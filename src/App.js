@@ -22,3 +22,12 @@ class App extends Component {
 
 
 export default App;
+
+
+const List = ({children}) => {
+    return (
+        <ul className="list">
+            {children}
+        </ul>
+    );
+};
