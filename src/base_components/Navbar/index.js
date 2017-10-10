@@ -4,12 +4,7 @@ import { ButtonToolbar, Button } from 'react-bootstrap';
 import './styles.css';
 
 const Navbar = () => {
-  return (
-    <ButtonToolbar>
-      <Button href="#">Link</Button>
-      <Button>Button</Button>
-    </ButtonToolbar>
-  );
+  return <div>hello</div>;
 };
 
 export default Navbar;
