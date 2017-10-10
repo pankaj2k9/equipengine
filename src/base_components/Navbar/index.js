@@ -1,19 +1,15 @@
 import React from 'react';
 
-import Text from 'Text';
+import { ButtonToolbar, Button } from 'react-bootstrap';
 import './styles.css';
 
 const Navbar = () => {
-    return (
-        <div className="Navbar">
-            <Text/>            
-        </div>
-    );
+  return (
+    <ButtonToolbar>
+      <Button href="#">Link</Button>
+      <Button>Button</Button>
+    </ButtonToolbar>
+  );
 };
 
-
 export default Navbar;
-
-
-
-
