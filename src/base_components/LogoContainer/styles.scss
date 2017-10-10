@@ -1,0 +1,21 @@
+.LogoContainer{
+    display: flex;
+    align-items: center;
+
+    img{
+        margin-right: 0.5em;
+    }
+ 
+    h1{
+        font-family: 'Avenir Next', sans-serif;
+        font-weight: 800;
+        font-size: 24px;
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .LogoContainer h1{
+        display: block;
+    }
+}
