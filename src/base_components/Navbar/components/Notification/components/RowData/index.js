@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import './styles.css';
 
-const RowData = ({ userName, date, message }) => {
+const RowData = ({ userName, date, message, avatar }) => {
   return (
     <li className="RowData">
       <div className="RowData__avatar">
-        <img src="" alt="" />
+        <img src={avatar} alt={userName} />
       </div>
       <div className="RowData__info">
         <div className="RowData__info__header">
@@ -25,7 +25,8 @@ const RowData = ({ userName, date, message }) => {
 RowData.propTypes = {
   userName: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired
+  message: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired
 };
 
 export default RowData;
