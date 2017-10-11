@@ -4,12 +4,20 @@ import IconBurger from 'react-icons/lib/fa/align-justify';
 
 import './styles.css';
 
-const ButtonTriggerSidebar = () => {
+const ButtonTriggerSidebar = ({ onOpenSidebar }) => {
   return (
-    <button className="ButtonTriggerSidebar" type="button">
+    <button
+      onClick={onOpenSidebar}
+      className="ButtonTriggerSidebar"
+      type="button"
+    >
       <IconBurger />
     </button>
   );
+};
+
+ButtonTriggerSidebar.propTypes = {
+  onOpenSidebar: PropTypes.func.isRequired
 };
 
 export default ButtonTriggerSidebar;

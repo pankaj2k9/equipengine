@@ -1,0 +1,11 @@
+.Breadcrumbs{
+    padding: 4% 6% 4% 6%;
+    border-bottom: 1px solid #DADADA;
+}
+
+
+@media screen and (min-width: 768px){
+    .Breadcrumbs{
+        padding: 20px 35px;
+    }
+}

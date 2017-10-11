@@ -2,6 +2,22 @@
     position: fixed;
     top: 0;
     height: 100vh;
+    background: none;
+    width: 100%;
+    margin-left: -208px;
+    transition: z-index 500ms, margin-left 150ms ease-in, background 500ms; 
+    z-index: -1;
+
+    // for the transition
+    &.isOpen{
+        background: rgba(53, 53, 53, 0.53); 
+        margin-left: 0px;
+    }
+
+    .Sidebar__content{
+        height: 100%;
+        width: 208px;
+    }
 
     .Sidebar__body{
         background: #2F3036;
@@ -34,5 +50,11 @@
 
 @media screen and (min-width: 768px){
     .Sidebar{
+        width: 257px;
+        margin-left: 0px;
+        
+        .Sidebar__content{
+            width: 100%;
+        }
     }
 }

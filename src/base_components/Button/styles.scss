@@ -1,0 +1,25 @@
+.Button{
+    background-color: #338FFC;
+    width: 70px;
+    border: 0;
+    padding: 9px 0;
+    font-family: "karla";
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 3px;
+    transition: background-color 300ms ease-in;
+
+    &:hover{
+        background-color: #125eb7;
+    }
+
+}
+
+
+@media screen and (min-width: 768px){
+    .Button{
+        width: 105px;
+    }
+}

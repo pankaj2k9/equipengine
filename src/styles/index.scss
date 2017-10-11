@@ -49,7 +49,11 @@ a{
     }
 }
 
-
+button{
+    &:focus{
+        outline: 0;
+    }
+}
 // overriding the base styles of the bootstrap components
 .popover{
     background: #FFFFFF;
