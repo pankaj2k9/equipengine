@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import LogoContainer from 'base_components/LogoContainer';
 import Menu from './components/Menu';
+import DropdownGroups from './components/DropdownGroups';
 import Link from 'base_components/Link';
 import './styles.css';
 
@@ -41,7 +42,10 @@ const Sidebar = () => {
     <div className="Sidebar">
       <LogoContainer />
       <div className="Sidebar__body">
-        <div className="Sidebar__body__mainPages">{mainPages}</div>
+        <div className="Sidebar__body__mainPages">
+          <DropdownGroups />
+          {mainPages}
+        </div>
         <div className="Sidebar__body__otherPages">{otherPages}</div>
       </div>
     </div>
