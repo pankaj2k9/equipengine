@@ -1,0 +1,38 @@
+.Sidebar{
+    position: fixed;
+    top: 0;
+    height: 100vh;
+
+    .Sidebar__body{
+        background: #2F3036;
+        height: 100%;
+    }
+
+    .Sidebar__body__mainPages{
+        border-bottom: 1px solid #424242;
+        padding: 7%;
+        height: 75%;
+    }
+
+    .Sidebar__item{
+        margin-bottom: 0.8em;
+
+        a {
+            color: #9FA6AD;
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 12px;
+        }
+    }
+
+    .Sidebar__body__otherPages{
+        padding: 8%;
+    }
+
+}
+
+
+@media screen and (min-width: 768px){
+    .Sidebar{
+    }
+}

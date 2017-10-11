@@ -1,6 +1,9 @@
 .LogoContainer{
     display: flex;
     align-items: center;
+    padding: 5% 5% 0 5%;
+    margin-bottom: 6px;
+    background-color: #fff;
 
     img{
         margin-right: 0.5em;
@@ -9,13 +12,21 @@
     h1{
         font-family: 'Avenir Next', sans-serif;
         font-weight: 800;
-        font-size: 24px;
-        display: none;
+        font-size: 18px;
+        margin-bottom: 0;
     }
 }
 
 @media screen and (min-width: 768px){
-    .LogoContainer h1{
-        display: block;
+    .LogoContainer{
+        padding: 16px;
+        margin-bottom: 0px;
+
+        img{
+            margin-right: 1em;
+        }
+        h1{
+            font-size: 24px;
+        }
     }
 }

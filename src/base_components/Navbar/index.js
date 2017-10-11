@@ -1,16 +1,16 @@
 import React from 'react';
 
-import LogoContainer from 'base_components/LogoContainer';
+import ButtonTriggerSidebar from './components/ButtonTriggerSidebar';
 import Notification from './components/Notification';
 import { ButtonToolbar, Button } from 'react-bootstrap';
 import './styles.css';
 
 const Navbar = () => {
   return (
-    <div className="Navbar">
-      <LogoContainer />
+    <nav className="Navbar">
+      <ButtonTriggerSidebar />
       <Notification />
-    </div>
+    </nav>
   );
 };
 

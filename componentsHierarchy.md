@@ -4,7 +4,7 @@ Base Components
     - TitleText
 
   - Navbar
-    - LogoContainer
+    - ButtonTriggerSidebar
     - Notification
       - components
         - PopoverWithBadge (*Popover)
@@ -16,6 +16,7 @@ Base Components
         - PopoverUserAvatar (*Popover)
 
   - Sidebar
+    - LogoContainer
     - components
       - Menu
         - Link (Link)
