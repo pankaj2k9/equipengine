@@ -9,8 +9,8 @@ import Link from 'base_components/Link';
 import './styles.css';
 
 const Sidebar = ({ isOpen, onCloseSidebar }) => {
-  // construct our mainPages elements
-  const mainPages = (
+  // construct our mainPages links that we will integrate on our sidebar
+  const mainPagesLink = (
     <Menu>
       <li className="Sidebar__item">
         <Link text="Dashboard" url="/" />
@@ -27,8 +27,8 @@ const Sidebar = ({ isOpen, onCloseSidebar }) => {
     </Menu>
   );
 
-  // otherPages
-  const otherPages = (
+  // otherPages links
+  const otherPagesLink = (
     <Menu>
       <li className="Sidebar__item">
         <Link text="Groups" url="/groups" />
@@ -53,9 +53,12 @@ const Sidebar = ({ isOpen, onCloseSidebar }) => {
         <div className="Sidebar__body">
           <div className="Sidebar__body__mainPages">
             <DropdownGroups />
-            {mainPages}
+            {
+              // we will put here the links that we created
+              mainPagesLink
+            }
           </div>
-          <div className="Sidebar__body__otherPages">{otherPages}</div>
+          <div className="Sidebar__body__otherPages">{otherPagesLink}</div>
         </div>
       </div>
     </div>
