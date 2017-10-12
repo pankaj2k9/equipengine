@@ -5,16 +5,11 @@ import Loadable from 'react-loadable';
 /* import base_components here*/
 import Loader from 'base_components/Loader';
 
-const delay = Component =>
-  new Promise(resolve => {
-    setTimeout(() => resolve(Component), 15000);
-  });
-
 /* create our async component in here
  * this will optimize the loading of components of our app
  * dynamically importing our scenes here*/
 const AsyncCourses = Loadable({
-  loader: () => delay(import('scenes/Courses')),
+  loader: () => import('scenes/Courses'),
   loading: Loader, // before this component gets loaded, we will render first this Loader component.
   timeout: 10000
 });
@@ -37,3 +32,8 @@ const Routes = () => {
 };
 
 export default Routes;
+
+/* const delay = Component =>
+ *   new Promise(resolve => {
+ *     setTimeout(() => resolve(Component), 15000);
+ *   });*/

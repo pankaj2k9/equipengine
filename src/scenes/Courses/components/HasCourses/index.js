@@ -1,7 +1,9 @@
 import React from 'react';
 
+import Box from 'base_components/Box';
+
 const HasCourses = () => {
-  return <div className="HasCourses">has courses</div>;
+  return <Box>has courses</Box>;
 };
 
 export default HasCourses;

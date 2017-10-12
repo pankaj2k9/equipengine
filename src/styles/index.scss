@@ -1,6 +1,7 @@
 @import './normalize.css';
 @import './fonts.scss';
 
+//------------------------------------------ BASE COMPONENTS -----------------------------------//
 html {font-size: 1rem;}
 
 body {
@@ -34,13 +35,14 @@ h4 {font-size: 1.414rem;}
 
 small, .font_small {font-size: 0.707rem;}
 
-// base styles
+// list
 ul{
     padding: 0;
     margin: 0;
     list-style-type: none;
 }
 
+// anchor
 a{
     transition: color 300ms ease-in;
 
@@ -53,11 +55,37 @@ a{
     }
 }
 
+// button
 button{
     &:focus{
         outline: 0;
     }
 }
+
+// paragraph
+p{
+    max-width: 750px;
+    text-align: justify;
+}
+
+// headline
+h4{
+    font-size: 1.2rem;
+    text-align: left;
+    font-family: "Avenir Next";
+    font-weight: 500;
+    color: #505050;
+}
+
+@media screen and (min-width: 768px){
+    h4{
+        margin-top: 2em;
+        font-size: 1.5rem;
+    }
+}
+
+//------------------------------------------ OVERRIDING ROOT COMPONENT -----------------------------------//
+
 // overriding the base styles of the bootstrap components
 .popover{
     background: #FFFFFF;

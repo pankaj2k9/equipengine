@@ -5,7 +5,11 @@ const subscribingOnCourses = WrappedComponent => {
     constructor() {
       super();
       this.state = {
-        courses: []
+        courses: [
+          {
+            title: 'itlog'
+          }
+        ]
       };
     }
 
