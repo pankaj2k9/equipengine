@@ -43,11 +43,7 @@ const Sidebar = ({ isOpen, onCloseSidebar }) => {
   const sidebarClassnames = classNames('Sidebar', { isOpen });
 
   return (
-    <div
-      onClick={onCloseSidebar}
-      style={{ zIndex: isOpen && 1 }}
-      className={sidebarClassnames}
-    >
+    <div onClick={onCloseSidebar} className={sidebarClassnames}>
       <div className="Sidebar__content">
         <LogoContainer />
         <div className="Sidebar__body">

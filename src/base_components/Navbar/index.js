@@ -8,12 +8,7 @@ import './styles.css';
 
 const Navbar = ({ isOpen, onOpenSidebar }) => {
   return (
-    <nav
-      style={{
-        zIndex: isOpen && -1
-      }}
-      className="Navbar"
-    >
+    <nav className="Navbar">
       <ButtonTriggerSidebar onOpenSidebar={onOpenSidebar} />
       <Notification />
     </nav>

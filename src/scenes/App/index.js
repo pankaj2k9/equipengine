@@ -33,10 +33,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar
-          isOpen={this.state.isSidebarOpen}
-          onOpenSidebar={this.openSidebar}
-        />
+        <Navbar onOpenSidebar={this.openSidebar} />
         <Sidebar
           isOpen={this.state.isSidebarOpen}
           onCloseSidebar={this.closeSidebar}

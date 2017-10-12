@@ -2,15 +2,16 @@
     position: fixed;
     top: 0;
     height: 100vh;
-    background: none;
+    opacity: 0;
+    z-index: 1;
+    background: rgba(53, 53, 53, 0.53); 
     width: 100%;
-    margin-left: -208px;
-    transition: z-index 500ms, margin-left 150ms ease-in, background 500ms; 
-    z-index: -1;
+    margin-left: -100%;
+    transition: margin-left 150ms ease-in, opacity 500ms; 
 
     // for the transition
     &.isOpen{
-        background: rgba(53, 53, 53, 0.53); 
+        opacity: 1;
         margin-left: 0px;
     }
 
