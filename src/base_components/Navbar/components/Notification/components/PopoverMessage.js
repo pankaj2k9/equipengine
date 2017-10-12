@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import IconMessage from 'react-icons/lib/fa/envelope';
 import Popover from 'base_components/Popover';
-import RowData from './RowData';
 
 const PopoverMessage = ({ messageRowData }) => {
   return (

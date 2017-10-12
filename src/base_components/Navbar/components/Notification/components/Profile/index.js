@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Popover from 'base_components/Popover';
 import PopoverRow from 'base_components/Popover/components/PopoverRow';

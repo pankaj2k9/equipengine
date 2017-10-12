@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ButtonToolbar, DropdownButton, MenuItem } from 'react-bootstrap';
 
 import './styles.css';

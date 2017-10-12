@@ -16,7 +16,7 @@ const Sidebar = ({ isOpen, onCloseSidebar }) => {
         <Link text="Dashboard" url="/" />
       </li>
       <li className="Sidebar__item">
-        <Link text="Courses" url="/courses" />
+        <Link isStrict={true} text="Courses" url="/courses" />
       </li>
       <li className="Sidebar__item">
         <Link text="Files" url="/files" />

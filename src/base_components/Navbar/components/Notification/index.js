@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import RowData from './components/RowData';
 import RowLink from './components/RowLink';

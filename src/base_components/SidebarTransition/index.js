@@ -20,7 +20,7 @@ class SidebarTransition extends Component {
   closeSidebar = e => {
     // we only want to update the state when the sidebar wrapper is clicked
     // if the child of the sidebar is clicked, we dont want to close the sidebar
-    if (e.target.className == 'Sidebar isOpen') {
+    if (e.target.className === 'Sidebar isOpen') {
       this.setState({
         isSidebarOpen: false
       });
