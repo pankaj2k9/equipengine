@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+
 import Navbar from 'base_components/Navbar';
 import Sidebar from 'base_components/Sidebar';
 
 class SidebarTransition extends Component {
+  static propTypes = {
+    location: PropTypes.object.isRequired
+  };
+
   constructor() {
     super();
     this.state = {
@@ -26,6 +33,17 @@ class SidebarTransition extends Component {
       });
     }
   };
+
+  componentWillReceiveProps(nextProps) {
+    // we need to check here if the key of location is changed.
+    // if changed close the sidebar.
+    if (nextProps.location.key !== this.props.location.key) {
+      this.setState({
+        isSidebarOpen: false
+      });
+    }
+  }
+
   render() {
     return (
       <div>
@@ -39,4 +57,4 @@ class SidebarTransition extends Component {
   }
 }
 
-export default SidebarTransition;
+export default withRouter(SidebarTransition);
