@@ -82,19 +82,19 @@ Scenes
     - Navbar
     - Sidebar
     - Main
-    - NoCourses
-      - Text
-      - LinkNoCourses (*Link)
+      - NoCourses
+        - Text
+        - LinkNoCourses (*Link)
 
-    - HasCourses
-    - Breadcrumbs
-      - ListCourses (*List)
-        - ListRowLeft 
-          - Text
-          - Textmed
-        - ListRowRight
-          - TutorialsCompleted (*Complete Component)
-          - LinkButton (LinkButton)
+      - HasCourses
+        - Breadcrumbs
+          - ListCourses (*List)
+            - ListRowLeft 
+              - Text
+              - Textmed
+            - ListRowRight
+              - TutorialsCompleted (*Complete Component)
+              - LinkButton (LinkButton)
         
   - Course Scene
     - Navbar
