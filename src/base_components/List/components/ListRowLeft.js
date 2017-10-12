@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ListRowLeft = ({ children }) => {
-  return <div className="List__row__left">{children}</div>;
+const ListRowLeft = ({ children, className }) => {
+  return <div className={className}>{children}</div>;
 };
 
 ListRowLeft.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  className: PropTypes.string.isRequired
 };
 
 export default ListRowLeft;

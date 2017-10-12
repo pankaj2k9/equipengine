@@ -5,17 +5,19 @@ import PropTypes from 'prop-types';
 import ListRow from './components/ListRow';
 import ListRowLeft from './components/ListRowLeft';
 import ListRowRight from './components/ListRowRight';
+import './styles.css';
 
-// TODO: add styles on this component and its sub components
-// start creating the scenes
 const List = ({ children }) => {
   return <ul>{children}</ul>;
 };
 
 List.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ])
 };
 
 // exposed this Components.
 // setting as the default component to be imported.
-export { List as default, LIstRow, ListRowLeft, ListRowRight };
+export { List as default, ListRow, ListRowLeft, ListRowRight };

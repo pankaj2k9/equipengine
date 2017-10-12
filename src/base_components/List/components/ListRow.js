@@ -8,3 +8,5 @@ const ListRow = ({ children }) => {
 ListRow.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired
 };
+
+export default ListRow;

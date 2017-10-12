@@ -6,7 +6,7 @@ import Notification from './components/Notification';
 import { ButtonToolbar, Button } from 'react-bootstrap';
 import './styles.css';
 
-const Navbar = ({ isOpen, onOpenSidebar }) => {
+const Navbar = ({ onOpenSidebar }) => {
   return (
     <nav className="Navbar">
       <ButtonTriggerSidebar onOpenSidebar={onOpenSidebar} />
@@ -16,8 +16,7 @@ const Navbar = ({ isOpen, onOpenSidebar }) => {
 };
 
 Navbar.propTypes = {
-  onOpenSidebar: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired
+  onOpenSidebar: PropTypes.func.isRequired
 };
 
 export default Navbar;
