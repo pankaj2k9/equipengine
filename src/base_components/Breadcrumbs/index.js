@@ -1,21 +1,20 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { Breadcrumbs as RootBreadcrumbs } from 'react-breadcrumbs-dynamic';
 
 import './Styles.css';
 
-const Breadcrumbs = () => {
+const Breadcrumbs = ({}) => {
   return (
     <div className="Breadcrumbs">
-      <a
-        href=""
-        style={{
-          color: '#616161',
-          fontSize: 14,
-          fontWeight: '400',
-          textTransform: 'capitalize'
+      <RootBreadcrumbs
+        separator={<span className="Breadcrumbs__separator"> > </span>}
+        item={NavLink}
+        finalItem={'span'}
+        finalProps={{
+          style: { color: '#616161' }
         }}
-      >
-        Courses
-      </a>
+      />
     </div>
   );
 };

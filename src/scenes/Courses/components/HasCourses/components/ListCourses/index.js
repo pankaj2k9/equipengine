@@ -13,11 +13,11 @@ const ListCourses = ({ courses }) => {
       <ListRow key={i}>
         <ListRowLeft>
           <p>{course.title}</p>
-          <p>{course.subTitle}</p>
+          <p>{course.subtitle}</p>
         </ListRowLeft>
         <ListRowRight className="ListCourses__right">
           <TutorialsCompleted />
-          <LinkButton text="View" url={'/courses/' + course.url} />
+          <LinkButton text="View" url={'/courses/' + course.id} />
         </ListRowRight>
       </ListRow>
     );

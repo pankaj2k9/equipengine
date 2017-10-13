@@ -1,0 +1,28 @@
+[
+  {
+    "id": "communication-and-culture",
+    "courseId": "ytishfk",
+    "title": "Communication and Culture",
+    "subtitle":
+      "This group is for people who are in level 3 pathway in the Connect Program.",
+    "tutorials": [
+      {
+        "id": "jfsafiks",
+        "title": "Tutorial 1"
+      }
+    ]
+  },
+  {
+    "id": "becoming-equipped-to-communicate",
+    "courseId": "ytjksdfj",
+    "title": "Becoming Equipped to Communicate",
+    "subtitle":
+      "This group is for people who are in level 3 pathway in the Connect Program.",
+    "tutorials": [
+      {
+        "id": "jfasfksf",
+        "title": "Tutorial 1"
+      }
+    ]
+  }
+]

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 
 /* import base_components here*/
 import Loader from 'base_components/Loader';

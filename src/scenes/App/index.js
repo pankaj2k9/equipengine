@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { BreadcrumbsProvider } from 'react-breadcrumbs-dynamic';
 
 import Routes from './Routes';
 import SidebarTransition from 'base_components/SidebarTransition';
@@ -9,12 +10,14 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <SidebarTransition />
-          <Main>
-            <Routes />
-          </Main>
-        </div>
+        <BreadcrumbsProvider>
+          <div>
+            <SidebarTransition />
+            <Main>
+              <Routes />
+            </Main>
+          </div>
+        </BreadcrumbsProvider>
       </Router>
     );
   }

@@ -5423,7 +5423,7 @@ prop-types-extra@^1.0.1:
   dependencies:
     warning "^3.0.0"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.0:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -5559,6 +5559,19 @@ react-bootstrap@^0.31.3:
     react-prop-types "^0.4.0"
     uncontrollable "^4.1.0"
     warning "^3.0.0"
+
+react-breadcrumbs-dynamic@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-breadcrumbs-dynamic/-/react-breadcrumbs-dynamic-1.0.6.tgz#6348275eeb0006409dc6e974871828ef27369453"
+  dependencies:
+    react-broadcast "^0.3.1"
+
+react-broadcast@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/react-broadcast/-/react-broadcast-0.3.1.tgz#8eb61fc812abc6e6579d373f93649163a97c26dd"
+  dependencies:
+    invariant "^2.2.1"
+    prop-types "^15.5.6"
 
 react-dev-utils@^4.1.0:
   version "4.1.0"
