@@ -6,7 +6,7 @@ const ListRow = ({ children }) => {
 };
 
 ListRow.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired
+  children: PropTypes.arrayOf(PropTypes.element)
 };
 
 export default ListRow;

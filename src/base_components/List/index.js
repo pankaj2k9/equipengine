@@ -7,15 +7,16 @@ import ListRowLeft from './components/ListRowLeft';
 import ListRowRight from './components/ListRowRight';
 import './styles.css';
 
-const List = ({ children }) => {
-  return <ul>{children}</ul>;
+const List = ({ className, children }) => {
+  return <ul className={className}>{children}</ul>;
 };
 
 List.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element)
-  ])
+  ]),
+  className: PropTypes.string
 };
 
 // exposed this Components.

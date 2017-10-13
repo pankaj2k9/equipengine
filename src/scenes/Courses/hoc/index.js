@@ -7,7 +7,16 @@ const subscribingOnCourses = WrappedComponent => {
       this.state = {
         courses: [
           {
-            title: 'itlog'
+            title: 'Communication and Culture',
+            subTitle:
+              'This group is for people who are in level 3 pathway in the Connect Program.',
+            url: 'communication-and-culture'
+          },
+          {
+            title: 'Becoming Equipped to Communicate',
+            subTitle:
+              'This group is for people who are in level 3 pathway in the Connect Program.',
+            url: 'becoming-equipped-to-communicate'
           }
         ]
       };
