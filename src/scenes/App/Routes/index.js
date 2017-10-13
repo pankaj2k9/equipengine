@@ -4,7 +4,7 @@ import Loadable from 'react-loadable';
 
 /* import base_components here*/
 import Loader from 'base_components/Loader';
-
+import Courses from 'scenes/Courses';
 /* create our async component in here
  * this will optimize the loading of components of our app
  * dynamically importing our scenes here*/
