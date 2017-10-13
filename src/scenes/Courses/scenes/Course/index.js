@@ -11,7 +11,7 @@ const Course = ({ courses, match }) => {
   const courseTitle = pipe(split('-'), join(' '))(paramId);
 
   // retrieve specific course based on the params id value
-  const course = courses.filter(course => course.id == paramId)[0];
+  const course = courses.filter(course => course.id === paramId)[0];
 
   return (
     <div>

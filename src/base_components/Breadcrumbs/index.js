@@ -4,7 +4,7 @@ import { Breadcrumbs as RootBreadcrumbs } from 'react-breadcrumbs-dynamic';
 
 import './Styles.css';
 
-const Breadcrumbs = ({}) => {
+const Breadcrumbs = () => {
   return (
     <div className="Breadcrumbs">
       <RootBreadcrumbs
