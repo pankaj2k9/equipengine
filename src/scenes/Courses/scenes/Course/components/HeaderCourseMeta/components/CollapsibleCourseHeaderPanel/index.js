@@ -4,21 +4,19 @@ import { Panel } from 'react-bootstrap';
 
 import './styles.css';
 
-const CollapsibleHeaderCoursePanel = ({ isOpen }) => {
+const CollapsibleHeaderCoursePanel = ({ description, isOpen }) => {
     return (
         <div className="CollapsibleHeaderCoursePanel">
             <Panel collapsible expanded={isOpen}>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid. Nihil anim keffiyeh
-                helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                ea proident.
+                {description}
             </Panel>
         </div>
     );
 };
 
 CollapsibleHeaderCoursePanel.propTypes = {
-    isOpen: PropTypes.bool.isRequired
+    isOpen: PropTypes.bool.isRequired,
+    description: PropTypes.string.isRequired
 };
 
 export default CollapsibleHeaderCoursePanel;

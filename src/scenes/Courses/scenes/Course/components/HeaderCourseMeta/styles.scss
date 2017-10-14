@@ -2,7 +2,6 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    height: 176px;
 
     header{
         display: flex;
@@ -13,6 +12,7 @@
         color: #fff;
 
         h3{
+            width: 40px;
             margin-top: 0px;
             font-size: 1.8rem;
             font-weight: 800;
@@ -64,6 +64,10 @@
 
         header{
             padding-top: 139px;
+
+            h3{
+                width: 745px;
+            }
 
             .HeaderCourseMeta__completed{
                 width: 80px;

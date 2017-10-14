@@ -24,6 +24,7 @@ class HeaderCourseMeta extends React.Component {
     };
 
     render() {
+        const { title, description } = this.props.course;
         return (
             <div>
                 <Box
@@ -34,7 +35,7 @@ class HeaderCourseMeta extends React.Component {
                 >
                     <header>
                         <div>
-                            <h3>Course title</h3>
+                            <h3>{title}</h3>
                             <a onClick={this.triggerPanel}>
                                 About this course
                                 <span className="HeaderCourseMeta__button">
@@ -54,7 +55,10 @@ class HeaderCourseMeta extends React.Component {
                         </div>
                     </header>
                 </Box>
-                <CollapsibleCourseHeaderPanel isOpen={this.state.open} />
+                <CollapsibleCourseHeaderPanel
+                    description={description}
+                    isOpen={this.state.open}
+                />
             </div>
         );
     }

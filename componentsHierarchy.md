@@ -109,7 +109,6 @@ Scenes
           - TutorialsCompleted (*Complete)
 
       - BodyCourseMeta
-
         - TabTutorials (*Tab)
           - ItemTutorials
             - ListTutorials (*List)

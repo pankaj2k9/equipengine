@@ -5,6 +5,7 @@ import { split, join, pipe } from 'ramda';
 
 import Box from 'base_components/Box';
 import HeaderCourseMeta from './components/HeaderCourseMeta';
+import BodyCourseMeta from './components/BodyCourseMeta';
 
 const Course = ({ courses, match }) => {
     // cachce variables
@@ -22,6 +23,7 @@ const Course = ({ courses, match }) => {
                 {courseTitle}
             </BreadcrumbsItem>
             <HeaderCourseMeta course={course} />
+            <BodyCourseMeta />
             <Box />
         </div>
     );
