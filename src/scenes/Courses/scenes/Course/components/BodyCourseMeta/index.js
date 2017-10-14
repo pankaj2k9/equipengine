@@ -1,14 +1,39 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import MediaQuery from 'react-responsive';
 
 import Box from 'base_components/Box';
 import TabsCourse from './components/TabsCourse';
+import LatestGroupDiscussion from './components/LatestGroupDiscussions';
 
 const BodyCourseMeta = () => {
     return (
-        <Box>
-            <TabsCourse />
-        </Box>
+        <div>
+            <MediaQuery query="(max-device-width: 767px)">
+                <Box>
+                    <TabsCourse />
+                    <LatestGroupDiscussion />
+                </Box>
+            </MediaQuery>
+            <MediaQuery query="(min-device-width: 768px)">
+                <Box
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between'
+                    }}
+                >
+                    <TabsCourse
+                        style={{
+                            width: '60%'
+                        }}
+                    />
+                    <LatestGroupDiscussion
+                        style={{
+                            width: '34%'
+                        }}
+                    />
+                </Box>
+            </MediaQuery>
+        </div>
     );
 };
 

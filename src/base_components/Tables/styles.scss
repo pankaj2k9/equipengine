@@ -13,12 +13,16 @@
             border: 0;
         }
 
+        td:last-child{
+            text-align: right;
+        }
+
         th{
             font-size: 12px;
             font-weight: 400;
             color: #636363;
             text-transform: uppercase;
-            padding-bottom: 0px;
+            padding-bottom: 3px;
         }
 
         td{

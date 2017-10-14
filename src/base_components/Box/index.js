@@ -5,9 +5,9 @@ import './styles.css';
 
 const Box = ({ style, children, className }) => {
     return (
-        <div style={style} className={`Box ${className}`}>
+        <section style={style} className={`Box ${className}`}>
             {children}
-        </div>
+        </section>
     );
 };
 

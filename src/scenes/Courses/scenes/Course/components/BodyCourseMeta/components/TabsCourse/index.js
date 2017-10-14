@@ -4,10 +4,11 @@ import { Tab } from 'react-bootstrap';
 
 import Tabs from 'base_components/Tabs';
 import ItemListTutorials from './components/ItemListTutorials';
+import ItemTableTutorialsFile from './components/ItemTableTutorialsFile';
 
-const TabsCourse = () => {
+const TabsCourse = ({ style }) => {
     return (
-        <Tabs>
+        <Tabs style={style}>
             <Tab eventKey={1} title="Tutorials">
                 <ItemListTutorials />
             </Tab>
@@ -15,12 +16,14 @@ const TabsCourse = () => {
                 Tab 2 content
             </Tab>
             <Tab eventKey={3} title="Files">
-                Tab 3 content
+                <ItemTableTutorialsFile />
             </Tab>
         </Tabs>
     );
 };
 
-TabsCourse.propTypes = {};
+TabsCourse.propTypes = {
+    style: PropTypes.object
+};
 
 export default TabsCourse;
