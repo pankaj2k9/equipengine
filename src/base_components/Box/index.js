@@ -3,15 +3,25 @@ import PropTypes from 'prop-types';
 
 import './styles.css';
 
-const Box = ({ children }) => {
-  return <div className="Box">{children}</div>;
+const Box = ({ style, children, className }) => {
+    return (
+        <div style={style} className={`Box ${className}`}>
+            {children}
+        </div>
+    );
+};
+
+Box.defaultProps = {
+    className: ''
 };
 
 Box.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element)
-  ])
+    className: PropTypes.string,
+    children: PropTypes.oneOfType([
+        PropTypes.element,
+        PropTypes.arrayOf(PropTypes.element)
+    ]),
+    style: PropTypes.object
 };
 
 export default Box;
