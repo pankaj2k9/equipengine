@@ -8,8 +8,8 @@ import iconPlayButton from './play-button.svg';
 import './styles.css';
 
 const ItemListTutorials = ({ tutorials }) => {
-  const listOfTutorials = tutorials.map((tutorial, i) => (
-    <ListRow key={i}>
+  const listOfTutorials = tutorials.map(tutorial => (
+    <ListRow key={tutorial.tutorialId}>
       <ListRowLeft>
         <img src={iconPlayButton} alt="Play button icon" />
         <div>
