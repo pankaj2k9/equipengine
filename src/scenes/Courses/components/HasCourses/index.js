@@ -7,6 +7,7 @@ import Loadable from 'react-loadable';
 import Loader from 'base_components/Loader';
 
 // for our breadcrumbs
+import ErrorBoundary from 'base_components/ErrorBoundary';
 import Breadcrumbs from 'base_components/Breadcrumbs';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 
@@ -21,7 +22,7 @@ const AsyncCourse = Loadable({
 const HasCourses = ({ courses, match }) => {
   return (
     <div>
-      <Breadcrumbs courses={courses} match={match} />
+      <Breadcrumbs />
       <BreadcrumbsItem to={match.url}>Courses</BreadcrumbsItem>
       <Route
         exact
@@ -30,7 +31,13 @@ const HasCourses = ({ courses, match }) => {
       />
       <Route
         path={`${match.url}/:id`}
-        render={props => <AsyncCourse {...props} courses={courses} />}
+        render={props => {
+          return (
+            <ErrorBoundary errMsg="Something went wrong in displaying the course page.">
+              <AsyncCourse {...props} courses={courses} />
+            </ErrorBoundary>
+          );
+        }}
       />
     </div>
   );
