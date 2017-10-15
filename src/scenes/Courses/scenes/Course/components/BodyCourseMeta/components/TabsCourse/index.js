@@ -6,24 +6,37 @@ import Tabs from 'base_components/Tabs';
 import ItemListTutorials from './components/ItemListTutorials';
 import ItemTableTutorialsFile from './components/ItemTableTutorialsFile';
 
-const TabsCourse = ({ style }) => {
+class TabsCourse extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    // if not the same, re-render the components
+    if (this.props.course !== nextProps.course) {
+      return true;
+    }
+
+    return false;
+  }
+  render() {
+    // get the list tutorials for this course
+    const { tutorials, files } = this.props.course;
+
     return (
-        <Tabs style={style}>
-            <Tab eventKey={1} title="Tutorials">
-                <ItemListTutorials />
-            </Tab>
-            <Tab eventKey={2} title="Group Discussions">
-                Tab 2 content
-            </Tab>
-            <Tab eventKey={3} title="Files">
-                <ItemTableTutorialsFile />
-            </Tab>
-        </Tabs>
+      <Tabs style={this.props.style}>
+        <Tab eventKey={1} title="Tutorials">
+          <ItemListTutorials tutorials={tutorials} />
+        </Tab>
+        <Tab eventKey={2} title="Group Discussions">
+          Tab 2 content
+        </Tab>
+        <Tab eventKey={3} title="Files">
+          <ItemTableTutorialsFile files={files} />
+        </Tab>
+      </Tabs>
     );
-};
+  }
+}
 
 TabsCourse.propTypes = {
-    style: PropTypes.object
+  style: PropTypes.object
 };
 
 export default TabsCourse;

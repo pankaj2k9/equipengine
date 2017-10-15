@@ -40,12 +40,12 @@
     "files": [
       {
         "file": "Submission Instruction.pdf",
-        "data": "22 April 17",
+        "date": "22 April 17",
         "tutorials": ["tsfjksaf", "tjksafj"]
       },
       {
         "file": "Showing culture.ptt",
-        "data": "19 March 17",
+        "date": "19 March 17",
         "tutorials": ["tjksafj"]
       }
     ]
@@ -91,12 +91,12 @@
     "files": [
       {
         "file": "Submission Instruction2.pdf",
-        "data": "22 May 17",
+        "date": "22 May 17",
         "tutorials": ["tsfjksgh", "tjksakg"]
       },
       {
         "file": "Showing culture2.ptt",
-        "data": "15 December 17",
+        "date": "15 December 17",
         "tutorials": ["tjksafj"]
       }
     ]

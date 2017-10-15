@@ -7,29 +7,27 @@ import HeaderCourseMeta from './components/HeaderCourseMeta';
 import BodyCourseMeta from './components/BodyCourseMeta';
 
 const Course = ({ courses, match }) => {
-    // cachce variables
-    const paramId = match.params.id;
+  // cachce variables
+  const paramId = match.params.id;
 
-    // create the course title based on the url params
-    const courseTitle = pipe(split('-'), join(' '))(paramId);
+  // create the course title based on the url params
+  const courseTitle = pipe(split('-'), join(' '))(paramId);
 
-    // retrieve specific course based on the params id value
-    const course = courses.filter(course => course.id === paramId)[0];
+  // retrieve specific course based on the params id value
+  const course = courses.filter(course => course.id === paramId)[0];
 
-    return (
-        <div>
-            <BreadcrumbsItem to={'/courses/course'}>
-                {courseTitle}
-            </BreadcrumbsItem>
-            <HeaderCourseMeta course={course} />
-            <BodyCourseMeta />
-        </div>
-    );
+  return (
+    <div>
+      <BreadcrumbsItem to={'/courses/course'}>{courseTitle}</BreadcrumbsItem>
+      <HeaderCourseMeta course={course} />
+      <BodyCourseMeta course={course} />
+    </div>
+  );
 };
 
 Course.propTypes = {
-    courses: PropTypes.array,
-    match: PropTypes.object.isRequired
+  courses: PropTypes.array,
+  match: PropTypes.object.isRequired
 };
 
 export default Course;
