@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MediaQuery from 'react-responsive';
 
 import List, { ListRow, ListRowLeft, ListRowRight } from 'base_components/List';
-import Button from 'base_components/Button';
+import LinkButton from 'base_components/LinkButton';
 import iconPlayButton from './play-button.svg';
 import './styles.css';
 
@@ -17,7 +18,20 @@ const ItemListTutorials = ({ tutorials }) => {
         </div>
       </ListRowLeft>
       <ListRowRight>
-        <Button text="View" />
+        {/* for mobile viewport */}
+        <MediaQuery query="(max-width: 767px)">
+          <LinkButton url="/tutorials" text="View" />
+        </MediaQuery>
+        {/* for desktop viewport */}
+        <MediaQuery query="(min-width: 768px)">
+          <LinkButton
+            style={{
+              width: 104
+            }}
+            url="/tutorials"
+            text="View"
+          />
+        </MediaQuery>
       </ListRowRight>
     </ListRow>
   ));

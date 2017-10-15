@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 import './styles.css';
 
-const LinkButton = ({ text, url }) => {
+const LinkButton = ({ style, text, url }) => {
   return (
-    <Link className="LinkButton" to={url}>
+    <Link style={style} className="LinkButton" to={url}>
       {text}
     </Link>
   );
@@ -14,7 +14,8 @@ const LinkButton = ({ text, url }) => {
 
 LinkButton.propTypes = {
   text: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  style: PropTypes.object
 };
 
 export default LinkButton;
