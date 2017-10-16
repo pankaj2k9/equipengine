@@ -10,7 +10,6 @@ const ModalFooter = () => {
         justifyContent: 'space-between'
       }}
     >
-      <p>custom element</p>
       <SlideControl
         handleClick={_ => console.log('prev')}
         text="Previous"
