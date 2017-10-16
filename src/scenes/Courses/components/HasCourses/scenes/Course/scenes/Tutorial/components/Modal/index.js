@@ -22,7 +22,7 @@ const Modal = () => {
     <Media query="(max-width: 767px)">
       {matches =>
         matches ? (
-          <div style={modalStyle}>
+          <div className="Modal" style={modalStyle}>
             <ModalInner>
               <ModalHeader />
               <ModalFooter />

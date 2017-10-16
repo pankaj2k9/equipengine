@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { BreadcrumbsProvider } from 'react-breadcrumbs-dynamic';
 
-import Routes from './Routes';
+import RoutesMain from './RoutesMain';
 import SidebarTransition from 'base_components/SidebarTransition';
+import Breadcrumbs from 'base_components/Breadcrumbs';
 import Main from 'base_components/Main';
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
           <div>
             <SidebarTransition />
             <Main>
-              <Routes />
+              <RoutesMain />
             </Main>
           </div>
         </BreadcrumbsProvider>

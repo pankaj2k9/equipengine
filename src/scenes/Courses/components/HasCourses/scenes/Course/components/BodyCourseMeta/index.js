@@ -5,12 +5,10 @@ import PropTypes from 'prop-types';
 import Box from 'base_components/Box';
 import TabsCourse from './components/TabsCourse';
 import LatestGroupDiscussion from './components/LatestGroupDiscussions';
-import Tutorial from 'scenes/Courses/scenes/Course/scenes/Tutorial';
 
 const BodyCourseMeta = ({ course }) => {
   return (
     <div>
-      <Tutorial />
       {/* this is the layout for 0-767px width */}
       <MediaQuery query="(max-device-width: 767px)">
         <Box>

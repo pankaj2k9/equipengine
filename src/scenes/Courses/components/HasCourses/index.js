@@ -2,19 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 
-// for our code splitting and loader
-import Loadable from 'react-loadable';
-import Loader from 'base_components/Loader';
+import ErrorBoundary from 'base_components/ErrorBoundary';
+import ListCourses from './components/ListCourses';
 
 // for our breadcrumbs
-import ErrorBoundary from 'base_components/ErrorBoundary';
 import Breadcrumbs from 'base_components/Breadcrumbs';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 
-import ListCourses from './components/ListCourses';
-
+/* for our code splitting, render this components asynchronous*/
+import Loader from 'base_components/Loader';
+import Loadable from 'react-loadable';
 const AsyncCourse = Loadable({
-  loader: () => import('scenes/Courses/scenes/Course'),
+  loader: () => import('./scenes/Course'),
   loading: Loader, // before this component gets loaded, we will render first this Loader component.
   timeout: 10000
 });
@@ -22,13 +21,16 @@ const AsyncCourse = Loadable({
 const HasCourses = ({ courses, match }) => {
   return (
     <div>
-      <Breadcrumbs />
+      {/* for our breadcrumbs item - get the current url and add it to its url */}
       <BreadcrumbsItem to={match.url}>Courses</BreadcrumbsItem>
+      <Breadcrumbs />
+      {/* only want to render this list courses on the courses route */}
       <Route
         exact
-        path={match.url}
-        component={_ => <ListCourses courses={courses} />}
+        path={`${match.url}`}
+        render={props => <ListCourses {...props} courses={courses} />}
       />
+      {/* Subroutes - course */}
       <Route
         path={`${match.url}/:id`}
         render={props => {
