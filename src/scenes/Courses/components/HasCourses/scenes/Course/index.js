@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic/dist/src';
 import { split, join, pipe } from 'ramda';
 import { Route } from 'react-router-dom';
+import { AnimatedRoute } from 'react-router-transition';
 
 import HeaderCourseMeta from './components/HeaderCourseMeta';
 import BodyCourseMeta from './components/BodyCourseMeta';
@@ -32,12 +33,13 @@ const Course = ({ courses, match }) => {
       <HeaderCourseMeta course={course} />
       <BodyCourseMeta course={course} />
       {/* subroutes - tutorials. */}
-      <Route
+      <AnimatedRoute
+        atEnter={{ opacity: 0 }}
+        atLeave={{ opacity: 0 }}
+        atActive={{ opacity: 1 }}
         exact
         path={`${match.url}/tutorials/:id`}
-        render={props => {
-          return <AsyncTutorial {...props} />;
-        }}
+        component={AsyncTutorial}
       />
     </div>
   );
