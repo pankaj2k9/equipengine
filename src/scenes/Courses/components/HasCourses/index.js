@@ -7,7 +7,7 @@ import ListCourses from './components/ListCourses';
 
 // for our breadcrumbs
 import Breadcrumbs from 'base_components/Breadcrumbs';
-import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic/dist/src';
 
 /* for our code splitting, render this components asynchronous*/
 import Loader from 'base_components/Loader';

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
+import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic/dist/src';
 import { split, join, pipe } from 'ramda';
 import { Route } from 'react-router-dom';
 

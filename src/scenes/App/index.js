@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { BreadcrumbsProvider } from 'react-breadcrumbs-dynamic';
+import { BreadcrumbsProvider } from 'react-breadcrumbs-dynamic/dist/src';
 
 import RoutesMain from './RoutesMain';
 import SidebarTransition from 'base_components/SidebarTransition';
