@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
-import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 
 import Modal from './components/Modal';
 
-const Tutorial = ({ match }) => {
+const Tutorial = ({ match, history }) => {
   return (
     <div>
-      <BreadcrumbsItem to={`${match.url}`}>tutorial</BreadcrumbsItem>
-      {/* <Modal /> */}
+      <Modal history={history} />
     </div>
   );
 };
 
-Tutorial.propTypes = {};
+Tutorial.propTypes = {
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
+};
 
 export default Tutorial;

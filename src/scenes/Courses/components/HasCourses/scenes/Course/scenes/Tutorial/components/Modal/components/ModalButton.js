@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Interactive from 'react-interactive';
 
-const ModalButton = ({ style, children, handleClick }) => (
+const ModalButton = ({ className, style, children, handleClick }) => (
   /* this wrapper component makes our element to be interactive - adding some hover/focus/active state*/
   <Interactive
     as="button"
@@ -16,6 +16,7 @@ const ModalButton = ({ style, children, handleClick }) => (
       transition: 'color 300ms ease-in',
       ...style
     }}
+    className={className}
   >
     {children}
   </Interactive>
@@ -27,7 +28,8 @@ ModalButton.propTypes = {
     PropTypes.element
   ]).isRequired,
   style: PropTypes.object,
-  handleClick: PropTypes.func.isRequired
+  handleClick: PropTypes.func.isRequired,
+  className: PropTypes.string
 };
 
 export default ModalButton;

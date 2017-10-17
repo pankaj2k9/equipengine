@@ -1,10 +1,12 @@
 import React from 'react';
-import IconClose from 'react-icons/lib/fa/close';
+import PropTypes from 'prop-types';
+import Media from 'react-media';
 
 import ModalBox from './ModalBox';
 import ModalButton from './ModalButton';
+import closeSrc from '../close-button.svg';
 
-const ModalHeader = () => {
+const ModalHeader = ({ handleCloseModal }) => {
   return (
     <ModalBox
       style={{
@@ -13,16 +15,36 @@ const ModalHeader = () => {
       }}
     >
       <ModalButton
-        handleClick={_ => console.log('close')}
+        handleClick={handleCloseModal}
         style={{
           padding: 0,
           fontSize: '1.2rem'
         }}
       >
-        <IconClose />
+        <Media query="(max-width: 767px)">
+          {matches =>
+            matches ? (
+              <img
+                className="ModalButtonClose"
+                alt="ButtonClose"
+                src={closeSrc}
+                style={{ height: 15 }}
+              />
+            ) : (
+              <img
+                className="ModalButtonClose"
+                alt="ButtonClose"
+                src={closeSrc}
+              />
+            )}
+        </Media>
       </ModalButton>
     </ModalBox>
   );
+};
+
+ModalHeader.propTypes = {
+  handleCloseModal: PropTypes.func.isRequired
 };
 
 export default ModalHeader;

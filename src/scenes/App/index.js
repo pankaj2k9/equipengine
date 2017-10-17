@@ -4,7 +4,6 @@ import { BreadcrumbsProvider } from 'react-breadcrumbs-dynamic';
 
 import RoutesMain from './RoutesMain';
 import SidebarTransition from 'base_components/SidebarTransition';
-import Breadcrumbs from 'base_components/Breadcrumbs';
 import Main from 'base_components/Main';
 
 class App extends Component {
