@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Media from 'react-media';
 
 import ModalHeader from './components/ModalHeader';
-/* import ModalBody from './components/ModalBody';*/
+import ModalBody from './components/ModalBody';
 import ModalFooter from './components/ModalFooter';
 import ModalInner from './components/ModalInner';
 
@@ -67,6 +67,7 @@ class Modal extends React.Component {
             >
               <ModalInner>
                 <ModalHeader handleCloseModal={this.handleCloseModal} />
+                <ModalBody />
                 <ModalFooter />
               </ModalInner>
             </div>
@@ -81,6 +82,7 @@ class Modal extends React.Component {
             >
               <ModalInner>
                 <ModalHeader handleCloseModal={this.handleCloseModal} />
+                <ModalBody />
                 <ModalFooter />
               </ModalInner>
             </div>

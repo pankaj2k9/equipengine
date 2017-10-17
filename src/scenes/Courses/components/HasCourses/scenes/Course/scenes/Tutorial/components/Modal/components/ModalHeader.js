@@ -8,38 +8,54 @@ import closeSrc from '../close-button.svg';
 
 const ModalHeader = ({ handleCloseModal }) => {
   return (
-    <ModalBox
-      style={{
-        flexDirection: 'row-reverse',
-        padding: '1% 3% 3% 3%'
-      }}
-    >
-      <ModalButton
-        handleClick={handleCloseModal}
-        style={{
-          padding: 0,
-          fontSize: '1.2rem'
-        }}
-      >
-        <Media query="(max-width: 767px)">
-          {matches =>
-            matches ? (
+    <Media query="(max-width: 767px)">
+      {matches =>
+        matches ? (
+          <ModalBox
+            style={{
+              flexDirection: 'row-reverse',
+              padding: '2% 3% 3% 3%'
+            }}
+          >
+            <ModalButton
+              handleClick={handleCloseModal}
+              style={{
+                padding: 0,
+                fontSize: '1.2rem'
+              }}
+            >
               <img
                 className="ModalButtonClose"
                 alt="ButtonClose"
                 src={closeSrc}
                 style={{ height: 15 }}
               />
-            ) : (
+            </ModalButton>
+          </ModalBox>
+        ) : (
+          <ModalBox
+            style={{
+              flexDirection: 'row-reverse',
+              padding: '16px 35px'
+            }}
+          >
+            <ModalButton
+              handleClick={handleCloseModal}
+              style={{
+                padding: 0,
+                fontSize: '1.2rem'
+              }}
+            >
               <img
                 className="ModalButtonClose"
                 alt="ButtonClose"
                 src={closeSrc}
+                style={{ height: 15 }}
               />
-            )}
-        </Media>
-      </ModalButton>
-    </ModalBox>
+            </ModalButton>
+          </ModalBox>
+        )}
+    </Media>
   );
 };
 

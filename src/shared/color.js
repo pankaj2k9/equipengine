@@ -10,3 +10,6 @@ export const $headlineColor = '#111111';
 export const $white = '#fff';
 export const $red = '#F44336';
 export const $black = '#000000';
+
+// for our border color and width
+export const $border = '1px solid #CFCFCF';
