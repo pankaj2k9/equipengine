@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Tab } from 'react-bootstrap';
 
 // base components
@@ -8,13 +7,14 @@ import Box from 'base_components/Box';
 
 // sub-components
 import ItemTableTutorialFiles from './components/ItemTableFilesTutorial';
+import ItemTutorialTaskGroups from './components/ItemTutorialTaskGroup';
 
 const TutorialTaskBody = () => {
   return (
     <Box>
       <Tabs>
         <Tab eventKey={1} title="Questions & Activities">
-          <ItemListTutorialQuestions />
+          <ItemTutorialTaskGroups />
         </Tab>
         <Tab eventKey={2} title="Files">
           <ItemTableTutorialFiles />
@@ -23,8 +23,6 @@ const TutorialTaskBody = () => {
     </Box>
   );
 };
-
-const ItemListTutorialQuestions = () => <div>list tutorial questions</div>;
 
 TutorialTaskBody.propTypes = {};
 

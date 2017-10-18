@@ -3,16 +3,25 @@ import PropTypes from 'prop-types';
 
 import './styles.css';
 
-const Button = ({ text }) => {
+const Button = ({ style, text, handleClick, children }) => {
   return (
-    <button className="Button" type="button">
+    <button
+      style={style}
+      onClick={handleClick}
+      className="Button"
+      type="button"
+    >
       {text}
+      {children}
     </button>
   );
 };
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  handleClick: PropTypes.func,
+  style: PropTypes.object,
+  children: PropTypes.element
 };
 
 export default Button;

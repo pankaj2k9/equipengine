@@ -16,8 +16,7 @@ const TutorialTask = () => {
         ) : (
           <div
             style={{
-              ...tutorialTaskStyle,
-              ...tutorialTaskStyle.desktopViewport
+              ...tutorialTaskStyle
             }}
             className="TutorialTask"
           >
@@ -31,10 +30,7 @@ const TutorialTask = () => {
 
 // component style
 const tutorialTaskStyle = {
-  width: '70%',
-  desktopViewport: {
-    height: 292
-  }
+  width: '70%'
 };
 
 TutorialTask.propTypes = {};
