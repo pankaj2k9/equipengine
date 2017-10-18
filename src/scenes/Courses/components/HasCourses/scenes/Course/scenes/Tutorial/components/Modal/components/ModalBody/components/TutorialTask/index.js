@@ -2,6 +2,7 @@ import React from 'react';
 import Media from 'react-media';
 
 import VideoPlayer from './components/VideoPlayer';
+import TutorialTaskBody from './components/TutorialTaskBody';
 
 const TutorialTask = () => {
   return (
@@ -10,6 +11,7 @@ const TutorialTask = () => {
         matches ? (
           <div className="TutorialTask">
             <VideoPlayer />
+            <TutorialTaskBody />
           </div>
         ) : (
           <div
@@ -20,6 +22,7 @@ const TutorialTask = () => {
             className="TutorialTask"
           >
             <VideoPlayer />
+            <TutorialTaskBody />
           </div>
         )}
     </Media>

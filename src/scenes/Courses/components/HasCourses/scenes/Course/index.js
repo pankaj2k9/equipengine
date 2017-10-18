@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic/dist/src';
 import { split, join, pipe } from 'ramda';
-import { Route } from 'react-router-dom';
 import { AnimatedRoute } from 'react-router-transition';
 
 import HeaderCourseMeta from './components/HeaderCourseMeta';
