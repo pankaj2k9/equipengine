@@ -18,7 +18,7 @@ const VideoRunningTime = ({ currentTime }) => {
           </ModalBoxVideoInfo>
         ) : (
           <ModalBoxVideoInfo style={desktopViewport}>
-            <div>
+            <div style={{ textAlign: 'right' }}>
               <span
                 style={{
                   ...span,
@@ -44,7 +44,7 @@ const VideoRunningTime = ({ currentTime }) => {
 
 const videoRunningTimeStyle = {
   span: {
-    fontSize: 12,
+    fontSize: 10,
     color: '#4e4e4e',
     desktopViewport: {
       color: '#ffffff'
@@ -54,7 +54,9 @@ const videoRunningTimeStyle = {
     fontSize: 14,
     marginBottom: 0,
     desktopViewport: {
-      color: '#ffffff'
+      color: '#ffffff',
+      textAlign: 'right',
+      paddingRight: '1em'
     }
   },
   desktopViewport: {

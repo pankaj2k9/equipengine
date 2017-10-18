@@ -33,6 +33,7 @@ const ModalBoxVideoInfo = ({ style, children }) => (
 const modalBoxVideoInfoStyle = {
   width: '50%',
   float: 'left',
+  marginTop: '0.5em',
   desktopViewport: {
     width: '25%'
   }

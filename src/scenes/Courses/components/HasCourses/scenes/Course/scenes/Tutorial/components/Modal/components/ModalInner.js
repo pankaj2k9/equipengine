@@ -3,31 +3,29 @@ import PropTypes from 'prop-types';
 import Media from 'react-media';
 
 const ModalInner = ({ children }) => (
-  <div>
-    <Media query="(max-width: 767px)">
-      {matches =>
-        matches ? (
-          <div
-            style={{
-              backgroundColor: '#fff',
-              margin: 10
-            }}
-          >
-            {children}
-          </div>
-        ) : (
-          <div
-            style={{
-              backgroundColor: '#fff',
-              margin: '30px auto',
-              maxWidth: 1190
-            }}
-          >
-            {children}
-          </div>
-        )}
-    </Media>
-  </div>
+  <Media query="(max-width: 767px)">
+    {matches =>
+      matches ? (
+        <div
+          style={{
+            backgroundColor: '#fff',
+            margin: 10
+          }}
+        >
+          {children}
+        </div>
+      ) : (
+        <div
+          style={{
+            backgroundColor: '#fff',
+            margin: '30px auto',
+            maxWidth: 1190
+          }}
+        >
+          {children}
+        </div>
+      )}
+  </Media>
 );
 
 ModalInner.propTypes = {

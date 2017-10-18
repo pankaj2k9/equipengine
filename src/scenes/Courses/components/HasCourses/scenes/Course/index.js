@@ -2,17 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic/dist/src';
 import { split, join, pipe } from 'ramda';
-import { AnimatedRoute } from 'react-router-transition';
+/* import { AnimatedRoute } from 'react-router-transition';*/
+import { Route } from 'react-router-dom';
 
 import HeaderCourseMeta from './components/HeaderCourseMeta';
 import BodyCourseMeta from './components/BodyCourseMeta';
+import './styles.css';
 
 // code splitting
-import Loader from 'base_components/Loader';
 import Loadable from 'react-loadable';
 const AsyncTutorial = Loadable({
   loader: () => import('./scenes/Tutorial'),
-  loading: Loader, // before this component gets loaded, we will render first this Loader component.
+  loading: () => null, // before this component gets loaded, we will render first this Loader component.
   timeout: 10000
 });
 
@@ -27,15 +28,12 @@ const Course = ({ courses, match }) => {
   const course = courses.filter(course => course.id === paramId)[0];
 
   return (
-    <div>
+    <div className="Course">
       <BreadcrumbsItem to={`${match.url}`}>{courseTitle}</BreadcrumbsItem>
       <HeaderCourseMeta course={course} />
       <BodyCourseMeta course={course} />
       {/* subroutes - tutorials. */}
-      <AnimatedRoute
-        atEnter={{ opacity: 0 }}
-        atLeave={{ opacity: 0 }}
-        atActive={{ opacity: 1 }}
+      <Route
         exact
         path={`${match.url}/tutorials/:id`}
         component={AsyncTutorial}

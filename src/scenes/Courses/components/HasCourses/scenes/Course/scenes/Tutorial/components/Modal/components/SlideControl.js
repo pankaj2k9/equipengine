@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ModalButton from './ModalButton';
 
 const SlideControl = ({ text, arrow, handleClick }) => (
-  <ModalButton handleClick={handleClick}>
+  <ModalButton style={{ padding: 0 }} handleClick={handleClick}>
     <span
       style={{
         marginRight: '0.3em'
