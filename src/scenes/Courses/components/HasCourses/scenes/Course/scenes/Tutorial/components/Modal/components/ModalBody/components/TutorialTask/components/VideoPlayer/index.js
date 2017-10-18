@@ -6,7 +6,7 @@ import { Player } from 'video-react';
 import moment from 'moment';
 import videoSrc from './sample.mp4';
 import posterSrc from './poster.png';
-import './styles.css';
+/* import './styles.css';*/
 
 import VideoMedia from './components/VideoMedia/index.js';
 import VideoRunningTime from './components/VideoRunningTime';
