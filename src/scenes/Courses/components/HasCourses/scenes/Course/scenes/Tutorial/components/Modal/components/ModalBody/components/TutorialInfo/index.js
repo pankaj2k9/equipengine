@@ -29,6 +29,7 @@ const TutorialInfo = () => {
 const tutorialInfoContainer = {
   backgroundColor: '#F0F0F0',
   desktopViewport: {
+    backgroundColor: '#F0F0F0',
     width: '30%'
   }
 };

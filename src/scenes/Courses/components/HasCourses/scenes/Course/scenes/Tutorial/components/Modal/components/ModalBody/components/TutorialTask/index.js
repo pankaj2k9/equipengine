@@ -12,7 +12,13 @@ const TutorialTask = () => {
             <VideoPlayer />
           </div>
         ) : (
-          <div style={tutorialTaskStyle} className="TutorialTask">
+          <div
+            style={{
+              ...tutorialTaskStyle,
+              ...tutorialTaskStyle.desktopViewport
+            }}
+            className="TutorialTask"
+          >
             <VideoPlayer />
           </div>
         )}
@@ -22,7 +28,10 @@ const TutorialTask = () => {
 
 // component style
 const tutorialTaskStyle = {
-  width: '70%'
+  width: '70%',
+  desktopViewport: {
+    height: 292
+  }
 };
 
 TutorialTask.propTypes = {};

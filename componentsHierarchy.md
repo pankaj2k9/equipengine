@@ -150,8 +150,8 @@ Scenes
       - ListThingsTodo
         - RowThingsTodo
 
-  - ContainerTutorial
-    - HeaderTutorial
+  - TutorialTask
+    - VideoPlayer
       - DropdownVideo (*Dropdown)
       - Thumbnail
       - VideoTime

@@ -20,7 +20,7 @@ const ModalInner = ({ children }) => (
             style={{
               backgroundColor: '#fff',
               margin: '30px auto',
-              maxWidth: 1100
+              maxWidth: 1190
             }}
           >
             {children}

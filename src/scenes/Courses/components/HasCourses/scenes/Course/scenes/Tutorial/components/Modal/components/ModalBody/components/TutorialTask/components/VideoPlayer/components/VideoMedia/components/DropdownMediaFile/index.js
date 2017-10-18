@@ -6,7 +6,7 @@ import './styles.css';
 const DropdownMediaFile = () => (
   <div className="DropdownMediaFile">
     <ButtonToolbar>
-      <DropdownButton title="Default button" id="dropdown-size-medium">
+      <DropdownButton title="Video" id="dropdown-size-medium">
         <MenuItem eventKey="1">Action</MenuItem>
         <MenuItem eventKey="2">Another action</MenuItem>
         <MenuItem eventKey="3">Something else here</MenuItem>
