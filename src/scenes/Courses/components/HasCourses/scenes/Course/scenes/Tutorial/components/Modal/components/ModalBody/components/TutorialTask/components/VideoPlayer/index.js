@@ -5,6 +5,10 @@ import { Player } from 'video-react';
 import moment from 'moment';
 import videoSrc from './sample.mp4';
 import posterSrc from './poster.png';
+import './styles.css';
+
+import VideoMedia from './components/VideoMedia/index.js';
+import VideoRunningTime from './components/VideoRunningTime';
 
 class VideoPlayer extends React.Component {
   constructor() {
@@ -33,15 +37,25 @@ class VideoPlayer extends React.Component {
       .startOf('day')
       .seconds(this.state.currentTime)
       .format('H:mm:ss');
+
     return (
       <div>
-        <Player ref="player" poster={posterSrc}>
-          <source src={videoSrc} />
-        </Player>
-        <h4>{currentTime}</h4>
+        <div style={videoPlayerStyle.container}>
+          <Player ref="player" poster={posterSrc} playsInline>
+            <source src={videoSrc} />
+          </Player>
+          <VideoMedia />
+          <VideoRunningTime currentTime={currentTime} />
+        </div>
       </div>
     );
   }
 }
+// styles
+const videoPlayerStyle = {
+  container: {
+    width: '100%'
+  }
+};
 
 export default VideoPlayer;

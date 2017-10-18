@@ -1,26 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Media from 'react-media';
 
 import TutorialInfo from './components/TutorialInfo';
-
-const modalBodyStyle = {
-  display: 'flex',
-  flexDirection: 'column-reverse'
-};
+import TutorialTask from './components/TutorialTask';
 
 const ModalBody = () => {
   return (
-    <div style={modalBodyStyle} className="ModalBody">
-      <TutorialInfo />
-      <TutorialTask />
-    </div>
+    <Media query="(max-width: 767px)">
+      {matches =>
+        matches ? (
+          <div style={modalBodyStyle} className="ModalBody">
+            <TutorialInfo />
+            <TutorialTask />
+          </div>
+        ) : (
+          <div style={modalBodyStyle.desktopViewport} className="ModalBody">
+            <TutorialInfo />
+            <TutorialTask />
+          </div>
+        )}
+    </Media>
   );
 };
 
-const TutorialTask = () => {
-  return <div>task</div>;
+const modalBodyStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  desktopViewport: {
+    display: 'flex'
+  }
 };
-
-ModalBody.propTypes = {};
 
 export default ModalBody;
