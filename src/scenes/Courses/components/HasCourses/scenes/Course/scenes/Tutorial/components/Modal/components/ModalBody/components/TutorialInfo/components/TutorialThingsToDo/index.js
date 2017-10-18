@@ -1,4 +1,5 @@
 import React from 'react';
+import Media from 'react-media';
 
 import ModalBox from '../../../../../ModalBox.js';
 // icon on things to do list
@@ -15,40 +16,80 @@ const TutorialThingsToDo = () => (
     <header>
       <h5 style={thingsToDoStyle.headline}>Things to do</h5>
     </header>
-    <ul style={thingsToDoStyle.list}>
-      <li style={thingsToDoStyle.list.row}>
-        <img
-          alt="Questions img"
-          src={questionsSrc}
-          style={thingsToDoStyle.list.row.img}
-        />
-        <span style={thingsToDoStyle.list.row.span}>4 x Questions</span>
-      </li>
-      <li style={thingsToDoStyle.list.row}>
-        <img
-          alt="Assignment img"
-          src={assignmentSrc}
-          style={thingsToDoStyle.list.row.img}
-        />
-        <span style={thingsToDoStyle.list.row.span}>2 x Assignment</span>
-      </li>
-      <li style={thingsToDoStyle.list.row}>
-        <img
-          alt="Media img"
-          src={mediaSrc}
-          style={thingsToDoStyle.list.row.img}
-        />
-        <span style={thingsToDoStyle.list.row.span}>1 x Media</span>
-      </li>
-      <li style={thingsToDoStyle.list.row}>
-        <img
-          alt="Quiz img"
-          src={quizSrc}
-          style={thingsToDoStyle.list.row.img}
-        />
-        <span style={thingsToDoStyle.list.row.span}>1 x Quiz</span>
-      </li>
-    </ul>
+    <Media query="(max-width: 767px)">
+      {matches =>
+        matches ? (
+          <ul style={thingsToDoStyle.list}>
+            <li style={thingsToDoStyle.list.row}>
+              <img
+                alt="Questions img"
+                src={questionsSrc}
+                style={thingsToDoStyle.list.row.img}
+              />
+              <span style={thingsToDoStyle.list.row.span}>4 x Questions</span>
+            </li>
+            <li style={thingsToDoStyle.list.row}>
+              <img
+                alt="Assignment img"
+                src={assignmentSrc}
+                style={thingsToDoStyle.list.row.img}
+              />
+              <span style={thingsToDoStyle.list.row.span}>2 x Assignment</span>
+            </li>
+            <li style={thingsToDoStyle.list.row}>
+              <img
+                alt="Media img"
+                src={mediaSrc}
+                style={thingsToDoStyle.list.row.img}
+              />
+              <span style={thingsToDoStyle.list.row.span}>1 x Media</span>
+            </li>
+            <li style={thingsToDoStyle.list.row}>
+              <img
+                alt="Quiz img"
+                src={quizSrc}
+                style={thingsToDoStyle.list.row.img}
+              />
+              <span style={thingsToDoStyle.list.row.span}>1 x Quiz</span>
+            </li>
+          </ul>
+        ) : (
+          <ul style={thingsToDoStyle.list}>
+            <li style={thingsToDoStyle.list.rowOnBiggerView}>
+              <img
+                alt="Questions img"
+                src={questionsSrc}
+                style={thingsToDoStyle.list.row.img}
+              />
+              <span style={thingsToDoStyle.list.row.span}>4 x Questions</span>
+            </li>
+            <li style={thingsToDoStyle.list.rowOnBiggerView}>
+              <img
+                alt="Assignment img"
+                src={assignmentSrc}
+                style={thingsToDoStyle.list.row.img}
+              />
+              <span style={thingsToDoStyle.list.row.span}>2 x Assignment</span>
+            </li>
+            <li style={thingsToDoStyle.list.rowOnBiggerView}>
+              <img
+                alt="Media img"
+                src={mediaSrc}
+                style={thingsToDoStyle.list.row.img}
+              />
+              <span style={thingsToDoStyle.list.row.span}>1 x Media</span>
+            </li>
+            <li style={thingsToDoStyle.list.rowOnBiggerView}>
+              <img
+                alt="Quiz img"
+                src={quizSrc}
+                style={thingsToDoStyle.list.row.img}
+              />
+              <span style={thingsToDoStyle.list.row.span}>1 x Quiz</span>
+            </li>
+          </ul>
+        )}
+    </Media>
     <footer>
       <form style={thingsToDoStyle.form} action="">
         <input name="complete" type="checkbox" value="" />
@@ -76,6 +117,8 @@ const thingsToDoStyle = {
       display: 'flex',
       alignItems: 'center',
       marginBottom: '0.3em',
+      float: 'left',
+      width: '50%',
       img: {
         marginRight: '0.8em',
         marginBottom: '0.2em'
@@ -83,6 +126,11 @@ const thingsToDoStyle = {
       span: {
         color: '#4E4E4E'
       }
+    },
+    rowOnBiggerView: {
+      display: 'flex',
+      alignItems: 'center',
+      marginBottom: '0.3em'
     }
   },
   form: {
