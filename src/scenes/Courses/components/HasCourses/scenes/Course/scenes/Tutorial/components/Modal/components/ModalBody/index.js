@@ -34,6 +34,7 @@ const modalBodyStyle = {
   flexDirection: 'column',
   borderBottom: '1px solid #dadada',
   borderTop: '1px solid #dadada',
+  minHeight: '100vh',
   desktopViewport: {
     flexDirection: 'row'
   }
