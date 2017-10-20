@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const UserAvatar = ({ image }) => {
-  return (
-    <img
-      alt="User Avatar"
-      src={image}
-      style={{
-        height: 35,
-        width: 35,
-        borderRadius: '50%'
-      }}
-    />
-  );
+const UserAvatar = ({ image }) => (
+  <img alt="user avatar" style={userAvatarStyle} src={image} />
+);
+
+const userAvatarStyle = {
+  height: 35,
+  width: 35,
+  borderRadius: '50%',
+  objectPosition: 'top',
+  objectFit: 'cover'
 };
 
 UserAvatar.propTypes = {

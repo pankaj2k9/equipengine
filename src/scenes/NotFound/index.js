@@ -23,7 +23,7 @@ const NotFound = () => {
             </p>
           </Box>
         ) : (
-          <Box style={{ marginTop: 150 }}>
+          <Box style={{ marginTop: 145 }}>
             <h4>Page Not Found</h4>
             <p>
               Praesent sapien massa, convallis a pellentesque nec, egestas non

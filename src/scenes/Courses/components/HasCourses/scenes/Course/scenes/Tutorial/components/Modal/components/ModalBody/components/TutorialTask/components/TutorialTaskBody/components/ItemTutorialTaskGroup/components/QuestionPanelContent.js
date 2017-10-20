@@ -39,7 +39,8 @@ const questionPanelContentStyle = {
       padding: '1em',
       fontSize: 14,
       borderRadius: 4,
-      marginBottom: '0.4em'
+      marginBottom: '0.4em',
+      outline: 0
     },
     div: {
       display: 'flex',

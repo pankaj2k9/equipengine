@@ -1,8 +1,8 @@
 import React from 'react';
 
 // sub-components
-import TutorialCategoryPanelHeader from './components/TutorialCategoryPanelHeader';
-import TutorialCategoryPanelContent from './components/TutorialCategoryPanelContent';
+import TutorialTaskPanelHeader from './components/TutorialTaskPanelHeader';
+import TutorialTaskPanelContent from './components/TutorialTaskPanelContent';
 
 class TutorialTaskPanel extends React.Component {
   constructor() {
@@ -22,16 +22,16 @@ class TutorialTaskPanel extends React.Component {
     const { category, title, children, isReadingGroup } = this.props;
     return (
       <div style={tutorialTaskPanelStyle} className="TutorialTaskPanel">
-        <TutorialCategoryPanelHeader
+        <TutorialTaskPanelHeader
           isPanelOpen={this.state.isPanelOpen}
           handleTogglePanel={this.handleTogglePanel}
           category={category}
           title={title}
           isReadingGroup={isReadingGroup}
         />
-        <TutorialCategoryPanelContent isPanelOpen={this.state.isPanelOpen}>
+        <TutorialTaskPanelContent isPanelOpen={this.state.isPanelOpen}>
           {children}
-        </TutorialCategoryPanelContent>
+        </TutorialTaskPanelContent>
       </div>
     );
   }

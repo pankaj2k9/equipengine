@@ -8,7 +8,7 @@ import IconArrowRight from 'react-icons/lib/fa/angle-right';
 import IconArrowDown from 'react-icons/lib/fa/angle-down';
 import Interactive from 'react-interactive';
 
-const TutorialCategoryPanelHeader = ({
+const TutorialTaskPanelHeader = ({
   isReadingGroup,
   isPanelOpen,
   category,
@@ -21,9 +21,9 @@ const TutorialCategoryPanelHeader = ({
     secondP,
     icon,
     downloadButton
-  } = tutorialCategoryPanelHeaderStyle;
+  } = tutorialTaskPanelHeaderStyle;
   return (
-    <div style={container} className="TutorialCategoryPanelHeader">
+    <div style={container} className="TutorialTaskPanelHeader">
       <div>
         <p style={firstP}>{category}</p>
         <Interactive
@@ -56,7 +56,7 @@ const TutorialCategoryPanelHeader = ({
   );
 };
 
-const tutorialCategoryPanelHeaderStyle = {
+const tutorialTaskPanelHeaderStyle = {
   container: {
     padding: '1em',
     display: 'flex',
@@ -91,4 +91,4 @@ const tutorialCategoryPanelHeaderStyle = {
   }
 };
 
-export default TutorialCategoryPanelHeader;
+export default TutorialTaskPanelHeader;
