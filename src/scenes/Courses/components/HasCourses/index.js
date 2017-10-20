@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import ErrorBoundary from 'base_components/ErrorBoundary';
 import ListCourses from './components/ListCourses';
@@ -25,22 +25,23 @@ const HasCourses = ({ courses, match }) => {
       <BreadcrumbsItem to={match.url}>Courses</BreadcrumbsItem>
       <Breadcrumbs />
       {/* only want to render this list courses on the courses route */}
-      <Route
-        exact
-        path={`${match.url}`}
-        render={props => <ListCourses {...props} courses={courses} />}
-      />
-      {/* Subroutes - course */}
-      <Route
-        path={`${match.url}/:id`}
-        render={props => {
-          return (
-            <ErrorBoundary errMsg="Something went wrong in displaying the course page.">
-              <AsyncCourse {...props} courses={courses} />
-            </ErrorBoundary>
-          );
-        }}
-      />
+      <Switch>
+        <Route
+          exact
+          path={`${match.url}`}
+          render={props => <ListCourses {...props} courses={courses} />}
+        />
+        <Route
+          path={`${match.url}/:id`}
+          render={props => {
+            return (
+              <ErrorBoundary errMsg="Something went wrong in displaying the course page.">
+                <AsyncCourse {...props} courses={courses} />
+              </ErrorBoundary>
+            );
+          }}
+        />
+      </Switch>
     </div>
   );
 };

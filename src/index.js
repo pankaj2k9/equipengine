@@ -7,8 +7,8 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 import 'video-react/dist/video-react.css';
 import './styles/index.css';
 
-import App from './scenes/App';
+import Root from './scenes/Root';
 import registerServiceWorker from 'utils/serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Root />, document.getElementById('root'));
 registerServiceWorker();
