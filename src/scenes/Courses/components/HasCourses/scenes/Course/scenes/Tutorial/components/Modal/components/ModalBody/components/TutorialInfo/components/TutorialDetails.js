@@ -19,7 +19,6 @@ const TutorialDetails = () => (
 
 const tutorialDetailsStyle = {
   div: {
-    borderTop: $border,
     borderBottom: $border,
     flexDirection: 'column'
   },

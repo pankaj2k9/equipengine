@@ -14,7 +14,13 @@ const ModalBody = () => {
             <TutorialTask />
           </div>
         ) : (
-          <div style={modalBodyStyle.desktopViewport} className="ModalBody">
+          <div
+            style={{
+              ...modalBodyStyle,
+              ...modalBodyStyle.desktopViewport
+            }}
+            className="ModalBody"
+          >
             <TutorialInfo />
             <TutorialTask />
           </div>
@@ -26,8 +32,10 @@ const ModalBody = () => {
 const modalBodyStyle = {
   display: 'flex',
   flexDirection: 'column',
+  borderBottom: '1px solid #dadada',
+  borderTop: '1px solid #dadada',
   desktopViewport: {
-    display: 'flex'
+    flexDirection: 'row'
   }
 };
 
