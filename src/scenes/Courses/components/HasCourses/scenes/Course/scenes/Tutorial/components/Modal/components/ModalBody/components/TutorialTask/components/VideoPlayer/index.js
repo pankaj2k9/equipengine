@@ -1,13 +1,11 @@
 import React from 'react';
 import Media from 'react-media';
-
-// for the video player
-import { Player } from 'video-react';
 import moment from 'moment';
-import videoSrc from './sample.mp4';
-import posterSrc from './poster.png';
-import './styles.css';
+/* import './styles.css';*/
 
+// sub-components
+import VideoForMobile from './components/VideoForMobile';
+import VideoForDesktop from './components/VideoForDesktop';
 import VideoMedia from './components/VideoMedia/index.js';
 import VideoRunningTime from './components/VideoRunningTime';
 
@@ -62,10 +60,7 @@ class VideoPlayer extends React.Component {
 // styles
 const videoPlayerStyle = {
   container: {
-    width: '100%',
-    innerContainerVideo: {
-      order: 2
-    }
+    width: '100%'
   },
   desktopViewport: {
     width: '100%',
@@ -74,46 +69,5 @@ const videoPlayerStyle = {
     background: '#000000'
   }
 };
-
-class VideoForDesktop extends React.Component {
-  componentDidMount() {
-    // subscribe state change
-    this.refs.player.subscribeToStateChange(this.props.handleStateChange);
-  }
-
-  render() {
-    return (
-      <div style={videoPlayerStyle.container.innerContainerVideo}>
-        <Player
-          ref="player"
-          poster={posterSrc}
-          playsInline
-          fluid={false}
-          width={410}
-          height={292}
-        >
-          <source src={videoSrc} />
-        </Player>
-      </div>
-    );
-  }
-}
-
-class VideoForMobile extends React.Component {
-  componentDidMount() {
-    // subscribe state change
-    this.refs.player.subscribeToStateChange(this.props.handleStateChange);
-  }
-
-  render() {
-    return (
-      <div>
-        <Player ref="player" poster={posterSrc} playsInline>
-          <source src={videoSrc} />
-        </Player>
-      </div>
-    );
-  }
-}
 
 export default VideoPlayer;

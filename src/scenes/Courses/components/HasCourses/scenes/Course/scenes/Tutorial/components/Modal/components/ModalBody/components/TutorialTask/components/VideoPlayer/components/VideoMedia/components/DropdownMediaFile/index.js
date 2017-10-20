@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonToolbar, MenuItem, DropdownButton } from 'react-bootstrap';
 
-import './styles.css';
+/* import './styles.css';*/
 
 const DropdownMediaFile = () => (
   <div className="DropdownMediaFile">

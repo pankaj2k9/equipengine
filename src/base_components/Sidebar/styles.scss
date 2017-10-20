@@ -15,7 +15,7 @@
         margin-left: 0px;
     }
 
-    .Sidebar__content{
+    .Sidebar__inner{
         height: 100%;
         width: 208px;
     }
@@ -32,9 +32,10 @@
     }
 
     .Sidebar__item{
-        margin-bottom: 0.8em;
+        margin-bottom: 1.6em;
 
         a {
+            letter-spacing: 0.7px;
             color: #9FA6AD;
             text-transform: uppercase;
             font-weight: 800;
@@ -56,8 +57,12 @@
         z-index: 1;
         opacity: 1;
         
-        .Sidebar__content{
+        .Sidebar__inner{
             width: 100%;
+        }
+
+        .Sidebar__body__mainPages{
+            padding: 25px 35px 17px 35px;
         }
     }
 }
