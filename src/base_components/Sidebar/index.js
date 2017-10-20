@@ -44,7 +44,7 @@ const Sidebar = ({ isOpen, onCloseSidebar }) => {
 
   return (
     <div onClick={onCloseSidebar} className={sidebarClassnames}>
-      <div className="Sidebar__content">
+      <div className="Sidebar__inner">
         <LogoContainer />
         <div className="Sidebar__body">
           <div className="Sidebar__body__mainPages">

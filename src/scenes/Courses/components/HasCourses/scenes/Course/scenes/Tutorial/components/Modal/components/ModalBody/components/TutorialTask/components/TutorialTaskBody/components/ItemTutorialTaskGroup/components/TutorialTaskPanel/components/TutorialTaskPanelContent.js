@@ -1,10 +1,10 @@
 import React from 'react';
 import { Panel } from 'react-bootstrap';
 
-const TutorialCategoryPanelContent = ({ children, isPanelOpen }) => (
+const TutorialTaskPanelContent = ({ children, isPanelOpen }) => (
   <Panel collapsible expanded={isPanelOpen}>
     {children}
   </Panel>
 );
 
-export default TutorialCategoryPanelContent;
+export default TutorialTaskPanelContent;

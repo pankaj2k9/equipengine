@@ -8,8 +8,7 @@ const ModalInner = ({ children }) => (
       matches ? (
         <div
           style={{
-            backgroundColor: '#fff',
-            margin: 10
+            backgroundColor: '#fff'
           }}
         >
           {children}
@@ -17,9 +16,7 @@ const ModalInner = ({ children }) => (
       ) : (
         <div
           style={{
-            backgroundColor: '#fff',
-            margin: '30px auto',
-            maxWidth: 1190
+            backgroundColor: '#fff'
           }}
         >
           {children}
