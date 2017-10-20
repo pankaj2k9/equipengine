@@ -14,7 +14,7 @@ import Loader from 'base_components/Loader';
  * dynamically importing our scenes here*/
 const AsyncMainBars = Loadable({
   loader: () => import('base_components/SidebarTransition'),
-  loading: Loader, // before this component gets loaded, we will render first this Loader component.
+  loading: () => null, // before this component gets loaded, we will render first this Loader component.
   timeout: 10000
 });
 
@@ -32,7 +32,7 @@ const AsyncNotFound = Loadable({
 const App = () => {
   return (
     <div>
-      <Route path="/" component={MainBars} />
+      <Route path="/" component={AsyncMainBars} />
       <Main>
         <Switch>
           <Route exact path="/" component={AsyncCourses} />
