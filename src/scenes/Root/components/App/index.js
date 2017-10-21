@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom';
 // base_components
 import Main from 'base_components/Main';
 import ErrorBoundary from 'base_components/ErrorBoundary';
-import MainBars from 'base_components/SidebarTransition';
 
 /* for code splitting - loadable */
 import Loadable from 'react-loadable';

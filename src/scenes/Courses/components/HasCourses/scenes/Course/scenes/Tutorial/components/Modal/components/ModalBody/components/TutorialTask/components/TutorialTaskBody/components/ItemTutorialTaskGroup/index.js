@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import TutorialQuestionsGroup from './components/TutorialQuestionsGroup';
 import TutorialQuizGroup from './components/TutorialQuizGroup';

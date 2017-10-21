@@ -13,11 +13,6 @@ body {
     color: #2D2D2D;
 }
 
-p {
-    margin-bottom: 1.3em;
-    transition: all 300ms ease-in;
-}
-
 h1, h2, h3, h4 {
     margin: 1.414em 0 0.5em;
     font-weight: inherit;
@@ -69,6 +64,7 @@ button{
 p{
     max-width: 750px;
     text-align: justify;
+    margin-bottom: 1.3em;
 }
 
 // headline
@@ -106,7 +102,6 @@ h4{
 .dropdown{
     width: 100%;
 }
-
 
 // panel
 .panel-default{

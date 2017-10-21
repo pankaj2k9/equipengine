@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Media from 'react-media';
 
 import ModalHeader from './components/ModalHeader';
@@ -91,9 +90,5 @@ class Modal extends React.Component {
     );
   }
 }
-
-Modal.propTypes = {
-  history: PropTypes.object.isRequired
-};
 
 export default Modal;

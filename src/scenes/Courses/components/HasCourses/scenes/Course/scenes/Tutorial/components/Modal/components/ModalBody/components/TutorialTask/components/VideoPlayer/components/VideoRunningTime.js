@@ -1,10 +1,11 @@
 import React from 'react';
-import Media from 'react-media';
+import PropTypes from 'prop-types';
 
+import Media from 'react-media';
 import ModalBoxVideoInfo from './ModalBoxVideoInfo';
 
 const VideoRunningTime = ({ currentTime }) => {
-  const { span, p, desktopViewport } = videoRunningTimeStyle;
+  const { infoRunningTime, infoCurrentTime, boxInfo } = videoRunningTimeStyle;
 
   return (
     <Media query="(max-width: 767px)">
@@ -12,25 +13,25 @@ const VideoRunningTime = ({ currentTime }) => {
         matches ? (
           <ModalBoxVideoInfo>
             <div>
-              <span style={span}>Running Time</span>
-              <p style={p}>{currentTime}</p>
+              <span style={infoRunningTime}>Running Time</span>
+              <p style={infoCurrentTime}>{currentTime}</p>
             </div>
           </ModalBoxVideoInfo>
         ) : (
-          <ModalBoxVideoInfo style={desktopViewport}>
+          <ModalBoxVideoInfo style={boxInfo.desktopViewport}>
             <div style={{ textAlign: 'right' }}>
               <span
                 style={{
-                  ...span,
-                  ...span.desktopViewport
+                  ...infoRunningTime,
+                  ...infoRunningTime.desktopViewport
                 }}
               >
                 Running Time
               </span>
               <p
                 style={{
-                  ...p,
-                  ...p.desktopViewport
+                  ...infoCurrentTime,
+                  ...infoCurrentTime.desktopViewport
                 }}
               >
                 {currentTime}
@@ -43,14 +44,14 @@ const VideoRunningTime = ({ currentTime }) => {
 };
 
 const videoRunningTimeStyle = {
-  span: {
+  infoRunningTime: {
     fontSize: 10,
     color: '#4e4e4e',
     desktopViewport: {
       color: '#ffffff'
     }
   },
-  p: {
+  infoCurrentTime: {
     fontSize: 14,
     marginBottom: 0,
     desktopViewport: {
@@ -59,12 +60,18 @@ const videoRunningTimeStyle = {
       paddingRight: '1em'
     }
   },
-  desktopViewport: {
-    order: 3,
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    marginBottom: '1.1em'
+  boxInfo: {
+    desktopViewport: {
+      order: 3,
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
+      marginBottom: '1.1em'
+    }
   }
+};
+
+VideoRunningTime.propTypes = {
+  currentTime: PropTypes.string.isRequired
 };
 
 export default VideoRunningTime;

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Player } from 'video-react';
+import PropTypes from 'prop-types';
 
+import { Player } from 'video-react';
 import videoSrc from '../sample.mp4';
 import posterSrc from '../poster.png';
 
@@ -30,6 +31,10 @@ class VideoForDesktop extends React.Component {
 
 const videoForDesktopStyle = {
   order: 2
+};
+
+VideoForDesktop.propTypes = {
+  handleStateChange: PropTypes.func.isRequired
 };
 
 export default VideoForDesktop;

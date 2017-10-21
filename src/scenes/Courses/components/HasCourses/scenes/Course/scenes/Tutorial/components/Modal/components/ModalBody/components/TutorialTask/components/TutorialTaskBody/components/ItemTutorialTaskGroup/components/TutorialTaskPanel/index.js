@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // sub-components
 import TutorialTaskPanelHeader from './components/TutorialTaskPanelHeader';
@@ -36,6 +37,21 @@ class TutorialTaskPanel extends React.Component {
     );
   }
 }
+
+TutorialTaskPanel.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element
+  ]).isRequired,
+  category: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  isReadingGroup: PropTypes.bool
+};
+
+// default props
+TutorialTaskPanel.defaultProps = {
+  isReadingGroup: false
+};
 
 const tutorialTaskPanelStyle = {
   border: '1px solid #cbcbcb',

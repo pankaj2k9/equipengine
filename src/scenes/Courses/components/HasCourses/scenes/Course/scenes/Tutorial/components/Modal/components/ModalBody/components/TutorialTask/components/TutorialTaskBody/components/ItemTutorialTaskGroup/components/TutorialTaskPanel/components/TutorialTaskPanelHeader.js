@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // for button
 import Button from 'base_components/Button';
@@ -17,21 +18,20 @@ const TutorialTaskPanelHeader = ({
 }) => {
   const {
     container,
-    firstP,
-    secondP,
+    headerCategory,
+    headerTitle,
     icon,
     downloadButton
   } = tutorialTaskPanelHeaderStyle;
   return (
     <div style={container} className="TutorialTaskPanelHeader">
       <div>
-        <p style={firstP}>{category}</p>
+        <p style={headerCategory}>{category}</p>
         <Interactive
           as="p"
           hover={{ color: '#338FFC' }}
-          onStateChange={this.handleInteractiveStateChange}
           onClick={handleTogglePanel}
-          style={secondP}
+          style={headerTitle}
         >
           {title}
         </Interactive>
@@ -56,6 +56,14 @@ const TutorialTaskPanelHeader = ({
   );
 };
 
+TutorialTaskPanelHeader.propTypes = {
+  isReadingGroup: PropTypes.bool.isRequired,
+  isPanelOpen: PropTypes.bool.isRequired,
+  headerCategory: PropTypes.string.isRequired,
+  headerTitle: PropTypes.string.isRequired,
+  handleTogglePanel: PropTypes.func.isRequired
+};
+
 const tutorialTaskPanelHeaderStyle = {
   container: {
     padding: '1em',
@@ -63,17 +71,17 @@ const tutorialTaskPanelHeaderStyle = {
     justifyContent: 'space-between',
     alignItems: 'center'
   },
-  firstP: {
+  headerCategory: {
     color: '#9FA6AD',
-    marginBottom: '0.8em',
-    cursor: 'pointer',
-    transition: 'all 300ms ease-in'
+    marginBottom: '0.8em'
   },
-  secondP: {
+  headerTitle: {
     fontSize: 16,
     color: '#111111',
     marginBottom: 0,
-    maxWidth: 600
+    maxWidth: 600,
+    transition: 'all 300ms ease-in',
+    cursor: 'pointer'
   },
   icon: {
     fontSize: '1.2rem',

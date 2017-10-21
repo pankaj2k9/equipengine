@@ -33,6 +33,4 @@ const tutorialTaskStyle = {
   width: '70%'
 };
 
-TutorialTask.propTypes = {};
-
 export default TutorialTask;
