@@ -1,6 +1,7 @@
 import React from 'react';
 import Media from 'react-media';
 
+import Form from 'base_components/Form';
 import ModalBox from '../../../../../ModalBox.js';
 // icon on things to do list
 import questionsSrc from './question.svg';
@@ -91,12 +92,12 @@ const TutorialThingsToDo = () => (
         )}
     </Media>
     <footer>
-      <form style={thingsToDoStyle.form} action="">
-        <input name="complete" type="checkbox" value="" />
-        <label style={thingsToDoStyle.form.label} htmlFor="complete">
+      <div style={thingsToDoStyle.formContainer}>
+        <Form />
+        <span style={thingsToDoStyle.formContainer.label}>
           Mark as complete
-        </label>
-      </form>
+        </span>
+      </div>
     </footer>
   </ModalBox>
 );
@@ -133,9 +134,10 @@ const thingsToDoStyle = {
       marginBottom: '0.3em'
     }
   },
-  form: {
+  formContainer: {
     marginBottom: '1.18em',
     display: 'flex',
+    alignItems: 'center',
     label: {
       marginLeft: '0.8em',
       fontSize: 12,
