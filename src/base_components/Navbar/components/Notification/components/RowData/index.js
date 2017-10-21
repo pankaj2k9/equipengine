@@ -7,7 +7,7 @@ const RowData = ({ userName, date, message, avatar }) => {
   return (
     <li className="RowData">
       <div className="RowData__avatar">
-        <img src={avatar} alt={userName} />
+        <img style={rowDataStyle.rowDataImg} src={avatar} alt={userName} />
       </div>
       <div className="RowData__info">
         <div className="RowData__info__header">
@@ -27,6 +27,15 @@ RowData.propTypes = {
   date: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired
+};
+
+const rowDataStyle = {
+  rowDataImg: {
+    height: 30,
+    width: 30,
+    objectFit: 'cover',
+    objectPosition: 'top'
+  }
 };
 
 export default RowData;

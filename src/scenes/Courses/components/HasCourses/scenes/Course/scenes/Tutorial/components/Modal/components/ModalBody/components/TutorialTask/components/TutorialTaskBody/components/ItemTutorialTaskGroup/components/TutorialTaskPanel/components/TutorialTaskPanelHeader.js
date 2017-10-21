@@ -59,8 +59,8 @@ const TutorialTaskPanelHeader = ({
 TutorialTaskPanelHeader.propTypes = {
   isReadingGroup: PropTypes.bool.isRequired,
   isPanelOpen: PropTypes.bool.isRequired,
-  headerCategory: PropTypes.string.isRequired,
-  headerTitle: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   handleTogglePanel: PropTypes.func.isRequired
 };
 
