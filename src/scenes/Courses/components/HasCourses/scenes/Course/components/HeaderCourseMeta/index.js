@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import IconArrowRight from 'react-icons/lib/fa/angle-right';
 import IconArrowDown from 'react-icons/lib/fa/angle-down';
@@ -8,7 +8,7 @@ import CollapsibleCourseHeaderPanel from './components/CollapsibleCourseHeaderPa
 import bgImage from './course-bg.png';
 import './styles.css';
 
-class HeaderCourseMeta extends React.Component {
+class HeaderCourseMeta extends PureComponent {
   constructor(...args) {
     super(...args);
     this.state = {

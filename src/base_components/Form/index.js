@@ -40,3 +40,13 @@ class Form extends React.Component {
 }
 
 export default Form;
+
+export const fetchUser = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject(() => {
+        throw new Error('Rejected by the server');
+      });
+    }, 500);
+  });
+};

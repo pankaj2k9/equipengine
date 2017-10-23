@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic/dist/src';
+/* import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic/dist/src';*/
 import { split, join, pipe } from 'ramda';
+import { isEqual } from 'lodash';
 /* import { AnimatedRoute } from 'react-router-transition';*/
 import { Route } from 'react-router-dom';
 
@@ -17,19 +18,16 @@ const AsyncTutorial = Loadable({
   timeout: 10000
 });
 
-const Course = ({ courses, match }) => {
+const Course = ({ match, courses }) => {
   // cachce variables
   const paramId = match.params.id;
-
   // create the course title based on the url params
   const courseTitle = pipe(split('-'), join(' '))(paramId);
-
   // retrieve specific course based on the params id value
   const course = courses.filter(course => course.id === paramId)[0];
-
   return (
     <div className="Course">
-      <BreadcrumbsItem to={`${match.url}`}>{courseTitle}</BreadcrumbsItem>
+      {/* <BreadcrumbsItem to={`${match.url}`}>{courseTitle}</BreadcrumbsItem> */}
       <HeaderCourseMeta course={course} />
       <BodyCourseMeta course={course} />
       {/* subroutes - tutorials. */}
