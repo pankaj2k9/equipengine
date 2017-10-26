@@ -22,4 +22,4 @@ yarn-error.log*
 
 
 # don't commit the generated css file on the src.
-src/**/*.css
+# src/**/*.css
