@@ -42,6 +42,7 @@ const HasCourses = ({ courses, match }) => {
           }}
         />
       </Switch>
+      <h5>hello world</h5>
     </div>
   );
 };
