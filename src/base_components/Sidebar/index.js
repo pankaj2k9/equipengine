@@ -31,10 +31,13 @@ const Sidebar = ({ isOpen, onCloseSidebar }) => {
   const otherPagesLink = (
     <Menu>
       <li className="Sidebar__item">
-        <Link text="Groups" url="/groups" />
+        <Link text="Groups Activiy" url="/groups-activiy" />
       </li>
       <li className="Sidebar__item">
-        <Link text="Settings" url="/settings" />
+        <Link text="Submissions Activity" url="/teacher-controls" />
+      </li>
+      <li className="Sidebar__item">
+        <Link text="User Manager" url="/users-manager" />
       </li>
     </Menu>
   );

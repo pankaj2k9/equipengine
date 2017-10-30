@@ -24,7 +24,6 @@
 .Sidebar .Sidebar__body__mainPages {
   border-bottom: 1px solid #424242;
   padding: 10% 7% 7% 7%;
-  height: 75%;
 }
 .Sidebar .Sidebar__item {
   margin-bottom: 1.6em;
@@ -37,7 +36,7 @@
   font-size: 12px;
 }
 .Sidebar .Sidebar__body__otherPages {
-  padding: 8%;
+  padding: 15% 8% 8% 8%;
 }
 
 @media screen and (min-width: 768px) {
