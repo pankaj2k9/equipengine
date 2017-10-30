@@ -1,13 +1,31 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import TeacherControls from './index.js';
+import TeacherControls, { FilterableTableCourse } from './index.js';
 
 describe('TeacherControls Scene', () => {
-  it('renders without blowing ->> Full rendering.', () => {
-    const wrapper = mount(<TeacherControls />);
+  let teacherControlsWrapper;
+  let courses;
+
+  beforeEach(() => {
+    // instantiating the courses array.
+    courses = ['itlog'];
+    // we will use this wrapper in some of our test files.
+    teacherControlsWrapper = shallow(<TeacherControls courses={courses} />);
   });
-  // Smoke Test -->> If we flip this thing on, will it catch fire and start producing smoke?
-  it('renders without blowing ->> Isolated rendering', () => {
-    const wrapper = shallow(<TeacherControls />);
+
+  it('renders without throwing an error.', () => {
+    const wrapper = mount(<TeacherControls courses={courses} />);
+  });
+
+  it('has a child component FilterableTableCourse with a passed props courses', () => {
+    expect(teacherControlsWrapper).toContainReact(
+      <FilterableTableCourse courses={courses} />
+    );
+  });
+
+  it('should have a props named courses which is not undefined', () => {
+    expect(teacherControlsWrapper).toHaveProp('courses');
+
+    expect(teacherControlsWrapper.props().courses).not.toBe(undefined);
   });
 });

@@ -1,9 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const TeacherControls = () => {
+const TeacherControls = ({ courses }) => {
+  return <FilterableTableCourse courses={courses} />;
+};
+
+TeacherControls.propTypes = {
+  courses: PropTypes.array.isRequired
+};
+
+export const FilterableTableCourse = ({ courses }) => {
   return (
     <div>
-      <h1>hello world</h1>
+      {courses.map((course, i) => {
+        return <li key={i}>{course}</li>;
+      })}
     </div>
   );
 };
