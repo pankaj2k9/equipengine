@@ -1,7 +1,7 @@
 jest.mock('./subscribeToCourses.js');
 import subscribeToCourses from './subscribeToCourses';
 
-describe.only('Subscribe to courses', () => {
+describe('Subscribe to courses', () => {
   it('should throw error if the pass input is not component', () => {
     // we will mock the real implementation of the subscribeToCourses.
     subscribeToCourses.mockImplementation(WrappedComponent => {

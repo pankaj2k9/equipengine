@@ -1,5 +1,8 @@
 @media screen and (min-width: 768px) {
   .Main {
-    margin-left: 257px;
+    padding-left: 257px;
+    position: absolute;
+    top: 68px;
+    width: 100%;
   }
 }
