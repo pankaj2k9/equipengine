@@ -1,22 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import subscribeToCourses from './hoc/subscribeToCourses';
 
-const TeacherControls = ({ courses }) => {
-  return <FilterableTableCourse courses={courses} />;
-};
-
-TeacherControls.propTypes = {
-  courses: PropTypes.array.isRequired
-};
+const TeacherControls = ({ courses }) => (
+  <FilterableTableCourse courses={courses} />
+);
 
 export const FilterableTableCourse = ({ courses }) => {
+  const listCourses = courses.map((course, i) => {
+    return <li key={i}>{course.title}</li>;
+  });
+
   return (
     <div>
-      {courses.map((course, i) => {
-        return <li key={i}>{course}</li>;
-      })}
+      <ul>{listCourses}</ul>
     </div>
   );
 };
 
-export default TeacherControls;
+export default subscribeToCourses(TeacherControls);
