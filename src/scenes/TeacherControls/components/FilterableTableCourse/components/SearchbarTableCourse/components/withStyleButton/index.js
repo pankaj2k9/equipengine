@@ -11,22 +11,25 @@ const withStyleButton = WrappedComponent =>
     text-shadow: none;
     text-transform: uppercase;
     padding: 10px 20px;
+    transition: all 300ms ease-in;
+    width: 100%;
 
     & + .dropdown-menu {
       width: 100%;
     }
 
-    @media screen and (min-width: 768px) {
-      width: 278px;
-      padding: 14px 20px;
+    &:active {
+      color: #333333;
+      background-color: #e0e0e0;
+    }
 
-      & span {
-        border-top: 5px dashed;
-        border-right: 5px solid transparent;
-        border-left: 5px solid transparent;
-        float: right;
-        margin-top: 0.5em;
-      }
+    &:hover {
+      color: #333333;
+      background-color: #e0e0e0;
+    }
+
+    @media screen and (min-width: 768px) {
+      padding: 14px 20px;
     }
   `;
 
