@@ -9,7 +9,14 @@ const Dropdown = withStyleButton(DropdownButton);
 
 const Toolbar = styled(ButtonToolbar)`
   margin-left: 0;
-  width: 35%;
+  margin-bottom: 0.5em;
+  border-radius: 4px;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 0.5em;
+    width: 35%;
+  }
 `;
 
 const SearchbarDropdown = ({ title }) => (
