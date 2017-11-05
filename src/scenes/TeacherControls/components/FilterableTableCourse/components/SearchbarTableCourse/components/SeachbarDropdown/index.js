@@ -14,8 +14,8 @@ const Toolbar = styled(ButtonToolbar)`
   width: 100%;
 
   @media screen and (min-width: 768px) {
-    margin-right: 0.5em;
-    width: 35%;
+    margin-right: 1em;
+    width: 25%;
   }
 `;
 

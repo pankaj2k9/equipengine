@@ -12,6 +12,6 @@ export default withStyleButton(({ className, title }) => (
 
     @media screen and (min-width: 768px){
       width: 12%;
-      margin-right: 16px;
+      margin-right: 1em;
     }
 `;

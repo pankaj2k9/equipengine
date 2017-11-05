@@ -2,13 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const RootForm = ({ children }) => <form action="">{children}</form>;
+const RootForm = ({ children, className }) => (
+  <form className={className} action="">
+    {children}
+  </form>
+);
 
 RootForm.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element)
-  ])
+  ]),
+  className: PropTypes.string
 };
 
 export default RootForm;
@@ -24,7 +29,7 @@ export const Text = styled(({ name, placeholder, className }) => (
   />
 ))`
   border: 1px solid #dddddd;
-  padding: 0.5em 1em;
+  padding: 0.8em 1em;
   border-radius: 3px;
   font-size: 14px;
   width: 100%;
