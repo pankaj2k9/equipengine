@@ -20,8 +20,10 @@ export default styled(({ className }) => (
 ))`
   border-bottom: 1px solid ${$borderLightColor};
   padding: 2%;
+  margin-top: 3%;
 
   @media screen and (min-width: 768px) {
+    margin-top: 0;
     padding: 27px 40px;
     display: flex;
     align-items: center;

@@ -21,7 +21,7 @@ class FilterableTableCourse extends Component {
 
   render() {
     return (
-      <div>
+      <div className="FilterableTableCourse">
         <SearchbarTableCourse />
         <TableCourse />
       </div>

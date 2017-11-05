@@ -28,6 +28,10 @@ const Flagged = styled(({ className }) => (
     font-size: 12px;
     font-weight: 800;
   }
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+  }
 `;
 
 export default Flagged;
