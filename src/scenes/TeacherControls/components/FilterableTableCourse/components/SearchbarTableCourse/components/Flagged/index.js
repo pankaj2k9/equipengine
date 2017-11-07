@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import FlaggedIcon from '../../../FlaggedIcon';
-import RootForm from 'base_components/RootForm';
+import RootForm, { Checkbox } from 'base_components/RootForm';
 
 const Flagged = styled(({ className }) => (
   <div className={className}>
     <RootForm>
-      <input name="show-flagged" type="checkbox" value="" />
+      <Checkbox name="show-flagged" />
     </RootForm>
     <FlaggedIcon isFlagged={true} />
     <span className="Flagged__total">(12)</span>

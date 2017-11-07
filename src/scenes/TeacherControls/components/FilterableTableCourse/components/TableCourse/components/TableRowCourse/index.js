@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { map } from 'ramda';
 
 import { TableRow } from 'base_components/Tables';
-import RootForm from 'base_components/RootForm';
+import RootForm, { Checkbox } from 'base_components/RootForm';
 import UserAvatar from 'base_components/UserAvatar';
 import FlaggedIcon from '../../../FlaggedIcon';
 
@@ -66,7 +66,7 @@ const TableRowCourse = ({ course }) => {
       </TableRowCourseTd>
       <TableRowCourseTd middle style={{ textAlign: 'center' }}>
         <RootForm>
-          <input name="" type="checkbox" value="" />
+          <Checkbox name="read" />
         </RootForm>
       </TableRowCourseTd>
     </TableRow>
