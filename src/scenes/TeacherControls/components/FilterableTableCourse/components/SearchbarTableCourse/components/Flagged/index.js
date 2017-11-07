@@ -9,7 +9,7 @@ const Flagged = styled(({ className }) => (
     <RootForm>
       <input name="show-flagged" type="checkbox" value="" />
     </RootForm>
-    <FlaggedIcon />
+    <FlaggedIcon isFlagged={true} />
     <span className="Flagged__total">(12)</span>
   </div>
 ))`

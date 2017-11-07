@@ -3,6 +3,7 @@ import React from 'react';
 import Tables, { TableRow } from 'base_components/Tables';
 import TableRowCourse from './components/TableRowCourse';
 import './styles.css';
+import userAvatar from 'resources/images/user.png';
 
 const TableCourse = () => {
   const coursesData = [
@@ -12,12 +13,25 @@ const TableCourse = () => {
         day: '22 Sep',
         time: '1:00 pm'
       },
-      course: 'Becoming Equipped to Communicate',
+      title: 'Becoming Equipped to Communicate',
       lesson: 'Tutorial 1.2',
       person: {
-        name: 'Jane Doe'
+        name: 'Jane Doe',
+        avatarURL: userAvatar
       },
-      lastAction: 'Jane wrote something'
+      lastAction: 'Jane wrote something',
+      feedbacks: [
+        {
+          id: '548sfjkjk324jksjfkxjjgjdfl',
+          avatarURL: userAvatar
+        },
+        {
+          id: '548sfjkjk324jksjfkxjjgjjnm',
+          name: 'Jane Doe',
+          avatarURL: userAvatar
+        }
+      ],
+      isFlagged: false
     },
     {
       id: '548sfjkjk324jksjfkxjkjhg',
@@ -25,12 +39,20 @@ const TableCourse = () => {
         day: '22 October',
         time: '1:00 pm'
       },
-      course: 'Culture and Language',
+      title: 'Culture and Language',
       lesson: 'Tutorial 1.2',
       person: {
-        name: 'Jane Doe'
+        name: 'Jane Doe',
+        avatarURL: userAvatar
       },
-      lastAction: 'Jane wrote something'
+      lastAction: 'Jane wrote something',
+      feedbacks: [
+        {
+          id: '548sfjkjk324jksjfkxjjgjdjnm',
+          avatarURL: userAvatar
+        }
+      ],
+      isFlagged: true
     }
   ];
 

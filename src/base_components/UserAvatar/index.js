@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const UserAvatar = ({ image }) => (
-  <img alt="user avatar" style={userAvatarStyle} src={image} />
-);
-
-const userAvatarStyle = {
-  height: 35,
-  width: 35,
-  borderRadius: '50%',
-  objectPosition: 'top',
-  objectFit: 'cover'
-};
+const UserAvatar = styled(({ image, className }) => (
+  <img alt="user avatar" className={className} src={image} />
+))`
+  height: ${props => (props.small ? '25px' : '35px')};
+  width: ${props => (props.small ? '25px' : '35px')};
+  border-radius: 50%;
+  object-position: top;
+  object-fit: cover;
+`;
 
 UserAvatar.propTypes = {
   image: PropTypes.string.isRequired

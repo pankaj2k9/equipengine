@@ -195,6 +195,11 @@ h4 {
   text-shadow: none;
 }
 
+/* overriding for table root component */
+.table-responsive {
+  border: 0;
+}
+
 @media screen and (min-width: 768px) {
   .DropdownMediaFile #dropdown-size-medium {
     border: 1px solid #979797;

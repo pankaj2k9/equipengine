@@ -1,17 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { Table } from 'react-bootstrap';
 
 import TableRow from './components/TableRow';
-import './styles.css';
 
-const Tables = ({ children, className }) => {
-  return (
-    <Table className={`Tables ${className}`} responsive>
-      {children}
-    </Table>
-  );
-};
+// TODO -> turn the sub components into styled component.
+const Tables = styled(({ children, className }) => (
+  <Table className={`Tables ${className}`} responsive>
+    {children}
+  </Table>
+))`
+  & .Tables__row {
+    border-bottom: 1px solid #dadada;
+  }
+  & .Tables__row th,
+  & .Tables__row td {
+    border: 0;
+  }
+  & .Tables__row td:last-child {
+    text-align: right;
+  }
+  & .Tables__row th {
+    font-size: 12px;
+    font-weight: 400;
+    color: #636363;
+    text-transform: uppercase;
+    padding-bottom: 3px;
+  }
+  & .Tables__row td {
+    vertical-align: middle;
+    color: #111111;
+  }
+`;
 
 Tables.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,

@@ -1,42 +1,77 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { map } from 'ramda';
 
 import { TableRow } from 'base_components/Tables';
+import RootForm from 'base_components/RootForm';
+import UserAvatar from 'base_components/UserAvatar';
+import FlaggedIcon from '../../../FlaggedIcon';
 
 // for table row data.
-// TODO: we need to turn it into styled component.
-const TableRowCourseTd = ({ children }) => (
-  <td
-    style={{
-      fontSize: 14,
-      textAlign: 'left',
-      marginTop: '0.7em',
-      verticalAlign: 'middle'
-    }}
-  >
-    {children}
-  </td>
-);
+const TableRowCourseTd = styled.td`
+  text-align: ${props => (props.middle ? 'center' : 'left')};
+  margin-top: 0.7em;
+`;
 
 // for table row course.
 const DateSpan = styled.span`
   color: #7e7e7e;
   display: block;
-  width: 70px;
 `;
 
-const TableRowCourse = ({ course }) => (
-  <TableRow>
-    <TableRowCourseTd>
-      <DateSpan>{`${course.date.day} ${course.date.time}`}</DateSpan>
-    </TableRowCourseTd>
-    <TableRowCourseTd>{course.course}</TableRowCourseTd>
-    <TableRowCourseTd>{course.lesson}</TableRowCourseTd>
-    <TableRowCourseTd>{course.person.name}</TableRowCourseTd>
-    <TableRowCourseTd>{course.lastAction}</TableRowCourseTd>
-  </TableRow>
-);
+// extending the user avatar component.
+const ExtendUserAvatar = UserAvatar.extend`
+  margin-right: 0.5em;
+  &:last-child {
+    margin-right: 0;
+  }
+`;
+
+// component for the table row course.
+const TableRowCourse = ({ course }) => {
+  const {
+    feedbacks,
+    title,
+    person,
+    date,
+    lesson,
+    lastAction,
+    isFlagged
+  } = course;
+  let feedbacksItem;
+  if (feedbacks.length) {
+    feedbacksItem = map(
+      item => <ExtendUserAvatar key={item.id} small image={item.avatarURL} />,
+      feedbacks
+    );
+  }
+  return (
+    <TableRow>
+      <TableRowCourseTd>
+        <DateSpan>{date.day}</DateSpan>
+        <DateSpan>{date.time}</DateSpan>
+      </TableRowCourseTd>
+      <TableRowCourseTd>{title}</TableRowCourseTd>
+      <TableRowCourseTd>{lesson}</TableRowCourseTd>
+      <TableRowCourseTd>
+        {' '}
+        <ExtendUserAvatar small image={course.person.avatarURL} />
+        <span>{person.name}</span>
+      </TableRowCourseTd>
+      <TableRowCourseTd>{lastAction}</TableRowCourseTd>
+      <TableRowCourseTd>{feedbacksItem}</TableRowCourseTd>
+      <TableRowCourseTd middle>
+        <FlaggedIcon big isFlagged={isFlagged} />
+      </TableRowCourseTd>
+      <TableRowCourseTd middle style={{ textAlign: 'center' }}>
+        <RootForm>
+          <input name="" type="checkbox" value="" />
+        </RootForm>
+      </TableRowCourseTd>
+    </TableRow>
+  );
+};
 
 TableRowCourse.propTypes = {
   course: PropTypes.object.isRequired
