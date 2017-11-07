@@ -1,5 +1,5 @@
 .ListCourses {
-  margin-top: 27px;
+  margin-top: 25px;
 }
 .ListCourses .ListCourses__right {
   display: flex;
@@ -9,7 +9,7 @@
 
 @media screen and (min-width: 768px) {
   .ListCourses {
-    margin-top: 150px;
+    margin-top: 85px;
   }
   .ListCourses .ListCourses__right {
     display: block;
