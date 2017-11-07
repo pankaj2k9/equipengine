@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { map } from 'ramda';
 
 import { TableRow } from 'base_components/Tables';
-import RootForm, { Checkbox } from 'base_components/RootForm';
+import RootForm, { CheckboxCircle } from 'base_components/RootForm';
 import UserAvatar from 'base_components/UserAvatar';
 import FlaggedIcon from '../../../FlaggedIcon';
 
@@ -55,7 +55,6 @@ const TableRowCourse = ({ course }) => {
       <TableRowCourseTd>{title}</TableRowCourseTd>
       <TableRowCourseTd>{lesson}</TableRowCourseTd>
       <TableRowCourseTd>
-        {' '}
         <ExtendUserAvatar small image={course.person.avatarURL} />
         <span>{person.name}</span>
       </TableRowCourseTd>
@@ -66,7 +65,7 @@ const TableRowCourse = ({ course }) => {
       </TableRowCourseTd>
       <TableRowCourseTd middle style={{ textAlign: 'center' }}>
         <RootForm>
-          <Checkbox name="read" />
+          <CheckboxCircle name="read" />
         </RootForm>
       </TableRowCourseTd>
     </TableRow>

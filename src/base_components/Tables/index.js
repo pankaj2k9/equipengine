@@ -13,6 +13,10 @@ const Tables = styled(({ children, className }) => (
 ))`
   & .Tables__row {
     border-bottom: 1px solid #dadada;
+    transition: background 300ms ease-in;
+    &:hover {
+      background: #f2f3f6;
+    }
   }
   & .Tables__row th,
   & .Tables__row td {

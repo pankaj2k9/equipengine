@@ -18,6 +18,9 @@ const Text = styled(({ name, placeholder, className }) => (
   font-size: 14px;
   width: 100%;
 
+  &:focus {
+    outline: 0;
+  }
   ::placeholder {
     color: #969696;
   }
