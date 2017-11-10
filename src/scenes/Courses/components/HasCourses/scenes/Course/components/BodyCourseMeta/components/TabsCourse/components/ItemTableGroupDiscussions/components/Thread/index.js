@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import { Modal } from 'react-bootstrap';
 import IconPlus from 'react-icons/lib/fa/plus';
 
