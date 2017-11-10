@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import './styles.css';
 
-const LinkButton = ({ style, text, url }) => {
+const LinkButton = ({ secondary, style, text, url, className }) => {
+  const secondaryClass = secondary ? 'LinkButton--secondary' : '';
   return (
-    <Link style={style} className="LinkButton" to={url}>
+    <Link
+      style={style}
+      className={`LinkButton ${className} ${secondaryClass}`}
+      to={url}
+    >
       {text}
     </Link>
   );
@@ -15,7 +21,9 @@ const LinkButton = ({ style, text, url }) => {
 LinkButton.propTypes = {
   text: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  style: PropTypes.object
+  style: PropTypes.object,
+  className: PropTypes.string,
+  secondary: PropTypes.bool
 };
 
 export default LinkButton;

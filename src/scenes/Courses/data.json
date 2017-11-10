@@ -12,6 +12,7 @@
         "id": "communication-tutorial-1",
         "tutorialId": "tsfjksaf",
         "title": "Communication Tutorial 1",
+        "type": "video",
         "video": {
           "length": "00:05:25"
         },
@@ -26,9 +27,6 @@
         "id": "communication-tutorial-2",
         "tutorialId": "tjksafj",
         "title": "Communication Tutorial 2",
-        "video": {
-          "length": "00:07:45"
-        },
         "questions": [
           "Do you agree with the statement that “absolutes are no longer popular” in our society? Give some examples from your own experience."
         ],

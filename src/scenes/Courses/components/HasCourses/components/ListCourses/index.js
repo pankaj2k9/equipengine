@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Box from 'base_components/Box';
 import TutorialsCompleted from './components/TutorialsCompleted';
@@ -7,6 +8,18 @@ import LinkButton from 'base_components/LinkButton';
 import List, { ListRow, ListRowLeft, ListRowRight } from 'base_components/List';
 
 import './styles.css';
+
+const ReportButton = styled(LinkButton)`
+  margin-top: 3.4em;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 1.1em;
+  }
+`;
+
+const ViewButton = styled(LinkButton)`
+  width: 100%;
+`;
 
 const ListCourses = ({ courses }) => {
   const listCourses = courses.map((course, i) => {
@@ -17,8 +30,15 @@ const ListCourses = ({ courses }) => {
           <p>{course.subtitle}</p>
         </ListRowLeft>
         <ListRowRight className="ListCourses__right">
-          <TutorialsCompleted />
-          <LinkButton text="View" url={'/courses/' + course.id} />
+          <ReportButton
+            secondary
+            text="Reports"
+            url={'/courses/' + course.id}
+          />
+          <div>
+            <TutorialsCompleted />
+            <ViewButton text="View" url={'/courses/' + course.id} />
+          </div>
         </ListRowRight>
       </ListRow>
     );

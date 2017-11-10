@@ -1,42 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Media from 'react-media';
+import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
+import { isNil } from 'ramda';
 
 import List, { ListRow, ListRowLeft, ListRowRight } from 'base_components/List';
 import LinkButton from 'base_components/LinkButton';
 import iconPlayButton from './play-button.svg';
+import iconExam from './exam.svg';
 import './styles.css';
 
+const ViewButton = styled(LinkButton)`
+  @media screen and (min-width: 768px) {
+    width: 104px;
+  }
+`;
 const ItemListTutorials = ({ tutorials, match }) => {
   const listOfTutorials = tutorials.map(tutorial => (
     <ListRow key={tutorial.tutorialId}>
       <ListRowLeft>
-        <img src={iconPlayButton} alt="Play button icon" />
+        {tutorial.type === 'video' ? (
+          <img src={iconPlayButton} alt="Play button icon" />
+        ) : (
+          <img src={iconExam} alt="Exam icon" />
+        )}
         <div>
           <p>{tutorial.title}</p>
-          <p>{tutorial.video.length}</p>
+          {!isNil(tutorial.video) ? <p>{tutorial.video.length}</p> : <p />}
         </div>
       </ListRowLeft>
       <ListRowRight>
-        {/* for mobile viewport */}
-        <Media query="(max-width: 767px)">
-          {matches =>
-            matches ? (
-              <LinkButton
-                url={`${match.url}/tutorials/${tutorial.id}`}
-                text="View"
-              />
-            ) : (
-              <LinkButton
-                style={{
-                  width: 104
-                }}
-                url={`${match.url}/tutorials/${tutorial.id}`}
-                text="View"
-              />
-            )}
-        </Media>
+        <ViewButton url={`${match.url}/tutorials/${tutorial.id}`} text="View" />
       </ListRowRight>
     </ListRow>
   ));

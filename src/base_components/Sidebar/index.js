@@ -27,8 +27,8 @@ const Sidebar = ({ isOpen, onCloseSidebar }) => {
     </Menu>
   );
 
-  // otherPages links
-  const otherPagesLink = (
+  // this is for teacher panel links
+  const teacherPanelLinks = (
     <Menu>
       <li className="Sidebar__item">
         <Link text="Groups Activiy" url="/groups-activiy" />
@@ -38,6 +38,18 @@ const Sidebar = ({ isOpen, onCloseSidebar }) => {
       </li>
       <li className="Sidebar__item">
         <Link text="User Manager" url="/users-manager" />
+      </li>
+    </Menu>
+  );
+
+  // this is for public other link
+  const otherLinks = (
+    <Menu>
+      <li className="Sidebar__item">
+        <Link text="Groups" url="/groups" />
+      </li>
+      <li className="Sidebar__item">
+        <Link text="Settings" url="/settings" />
       </li>
     </Menu>
   );
@@ -57,7 +69,8 @@ const Sidebar = ({ isOpen, onCloseSidebar }) => {
               mainPagesLink
             }
           </div>
-          <div className="Sidebar__body__otherPages">{otherPagesLink}</div>
+          <div className="Sidebar__body__otherPages">{teacherPanelLinks}</div>
+          <div className="Sidebar__body__otherPages">{otherLinks}</div>
         </div>
       </div>
     </div>

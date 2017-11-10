@@ -18,15 +18,15 @@
   font-weight: 800;
   margin-bottom: 0.2em;
 }
-.HeaderCourseMeta header a {
+.HeaderCourseMeta__toggleLink {
   color: #fff;
   font-weight: 500;
   cursor: pointer;
 }
-.HeaderCourseMeta header a:hover {
+.HeaderCourseMeta__toggleLink:hover {
   color: #338ffc;
 }
-.HeaderCourseMeta header a .HeaderCourseMeta__button {
+.HeaderCourseMeta__toggleLink .HeaderCourseMeta__button {
   margin-left: 4px;
   font-size: 1rem;
 }
@@ -53,7 +53,7 @@
     padding-top: 139px;
   }
   .HeaderCourseMeta header h3 {
-    width: 745px;
+    width: 714px;
   }
   .HeaderCourseMeta header .HeaderCourseMeta__completed {
     width: 80px;

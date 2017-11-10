@@ -25,3 +25,14 @@
     width: 145px;
   }
 }
+
+.LinkButton--secondary {
+  font-weight: 800;
+  background: #d8d8d8;
+  color: #333333 !important;
+}
+
+.LinkButton--secondary:hover {
+  background: #a2a0a0;
+  color: #333333;
+}
