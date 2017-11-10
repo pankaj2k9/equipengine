@@ -31,11 +31,7 @@ class BodyCourseMeta extends PureComponent {
                 width: '60%'
               }}
             />
-            <LatestGroupDiscussion
-              style={{
-                width: '34%'
-              }}
-            />
+            <LatestGroupDiscussion />
           </Box>
         </MediaQuery>
       </div>

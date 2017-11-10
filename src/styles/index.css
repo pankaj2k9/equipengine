@@ -101,12 +101,17 @@ ul {
 a {
   transition: color 300ms ease-in;
 }
+
 a:hover {
   text-decoration: none;
 }
 a:focus {
   text-decoration: none;
   color: #fff;
+}
+
+strong {
+  color: #1b93ec;
 }
 
 button:focus {
