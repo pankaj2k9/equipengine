@@ -1,8 +1,47 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { Modal } from 'react-bootstrap';
+import ModalHeader from 'react-bootstrap/lib/ModalHeader';
+import ModalTitle from 'react-bootstrap/lib/ModalTitle';
+import ModalBody from 'react-bootstrap/lib/ModalBody';
+import ModalFooter from 'react-bootstrap/lib/ModalFooter';
 import IconPlus from 'react-icons/lib/fa/plus';
 
+import RootForm, { TextArea } from 'base_components/RootForm';
 import Button from 'base_components/RootButton';
+import iconDropfile from 'resources/images/dropfile.svg';
+
+const ThreadModal = styled(Modal)`
+  .modal-dialog {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    .modal-content {
+      border-radius: 0;
+      border: 0;
+      min-height: 100vh;
+      position: relative;
+    }
+    .modal-footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+
+      > div {
+        width: 774px;
+        margin: 0 auto;
+      }
+
+      form div {
+        margin-top: 0.5em;
+        img {
+          margin-right: 1em;
+        }
+      }
+    }
+  }
+`;
 
 // button to open the thread modal.
 const OpenThread = Button.extend`
@@ -40,69 +79,27 @@ class Thread extends Component {
           </i>
         </OpenThread>
 
-        <Modal show={this.state.showModal} onHide={this.close}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <h4>Text in a modal</h4>
-            <p>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </p>
-
-            <hr />
-
-            <h4>Overflowing text to show scroll behavior</h4>
-            <p>
-              Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-              ac consectetur ac, vestibulum at eros.
-            </p>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur
-              et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-              auctor.
-            </p>
-            <p>
-              Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-              cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-              dui. Donec ullamcorper nulla non metus auctor fringilla.
-            </p>
-            <p>
-              Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-              ac consectetur ac, vestibulum at eros.
-            </p>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur
-              et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-              auctor.
-            </p>
-            <p>
-              Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-              cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-              dui. Donec ullamcorper nulla non metus auctor fringilla.
-            </p>
-            <p>
-              Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-              ac consectetur ac, vestibulum at eros.
-            </p>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur
-              et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-              auctor.
-            </p>
-            <p>
-              Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-              cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-              dui. Donec ullamcorper nulla non metus auctor fringilla.
-            </p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.close}>Close</Button>
-          </Modal.Footer>
-        </Modal>
+        <ThreadModal
+          className="Modal"
+          show={this.state.showModal}
+          onHide={this.close}
+        >
+          <ModalHeader closeButton />
+          <ModalBody>
+            <p>lorem ipsum</p>
+          </ModalBody>
+          <ModalFooter>
+            <div>
+              <RootForm>
+                <TextArea name="thread" placeholder="Write Something" />
+                <div>
+                  <img src={iconDropfile} alt="Drop file" />
+                  <Button onClick={this.close}>Close</Button>
+                </div>
+              </RootForm>
+            </div>
+          </ModalFooter>
+        </ThreadModal>
       </div>
     );
   }

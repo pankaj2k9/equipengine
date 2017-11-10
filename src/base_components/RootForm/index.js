@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Text from './components/Text';
+import TextArea from './components/TextArea';
 import { Checkbox, CheckboxCircle } from './components/Checkbox';
 
 const RootForm = ({ children, className }) => (
@@ -18,4 +19,4 @@ RootForm.propTypes = {
   className: PropTypes.string
 };
 
-export { RootForm as default, Text, Checkbox, CheckboxCircle };
+export { RootForm as default, Text, TextArea, Checkbox, CheckboxCircle };
