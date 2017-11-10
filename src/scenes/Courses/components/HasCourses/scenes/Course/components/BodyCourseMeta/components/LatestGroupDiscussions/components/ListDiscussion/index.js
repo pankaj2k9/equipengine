@@ -32,6 +32,7 @@ const HasDiscussions = styled(({ className, discussions }) => {
     img,
     p {
       margin-bottom: 0.7rem;
+      max-width: 250px;
     }
 
     > div {

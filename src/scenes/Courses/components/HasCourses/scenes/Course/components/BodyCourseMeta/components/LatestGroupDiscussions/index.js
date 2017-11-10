@@ -45,7 +45,7 @@ const LatestGroupDiscussions = styled(({ className, style }) => {
     color: #000000;
   }
   @media screen and (min-width: 768px) {
-    width: 34%;
+    width: 35%;
   }
 `;
 

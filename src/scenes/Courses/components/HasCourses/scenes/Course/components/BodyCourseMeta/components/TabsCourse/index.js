@@ -5,6 +5,7 @@ import { Tab } from 'react-bootstrap';
 import Tabs from 'base_components/Tabs';
 import ItemListTutorials from './components/ItemListTutorials';
 import ItemTableTutorialsFile from './components/ItemTableTutorialsFile';
+import ItemTableGroupDiscussions from './components/ItemTableGroupDiscussions';
 
 class TabsCourse extends React.Component {
   shouldComponentUpdate(nextProps) {
@@ -25,7 +26,7 @@ class TabsCourse extends React.Component {
           <ItemListTutorials tutorials={tutorials} />
         </Tab>
         <Tab eventKey={2} title="Group Discussions">
-          Tab 2 content
+          <ItemTableGroupDiscussions />
         </Tab>
         <Tab eventKey={3} title="Files">
           <ItemTableTutorialsFile files={files} />
