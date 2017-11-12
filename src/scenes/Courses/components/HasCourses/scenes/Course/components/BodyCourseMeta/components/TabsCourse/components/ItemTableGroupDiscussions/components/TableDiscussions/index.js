@@ -11,7 +11,7 @@ const TableDiscussions = ({ discussions }) => {
     <TableRow key={item.id}>
       <TableDataPosted discussion={item} />
       <TableData>{item.dateAdded}</TableData>
-      <TableData>{item.comments}</TableData>
+      <TableData>{item.comments.length}</TableData>
       <TableDataActivity activity={item.activities[0]} />
     </TableRow>
   ));

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import userURL from 'resources/images/user.png';
 import TableDiscussions from './components/TableDiscussions';
 import Thread from './components/Thread';
 
@@ -26,7 +27,52 @@ const ItemTableGroupDiscussions = ({ className }) => {
         day: '2 Sep',
         time: '1:00pm'
       },
-      comments: 4,
+      comments: [
+        {
+          id: '5f3fjghds234jsfs',
+          name: 'John Mcall',
+          avatarURL: userURL,
+          comment:
+            'Hi everyone. I’ve been thinking lately about the impact our culture has on government decisions. Does anyone have some good examples? I’ve thought about the way the governement is so stupid lately relates to the way our culture is so stupid. ',
+          date: {
+            day: '2 Sep',
+            time: '1:00pm'
+          }
+        },
+        {
+          id: '5f3fjghds234jsfs',
+          name: 'Jane Doe',
+          avatarURL: userURL,
+          comment:
+            'Yes! That is so true. They are both stupid. I never realised before…',
+          date: {
+            day: '2 Sep',
+            time: '1:00pm'
+          }
+        },
+        {
+          id: '5fhld3fjghds234jsfs',
+          name: 'John Mcall',
+          avatarURL: userURL,
+          comment:
+            'Hi everyone. I’ve been thinking lately about the impact our culture has on government decisions. Does anyone have some good examples? I’ve thought about the way the governement is so stupid lately relates to the way our culture is so stupid. ',
+          date: {
+            day: '2 Sep',
+            time: '1:00pm'
+          }
+        },
+        {
+          id: '5ff3fjghds234jsfs',
+          name: 'Jane Doe',
+          avatarURL: userURL,
+          comment:
+            'Yes! That is so true. They are both stupid. I never realised before…',
+          date: {
+            day: '2 Sep',
+            time: '1:00pm'
+          }
+        }
+      ],
       dateAdded: '22 April 17'
     },
     {
@@ -45,18 +91,43 @@ const ItemTableGroupDiscussions = ({ className }) => {
           }
         }
       ],
+      comments: [
+        {
+          id: '5f3fjghds234jsfs',
+          name: 'John Mcall',
+          avatarURL:
+            'https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg',
+          comment:
+            'Hi everyone. I’ve been thinking lately about the impact our culture has on government decisions. Does anyone have some good examples? I’ve thought about the way the governement is so stupid lately relates to the way our culture is so stupid. ',
+          date: {
+            day: '2 Sep',
+            time: '1:00pm'
+          }
+        },
+        {
+          id: '5f3fjghds234jsfs',
+          name: 'Jane Doe',
+          avatarURL:
+            'https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg',
+          comment:
+            'Yes! That is so true. They are both stupid. I never realised before…',
+          date: {
+            day: '2 Sep',
+            time: '1:00pm'
+          }
+        }
+      ],
       date: {
         day: '2 Sep',
         time: '1:00pm'
       },
-      comments: 2,
       dateAdded: '22 April 17'
     }
   ];
 
   return (
     <div>
-      <Thread />
+      <Thread thread={discussions[0]} />
       <TableDiscussions discussions={discussions} />
     </div>
   );

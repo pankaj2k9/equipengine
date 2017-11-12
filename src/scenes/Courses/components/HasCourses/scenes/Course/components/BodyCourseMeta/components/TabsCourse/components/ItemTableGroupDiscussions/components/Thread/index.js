@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Modal } from 'react-bootstrap';
-import ModalHeader from 'react-bootstrap/lib/ModalHeader';
-import ModalTitle from 'react-bootstrap/lib/ModalTitle';
-import ModalBody from 'react-bootstrap/lib/ModalBody';
-import ModalFooter from 'react-bootstrap/lib/ModalFooter';
 import IconPlus from 'react-icons/lib/fa/plus';
-
-import RootForm, { TextArea } from 'base_components/RootForm';
+/* For Modal*/
+import { Modal } from 'react-bootstrap';
+import ThreadModalBody from './components/ThreadModalBody';
+import ThreadModalFooter from './components/ThreadModalFooter';
+import ModalHeader from 'react-bootstrap/lib/ModalHeader';
+/* other component*/
 import Button from 'base_components/RootButton';
-import iconDropfile from 'resources/images/dropfile.svg';
 
 const ThreadModal = styled(Modal)`
   .modal-dialog {
@@ -17,28 +16,16 @@ const ThreadModal = styled(Modal)`
     height: 100%;
     margin: 0;
 
+    .modal-header,
+    modal-footer {
+      border-bottom: 1px solid #dadada;
+    }
+
     .modal-content {
       border-radius: 0;
       border: 0;
       min-height: 100vh;
       position: relative;
-    }
-    .modal-footer {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-
-      > div {
-        width: 774px;
-        margin: 0 auto;
-      }
-
-      form div {
-        margin-top: 0.5em;
-        img {
-          margin-right: 1em;
-        }
-      }
     }
   }
 `;
@@ -79,30 +66,18 @@ class Thread extends Component {
           </i>
         </OpenThread>
 
-        <ThreadModal
-          className="Modal"
-          show={this.state.showModal}
-          onHide={this.close}
-        >
+        <ThreadModal show={this.state.showModal} onHide={this.close}>
           <ModalHeader closeButton />
-          <ModalBody>
-            <p>lorem ipsum</p>
-          </ModalBody>
-          <ModalFooter>
-            <div>
-              <RootForm>
-                <TextArea name="thread" placeholder="Write Something" />
-                <div>
-                  <img src={iconDropfile} alt="Drop file" />
-                  <Button onClick={this.close}>Close</Button>
-                </div>
-              </RootForm>
-            </div>
-          </ModalFooter>
+          <ThreadModalBody thread={this.props.thread} />
+          <ThreadModalFooter />
         </ThreadModal>
       </div>
     );
   }
 }
+
+Thread.propTypes = {
+  thread: PropTypes.object.isRequired
+};
 
 export default Thread;
