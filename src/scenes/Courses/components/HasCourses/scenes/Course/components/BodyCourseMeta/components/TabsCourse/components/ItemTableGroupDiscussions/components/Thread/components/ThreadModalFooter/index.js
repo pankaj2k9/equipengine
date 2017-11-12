@@ -13,7 +13,7 @@ const ThreadModalFooter = styled(({ className }) => (
         <TextArea name="thread" placeholder="Write Something" />
         <div>
           <img src={iconDropfile} alt="Drop file" />
-          <Button onClick={this.close}>Close</Button>
+          <Button>Submit</Button>
         </div>
       </RootForm>
     </div>
