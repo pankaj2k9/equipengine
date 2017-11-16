@@ -18,10 +18,10 @@ const RightContainer = MainRight.extend`
 `;
 
 // container that holds the side components.
-const SideContainer = ({ yourGroups }) => (
+const SideContainer = ({ groups }) => (
   <RightContainer>
     <SearchBar />
-    {!isEmpty(yourGroups) ? (
+    {!isEmpty(groups) ? (
       <div>
         <p>Only one group can be selected (active) at a time.</p>
         <p>
@@ -37,7 +37,7 @@ const SideContainer = ({ yourGroups }) => (
 );
 
 SideContainer.propTypes = {
-  yourGroups: PropTypes.array.isRequired
+  groups: PropTypes.array.isRequired
 };
 
 export default SideContainer;

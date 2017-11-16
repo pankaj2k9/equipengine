@@ -6,11 +6,30 @@ import IconUser from 'react-icons/lib/fa/user';
 
 import Button from 'base_components/RootButton';
 
-// extend button, select button
-const SelectButton = Button.extend`
+// compose button, group button
+const GroupButton = Button.extend`
   width: 146px;
 `;
 
+// compose a joined container div that we will use on the joined button.
+const JoinedContainer = styled.div`
+  button:last-child {
+    border: 1px solid #979797;
+    background: none;
+    color: #9c9c9c;
+    margin-top: 1em;
+
+    &:hover {
+      background-color: #dddddd;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    text-align: right;
+  }
+`;
+
+// List Item Group
 const ListItemGroup = styled(({ className, group }) => {
   return (
     <li className={className}>
@@ -26,16 +45,24 @@ const ListItemGroup = styled(({ className, group }) => {
       </div>
       <div>
         {/* check if the group type is your-group
-           if your group type, we need to check if the group is already selected or not.
-         */}
+            if your group type, we need to check if the group is already selected or not.
+          */}
+        {/** check if the group item is type public group.
+            we also need to check if the item is already joined or not.
+          */}
         {identical(group.type, 'your-group') ? (
           group.isSelected ? (
-            <SelectButton disabled>Selected</SelectButton>
+            <GroupButton disabled>Selected</GroupButton>
           ) : (
-            <SelectButton>Select</SelectButton>
+            <GroupButton>Select</GroupButton>
           )
+        ) : group.isJoined ? (
+          <JoinedContainer>
+            <GroupButton disabled>Joined</GroupButton>
+            <GroupButton>Leave</GroupButton>
+          </JoinedContainer>
         ) : (
-          <Button>Join</Button>
+          <GroupButton>Join</GroupButton>
         )}
       </div>
     </li>
@@ -47,7 +74,7 @@ const ListItemGroup = styled(({ className, group }) => {
   margin-bottom: 1.2em;
   background-color: ${props => (props.isSelected ? '#F6F6F6' : 'none')};
 
-  div:first-child {
+  > div:first-child {
     h5 {
       font-size: 1.01rem;
       color: #111111;
@@ -65,7 +92,7 @@ const ListItemGroup = styled(({ className, group }) => {
   @media screen and (min-width: 768px) {
     display: flex;
 
-    div:first-child {
+    > div:first-child {
       margin-right: 1em;
     }
   }
