@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const RootButton = styled.button`
   background-color: ${props => (props.secondary ? '#d8d8d8' : '#338ffc')};
+  opacity: ${props => (props.disabled ? '0.5' : '1')};
   color: ${props => (props.secondary ? '#333333' : '#ffffff')};
   width: 104px;
   border: 0;
@@ -12,9 +13,9 @@ const RootButton = styled.button`
   text-transform: uppercase;
   border-radius: 3px;
   transition: background-color 300ms ease-in;
+  pointer-events: ${props => props.disabled && 'none'};
 
   &:hover {
-    background-color: #125eb7;
     background-color: ${props => (props.secondary ? '#a2a0a0' : '#125eb7')};
     color: ${props => (props.secondary ? '#333333' : '#ffffff')};
   }

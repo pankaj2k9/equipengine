@@ -13,6 +13,7 @@ const TextContainer = styled.div`
   border-radius: 3px;
   font-size: 14px;
   width: 100%;
+  margin-bottom: 1.5em;
 
   > span {
     font-size: 1.1rem;
@@ -20,6 +21,7 @@ const TextContainer = styled.div`
 
   > input {
     margin-left: 0.5em;
+    border: 0;
     &:focus {
       outline: 0;
     }

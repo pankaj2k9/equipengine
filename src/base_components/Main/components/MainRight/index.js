@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const MainRight = styled.div`
   @media screen and (min-width: 768px) {
-    width: 30%;
+    width: 25%;
   }
 `;
 
