@@ -22,7 +22,7 @@ const Text = styled(({ name, placeholder, className }) => (
     outline: 0;
   }
   ::placeholder {
-    color: #969696;
+    color: #c0c0c0;
   }
 `;
 

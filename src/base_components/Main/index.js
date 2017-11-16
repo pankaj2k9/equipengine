@@ -1,14 +1,24 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import './styles.css';
+import MainLeft from './components/MainLeft';
+import MainRight from './components/MainRight';
+import MainInnerContainer from './components/MainInnerContainer';
 
-const Main = ({ children }) => {
-  return <main className="Main">{children}</main>;
-};
+const Main = styled.main`
+  @media screen and (min-width: 768px) {
+    padding-left: 257px;
+    position: absolute;
+    top: 68px;
+    width: 100%;
+  }
+`;
 
 Main.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]).isRequired
 };
 
-export default Main;
+export { Main as default, MainInnerContainer, MainLeft, MainRight };
