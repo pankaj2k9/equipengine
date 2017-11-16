@@ -1,27 +1,38 @@
 import React from 'react';
 
-import { MainInnerContainer, MainLeft, MainRight } from 'base_components/Main';
+import { MainInnerContainer, MainLeft } from 'base_components/Main';
+import SideContainer from './components/SideContainer';
 import TabsGroup from './components/TabsGroup';
-import SearchBar from 'base_components/RootSearchBar';
-import InformationText from 'base_components/InformationText';
 
-// extending the styles of right container.
-const RightContainer = MainRight.extend`
-  @media screen and (max-width: 767px) {
-    margin-top: 1.7em;
+// your group items.
+const yourGroupItems = [
+  {
+    id: '5fgjsdflsadjflksafmsmf',
+    title: 'Connect: Level 2',
+    desc:
+      'This group is for people who are in level 3 pathway in the Connect Program. ',
+    people: 12,
+    isSelected: true,
+    type: 'your-group'
+  },
+  {
+    id: '5fgjsdflsadjsajfmsdfn',
+    title: 'Connect: Level 3',
+    desc:
+      'This group is for people who are in level 3 pathway in the Connect Program. ',
+    people: 5,
+    isSelected: false,
+    type: 'your-group'
   }
-`;
+];
 
 // the Groups scene.
 const Groups = () => (
   <MainInnerContainer>
     <MainLeft>
-      <TabsGroup />
+      <TabsGroup yourGroups={yourGroupItems} />
     </MainLeft>
-    <RightContainer>
-      <SearchBar />
-      <InformationText text="Learn more about groups" to="/learn-groups" />
-    </RightContainer>
+    <SideContainer yourGroups={yourGroupItems} />
   </MainInnerContainer>
 );
 
