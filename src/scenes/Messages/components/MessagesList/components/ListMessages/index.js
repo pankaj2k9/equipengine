@@ -8,7 +8,7 @@ import avatar from 'resources/images/user.png';
 const ListMessagesItem = styled(({ className }) => (
   <li className={className}>
     <a href="">
-      <UserAvatar image={avatar} />
+      <UserAvatar small image={avatar} />
       <div>
         <div>
           <span>John Jones</span>
@@ -59,13 +59,18 @@ const ListMessagesItem = styled(({ className }) => (
 `;
 
 // List messages component
-const ListMessages = ({ className }) => {
+const ListMessages = styled(({ className }) => {
   return (
     <ul className={className}>
       <ListMessagesItem />
       <ListMessagesItem active />
     </ul>
   );
-};
+})`
+  @media screen and (max-width: 767px) {
+    height: 155px;
+    overflow-y: auto;
+  }
+`;
 
 export default ListMessages;
