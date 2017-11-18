@@ -45,11 +45,21 @@ const ListMessagesItem = styled(({ className }) => (
   }
 `;
 
+// creating styled ConvoList component
+const ConvoList = styled.ul`
+  max-height: 200px;
+  overflow-y: auto;
+
+  @media screen and (min-width: 768px) {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+`;
 const MessagesConvoList = () => (
-  <ul>
+  <ConvoList>
     <ListMessagesItem />
     <ListMessagesItem />
-  </ul>
+  </ConvoList>
 );
 
 export default MessagesConvoList;
