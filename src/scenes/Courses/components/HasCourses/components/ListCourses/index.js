@@ -10,8 +10,6 @@ import List, { ListRow, ListRowLeft, ListRowRight } from 'base_components/List';
 import './styles.css';
 
 const ReportButton = styled(LinkButton)`
-  margin-top: 3.4em;
-
   @media screen and (min-width: 768px) {
     margin-right: 1.1em;
   }
@@ -31,6 +29,9 @@ const ListCourses = ({ courses }) => {
         </ListRowLeft>
         <ListRowRight className="ListCourses__right">
           <ReportButton
+            style={{
+              marginTop: '3.4em'
+            }}
             secondary
             text="Reports"
             url={'/courses/' + course.id}
