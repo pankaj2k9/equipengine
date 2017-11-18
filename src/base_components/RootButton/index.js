@@ -4,7 +4,7 @@ const RootButton = styled.button`
   background-color: ${props => (props.secondary ? '#d8d8d8' : '#338ffc')};
   opacity: ${props => (props.disabled ? '0.5' : '1')};
   color: ${props => (props.secondary ? '#333333' : '#ffffff')};
-  width: 104px;
+  width: ${props => (props.large ? '146px' : '104px')};
   border: 0;
   padding: 11px 0;
   font-family: 'karla';
