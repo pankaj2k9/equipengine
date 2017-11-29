@@ -8,12 +8,19 @@ import ErrorBoundary from 'base_components/ErrorBoundary';
 /* for code splitting - loadable */
 import Loadable from 'react-loadable';
 import Loader from 'base_components/Loader';
+
 /* create our async component in here
  * this will optimize the loading of components of our app
  * dynamically importing our scenes here*/
 const AsyncMainBars = Loadable({
   loader: () => import('base_components/SidebarTransition'),
   loading: () => null, // before this component gets loaded, we will render first this Loader component.
+  timeout: 10000
+});
+
+const AsyncDashboard = Loadable({
+  loader: () => import('scenes/Dashboard'),
+  loading: Loader, // before this component gets loaded, we will render first this Loader component.
   timeout: 10000
 });
 
@@ -71,7 +78,18 @@ const App = () => {
       <Route path="/" component={AsyncMainBars} />
       <Main>
         <Switch>
-          <Route exact path="/" component={AsyncCourses} />
+          <Route
+            exact
+            strict
+            path="/"
+            render={props => {
+              return (
+                <ErrorBoundary errMsg="Something went wrong in displaying the courses page.">
+                  <AsyncDashboard {...props} />
+                </ErrorBoundary>
+              );
+            }}
+          />
           <Route
             strict
             path="/courses"

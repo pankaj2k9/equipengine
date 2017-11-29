@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 // for TextArea
-const TextArea = styled(({ name, placeholder, className }) => (
+const TextArea = styled(({ name, placeholder, className, row }) => (
   <textarea
     placeholder={placeholder}
     name={name}
     className={className}
     cols="30"
-    rows="5"
+    rows={row}
   />
 ))`
   border: 1px solid #dddddd;
@@ -29,7 +29,8 @@ const TextArea = styled(({ name, placeholder, className }) => (
 TextArea.proptTypes = {
   name: PropTypes.string.isRequired,
   className: PropTypes.string,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  row: PropTypes.number
 };
 
 export default TextArea;
