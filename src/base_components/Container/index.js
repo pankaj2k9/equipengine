@@ -6,5 +6,6 @@ export default styled.div`
 
   @media screen and (min-width: 768px) {
     padding: 16px 35px;
+    display: flex;
   }
 `;
