@@ -4,16 +4,17 @@ import { Link } from 'react-router-dom';
 
 import './styles.css';
 
-const RowLink = ({ text }) => {
+const RowLink = ({ text, url }) => {
   return (
-    <Link className="RowLink" to="/messages">
+    <Link className="RowLink" to={url}>
       {text}
     </Link>
   );
 };
 
 RowLink.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired
 };
 
 export default RowLink;

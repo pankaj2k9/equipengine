@@ -47,6 +47,12 @@ const AsyncTeacherControls = Loadable({
   timeout: 10000
 });
 
+const AsyncNotifications = Loadable({
+  loader: () => import('scenes/Notifications'),
+  loading: Loader,
+  timeout: 10000
+});
+
 const AsyncNotFound = Loadable({
   loader: () => import('scenes/NotFound'),
   loading: Loader,
@@ -111,6 +117,17 @@ const App = () => {
               return (
                 <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
                   <AsyncPeople {...props} />
+                </ErrorBoundary>
+              );
+            }}
+          />
+          <Route
+            strict
+            path="/notifications"
+            component={props => {
+              return (
+                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                  <AsyncNotifications {...props} />
                 </ErrorBoundary>
               );
             }}

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import MainLeft from './components/MainLeft';
 import MainRight from './components/MainRight';
 import MainInnerContainer from './components/MainInnerContainer';
+import MainHeaderTitle from './components/MainHeaderTitle';
 
 const Main = styled.main`
   @media screen and (min-width: 768px) {
@@ -21,4 +22,10 @@ Main.propTypes = {
   ]).isRequired
 };
 
-export { Main as default, MainInnerContainer, MainLeft, MainRight };
+export {
+  Main as default,
+  MainInnerContainer,
+  MainLeft,
+  MainRight,
+  MainHeaderTitle
+};

@@ -6,12 +6,14 @@ import './styles.css';
 const RowData = ({ userName, date, message, avatar }) => {
   return (
     <li className="RowData">
-      <div className="RowData__avatar">
-        <img style={rowDataStyle.rowDataImg} src={avatar} alt={userName} />
-      </div>
+      {avatar && (
+        <div className="RowData__avatar">
+          <img style={rowDataStyle.rowDataImg} src={avatar} alt={userName} />
+        </div>
+      )}
       <div className="RowData__info">
         <div className="RowData__info__header">
-          <p>{userName}</p>
+          {userName && <p>{userName}</p>}
           <span>{date}</span>
         </div>
         <div className="RowData__info__body">
@@ -23,10 +25,10 @@ const RowData = ({ userName, date, message, avatar }) => {
 };
 
 RowData.propTypes = {
-  userName: PropTypes.string.isRequired,
+  userName: PropTypes.string,
   date: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired
+  avatar: PropTypes.string
 };
 
 const rowDataStyle = {

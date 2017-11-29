@@ -4,13 +4,13 @@
   padding: 12px 15px 0 15px;
   font-size: 13px;
 }
+.RowData__avatar {
+  margin-right: 14px;
+}
 .RowData .RowData__avatar img {
   height: 30px;
   width: 30px;
   border-radius: 50%;
-}
-.RowData .RowData__info {
-  margin-left: 14px;
 }
 .RowData .RowData__info .RowData__info__header {
   display: flex;
