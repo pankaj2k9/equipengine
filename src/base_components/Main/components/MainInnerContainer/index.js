@@ -5,7 +5,7 @@ const MainInnerContainer = styled.div`
   padding: 2%;
   @media screen and (min-width: 768px) {
     display: flex;
-    padding: 27px 40px;
+    padding: 27px 35px;
   }
 `;
 

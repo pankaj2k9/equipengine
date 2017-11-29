@@ -10,6 +10,19 @@ import ItemTableTutorialFiles from './components/ItemTableFilesTutorial';
 import ItemTutorialTaskGroups from './components/ItemTutorialTaskGroup';
 
 const TutorialTaskBody = () => {
+  const files = [
+    {
+      id: 'ysdjfk',
+      file: 'Submissions instructions.pdf',
+      date: '22 April 17'
+    },
+    {
+      id: 'yskjdksf',
+      file: 'Showing culture.ptt',
+      date: '19 March 17'
+    }
+  ];
+
   return (
     <Box>
       <Tabs>
@@ -17,7 +30,7 @@ const TutorialTaskBody = () => {
           <ItemTutorialTaskGroups />
         </Tab>
         <Tab eventKey={2} title="Files">
-          <ItemTableTutorialFiles />
+          <ItemTableTutorialFiles files={files} />
         </Tab>
       </Tabs>
     </Box>

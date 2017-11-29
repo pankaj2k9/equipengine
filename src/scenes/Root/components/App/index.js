@@ -53,6 +53,12 @@ const AsyncNotifications = Loadable({
   timeout: 10000
 });
 
+const AsyncFiles = Loadable({
+  loader: () => import('scenes/Files'),
+  loading: Loader,
+  timeout: 10000
+});
+
 const AsyncNotFound = Loadable({
   loader: () => import('scenes/NotFound'),
   loading: Loader,
@@ -128,6 +134,17 @@ const App = () => {
               return (
                 <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
                   <AsyncNotifications {...props} />
+                </ErrorBoundary>
+              );
+            }}
+          />
+          <Route
+            strict
+            path="/files"
+            component={props => {
+              return (
+                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                  <AsyncFiles {...props} />
                 </ErrorBoundary>
               );
             }}

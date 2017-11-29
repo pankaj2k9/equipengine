@@ -14,6 +14,4 @@ const ItemTutorialTaskGroup = () => {
   );
 };
 
-ItemTutorialTaskGroup.propTypes = {};
-
 export default ItemTutorialTaskGroup;
