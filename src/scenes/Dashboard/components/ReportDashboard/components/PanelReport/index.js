@@ -25,7 +25,7 @@ const ReportPanel = styled(({ className, title, children }) => (
   }
 
   > div {
-    padding: 1em;
+    padding: 1.4em;
   }
 `;
 

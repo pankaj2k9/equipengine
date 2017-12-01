@@ -114,6 +114,11 @@ strong {
   color: #1b93ec;
 }
 
+b {
+  color: #4f4f4f;
+  font-weight: 800;
+}
+
 button:focus {
   outline: 0;
 }

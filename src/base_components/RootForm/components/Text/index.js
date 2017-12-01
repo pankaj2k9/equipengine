@@ -21,6 +21,7 @@ const Text = styled(({ name, placeholder, className }) => (
   &:focus {
     outline: 0;
   }
+
   ::placeholder {
     color: #c0c0c0;
   }

@@ -21,8 +21,9 @@ const TextArea = styled(({ name, placeholder, className, row }) => (
   &:focus {
     outline: 0;
   }
+
   ::placeholder {
-    color: #969696;
+    color: #c0c0c0;
   }
 `;
 
