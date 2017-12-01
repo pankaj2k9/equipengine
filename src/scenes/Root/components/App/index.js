@@ -48,12 +48,6 @@ const AsyncPeople = Loadable({
   timeout: 10000
 });
 
-const AsyncTeacherControls = Loadable({
-  loader: () => import('scenes/TeacherControls'),
-  loading: Loader,
-  timeout: 10000
-});
-
 const AsyncNotifications = Loadable({
   loader: () => import('scenes/Notifications'),
   loading: Loader,
@@ -62,6 +56,19 @@ const AsyncNotifications = Loadable({
 
 const AsyncFiles = Loadable({
   loader: () => import('scenes/Files'),
+  loading: Loader,
+  timeout: 10000
+});
+
+//------------------------- TEACHERS PANEL COMPONENT -------------------------------//
+const AsyncTeacherControls = Loadable({
+  loader: () => import('scenes/TeacherControls'),
+  loading: Loader,
+  timeout: 10000
+});
+
+const AsyncTeacherFiles = Loadable({
+  loader: () => import('scenes/TeacherFiles'),
   loading: Loader,
   timeout: 10000
 });
@@ -97,17 +104,6 @@ const App = () => {
               return (
                 <ErrorBoundary errMsg="Something went wrong in displaying the courses page.">
                   <AsyncCourses {...props} />
-                </ErrorBoundary>
-              );
-            }}
-          />
-          <Route
-            strict
-            path="/teacher-controls"
-            component={props => {
-              return (
-                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
-                  <AsyncTeacherControls {...props} />
                 </ErrorBoundary>
               );
             }}
@@ -167,6 +163,30 @@ const App = () => {
               );
             }}
           />
+          {/*-------------------------- TEACHERS PANEL PAGES ---------------------*/}
+          <Route
+            strict
+            path="/teachers/submissionsActivity"
+            component={props => {
+              return (
+                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                  <AsyncTeacherControls {...props} />
+                </ErrorBoundary>
+              );
+            }}
+          />
+          <Route
+            strict
+            path="/teachers/files"
+            component={props => {
+              return (
+                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                  <AsyncTeacherFiles {...props} />
+                </ErrorBoundary>
+              );
+            }}
+          />
+
           {/* no routes match */}
           <Route component={AsyncNotFound} />
         </Switch>

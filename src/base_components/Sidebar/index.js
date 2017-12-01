@@ -34,7 +34,10 @@ const Sidebar = ({ isOpen, onCloseSidebar }) => {
         <Link text="Groups Activiy" url="/groups-activiy" />
       </li>
       <li className="Sidebar__item">
-        <Link text="Submissions Activity" url="/teacher-controls" />
+        <Link text="Submissions Activity" url="/teachers/submissionsActivity" />
+      </li>
+      <li className="Sidebar__item">
+        <Link text="Files" url="/teachers/files" />
       </li>
       <li className="Sidebar__item">
         <Link text="User Manager" url="/users-manager" />
