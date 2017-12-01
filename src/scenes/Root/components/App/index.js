@@ -61,6 +61,12 @@ const AsyncFiles = Loadable({
 });
 
 //------------------------- TEACHERS PANEL COMPONENT -------------------------------//
+const AsyncGroupsActivity = Loadable({
+  loader: () => import('scenes/TeacherGroupsActivity'),
+  loading: Loader,
+  timeout: 10000
+});
+
 const AsyncTeacherControls = Loadable({
   loader: () => import('scenes/TeacherControls'),
   loading: Loader,
@@ -164,6 +170,17 @@ const App = () => {
             }}
           />
           {/*-------------------------- TEACHERS PANEL PAGES ---------------------*/}
+          <Route
+            strict
+            path="/teachers/groupsActivity"
+            component={props => {
+              return (
+                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                  <AsyncGroupsActivity {...props} />
+                </ErrorBoundary>
+              );
+            }}
+          />
           <Route
             strict
             path="/teachers/submissionsActivity"

@@ -31,7 +31,7 @@ const Sidebar = ({ isOpen, onCloseSidebar }) => {
   const teacherPanelLinks = (
     <Menu>
       <li className="Sidebar__item">
-        <Link text="Groups Activiy" url="/groups-activiy" />
+        <Link text="Groups Activiy" url="/teachers/groupsActivity" />
       </li>
       <li className="Sidebar__item">
         <Link text="Submissions Activity" url="/teachers/submissionsActivity" />
@@ -40,7 +40,7 @@ const Sidebar = ({ isOpen, onCloseSidebar }) => {
         <Link text="Files" url="/teachers/files" />
       </li>
       <li className="Sidebar__item">
-        <Link text="User Manager" url="/users-manager" />
+        <Link text="User Manager" url="/teachers/usersManager" />
       </li>
     </Menu>
   );

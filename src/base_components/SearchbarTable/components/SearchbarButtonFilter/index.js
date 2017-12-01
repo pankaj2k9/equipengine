@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import withStyleButton from '../withStyleButton';
 
-export default withStyleButton(({ className, title }) => (
+const SearchbarButtonFilter = withStyleButton(({ className, title }) => (
   <button className={className}>{title}</button>
 )).extend`
     margin-bottom: 0.5em;
@@ -15,3 +16,9 @@ export default withStyleButton(({ className, title }) => (
       margin-right: 1em;
     }
 `;
+
+SearchbarButtonFilter.propTypes = {
+  title: PropTypes.string.isRequired
+};
+
+export default SearchbarButtonFilter;
