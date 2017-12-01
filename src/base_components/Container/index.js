@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-export default styled.div`
+const Container = styled.div`
   padding: 0 2%;
   margin: 1.5em 0;
 
@@ -9,3 +10,12 @@ export default styled.div`
     display: flex;
   }
 `;
+
+Container.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]).isRequired
+};
+
+export default Container;

@@ -6,6 +6,8 @@ import ListNotice from './components/ListNotice';
 
 // for body container
 const Body = Container.extend`
+  margin-bottom: 0;
+
   @media screen and (min-width: 768px) {
     min-height: 80vh;
     display: block;

@@ -2,11 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import NoticeboardDashboard from './components/NoticeboardDashboard';
-
-// for tutorial completed and some reports component
-const ReportDashboard = styled(({ className }) => (
-  <div>report dashboard</div>
-))``;
+import ReportDashboard from './components/ReportDashboard';
 
 const Dashboard = styled(({ className }) => (
   <div className={className}>
