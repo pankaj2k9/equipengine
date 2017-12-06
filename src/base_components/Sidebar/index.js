@@ -40,7 +40,7 @@ const Sidebar = ({ isOpen, onCloseSidebar }) => {
         <Link text="Files" url="/teachers/files" />
       </li>
       <li className="Sidebar__item">
-        <Link text="User Manager" url="/teachers/usersManager" />
+        <Link text="User Manager" url="/teachers/user-manager" />
       </li>
     </Menu>
   );

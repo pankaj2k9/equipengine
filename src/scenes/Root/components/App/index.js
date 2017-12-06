@@ -79,6 +79,12 @@ const AsyncTeacherFiles = Loadable({
   timeout: 10000
 });
 
+const AsyncTeacherUserManager = Loadable({
+  loader: () => import('scenes/TeacherUserManager'),
+  loading: Loader,
+  timeout: 10000
+});
+
 const AsyncNotFound = Loadable({
   loader: () => import('scenes/NotFound'),
   loading: Loader,
@@ -203,7 +209,17 @@ const App = () => {
               );
             }}
           />
-
+          <Route
+            strict
+            path="/teachers/user-manager"
+            component={props => {
+              return (
+                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                  <AsyncTeacherUserManager {...props} />
+                </ErrorBoundary>
+              );
+            }}
+          />
           {/* no routes match */}
           <Route component={AsyncNotFound} />
         </Switch>
