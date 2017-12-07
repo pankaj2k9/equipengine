@@ -1,7 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import IconMenu from 'react-icons/lib/fa/align-justify';
-
+// For panel
+import { Panel } from 'react-bootstrap';
+import withCollapsiblePanel from 'hoc/withCollapsiblePanel';
+// Sub-components
 import HeaderItemCourse from './components/HeaderItemCourse';
 import BodyItemCourse from './components/BodyItemCourse';
 
@@ -21,17 +25,28 @@ const MenuButton = styled.span`
 `;
 
 // this is the shape of the list item course.
-const ListItemCourse = styled(({ className }) => (
+const ListItemCourse = ({ className, isOpenPanel, onToggle }) => (
   <li className={className}>
     <ContainerInfoCourse>
       <HeaderItemCourse />
-      <BodyItemCourse />
+      <BodyItemCourse onToggle={onToggle} isOpenPanel={isOpenPanel} />
+      <Panel collapsible expanded={isOpenPanel}>
+        itlog mabaho blehhhhh......
+      </Panel>
     </ContainerInfoCourse>
     <MenuButton>
       <IconMenu />
     </MenuButton>
   </li>
-))`
+);
+
+ListItemCourse.propTypes = {
+  isOpenPanel: PropTypes.bool.isRequired,
+  onToggle: PropTypes.func.isRequired
+};
+
+// we will make the ListItemCourse as a styled component
+const StyledListItemCourse = styled(withCollapsiblePanel(ListItemCourse))`
   border-bottom: 1px solid #dadada;
   padding: 1.7em 0 0.8em 0;
 
@@ -54,9 +69,10 @@ const ListItemCourse = styled(({ className }) => (
 // for teacher user courses component.
 const ItemTeacherUserCourses = () => (
   <ul>
-    <ListItemCourse />
-    <ListItemCourse />
+    <StyledListItemCourse />
+    <StyledListItemCourse />
   </ul>
 );
 
+// we will subscribe this component into hoc to make some components more collapsible.
 export default ItemTeacherUserCourses;
