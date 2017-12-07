@@ -13,7 +13,7 @@ const ContainerTeacherUserManager = styled.div`
     margin-top: 0;
     padding: 0;
     display: flex;
-    height: 90vh;
+    min-height: 90vh;
   }
 `;
 

@@ -48,6 +48,8 @@ const BodyItemCourse = styled(({ className, isOpenPanel, onToggle }) => (
     </ButtonPanel>
   </div>
 ))`
+  margin-top: 2em;
+
   > div:first-child{
       display: flex;
       align-items: center;
@@ -59,6 +61,7 @@ const BodyItemCourse = styled(({ className, isOpenPanel, onToggle }) => (
   @media screen and (min-width: 768px){
     display: flex;
     justify-content: space-between;
+    margin-top: 3em;
   }
 `;
 

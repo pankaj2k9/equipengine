@@ -11,12 +11,17 @@ const DateTime = styled(({ className, date, time }) => (
   display: flex;
   flex-direction: column;
   font-size: 10px;
-  color: #7e7e7e;
+  font-weight: ${props => props.bold && '800'};
+  color: ${props => (props.accent ? '#338FFC' : '#7e7e7e')};
+  text-align: ${props => props.center && 'center'};
 `;
 
 DateTime.proTypes = {
   date: PropTypes.string.isRequired,
-  time: PropTypes.string.isRequired
+  time: PropTypes.string.isRequired,
+  accent: PropTypes.bool,
+  bold: PropTypes.bool,
+  center: PropTypes.bool
 };
 
 export default DateTime;

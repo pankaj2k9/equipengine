@@ -25,6 +25,11 @@ const TeacherUserSettings = styled(({ className }) => (
 ))`
   @media screen and (min-width: 768px) {
     width: 70%;
+    padding: 16px 0;
+
+    .nav-tabs {
+      padding: 0 2.4em;
+    }
   }
 `;
 
