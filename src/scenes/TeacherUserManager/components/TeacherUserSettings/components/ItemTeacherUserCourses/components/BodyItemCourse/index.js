@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import IconRight from 'react-icons/lib/fa/angle-right';
 import IconDown from 'react-icons/lib/fa/angle-down';
+import Form, { Switch } from 'base_components/RootForm';
 
 import './styles.css';
 
@@ -33,6 +34,9 @@ const BodyItemCourse = styled(({ className, isOpenPanel, onToggle }) => (
   <div className={className}>
     <div>
       <span>Enable / Disable</span>
+      <Form>
+        <Switch name="course-switch" />
+      </Form>
     </div>
     <ButtonPanel onClick={() => onToggle()}>
       View Lessons
@@ -50,15 +54,23 @@ const BodyItemCourse = styled(({ className, isOpenPanel, onToggle }) => (
 ))`
   margin-top: 2em;
 
-  > div:first-child{
-      display: flex;
-      align-items: center;
-      color: #9FA6AD;
-      margin-bottom: 1.3em
-      font-size: 12px;
+  > div:first-child {
+    display: flex;
+    align-items: center;
+    color: #9fa6ad;
+    margin-bottom: 1.3em;
+    font-size: 12px;
+
+    span {
+      margin-right: 1em;
+    }
+
+    form {
+      height: 22px;
+    }
   }
 
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     display: flex;
     justify-content: space-between;
     margin-top: 3em;

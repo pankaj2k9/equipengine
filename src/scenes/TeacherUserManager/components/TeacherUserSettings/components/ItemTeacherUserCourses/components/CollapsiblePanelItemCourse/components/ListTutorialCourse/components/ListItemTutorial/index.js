@@ -10,6 +10,8 @@ import DateTime from 'base_components/DateTime';
 // for feedback
 import UserAvatar from 'base_components/UserAvatar';
 import iconUser from 'resources/images/user.png';
+// for form
+import Form, { CheckboxCircleSecondary } from 'base_components/RootForm';
 
 // this is for meta span information component
 const MetaInfo = styled.span`
@@ -41,7 +43,9 @@ const ListItemTutorial = styled(({ className, isReport }) => (
           <MetaInfo>Feedback / Discussion</MetaInfo>
         </div>
         <div className="ListItemTutorial__complete">
-          <input name="complete" type="checkbox" />
+          <Form>
+            <CheckboxCircleSecondary name="complete" />
+          </Form>
           <MetaInfo>Mark Complete</MetaInfo>
         </div>
         <LinkButton text="View" url="/view" />
@@ -99,7 +103,7 @@ const ListItemTutorial = styled(({ className, isReport }) => (
       flex-direction: column;
       align-items: center;
 
-      input {
+      form {
         margin-bottom: 0.3em;
       }
     }
