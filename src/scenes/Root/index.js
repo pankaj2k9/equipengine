@@ -9,7 +9,11 @@ class Root extends Component {
     return (
       <Router>
         <BreadcrumbsProvider>
-          <App />
+          <App
+            loggedUser={{
+              type: 'Admin'
+            }}
+          />
         </BreadcrumbsProvider>
       </Router>
     );

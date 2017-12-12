@@ -31,10 +31,13 @@ const Sidebar = ({ isOpen, onCloseSidebar }) => {
   const teacherPanelLinks = (
     <Menu>
       <li className="Sidebar__item">
-        <Link text="Groups Activiy" url="/teachers/groupsActivity" />
+        <Link text="Groups Activiy" url="/teachers/groups-activity" />
       </li>
       <li className="Sidebar__item">
-        <Link text="Submissions Activity" url="/teachers/submissionsActivity" />
+        <Link
+          text="Submissions Activity"
+          url="/teachers/submissions-activity"
+        />
       </li>
       <li className="Sidebar__item">
         <Link text="Files" url="/teachers/files" />

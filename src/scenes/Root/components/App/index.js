@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
+import { identical } from 'ramda';
 
 // base_components
 import Main from 'base_components/Main';
@@ -85,17 +87,35 @@ const AsyncTeacherUserManager = Loadable({
   timeout: 10000
 });
 
+// for our admin panel
+const AsyncNavbarAdmin = () => <div>admin panel</div>;
+
+const AsyncAdminGroupManager = Loadable({
+  loader: () => import('scenes/Admin/AdminGroupManager'),
+  loading: Loader,
+  timeout: 10000
+});
+
 const AsyncNotFound = Loadable({
   loader: () => import('scenes/NotFound'),
   loading: Loader,
   timeout: 10000
 });
 
-const App = () => {
+const App = ({ loggedUser: { type } }) => {
   return (
     <div>
-      <Route path="/" component={AsyncMainBars} />
-      <Main>
+      <Route
+        path="/"
+        render={() =>
+          // conditional rendering.
+          identical(type, 'Student') || identical(type, 'Teacher') ? (
+            <AsyncMainBars />
+          ) : (
+            <AsyncNavbarAdmin />
+          )}
+      />
+      <Main type={type}>
         <Switch>
           <Route
             exact
@@ -175,10 +195,12 @@ const App = () => {
               );
             }}
           />
+
           {/*-------------------------- TEACHERS PANEL PAGES ---------------------*/}
+
           <Route
             strict
-            path="/teachers/groupsActivity"
+            path="/teachers/groups-activity"
             component={props => {
               return (
                 <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
@@ -189,7 +211,7 @@ const App = () => {
           />
           <Route
             strict
-            path="/teachers/submissionsActivity"
+            path="/teachers/submissions-activity"
             component={props => {
               return (
                 <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
@@ -220,12 +242,30 @@ const App = () => {
               );
             }}
           />
+
+          {/*-------------------------- ADMIN PANEL PAGES ---------------------*/}
+          <Route
+            strict
+            path="/admin/group-manager"
+            component={props => {
+              return (
+                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                  <AsyncAdminGroupManager {...props} />
+                </ErrorBoundary>
+              );
+            }}
+          />
+
           {/* no routes match */}
           <Route component={AsyncNotFound} />
         </Switch>
       </Main>
     </div>
   );
+};
+
+App.propTypes = {
+  loggedUser: PropTypes.object
 };
 
 export default App;
