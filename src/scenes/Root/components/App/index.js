@@ -87,8 +87,12 @@ const AsyncTeacherUserManager = Loadable({
   timeout: 10000
 });
 
-// for our admin panel
-const AsyncNavbarAdmin = () => <div>admin panel</div>;
+//------------------------- ADMIN PANEL COMPONENT -------------------------------//
+const AsyncNavbarAdmin = Loadable({
+  loader: () => import('base_components/NavbarAdmin'),
+  loading: Loader,
+  timeout: 10000
+});
 
 const AsyncAdminGroupManager = Loadable({
   loader: () => import('scenes/Admin/AdminGroupManager'),

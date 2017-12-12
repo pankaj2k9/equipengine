@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink as LinkRoute } from 'react-router-dom';
 
-const Link = ({ text, url, isStrict }) => {
+const Link = ({ text, url, isStrict, className }) => {
   // check if the link is strict not exact - get active even though that the url has a trailing slash
   if (isStrict) {
     return (
@@ -22,7 +22,8 @@ const Link = ({ text, url, isStrict }) => {
 Link.propTypes = {
   text: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  isStrict: PropTypes.bool
+  isStrict: PropTypes.bool,
+  className: PropTypes.string
 };
 
 export default Link;
