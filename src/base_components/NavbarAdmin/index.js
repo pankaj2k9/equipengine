@@ -1,9 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { NavLink, Link } from 'react-router-dom';
+import withCollapsiblePanel from 'hoc/withCollapsiblePanel';
 
 import logo from 'resources/images/logo.svg';
 import IconBurger from 'react-icons/lib/fa/align-justify';
+import IconArrowBack from 'react-icons/lib/md/arrow-back';
 
 // link
 const LinkNavbarAdmin = styled(NavLink)`
@@ -11,19 +14,48 @@ const LinkNavbarAdmin = styled(NavLink)`
   text-transform: uppercase;
   padding: 0.7em 2%;
   display: block;
+  transition: all 300ms ease-in;
+
+  &:hover {
+    color: #0e90e0;
+  }
 
   &.active {
     background: rgba(70, 70, 70, 0.82);
     color: #0e90e0;
   }
+
+  @media screen and (min-width: 768px) {
+    font-size: 0.78rem;
+
+    &.active {
+      background: none;
+    }
+  }
 `;
 
-const ListLink = styled.ul`
+// List
+const ListLinkHorizontal = styled.ul`
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+`;
+
+const ListLinkVertical = styled.ul`
   margin-top: 0.8em;
+  display: ${props => (props.isOpenPanel ? 'block' : 'none')};
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 
-const ListLinkNavbarAdmin = ({ className }) => (
-  <ListLink className={className}>
+const ListLinkNavbarAdminVertical = ({ isOpenPanel }) => (
+  <ListLinkVertical isOpenPanel={isOpenPanel}>
     <li>
       <LinkNavbarAdmin activeClassName="active" to="/admin/group-manager">
         Group Manager
@@ -47,19 +79,53 @@ const ListLinkNavbarAdmin = ({ className }) => (
         Organisation Settings
       </LinkNavbarAdmin>
     </li>
-  </ListLink>
+  </ListLinkVertical>
 );
 
-const ContentNavbarAdmin = styled(({ className }) => (
+const ListLinkNavbarAdminHorizontal = ({ className }) => (
+  <ListLinkHorizontal>
+    <li>
+      <LinkNavbarAdmin activeClassName="active" to="/admin/group-manager">
+        Group Manager
+      </LinkNavbarAdmin>
+    </li>
+    <li>
+      <LinkNavbarAdmin activeClassName="active" to="/admin/course-create">
+        Course Creator
+      </LinkNavbarAdmin>
+    </li>
+    <li>
+      <LinkNavbarAdmin activeClassName="active" to="/admin/user-manager">
+        User Manager
+      </LinkNavbarAdmin>
+    </li>
+    <li>
+      <LinkNavbarAdmin
+        activeClassName="active"
+        to="/admin/organisation-settings"
+      >
+        Organisation Settings
+      </LinkNavbarAdmin>
+    </li>
+  </ListLinkHorizontal>
+);
+
+// Content navbar admin
+const ContentNavbarAdmin = styled(({ className, onToggle }) => (
   <div className={className}>
     <div>
       <Link to="/">
         <img alt="Logo" src={logo} />
       </Link>
-      <ListLinkNavbarAdmin />
+      <ListLinkNavbarAdminHorizontal />
     </div>
-    <span>Main Site</span>
-    <button>
+    <Link to="/">
+      <span>
+        <IconArrowBack />
+      </span>
+      Main Site
+    </Link>
+    <button onClick={onToggle}>
       <IconBurger />
     </button>
   </div>
@@ -69,20 +135,46 @@ const ContentNavbarAdmin = styled(({ className }) => (
   justify-content: space-between;
   padding: 0 2%;
 
-  > div:first-child {
-    ul {
-      display: none;
-    }
-  }
-
-  > span {
+  > a {
     display: none;
+    color: #9fa6ad;
+    font-weight: 800;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    transition: all 300ms ease-in;
+
+    &:hover {
+      color: #0e90e0;
+    }
+
+    span {
+      font-size: 1rem;
+      margin-right: 0.3em;
+    }
   }
 
   > button {
     color: #ffffff;
     font-size: 1.6rem;
     padding: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 0;
+
+    > div:first-child {
+      display: flex;
+      width: 57%;
+      align-items: center;
+    }
+
+    > a {
+      display: block;
+    }
+
+    > button {
+      display: none;
+    }
   }
 `;
 
@@ -91,13 +183,22 @@ const Navbar = styled.nav`
   flex-direction: column;
   background-color: #2a2d2f;
   padding: 2% 0;
+
+  @media screen and (min-width: 768px) {
+    padding: 14px 35px;
+  }
 `;
 
-const NavbarAdmin = () => (
+const NavbarAdmin = ({ onToggle, isOpenPanel }) => (
   <Navbar>
-    <ContentNavbarAdmin />
-    <ListLinkNavbarAdmin />
+    <ContentNavbarAdmin onToggle={onToggle} />
+    <ListLinkNavbarAdminVertical isOpenPanel={isOpenPanel} />
   </Navbar>
 );
 
-export default NavbarAdmin;
+NavbarAdmin.propTypes = {
+  onToggle: PropTypes.func.isRequired,
+  isOpenPanel: PropTypes.bool.isRequired
+};
+
+export default withCollapsiblePanel(NavbarAdmin);
