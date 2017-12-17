@@ -1,35 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import Panel from 'base_components/Panel';
+import ListControl, { ListItemControl } from 'base_components/ListControl';
 
 // for list item control.
 import Button from 'base_components/RootButton';
 import { Label } from 'base_components/RootForm';
-
-const ListControl = styled.ul`
-  display: flex;
-  flex-direction: column;
-`;
-
-const ListItemControl = styled.li`
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.8em;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  button {
-    margin-right: 1.5em;
-  }
-
-  label {
-    font-size: 12px;
-    max-width: 250px;
-  }
-`;
 
 const PanelControlGroup = () => (
   <Panel>
