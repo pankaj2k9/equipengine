@@ -2,12 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import FilterableListAdminGroup from './components/FilterableListAdminGroup';
-
-// for settign admin manager
-import Container from 'base_components/Container';
-
-// settings admin manager group.
-const TabAdminGroup = () => <Container>group settings</Container>;
+import TabsAdminGroup from './components/TabsAdminGroup';
 
 // this the root component for admin group manager.
 const ContainerAdminGroupManager = styled.div`
@@ -19,7 +14,7 @@ const ContainerAdminGroupManager = styled.div`
 const AdminGroupManager = () => (
   <ContainerAdminGroupManager>
     <FilterableListAdminGroup />
-    <TabAdminGroup />
+    <TabsAdminGroup />
   </ContainerAdminGroupManager>
 );
 

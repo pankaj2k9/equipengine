@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import FormGroup from './components/FormGroup';
+import Label from './components/Label';
 import Text from './components/Text';
 import TextArea from './components/TextArea';
 import {
@@ -31,5 +33,7 @@ export {
   Checkbox,
   CheckboxCircle,
   CheckboxCircleSecondary,
-  Switch
+  Switch,
+  Label,
+  FormGroup
 };
