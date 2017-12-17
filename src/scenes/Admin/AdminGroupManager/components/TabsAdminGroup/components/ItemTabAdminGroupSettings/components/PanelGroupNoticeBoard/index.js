@@ -6,7 +6,22 @@ import { FormGroup, Label, Switch } from 'base_components/RootForm';
 
 const PanelExtend = Panel.extend`
   padding-bottom: 0;
+
+  header label {
+    margin-right: 0.9em;
+  }
+
+  @media screen and (min-width: 768px) {
+    header {
+      width: 315px;
+
+      label {
+        margin-right: 0;
+      }
+    }
+  }
 `;
+
 const LabelNoticeBoard = Label.extend`
   width: 134px;
   margin-right: 8em;
@@ -22,7 +37,10 @@ const ContainerFormGroups = styled.div`
 `;
 
 const PanelGroupNoticeBoard = () => (
-  <PanelExtend title="Group Noticeboard">
+  <PanelExtend
+    title="Group Noticeboard"
+    AdditionalTitle={() => <Switch name="toggle-all" />}
+  >
     <ContainerFormGroups>
       <FormGroup isFlex>
         <LabelNoticeBoard>Students can post new content</LabelNoticeBoard>

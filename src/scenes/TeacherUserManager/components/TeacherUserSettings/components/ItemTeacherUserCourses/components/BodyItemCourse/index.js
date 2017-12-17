@@ -61,7 +61,7 @@ const BodyItemCourse = styled(({ className, isOpenPanel, onToggle }) => (
     margin-bottom: 1.3em;
     font-size: 12px;
 
-    span {
+    > span {
       margin-right: 1em;
     }
 
