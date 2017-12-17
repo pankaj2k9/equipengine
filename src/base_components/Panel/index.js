@@ -17,6 +17,10 @@ const Panel = styled(({ className, title, children }) => (
     font-weight: 800;
     margin: 0 0 21px 0;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 65%;
+  }
 `;
 
 Panel.propTypes = {

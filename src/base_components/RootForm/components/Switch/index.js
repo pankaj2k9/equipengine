@@ -10,7 +10,7 @@ const Switch = styled(({ className, name }) => (
 ))`
   position: relative;
   display: inline-block;
-  width: 55px;
+  width: 42px;
   height: 22px;
   margin-bottom: 0;
 
