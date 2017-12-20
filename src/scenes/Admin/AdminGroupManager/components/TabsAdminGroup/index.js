@@ -6,6 +6,7 @@ import Tabs from 'base_components/Tabs';
 import Container from 'base_components/Container';
 // sub components
 import ItemTabAdminGroupSettings from './components/ItemTabAdminGroupSettings';
+import ItemTabAdminGroupUsers from './components/ItemTabAdminGroupUsers';
 
 const ContainerTabsAdminGroup = Container.extend`
   .Tabs {
@@ -25,8 +26,8 @@ const TabsAdminGroup = () => (
       <Tab eventKey={1} title="Course">
         Courses
       </Tab>
-      <Tab eventKey={2} title="People">
-        People
+      <Tab eventKey={2} title="Users">
+        <ItemTabAdminGroupUsers />
       </Tab>
       <Tab eventKey={3} title="Settings">
         <ItemTabAdminGroupSettings />

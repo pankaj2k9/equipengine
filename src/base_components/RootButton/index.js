@@ -65,4 +65,13 @@ const RootButton = styled.button`
   }
 `;
 
-export default RootButton;
+// for button icon
+const ButtonIcon = RootButton.extend`
+  width: 148px;
+  i {
+    font-size: 1rem;
+    margin-left: 0.5em;
+  }
+`;
+
+export { RootButton as default, ButtonIcon };

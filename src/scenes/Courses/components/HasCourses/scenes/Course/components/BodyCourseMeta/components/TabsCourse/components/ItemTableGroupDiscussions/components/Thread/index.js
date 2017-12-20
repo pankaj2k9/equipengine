@@ -8,7 +8,7 @@ import ThreadModalBody from './components/ThreadModalBody';
 import ThreadModalFooter from './components/ThreadModalFooter';
 import ModalHeader from 'react-bootstrap/lib/ModalHeader';
 /* other component*/
-import Button from 'base_components/RootButton';
+import { ButtonIcon } from 'base_components/RootButton';
 
 const ThreadModal = styled(Modal)`
   .modal-dialog {
@@ -27,15 +27,6 @@ const ThreadModal = styled(Modal)`
       min-height: 100vh;
       position: relative;
     }
-  }
-`;
-
-// button to open the thread modal.
-const OpenThread = Button.extend`
-  width: 148px;
-  i {
-    font-size: 1rem;
-    margin-left: 0.5em;
   }
 `;
 
@@ -59,12 +50,12 @@ class Thread extends Component {
   render() {
     return (
       <div>
-        <OpenThread secondary onClick={this.open}>
+        <ButtonIcon secondary onClick={this.open}>
           New Thread
           <i>
             <IconPlus />
           </i>
-        </OpenThread>
+        </ButtonIcon>
 
         <ThreadModal show={this.state.showModal} onHide={this.close}>
           <ModalHeader closeButton />
