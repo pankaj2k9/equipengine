@@ -8,6 +8,7 @@ import TabsAdminGroup from './components/TabsAdminGroup';
 const ContainerAdminGroupManager = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
+    min-height: 90vh;
   }
 `;
 

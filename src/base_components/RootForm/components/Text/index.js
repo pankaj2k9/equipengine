@@ -17,6 +17,7 @@ const Text = styled(({ name, placeholder, className }) => (
   border-radius: 3px;
   font-size: 14px;
   width: 100%;
+  height: 40px;
 
   &:focus {
     outline: 0;
