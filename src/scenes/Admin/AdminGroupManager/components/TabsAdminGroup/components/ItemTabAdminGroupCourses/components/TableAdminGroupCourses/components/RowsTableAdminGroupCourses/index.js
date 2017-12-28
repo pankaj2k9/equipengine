@@ -1,24 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import IconMenu from 'react-icons/lib/fa/align-justify';
+// sub-components
+import ModalCoursesSettings from './components/ModalCoursesSettings';
 // base components
 import { TableRow, Td } from 'base_components/Tables';
 import StatusCircle from 'base_components/StatusCircle';
 import Button from 'base_components/RootButton';
 // assets
-import iconSettings from 'resources/images/iconSettings.svg';
 import iconPauseButton from 'resources/images/iconPauseButton.svg';
 
 // compose a table data.
 const TableDataGroupUser = ({ children }) => <Td center>{children}</Td>;
-// compose icon image.
-const IconSettings = styled.img`
-  margin-right: 0.8em;
-`;
+
 // compse IconMenuContainer styled component.
 const IconMenuContainer = styled.i`
   color: #e3e3e3;
 `;
+
+// compose buttons
 const ButtonCourseDetails = Button.extend`
   width: 125px;
 `;
@@ -38,7 +38,7 @@ const RowsTableAdminGroupCourses = () => (
       </TableDataGroupUser>
       <TableDataGroupUser>
         <div>
-          <IconSettings alt="icon settings" src={iconSettings} />
+          <ModalCoursesSettings />
           <ButtonCourseDetails light lightBorder>
             Course Details
           </ButtonCourseDetails>
@@ -58,7 +58,7 @@ const RowsTableAdminGroupCourses = () => (
       </TableDataGroupUser>
       <TableDataGroupUser>
         <div>
-          <IconSettings alt="icon settings" src={iconSettings} />
+          <ModalCoursesSettings />
           <ButtonCourseDetails light lightBorder>
             Course Details
           </ButtonCourseDetails>
