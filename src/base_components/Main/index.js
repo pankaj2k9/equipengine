@@ -8,8 +8,11 @@ import MainInnerContainer from './components/MainInnerContainer';
 import MainHeaderTitle from './components/MainHeaderTitle';
 
 const Main = styled.main`
+  padding-bottom: 2em;
+
   @media screen and (min-width: 768px) {
     padding-left: ${props => !identical(props.type, 'Admin') && '257px'};
+    padding-bottom: 0;
     position: ${props => !identical(props.type, 'Admin') && 'absolute'};
     top: ${props => !identical(props.type, 'Admin') && '68px'};
     width: 100%;

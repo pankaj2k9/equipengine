@@ -32,7 +32,7 @@ const Panel = styled(({ className, title, children, AdditionalTitle }) => (
   }
 
   @media screen and (min-width: 768px) {
-    width: 65%;
+    width: ${props => (props.isFullWidth ? '100%' : '65%')};
 
     header {
       margin-bottom: 1.8em;
@@ -49,7 +49,8 @@ Panel.propTypes = {
   AdditionalTitle: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element)
-  ])
+  ]),
+  isFullWidth: PropTypes.bool
 };
 
 export default Panel;
