@@ -100,6 +100,12 @@ const AsyncAdminGroupManager = Loadable({
   timeout: 10000
 });
 
+const AsyncAdminUserManager = Loadable({
+  loader: () => import('scenes/Admin/AdminUserManager'),
+  loading: Loader,
+  timeout: 10000
+});
+
 const AsyncNotFound = Loadable({
   loader: () => import('scenes/NotFound'),
   loading: Loader,
@@ -127,7 +133,7 @@ const App = ({ loggedUser: { type } }) => {
             path="/"
             render={props => {
               return (
-                <ErrorBoundary errMsg="Something went wrong in displaying the courses page.">
+                <ErrorBoundary errMsg="Something went wrong in displaying the dashboard page.">
                   <AsyncDashboard {...props} />
                 </ErrorBoundary>
               );
@@ -149,7 +155,7 @@ const App = ({ loggedUser: { type } }) => {
             path="/groups"
             component={props => {
               return (
-                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                <ErrorBoundary errMsg="Something went wrong in displaying the groups page.">
                   <AsyncGroups {...props} />
                 </ErrorBoundary>
               );
@@ -160,7 +166,7 @@ const App = ({ loggedUser: { type } }) => {
             path="/messages"
             component={props => {
               return (
-                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                <ErrorBoundary errMsg="Something went wrong in displaying the messages page.">
                   <AsyncMessages {...props} />
                 </ErrorBoundary>
               );
@@ -171,7 +177,7 @@ const App = ({ loggedUser: { type } }) => {
             path="/people"
             component={props => {
               return (
-                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                <ErrorBoundary errMsg="Something went wrong in displaying the people page.">
                   <AsyncPeople {...props} />
                 </ErrorBoundary>
               );
@@ -182,7 +188,7 @@ const App = ({ loggedUser: { type } }) => {
             path="/notifications"
             component={props => {
               return (
-                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                <ErrorBoundary errMsg="Something went wrong in displaying the notifications page.">
                   <AsyncNotifications {...props} />
                 </ErrorBoundary>
               );
@@ -193,7 +199,7 @@ const App = ({ loggedUser: { type } }) => {
             path="/files"
             component={props => {
               return (
-                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                <ErrorBoundary errMsg="Something went wrong in displaying the files page.">
                   <AsyncFiles {...props} />
                 </ErrorBoundary>
               );
@@ -207,7 +213,7 @@ const App = ({ loggedUser: { type } }) => {
             path="/teachers/groups-activity"
             component={props => {
               return (
-                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                <ErrorBoundary errMsg="Something went wrong in displaying the groups activity page.">
                   <AsyncGroupsActivity {...props} />
                 </ErrorBoundary>
               );
@@ -229,7 +235,7 @@ const App = ({ loggedUser: { type } }) => {
             path="/teachers/files"
             component={props => {
               return (
-                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                <ErrorBoundary errMsg="Something went wrong in displaying the teachers files page.">
                   <AsyncTeacherFiles {...props} />
                 </ErrorBoundary>
               );
@@ -240,7 +246,7 @@ const App = ({ loggedUser: { type } }) => {
             path="/teachers/user-manager"
             component={props => {
               return (
-                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                <ErrorBoundary errMsg="Something went wrong in displaying the teachers user manager page.">
                   <AsyncTeacherUserManager {...props} />
                 </ErrorBoundary>
               );
@@ -253,8 +259,19 @@ const App = ({ loggedUser: { type } }) => {
             path="/admin/group-manager"
             component={props => {
               return (
-                <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+                <ErrorBoundary errMsg="Something went wrong in displaying the admin group manager page.">
                   <AsyncAdminGroupManager {...props} />
+                </ErrorBoundary>
+              );
+            }}
+          />
+          <Route
+            strict
+            path="/admin/user-manager"
+            component={props => {
+              return (
+                <ErrorBoundary errMsg="Something went wrong in displaying the admin user manager page.">
+                  <AsyncAdminUserManager {...props} />
                 </ErrorBoundary>
               );
             }}
