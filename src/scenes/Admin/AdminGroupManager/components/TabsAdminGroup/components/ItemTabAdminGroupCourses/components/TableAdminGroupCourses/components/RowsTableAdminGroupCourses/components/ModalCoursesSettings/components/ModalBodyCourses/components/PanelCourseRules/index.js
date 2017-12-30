@@ -34,8 +34,6 @@ const PanelCourseRules = styled(({ className }) => (
   }
 
   .PanelCourseRules__switch {
-    margin-bottom: 15px;
-
     > span:first-child {
       width: 130px;
     }
@@ -44,6 +42,7 @@ const PanelCourseRules = styled(({ className }) => (
   .PanelCourseRules__dropdown {
     background-color: #fbfbfb;
     padding: 1.5em;
+    margin-bottom: 0;
 
     > span:first-child {
       width: 130px;

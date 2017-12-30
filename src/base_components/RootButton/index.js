@@ -49,9 +49,8 @@ const RootButton = styled.button`
   opacity: ${props => (props.disabled ? '0.5' : '1')};
   color: ${fontColorVariation};
   width: ${props => (props.large ? '146px' : '104px')};
-  height: 40px;
   border: ${props => (props.lightBorder ? '1px solid #979797' : '0')};
-  padding: 8px 0;
+  padding: 10px 0;
   font-family: 'karla';
   font-size: 12px;
   font-weight: 800;

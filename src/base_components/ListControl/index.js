@@ -20,7 +20,7 @@ const ListItemControl = styled.li`
 
   label {
     font-size: 12px;
-    max-width: 250px;
+    max-width: 325px;
   }
 `;
 
