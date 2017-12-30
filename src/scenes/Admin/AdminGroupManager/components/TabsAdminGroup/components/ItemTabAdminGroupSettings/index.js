@@ -9,7 +9,11 @@ import PanelGroupNoticeBoard from './components/PanelGroupNoticeBoard';
 import PanelControlGroup from './components/PanelControlGroup';
 
 const ButtonUpdate = Button.extend`
-  margin: 3em 0 5em;
+  margin-top: 3em;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 5em;
+  }
 `;
 
 const ItemTabAdminGroupSettings = () => (
