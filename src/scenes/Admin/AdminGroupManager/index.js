@@ -1,22 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import ContainerAdminPanel from '../components/ContainerAdminPanel';
 import FilterableListAdminGroup from './components/FilterableListAdminGroup';
 import TabsAdminGroup from './components/TabsAdminGroup';
 
-// this the root component for admin group manager.
-const ContainerAdminGroupManager = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-    min-height: 90vh;
-  }
-`;
-
 const AdminGroupManager = () => (
-  <ContainerAdminGroupManager>
+  <ContainerAdminPanel>
     <FilterableListAdminGroup />
     <TabsAdminGroup />
-  </ContainerAdminGroupManager>
+  </ContainerAdminPanel>
 );
 
 export default AdminGroupManager;

@@ -1,0 +1,46 @@
+import Container from 'base_components/Container';
+
+const ContainerFilterableList = Container.extend`
+  @media screen and (min-width: 768px) {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 40%;
+    border-right: 1px solid #dadada;
+  }
+`;
+
+const ContainerSearchbarList = Container.extend`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1px solid #dadada;
+  margin-bottom: 0;
+
+  @media screen and (max-width: 767px) {
+    button,
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    button:last-child {
+      margin-bottom: 1.5em;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+    flex-direction: row;
+
+    form {
+      width: 192px;
+    }
+
+    button:last-child {
+      width: 126px;
+    }
+  }
+`;
+
+export { ContainerFilterableList as default, ContainerSearchbarList };

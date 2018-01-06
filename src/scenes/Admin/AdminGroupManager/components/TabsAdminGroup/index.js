@@ -4,25 +4,15 @@ import { Tab } from 'react-bootstrap';
 import Tabs from 'base_components/Tabs';
 // base components.
 import Container from 'base_components/Container';
+import ContainerTabsAdmin from '../../../components/ContainerAdminPanel/components/ContainerTabsAdmin';
 // sub components
 import ItemTabAdminGroupSettings from './components/ItemTabAdminGroupSettings';
 import ItemTabAdminGroupUsers from './components/ItemTabAdminGroupUsers';
 import ItemTabAdminGroupCourses from './components/ItemTabAdminGroupCourses';
 
-const ContainerTabsAdminGroup = Container.extend`
-  .Tabs {
-    width: 100%;
-  }
-
-  @media screen and (min-width: 768px) {
-    margin-top: 5px;
-    width: 60%;
-  }
-`;
-
 // settings admin manager group.
 const TabsAdminGroup = () => (
-  <ContainerTabsAdminGroup>
+  <ContainerTabsAdmin>
     <Tabs>
       <Tab eventKey={1} title="Courses">
         <ItemTabAdminGroupCourses />
@@ -34,7 +24,7 @@ const TabsAdminGroup = () => (
         <ItemTabAdminGroupSettings />
       </Tab>
     </Tabs>
-  </ContainerTabsAdminGroup>
+  </ContainerTabsAdmin>
 );
 
 export default TabsAdminGroup;
