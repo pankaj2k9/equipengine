@@ -3,8 +3,7 @@ import React from 'react';
 import { Tab } from 'react-bootstrap';
 import Tabs from 'base_components/Tabs';
 // base components.
-import Container from 'base_components/Container';
-import ContainerTabsAdmin from '../../../components/ContainerAdminPanel/components/ContainerTabsAdmin';
+import ContainerBodyAdmin from '../../../components/ContainerAdminPanel/components/ContainerBodyAdmin';
 // sub components
 import ItemTabAdminGroupSettings from './components/ItemTabAdminGroupSettings';
 import ItemTabAdminGroupUsers from './components/ItemTabAdminGroupUsers';
@@ -12,7 +11,7 @@ import ItemTabAdminGroupCourses from './components/ItemTabAdminGroupCourses';
 
 // settings admin manager group.
 const TabsAdminGroup = () => (
-  <ContainerTabsAdmin>
+  <ContainerBodyAdmin>
     <Tabs>
       <Tab eventKey={1} title="Courses">
         <ItemTabAdminGroupCourses />
@@ -24,7 +23,7 @@ const TabsAdminGroup = () => (
         <ItemTabAdminGroupSettings />
       </Tab>
     </Tabs>
-  </ContainerTabsAdmin>
+  </ContainerBodyAdmin>
 );
 
 export default TabsAdminGroup;

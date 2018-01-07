@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import ContainerAdminPanel from '../components/ContainerAdminPanel';
 import FilterableListAdminGroup from './components/FilterableListAdminGroup';
