@@ -6,7 +6,7 @@ import StatusCircle from 'base_components/StatusCircle';
 
 const StatusUser = styled(({ className, isActive }) => (
   <div className={className}>
-    <StatusCircle isActive={isActive} />
+    <StatusCircle state={isActive ? 'active' : 'inActive'} />
     <span>Active</span>
   </div>
 ))`
