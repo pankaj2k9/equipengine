@@ -1,12 +1,12 @@
 import React from 'react';
 // Container
-import ContainerFilterableList, {
-  ContainerSearchbarList
-} from '../../../components/ContainerAdminPanel/components/ContainerFilterableList';
+import ContainerFilterableList from '../../../components/ContainerAdminPanel/components/ContainerFilterableList';
+// sub components
+import SearchbarListAdminUser from './components/SearchbarListAdminUser';
 
 const FilterableListAdminUser = () => (
   <ContainerFilterableList>
-    <ContainerSearchbarList>Searchbar list user manager</ContainerSearchbarList>
+    <SearchbarListAdminUser />
   </ContainerFilterableList>
 );
 
