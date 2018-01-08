@@ -34,7 +34,7 @@ const RowsTableAdminGroupCourses = () => (
       <TableDataGroupUser>Communication and Culture</TableDataGroupUser>
       <TableDataGroupUser>22/03/17</TableDataGroupUser>
       <TableDataGroupUser>
-        <StatusCircle isActive />
+        <StatusCircle state="active" />
       </TableDataGroupUser>
       <TableDataGroupUser>
         <div>

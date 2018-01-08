@@ -1,7 +1,7 @@
 import React from 'react';
 // sub components
+import RoleUser from 'base_components/RoleUser';
 import StatusUser from './components/StatusUser';
-import RoleUser from './components/RoleUser';
 // base components
 import { TableRow, Td } from 'base_components/Tables';
 import UserAvatar from 'base_components/UserAvatar';

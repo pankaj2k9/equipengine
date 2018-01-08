@@ -3,10 +3,12 @@ import React from 'react';
 import ContainerFilterableList from '../../../components/ContainerAdminPanel/components/ContainerFilterableList';
 // sub components
 import SearchbarListAdminUser from './components/SearchbarListAdminUser';
+import ListAdminUser from './components/ListAdminUser';
 
 const FilterableListAdminUser = () => (
   <ContainerFilterableList>
     <SearchbarListAdminUser />
+    <ListAdminUser />
   </ContainerFilterableList>
 );
 
