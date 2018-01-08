@@ -16,8 +16,8 @@ const Button = ButtonIcon.extend`
   }
 `;
 
-const ButtonAddGroup = ({ onHandlerClick, text }) => (
-  <Button onClick={onHandlerClick}>
+const ButtonAdd = ({ onHandlerClick, text, className }) => (
+  <Button className={className} onClick={onHandlerClick}>
     {text}
     <i>
       <IconPlus />
@@ -25,9 +25,10 @@ const ButtonAddGroup = ({ onHandlerClick, text }) => (
   </Button>
 );
 
-ButtonAddGroup.propTypes = {
+ButtonAdd.propTypes = {
   text: PropTypes.string.isRequired,
-  onHandlerClick: PropTypes.func
+  onHandlerClick: PropTypes.func,
+  className: PropTypes.string
 };
 
-export default ButtonAddGroup;
+export default ButtonAdd;

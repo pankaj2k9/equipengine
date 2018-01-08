@@ -5,6 +5,7 @@ import ContainerBodyAdmin from '../../../components/ContainerAdminPanel/componen
 // sub-components
 import Form from 'base_components/RootForm';
 import FormUserDetails from './components/FormUserDetails';
+import FormOtherInfo from './components/FormOtherInfo';
 
 // extend-form
 const MainForm = styled(Form)`
@@ -15,6 +16,7 @@ const FormAdminUser = () => (
   <ContainerBodyAdmin>
     <MainForm>
       <FormUserDetails />
+      <FormOtherInfo />
     </MainForm>
   </ContainerBodyAdmin>
 );
