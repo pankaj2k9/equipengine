@@ -2,36 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { MenuItem } from 'react-bootstrap';
 // components
-import Form, {
-  FormGroup,
-  Label,
-  Text,
-  TextArea
-} from 'base_components/RootForm';
+import { FormGroup, Label, Text, TextArea } from 'base_components/RootForm';
 import FormGroupLeft from '../FormGroupLeft';
-import ButtonAdd from 'base_components/ButtonAdd';
 import PanelAdminUser from '../PanelAdminUser';
 import ContainerFlex from 'base_components/ContainerFlex';
 import Dropdown from 'base_components/Dropdown';
-
-// button add group
-const ButtonAddGroup = styled(ButtonAdd)`
-  border: 1px solid #979797;
-  background: transparent;
-  color: #000000;
-  margin-right: 0;
-
-  &:hover {
-    background-color: #e2e2e2;
-    color: #000000;
-  }
-`;
-
-// form add group
-const FormAddGroup = styled(Form)`
-  display: flex;
-  justify-content: flex-end;
-`;
 
 // form group downdown
 const FormGroupDropdown = styled(FormGroup)`
@@ -95,9 +70,6 @@ const FormOtherInfo = () => (
         <Text name="zipCode" placeholder="Zip code" />
       </FormGroupZipCode>
     </ContainerFlex>
-    <FormAddGroup>
-      <ButtonAddGroup text="Add Group" />
-    </FormAddGroup>
   </PanelAdminUser>
 );
 

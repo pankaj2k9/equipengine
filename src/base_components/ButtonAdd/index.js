@@ -10,7 +10,7 @@ const Button = ButtonIcon.extend`
 
   @media screen and (min-width: 768px) {
     padding: 8px 13px;
-    width: inherit;
+    width: initial;
     margin-right: 1.5em;
     margin-bottom: 0;
   }

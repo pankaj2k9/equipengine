@@ -6,7 +6,7 @@ import ContainerFlex from 'base_components/ContainerFlex';
 import UserAvatar from 'base_components/UserAvatar';
 import iconUser from 'resources/images/user.png';
 // Forms
-import Form, { FormGroup, Label, Text } from 'base_components/RootForm';
+import { FormGroup, Label, Text } from 'base_components/RootForm';
 import Button from 'base_components/RootButton';
 
 // adding styles for user avatar
@@ -43,11 +43,9 @@ const FormGroups = ({ className }) => (
       <Label>Email Address</Label>
       <Text name="email" placeholder="Email Address" type="email" />
     </FormGroup>
-    <Form>
-      <ButtonSetPassword light lightBorder>
-        Send set password link
-      </ButtonSetPassword>
-    </Form>
+    <ButtonSetPassword light lightBorder>
+      Send set password link
+    </ButtonSetPassword>
   </div>
 );
 
