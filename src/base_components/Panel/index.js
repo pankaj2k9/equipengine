@@ -46,10 +46,7 @@ Panel.propTypes = {
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element)
   ]).isRequired,
-  AdditionalTitle: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element)
-  ]),
+  AdditionalTitle: PropTypes.func,
   isFullWidth: PropTypes.bool
 };
 

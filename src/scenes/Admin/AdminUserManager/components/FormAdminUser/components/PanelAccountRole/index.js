@@ -10,7 +10,7 @@ const PanelFormAccountRole = styled(PanelAdminUser)`
   border-top: 1px solid #dadada;
 `;
 
-const FormAccountRole = () => (
+const PanelAccountRole = () => (
   <PanelFormAccountRole title="Account Role">
     <DropdownUserRole />
     <AccountContainer />
@@ -18,4 +18,4 @@ const FormAccountRole = () => (
   </PanelFormAccountRole>
 );
 
-export default FormAccountRole;
+export default PanelAccountRole;

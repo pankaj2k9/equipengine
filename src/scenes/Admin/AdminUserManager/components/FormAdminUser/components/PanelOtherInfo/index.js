@@ -31,7 +31,7 @@ const FormGroupZipCode = styled(FormGroup)`
   width: 25%;
 `;
 
-const FormOtherInfo = () => (
+const PanelOtherInfo = () => (
   <PanelAdminUser>
     <ContainerFlex>
       <FormGroupLeft>
@@ -73,4 +73,4 @@ const FormOtherInfo = () => (
   </PanelAdminUser>
 );
 
-export default FormOtherInfo;
+export default PanelOtherInfo;

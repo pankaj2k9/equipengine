@@ -2,12 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 // Container
 import ContainerBodyAdmin from '../../../components/ContainerAdminPanel/components/ContainerBodyAdmin';
-// sub-components
+// form
 import Form from 'base_components/RootForm';
-import FormUserDetails from './components/FormUserDetails';
-import FormOtherInfo from './components/FormOtherInfo';
-import FormGroups from './components/FormGroups';
-import FormAccountRole from './components/FormAccountRole';
+import ButtonUpdate from 'base_components/ButtonUpdate';
+// sub-components
+import PanelUserDetails from './components/PanelUserDetails';
+import PanelOtherInfo from './components/PanelOtherInfo';
+import PanelGroups from './components/PanelGroups';
+import PanelAccountRole from './components/PanelAccountRole';
+import PanelControlGroup from './components/PanelControlGroup';
 
 // extend-form
 const MainForm = styled(Form)`
@@ -17,10 +20,12 @@ const MainForm = styled(Form)`
 const FormAdminUser = () => (
   <ContainerBodyAdmin>
     <MainForm>
-      <FormUserDetails />
-      <FormOtherInfo />
-      <FormGroups />
-      <FormAccountRole />
+      <PanelUserDetails />
+      <PanelOtherInfo />
+      <PanelGroups />
+      <PanelAccountRole />
+      <PanelControlGroup />
+      <ButtonUpdate>Update</ButtonUpdate>
     </MainForm>
   </ContainerBodyAdmin>
 );

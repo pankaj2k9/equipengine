@@ -23,7 +23,7 @@ const ButtonSetPassword = Button.extend`
 `;
 
 // removing the padding-top for Panel
-const PanelUserDetails = PanelAdminUser.extend`
+const Panel = PanelAdminUser.extend`
   padding-top: 0;
 `;
 
@@ -49,13 +49,13 @@ const FormGroups = ({ className }) => (
   </div>
 );
 
-const FormUserDetails = () => (
-  <PanelUserDetails title="User Details">
+const PanelUserDetails = () => (
+  <Panel title="User Details">
     <ContainerFlex>
       <FormUserAvatar image={iconUser} />
       <FormGroups />
     </ContainerFlex>
-  </PanelUserDetails>
+  </Panel>
 );
 
-export default FormUserDetails;
+export default PanelUserDetails;

@@ -25,7 +25,7 @@ const TextHint = styled.p`
   color: #777777;
 `;
 
-const FormGroups = styled(({ className }) => (
+const PanelGroups = styled(({ className }) => (
   <Panel
     title="Groups"
     AdditionalTitle={() => <ButtonAddGroup text="Add group" />}
@@ -47,4 +47,4 @@ const FormGroups = styled(({ className }) => (
   }
 `;
 
-export default FormGroups;
+export default PanelGroups;
