@@ -7,6 +7,7 @@ import Form from 'base_components/RootForm';
 import FormUserDetails from './components/FormUserDetails';
 import FormOtherInfo from './components/FormOtherInfo';
 import FormGroups from './components/FormGroups';
+import FormAccountRole from './components/FormAccountRole';
 
 // extend-form
 const MainForm = styled(Form)`
@@ -19,6 +20,7 @@ const FormAdminUser = () => (
       <FormUserDetails />
       <FormOtherInfo />
       <FormGroups />
+      <FormAccountRole />
     </MainForm>
   </ContainerBodyAdmin>
 );

@@ -70,7 +70,8 @@ const Switch = styled(({ className, name }) => (
 `;
 
 Switch.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  className: PropTypes.string
 };
 
 export default Switch;
