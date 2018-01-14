@@ -2,6 +2,7 @@ import Container from 'base_components/Container';
 
 const ContainerFilterableList = Container.extend`
   @media screen and (min-width: 768px) {
+    position: fixed;
     flex-direction: column;
     margin: 0;
     padding: 0;

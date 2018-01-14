@@ -12,6 +12,10 @@ const Navbar = styled.nav`
   flex-direction: column;
   background-color: #2a2d2f;
   padding: 2% 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 
   @media screen and (min-width: 768px) {
     padding: 14px 35px;
