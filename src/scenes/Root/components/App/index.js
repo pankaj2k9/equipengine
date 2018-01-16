@@ -285,7 +285,7 @@ const App = ({ loggedUser: { type } }) => {
           <Route
             strict
             path="/admin/course-creator"
-            component={props => {
+            render={props => {
               return (
                 <ErrorBoundary errMsg="Something went wrong in displaying the admin user manager page.">
                   <AsyncAdminCourseCreator {...props} />

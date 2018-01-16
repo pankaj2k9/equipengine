@@ -4,11 +4,9 @@ import { Switch, Route } from 'react-router-dom';
 
 import ErrorBoundary from 'base_components/ErrorBoundary';
 import ListCourses from './components/ListCourses';
-
 // for our breadcrumbs
 import Breadcrumbs from 'base_components/Breadcrumbs';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic/dist/src';
-
 /* for our code splitting, render this components asynchronous*/
 import Loader from 'base_components/Loader';
 import Loadable from 'react-loadable';
@@ -22,8 +20,8 @@ const HasCourses = ({ courses, match }) => {
   return (
     <div>
       {/* for our breadcrumbs item - get the current url and add it to its url */}
-      <BreadcrumbsItem to={match.url}>Courses</BreadcrumbsItem>
       <Breadcrumbs />
+      <BreadcrumbsItem to={match.url}>Courses</BreadcrumbsItem>
       {/* only want to render this list courses on the courses route */}
       <Switch>
         <Route

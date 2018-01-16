@@ -24,7 +24,7 @@ const SidebarAdminCourse = ({ match }) => (
     <ListLinkItem
       icon={iconCourseLibrary}
       text="Course Library"
-      url={`${match.path}/course-library`}
+      url={`${match.path}/courses`}
     />
     <ListLinkItem
       icon={iconAddOns}

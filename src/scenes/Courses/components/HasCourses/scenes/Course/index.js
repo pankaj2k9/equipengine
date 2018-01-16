@@ -26,7 +26,7 @@ const Course = ({ match, courses }) => {
   const course = courses.filter(course => course.id === paramId)[0];
   return (
     <div className="Course">
-      <BreadcrumbsItem to={`${match.url}`}>{courseTitle}</BreadcrumbsItem>
+      <BreadcrumbsItem to={match.url}>{courseTitle}</BreadcrumbsItem>
       <HeaderCourseMeta course={course} />
       <BodyCourseMeta course={course} />
       {/* subroutes - tutorials. */}
