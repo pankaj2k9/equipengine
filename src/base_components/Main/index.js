@@ -9,7 +9,7 @@ import MainHeaderTitle from './components/MainHeaderTitle';
 
 const Main = styled.main`
   padding-bottom: 2em;
-  margin-top: ${props => identical(props.type, 'Admin') && '77px'};
+  margin-top: ${props => identical(props.type, 'Admin') && '56px'};
 
   @media screen and (min-width: 768px) {
     padding-left: ${props => !identical(props.type, 'Admin') && '257px'};

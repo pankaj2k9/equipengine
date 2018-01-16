@@ -1,6 +1,8 @@
 import Container from 'base_components/Container';
 
 const ContainerFilterableList = Container.extend`
+  padding: 1% 2%;
+
   @media screen and (min-width: 768px) {
     position: fixed;
     flex-direction: column;

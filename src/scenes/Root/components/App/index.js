@@ -106,6 +106,12 @@ const AsyncAdminUserManager = Loadable({
   timeout: 10000
 });
 
+const AsyncAdminCourseCreator = Loadable({
+  loader: () => import('scenes/Admin/AdminCourseCreator'),
+  loading: Loader,
+  timeout: 10000
+});
+
 const AsyncNotFound = Loadable({
   loader: () => import('scenes/NotFound'),
   loading: Loader,
@@ -276,7 +282,17 @@ const App = ({ loggedUser: { type } }) => {
               );
             }}
           />
-
+          <Route
+            strict
+            path="/admin/course-creator"
+            component={props => {
+              return (
+                <ErrorBoundary errMsg="Something went wrong in displaying the admin user manager page.">
+                  <AsyncAdminCourseCreator {...props} />
+                </ErrorBoundary>
+              );
+            }}
+          />
           {/* no routes match */}
           <Route component={AsyncNotFound} />
         </Switch>

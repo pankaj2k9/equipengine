@@ -21,7 +21,7 @@ const ListLinkNavbarAdminHorizontal = ({ className }) => (
       </LinkNavbarAdmin>
     </li>
     <li>
-      <LinkNavbarAdmin activeClassName="active" to="/admin/course-create">
+      <LinkNavbarAdmin activeClassName="active" to="/admin/course-creator">
         Course Creator
       </LinkNavbarAdmin>
     </li>
