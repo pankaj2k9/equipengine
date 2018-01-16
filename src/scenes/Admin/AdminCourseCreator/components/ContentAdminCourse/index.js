@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 // components
 import ErrorBoundary from 'base_components/ErrorBoundary';
 // Scenes
