@@ -51,7 +51,7 @@ const ListLinkItem = styled(({ className, icon, text, url }) => (
       font-weight: 800;
       font-size: 12px;
       margin-top: 0.5em;
-      width: 50px;
+      width: 57px;
       text-align: center;
       text-transform: uppercase;
       line-height: 1.4;
