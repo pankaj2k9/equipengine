@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import IconSearch from 'react-icons/lib/fa/search';
 
@@ -31,20 +32,19 @@ const TextContainer = styled.div`
   }
 `;
 
-const SearchBar = styled(({ className }) => (
-  <Form>
+const SearchBar = styled(({ className, placeholder }) => (
+  <Form className={className}>
     <TextContainer>
       <span>
         <IconSearch />
       </span>
-      <input
-        name="searchbar"
-        type="text"
-        placeholder="Search groups"
-        value=""
-      />
+      <input name="searchbar" type="text" placeholder={placeholder} value="" />
     </TextContainer>
   </Form>
 ))``;
+
+SearchBar.propTypes = {
+  placeholder: PropTypes.string
+};
 
 export default SearchBar;

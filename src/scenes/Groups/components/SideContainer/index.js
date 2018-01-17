@@ -20,7 +20,7 @@ const RightContainer = MainRight.extend`
 // container that holds the side components.
 const SideContainer = ({ groups }) => (
   <RightContainer>
-    <SearchBar />
+    <SearchBar placeholder="Search groups" />
     {!isEmpty(groups) ? (
       <div>
         <p>Only one group can be selected (active) at a time.</p>
