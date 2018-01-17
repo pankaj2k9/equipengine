@@ -15,6 +15,7 @@ const DropdownRefine = Dropdown.extend`
   font-size: 12px;
   font-weight: 800;
   border-radius: 3px;
+  width: 100%;
 
   .caret {
     padding-bottom: 4px;

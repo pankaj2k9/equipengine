@@ -9,8 +9,9 @@ import iconCourseLibrary from './course-library.svg';
 import iconAddOns from './add-ons.svg';
 
 const ListLink = styled.ul`
-  background-color: #000000;
   min-height: 100vh;
+  height: 100%;
+  background-color: #000000;
   position: fixed;
 `;
 
