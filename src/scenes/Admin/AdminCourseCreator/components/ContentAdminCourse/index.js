@@ -26,7 +26,6 @@ const ContainerContent = styled.div`
 const ContentAdminCourse = ({ match }) => (
   <ContainerContent>
     <Route
-      exact
       path={`${match.url}/courses`}
       render={props => (
         <ErrorBoundary errMsg="Something went wrong in displaying the courses page.">

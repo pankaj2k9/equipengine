@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import IconUser from 'react-icons/lib/fa/user';
 //
 import { TableRow, Td } from 'base_components/Tables';
-import Button from 'base_components/RootButton';
+import LinkButton from 'base_components/LinkButton';
 import ContainerFlex from 'base_components/ContainerFlex';
 
 // Table data for name column
@@ -35,11 +35,11 @@ const Text = styled.span`
   font-size: 16px;
 `;
 
-const ButtonDetails = Button.extend`
-  @media screen and (min-width: 768px) {
-    width: 140px;
-  }
-`;
+/* const ButtonDetails = Button.extend`
+ *   @media screen and (min-width: 768px) {
+ *     width: 140px;
+ *   }
+ * `;*/
 
 const TableRowCourses = () => (
   <tbody>
@@ -66,7 +66,10 @@ const TableRowCourses = () => (
         <Text>8</Text>
       </Td>
       <Td>
-        <ButtonDetails>Details</ButtonDetails>
+        <LinkButton
+          url="/admin/course-creator/courses/communication-and-culture"
+          text="Details"
+        />
       </Td>
     </TableRow>
     <TableRow>
@@ -92,7 +95,10 @@ const TableRowCourses = () => (
         <Text>5</Text>
       </Td>
       <Td>
-        <ButtonDetails>Details</ButtonDetails>
+        <LinkButton
+          url="/admin/course-creator/courses/language-and-culture"
+          text="Details"
+        />
       </Td>
     </TableRow>
   </tbody>
