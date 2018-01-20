@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { split, join, pipe } from 'ramda';
 // component
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic/dist/src';
