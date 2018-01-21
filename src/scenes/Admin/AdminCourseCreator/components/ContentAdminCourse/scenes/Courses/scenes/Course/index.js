@@ -3,6 +3,7 @@ import { split, join, pipe } from 'ramda';
 // component
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic/dist/src';
 import HeaderCourseMeta from './components/HeaderCourseMeta';
+import BodyCourseMeta from './components/BodyCourseMeta';
 
 const Course = ({ match }) => {
   // cachce variables
@@ -14,6 +15,7 @@ const Course = ({ match }) => {
     <div>
       <BreadcrumbsItem to={match.url}>{courseTitle}</BreadcrumbsItem>
       <HeaderCourseMeta courseTitle={courseTitle} />
+      <BodyCourseMeta />
     </div>
   );
 };
