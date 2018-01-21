@@ -1,21 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 //
+import ContainerHeaderItemTab from '../../../ContainerHeaderItemTab';
 import ButtonAdd from 'base_components/ButtonAdd';
 
-const ContainerHeader = styled.div`
-  padding-bottom: 0.8em;
-  border-bottom: 1px solid #d8d8d8;
-
-  @media screen and (min-width: 768px) {
-    padding-bottom: 1.5em;
-  }
-`;
-
 const HeaderTutorialCourse = () => (
-  <ContainerHeader>
+  <ContainerHeaderItemTab>
     <ButtonAdd text="Add new lesson" />
-  </ContainerHeader>
+  </ContainerHeaderItemTab>
 );
 
 export default HeaderTutorialCourse;
