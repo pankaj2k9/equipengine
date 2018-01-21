@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 //
 import ContainerHeaderItemTab from '../../../ContainerHeaderItemTab';
 import ButtonAdd from 'base_components/ButtonAdd';

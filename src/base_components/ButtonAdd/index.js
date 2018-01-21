@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { ButtonIcon } from 'base_components/RootButton';
-import IconPlus from 'react-icons/lib/fa/plus';
+import IconPlus from 'react-icons/lib/md/add';
 
 const Button = ButtonIcon.extend`
   width: 100%;
@@ -18,7 +18,7 @@ const Button = ButtonIcon.extend`
 
 const ButtonAdd = ({ onHandlerClick, text, className }) => (
   <Button className={className} onClick={onHandlerClick}>
-    {text}
+    <span>{text}</span>
     <i>
       <IconPlus />
     </i>

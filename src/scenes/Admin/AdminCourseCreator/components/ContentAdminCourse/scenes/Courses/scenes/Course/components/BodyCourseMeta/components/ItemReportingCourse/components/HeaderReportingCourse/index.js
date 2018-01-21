@@ -14,6 +14,10 @@ const HeaderReportingCourse = styled(({ className }) => (
   align-items: center;
 
   > span {
+    margin-right: 1em;
+  }
+
+  @media screen and (min-width: 768px) {
     margin-right: 2em;
   }
 `;

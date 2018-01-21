@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import ContainerFlex from 'base_components/ContainerFlex';
 import iconPlay from 'resources/images/play-button.svg';
 import IconMenu from 'react-icons/lib/md/dehaze';
-import IconClose from 'react-icons/lib/fa/close';
+import IconClose from 'react-icons/lib/md/close';
 import Form, { Switch } from 'base_components/RootForm';
 import Button from 'base_components/RootButton';
 
@@ -72,6 +72,7 @@ const ListItem = styled(({ className }) => (
 
       > i {
         color: #afafaf;
+        font-size: 1.4rem;
       }
     }
   }
