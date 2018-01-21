@@ -21,7 +21,7 @@ const ListItem = styled(({ className }) => (
           <span>00:05:25</span>
         </div>
       </ContainerFlex>
-      <div>
+      <ContainerFlex className="ListItem__right">
         <Form>
           <Switch name="switchTutorial" />
           <Button secondary>Edit</Button>
@@ -29,7 +29,7 @@ const ListItem = styled(({ className }) => (
             <IconClose />
           </i>
         </Form>
-      </div>
+      </ContainerFlex>
     </ContainerFlex>
   </li>
 ))`
@@ -59,10 +59,27 @@ const ListItem = styled(({ className }) => (
       }
     }
   }
+
+  .ListItem__right {
+    > form {
+      display: flex;
+      align-items: center;
+
+      > label,
+      > button {
+        margin-right: 12px;
+      }
+
+      > i {
+        color: #afafaf;
+      }
+    }
+  }
 `;
 
 const ListTutorialCourse = () => (
   <ul>
+    <ListItem />
     <ListItem />
   </ul>
 );
