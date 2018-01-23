@@ -5,6 +5,7 @@ import ContainerFlex from 'base_components/ContainerFlex';
 import TitleSection from '../TitleSection';
 import ButtonAdd from 'base_components/ButtonAdd';
 import ListObjectives from './components/ListObjectives';
+import FooterTotalWeights from './components/FooterTotalWeights';
 
 const ContainerTitle = ContainerFlex.extend`
   padding-bottom: 0.5em;
@@ -40,6 +41,7 @@ const SectionObjectiveCourse = () => (
       <ButtonAddObjective text="Add" />
     </ContainerTitle>
     <ListObjectives />
+    <FooterTotalWeights />
   </section>
 );
 

@@ -5,6 +5,7 @@ import ContainerFlex from 'base_components/ContainerFlex';
 import Dropdown from 'base_components/Dropdown';
 import { MenuItem } from 'react-bootstrap';
 import { Label } from 'base_components/RootForm';
+import Spinner from 'base_components/Spinner';
 import IconMenu from 'react-icons/lib/md/dehaze';
 import IconClose from 'react-icons/lib/md/close';
 
@@ -12,6 +13,7 @@ const ContainerButton = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 2.4em;
+  text-align: center;
 
   label {
     color: #727272;
@@ -44,7 +46,7 @@ const ListItem = styled(({ className }) => (
           <Label>Assesment Method</Label>
         </ContainerButton>
         <ContainerButton>
-          <span>Counter button</span>
+          <Spinner />
           <Label>Weight of Mark</Label>
         </ContainerButton>
         <i>
@@ -57,10 +59,6 @@ const ListItem = styled(({ className }) => (
   padding: 1.2em 0.8em 1.2em;
   border-bottom: 1px solid #d8d8d8;
 
-  &:last-child {
-    border-bottom: 0;
-  }
-
   .ListItem__title {
     i {
       color: #d8d8d8;
@@ -69,7 +67,7 @@ const ListItem = styled(({ className }) => (
   }
 
   .ListItem__action {
-    i {
+    > i {
       color: #afafaf;
       font-size: 1.4rem;
     }
@@ -78,6 +76,8 @@ const ListItem = styled(({ className }) => (
 
 const List = styled.ul`
   border: 1px solid #d8d8d8;
+  padding-bottom: 1.5em;
+  overflow: auto;
 `;
 
 const ListObjectives = () => (

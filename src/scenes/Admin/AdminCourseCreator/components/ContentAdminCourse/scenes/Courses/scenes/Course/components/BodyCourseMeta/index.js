@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 // for Tab Component
 import { Tab } from 'react-bootstrap';
 import Tabs from 'base_components/Tabs';
@@ -7,8 +8,14 @@ import Box from 'base_components/Box';
 import ItemTutorialCourse from './components/ItemTutorialCourse';
 import ItemReportingCourse from './components/ItemReportingCourse';
 
+const BoxBodyCourse = styled(Box)`
+  @media screen and (min-width: 768px) {
+    padding-bottom: 85px;
+  }
+`;
+
 const BodyCourseMeta = () => (
-  <Box>
+  <BoxBodyCourse>
     <Tabs>
       <Tab eventKey={1} title="Tutorials">
         <ItemTutorialCourse />
@@ -17,7 +24,7 @@ const BodyCourseMeta = () => (
         <ItemReportingCourse />
       </Tab>
     </Tabs>
-  </Box>
+  </BoxBodyCourse>
 );
 
 export default BodyCourseMeta;
