@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import withCollapsiblePanel from 'hoc/withCollapsiblePanel';
 
 import ContentNavbarAdmin from './components/ContentNavbarAdmin';
-import ListLinkNavbarAdminVertical from './components/ListLinkAdminVertical';
+import ListLinkAdminHorizontal from './components/ListLinkAdminHorizontal';
 
 // Styled navbar component.
 const Navbar = styled.nav`
@@ -25,7 +25,7 @@ const Navbar = styled.nav`
 const NavbarAdmin = ({ onToggle, isOpenPanel }) => (
   <Navbar>
     <ContentNavbarAdmin onToggle={onToggle} />
-    <ListLinkNavbarAdminVertical isOpenPanel={isOpenPanel} />
+    <ListLinkAdminHorizontal onToggle={onToggle} isOpenPanel={isOpenPanel} />
   </Navbar>
 );
 

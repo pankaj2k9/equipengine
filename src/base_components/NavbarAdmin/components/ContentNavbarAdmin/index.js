@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import IconArrowBack from 'react-icons/lib/md/arrow-back';
 
-import ListLinkNavbarAdminHorizontal from '../ListLinkNavbarAdminHorizontal';
+import ListLinkAdminVertical from '../ListLinkAdminVertical';
 import logo from 'resources/images/logo.svg';
 import IconBurger from 'react-icons/lib/fa/align-justify';
 
@@ -14,7 +14,7 @@ const ContentNavbarAdmin = styled(({ className, onToggle }) => (
       <Link to="/">
         <img alt="Logo" src={logo} />
       </Link>
-      <ListLinkNavbarAdminHorizontal />
+      <ListLinkAdminVertical />
     </div>
     <Link to="/">
       <span>
@@ -51,6 +51,8 @@ const ContentNavbarAdmin = styled(({ className, onToggle }) => (
   }
 
   > button {
+    border: 0;
+    background: transparent;
     color: #ffffff;
     font-size: 1.6rem;
     padding: 0;
@@ -61,7 +63,7 @@ const ContentNavbarAdmin = styled(({ className, onToggle }) => (
 
     > div:first-child {
       display: flex;
-      width: 57%;
+      width: 620px;
       align-items: center;
     }
 

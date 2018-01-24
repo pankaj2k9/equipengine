@@ -1,20 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import LinkNavbarAdmin from '../LinkNavbarAdmin';
 
 const ListLinkVertical = styled.ul`
-  margin-top: 0.8em;
-  display: ${props => (props.isOpenPanel ? 'block' : 'none')};
+  display: none;
 
   @media screen and (min-width: 768px) {
-    display: none;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
   }
 `;
 
-const ListLinkNavbarAdminVertical = ({ isOpenPanel }) => (
-  <ListLinkVertical isOpenPanel={isOpenPanel}>
+const ListLinkAdminVertical = ({ className }) => (
+  <ListLinkVertical>
     <li>
       <LinkNavbarAdmin activeClassName="active" to="/admin/group-manager">
         Group Manager
@@ -41,8 +41,4 @@ const ListLinkNavbarAdminVertical = ({ isOpenPanel }) => (
   </ListLinkVertical>
 );
 
-ListLinkNavbarAdminVertical.propTypes = {
-  isOpenPanel: PropTypes.bool.isRequired
-};
-
-export default ListLinkNavbarAdminVertical;
+export default ListLinkAdminVertical;

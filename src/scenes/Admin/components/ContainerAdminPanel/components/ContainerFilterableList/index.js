@@ -4,6 +4,7 @@ const ContainerFilterableList = Container.extend`
   padding: 1% 2%;
 
   @media screen and (min-width: 768px) {
+    min-height: 100vh;
     position: fixed;
     flex-direction: column;
     margin: 0;
