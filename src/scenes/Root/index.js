@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux';
 import { BreadcrumbsProvider } from 'react-breadcrumbs-dynamic/dist/src';
+// importing store and history
+import store, { history } from 'store';
 
 import App from './components/App';
 
 class Root extends Component {
   render() {
     return (
-      <Router>
-        <BreadcrumbsProvider>
-          <App
-            loggedUser={{
-              type: 'Student'
-            }}
-          />
-        </BreadcrumbsProvider>
-      </Router>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <BreadcrumbsProvider>
+            <App
+              loggedUser={{
+                type: 'Student'
+              }}
+            />
+          </BreadcrumbsProvider>
+        </ConnectedRouter>
+      </Provider>
     );
   }
 }
