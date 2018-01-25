@@ -32,4 +32,7 @@ const composedEnhancers = compose(
 // creating store.
 const store = createStore(rootReducer, initialState, composedEnhancers);
 
+// exposing store on browser
+window.store = store;
+
 export { store as default, history };
