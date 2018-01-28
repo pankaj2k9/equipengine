@@ -9,8 +9,7 @@ import './styles.css';
 const Profile = ({ userName, avatar }) => {
   const popoverProfileContent = (
     <ul>
-      <PopoverRow text="Sign out" />
-      <PopoverRow text="Sign out" />
+      <PopoverRow url="/login" text="Sign out" />
     </ul>
   );
 
