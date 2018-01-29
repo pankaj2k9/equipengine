@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 //
 import ErrorBoundary from 'base_components/ErrorBoundary';
 /* for code splitting - loadable */
@@ -48,8 +48,14 @@ const AsyncFiles = Loadable({
   timeout: 10000
 });
 
+const AsyncNotFound = Loadable({
+  loader: () => import('scenes/NotFound'),
+  loading: Loader,
+  timeout: 10000
+});
+
 const PrivateRoutes = () => (
-  <div>
+  <Switch>
     <Route
       exact
       strict
@@ -128,7 +134,9 @@ const PrivateRoutes = () => (
         );
       }}
     />
-  </div>
+    {/* no routes match */}
+    <Route component={AsyncNotFound} />
+  </Switch>
 );
 
 export default PrivateRoutes;

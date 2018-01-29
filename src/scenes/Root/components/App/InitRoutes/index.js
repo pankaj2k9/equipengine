@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { identical, isEmpty } from 'ramda';
 
 // base_components
@@ -31,12 +31,6 @@ const AsyncNavbarAdmin = Loadable({
   timeout: 10000
 });
 
-const AsyncNotFound = Loadable({
-  loader: () => import('scenes/NotFound'),
-  loading: Loader,
-  timeout: 10000
-});
-
 /**
  * InitRoutes component will render either Public or Private routes based on the type.
  * If the type is empty, we need to render public. Else render private.
@@ -58,15 +52,11 @@ const InitRoutes = ({ type }) => (
               <AsyncNavbarAdmin />
             )}
         />
-        <Switch>
-          <Main type={type}>
-            <PrivateRoutes />
-            <TeacherRoutes />
-            <AdminRoutes />
-            {/* no routes match */}
-            <Route component={AsyncNotFound} />
-          </Main>
-        </Switch>
+        <Main type={type}>
+          <PrivateRoutes />
+          <TeacherRoutes />
+          <AdminRoutes />
+        </Main>
       </div>
     )}
   </div>

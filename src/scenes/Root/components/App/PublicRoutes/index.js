@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Route } from 'react-router-dom';
 //
 import ErrorBoundary from 'base_components/ErrorBoundary';
@@ -13,7 +13,7 @@ const AsyncLogin = Loadable({
 });
 
 const PublicRoutes = () => (
-  <div>
+  <Fragment>
     <Route
       path="/login"
       component={props => {
@@ -24,7 +24,7 @@ const PublicRoutes = () => (
         );
       }}
     />
-  </div>
+  </Fragment>
 );
 
 export default PublicRoutes;

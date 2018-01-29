@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 //
 import ErrorBoundary from 'base_components/ErrorBoundary';
 /* for code splitting - loadable */
@@ -26,7 +26,7 @@ const AsyncAdminCourseCreator = Loadable({
 });
 
 const AdminRoutes = () => (
-  <div>
+  <Switch>
     {/*-------------------------- ADMIN PANEL PAGES ---------------------*/}
     <Route
       strict
@@ -61,7 +61,7 @@ const AdminRoutes = () => (
         );
       }}
     />
-  </div>
+  </Switch>
 );
 
 export default AdminRoutes;
