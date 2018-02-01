@@ -15,7 +15,7 @@ class Root extends Component {
           <BreadcrumbsProvider>
             <App
               loggedUser={{
-                type: 'Student'
+                type: ''
               }}
             />
           </BreadcrumbsProvider>

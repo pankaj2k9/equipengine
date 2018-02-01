@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom';
 import { isNil } from 'ramda';
 
 /**
- *
  * Function which create a route based on the passed route info.
  * @param{Object} route
  * @return{Object} Route component
