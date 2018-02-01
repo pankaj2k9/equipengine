@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { isNil } from 'ramda';
 /* for code splitting - loadable */
 import Loadable from 'react-loadable';
 import Loader from 'base_components/Loader';
