@@ -6,6 +6,7 @@ import Loadable from 'react-loadable';
 import Loader from 'base_components/Loader';
 //
 import routes from './routes';
+import createRoute from '../createRoute';
 
 const AsyncNotFound = Loadable({
   loader: () => import('scenes/NotFound'),
@@ -15,18 +16,7 @@ const AsyncNotFound = Loadable({
 
 const PublicRoutes = () => (
   <Switch>
-    {routes.map(route => (
-      <Route
-        key={route.id}
-        path={route.path}
-        exact={route.exact}
-        strict={route.strict}
-        component={!isNil(route.AsyncComponent) ? route.AsyncComponent : null}
-        render={
-          !isNil(route.AsyncRenderComponent) ? route.AsyncRenderComponent : null
-        }
-      />
-    ))}
+    {routes.map(route => createRoute(route))}
     <Route component={AsyncNotFound} />
   </Switch>
 );
