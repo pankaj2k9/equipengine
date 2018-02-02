@@ -1,5 +1,5 @@
 import { identical, isNil } from 'ramda';
-import { GET_LOGGED_USER } from './actionTypes';
+import { ADD_LOGGED_USER } from './actionTypes';
 
 // initial users for our app.
 const initialUsers = [
@@ -40,7 +40,7 @@ const getUserByAuth = ({ users, username, password }) =>
  */
 const loggedUser = (state = '', action) => {
   switch (action.type) {
-    case GET_LOGGED_USER: {
+    case ADD_LOGGED_USER: {
       const { username, password } = action.payload;
       // get logged user
       const loggedUser = getUserByAuth({

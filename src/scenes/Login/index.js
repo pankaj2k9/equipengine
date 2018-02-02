@@ -1,20 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-//
-import LoginBox from './components/LoginBox';
+// here we will expose all the resources of Login scene/feature
 
-// styled component
-const ContainerLogin = styled.div`
-  background: #f5f5f5;
-  height: 100vh;
-  position: relative;
-`;
+import LoginContainer from './LoginContainer';
+import loggedUser from './reducer';
 
-// Container Login component
-const Login = () => (
-  <ContainerLogin>
-    <LoginBox />
-  </ContainerLogin>
-);
-
-export default Login;
+export { LoginContainer as default, loggedUser };

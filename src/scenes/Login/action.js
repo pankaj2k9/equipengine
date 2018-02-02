@@ -1,14 +1,14 @@
-import { GET_LOGGED_USER } from './actionTypes';
+import { ADD_LOGGED_USER } from './actionTypes';
 
 /**
- * loggedUser :: Object -> Object
+ * addLoggedUser :: Object -> Object
  *
  * Action creator for setting the logged user.
  * @param {Object} account user account
  * @return {Object}
  */
-export const loggedUser = account => ({
-  type: GET_LOGGED_USER,
+export const addLoggedUser = account => ({
+  type: ADD_LOGGED_USER,
   payload: {
     ...account
   }
