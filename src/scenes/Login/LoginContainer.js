@@ -6,6 +6,10 @@ import { isNil, isEmpty } from 'ramda';
 //
 import Login from './Login';
 
+// TODO: Move this selector to loggedUser selector.
+// TODO: Redirect the user to panel(panel based on their type) if the account is valid.
+// TODO: Add another selector for getting the loggedUser information and use it to our App component.
+
 // destructuring the loggedUserActions
 const { addLoggedUser } = loggedUserActions;
 
