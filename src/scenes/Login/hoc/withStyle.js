@@ -7,8 +7,8 @@ export default WrappedComponent =>
     position: relative;
 
     .Login__formContainer {
-      width: 30%;
-      height: 322px;
+      width: 80%;
+      height: 300px;
       padding: 2em;
       background-color: #ffffff;
       box-shadow: 0px 3px 29px 0px rgba(214, 214, 214, 0.67);
@@ -19,13 +19,15 @@ export default WrappedComponent =>
 
       h3 {
         margin-top: 0.4em;
-        margin-bottom: 0.2em;
+        margin-bottom: 0.6em;
         font-size: 1.8rem;
         font-weight: 800;
       }
 
-      p {
-        margin-bottom: 1.6em;
+      span {
+        color: #ef2525;
+        margin-bottom: 0.7em;
+        display: block;
       }
 
       form {
@@ -44,6 +46,12 @@ export default WrappedComponent =>
           font-size: 1rem;
           border-radius: 0;
         }
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      .Login__formContainer {
+        width: 30%;
       }
     }
   `;

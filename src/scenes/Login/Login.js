@@ -11,7 +11,8 @@ const Login = ({
   onHandleChange,
   username,
   password,
-  addLoggedUser
+  addLoggedUser,
+  isUserValid
 }) => {
   // event handler for form onSubmit event.
   const onSubmit = e => {
@@ -24,7 +25,7 @@ const Login = ({
       <div className="Login__formContainer">
         <header>
           <h3>Login</h3>
-          <p>To continue in Equipt Engine</p>
+          {!isUserValid && <span>Username or password is incorrect.</span>}
         </header>
         <form onSubmit={onSubmit}>
           <input
@@ -53,7 +54,8 @@ Login.propTypes = {
   onHandleChange: PropTypes.func.isRequired,
   addLoggedUser: PropTypes.func.isRequired,
   username: PropTypes.string,
-  password: PropTypes.string
+  password: PropTypes.string,
+  isUserValid: PropTypes.bool.isRequired
 };
 
 export default compose(withState, withStyle)(Login);

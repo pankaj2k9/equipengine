@@ -1,5 +1,5 @@
 import { identical, isNil } from 'ramda';
-import { ADD_LOGGED_USER } from './actionTypes';
+import { ADD_LOGGED_USER } from './actionTypes.js';
 
 // initial users for our app.
 const initialUsers = [
@@ -36,7 +36,7 @@ const getUserByAuth = ({ users, username, password }) =>
 /**
  * loggedUser :: (state, action) -> state
  *
- * Managing the state of loggedUser
+ * Managing the state of loggedUser. LoggedUser will hold either a userID or null.
  */
 const loggedUser = (state = '', action) => {
   switch (action.type) {
@@ -49,8 +49,8 @@ const loggedUser = (state = '', action) => {
         password
       });
 
-      // if loggedUser is undefined we will return empty object else return loggedUser
-      return !isNil(loggedUser) ? loggedUser._id : '';
+      // if loggedUser is undefined we will return
+      return !isNil(loggedUser) ? loggedUser._id : null;
     }
     default: {
       return state;
