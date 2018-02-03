@@ -12,11 +12,10 @@ const { addLoggedUser } = loggedUserActions;
 // loggedUserSelectors
 const { isUserValid } = loggedUserSelectors;
 
-const mapStateToProps = state => ({
+const mapState = state => ({
   isUserValid: isUserValid(state)
 });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ addLoggedUser }, dispatch);
+const mapDispatch = dispatch => bindActionCreators({ addLoggedUser }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapState, mapDispatch)(Login);

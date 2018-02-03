@@ -5,7 +5,7 @@ import { BreadcrumbsProvider } from 'react-breadcrumbs-dynamic/dist/src';
 // importing store and history
 import store, { history } from 'store';
 
-import App from './components/App';
+import AppContainer from './components/App';
 
 class Root extends Component {
   render() {
@@ -13,11 +13,7 @@ class Root extends Component {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <BreadcrumbsProvider>
-            <App
-              loggedUser={{
-                type: ''
-              }}
-            />
+            <AppContainer />
           </BreadcrumbsProvider>
         </ConnectedRouter>
       </Provider>
