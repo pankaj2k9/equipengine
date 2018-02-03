@@ -1,5 +1,5 @@
-import * as actions from './action';
+import * as userActions from './action';
 import reducer from './reducer';
+import * as usersSelectors from './selectors';
 
-// we will expose this modules
-export { actions, reducer };
+export { userActions, reducer, usersSelectors };
