@@ -16,4 +16,10 @@ export const getLoggedUser = createSelector(
 );
 
 // validate if the user is valid
-export const isUserValid = createSelector(getLoggedUser, compose(not, isEmpty));
+export const isUserValid = createSelector(getLoggedUser, user => {
+  const isValid = compose(not, isEmpty)(user);
+
+  console.log('is Valid', isValid);
+
+  return isValid;
+});

@@ -12,12 +12,19 @@ const Login = ({
   username,
   password,
   addLoggedUser,
-  isUserValid
+  redirectToIndex,
+  isUserValid,
+  history
 }) => {
   // event handler for form onSubmit event.
   const onSubmit = e => {
     e.preventDefault();
     addLoggedUser({ username, password });
+
+    /* handle the user validation. If user is valid, redirect to '/' path, if not stay on the same page.*/
+    if (isUserValid) {
+      redirectToIndex();
+    }
   };
 
   return (
@@ -50,6 +57,7 @@ const Login = ({
 };
 
 Login.propTypes = {
+  history: PropTypes.object.isRequired,
   className: PropTypes.string.isRequired,
   onHandleChange: PropTypes.func.isRequired,
   addLoggedUser: PropTypes.func.isRequired,

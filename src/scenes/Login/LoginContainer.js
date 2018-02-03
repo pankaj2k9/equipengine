@@ -1,4 +1,5 @@
 import { bindActionCreators } from 'redux';
+import { push } from 'react-router-redux';
 import { connect } from 'react-redux';
 import { loggedUserActions, loggedUserSelectors } from 'data/loggedUser';
 //
@@ -16,6 +17,13 @@ const mapState = state => ({
   isUserValid: isUserValid(state)
 });
 
-const mapDispatch = dispatch => bindActionCreators({ addLoggedUser }, dispatch);
+const mapDispatch = dispatch =>
+  bindActionCreators(
+    {
+      addLoggedUser,
+      redirectToIndex: () => push('/')
+    },
+    dispatch
+  );
 
 export default connect(mapState, mapDispatch)(Login);
