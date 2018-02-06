@@ -1,9 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { isEmpty } from 'ramda';
 import { Switch, Route } from 'react-router-dom';
-//
-import ErrorBoundary from 'base_components/ErrorBoundary';
 /* for code splitting - loadable */
 import Loadable from 'react-loadable';
 import Loader from 'base_components/Loader';

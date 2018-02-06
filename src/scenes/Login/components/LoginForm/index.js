@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import Button from 'base_components/RootButton';
 import withState from './hoc/withState';
-import { identical } from 'ramda';
+import { identical, compose, not } from 'ramda';
 
 const LoginForm = ({
   onHandleChange,
@@ -11,16 +11,25 @@ const LoginForm = ({
   password,
   loggedUser,
   isPending,
-  redirectToIndex
+  history
 }) => {
   // event handler for form onSubmit event.
   const onSubmit = e => {
     e.preventDefault();
-
     // chaining on the promise data
-    loggedUser({ username, password }).then(
-      res => identical(res.status, 'successfully') && redirectToIndex()
-    );
+    loggedUser({ username, password }).then(res => {
+      // if successfull, we will redirect to other page.
+      if (identical(res.status, 'successfully')) {
+        // redirec based on the user type.
+        // if type is student or teacher
+        if (compose(not, identical(res.user.type))('Admin')) {
+          return history.push('/');
+        }
+        // else admin, redirect to /admin/group-manager
+        history.push('/admin/group-manager');
+        /* redirectBasedOnType(res.user.type);*/
+      }
+    });
   };
 
   return (
@@ -49,7 +58,8 @@ LoginForm.propTypes = {
   username: PropTypes.string,
   password: PropTypes.string,
   loggedUser: PropTypes.func.isRequired,
-  isPending: PropTypes.bool.isRequired
+  isPending: PropTypes.bool.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default withState(LoginForm);

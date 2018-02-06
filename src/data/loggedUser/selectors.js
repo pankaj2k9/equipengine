@@ -1,7 +1,5 @@
 import { createSelector } from 'reselect';
 import { isEmpty } from 'ramda';
-// import other selector
-import { usersSelectors } from 'data/users';
 
 // select logged user proccess error
 export const selectProcessError = state =>

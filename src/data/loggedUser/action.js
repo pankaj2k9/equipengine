@@ -61,7 +61,7 @@ export const loggedUser = account => dispatch => {
       // dispatch success AC
       dispatch(success());
       // dispatch addLoggedUser AC
-      dispatch(addLoggedUser(data));
+      dispatch(addLoggedUser(data.user));
       return data;
     })
     .catch(err => {

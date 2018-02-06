@@ -1,5 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { push } from 'react-router-redux';
+import { compose, not, identical } from 'ramda';
 import { connect } from 'react-redux';
 import { loggedUserActions, loggedUserSelectors } from 'data/loggedUser';
 //
@@ -20,8 +21,7 @@ const mapState = state => ({
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
-      loggedUser,
-      redirectToIndex: () => push('/')
+      loggedUser
     },
     dispatch
   );

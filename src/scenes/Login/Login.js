@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { compose, not, isEmpty } from 'ramda';
+import { not } from 'ramda';
 //
 import LoginForm from './components/LoginForm';
 import withStyle from './hoc/withStyle';
@@ -8,7 +8,6 @@ import withStyle from './hoc/withStyle';
 const Login = ({
   className,
   loggedUser,
-  redirectToIndex,
   errorMsg,
   isUserValid,
   isPending,
@@ -23,9 +22,9 @@ const Login = ({
         </header>
         <LoginForm
           errorMsg={errorMsg}
-          redirectToIndex={redirectToIndex}
           isPending={isPending}
           loggedUser={loggedUser}
+          history={history}
         />
       </div>
     </div>
@@ -38,8 +37,7 @@ Login.propTypes = {
   loggedUser: PropTypes.func.isRequired,
   errorMsg: PropTypes.node.isRequired,
   isUserValid: PropTypes.bool.isRequired,
-  isPending: PropTypes.bool.isRequired,
-  redirectToIndex: PropTypes.func.isRequired
+  isPending: PropTypes.bool.isRequired
 };
 
 export default withStyle(Login);
