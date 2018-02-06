@@ -1,25 +1,17 @@
 import { createSelector } from 'reselect';
-import { isEmpty, not, compose } from 'ramda';
-import { get } from 'lodash';
+import { isEmpty } from 'ramda';
 // import other selector
 import { usersSelectors } from 'data/users';
 
-// select loggedUser ID
-export const selectLoggedUserID = state => state.loggedUser;
+// select logged user proccess error
+export const selectProcessError = state =>
+  state.loggedUser.processRequest.error;
 
-// select loggedUser information
-export const getLoggedUser = createSelector(
-  usersSelectors.selectUsers,
-  selectLoggedUserID,
-  // if the value is undefined, get will return the 3 input of get function.
-  (users, loggedUserID) => get(users, loggedUserID, {})
+// get error message
+export const getErrorMessage = createSelector(
+  selectProcessError,
+  error => (isEmpty(error) ? error : error.message)
 );
 
-// validate if the user is valid
-export const isUserValid = createSelector(getLoggedUser, user => {
-  const isValid = compose(not, isEmpty)(user);
-
-  console.log('is Valid', isValid);
-
-  return isValid;
-});
+// check if user is valid
+export const isUserValid = createSelector(getErrorMessage, isEmpty);

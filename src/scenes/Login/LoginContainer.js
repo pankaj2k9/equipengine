@@ -5,22 +5,22 @@ import { loggedUserActions, loggedUserSelectors } from 'data/loggedUser';
 //
 import Login from './Login';
 
-// TODO: Redirect the user to panel(panel based on their type) if the account is valid.
-// TODO: Add another selector for getting the loggedUser information and use it to our App component.
-
 // destructuring the loggedUserActions
-const { addLoggedUser } = loggedUserActions;
+const { loggedUser } = loggedUserActions;
+
 // loggedUserSelectors
-const { isUserValid } = loggedUserSelectors;
+const { getErrorMessage, isUserValid } = loggedUserSelectors;
 
 const mapState = state => ({
-  isUserValid: isUserValid(state)
+  errorMsg: getErrorMessage(state),
+  isUserValid: isUserValid(state),
+  isPending: state.loggedUser.processRequest.pending
 });
 
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
-      addLoggedUser,
+      loggedUser,
       redirectToIndex: () => push('/')
     },
     dispatch
