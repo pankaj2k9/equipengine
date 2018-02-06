@@ -51,7 +51,7 @@ export const fetchUser = ({ username = '', password = '' }) => {
     setTimeout(() => {
       // success obj
       const successObj = {
-        status: 'successfull',
+        status: 'successfully',
         message: 'Successfully.',
         user: loggedUser
       };

@@ -3,18 +3,24 @@ import PropTypes from 'prop-types';
 //
 import Button from 'base_components/RootButton';
 import withState from './hoc/withState';
+import { identical } from 'ramda';
 
 const LoginForm = ({
   onHandleChange,
   username,
   password,
   loggedUser,
-  isPending
+  isPending,
+  redirectToIndex
 }) => {
   // event handler for form onSubmit event.
   const onSubmit = e => {
     e.preventDefault();
-    loggedUser({ username, password });
+
+    // chaining on the promise data
+    loggedUser({ username, password }).then(
+      res => identical(res.status, 'successfully') && redirectToIndex()
+    );
   };
 
   return (

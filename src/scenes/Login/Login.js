@@ -21,7 +21,12 @@ const Login = ({
           <h3>Login</h3>
           {not(isUserValid) && <span>{errorMsg}</span>}
         </header>
-        <LoginForm isPending={isPending} loggedUser={loggedUser} />
+        <LoginForm
+          errorMsg={errorMsg}
+          redirectToIndex={redirectToIndex}
+          isPending={isPending}
+          loggedUser={loggedUser}
+        />
       </div>
     </div>
   );
@@ -33,7 +38,8 @@ Login.propTypes = {
   loggedUser: PropTypes.func.isRequired,
   errorMsg: PropTypes.node.isRequired,
   isUserValid: PropTypes.bool.isRequired,
-  isPending: PropTypes.bool.isRequired
+  isPending: PropTypes.bool.isRequired,
+  redirectToIndex: PropTypes.func.isRequired
 };
 
 export default withStyle(Login);
