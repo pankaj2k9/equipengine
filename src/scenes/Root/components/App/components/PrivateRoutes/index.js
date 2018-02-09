@@ -14,13 +14,13 @@ import routes from './routes';
  * this will optimize the loading of components of our app
  * dynamically importing our scenes here*/
 const AsyncMainBars = Loadable({
-  loader: () => import('base_components/SidebarTransition'),
+  loader: () => import('scenes/components/SidebarTransition'),
   loading: () => null, // before this component gets loaded, we will render first this Loader component.
   timeout: 10000
 });
 
 const AsyncNavbarAdmin = Loadable({
-  loader: () => import('base_components/NavbarAdmin'),
+  loader: () => import('scenes/components/NavbarAdmin'),
   loading: Loader,
   timeout: 10000
 });

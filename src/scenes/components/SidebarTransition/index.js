@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-import Navbar from 'base_components/Navbar';
-import Sidebar from 'base_components/Sidebar';
+import Navbar from '../Navbar';
+import Sidebar from '../Sidebar';
 
 class SidebarTransition extends Component {
   static propTypes = {

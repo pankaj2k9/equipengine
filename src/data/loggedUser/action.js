@@ -2,7 +2,8 @@ import {
   PENDING_REQUEST,
   SUCCESS_REQUEST,
   FAILURE_REQUEST,
-  ADD_LOGGED_USER
+  ADD_LOGGED_USER,
+  REMOVE_LOGGED_USER
 } from './actionTypes';
 import { fetchUser } from './api';
 
@@ -69,3 +70,7 @@ export const loggedUser = account => dispatch => {
       return err;
     });
 };
+
+export const removeLoggedUser = () => ({
+  type: REMOVE_LOGGED_USER
+});

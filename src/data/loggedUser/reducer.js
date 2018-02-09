@@ -2,7 +2,8 @@ import {
   PENDING_REQUEST,
   SUCCESS_REQUEST,
   FAILURE_REQUEST,
-  ADD_LOGGED_USER
+  ADD_LOGGED_USER,
+  REMOVE_LOGGED_USER
 } from './actionTypes';
 import { combineReducers } from 'redux';
 
@@ -56,6 +57,9 @@ const user = (state = {}, action) => {
     case ADD_LOGGED_USER: {
       const { loggedUser } = action.payload;
       return loggedUser;
+    }
+    case REMOVE_LOGGED_USER: {
+      return {};
     }
     default: {
       return state;

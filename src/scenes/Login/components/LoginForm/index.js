@@ -7,6 +7,7 @@ import { identical, compose, not } from 'ramda';
 
 const LoginForm = ({
   onHandleChange,
+  clearForm,
   username,
   password,
   loggedUser,
@@ -26,15 +27,19 @@ const LoginForm = ({
           return history.push('/');
         }
         // else admin, redirect to /admin/group-manager
-        history.push('/admin/group-manager');
+        return history.push('/admin/group-manager');
         /* redirectBasedOnType(res.user.type);*/
       }
+
+      // not successfull. clear the form
+      clearForm();
     });
   };
 
   return (
     <form onSubmit={onSubmit}>
       <input
+        autoFocus={true}
         onChange={onHandleChange}
         name="username"
         type="text"
@@ -55,6 +60,7 @@ const LoginForm = ({
 
 LoginForm.propTypes = {
   onHandleChange: PropTypes.func.isRequired,
+  clearForm: PropTypes.func.isRequired,
   username: PropTypes.string,
   password: PropTypes.string,
   loggedUser: PropTypes.func.isRequired,

@@ -1,5 +1,7 @@
 import { identical, isNil } from 'ramda';
 import { reduce } from 'lodash';
+//
+import userAvatar from 'resources/images/user.png';
 
 const fakeUsers = {
   '23423423424jj324': {
@@ -7,21 +9,24 @@ const fakeUsers = {
     name: 'Irish Jane',
     type: 'Admin',
     username: 'irishjane',
-    password: '123456'
+    password: '123456',
+    avatar: userAvatar
   },
   '234238sdjf34234j': {
     _id: '234238sdjf34234j',
     name: 'Drish Cual',
     type: 'Student',
     username: 'drish',
-    password: '123456'
+    password: '123456',
+    avatar: userAvatar
   },
   '234234nj23lkj423': {
     _id: '234234nj23lkj423',
     name: 'Dennis Martin',
     type: 'Teacher',
     username: 'drish',
-    password: '123456'
+    password: '123456',
+    avatar: userAvatar
   }
 };
 

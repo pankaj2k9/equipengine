@@ -1,9 +1,11 @@
 import { createSelector } from 'reselect';
-import { isEmpty } from 'ramda';
+import { isEmpty, compose, not } from 'ramda';
+
+// get loggedUser
+export const selectLoggedUser = state => state.loggedUser.user;
 
 // select logged user proccess error
-export const selectProcessError = state =>
-  state.loggedUser.processRequest.error;
+const selectProcessError = state => state.loggedUser.processRequest.error;
 
 // get error message
 export const getErrorMessage = createSelector(
@@ -11,5 +13,23 @@ export const getErrorMessage = createSelector(
   error => (isEmpty(error) ? error : error.message)
 );
 
-// check if user is valid
+/**
+ * isUserValid :: Object -> Boolean
+ *
+ * Check if the user is valid using error message
+ * @param{Object} state
+ * @return{Boolean}
+ */
 export const isUserValid = createSelector(getErrorMessage, isEmpty);
+
+/**
+ * isUserAuthenticated :: Object -> Boolean
+ *
+ * Check if the user isAuthenticated through checking the user value.
+ * @param{Object} state
+ * @return{Boolean}
+ */
+export const isUserAuthenticated = createSelector(
+  selectLoggedUser,
+  compose(not, isEmpty)
+);

@@ -10,7 +10,7 @@ import './styles.css';
 
 const Popover = ({ popoverContent, buttonIcon, buttonStyle, dataCount }) => {
   // this is our popover container
-  const popoverContainer = (
+  const PopoverContainer = (
     <BootstrapPopover className="Popover" id="popover-trigger-click-root-close">
       <div className="Popover__content">{popoverContent}</div>
     </BootstrapPopover>
@@ -20,7 +20,7 @@ const Popover = ({ popoverContent, buttonIcon, buttonStyle, dataCount }) => {
       trigger="click"
       rootClose
       placement="bottom"
-      overlay={popoverContainer}
+      overlay={PopoverContainer}
     >
       <button className="Popover__button" type="button" style={buttonStyle}>
         {buttonIcon}
@@ -30,7 +30,7 @@ const Popover = ({ popoverContent, buttonIcon, buttonStyle, dataCount }) => {
   );
 };
 
-Popover.PropTypes = {
+Popover.propTypes = {
   popoverContent: PropTypes.element.isRequired,
   buttonTrigger: PropTypes.element.isRequired,
   dataCount: PropTypes.number

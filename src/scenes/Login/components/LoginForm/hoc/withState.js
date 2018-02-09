@@ -16,6 +16,14 @@ export default WrappedComponent => {
       });
     };
 
+    clearForm = () => {
+      // TODO: add auto-focus feature.
+      this.setState({
+        username: '',
+        password: ''
+      });
+    };
+
     render() {
       const { username, password } = this.state;
 
@@ -23,6 +31,7 @@ export default WrappedComponent => {
         <WrappedComponent
           {...this.props}
           onHandleChange={this.handleChange}
+          clearForm={this.clearForm}
           username={username}
           password={password}
         />
