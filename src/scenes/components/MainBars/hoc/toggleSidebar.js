@@ -40,7 +40,7 @@ const toggleSidebar = WrappedComponent => {
       return (
         <WrappedComponent
           {...this.props}
-          isOpen={this.state.isOpen}
+          isOpen={this.state.isSidebarOpen}
           openSidebar={this.openSidebar}
           closeSidebar={this.closeSidebar}
         />
