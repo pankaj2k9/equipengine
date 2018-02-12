@@ -14,7 +14,7 @@ import routes from './routes';
  * this will optimize the loading of components of our app
  * dynamically importing our scenes here*/
 const AsyncMainBars = Loadable({
-  loader: () => import('scenes/components/SidebarTransition'),
+  loader: () => import('scenes/components/MainBars'),
   loading: () => null, // before this component gets loaded, we will render first this Loader component.
   timeout: 10000
 });
@@ -36,10 +36,10 @@ const PrivateRoutes = ({ type }) => (
     {/* Displaying the Navbar and Sidebar */}
     <Route
       path="/"
-      render={() =>
+      render={props =>
         // conditional rendering.
         identical(type, 'Student') || identical(type, 'Teacher') ? (
-          <AsyncMainBars />
+          <AsyncMainBars {...props} />
         ) : (
           <AsyncNavbarAdmin />
         )}
