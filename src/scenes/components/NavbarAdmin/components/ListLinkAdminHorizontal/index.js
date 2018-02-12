@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import LinkNavbarAdmin from '../LinkNavbarAdmin';
+import { LinkHorizontal } from '../LinkNavbarAdmin';
 
 const ListLinkHorizontal = styled.ul`
   margin-top: 0.8em;
@@ -16,27 +16,27 @@ const ListLinkHorizontal = styled.ul`
 const ListLinkAdminHorizontal = ({ isOpenPanel, onToggle }) => (
   <ListLinkHorizontal isOpenPanel={isOpenPanel}>
     <li onClick={onToggle}>
-      <LinkNavbarAdmin activeClassName="active" to="/admin/group-manager">
+      <LinkHorizontal activeClassName="active" to="/admin/group-manager">
         Group Manager
-      </LinkNavbarAdmin>
+      </LinkHorizontal>
     </li>
     <li onClick={onToggle}>
-      <LinkNavbarAdmin activeClassName="active" to="/admin/course-creator">
+      <LinkHorizontal activeClassName="active" to="/admin/course-creator">
         Course Creator
-      </LinkNavbarAdmin>
+      </LinkHorizontal>
     </li>
     <li onClick={onToggle}>
-      <LinkNavbarAdmin activeClassName="active" to="/admin/user-manager">
+      <LinkHorizontal activeClassName="active" to="/admin/user-manager">
         User Manager
-      </LinkNavbarAdmin>
+      </LinkHorizontal>
     </li>
     <li onClick={onToggle}>
-      <LinkNavbarAdmin
+      <LinkHorizontal
         activeClassName="active"
         to="/admin/organisation-settings"
       >
         Organisation Settings
-      </LinkNavbarAdmin>
+      </LinkHorizontal>
     </li>
   </ListLinkHorizontal>
 );
