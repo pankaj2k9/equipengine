@@ -144,6 +144,12 @@ h4 {
   }
 }
 
+/* overriding the button style default */
+.btn-default {
+  box-shadow: none;
+}
+
+/* for popover */
 .popover {
   background: #ffffff;
   border: 1px solid #cdcdcd;

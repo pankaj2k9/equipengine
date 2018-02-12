@@ -19,7 +19,7 @@ const Sidebar = ({ isOpen, onCloseSidebar, accountType }) => {
       <div className="Sidebar__inner">
         <LogoContainer />
         <div className="Sidebar__body">
-          <MainPanelLinks />
+          <MainPanelLinks accountType={accountType} />
           {identical(accountType, 'Student') ? (
             <SettingsPanelLinks />
           ) : (

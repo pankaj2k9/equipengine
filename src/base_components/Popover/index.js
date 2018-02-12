@@ -32,7 +32,6 @@ const Popover = ({ popoverContent, buttonIcon, buttonStyle, dataCount }) => {
 
 Popover.propTypes = {
   popoverContent: PropTypes.element.isRequired,
-  buttonTrigger: PropTypes.element.isRequired,
   dataCount: PropTypes.number
 };
 

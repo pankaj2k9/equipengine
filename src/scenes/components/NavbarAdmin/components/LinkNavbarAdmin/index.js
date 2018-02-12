@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 export default styled(NavLink)`
   color: #ffffff;
   text-transform: uppercase;
-  padding: 0.7em 2%;
   display: block;
   transition: all 300ms ease-in;
 

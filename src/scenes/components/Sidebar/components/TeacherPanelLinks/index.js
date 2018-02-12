@@ -16,9 +16,6 @@ const TeacherPanelLinks = () => (
         />
       </li>
       <li className="Sidebar__item">
-        <Link text="Files" url="/teachers/files" />
-      </li>
-      <li className="Sidebar__item">
         <Link text="User Manager" url="/teachers/user-manager" />
       </li>
     </Menu>
