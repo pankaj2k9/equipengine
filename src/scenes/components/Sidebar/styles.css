@@ -22,7 +22,6 @@
   height: 100%;
 }
 .Sidebar .Sidebar__body__mainPages {
-  border-bottom: 1px solid #424242;
   padding: 10% 7% 7% 7%;
 }
 .Sidebar .Sidebar__item {
@@ -35,8 +34,18 @@
   font-weight: 800;
   font-size: 12px;
 }
+
 .Sidebar .Sidebar__body__otherPages {
   padding: 15% 8% 8% 8%;
+  border-top: 1px solid #424242;
+  border-bottom: 1px solid #424242;
+}
+
+.Sidebar .Sidebar__body__otherPages--settings {
+  border-bottom: 0;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 @media screen and (min-width: 768px) {

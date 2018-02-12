@@ -6,25 +6,25 @@ import userAvatar from 'resources/images/user.png';
 const fakeUsers = {
   '23423423424jj324': {
     _id: '23423423424jj324',
-    name: 'Irish Jane',
+    name: 'Irish Jane Cual',
     type: 'Admin',
-    username: 'irishjane',
+    username: 'admin',
     password: '123456',
     avatar: userAvatar
   },
   '234238sdjf34234j': {
     _id: '234238sdjf34234j',
-    name: 'Drish Cual',
+    name: 'Dennis Cual',
     type: 'Student',
-    username: 'drish',
+    username: 'student',
     password: '123456',
     avatar: userAvatar
   },
   '234234nj23lkj423': {
     _id: '234234nj23lkj423',
-    name: 'Dennis Martin',
+    name: 'Drish Cual',
     type: 'Teacher',
-    username: 'drish',
+    username: 'teacher',
     password: '123456',
     avatar: userAvatar
   }
