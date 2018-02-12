@@ -4,7 +4,7 @@ import Menu from '../Menu';
 import Link from 'base_components/Link';
 
 // this is for public other link
-const OtherPanelLinks = () => (
+const SettingsPanelLinks = () => (
   <div className="Sidebar__body__otherPages Sidebar__body__otherPages--settings">
     <Menu>
       <li className="Sidebar__item">
@@ -17,4 +17,4 @@ const OtherPanelLinks = () => (
   </div>
 );
 
-export default OtherPanelLinks;
+export default SettingsPanelLinks;
