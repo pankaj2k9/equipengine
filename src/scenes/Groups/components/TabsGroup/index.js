@@ -6,7 +6,7 @@ import { Tab } from 'react-bootstrap';
 import Tabs from 'base_components/Tabs';
 
 import ItemTabYourGroup from './components/ItemTabYourGroup';
-import ItemTabPublicGroup from './components/ItemTabPublicGroup';
+/* import ItemTabPublicGroup from './components/ItemTabPublicGroup';*/
 
 const TabsGroup = ({ groups }) => {
   // get the yourGroups item on the groups array.
@@ -15,10 +15,10 @@ const TabsGroup = ({ groups }) => {
     groups
   );
   // get the public groups item on the groups array.
-  const publicGroups = filter(
-    group => identical(group.type, 'public-group'),
-    groups
-  );
+  /* const publicGroups = filter(
+   *   group => identical(group.type, 'public-group'),
+   *   groups
+   * );*/
 
   return (
     <Tabs>
