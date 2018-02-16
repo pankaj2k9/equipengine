@@ -6,7 +6,6 @@ import { identical } from 'ramda';
 import LogoContainer from 'base_components/LogoContainer';
 import MainPanelLinks from './components/MainPanelLinks';
 import TeacherPanelLinks from './components/TeacherPanelLinks';
-import SettingsPanelLinks from './components/SettingsPanelLinks';
 // assets
 import './styles.css';
 
@@ -20,11 +19,7 @@ const Sidebar = ({ isOpen, onCloseSidebar, accountType }) => {
         <LogoContainer />
         <div className="Sidebar__body">
           <MainPanelLinks accountType={accountType} />
-          {identical(accountType, 'Student') ? (
-            <SettingsPanelLinks />
-          ) : (
-            <TeacherPanelLinks />
-          )}
+          {identical(accountType, 'Teacher') && <TeacherPanelLinks />}
         </div>
       </div>
     </div>

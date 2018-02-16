@@ -25,9 +25,9 @@ const TabsGroup = ({ groups }) => {
       <Tab eventKey={1} title="Your Groups">
         <ItemTabYourGroup yourGroups={yourGroups} />
       </Tab>
-      <Tab eventKey={2} title="Public Groups">
-        <ItemTabPublicGroup publicGroups={publicGroups} />
-      </Tab>
+      {/* <Tab eventKey={2} title="Public Groups">
+          <ItemTabPublicGroup publicGroups={publicGroups} />
+          </Tab> */}
     </Tabs>
   );
 };
