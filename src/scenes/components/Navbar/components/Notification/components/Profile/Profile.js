@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 //
 import Popover from 'base_components/Popover';
 import UserAvatar from 'base_components/UserAvatar';
@@ -10,6 +11,7 @@ import './styles.css';
 const Profile = ({ name, avatar, removeLoggedUser }) => {
   const PopoverProfileContent = (
     <ul>
+      <Link to="'/settings">Settings</Link>
       <ButtonLogout handlerClick={removeLoggedUser} />
     </ul>
   );

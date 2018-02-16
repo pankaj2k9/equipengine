@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { identical } from 'ramda';
 //
 import ButtonTriggerSidebar from './components/ButtonTriggerSidebar';
 import Notification from './components/Notification';
