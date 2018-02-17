@@ -8,7 +8,7 @@ import Link from 'base_components/Link';
 
 const isStudentType = type => identical(type, 'Student');
 
-const MainPagesLink = ({ accountType }) => (
+const MainPanelLinks = ({ accountType }) => (
   <div className="Sidebar__body__mainPages">
     <DropdownGroups />
     <Menu>
@@ -24,17 +24,15 @@ const MainPagesLink = ({ accountType }) => (
           url={isStudentType(accountType) ? '/files' : '/teachers/files'}
         />
       </li>
-      {isStudentType(accountType) && (
-        <li className="Sidebar__item">
-          <Link text="People" url="/people" />
-        </li>
-      )}
+      <li className="Sidebar__item">
+        {isStudentType(accountType) && <Link text="People" url="/people" />}
+      </li>
     </Menu>
   </div>
 );
 
-MainPagesLink.propTypes = {
+MainPanelLinks.propTypes = {
   accountType: PropTypes.string.isRequired
 };
 
-export default MainPagesLink;
+export default MainPanelLinks;

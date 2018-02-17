@@ -11,7 +11,7 @@ import './styles.css';
 
 const Notification = () => {
   // compose our notification data
-  const notiRowData = (
+  const NotiRowData = () => (
     <ul>
       <RowData
         date="22 Sep 4:00pm"
@@ -26,7 +26,7 @@ const Notification = () => {
   );
 
   // compose our message data.
-  const messageRowData = (
+  const MessageRowData = () => (
     <ul>
       <RowData
         avatar={avatar}
@@ -46,8 +46,8 @@ const Notification = () => {
 
   return (
     <div className="Notification">
-      <PopoverNoti notiRowData={notiRowData} />
-      <PopoverMessage messageRowData={messageRowData} />
+      <PopoverNoti NotiRowData={NotiRowData} />
+      <PopoverMessage MessageRowData={MessageRowData} />
       <Profile userName="Jane Doe" avatar={avatar} />
     </div>
   );

@@ -1,21 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 //
+import PopoverProfileContent from './components/PopoverProfileContent';
 import Popover from 'base_components/Popover';
 import UserAvatar from 'base_components/UserAvatar';
 import IconDown from 'react-icons/lib/fa/angle-down';
-import ButtonLogout from './components/ButtonLogout';
 import './styles.css';
 
 const Profile = ({ name, avatar, removeLoggedUser }) => {
-  const PopoverProfileContent = (
-    <ul>
-      <Link to="'/settings">Settings</Link>
-      <ButtonLogout handlerClick={removeLoggedUser} />
-    </ul>
-  );
-
   return (
     <div className="Profile">
       <p>{name}</p>
@@ -25,7 +17,9 @@ const Profile = ({ name, avatar, removeLoggedUser }) => {
         buttonStyle={{
           fontSize: '1.5rem'
         }}
-        popoverContent={PopoverProfileContent}
+        popoverContentElement={
+          <PopoverProfileContent removeLoggedUser={removeLoggedUser} />
+        }
       />
     </div>
   );

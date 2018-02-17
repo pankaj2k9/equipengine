@@ -8,13 +8,19 @@ import {
 
 import './styles.css';
 
-const Popover = ({ popoverContent, buttonIcon, buttonStyle, dataCount }) => {
+const Popover = ({
+  popoverContentElement,
+  buttonIcon,
+  buttonStyle,
+  dataCount
+}) => {
   // this is our popover container
   const PopoverContainer = (
     <BootstrapPopover className="Popover" id="popover-trigger-click-root-close">
-      <div className="Popover__content">{popoverContent}</div>
+      <div className="Popover__content">{popoverContentElement}</div>
     </BootstrapPopover>
   );
+
   return (
     <OverlayTrigger
       trigger="click"
@@ -31,7 +37,7 @@ const Popover = ({ popoverContent, buttonIcon, buttonStyle, dataCount }) => {
 };
 
 Popover.propTypes = {
-  popoverContent: PropTypes.element.isRequired,
+  popoverContentElement: PropTypes.element.isRequired,
   dataCount: PropTypes.number
 };
 
