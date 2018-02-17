@@ -10,12 +10,13 @@ import './styles.css';
 
 const Popover = ({
   popoverContentElement,
+  positionLeft,
   buttonIcon,
   buttonStyle,
   dataCount
 }) => {
   // this is our popover container
-  const PopoverContainer = (
+  const popoverContainerElement = (
     <BootstrapPopover className="Popover" id="popover-trigger-click-root-close">
       <div className="Popover__content">{popoverContentElement}</div>
     </BootstrapPopover>
@@ -26,7 +27,8 @@ const Popover = ({
       trigger="click"
       rootClose
       placement="bottom"
-      overlay={PopoverContainer}
+      overlay={popoverContainerElement}
+      positionLeft={200}
     >
       <button className="Popover__button" type="button" style={buttonStyle}>
         {buttonIcon}
@@ -38,7 +40,8 @@ const Popover = ({
 
 Popover.propTypes = {
   popoverContentElement: PropTypes.element.isRequired,
-  dataCount: PropTypes.number
+  dataCount: PropTypes.number,
+  positionLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export default Popover;
