@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { identical } from 'ramda';
 import styled from 'styled-components';
+//
 import IconUser from 'react-icons/lib/fa/user';
-
-import Button from 'base_components/RootButton';
+import LinkButton from 'base_components/LinkButton';
 
 // compose button, group button
-const GroupButton = Button.extend`
-  width: 146px;
-`;
+/* const GroupButton = Button.extend`
+ *   width: 146px;
+ * `;*/
 
 // compose a joined container div that we will use on the joined button.
 const JoinedContainer = styled.div`
@@ -52,17 +52,16 @@ const ListItemGroup = styled(({ className, group }) => {
           */}
         {identical(group.type, 'your-group') ? (
           group.isSelected ? (
-            <GroupButton disabled>View</GroupButton>
+            <LinkButton url="/secure/dashboard" text="View" />
           ) : (
-            <GroupButton>View</GroupButton>
+            <LinkButton url="/secure/dashboard" text="View" />
           )
         ) : group.isJoined ? (
           <JoinedContainer>
-            <GroupButton disabled>Joined</GroupButton>
-            <GroupButton>Leave</GroupButton>
+            <LinkButton url="/secure/dashboard" text="View" />
           </JoinedContainer>
         ) : (
-          <GroupButton>Join</GroupButton>
+          <LinkButton url="/secure/dashboard" text="View" />
         )}
       </div>
     </li>
@@ -73,11 +72,15 @@ const ListItemGroup = styled(({ className, group }) => {
   margin-bottom: 1.2em;
   background-color: ${props => (props.isSelected ? '#F6F6F6' : 'none')};
 
+  a {
+    width: 104px;
+  }
+
   > div:first-child {
     h5 {
       font-size: 1.01rem;
       color: #111111;
-      margin: 0 0 0.3em 0;
+      margin: 0 0 0.7em 0;
     }
     span:first-child {
       margin-right: 0.2em;
