@@ -16,24 +16,27 @@ const ListLinkHorizontal = styled.ul`
 const ListLinkAdminHorizontal = ({ isOpenPanel, onToggle }) => (
   <ListLinkHorizontal isOpenPanel={isOpenPanel}>
     <li onClick={onToggle}>
-      <LinkHorizontal activeClassName="active" to="/admin/group-manager">
+      <LinkHorizontal activeClassName="active" to="/secure/admin/group-manager">
         Group Manager
       </LinkHorizontal>
     </li>
     <li onClick={onToggle}>
-      <LinkHorizontal activeClassName="active" to="/admin/course-creator">
+      <LinkHorizontal
+        activeClassName="active"
+        to="/secure/admin/course-creator"
+      >
         Course Creator
       </LinkHorizontal>
     </li>
     <li onClick={onToggle}>
-      <LinkHorizontal activeClassName="active" to="/admin/user-manager">
+      <LinkHorizontal activeClassName="active" to="/secure/admin/user-manager">
         User Manager
       </LinkHorizontal>
     </li>
     <li onClick={onToggle}>
       <LinkHorizontal
         activeClassName="active"
-        to="/admin/organisation-settings"
+        to="/secure/admin/organisation-settings"
       >
         Organisation Settings
       </LinkHorizontal>

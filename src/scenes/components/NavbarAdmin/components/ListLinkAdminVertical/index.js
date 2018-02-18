@@ -16,24 +16,30 @@ const ListLinkVertical = styled.ul`
 const ListLinkAdminVertical = ({ className }) => (
   <ListLinkVertical>
     <li>
-      <LinkNavbarAdmin activeClassName="active" to="/admin/group-manager">
+      <LinkNavbarAdmin
+        activeClassName="active"
+        to="/secure/admin/group-manager"
+      >
         Group Manager
       </LinkNavbarAdmin>
     </li>
     <li>
-      <LinkNavbarAdmin activeClassName="active" to="/admin/course-creator">
+      <LinkNavbarAdmin
+        activeClassName="active"
+        to="/secure/admin/course-creator"
+      >
         Course Creator
       </LinkNavbarAdmin>
     </li>
     <li>
-      <LinkNavbarAdmin activeClassName="active" to="/admin/user-manager">
+      <LinkNavbarAdmin activeClassName="active" to="/secure/admin/user-manager">
         User Manager
       </LinkNavbarAdmin>
     </li>
     <li>
       <LinkNavbarAdmin
         activeClassName="active"
-        to="/admin/organisation-settings"
+        to="/secure/admin/organisation-settings"
       >
         Organisation Settings
       </LinkNavbarAdmin>

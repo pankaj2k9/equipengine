@@ -27,7 +27,7 @@ const AsyncAdminCourseCreator = Loadable({
 const adminRoutes = [
   {
     id: 'admin01',
-    path: '/admin/group-manager',
+    path: '/secure/admin/group-manager',
     strict: true,
     exact: true,
     AsyncComponent: props => (

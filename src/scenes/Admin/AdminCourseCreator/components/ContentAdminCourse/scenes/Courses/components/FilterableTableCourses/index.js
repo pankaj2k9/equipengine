@@ -1,13 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import HeaderTableCourses from './components/HeaderTableCourses';
 import TableCourses from './components/TableCourses';
 
-const FilterableTableCourses = () => (
+const FilterableTableCourses = ({ match }) => (
   <div>
     <HeaderTableCourses />
-    <TableCourses />
+    <TableCourses match={match} />
   </div>
 );
+
+FilterableTableCourses.propTypes = {
+  match: PropTypes.object.isRequired
+};
 
 export default FilterableTableCourses;

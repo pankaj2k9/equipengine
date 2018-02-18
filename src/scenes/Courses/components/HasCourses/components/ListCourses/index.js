@@ -19,7 +19,7 @@ const ViewButton = styled(LinkButton)`
   width: 100%;
 `;
 
-const ListCourses = ({ courses }) => {
+const ListCourses = ({ courses, match }) => {
   const listCourses = courses.map((course, i) => {
     return (
       <ListRow key={course.courseId}>
@@ -34,11 +34,11 @@ const ListCourses = ({ courses }) => {
             }}
             secondary
             text="Reports"
-            url={'/courses/' + course.id}
+            url={`${match.url}/${course.id}`}
           />
           <div>
             <TutorialsCompleted />
-            <ViewButton text="View" url={'/courses/' + course.id} />
+            <ViewButton text="View" url={`${match.url}/${course.id}`} />
           </div>
         </ListRowRight>
       </ListRow>
@@ -52,7 +52,12 @@ const ListCourses = ({ courses }) => {
 };
 
 ListCourses.propTypes = {
-  courses: PropTypes.array
+  courses: PropTypes.array.isRequired,
+  match: PropTypes.object.isRequired
+};
+
+ListCourses.defaultProps = {
+  courses: []
 };
 
 export default ListCourses;

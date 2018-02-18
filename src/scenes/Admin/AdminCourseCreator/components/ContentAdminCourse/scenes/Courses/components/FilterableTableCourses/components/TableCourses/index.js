@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 //
 import Container from 'base_components/Container';
 import Tables, { TableRow } from 'base_components/Tables';
@@ -16,7 +17,7 @@ const ContainerTableCourses = Container.extend`
   }
 `;
 
-const TableCourses = () => (
+const TableCourses = ({ match }) => (
   <ContainerTableCourses>
     <Tables>
       <thead>
@@ -28,9 +29,13 @@ const TableCourses = () => (
           <th />
         </TableRow>
       </thead>
-      <TableRowCourses />
+      <TableRowCourses match={match} />
     </Tables>
   </ContainerTableCourses>
 );
+
+TableCourses.propTypes = {
+  match: PropTypes.object.isRequired
+};
 
 export default TableCourses;

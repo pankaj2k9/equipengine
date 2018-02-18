@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import IconUser from 'react-icons/lib/fa/user';
 //
@@ -35,13 +36,7 @@ const Text = styled.span`
   font-size: 16px;
 `;
 
-/* const ButtonDetails = Button.extend`
- *   @media screen and (min-width: 768px) {
- *     width: 140px;
- *   }
- * `;*/
-
-const TableRowCourses = () => (
+const TableRowCourses = ({ match }) => (
   <tbody>
     <TableRow>
       <TableDataName>
@@ -67,7 +62,7 @@ const TableRowCourses = () => (
       </Td>
       <Td>
         <LinkButton
-          url="/admin/course-creator/courses/communication-and-culture"
+          url={`${match.url}/communication-and-culture`}
           text="Details"
         />
       </Td>
@@ -95,13 +90,14 @@ const TableRowCourses = () => (
         <Text>5</Text>
       </Td>
       <Td>
-        <LinkButton
-          url="/admin/course-creator/courses/language-and-culture"
-          text="Details"
-        />
+        <LinkButton url={`${match.url}/language-and-culture`} text="Details" />
       </Td>
     </TableRow>
   </tbody>
 );
+
+TableRowCourses.propTypes = {
+  match: PropTypes.object.isRequired
+};
 
 export default TableRowCourses;
