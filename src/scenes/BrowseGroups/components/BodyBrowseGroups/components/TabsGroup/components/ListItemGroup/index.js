@@ -68,8 +68,7 @@ const ListItemGroup = styled(({ className, group }) => {
     </li>
   );
 })`
-  border: 1px solid #e2e2e2;
-  border-radius: 5px;
+  border-bottom: 1px solid #e2e2e2;
   padding: 2em;
   margin-bottom: 1.2em;
   background-color: ${props => (props.isSelected ? '#F6F6F6' : 'none')};

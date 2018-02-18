@@ -1,8 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
 //
 import TabsGroup from './components/TabsGroup';
+import ListLatestNotification from './components/ListLatestNotification';
+import ContainerFlex from 'base_components/ContainerFlex';
 
-const BodyBrowseGroups = () => {
+const BodyBrowseGroups = ({ className }) => {
   // your group items.
   const groups = [
     {
@@ -44,10 +47,23 @@ const BodyBrowseGroups = () => {
   ];
 
   return (
-    <div>
+    <ContainerFlex className={className}>
       <TabsGroup groups={groups} />
-    </div>
+      <ListLatestNotification />
+    </ContainerFlex>
   );
 };
 
-export default BodyBrowseGroups;
+export default styled(BodyBrowseGroups)`
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 1em;
+
+    > div {
+      width: 49%;
+    }
+  }
+`;

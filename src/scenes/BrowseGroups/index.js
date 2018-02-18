@@ -6,13 +6,16 @@ import BodyBrowseGroups from './components/BodyBrowseGroups';
 
 /**
    TODO:
-   - Add components to Head.
    - Add components to Body.
  */
 
 const ContainerBrowseGroups = styled.section`
-  width: 60%;
+  width: 80%;
   margin: 3em auto;
+
+  @media screen and (min-width: 768px) {
+    width: 60%;
+  }
 `;
 
 const BrowseGroups = () => (
