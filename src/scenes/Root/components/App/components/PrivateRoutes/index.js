@@ -31,7 +31,7 @@ const AsyncNotFound = Loadable({
   timeout: 10000
 });
 
-const PrivateRoutes = ({ type }) => (
+const PrivateRoutes = ({ type, location }) => (
   <Fragment>
     {/* Displaying the Navbar and Sidebar */}
     <Route
@@ -44,7 +44,7 @@ const PrivateRoutes = ({ type }) => (
           <AsyncNavbarAdmin />
         )}
     />
-    <Main type={type}>
+    <Main type={type} pathname={location.pathname}>
       {/* Routes that our app use. */}
       <Switch>
         {routes.map(route => createRoute(route))}
@@ -55,7 +55,8 @@ const PrivateRoutes = ({ type }) => (
 );
 
 PrivateRoutes.propTypes = {
-  type: PropTypes.string
+  type: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 export default PrivateRoutes;

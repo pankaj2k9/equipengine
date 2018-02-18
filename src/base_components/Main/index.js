@@ -7,12 +7,28 @@ import MainRight from './components/MainRight';
 import MainInnerContainer from './components/MainInnerContainer';
 import MainHeaderTitle from './components/MainHeaderTitle';
 
+// Add padding left based on the passed object.
+const addPaddingLeft = ({ type, pathname }) => {
+  const browseGroupPath = '/secure/browse-groups';
+  // check first if the current location is equal to browseGroupPath.
+  if (identical(pathname, browseGroupPath)) {
+    return '0px';
+  }
+  // else, check the account type.
+  if (!identical(type, 'Admin')) {
+    return '257px';
+  }
+  // return 0
+  return '0px';
+};
+
 const Main = styled.main`
   padding-bottom: 2em;
   margin-top: ${props => identical(props.type, 'Admin') && '55px'};
 
   @media screen and (min-width: 768px) {
-    padding-left: ${props => !identical(props.type, 'Admin') && '257px'};
+    padding-left: ${props =>
+      addPaddingLeft({ type: props.type, pathname: props.pathname })};
     padding-bottom: 0;
     position: absolute;
     top: 68px;
@@ -26,7 +42,8 @@ Main.propTypes = {
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element)
   ]).isRequired,
-  type: PropTypes.string
+  type: PropTypes.string.isRequired,
+  pathname: PropTypes.string.isRequired
 };
 
 export {

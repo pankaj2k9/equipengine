@@ -19,7 +19,7 @@
   .LogoContainer {
     padding: 16px 16px 11px 35px;
     margin-bottom: 0px;
-    border-bottom: 1px solid #dadada;
+    /* border-bottom: 1px solid #dadada; */
   }
   .LogoContainer img {
     margin-right: 1em;
