@@ -13,19 +13,25 @@ const MainPanelLinks = ({ accountType }) => (
     <DropdownGroups />
     <Menu>
       <li className="Sidebar__item">
-        <Link text="Dashboard" url="/" />
+        <Link text="Dashboard" url="/secure/dashboard" />
       </li>
       <li className="Sidebar__item">
-        <Link isStrict={true} text="Courses" url="/courses" />
+        <Link isStrict={true} text="Courses" url="/secure/courses" />
       </li>
       <li className="Sidebar__item">
         <Link
           text="Files"
-          url={isStudentType(accountType) ? '/files' : '/teachers/files'}
+          url={
+            isStudentType(accountType)
+              ? '/secure/files'
+              : '/secure/teacher/files'
+          }
         />
       </li>
       <li className="Sidebar__item">
-        {isStudentType(accountType) && <Link text="People" url="/people" />}
+        {isStudentType(accountType) && (
+          <Link text="People" url="/secure/people" />
+        )}
       </li>
     </Menu>
   </div>

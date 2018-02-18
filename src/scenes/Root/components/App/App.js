@@ -25,14 +25,18 @@ const App = ({ loggedUser, isUserAuthenticated }) => (
         strict
         path="/login"
         component={props =>
-          isUserAuthenticated ? <Redirect to="/" /> : <AsyncLogin {...props} />}
+          isUserAuthenticated ? (
+            <Redirect to="/secure" />
+          ) : (
+            <AsyncLogin {...props} />
+          )}
       />
       {/* <Route
           path="/"
           component={props => <PrivateRoutes {...props} type={loggedUser.type} />}
           /> */}
       <Route
-        path="/"
+        path="/secure"
         component={props =>
           isUserAuthenticated ? (
             <PrivateRoutes {...props} type={loggedUser.type} />

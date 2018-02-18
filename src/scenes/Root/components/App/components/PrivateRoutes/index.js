@@ -35,7 +35,7 @@ const PrivateRoutes = ({ type }) => (
   <Fragment>
     {/* Displaying the Navbar and Sidebar */}
     <Route
-      path="/"
+      path="/secure"
       render={props =>
         // conditional rendering.
         identical(type, 'Student') || identical(type, 'Teacher') ? (

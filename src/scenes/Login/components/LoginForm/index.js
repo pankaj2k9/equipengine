@@ -24,10 +24,10 @@ const LoginForm = ({
         // redirec based on the user type.
         // if type is student or teacher
         if (compose(not, identical(res.user.type))('Admin')) {
-          return history.push('/');
+          return history.push('/secure');
         }
         // else admin, redirect to /admin/group-manager
-        return history.push('/admin/group-manager');
+        return history.push('/secure/admin/group-manager');
         /* redirectBasedOnType(res.user.type);*/
       }
 

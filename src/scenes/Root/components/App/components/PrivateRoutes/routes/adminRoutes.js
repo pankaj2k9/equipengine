@@ -38,7 +38,7 @@ const adminRoutes = [
   },
   {
     id: 'admin02',
-    path: '/admin/user-manager',
+    path: '/secure/admin/user-manager',
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -49,7 +49,7 @@ const adminRoutes = [
   },
   {
     id: 'admin03',
-    path: '/admin/course-creator',
+    path: '/secure/admin/course-creator',
     strict: true,
     exact: false,
     AsyncRenderComponent: props => (

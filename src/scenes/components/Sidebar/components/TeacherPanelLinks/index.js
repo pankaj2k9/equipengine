@@ -7,16 +7,16 @@ const TeacherPanelLinks = () => (
   <div className="Sidebar__body__otherPages">
     <Menu>
       <li className="Sidebar__item">
-        <Link text="Groups Activiy" url="/teachers/groups-activity" />
+        <Link text="Groups Activiy" url="/secure/teacher/groups-activity" />
       </li>
       <li className="Sidebar__item">
         <Link
           text="Submissions Activity"
-          url="/teachers/submissions-activity"
+          url="/secure/teacher/submissions-activity"
         />
       </li>
       <li className="Sidebar__item">
-        <Link text="User Manager" url="/teachers/user-manager" />
+        <Link text="User Manager" url="/secure/teacher/user-manager" />
       </li>
     </Menu>
   </div>

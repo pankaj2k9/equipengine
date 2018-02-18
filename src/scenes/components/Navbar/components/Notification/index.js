@@ -21,7 +21,7 @@ const Notification = () => {
         date="22 Sep 4:00pm"
         message="Hi, Jane can you send me question I asked for the other day when you…"
       />
-      <RowLink text="View All" url="/notifications" />
+      <RowLink text="View All" url="/secure/notifications" />
     </ul>
   );
 
@@ -40,7 +40,7 @@ const Notification = () => {
         date="22 Sep 4:00pm"
         message="Hi, Jane can you send me question I asked for the other day when you…"
       />
-      <RowLink text="View All" url="/messages" />
+      <RowLink text="View All" url="/secure/messages" />
     </ul>
   );
 

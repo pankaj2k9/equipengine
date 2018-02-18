@@ -50,7 +50,7 @@ const AsyncFiles = Loadable({
 const privateRoutes = [
   {
     id: 'private01',
-    path: '/',
+    path: '/secure/dashboard',
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -61,7 +61,7 @@ const privateRoutes = [
   },
   {
     id: 'private02',
-    path: '/messages',
+    path: '/secure/messages',
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -72,7 +72,7 @@ const privateRoutes = [
   },
   {
     id: 'private03',
-    path: '/notifications',
+    path: '/secure/notifications',
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -83,7 +83,7 @@ const privateRoutes = [
   },
   {
     id: 'private04',
-    path: '/courses',
+    path: '/secure/courses',
     strict: true,
     exact: false,
     AsyncRenderComponent: props => (
@@ -94,7 +94,7 @@ const privateRoutes = [
   },
   {
     id: 'private05',
-    path: '/groups',
+    path: '/secure/groups',
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -105,7 +105,7 @@ const privateRoutes = [
   },
   {
     id: 'private06',
-    path: '/people',
+    path: '/secure/people',
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -116,7 +116,7 @@ const privateRoutes = [
   },
   {
     id: 'private07',
-    path: '/files',
+    path: '/secure/files',
     strict: true,
     exact: true,
     AsyncComponent: props => (

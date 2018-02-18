@@ -33,7 +33,7 @@ const AsyncTeacherUserManager = Loadable({
 const teacherRoutes = [
   {
     id: 'teacher01',
-    path: '/teachers/groups-activity',
+    path: '/secure/teacher/groups-activity',
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -44,33 +44,33 @@ const teacherRoutes = [
   },
   {
     id: 'teacher02',
-    path: '/teachers/submissions-activity',
+    path: '/secure/teacher/submissions-activity',
     strict: true,
     exact: true,
     AsyncComponent: props => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the teachers controls page.">
+      <ErrorBoundary errMsg="Something went wrong in displaying the teacher controls page.">
         <AsyncTeacherControls {...props} />
       </ErrorBoundary>
     )
   },
   {
     id: 'teacher03',
-    path: '/teachers/files',
+    path: '/secure/teacher/files',
     strict: true,
     exact: true,
     AsyncComponent: props => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the teachers files page.">
+      <ErrorBoundary errMsg="Something went wrong in displaying the teacher files page.">
         <AsyncTeacherFiles {...props} />
       </ErrorBoundary>
     )
   },
   {
     id: 'teacher04',
-    path: '/teachers/user-manager',
+    path: '/secure/teacher/user-manager',
     strict: true,
     exact: true,
     AsyncComponent: props => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the teachers user manager page.">
+      <ErrorBoundary errMsg="Something went wrong in displaying the teacher user manager page.">
         <AsyncTeacherUserManager {...props} />
       </ErrorBoundary>
     )
