@@ -5,6 +5,12 @@ import ErrorBoundary from 'base_components/ErrorBoundary';
 import Loadable from 'react-loadable';
 import Loader from 'base_components/Loader';
 
+const AsyncBrowseGroups = Loadable({
+  loader: () => import('scenes/BrowseGroups'),
+  loading: Loader, // before this component gets loaded, we will render first this Loader component.
+  timeout: 10000
+});
+
 const AsyncDashboard = Loadable({
   loader: () => import('scenes/Dashboard'),
   loading: Loader, // before this component gets loaded, we will render first this Loader component.
@@ -48,6 +54,17 @@ const AsyncFiles = Loadable({
 });
 
 const privateRoutes = [
+  {
+    id: 'private00',
+    path: '/secure/browse-groups',
+    strict: true,
+    exact: true,
+    AsyncComponent: props => (
+      <ErrorBoundary errMsg="Something went wrong in displaying the dashboard page.">
+        <AsyncBrowseGroups {...props} />
+      </ErrorBoundary>
+    )
+  },
   {
     id: 'private01',
     path: '/secure/dashboard',

@@ -7,7 +7,7 @@ import { $textBoldColor } from 'shared/color.js';
 
 const LogoContainer = () => {
   return (
-    <Link className="LogoContainer" to="/">
+    <Link className="LogoContainer" to="/secure/browse-groups">
       <img alt="Logo" src={Logo} />
       <h1 style={{ color: $textBoldColor }}>EquipEngine</h1>
     </Link>

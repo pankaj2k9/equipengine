@@ -11,12 +11,12 @@ import IconBurger from 'react-icons/lib/fa/align-justify';
 const ContentNavbarAdmin = styled(({ className, onToggle }) => (
   <div className={className}>
     <div>
-      <Link to="/secure">
+      <Link to="/secure/admin/group-manager">
         <img alt="Logo" src={logo} />
       </Link>
       <ListLinkAdminVertical />
     </div>
-    <Link to="/secure">
+    <Link to="/secure/admin/group-manager">
       <span>
         <IconArrowBack />
       </span>
