@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { identical } from 'ramda';
 //
 import Navbar from '../Navbar';
 import Sidebar from '../Sidebar';
@@ -11,17 +12,22 @@ const MainBars = ({
   isOpen,
   accountType,
   location
-}) => (
-  <div>
-    <Navbar onOpenSidebar={openSidebar} accountType={accountType} />
-    <Sidebar
-      isOpen={isOpen}
-      onCloseSidebar={closeSidebar}
-      accountType={accountType}
-      pathname={location.pathname}
-    />
-  </div>
-);
+}) => {
+  // browse group path
+  const browseGroupPath = '/secure/browse-groups';
+  return (
+    <div>
+      <Navbar onOpenSidebar={openSidebar} accountType={accountType} />
+      <Sidebar
+        isOpen={isOpen}
+        onCloseSidebar={closeSidebar}
+        accountType={accountType}
+        pathname={location.pathname}
+        isBrowseGroupPath={identical(location.pathname, browseGroupPath)}
+      />
+    </div>
+  );
+};
 
 MainBars.propTypes = {
   openSidebar: PropTypes.func.isRequired,
