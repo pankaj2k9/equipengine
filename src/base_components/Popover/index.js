@@ -10,7 +10,6 @@ import './styles.css';
 
 const Popover = ({
   popoverContentElement,
-  positionLeft,
   buttonIcon,
   buttonStyle,
   dataCount
@@ -28,7 +27,6 @@ const Popover = ({
       rootClose
       placement="bottom"
       overlay={popoverContainerElement}
-      positionLeft={200}
     >
       <button className="Popover__button" type="button" style={buttonStyle}>
         {buttonIcon}
@@ -40,8 +38,7 @@ const Popover = ({
 
 Popover.propTypes = {
   popoverContentElement: PropTypes.element.isRequired,
-  dataCount: PropTypes.number,
-  positionLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  dataCount: PropTypes.number
 };
 
 export default Popover;

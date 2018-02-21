@@ -32,7 +32,7 @@ const App = ({ loggedUser, isUserAuthenticated }) => (
           )}
       />
       <Route
-        path="/secure/browse-groups"
+        path="/secure"
         component={props =>
           isUserAuthenticated ? (
             <PrivateRoutes {...props} type={loggedUser.type} />
