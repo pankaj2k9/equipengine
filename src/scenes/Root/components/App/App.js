@@ -7,6 +7,8 @@ import Loader from 'base_components/Loader';
 //
 import PrivateRoutes from './components/PrivateRoutes';
 
+import Sample from './Sample';
+
 const AsyncLogin = Loadable({
   loader: () => import('scenes/Login'),
   loading: Loader, // before this component gets loaded, we will render first this Loader component.
@@ -20,6 +22,7 @@ const AsyncLogin = Loadable({
 const App = ({ loggedUser, isUserAuthenticated }) => (
   <Fragment>
     <Switch>
+      <Route exact strict path="/" component={Sample} />
       <Route
         exact
         strict

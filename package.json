@@ -16,6 +16,7 @@
     "prop-types": "^15.6.0",
     "ramda": "^0.24.1",
     "react": "^16.2.0",
+    "react-beautiful-dnd": "^4.0.1",
     "react-bootstrap": "^0.31.3",
     "react-breadcrumbs-dynamic": "^1.0.8",
     "react-dom": "^16.2.0",
