@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { List } from 'immutable';
+import { not, isNil } from 'ramda';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-
-// TODO: We need to review the codes which are used to achieve our desire results of drag and drop functionality.
 
 // fake data generator
 const getItems = count =>
@@ -11,46 +11,28 @@ const getItems = count =>
   }));
 
 // a little function to help us with reordering the result
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
-};
+const reorderItems = (list, startIndex, endIndex) =>
+  List(list)
+    .delete(startIndex) // delete element to the position of given startIndex then return the new array which excludes the deleted element.
+    .insert(endIndex, List(list).get(startIndex)) // insert the element from startIndex to the position of endIndex.
+    .toArray(); // return an array instead of List
 
 class Sample extends Component {
   state = {
     items: getItems(3)
   };
 
-  onDragStart = () => {
-    /*...*/
-  };
-  onDragEnd = result => {
-    /*...*/
-    // dropped outside the list
-    if (!result.destination) {
-      return;
-    }
-
-    const items = reorder(
-      this.state.items,
-      result.source.index,
-      result.destination.index
-    );
-
-    this.setState({
-      items
-    });
-  };
+  // this handler is used for re-ordering the items on the list.
+  onDragEnd = ({ source, destination }) =>
+    not(isNil(destination)) // handle not null or undefined destination
+      ? this.setState({
+          items: reorderItems(this.state.items, source.index, destination.index)
+        })
+      : undefined;
 
   render() {
     return (
-      <DragDropContext
-        onDragStart={this.onDragStart}
-        onDragEnd={this.onDragEnd}
-      >
+      <DragDropContext onDragEnd={this.onDragEnd}>
         <Droppable droppableId="droppable-1" type="PERSON">
           {(provided, snapshot) => (
             <div
@@ -60,20 +42,29 @@ class Sample extends Component {
                 width: '50%'
               }}
             >
-              {this.state.items.map((item, i) => (
-                <Draggable draggableId={item.id} type="PERSON" index={i}>
-                  {(provided, snapshot) => (
-                    <div>
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                      >
-                        <span>{item.content}</span>
+              {this.state.items.map(({ id, content }, i) => (
+                <Draggable draggableId={id} type="PERSON" index={i} key={id}>
+                  {(provided, snapshot) => {
+                    // extending the DraggableStyle with our own inline styles
+                    const style = {
+                      backgroundColor: snapshot.isDragging ? 'green' : 'white',
+                      fontSize: 18,
+                      ...provided.draggableProps.style
+                    };
+                    return (
+                      <div>
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          style={style}
+                        >
+                          <span>{content}</span>
+                        </div>
+                        {provided.placeholder}
                       </div>
-                      {provided.placeholder}
-                    </div>
-                  )}
+                    );
+                  }}
                 </Draggable>
               ))}
               {provided.placeholder}
