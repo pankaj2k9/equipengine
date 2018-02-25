@@ -1,6 +1,7 @@
 {
   "extends": ["react-app", "eslint:recommended"],
   "rules": {
+      "semi": [2, "always"],
       "quotes": [2, "single", { "avoidEscape": true }],
       "block-spacing": [2, "always"],
       "arrow-parens" : [2, "always"]

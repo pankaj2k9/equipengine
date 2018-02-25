@@ -1,96 +1,47 @@
-import React, { Component, Fragment } from 'react';
-import { List } from 'immutable';
-import { not, isNil, identical } from 'ramda';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import React from 'react';
+import { addIndex, map } from 'ramda';
+// drag and drop components.
+import DragDrop, {
+  DroppableList,
+  DroppableListItem
+} from 'base_components/DragDrop';
 
+// fake generator of item.
 const getItems = count =>
   Array.from({ length: count }, (v, k) => k).map(k => ({
     id: `item-${k}`,
     content: `item ${k}`
   }));
 
-// a little function to help us with reordering the result
-const reorderItems = (list, startIndex, endIndex) =>
-  List(list)
-    .delete(startIndex) // delete element to the position of given startIndex then return the new array which excludes the deleted element.
-    .insert(endIndex, List(list).get(startIndex)) // insert the element from startIndex to the position of endIndex.
-    .toArray(); // return an array instead of List
+/**
+ * transformerToReactElem :: (Object a, Number) -> Object React
+ *
+ * Transforming the element from the array to React element.
+ * @param {Object} item element in the array.
+ * @param {Number} i index of element.
+ * @retur {object} react element.
+ */
+const transformerToReactElem = (item, i) => (
+  <DroppableListItem draggableId={item.id} index={i} key={item.id}>
+    <span>{item.content}</span>
+  </DroppableListItem>
+);
 
-class Inner extends Component {
-  shouldComponentUpdate(nextProps) {
-    if (identical(this.props.items, nextProps.items)) {
-      return false;
-    }
+/**
+ * createDroppableListItems :: Array a -> Array React
+ *
+ * Create droppable list items based on the given array of objects.
+ * @param {Array} list
+ * @return {Array} array of react elements.
+ */
+const createDroppableListItems = addIndex(map)(transformerToReactElem);
 
-    return true;
-    /* return identical(this.props.items, nextProps.items) ? false : true;*/
-  }
-
-  render() {
-    return this.props.items.map(({ id, content }, i) => (
-      <Draggable draggableId={id} type="PERSON" index={i} key={id}>
-        {(provided, snapshot) => {
-          // extending the DraggableStyle with our own inline styles
-          const style = {
-            backgroundColor: snapshot.isDragging ? 'green' : 'white',
-            fontSize: 18,
-            padding: 2,
-            margin: '0 0 2px 0',
-            ...provided.draggableProps.style
-          };
-          return (
-            <Fragment>
-              <div
-                ref={provided.innerRef}
-                {...provided.draggableProps}
-                {...provided.dragHandleProps}
-                style={style}
-              >
-                <span>{content}</span>
-              </div>
-              {provided.placeholder}
-            </Fragment>
-          );
-        }}
-      </Draggable>
-    ));
-  }
-}
-
-class Sample extends Component {
-  state = {
-    items: getItems(3)
-  };
-
-  // this handler is used for re-ordering the items on the list.
-  onDragEnd = ({ source, destination }) =>
-    not(isNil(destination)) // handle not null or undefined destination
-      ? this.setState({
-          items: reorderItems(this.state.items, source.index, destination.index)
-        })
-      : undefined;
-
-  render() {
-    return (
-      <DragDropContext onDragEnd={this.onDragEnd}>
-        <Droppable droppableId="droppable-1" type="PERSON">
-          {(provided, snapshot) => (
-            <div
-              ref={provided.innerRef}
-              style={{
-                backgroundColor: snapshot.isDraggingOver ? 'blue' : 'grey',
-                width: '50%',
-                padding: 8
-              }}
-            >
-              <Inner items={this.state.items} />
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
-    );
-  }
-}
+const Sample = () => (
+  <DragDrop list={getItems(3)}>
+    <DroppableList droppableId="droppable-01">
+      {createDroppableListItems}
+    </DroppableList>
+  </DragDrop>
+);
 
 export default Sample;
