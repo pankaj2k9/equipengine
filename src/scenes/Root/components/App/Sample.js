@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { List } from 'immutable';
 import { not, isNil, identical } from 'ramda';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-// fake data generator
 const getItems = count =>
   Array.from({ length: count }, (v, k) => k).map(k => ({
     id: `item-${k}`,
@@ -20,10 +19,9 @@ const reorderItems = (list, startIndex, endIndex) =>
 class Inner extends Component {
   shouldComponentUpdate(nextProps) {
     if (identical(this.props.items, nextProps.items)) {
-      console.log('equal');
       return false;
     }
-    console.log('not equal');
+
     return true;
     /* return identical(this.props.items, nextProps.items) ? false : true;*/
   }
@@ -41,7 +39,7 @@ class Inner extends Component {
             ...provided.draggableProps.style
           };
           return (
-            <div>
+            <Fragment>
               <div
                 ref={provided.innerRef}
                 {...provided.draggableProps}
@@ -51,7 +49,7 @@ class Inner extends Component {
                 <span>{content}</span>
               </div>
               {provided.placeholder}
-            </div>
+            </Fragment>
           );
         }}
       </Draggable>
