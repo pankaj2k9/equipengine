@@ -53,7 +53,7 @@ DroppableListItem.defaultProps = {
   type: 'DEFAULT',
 
   colorState: {
-    isDragColor: '#F4F4F4',
+    isDragColor: '#F2F3F6',
     notDragColor: '#FFFFFF'
   }
 };

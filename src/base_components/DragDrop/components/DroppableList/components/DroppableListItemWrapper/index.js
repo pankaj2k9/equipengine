@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from 'react';
+import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
-import { identical } from 'ramda';
+import {identical} from 'ramda';
 
 /**
  * We are using this component to block any unnecessary rendering of the Draggable item components.
  */
 class DroppableListItemWrapper extends Component {
-  shouldComponentUpdate = nextProps =>
+  shouldComponentUpdate = (nextProps) =>
     identical(this.props.list, nextProps.list) ? false : true;
 
   render() {
