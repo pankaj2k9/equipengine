@@ -1,14 +1,13 @@
 import React from 'react';
 import {addIndex, map} from 'ramda';
-// drag and drop components.
 import DragDrop, {
   DroppableList,
   DroppableListItem
 } from 'base_components/DragDrop';
 
 // fake generator of item.
-const getItems = count =>
-  Array.from({length: count}, (v, k) => k).map(k => ({
+const getItems = (count) =>
+  Array.from({length: count}, (v, k) => k).map((k) => ({
     id: `item-${k}`,
     content: `item ${k}`
   }));

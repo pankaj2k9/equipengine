@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-
+// Drap and drop
+import DragDrop from 'base_components/DragDrop';
 // base components
-import { MainInnerContainer } from 'base_components/Main';
-import { Tab } from 'react-bootstrap';
+import {MainInnerContainer} from 'base_components/Main';
+import {Tab} from 'react-bootstrap';
 import Tabs from 'base_components/Tabs';
 // child components.
 import ItemTeacherUserCourses from './components/ItemTeacherUserCourses';
@@ -11,11 +12,13 @@ import ItemTeacherUserCourses from './components/ItemTeacherUserCourses';
 // for teacher user settings.
 const ItemTeacherUserSettings = () => <div>user settings</div>;
 
-const TeacherUserSettings = styled(({ className }) => (
+const TeacherUserSettings = styled(({className}) => (
   <MainInnerContainer className={className}>
-    <Tabs style={{ marginTop: 0, width: '100%' }}>
+    <Tabs style={{marginTop: 0, width: '100%'}}>
       <Tab eventKey={1} title="Courses">
-        <ItemTeacherUserCourses />
+        <DragDrop list={[]}>
+          <ItemTeacherUserCourses />
+        </DragDrop>
       </Tab>
       <Tab eventKey={2} title="Settings">
         <ItemTeacherUserSettings />

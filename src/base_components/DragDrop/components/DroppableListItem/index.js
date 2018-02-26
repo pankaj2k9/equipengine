@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import { Draggable } from 'react-beautiful-dnd';
+import {Draggable} from 'react-beautiful-dnd';
 
-const DroppableListItem = ({ draggableId, index, type, children }) => (
+const DroppableListItem = ({draggableId, index, type, children}) => (
   <Draggable
     draggableId={draggableId}
     type={type}
@@ -12,10 +12,7 @@ const DroppableListItem = ({ draggableId, index, type, children }) => (
     {(provided, snapshot) => {
       // extending the DraggableStyle with our own inline styles
       const style = {
-        backgroundColor: snapshot.isDragging ? 'green' : 'white',
-        fontSize: 18,
-        padding: 2,
-        margin: '0 0 2px 0',
+        backgroundColor: snapshot.isDragging ? '#f4f4f4' : 'white',
         ...provided.draggableProps.style
       };
       return (

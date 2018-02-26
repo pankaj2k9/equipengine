@@ -9,12 +9,12 @@ const List = styled.ul`
   margin-top: 1.5em;
 
   @media screen and (min-width: 768px) {
-    margin-top: 2em;
+    margin-top: 2.4em;
   }
 `;
 
 // the list item user component.
-const ListItemUser = styled(({ className }) => (
+const ListItemUser = styled(({className}) => (
   <li className={className}>
     <UserAvatar image={iconUser} />
     <span>Jane Doe</span>
@@ -23,7 +23,7 @@ const ListItemUser = styled(({ className }) => (
   display: flex;
   align-items: center;
   padding: 0.8em;
-  background-color: ${props => props.active && 'rgba(184,184,184,.2)'};
+  background-color: ${(props) => props.active && 'rgba(184,184,184,.2)'};
 
   span {
     color: #111111;
