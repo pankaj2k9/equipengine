@@ -13,8 +13,6 @@ const getItems = count =>
     content: `item ${k}`
   }));
 
-console.log('hello world');
-
 /**
  * transformerToReactElem :: (Object a, Number) -> Object React
  *
