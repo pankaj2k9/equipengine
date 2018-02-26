@@ -1,8 +1,14 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {Draggable} from 'react-beautiful-dnd';
-
-const DroppableListItem = ({draggableId, index, type, children}) => (
+/* '#f4f4f4'*/
+const DroppableListItem = ({
+  draggableId,
+  index,
+  type,
+  children,
+  colorState: {isDragColor, notDragColor}
+}) => (
   <Draggable
     draggableId={draggableId}
     type={type}
@@ -12,7 +18,7 @@ const DroppableListItem = ({draggableId, index, type, children}) => (
     {(provided, snapshot) => {
       // extending the DraggableStyle with our own inline styles
       const style = {
-        backgroundColor: snapshot.isDragging ? '#f4f4f4' : 'white',
+        backgroundColor: snapshot.isDragging ? isDragColor : notDragColor,
         ...provided.draggableProps.style
       };
       return (
@@ -36,11 +42,20 @@ DroppableListItem.propTypes = {
   draggableId: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
-  children: PropTypes.element
+  children: PropTypes.element,
+  colorState: PropTypes.shape({
+    isDragColor: PropTypes.string,
+    notDragColor: PropTypes.string
+  }).isRequired
 };
 
 DroppableListItem.defaultProps = {
-  type: 'DEFAULT'
+  type: 'DEFAULT',
+
+  colorState: {
+    isDragColor: '#F4F4F4',
+    notDragColor: '#FFFFFF'
+  }
 };
 
 export default DroppableListItem;
