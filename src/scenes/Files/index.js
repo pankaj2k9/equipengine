@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 import {
   MainInnerContainer,
   MainHeaderTitle,
   MainLeft,
   MainRight
-} from 'base_components/Main';
-import TableFiles from 'base_components/TableFiles';
-import SearchBar from 'base_components/RootSearchBar';
+} from 'base_components/Main'
+import TableFiles from 'base_components/TableFiles'
+import SearchBar from 'base_components/RootSearchBar'
 
 // test data
 const files = [
@@ -21,7 +21,7 @@ const files = [
     file: 'Showing culture.ptt',
     date: '19 March 17'
   }
-];
+]
 
 const Files = () => (
   <div>
@@ -37,6 +37,6 @@ const Files = () => (
       </MainRight>
     </MainInnerContainer>
   </div>
-);
+)
 
-export default Files;
+export default Files

@@ -1,21 +1,21 @@
-import React from 'react';
-import Media from 'react-media';
+import React from 'react'
+import Media from 'react-media'
 
-import TutorialDetails from './components/TutorialDetails';
-import TutorialThingsToDo from './components/TutorialThingsToDo';
+import TutorialDetails from './components/TutorialDetails'
+import TutorialThingsToDo from './components/TutorialThingsToDo'
 
 const TutorialInfo = () => {
   return (
-    <Media query="(max-width: 767px)">
+    <Media query='(max-width: 767px)'>
       {matches =>
         matches ? (
-          <div className="TutorialInfo" style={tutorialInfoContainer}>
+          <div className='TutorialInfo' style={tutorialInfoContainer}>
             <TutorialDetails />
             <TutorialThingsToDo />
           </div>
         ) : (
           <div
-            className="TutorialInfo"
+            className='TutorialInfo'
             style={tutorialInfoContainer.desktopViewport}
           >
             <TutorialDetails />
@@ -23,8 +23,8 @@ const TutorialInfo = () => {
           </div>
         )}
     </Media>
-  );
-};
+  )
+}
 
 const tutorialInfoContainer = {
   backgroundColor: '#F0F0F0',
@@ -32,6 +32,6 @@ const tutorialInfoContainer = {
     backgroundColor: '#F0F0F0',
     width: '30%'
   }
-};
+}
 
-export default TutorialInfo;
+export default TutorialInfo

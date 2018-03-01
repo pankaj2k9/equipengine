@@ -1,4 +1,4 @@
-import { MainHeaderTitle } from 'base_components/Main';
+import { MainHeaderTitle } from 'base_components/Main'
 
 const HeaderNotification = MainHeaderTitle.extend`
   display: flex;
@@ -16,6 +16,6 @@ const HeaderNotification = MainHeaderTitle.extend`
       padding-right: 8.2em;
     }
   }
-`;
+`
 
-export default HeaderNotification;
+export default HeaderNotification

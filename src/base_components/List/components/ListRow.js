@@ -1,17 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const ListRow = ({ style, children }) => {
-    return (
-        <li style={{ style }} className="List__row">
-            {children}
-        </li>
-    );
-};
+  return (
+    <li style={{ style }} className='List__row'>
+      {children}
+    </li>
+  )
+}
 
 ListRow.propTypes = {
-    children: PropTypes.arrayOf(PropTypes.element),
-    style: PropTypes.object
-};
+  children: PropTypes.arrayOf(PropTypes.element),
+  style: PropTypes.object
+}
 
-export default ListRow;
+export default ListRow

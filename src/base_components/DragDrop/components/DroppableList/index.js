@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {Droppable} from 'react-beautiful-dnd';
-import DroppableListItemWrapper from './components/DroppableListItemWrapper';
+import React from 'react'
+import PropTypes from 'prop-types'
+import {Droppable} from 'react-beautiful-dnd'
+import DroppableListItemWrapper from './components/DroppableListItemWrapper'
 
 const DroppableList = ({
   droppableId,
@@ -27,7 +27,7 @@ const DroppableList = ({
       </ul>
     )}
   </Droppable>
-);
+)
 
 DroppableList.propTypes = {
   droppableId: PropTypes.string.isRequired,
@@ -39,7 +39,7 @@ DroppableList.propTypes = {
     isDragColor: PropTypes.string,
     notDragColor: PropTypes.string
   }).isRequired
-};
+}
 
 DroppableList.defaultProps = {
   droppableId: 'droppable-1',
@@ -50,6 +50,6 @@ DroppableList.defaultProps = {
     isDragColor: '#DEDEDE',
     notDragColor: '#DEDEDE'
   }
-};
+}
 
-export default DroppableList;
+export default DroppableList

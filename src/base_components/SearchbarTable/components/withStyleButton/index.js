@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const withStyleButton = WrappedComponent =>
   // styling the dropdown component.
@@ -31,6 +31,6 @@ const withStyleButton = WrappedComponent =>
     @media screen and (min-width: 768px) {
       padding: 14px 20px;
     }
-  `;
+  `
 
-export default withStyleButton;
+export default withStyleButton

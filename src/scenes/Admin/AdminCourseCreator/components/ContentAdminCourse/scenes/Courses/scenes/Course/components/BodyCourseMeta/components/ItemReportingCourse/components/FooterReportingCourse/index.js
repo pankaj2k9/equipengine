@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 // for footer
-import styled from 'styled-components';
-import Button from 'base_components/RootButton';
-import IconWarning from 'react-icons/lib/fa/exclamation-circle';
+import styled from 'styled-components'
+import Button from 'base_components/RootButton'
+import IconWarning from 'react-icons/lib/fa/exclamation-circle'
 
 const FooterReportingCourse = styled(({ className }) => (
   <footer className={className}>
@@ -40,6 +40,6 @@ const FooterReportingCourse = styled(({ className }) => (
       margin-top: 1.4em;
     }
   }
-`;
+`
 
-export default FooterReportingCourse;
+export default FooterReportingCourse

@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 //
-import UserAvatar from 'base_components/UserAvatar';
+import UserAvatar from 'base_components/UserAvatar'
 
 const ListLinkItem = styled(({ className, icon, text, url }) => (
   <NavLink
@@ -57,12 +57,12 @@ const ListLinkItem = styled(({ className, icon, text, url }) => (
       line-height: 1.4;
     }
   }
-`;
+`
 
 ListLinkItem.propTypes = {
   icon: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired
-};
+}
 
-export default ListLinkItem;
+export default ListLinkItem

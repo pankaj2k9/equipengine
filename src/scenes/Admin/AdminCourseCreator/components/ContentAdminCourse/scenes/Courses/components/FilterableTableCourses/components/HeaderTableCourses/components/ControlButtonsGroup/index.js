@@ -1,9 +1,9 @@
-import React from 'react';
-import { MenuItem } from 'react-bootstrap';
+import React from 'react'
+import { MenuItem } from 'react-bootstrap'
 // component
-import Dropdown from 'base_components/Dropdown';
-import Button from 'base_components/RootButton';
-import ContainerFlex from 'base_components/ContainerFlex';
+import Dropdown from 'base_components/Dropdown'
+import Button from 'base_components/RootButton'
+import ContainerFlex from 'base_components/ContainerFlex'
 
 // extending the dropdown button style.
 const DropdownRefine = Dropdown.extend`
@@ -24,7 +24,7 @@ const DropdownRefine = Dropdown.extend`
   @media screen and (min-width: 768px) {
     width: 150px;
   }
-`;
+`
 
 const ContainerControlButtons = ContainerFlex.extend`
   flex-direction: column;
@@ -48,19 +48,19 @@ const ContainerControlButtons = ContainerFlex.extend`
       margin-right: 1em;
     }
   }
-`;
+`
 
 const ControlButtonsGroup = () => (
   <ContainerControlButtons>
     <Button secondary>Show All</Button>
-    <DropdownRefine title="Refine" id="dropdown-size-medium">
-      <MenuItem eventKey="1">Action</MenuItem>
-      <MenuItem eventKey="2">Another action</MenuItem>
-      <MenuItem eventKey="3">Something else here</MenuItem>
+    <DropdownRefine title='Refine' id='dropdown-size-medium'>
+      <MenuItem eventKey='1'>Action</MenuItem>
+      <MenuItem eventKey='2'>Another action</MenuItem>
+      <MenuItem eventKey='3'>Something else here</MenuItem>
       <MenuItem divider />
-      <MenuItem eventKey="4">Separated link</MenuItem>
+      <MenuItem eventKey='4'>Separated link</MenuItem>
     </DropdownRefine>
   </ContainerControlButtons>
-);
+)
 
-export default ControlButtonsGroup;
+export default ControlButtonsGroup

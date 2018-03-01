@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { isNil } from 'ramda';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import { isNil } from 'ramda'
 
 const Panel = styled(({ className, title, children, AdditionalTitle }) => (
   <section className={className}>
@@ -38,7 +38,7 @@ const Panel = styled(({ className, title, children, AdditionalTitle }) => (
       margin-bottom: 1.8em;
     }
   }
-`;
+`
 
 Panel.propTypes = {
   title: PropTypes.string,
@@ -48,6 +48,6 @@ Panel.propTypes = {
   ]).isRequired,
   AdditionalTitle: PropTypes.func,
   isFullWidth: PropTypes.bool
-};
+}
 
-export default Panel;
+export default Panel

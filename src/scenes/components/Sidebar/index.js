@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { identical } from 'ramda';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { identical } from 'ramda'
 //
-import LogoContainer from 'base_components/LogoContainer';
-import MainPanelLinks from './components/MainPanelLinks';
-import TeacherPanelLinks from './components/TeacherPanelLinks';
-import withStyle from './withStyle';
+import LogoContainer from 'base_components/LogoContainer'
+import MainPanelLinks from './components/MainPanelLinks'
+import TeacherPanelLinks from './components/TeacherPanelLinks'
+import withStyle from './withStyle'
 
 const Sidebar = ({
   isOpen,
@@ -16,29 +16,29 @@ const Sidebar = ({
   className
 }) => {
   // when the isOpen props is true, add other classname on sidebar
-  const sidebarClassnames = classNames('Sidebar', { isOpen });
+  const sidebarClassnames = classNames('Sidebar', { isOpen })
   return (
     <div
       onClick={onCloseSidebar}
       className={`${sidebarClassnames} ${className}`}
     >
-      <div className="Sidebar__inner">
+      <div className='Sidebar__inner'>
         <LogoContainer />
-        <div className="Sidebar__body">
+        <div className='Sidebar__body'>
           >
           <MainPanelLinks accountType={accountType} />
           {identical(accountType, 'Teacher') && <TeacherPanelLinks />}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 Sidebar.propTypes = {
   onCloseSidebar: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   accountType: PropTypes.string.isRequired,
   isBrowseGroupPath: PropTypes.bool.isRequired
-};
+}
 
-export default withStyle(Sidebar);
+export default withStyle(Sidebar)

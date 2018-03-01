@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import UserAvatar from 'base_components/UserAvatar';
-import iconUser from 'resources/images/user.png';
+import UserAvatar from 'base_components/UserAvatar'
+import iconUser from 'resources/images/user.png'
 
 // the list component
 const List = styled.ul`
@@ -11,7 +11,7 @@ const List = styled.ul`
   @media screen and (min-width: 768px) {
     margin-top: 2.4em;
   }
-`;
+`
 
 // the list item user component.
 const ListItemUser = styled(({className}) => (
@@ -33,7 +33,7 @@ const ListItemUser = styled(({className}) => (
   @media screen and (min-width: 768px) {
     padding: 0.8em 2.6em;
   }
-`;
+`
 
 // hold the List of user components.
 const ListUser = () => (
@@ -42,6 +42,6 @@ const ListUser = () => (
     <ListItemUser />
     <ListItemUser />
   </List>
-);
+)
 
-export default ListUser;
+export default ListUser

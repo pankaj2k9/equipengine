@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import TableData from '../TableData';
-import UserAvatar from 'base_components/UserAvatar';
+import TableData from '../TableData'
+import UserAvatar from 'base_components/UserAvatar'
 
 const TableDataActivity = styled(({ activity, className }) => (
   <TableData style={{ textAlign: 'center' }} className={className}>
@@ -35,10 +35,10 @@ const TableDataActivity = styled(({ activity, className }) => (
       }
     }
   }
-`;
+`
 
 TableDataActivity.propTypes = {
   activity: PropTypes.object.isRequired
-};
+}
 
-export default TableDataActivity;
+export default TableDataActivity

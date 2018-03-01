@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import PeopleList, { PeopleItem } from '../PeopleList';
+import PeopleList, { PeopleItem } from '../PeopleList'
 
 const ItemTabAllPeople = () => (
   <PeopleList>
@@ -8,6 +8,6 @@ const ItemTabAllPeople = () => (
     <PeopleItem />
     <PeopleItem />
   </PeopleList>
-);
+)
 
-export default ItemTabAllPeople;
+export default ItemTabAllPeople

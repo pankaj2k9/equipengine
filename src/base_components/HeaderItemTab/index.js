@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 // for the header container admin users.
 export default styled.header`
@@ -11,4 +11,4 @@ export default styled.header`
   @media screen and (min-width: 768px) {
     flex-direction: row;
   }
-`;
+`

@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import { MainRight } from 'base_components/Main';
-import SearchBar from 'base_components/RootSearchBar';
+import { MainRight } from 'base_components/Main'
+import SearchBar from 'base_components/RootSearchBar'
 
 const Sidebar = styled(({ className }) => (
   <MainRight className={className}>
@@ -18,6 +18,6 @@ const Sidebar = styled(({ className }) => (
     color: #515151;
     line-height: 1.5;
   }
-`;
+`
 
-export default Sidebar;
+export default Sidebar

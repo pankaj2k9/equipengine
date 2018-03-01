@@ -1,29 +1,29 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 //
-import ContainerFlex from 'base_components/ContainerFlex';
-import iconPlay from 'resources/images/play-button.svg';
-import IconMenu from 'react-icons/lib/md/dehaze';
-import IconClose from 'react-icons/lib/md/close';
-import Form, { Switch } from 'base_components/RootForm';
-import Button from 'base_components/RootButton';
+import ContainerFlex from 'base_components/ContainerFlex'
+import iconPlay from 'resources/images/play-button.svg'
+import IconMenu from 'react-icons/lib/md/dehaze'
+import IconClose from 'react-icons/lib/md/close'
+import Form, { Switch } from 'base_components/RootForm'
+import Button from 'base_components/RootButton'
 
 const ListItem = styled(({ className }) => (
   <li className={className}>
     <ContainerFlex isAlignCenter isSpaceBetween>
-      <ContainerFlex isAlignCenter isSpaceBetween className="ListItem__left">
+      <ContainerFlex isAlignCenter isSpaceBetween className='ListItem__left'>
         <i>
           <IconMenu />
         </i>
-        <img alt="icon play" src={iconPlay} />
+        <img alt='icon play' src={iconPlay} />
         <div>
           <p>Tutorial 1</p>
           <span>00:05:25</span>
         </div>
       </ContainerFlex>
-      <ContainerFlex className="ListItem__right">
+      <ContainerFlex className='ListItem__right'>
         <Form>
-          <Switch name="switchTutorial" />
+          <Switch name='switchTutorial' />
           <Button secondary>Edit</Button>
           <i>
             <IconClose />
@@ -76,13 +76,13 @@ const ListItem = styled(({ className }) => (
       }
     }
   }
-`;
+`
 
 const ListTutorialCourse = () => (
   <ul>
     <ListItem />
     <ListItem />
   </ul>
-);
+)
 
-export default ListTutorialCourse;
+export default ListTutorialCourse

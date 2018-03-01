@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 const LinkMain = styled(NavLink)`
   color: #ffffff;
@@ -23,10 +23,10 @@ const LinkMain = styled(NavLink)`
       background: none;
     }
   }
-`;
+`
 
 const LinkHorizontal = styled(LinkMain)`
   padding: 2% 3%;
-`;
+`
 
-export { LinkMain as default, LinkHorizontal };
+export { LinkMain as default, LinkHorizontal }

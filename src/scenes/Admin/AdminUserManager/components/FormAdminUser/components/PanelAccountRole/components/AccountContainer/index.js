@@ -1,26 +1,26 @@
-import React from 'react';
-import styled from 'styled-components';
-import { MenuItem } from 'react-bootstrap';
+import React from 'react'
+import styled from 'styled-components'
+import { MenuItem } from 'react-bootstrap'
 // components
-import ContainerFlex from 'base_components/ContainerFlex';
-import Dropdown from 'base_components/Dropdown';
-import { Label, Switch } from 'base_components/RootForm';
+import ContainerFlex from 'base_components/ContainerFlex'
+import Dropdown from 'base_components/Dropdown'
+import { Label, Switch } from 'base_components/RootForm'
 
 const AccountContainer = styled(({ className }) => (
   <div className={className}>
     <ContainerFlex isSpaceBetween>
       <Label>Exclude students from teacher</Label>
-      <Dropdown title="Select Students" id="dropdown-size-medium">
-        <MenuItem eventKey="1">Action</MenuItem>
-        <MenuItem eventKey="2">Another action</MenuItem>
-        <MenuItem eventKey="3">Something else here</MenuItem>
+      <Dropdown title='Select Students' id='dropdown-size-medium'>
+        <MenuItem eventKey='1'>Action</MenuItem>
+        <MenuItem eventKey='2'>Another action</MenuItem>
+        <MenuItem eventKey='3'>Something else here</MenuItem>
         <MenuItem divider />
-        <MenuItem eventKey="4">Separated link</MenuItem>
+        <MenuItem eventKey='4'>Separated link</MenuItem>
       </Dropdown>
     </ContainerFlex>
     <ContainerFlex isSpaceBetween>
       <Label>File Control Priveleges</Label>
-      <Switch name="fileControlPriveleges" />
+      <Switch name='fileControlPriveleges' />
     </ContainerFlex>
   </div>
 ))`
@@ -49,6 +49,6 @@ const AccountContainer = styled(({ className }) => (
       margin-bottom: 0;
     }
   }
-`;
+`
 
-export default AccountContainer;
+export default AccountContainer

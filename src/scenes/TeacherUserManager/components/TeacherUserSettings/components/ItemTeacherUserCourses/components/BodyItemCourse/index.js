@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import IconRight from 'react-icons/lib/fa/angle-right';
-import IconDown from 'react-icons/lib/fa/angle-down';
-import Form, { Switch } from 'base_components/RootForm';
+import IconRight from 'react-icons/lib/fa/angle-right'
+import IconDown from 'react-icons/lib/fa/angle-down'
+import Form, { Switch } from 'base_components/RootForm'
 
-import './styles.css';
+import './styles.css'
 
 // we will use this for button of a panel
 const ButtonPanel = styled.p`
@@ -21,21 +21,21 @@ const ButtonPanel = styled.p`
   &:hover {
     color: #338ffc;
   }
-`;
+`
 
 // for span icon.
 const SpanIcon = styled.span`
   font-size: 18px;
   font-weight: 800;
   margin-left: 0.3em;
-`;
+`
 
 const BodyItemCourse = styled(({ className, isOpenPanel, onToggle }) => (
   <div className={className}>
     <div>
       <span>Enable / Disable</span>
       <Form>
-        <Switch name="course-switch" />
+        <Switch name='course-switch' />
       </Form>
     </div>
     <ButtonPanel onClick={() => onToggle()}>
@@ -75,11 +75,11 @@ const BodyItemCourse = styled(({ className, isOpenPanel, onToggle }) => (
     justify-content: space-between;
     margin-top: 3em;
   }
-`;
+`
 
 BodyItemCourse.propTypes = {
   onToggle: PropTypes.func.isRequired,
   isOpenPanel: PropTypes.bool.isRequired
-};
+}
 
-export default BodyItemCourse;
+export default BodyItemCourse

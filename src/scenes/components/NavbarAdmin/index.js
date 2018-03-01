@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import withCollapsiblePanel from 'hoc/withCollapsiblePanel';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import withCollapsiblePanel from 'hoc/withCollapsiblePanel'
 
-import ContentNavbarAdmin from './components/ContentNavbarAdmin';
-import ListLinkAdminHorizontal from './components/ListLinkAdminHorizontal';
+import ContentNavbarAdmin from './components/ContentNavbarAdmin'
+import ListLinkAdminHorizontal from './components/ListLinkAdminHorizontal'
 
 // Styled navbar component.
 const Navbar = styled.nav`
@@ -20,18 +20,18 @@ const Navbar = styled.nav`
   @media screen and (min-width: 768px) {
     padding: 14px 35px;
   }
-`;
+`
 
 const NavbarAdmin = ({ onToggle, isOpenPanel }) => (
   <Navbar>
     <ContentNavbarAdmin onToggle={onToggle} />
     <ListLinkAdminHorizontal onToggle={onToggle} isOpenPanel={isOpenPanel} />
   </Navbar>
-);
+)
 
 NavbarAdmin.propTypes = {
   onToggle: PropTypes.func.isRequired,
   isOpenPanel: PropTypes.bool.isRequired
-};
+}
 
-export default withCollapsiblePanel(NavbarAdmin);
+export default withCollapsiblePanel(NavbarAdmin)

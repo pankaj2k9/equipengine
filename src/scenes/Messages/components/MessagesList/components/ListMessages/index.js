@@ -1,13 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import UserAvatar from 'base_components/UserAvatar';
-import avatar from 'resources/images/user.png';
+import UserAvatar from 'base_components/UserAvatar'
+import avatar from 'resources/images/user.png'
 
 // list messages item
 const ListMessagesItem = styled(({ className }) => (
   <li className={className}>
-    <a href="">
+    <a href=''>
       <UserAvatar small image={avatar} />
       <div>
         <div>
@@ -56,7 +56,7 @@ const ListMessagesItem = styled(({ className }) => (
       background: rgba(186, 186, 186, 0.21);
     }
   }
-`;
+`
 
 // List messages component
 const ListMessages = styled(({ className }) => {
@@ -65,12 +65,12 @@ const ListMessages = styled(({ className }) => {
       <ListMessagesItem />
       <ListMessagesItem active />
     </ul>
-  );
+  )
 })`
   @media screen and (max-width: 767px) {
     height: 155px;
     overflow-y: auto;
   }
-`;
+`
 
-export default ListMessages;
+export default ListMessages

@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-import Container from 'base_components/Container';
-import ReportTutorialCompleted from './components/ReportTutorialCompleted';
-import ReportLatestFeedback from './components/ReportLatestFeedback';
-import ReportLatestGroupActivity from './components/ReportLatestGroupActivity';
+import Container from 'base_components/Container'
+import ReportTutorialCompleted from './components/ReportTutorialCompleted'
+import ReportLatestFeedback from './components/ReportLatestFeedback'
+import ReportLatestGroupActivity from './components/ReportLatestGroupActivity'
 
 // Container all the components for report
 const ReportContainer = Container.extend`
@@ -15,7 +15,7 @@ const ReportContainer = Container.extend`
     flex-direction: column;
     width: 40%;
   }
-`;
+`
 
 // for tutorial completed and some reports component
 const ReportDashboard = () => (
@@ -24,6 +24,6 @@ const ReportDashboard = () => (
     <ReportLatestFeedback />
     <ReportLatestGroupActivity />
   </ReportContainer>
-);
+)
 
-export default ReportDashboard;
+export default ReportDashboard

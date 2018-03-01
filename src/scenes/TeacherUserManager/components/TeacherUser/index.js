@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 // this is for the user list.
-import Form, { Text } from 'base_components/RootForm';
-import ListUser from './components/ListUser';
+import Form, { Text } from 'base_components/RootForm'
+import ListUser from './components/ListUser'
 
 const TeacherUser = styled(({ className }) => (
   <div className={className}>
     <Form>
-      <Text name="user-searchbar" placeholder="Search people..." />
+      <Text name='user-searchbar' placeholder='Search people...' />
     </Form>
     <ListUser />
   </div>
@@ -22,6 +22,6 @@ const TeacherUser = styled(({ className }) => (
       margin-top: 25px;
     }
   }
-`;
+`
 
-export default TeacherUser;
+export default TeacherUser

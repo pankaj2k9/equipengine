@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { identical } from 'ramda';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { identical } from 'ramda'
+import styled from 'styled-components'
 //
-import IconUser from 'react-icons/lib/fa/user';
-import LinkButton from 'base_components/LinkButton';
+import IconUser from 'react-icons/lib/fa/user'
+import LinkButton from 'base_components/LinkButton'
 
 // compose button, group button
 /* const GroupButton = Button.extend`
  *   width: 146px;
- * `;*/
+ * `; */
 
 // compose a joined container div that we will use on the joined button.
 const JoinedContainer = styled.div`
@@ -27,7 +27,7 @@ const JoinedContainer = styled.div`
   @media screen and (min-width: 768px) {
     text-align: right;
   }
-`;
+`
 
 // List Item Group
 const ListItemGroup = styled(({ className, group }) => {
@@ -52,20 +52,20 @@ const ListItemGroup = styled(({ className, group }) => {
           */}
         {identical(group.type, 'your-group') ? (
           group.isSelected ? (
-            <LinkButton url="/secure/dashboard" text="View" />
+            <LinkButton url='/secure/dashboard' text='View' />
           ) : (
-            <LinkButton url="/secure/dashboard" text="View" />
+            <LinkButton url='/secure/dashboard' text='View' />
           )
         ) : group.isJoined ? (
           <JoinedContainer>
-            <LinkButton url="/secure/dashboard" text="View" />
+            <LinkButton url='/secure/dashboard' text='View' />
           </JoinedContainer>
         ) : (
-          <LinkButton url="/secure/dashboard" text="View" />
+          <LinkButton url='/secure/dashboard' text='View' />
         )}
       </div>
     </li>
-  );
+  )
 })`
   border-bottom: 1px solid #e2e2e2;
   padding: 2em;
@@ -102,10 +102,10 @@ const ListItemGroup = styled(({ className, group }) => {
       margin-right: 1em;
     }
   }
-`;
+`
 
 ListItemGroup.propTypes = {
   group: PropTypes.object.isRequired
-};
+}
 
-export default ListItemGroup;
+export default ListItemGroup

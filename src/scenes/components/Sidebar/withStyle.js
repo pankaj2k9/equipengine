@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export default WrappedComponent =>
   styled(WrappedComponent)`
@@ -75,4 +75,4 @@ export default WrappedComponent =>
         padding: 25px 35px 17px 35px;
       }
     }
-  `;
+  `

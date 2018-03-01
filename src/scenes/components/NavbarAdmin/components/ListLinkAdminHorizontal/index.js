@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import { LinkHorizontal } from '../LinkNavbarAdmin';
+import { LinkHorizontal } from '../LinkNavbarAdmin'
 
 const ListLinkHorizontal = styled.ul`
   margin-top: 0.8em;
@@ -11,42 +11,42 @@ const ListLinkHorizontal = styled.ul`
   @media screen and (min-width: 768px) {
     display: none;
   }
-`;
+`
 
 const ListLinkAdminHorizontal = ({ isOpenPanel, onToggle }) => (
   <ListLinkHorizontal isOpenPanel={isOpenPanel}>
     <li onClick={onToggle}>
-      <LinkHorizontal activeClassName="active" to="/secure/admin/group-manager">
+      <LinkHorizontal activeClassName='active' to='/secure/admin/group-manager'>
         Group Manager
       </LinkHorizontal>
     </li>
     <li onClick={onToggle}>
       <LinkHorizontal
-        activeClassName="active"
-        to="/secure/admin/course-creator"
+        activeClassName='active'
+        to='/secure/admin/course-creator'
       >
         Course Creator
       </LinkHorizontal>
     </li>
     <li onClick={onToggle}>
-      <LinkHorizontal activeClassName="active" to="/secure/admin/user-manager">
+      <LinkHorizontal activeClassName='active' to='/secure/admin/user-manager'>
         User Manager
       </LinkHorizontal>
     </li>
     <li onClick={onToggle}>
       <LinkHorizontal
-        activeClassName="active"
-        to="/secure/admin/organisation-settings"
+        activeClassName='active'
+        to='/secure/admin/organisation-settings'
       >
         Organisation Settings
       </LinkHorizontal>
     </li>
   </ListLinkHorizontal>
-);
+)
 
 ListLinkAdminHorizontal.propTypes = {
   isOpenPanel: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired
-};
+}
 
-export default ListLinkAdminHorizontal;
+export default ListLinkAdminHorizontal

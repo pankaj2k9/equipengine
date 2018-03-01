@@ -1,48 +1,48 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 // for background color variation
 const backgroundColorVariation = props => {
   if (props.secondary) {
-    return '#d8d8d8';
+    return '#d8d8d8'
   } else if (props.light) {
-    return 'transparent';
+    return 'transparent'
   } else {
-    return '#338ffc';
+    return '#338ffc'
   }
-};
+}
 
 // for color
 const fontColorVariation = props => {
   if (props.secondary) {
-    return '#333333';
+    return '#333333'
   } else if (props.light) {
-    return '#000000';
+    return '#000000'
   } else {
-    return '#ffffff';
+    return '#ffffff'
   }
-};
+}
 
 // when hover, set a background color depending on props given
 const hoverBackgroundColorVariation = props => {
   if (props.secondary) {
-    return '#a2a0a0';
+    return '#a2a0a0'
   } else if (props.light) {
-    return '#e2e2e2';
+    return '#e2e2e2'
   } else {
-    return '#125eb7';
+    return '#125eb7'
   }
-};
+}
 
 // for hover font color variation, depending on the given props.
 const hoverFontColorVariation = props => {
   if (props.secondary) {
-    return '#333333';
+    return '#333333'
   } else if (props.light) {
-    return '#000000';
+    return '#000000'
   } else {
-    return '#ffffff';
+    return '#ffffff'
   }
-};
+}
 
 const RootButton = styled.button`
   background-color: ${backgroundColorVariation};
@@ -63,7 +63,7 @@ const RootButton = styled.button`
     background-color: ${hoverBackgroundColorVariation};
     color: ${hoverFontColorVariation};
   }
-`;
+`
 
 // for button icon
 const ButtonIcon = RootButton.extend`
@@ -72,6 +72,6 @@ const ButtonIcon = RootButton.extend`
     font-size: 1rem;
     margin-left: 0.5em;
   }
-`;
+`
 
-export { RootButton as default, ButtonIcon };
+export { RootButton as default, ButtonIcon }

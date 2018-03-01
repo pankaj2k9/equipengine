@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import Media from 'react-media';
-import ModalBoxVideoInfo from './ModalBoxVideoInfo';
+import Media from 'react-media'
+import ModalBoxVideoInfo from './ModalBoxVideoInfo'
 
 const VideoRunningTime = ({ currentTime }) => {
-  const { infoRunningTime, infoCurrentTime, boxInfo } = videoRunningTimeStyle;
+  const { infoRunningTime, infoCurrentTime, boxInfo } = videoRunningTimeStyle
 
   return (
-    <Media query="(max-width: 767px)">
+    <Media query='(max-width: 767px)'>
       {matches =>
         matches ? (
           <ModalBoxVideoInfo>
@@ -40,8 +40,8 @@ const VideoRunningTime = ({ currentTime }) => {
           </ModalBoxVideoInfo>
         )}
     </Media>
-  );
-};
+  )
+}
 
 const videoRunningTimeStyle = {
   infoRunningTime: {
@@ -68,10 +68,10 @@ const videoRunningTimeStyle = {
       marginBottom: '1.1em'
     }
   }
-};
+}
 
 VideoRunningTime.propTypes = {
   currentTime: PropTypes.string.isRequired
-};
+}
 
-export default VideoRunningTime;
+export default VideoRunningTime

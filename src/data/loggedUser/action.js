@@ -4,8 +4,8 @@ import {
   FAILURE_REQUEST,
   ADD_LOGGED_USER,
   REMOVE_LOGGED_USER
-} from './actionTypes';
-import { fetchUser } from './api';
+} from './actionTypes'
+import { fetchUser } from './api'
 
 // Requests action creators.
 // begin the request, status type - PENDING
@@ -14,14 +14,14 @@ const pending = () => ({
   payload: {
     isPending: true
   }
-});
+})
 // success, status type - SUCCESS
 const success = () => ({
   type: SUCCESS_REQUEST,
   payload: {
     isPending: false
   }
-});
+})
 // failure, status type - failure
 const failure = error => ({
   type: FAILURE_REQUEST,
@@ -29,7 +29,7 @@ const failure = error => ({
     isPending: false,
     error
   }
-});
+})
 
 /**
  * addLoggedUser :: Object -> Object
@@ -43,7 +43,7 @@ const addLoggedUser = loggedUser => ({
   payload: {
     loggedUser
   }
-});
+})
 
 /**
  * loggedUser :: Object -> Function
@@ -54,23 +54,23 @@ const addLoggedUser = loggedUser => ({
  */
 export const loggedUser = account => dispatch => {
   // dispatch pending AC
-  dispatch(pending());
+  dispatch(pending())
   // execute the loggingUser api
   // we can return the promise once the async dispatch function execute.
   return fetchUser(account)
     .then(data => {
       // dispatch success AC
-      dispatch(success());
+      dispatch(success())
       // dispatch addLoggedUser AC
-      dispatch(addLoggedUser(data.user));
-      return data;
+      dispatch(addLoggedUser(data.user))
+      return data
     })
     .catch(err => {
-      dispatch(failure(err));
-      return err;
-    });
-};
+      dispatch(failure(err))
+      return err
+    })
+}
 
 export const removeLoggedUser = () => ({
   type: REMOVE_LOGGED_USER
-});
+})

@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 // base
-import Panel from 'base_components/Panel';
+import Panel from 'base_components/Panel'
 // for list item control.
-import ListControl, { ListItemControl } from 'base_components/ListControl';
-import Button from 'base_components/RootButton';
-import { Label } from 'base_components/RootForm';
+import ListControl, { ListItemControl } from 'base_components/ListControl'
+import Button from 'base_components/RootButton'
+import { Label } from 'base_components/RootForm'
 
 const PanelControlCourse = () => (
   <Panel isFullWidth>
@@ -28,6 +28,6 @@ const PanelControlCourse = () => (
       </ListItemControl>
     </ListControl>
   </Panel>
-);
+)
 
-export default PanelControlCourse;
+export default PanelControlCourse

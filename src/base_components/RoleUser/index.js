@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const RoleUser = styled(({ className, roleUser }) => (
   <div className={className}>
@@ -17,10 +17,10 @@ const RoleUser = styled(({ className, roleUser }) => (
     text-transform: uppercase;
     font-size: 12px;
   }
-`;
+`
 
 RoleUser.propTypes = {
   roleUser: PropTypes.string.isRequired
-};
+}
 
-export default RoleUser;
+export default RoleUser

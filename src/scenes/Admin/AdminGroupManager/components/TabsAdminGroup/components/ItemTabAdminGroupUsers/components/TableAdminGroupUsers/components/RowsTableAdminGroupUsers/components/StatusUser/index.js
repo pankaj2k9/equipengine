@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 // base components
-import StatusCircle from 'base_components/StatusCircle';
+import StatusCircle from 'base_components/StatusCircle'
 
 const StatusUser = styled(({ className, isActive }) => (
   <div className={className}>
@@ -17,10 +17,10 @@ const StatusUser = styled(({ className, isActive }) => (
     margin-left: 0.3em;
     text-transform: uppercase;
   }
-`;
+`
 
 StatusUser.propTypes = {
   isActive: PropTypes.bool.isRequired
-};
+}
 
-export default StatusUser;
+export default StatusUser

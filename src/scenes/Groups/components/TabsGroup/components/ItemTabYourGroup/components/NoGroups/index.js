@@ -1,15 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import InformationText from 'base_components/InformationText';
-import Button from 'base_components/RootButton';
+import InformationText from 'base_components/InformationText'
+import Button from 'base_components/RootButton'
 
 // for view group button
 const ViewGroupButton = Button.extend`
   display: block;
   margin: 0 auto 3em auto;
   width: 195px;
-`;
+`
 
 const NoGroups = styled(({ className }) => (
   <div className={className}>
@@ -20,7 +20,7 @@ const NoGroups = styled(({ className }) => (
       administrator about joining a private group.
     </p>
     <ViewGroupButton>View Public Groups</ViewGroupButton>
-    <InformationText to="/learn-groups" text="Learn more about groups" />
+    <InformationText to='/learn-groups' text='Learn more about groups' />
   </div>
 ))`
   margin-top: 3.5em;
@@ -43,6 +43,6 @@ const NoGroups = styled(({ className }) => (
   @media screen and (min-width: 768px) {
     margin-top: 5em;
   }
-`;
+`
 
-export default NoGroups;
+export default NoGroups

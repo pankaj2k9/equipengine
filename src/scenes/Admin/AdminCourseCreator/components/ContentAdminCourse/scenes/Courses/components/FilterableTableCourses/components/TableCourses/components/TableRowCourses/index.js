@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import IconUser from 'react-icons/lib/fa/user';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import IconUser from 'react-icons/lib/fa/user'
 //
-import { TableRow, Td } from 'base_components/Tables';
-import LinkButton from 'base_components/LinkButton';
-import ContainerFlex from 'base_components/ContainerFlex';
+import { TableRow, Td } from 'base_components/Tables'
+import LinkButton from 'base_components/LinkButton'
+import ContainerFlex from 'base_components/ContainerFlex'
 
 // Table data for name column
 const TableDataName = styled.td`
@@ -19,7 +19,7 @@ const TableDataName = styled.td`
     max-width: 350px;
     display: inline-block;
   }
-`;
+`
 
 // container for active user
 const ContainerActiveUser = ContainerFlex.extend`
@@ -29,12 +29,12 @@ const ContainerActiveUser = ContainerFlex.extend`
     color: #9fa6ad;
     margin-right: 0.3em;
   }
-`;
+`
 
 // for text
 const Text = styled.span`
   font-size: 16px;
-`;
+`
 
 const TableRowCourses = ({ match }) => (
   <tbody>
@@ -63,7 +63,7 @@ const TableRowCourses = ({ match }) => (
       <Td>
         <LinkButton
           url={`${match.url}/communication-and-culture`}
-          text="Details"
+          text='Details'
         />
       </Td>
     </TableRow>
@@ -90,14 +90,14 @@ const TableRowCourses = ({ match }) => (
         <Text>5</Text>
       </Td>
       <Td>
-        <LinkButton url={`${match.url}/language-and-culture`} text="Details" />
+        <LinkButton url={`${match.url}/language-and-culture`} text='Details' />
       </Td>
     </TableRow>
   </tbody>
-);
+)
 
 TableRowCourses.propTypes = {
   match: PropTypes.object.isRequired
-};
+}
 
-export default TableRowCourses;
+export default TableRowCourses

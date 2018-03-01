@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Media from 'react-media';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Media from 'react-media'
 
-import ModalBox from './ModalBox';
-import ModalButton from './ModalButton';
-import closeSrc from '../close-button.svg';
+import ModalBox from './ModalBox'
+import ModalButton from './ModalButton'
+import closeSrc from '../close-button.svg'
 
 const ModalHeader = ({ handleCloseModal }) => {
   return (
-    <Media query="(max-width: 767px)">
+    <Media query='(max-width: 767px)'>
       {matches =>
         matches ? (
           <ModalBox
@@ -25,8 +25,8 @@ const ModalHeader = ({ handleCloseModal }) => {
               }}
             >
               <img
-                className="ModalButtonClose"
-                alt="ButtonClose"
+                className='ModalButtonClose'
+                alt='ButtonClose'
                 src={closeSrc}
                 style={{ height: 15 }}
               />
@@ -47,8 +47,8 @@ const ModalHeader = ({ handleCloseModal }) => {
               }}
             >
               <img
-                className="ModalButtonClose"
-                alt="ButtonClose"
+                className='ModalButtonClose'
+                alt='ButtonClose'
                 src={closeSrc}
                 style={{ height: 15 }}
               />
@@ -56,11 +56,11 @@ const ModalHeader = ({ handleCloseModal }) => {
           </ModalBox>
         )}
     </Media>
-  );
-};
+  )
+}
 
 ModalHeader.propTypes = {
   handleCloseModal: PropTypes.func.isRequired
-};
+}
 
-export default ModalHeader;
+export default ModalHeader

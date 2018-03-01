@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import UserAvatar from 'base_components/UserAvatar';
+import UserAvatar from 'base_components/UserAvatar'
 
 const HasDiscussions = styled(({ className, discussions }) => {
   // creating list of dicussion list
@@ -19,8 +19,8 @@ const HasDiscussions = styled(({ className, discussions }) => {
         <span>{item.date.time}</span>
       </div>
     </li>
-  ));
-  return <ul className={className}>{listDiscussions}</ul>;
+  ))
+  return <ul className={className}>{listDiscussions}</ul>
 })`
   li {
     display: flex;
@@ -61,12 +61,12 @@ const HasDiscussions = styled(({ className, discussions }) => {
       }
     }
   }
-`;
+`
 
 const ListDiscussion = ({ discussions }) => {
   // if there are discussions
   if (discussions.length) {
-    return <HasDiscussions discussions={discussions} />;
+    return <HasDiscussions discussions={discussions} />
   }
   // no discussions
   return (
@@ -78,11 +78,11 @@ const ListDiscussion = ({ discussions }) => {
     >
       No discussion to show
     </p>
-  );
-};
+  )
+}
 
 ListDiscussion.propTypes = {
   discussions: PropTypes.array.isRequired
-};
+}
 
-export default ListDiscussion;
+export default ListDiscussion

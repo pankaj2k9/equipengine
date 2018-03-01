@@ -1,22 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import FormGroup from './components/FormGroup';
-import Label from './components/Label';
-import Text from './components/Text';
-import TextArea from './components/TextArea';
+import FormGroup from './components/FormGroup'
+import Label from './components/Label'
+import Text from './components/Text'
+import TextArea from './components/TextArea'
 import {
   Checkbox,
   CheckboxCircle,
   CheckboxCircleSecondary
-} from './components/Checkbox';
-import Switch from './components/Switch';
+} from './components/Checkbox'
+import Switch from './components/Switch'
 
 const RootForm = ({ children, className }) => (
-  <form className={className} action="">
+  <form className={className} action=''>
     {children}
   </form>
-);
+)
 
 RootForm.propTypes = {
   children: PropTypes.oneOfType([
@@ -24,7 +24,7 @@ RootForm.propTypes = {
     PropTypes.arrayOf(PropTypes.element)
   ]),
   className: PropTypes.string
-};
+}
 
 export {
   RootForm as default,
@@ -36,4 +36,4 @@ export {
   Switch,
   Label,
   FormGroup
-};
+}

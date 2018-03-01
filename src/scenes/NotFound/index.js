@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import Box from 'base_components/Box';
+import Box from 'base_components/Box'
 
 const NotFound = () => {
   return (
@@ -18,7 +18,7 @@ const NotFound = () => {
         dapibus.
       </p>
     </Box>
-  );
-};
+  )
+}
 
-export default NotFound;
+export default NotFound

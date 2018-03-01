@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import TutorialQuestionsGroup from './components/TutorialQuestionsGroup';
-import TutorialQuizGroup from './components/TutorialQuizGroup';
-import TutorialReadingGroup from './components/TutorialReadingGroup';
+import TutorialQuestionsGroup from './components/TutorialQuestionsGroup'
+import TutorialQuizGroup from './components/TutorialQuizGroup'
+import TutorialReadingGroup from './components/TutorialReadingGroup'
 
 const ItemTutorialTaskGroup = () => {
   return (
@@ -11,7 +11,7 @@ const ItemTutorialTaskGroup = () => {
       <TutorialReadingGroup />
       <TutorialQuizGroup />
     </ul>
-  );
-};
+  )
+}
 
-export default ItemTutorialTaskGroup;
+export default ItemTutorialTaskGroup

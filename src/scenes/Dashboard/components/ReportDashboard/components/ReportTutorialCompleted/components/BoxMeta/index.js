@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const BoxMeta = styled(({ className, spanFirst, spanLast }) => (
   <div className={className}>
@@ -32,11 +32,11 @@ const BoxMeta = styled(({ className, spanFirst, spanLast }) => (
       margin: 0;
     }
   }
-`;
+`
 
 BoxMeta.propTypes = {
   spanFirst: PropTypes.string.isRequired,
   spanLast: PropTypes.string.isRequired
-};
+}
 
-export default BoxMeta;
+export default BoxMeta

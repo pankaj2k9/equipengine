@@ -1,15 +1,15 @@
-import React from 'react';
-import Media from 'react-media';
+import React from 'react'
+import Media from 'react-media'
 
-import TutorialInfo from './components/TutorialInfo';
-import TutorialTask from './components/TutorialTask';
+import TutorialInfo from './components/TutorialInfo'
+import TutorialTask from './components/TutorialTask'
 
 const ModalBody = () => {
   return (
-    <Media query="(max-width: 767px)">
+    <Media query='(max-width: 767px)'>
       {matches =>
         matches ? (
-          <div style={modalBodyStyle} className="ModalBody">
+          <div style={modalBodyStyle} className='ModalBody'>
             <TutorialInfo />
             <TutorialTask />
           </div>
@@ -19,15 +19,15 @@ const ModalBody = () => {
               ...modalBodyStyle,
               ...modalBodyStyle.desktopViewport
             }}
-            className="ModalBody"
+            className='ModalBody'
           >
             <TutorialInfo />
             <TutorialTask />
           </div>
         )}
     </Media>
-  );
-};
+  )
+}
 
 const modalBodyStyle = {
   display: 'flex',
@@ -38,6 +38,6 @@ const modalBodyStyle = {
   desktopViewport: {
     flexDirection: 'row'
   }
-};
+}
 
-export default ModalBody;
+export default ModalBody

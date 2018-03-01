@@ -1,4 +1,4 @@
-import Button from 'base_components/RootButton';
+import Button from 'base_components/RootButton'
 
 export default Button.extend`
   margin-top: 3em;
@@ -6,4 +6,4 @@ export default Button.extend`
   @media screen and (min-width: 768px) {
     margin-bottom: 5em;
   }
-`;
+`

@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import HeaderDashboard from './components/HeaderDashboard';
-import BodyDashboard from './components/BodyDashboard';
+import HeaderDashboard from './components/HeaderDashboard'
+import BodyDashboard from './components/BodyDashboard'
 
 const ContainerNoticeboard = styled.div`
   border-right: 1px solid #dadada;
@@ -10,7 +10,7 @@ const ContainerNoticeboard = styled.div`
   @media screen and (min-width: 768px) {
     width: 60%;
   }
-`;
+`
 
 // noticeboard component.
 const NoticeboardDashboard = () => (
@@ -18,6 +18,6 @@ const NoticeboardDashboard = () => (
     <HeaderDashboard />
     <BodyDashboard />
   </ContainerNoticeboard>
-);
+)
 
-export default NoticeboardDashboard;
+export default NoticeboardDashboard

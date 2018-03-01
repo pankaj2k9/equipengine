@@ -1,28 +1,28 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 // base
-import Panel from 'base_components/Panel';
-import ContainerFlexCourses from '../ContainerFlexCourses';
-import { Switch } from 'base_components/RootForm';
-import Dropdown from 'base_components/Dropdown';
-import { MenuItem } from 'react-bootstrap';
+import Panel from 'base_components/Panel'
+import ContainerFlexCourses from '../ContainerFlexCourses'
+import { Switch } from 'base_components/RootForm'
+import Dropdown from 'base_components/Dropdown'
+import { MenuItem } from 'react-bootstrap'
 
 const PanelCourseRules = styled(({ className }) => (
-  <Panel isFullWidth className={className} title="Course Rules">
-    <ContainerFlexCourses isSpaceBetween className="PanelCourseRules__switch">
+  <Panel isFullWidth className={className} title='Course Rules'>
+    <ContainerFlexCourses isSpaceBetween className='PanelCourseRules__switch'>
       <span>
         Users must complete another course before this one is available.
       </span>
-      <Switch name="course-rules" />
+      <Switch name='course-rules' />
     </ContainerFlexCourses>
-    <ContainerFlexCourses isSpaceBetween className="PanelCourseRules__dropdown">
+    <ContainerFlexCourses isSpaceBetween className='PanelCourseRules__dropdown'>
       <span>Course to be completed before:</span>
-      <Dropdown title="Select Course" id="dropdown-size-medium">
-        <MenuItem eventKey="1">Action</MenuItem>
-        <MenuItem eventKey="2">Another action</MenuItem>
-        <MenuItem eventKey="3">Something else here</MenuItem>
+      <Dropdown title='Select Course' id='dropdown-size-medium'>
+        <MenuItem eventKey='1'>Action</MenuItem>
+        <MenuItem eventKey='2'>Another action</MenuItem>
+        <MenuItem eventKey='3'>Something else here</MenuItem>
         <MenuItem divider />
-        <MenuItem eventKey="4">Separated link</MenuItem>
+        <MenuItem eventKey='4'>Separated link</MenuItem>
       </Dropdown>
     </ContainerFlexCourses>
   </Panel>
@@ -67,6 +67,6 @@ const PanelCourseRules = styled(({ className }) => (
       position: relative;
     }
   }
-`;
+`
 
-export default PanelCourseRules;
+export default PanelCourseRules

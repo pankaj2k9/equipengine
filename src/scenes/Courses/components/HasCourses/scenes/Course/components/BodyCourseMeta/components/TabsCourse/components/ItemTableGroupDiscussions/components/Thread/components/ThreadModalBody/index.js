@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import ModalBody from 'react-bootstrap/lib/ModalBody';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import ModalBody from 'react-bootstrap/lib/ModalBody'
 
-import UserAvatar from 'base_components/UserAvatar';
+import UserAvatar from 'base_components/UserAvatar'
 
 const ListRow = styled.li`
   padding: 1em 0;
@@ -32,7 +32,7 @@ const ListRow = styled.li`
       }
     }
   }
-`;
+`
 
 const ThreadModalBody = styled(({ className, thread }) => {
   const commentList = thread.comments.map(comment => (
@@ -47,7 +47,7 @@ const ThreadModalBody = styled(({ className, thread }) => {
         <p>{comment.comment}</p>
       </div>
     </ListRow>
-  ));
+  ))
   return (
     <ModalBody className={className}>
       <div>
@@ -59,7 +59,7 @@ const ThreadModalBody = styled(({ className, thread }) => {
         <ul>{commentList}</ul>
       </div>
     </ModalBody>
-  );
+  )
 })`
   > div {
     max-width: 774px;
@@ -86,10 +86,10 @@ const ThreadModalBody = styled(({ className, thread }) => {
       max-width: 493px;
     }
   }
-`;
+`
 
 ThreadModalBody.propTypes = {
   thread: PropTypes.object.isRequired
-};
+}
 
-export default ThreadModalBody;
+export default ThreadModalBody

@@ -1,17 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import UserAvatar from 'base_components/UserAvatar';
-import iconUser from 'resources/images/user.png';
-import Form, { Text } from 'base_components/RootForm';
-import DateTime from 'base_components/DateTime';
+import UserAvatar from 'base_components/UserAvatar'
+import iconUser from 'resources/images/user.png'
+import Form, { Text } from 'base_components/RootForm'
+import DateTime from 'base_components/DateTime'
 
 const ItemNotice = styled(({ className }) => (
   <li className={className}>
     <div>
       <UserAvatar image={iconUser} />
       <span>Jon Mccall</span>
-      <DateTime date="22 Sep" time="2:00pm" />
+      <DateTime date='22 Sep' time='2:00pm' />
     </div>
     <div>
       <p>
@@ -19,7 +19,7 @@ const ItemNotice = styled(({ className }) => (
         weeks event. Anyone that can make it is welcome.
       </p>
       <Form>
-        <Text name="comment" placeholder="Comment..." />
+        <Text name='comment' placeholder='Comment...' />
       </Form>
     </div>
   </li>
@@ -42,7 +42,7 @@ const ItemNotice = styled(({ className }) => (
   p {
     color: #000000;
   }
-`;
+`
 
 // ListNotice component.
 const ListNotice = () => (
@@ -50,6 +50,6 @@ const ListNotice = () => (
     <ItemNotice />
     <ItemNotice />
   </ul>
-);
+)
 
-export default ListNotice;
+export default ListNotice

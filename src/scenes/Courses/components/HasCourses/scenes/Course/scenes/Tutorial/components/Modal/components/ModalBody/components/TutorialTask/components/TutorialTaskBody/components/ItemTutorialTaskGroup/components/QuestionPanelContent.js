@@ -1,30 +1,30 @@
-import React from 'react';
+import React from 'react'
 
-import Button from 'base_components/Button';
-import UserAvatar from 'base_components/UserAvatar';
-import avatarSrc from 'resources/images/user.png';
-import iconOpenSrc from './open-file.svg';
+import Button from 'base_components/Button'
+import UserAvatar from 'base_components/UserAvatar'
+import avatarSrc from 'resources/images/user.png'
+import iconOpenSrc from './open-file.svg'
 
 const QuestionPanelContent = () => {
-  const { container, form } = questionPanelContentStyle;
+  const { container, form } = questionPanelContentStyle
   return (
-    <div style={container} className="PanelContent">
+    <div style={container} className='PanelContent'>
       <UserAvatar image={avatarSrc} />
-      <form style={form} action="">
+      <form style={form} action=''>
         <input
           style={form.input}
-          type="text"
-          name="quesstion"
-          placeholder="Write your answer"
+          type='text'
+          name='quesstion'
+          placeholder='Write your answer'
         />
         <div style={form.div}>
-          <img style={form.div.icon} alt="Open doc icon" src={iconOpenSrc} />
-          <Button text="Submit" />
+          <img style={form.div.icon} alt='Open doc icon' src={iconOpenSrc} />
+          <Button text='Submit' />
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
 const questionPanelContentStyle = {
   container: {
@@ -51,6 +51,6 @@ const questionPanelContentStyle = {
       }
     }
   }
-};
+}
 
-export default QuestionPanelContent;
+export default QuestionPanelContent

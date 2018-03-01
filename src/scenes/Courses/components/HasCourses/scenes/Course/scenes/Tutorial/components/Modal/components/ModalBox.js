@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Media from 'react-media';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Media from 'react-media'
 
-import Box from 'base_components/Box';
+import Box from 'base_components/Box'
 
 const ModalBox = ({ className, children, style }) => (
-  <Media query="(max-width: 767px)">
+  <Media query='(max-width: 767px)'>
     {matches =>
       matches ? (
         <Box
@@ -31,7 +31,7 @@ const ModalBox = ({ className, children, style }) => (
         </Box>
       )}
   </Media>
-);
+)
 
 ModalBox.propTypes = {
   children: PropTypes.oneOfType([
@@ -40,6 +40,6 @@ ModalBox.propTypes = {
   ]).isRequired,
   style: PropTypes.object,
   className: PropTypes.string
-};
+}
 
-export default ModalBox;
+export default ModalBox

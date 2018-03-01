@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export default styled.h3`
   color: #000000;
@@ -9,4 +9,4 @@ export default styled.h3`
   @media screen and (min-width: 768px) {
     margin-bottom: 1.4em;
   }
-`;
+`

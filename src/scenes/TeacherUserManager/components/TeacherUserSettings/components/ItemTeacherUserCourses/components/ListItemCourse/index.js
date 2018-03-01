@@ -1,17 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 // Sub-components
-import HeaderItemCourse from '../HeaderItemCourse';
-import BodyItemCourse from '../BodyItemCourse';
-import CollapsiblePanelItemCourse from '../CollapsiblePanelItemCourse';
-import withCollapsiblePanel from 'hoc/withCollapsiblePanel';
-import IconMenu from 'react-icons/lib/fa/align-justify';
+import HeaderItemCourse from '../HeaderItemCourse'
+import BodyItemCourse from '../BodyItemCourse'
+import CollapsiblePanelItemCourse from '../CollapsiblePanelItemCourse'
+import withCollapsiblePanel from 'hoc/withCollapsiblePanel'
+import IconMenu from 'react-icons/lib/fa/align-justify'
 
 // container that will hold the info course
 const ContainerInfoCourse = styled.div`
   width: 95%;
-`;
+`
 
 // the menu buton
 const MenuButton = styled.span`
@@ -21,7 +21,7 @@ const MenuButton = styled.span`
     display: inline;
     color: #e3e3e3;
   }
-`;
+`
 
 // this is the shape of the list item course.
 const ListItemCourse = ({className, isOpenPanel, onToggle}) => (
@@ -37,12 +37,12 @@ const ListItemCourse = ({className, isOpenPanel, onToggle}) => (
     </div>
     <CollapsiblePanelItemCourse isOpenPanel={isOpenPanel} />
   </li>
-);
+)
 
 ListItemCourse.propTypes = {
   isOpenPanel: PropTypes.bool.isRequired,
   onToggle: PropTypes.func.isRequired
-};
+}
 
 // we will make the ListItemCourse as a styled component
 const StyledListItemCourse = styled(ListItemCourse)`
@@ -75,6 +75,6 @@ const StyledListItemCourse = styled(ListItemCourse)`
       }
     }
   }
-`;
+`
 
-export default withCollapsiblePanel(StyledListItemCourse);
+export default withCollapsiblePanel(StyledListItemCourse)

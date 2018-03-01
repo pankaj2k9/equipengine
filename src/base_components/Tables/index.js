@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Table } from 'react-bootstrap';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import { Table } from 'react-bootstrap'
 
-import TableRow from './components/TableRow';
-import Td from './components/Td';
-import Th from './components/Th';
+import TableRow from './components/TableRow'
+import Td from './components/Td'
+import Th from './components/Th'
 
 // TODO -> turn the sub components into styled component.
 const Tables = styled(({ children, className }) => (
@@ -38,11 +38,11 @@ const Tables = styled(({ children, className }) => (
     vertical-align: middle;
     color: #111111;
   }
-`;
+`
 
 Tables.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
   className: PropTypes.string
-};
+}
 
-export { Tables as default, TableRow, Th, Td };
+export { Tables as default, TableRow, Th, Td }

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export default styled.header`
   padding: 2%;
@@ -12,4 +12,4 @@ export default styled.header`
   @media screen and (min-width: 768px) {
     padding: 16px 35px;
   }
-`;
+`

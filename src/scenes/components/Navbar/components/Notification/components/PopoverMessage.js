@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import IconMessage from 'react-icons/lib/fa/envelope';
-import Popover from 'base_components/Popover';
+import IconMessage from 'react-icons/lib/fa/envelope'
+import Popover from 'base_components/Popover'
 
 const PopoverMessage = ({ MessageRowData }) => {
   return (
@@ -14,11 +14,11 @@ const PopoverMessage = ({ MessageRowData }) => {
       popoverContentElement={<MessageRowData />}
       dataCount={12}
     />
-  );
-};
+  )
+}
 
 PopoverMessage.propTypes = {
   MessageRowData: PropTypes.func.isRequired
-};
+}
 
-export default PopoverMessage;
+export default PopoverMessage

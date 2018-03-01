@@ -1,27 +1,27 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 // base
-import Panel from 'base_components/Panel';
-import { Label, Switch } from 'base_components/RootForm';
-import ContainerFlexCourses from '../ContainerFlexCourses';
+import Panel from 'base_components/Panel'
+import { Label, Switch } from 'base_components/RootForm'
+import ContainerFlexCourses from '../ContainerFlexCourses'
 
 const PanelFeatures = styled(({ className }) => (
-  <Panel title="Features" isFullWidth className={className}>
+  <Panel title='Features' isFullWidth className={className}>
     <ContainerFlexCourses isSpaceBetween>
       <Label>Reporting system</Label>
-      <Switch name="reporting-system" />
+      <Switch name='reporting-system' />
     </ContainerFlexCourses>
     <ContainerFlexCourses isSpaceBetween>
       <Label>Course Files Page</Label>
-      <Switch name="course-file" />
+      <Switch name='course-file' />
     </ContainerFlexCourses>
     <ContainerFlexCourses isSpaceBetween>
       <Label>Course Discussion Page</Label>
-      <Switch name="course-discussion" />
+      <Switch name='course-discussion' />
     </ContainerFlexCourses>
     <ContainerFlexCourses isSpaceBetween>
       <Label>Students can post new content</Label>
-      <Switch name="student-post" />
+      <Switch name='student-post' />
     </ContainerFlexCourses>
   </Panel>
 ))`
@@ -36,6 +36,6 @@ const PanelFeatures = styled(({ className }) => (
       width: 130px;
     }
   }
-`;
+`
 
-export default PanelFeatures;
+export default PanelFeatures

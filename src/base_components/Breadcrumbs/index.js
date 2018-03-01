@@ -1,14 +1,14 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Breadcrumbs as RootBreadcrumbs } from 'react-breadcrumbs-dynamic/dist/src';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { Breadcrumbs as RootBreadcrumbs } from 'react-breadcrumbs-dynamic/dist/src'
 
-import './styles.css';
+import './styles.css'
 
 const Breadcrumbs = () => {
   return (
-    <div className="Breadcrumbs">
+    <div className='Breadcrumbs'>
       <RootBreadcrumbs
-        separator={<span className="Breadcrumbs__separator"> > </span>}
+        separator={<span className='Breadcrumbs__separator'> > </span>}
         item={NavLink}
         finalItem={'span'}
         finalProps={{
@@ -16,7 +16,7 @@ const Breadcrumbs = () => {
         }}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Breadcrumbs;
+export default Breadcrumbs

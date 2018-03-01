@@ -1,22 +1,22 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import IconArrowBack from 'react-icons/lib/md/arrow-back';
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import IconArrowBack from 'react-icons/lib/md/arrow-back'
 
-import ListLinkAdminVertical from '../ListLinkAdminVertical';
-import logo from 'resources/images/logo.svg';
-import IconBurger from 'react-icons/lib/fa/align-justify';
+import ListLinkAdminVertical from '../ListLinkAdminVertical'
+import logo from 'resources/images/logo.svg'
+import IconBurger from 'react-icons/lib/fa/align-justify'
 
 // Content navbar admin
 const ContentNavbarAdmin = styled(({ className, onToggle }) => (
   <div className={className}>
     <div>
-      <Link to="/secure/admin/group-manager">
-        <img alt="Logo" src={logo} />
+      <Link to='/secure/admin/group-manager'>
+        <img alt='Logo' src={logo} />
       </Link>
       <ListLinkAdminVertical />
     </div>
-    <Link to="/secure/admin/group-manager">
+    <Link to='/secure/admin/group-manager'>
       <span>
         <IconArrowBack />
       </span>
@@ -75,6 +75,6 @@ const ContentNavbarAdmin = styled(({ className, onToggle }) => (
       display: none;
     }
   }
-`;
+`
 
-export default ContentNavbarAdmin;
+export default ContentNavbarAdmin

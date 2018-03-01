@@ -1,29 +1,29 @@
-import React from 'react';
-import Media from 'react-media';
+import React from 'react'
+import Media from 'react-media'
 
-import Form from 'base_components/Form';
-import ModalBox from '../../../../../ModalBox.js';
+import Form from 'base_components/Form'
+import ModalBox from '../../../../../ModalBox.js'
 // icon on things to do list
-import questionsSrc from './question.svg';
-import assignmentSrc from './assignment.svg';
-import mediaSrc from './media.svg';
-import quizSrc from './quiz.svg';
+import questionsSrc from './question.svg'
+import assignmentSrc from './assignment.svg'
+import mediaSrc from './media.svg'
+import quizSrc from './quiz.svg'
 
 const TutorialThingsToDo = () => (
   <ModalBox
     style={thingsToDoStyle.container}
-    className="TutorialInfo__thingsToDo"
+    className='TutorialInfo__thingsToDo'
   >
     <header>
       <h5 style={thingsToDoStyle.headline}>Things to do</h5>
     </header>
-    <Media query="(max-width: 767px)">
+    <Media query='(max-width: 767px)'>
       {matches =>
         matches ? (
           <ul style={thingsToDoStyle.list}>
             <li style={thingsToDoStyle.list.row}>
               <img
-                alt="Questions img"
+                alt='Questions img'
                 src={questionsSrc}
                 style={thingsToDoStyle.list.row.img}
               />
@@ -31,7 +31,7 @@ const TutorialThingsToDo = () => (
             </li>
             <li style={thingsToDoStyle.list.row}>
               <img
-                alt="Assignment img"
+                alt='Assignment img'
                 src={assignmentSrc}
                 style={thingsToDoStyle.list.row.img}
               />
@@ -39,7 +39,7 @@ const TutorialThingsToDo = () => (
             </li>
             <li style={thingsToDoStyle.list.row}>
               <img
-                alt="Media img"
+                alt='Media img'
                 src={mediaSrc}
                 style={thingsToDoStyle.list.row.img}
               />
@@ -47,7 +47,7 @@ const TutorialThingsToDo = () => (
             </li>
             <li style={thingsToDoStyle.list.row}>
               <img
-                alt="Quiz img"
+                alt='Quiz img'
                 src={quizSrc}
                 style={thingsToDoStyle.list.row.img}
               />
@@ -58,7 +58,7 @@ const TutorialThingsToDo = () => (
           <ul style={thingsToDoStyle.list}>
             <li style={thingsToDoStyle.list.rowOnBiggerView}>
               <img
-                alt="Questions img"
+                alt='Questions img'
                 src={questionsSrc}
                 style={thingsToDoStyle.list.row.img}
               />
@@ -66,7 +66,7 @@ const TutorialThingsToDo = () => (
             </li>
             <li style={thingsToDoStyle.list.rowOnBiggerView}>
               <img
-                alt="Assignment img"
+                alt='Assignment img'
                 src={assignmentSrc}
                 style={thingsToDoStyle.list.row.img}
               />
@@ -74,7 +74,7 @@ const TutorialThingsToDo = () => (
             </li>
             <li style={thingsToDoStyle.list.rowOnBiggerView}>
               <img
-                alt="Media img"
+                alt='Media img'
                 src={mediaSrc}
                 style={thingsToDoStyle.list.row.img}
               />
@@ -82,7 +82,7 @@ const TutorialThingsToDo = () => (
             </li>
             <li style={thingsToDoStyle.list.rowOnBiggerView}>
               <img
-                alt="Quiz img"
+                alt='Quiz img'
                 src={quizSrc}
                 style={thingsToDoStyle.list.row.img}
               />
@@ -100,7 +100,7 @@ const TutorialThingsToDo = () => (
       </div>
     </footer>
   </ModalBox>
-);
+)
 
 const thingsToDoStyle = {
   container: {
@@ -145,6 +145,6 @@ const thingsToDoStyle = {
       color: '#4e4e4e'
     }
   }
-};
+}
 
-export default TutorialThingsToDo;
+export default TutorialThingsToDo

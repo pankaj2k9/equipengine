@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import SearchbarButtonFilter from './components/SearchbarButtonFilter';
-import SearchbarDropdownCourse from './components/SearchbarDropdownCourse';
-import SearchbarDropdownLesson from './components/SearchbarDropdownLesson';
-import SearchbarForm from './components/SearchbarForm';
-import { $borderLightColor } from 'shared/color';
+import SearchbarButtonFilter from './components/SearchbarButtonFilter'
+import SearchbarDropdownCourse from './components/SearchbarDropdownCourse'
+import SearchbarDropdownLesson from './components/SearchbarDropdownLesson'
+import SearchbarForm from './components/SearchbarForm'
+import { $borderLightColor } from 'shared/color'
 
 // creating styled component for searchbar container
 const SearchbarTable = styled.div`
@@ -19,14 +19,14 @@ const SearchbarTable = styled.div`
     display: flex;
     align-items: center;
   }
-`;
+`
 
 SearchbarTable.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element)
   ]).isRequired
-};
+}
 
 export {
   SearchbarTable as default,
@@ -34,4 +34,4 @@ export {
   SearchbarDropdownCourse,
   SearchbarDropdownLesson,
   SearchbarForm
-};
+}

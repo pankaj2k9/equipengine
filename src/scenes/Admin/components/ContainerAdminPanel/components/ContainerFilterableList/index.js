@@ -1,4 +1,4 @@
-import Container from 'base_components/Container';
+import Container from 'base_components/Container'
 
 const ContainerFilterableList = Container.extend`
   padding: 1% 2%;
@@ -12,7 +12,7 @@ const ContainerFilterableList = Container.extend`
     width: 45%;
     border-right: 1px solid #dadada;
   }
-`;
+`
 
 const ContainerSearchbarList = Container.extend`
   display: flex;
@@ -45,6 +45,6 @@ const ContainerSearchbarList = Container.extend`
       width: 126px;
     }
   }
-`;
+`
 
-export { ContainerFilterableList as default, ContainerSearchbarList };
+export { ContainerFilterableList as default, ContainerSearchbarList }

@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import TableData from './components/TableData';
-import TableDataPosted from './components/TableDataPosted';
-import TableDataActivity from './components/TableDataActivity';
-import Tables, { TableRow } from 'base_components/Tables';
+import TableData from './components/TableData'
+import TableDataPosted from './components/TableDataPosted'
+import TableDataActivity from './components/TableDataActivity'
+import Tables, { TableRow } from 'base_components/Tables'
 
 const TableDiscussions = ({ discussions }) => {
   const discussionRows = discussions.map(item => (
@@ -14,7 +14,7 @@ const TableDiscussions = ({ discussions }) => {
       <TableData>{item.comments.length}</TableData>
       <TableDataActivity activity={item.activities[0]} />
     </TableRow>
-  ));
+  ))
 
   return (
     <Tables>
@@ -28,11 +28,11 @@ const TableDiscussions = ({ discussions }) => {
       </thead>
       <tbody>{discussionRows}</tbody>
     </Tables>
-  );
-};
+  )
+}
 
 TableDiscussions.propTypes = {
   discussions: PropTypes.array.isRequired
-};
+}
 
-export default TableDiscussions;
+export default TableDiscussions

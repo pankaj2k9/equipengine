@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 //
-import ContainerFlex from 'base_components/ContainerFlex';
-import IconCaretLeft from 'react-icons/lib/fa/caret-left';
-import IconCaretRight from 'react-icons/lib/fa/caret-right';
+import ContainerFlex from 'base_components/ContainerFlex'
+import IconCaretLeft from 'react-icons/lib/fa/caret-left'
+import IconCaretRight from 'react-icons/lib/fa/caret-right'
 
 const ContainerSpinner = ContainerFlex.extend`
   width: 98px;
@@ -13,20 +13,20 @@ const ContainerSpinner = ContainerFlex.extend`
   border-radius: 3px;
   padding: 6px 12px;
   color: #000000;
-`;
+`
 
 const ButtonSpinner = styled.button`
   border: 0;
   background: transparent;
   padding: 0;
   cursor: pointer;
-`;
+`
 
 const TextSpinner = styled.input`
   width: 46px;
   border: 0;
   text-align: center;
-`;
+`
 
 const SpinnerUI = ({
   onDecrementCounter,
@@ -41,8 +41,8 @@ const SpinnerUI = ({
       </i>
     </ButtonSpinner>
     <TextSpinner
-      name="counter"
-      type="text"
+      name='counter'
+      type='text'
       onChange={onHandleChange}
       value={count}
     />
@@ -52,13 +52,13 @@ const SpinnerUI = ({
       </i>
     </ButtonSpinner>
   </ContainerSpinner>
-);
+)
 
 SpinnerUI.propTypes = {
-  /* count: PropTypes.number.isRequired,*/
+  /* count: PropTypes.number.isRequired, */
   onIncrementCounter: PropTypes.func.isRequired,
   onDecrementCounter: PropTypes.func.isRequired,
   onHandleChange: PropTypes.func.isRequired
-};
+}
 
-export default SpinnerUI;
+export default SpinnerUI

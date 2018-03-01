@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 // for checkbox
 const Checkbox = styled(({ name, className }) => (
   <div className={className}>
-    <input className="Checkbox" name={name} type="checkbox" />
-    <label className="Checkbox__label" htmlFor={name} />
+    <input className='Checkbox' name={name} type='checkbox' />
+    <label className='Checkbox__label' htmlFor={name} />
   </div>
 ))`
   width: 15px;
@@ -58,17 +58,17 @@ const Checkbox = styled(({ name, className }) => (
       transform: rotate(-45deg);
     }
   }
-`;
+`
 
 Checkbox.propTypes = {
   name: PropTypes.string.isRequired,
   className: PropTypes.string
-};
+}
 
 const CheckboxCircle = styled(({ name, className }) => (
   <div className={className}>
-    <input className="Checkbox" name={name} type="checkbox" />
-    <label className="Checkbox__label" htmlFor={name} />
+    <input className='Checkbox' name={name} type='checkbox' />
+    <label className='Checkbox__label' htmlFor={name} />
   </div>
 ))`
   display: inline-block;
@@ -105,17 +105,17 @@ const CheckboxCircle = styled(({ name, className }) => (
     height: 75%;
     width: 75%;
   }
-`;
+`
 
 CheckboxCircle.propTypes = {
   name: PropTypes.string.isRequired,
   className: PropTypes.string
-};
+}
 
 const CheckboxCircleSecondary = styled(({ name, className }) => (
   <div className={className}>
-    <input className="Checkbox" name={name} type="checkbox" />
-    <label className="Checkbox__label" htmlFor={name} />
+    <input className='Checkbox' name={name} type='checkbox' />
+    <label className='Checkbox__label' htmlFor={name} />
   </div>
 ))`
   width: 25px;
@@ -163,10 +163,10 @@ const CheckboxCircleSecondary = styled(({ name, className }) => (
       transform: rotate(-45deg);
     }
   }
-`;
+`
 
 CheckboxCircleSecondary.propTypes = {
   name: PropTypes.string.isRequired
-};
+}
 
-export { Checkbox, CheckboxCircle, CheckboxCircleSecondary };
+export { Checkbox, CheckboxCircle, CheckboxCircleSecondary }

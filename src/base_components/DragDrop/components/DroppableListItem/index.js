@@ -1,7 +1,7 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
-import {Draggable} from 'react-beautiful-dnd';
-/* '#f4f4f4'*/
+import React, {Fragment} from 'react'
+import PropTypes from 'prop-types'
+import {Draggable} from 'react-beautiful-dnd'
+/* '#f4f4f4' */
 const DroppableListItem = ({
   draggableId,
   index,
@@ -20,7 +20,7 @@ const DroppableListItem = ({
       const style = {
         backgroundColor: snapshot.isDragging ? isDragColor : notDragColor,
         ...provided.draggableProps.style
-      };
+      }
       return (
         <Fragment>
           <div
@@ -33,10 +33,10 @@ const DroppableListItem = ({
           </div>
           {provided.placeholder}
         </Fragment>
-      );
+      )
     }}
   </Draggable>
-);
+)
 
 DroppableListItem.propTypes = {
   draggableId: PropTypes.string.isRequired,
@@ -47,7 +47,7 @@ DroppableListItem.propTypes = {
     isDragColor: PropTypes.string,
     notDragColor: PropTypes.string
   }).isRequired
-};
+}
 
 DroppableListItem.defaultProps = {
   type: 'DEFAULT',
@@ -56,6 +56,6 @@ DroppableListItem.defaultProps = {
     isDragColor: '#F2F3F6',
     notDragColor: '#FFFFFF'
   }
-};
+}
 
-export default DroppableListItem;
+export default DroppableListItem

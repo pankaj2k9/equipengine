@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { not } from 'ramda';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { not } from 'ramda'
 //
-import LoginForm from './components/LoginForm';
-import withStyle from './hoc/withStyle';
+import LoginForm from './components/LoginForm'
+import withStyle from './hoc/withStyle'
 
 const Login = ({
   className,
@@ -15,7 +15,7 @@ const Login = ({
 }) => {
   return (
     <div className={className}>
-      <div className="Login__formContainer">
+      <div className='Login__formContainer'>
         <header>
           <h3>Login</h3>
           {not(isUserValid) && <span>{errorMsg}</span>}
@@ -28,8 +28,8 @@ const Login = ({
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
 Login.propTypes = {
   history: PropTypes.object.isRequired,
@@ -38,6 +38,6 @@ Login.propTypes = {
   errorMsg: PropTypes.node.isRequired,
   isUserValid: PropTypes.bool.isRequired,
   isPending: PropTypes.bool.isRequired
-};
+}
 
-export default withStyle(Login);
+export default withStyle(Login)

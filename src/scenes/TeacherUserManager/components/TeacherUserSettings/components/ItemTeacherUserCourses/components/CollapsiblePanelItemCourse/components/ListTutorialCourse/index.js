@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import ListItemTutorial from './components/ListItemTutorial';
+import ListItemTutorial from './components/ListItemTutorial'
 
 // this is for list
 const List = styled.ul`
   overflow-x: auto;
-`;
+`
 
 // This is the main component.
 const ListTutorialCourse = () => (
@@ -15,6 +15,6 @@ const ListTutorialCourse = () => (
     <ListItemTutorial />
     <ListItemTutorial isReport />
   </List>
-);
+)
 
-export default ListTutorialCourse;
+export default ListTutorialCourse

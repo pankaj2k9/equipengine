@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { MainInnerContainer, MainLeft } from 'base_components/Main';
-import SideContainer from './components/SideContainer';
-import TabsGroup from './components/TabsGroup';
+import { MainInnerContainer, MainLeft } from 'base_components/Main'
+import SideContainer from './components/SideContainer'
+import TabsGroup from './components/TabsGroup'
 
 // your group items.
 const groups = [
@@ -42,7 +42,7 @@ const groups = [
     isJoined: true,
     type: 'public-group'
   }
-];
+]
 
 // the Groups scene.
 const Groups = () => (
@@ -52,6 +52,6 @@ const Groups = () => (
     </MainLeft>
     <SideContainer groups={groups} />
   </MainInnerContainer>
-);
+)
 
-export default Groups;
+export default Groups

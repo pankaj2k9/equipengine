@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-import './styles.css';
+import './styles.css'
 
 const LinkButton = ({ secondary, style, text, url, className }) => {
-  const secondaryClass = secondary ? 'LinkButton--secondary' : '';
+  const secondaryClass = secondary ? 'LinkButton--secondary' : ''
   return (
     <Link
       style={style}
@@ -14,8 +14,8 @@ const LinkButton = ({ secondary, style, text, url, className }) => {
     >
       {text}
     </Link>
-  );
-};
+  )
+}
 
 LinkButton.propTypes = {
   text: PropTypes.string.isRequired,
@@ -23,6 +23,6 @@ LinkButton.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
   secondary: PropTypes.bool
-};
+}
 
-export default LinkButton;
+export default LinkButton

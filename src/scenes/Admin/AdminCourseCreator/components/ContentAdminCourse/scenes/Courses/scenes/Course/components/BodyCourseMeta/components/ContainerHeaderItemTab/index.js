@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export default styled.div`
   padding-bottom: 0.8em;
@@ -7,4 +7,4 @@ export default styled.div`
   @media screen and (min-width: 768px) {
     padding-bottom: 1.5em;
   }
-`;
+`

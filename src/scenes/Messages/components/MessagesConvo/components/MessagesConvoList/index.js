@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import UserAvatar from 'base_components/UserAvatar';
-import avatar from 'resources/images/user.png';
+import UserAvatar from 'base_components/UserAvatar'
+import avatar from 'resources/images/user.png'
 
 const ListMessagesItem = styled(({ className }) => (
   <li className={className}>
@@ -43,7 +43,7 @@ const ListMessagesItem = styled(({ className }) => (
     color: #2d2d2d;
     margin-bottom: 0px;
   }
-`;
+`
 
 // creating styled ConvoList component
 const ConvoList = styled.ul`
@@ -54,12 +54,12 @@ const ConvoList = styled.ul`
     max-height: 80vh;
     overflow-y: auto;
   }
-`;
+`
 const MessagesConvoList = () => (
   <ConvoList>
     <ListMessagesItem />
     <ListMessagesItem />
   </ConvoList>
-);
+)
 
-export default MessagesConvoList;
+export default MessagesConvoList

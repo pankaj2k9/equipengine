@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 //
-import ContainerFlex from 'base_components/ContainerFlex';
-import iconSettings from 'resources/images/iconSettings.svg';
+import ContainerFlex from 'base_components/ContainerFlex'
+import iconSettings from 'resources/images/iconSettings.svg'
 
 const HeaderBrowseGroups = styled(({ className }) => (
   <ContainerFlex isAlignCenter isSpaceBetween className={className}>
     <h4>Hi Jane!</h4>
     <button>
-      <img alt="icon settings" src={iconSettings} />
+      <img alt='icon settings' src={iconSettings} />
     </button>
   </ContainerFlex>
 ))`
@@ -33,6 +33,6 @@ const HeaderBrowseGroups = styled(({ className }) => (
       border-color: #000000;
     }
   }
-`;
+`
 
-export default HeaderBrowseGroups;
+export default HeaderBrowseGroups

@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { ButtonIcon } from 'base_components/RootButton';
-import IconPlus from 'react-icons/lib/md/add';
+import { ButtonIcon } from 'base_components/RootButton'
+import IconPlus from 'react-icons/lib/md/add'
 
 const Button = ButtonIcon.extend`
   width: 100%;
@@ -14,7 +14,7 @@ const Button = ButtonIcon.extend`
     margin-right: 1.5em;
     margin-bottom: 0;
   }
-`;
+`
 
 const ButtonAdd = ({ onHandlerClick, text, className }) => (
   <Button className={className} onClick={onHandlerClick}>
@@ -23,12 +23,12 @@ const ButtonAdd = ({ onHandlerClick, text, className }) => (
       <IconPlus />
     </i>
   </Button>
-);
+)
 
 ButtonAdd.propTypes = {
   text: PropTypes.string.isRequired,
   onHandlerClick: PropTypes.func,
   className: PropTypes.string
-};
+}
 
-export default ButtonAdd;
+export default ButtonAdd

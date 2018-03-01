@@ -1,6 +1,6 @@
-import privateRoutes from './privateRoutes';
-import teacherRoutes from './teacherRoutes';
-import adminRoutes from './adminRoutes';
+import privateRoutes from './privateRoutes'
+import teacherRoutes from './teacherRoutes'
+import adminRoutes from './adminRoutes'
 
 // exposing the routes.
-export default [...privateRoutes, ...teacherRoutes, ...adminRoutes];
+export default [...privateRoutes, ...teacherRoutes, ...adminRoutes]

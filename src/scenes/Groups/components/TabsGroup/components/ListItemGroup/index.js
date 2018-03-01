@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { identical } from 'ramda';
-import styled from 'styled-components';
-import IconUser from 'react-icons/lib/fa/user';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { identical } from 'ramda'
+import styled from 'styled-components'
+import IconUser from 'react-icons/lib/fa/user'
 
-import Button from 'base_components/RootButton';
+import Button from 'base_components/RootButton'
 
 // compose button, group button
 const GroupButton = Button.extend`
   width: 146px;
-`;
+`
 
 // compose a joined container div that we will use on the joined button.
 const JoinedContainer = styled.div`
@@ -27,7 +27,7 @@ const JoinedContainer = styled.div`
   @media screen and (min-width: 768px) {
     text-align: right;
   }
-`;
+`
 
 // List Item Group
 const ListItemGroup = styled(({ className, group }) => {
@@ -66,7 +66,7 @@ const ListItemGroup = styled(({ className, group }) => {
         )}
       </div>
     </li>
-  );
+  )
 })`
   border: 1px solid #e2e2e2;
   border-radius: 5px;
@@ -96,10 +96,10 @@ const ListItemGroup = styled(({ className, group }) => {
       margin-right: 1em;
     }
   }
-`;
+`
 
 ListItemGroup.propTypes = {
   group: PropTypes.object.isRequired
-};
+}
 
-export default ListItemGroup;
+export default ListItemGroup

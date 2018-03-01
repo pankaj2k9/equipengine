@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const BoxCompleted = styled(({ className }) => (
   <div className={className}>
@@ -24,6 +24,6 @@ const BoxCompleted = styled(({ className }) => (
   @media screen and (min-width: 768px) {
     margin: 0 1em;
   }
-`;
+`
 
-export default BoxCompleted;
+export default BoxCompleted

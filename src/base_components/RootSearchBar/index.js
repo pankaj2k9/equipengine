@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import IconSearch from 'react-icons/lib/fa/search';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import IconSearch from 'react-icons/lib/fa/search'
 
-import Form from 'base_components/RootForm';
+import Form from 'base_components/RootForm'
 
 // create Input text
 const TextContainer = styled.div`
@@ -30,7 +30,7 @@ const TextContainer = styled.div`
       color: #c0c0c0;
     }
   }
-`;
+`
 
 const SearchBar = styled(({ className, placeholder }) => (
   <Form className={className}>
@@ -38,13 +38,13 @@ const SearchBar = styled(({ className, placeholder }) => (
       <span>
         <IconSearch />
       </span>
-      <input name="searchbar" type="text" placeholder={placeholder} value="" />
+      <input name='searchbar' type='text' placeholder={placeholder} value='' />
     </TextContainer>
   </Form>
-))``;
+))``
 
 SearchBar.propTypes = {
   placeholder: PropTypes.string
-};
+}
 
-export default SearchBar;
+export default SearchBar

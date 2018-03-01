@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import ListDiscussion from './components/ListDiscussion';
+import ListDiscussion from './components/ListDiscussion'
 
 const LatestGroupDiscussions = styled(({ className, style }) => {
   const discussions = [
@@ -30,13 +30,13 @@ const LatestGroupDiscussions = styled(({ className, style }) => {
         time: '1:00pm'
       }
     }
-  ];
+  ]
   return (
     <div className={className}>
       <header>Latest Group Discussions</header>
       <ListDiscussion discussions={discussions} />
     </div>
-  );
+  )
 })`
   > header {
     border-bottom: 1px solid #dadada;
@@ -47,6 +47,6 @@ const LatestGroupDiscussions = styled(({ className, style }) => {
   @media screen and (min-width: 768px) {
     width: 35%;
   }
-`;
+`
 
-export default LatestGroupDiscussions;
+export default LatestGroupDiscussions

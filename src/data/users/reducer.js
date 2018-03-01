@@ -1,4 +1,4 @@
-import { GET_USERS } from './actionTypes';
+import { GET_USERS } from './actionTypes'
 
 const initialUsers = {
   '23423423424jj324': {
@@ -22,18 +22,18 @@ const initialUsers = {
     username: 'drish',
     password: '123456'
   }
-};
+}
 
 // reducers for managing users
 const users = (state = initialUsers, action) => {
   switch (action.type) {
     case GET_USERS: {
-      return state;
+      return state
     }
     default: {
-      return state;
+      return state
     }
   }
-};
+}
 
-export default users;
+export default users

@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 // base
-import Tables, { TableRow, Th } from 'base_components/Tables';
+import Tables, { TableRow, Th } from 'base_components/Tables'
 // sub components
-import RowsTableAdminGroupUsers from './components/RowsTableAdminGroupUsers';
+import RowsTableAdminGroupUsers from './components/RowsTableAdminGroupUsers'
 
 // compose a table header
-const TableHeaderGroupUser = ({ children }) => <Th center>{children}</Th>;
+const TableHeaderGroupUser = ({ children }) => <Th center>{children}</Th>
 
 // composing the TableAdmin
 const TableAdminGroupUsers = () => (
@@ -24,6 +24,6 @@ const TableAdminGroupUsers = () => (
     </thead>
     <RowsTableAdminGroupUsers />
   </Tables>
-);
+)
 
-export default TableAdminGroupUsers;
+export default TableAdminGroupUsers

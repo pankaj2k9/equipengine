@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import ModalButton from './ModalButton';
+import ModalButton from './ModalButton'
 
 const SlideControl = ({ text, arrow, handleClick }) => (
   <ModalButton style={{ padding: 0 }} handleClick={handleClick}>
@@ -14,12 +14,12 @@ const SlideControl = ({ text, arrow, handleClick }) => (
     </span>
     <span>{text}</span>
   </ModalButton>
-);
+)
 
 SlideControl.propTypes = {
   text: PropTypes.string.isRequired,
   arrow: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired
-};
+}
 
-export default SlideControl;
+export default SlideControl

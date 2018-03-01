@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 //
-import Container from 'base_components/Container';
-import Tables, { TableRow } from 'base_components/Tables';
-import TableRowCourses from './components/TableRowCourses';
+import Container from 'base_components/Container'
+import Tables, { TableRow } from 'base_components/Tables'
+import TableRowCourses from './components/TableRowCourses'
 
 const ContainerTableCourses = Container.extend`
   .table-responsive {
@@ -15,7 +15,7 @@ const ContainerTableCourses = Container.extend`
       width: calc(100% - 201.59px);
     }
   }
-`;
+`
 
 const TableCourses = ({ match }) => (
   <ContainerTableCourses>
@@ -32,10 +32,10 @@ const TableCourses = ({ match }) => (
       <TableRowCourses match={match} />
     </Tables>
   </ContainerTableCourses>
-);
+)
 
 TableCourses.propTypes = {
   match: PropTypes.object.isRequired
-};
+}
 
-export default TableCourses;
+export default TableCourses

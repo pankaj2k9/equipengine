@@ -1,4 +1,4 @@
-import Container from 'base_components/Container';
+import Container from 'base_components/Container'
 
 export default Container.extend`
   .Tabs {
@@ -10,4 +10,4 @@ export default Container.extend`
     margin-top: 2px;
     width: 55%;
   }
-`;
+`

@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 // for button
-import Button from 'base_components/Button';
-import IconDownload from 'react-icons/lib/fa/download';
+import Button from 'base_components/Button'
+import IconDownload from 'react-icons/lib/fa/download'
 
-import IconArrowRight from 'react-icons/lib/fa/angle-right';
-import IconArrowDown from 'react-icons/lib/fa/angle-down';
-import Interactive from 'react-interactive';
+import IconArrowRight from 'react-icons/lib/fa/angle-right'
+import IconArrowDown from 'react-icons/lib/fa/angle-down'
+import Interactive from 'react-interactive'
 
 const TutorialTaskPanelHeader = ({
   isReadingGroup,
@@ -22,13 +22,13 @@ const TutorialTaskPanelHeader = ({
     headerTitle,
     icon,
     downloadButton
-  } = tutorialTaskPanelHeaderStyle;
+  } = tutorialTaskPanelHeaderStyle
   return (
-    <div style={container} className="TutorialTaskPanelHeader">
+    <div style={container} className='TutorialTaskPanelHeader'>
       <div>
         <p style={headerCategory}>{category}</p>
         <Interactive
-          as="p"
+          as='p'
           hover={{ color: '#338FFC' }}
           onClick={handleTogglePanel}
           style={headerTitle}
@@ -36,7 +36,7 @@ const TutorialTaskPanelHeader = ({
           {title}
         </Interactive>
         {isReadingGroup && (
-          <Button style={downloadButton} text="Download">
+          <Button style={downloadButton} text='Download'>
             <span>
               <IconDownload style={downloadButton.span} />
             </span>
@@ -53,8 +53,8 @@ const TutorialTaskPanelHeader = ({
         </span>
       )}
     </div>
-  );
-};
+  )
+}
 
 TutorialTaskPanelHeader.propTypes = {
   isReadingGroup: PropTypes.bool.isRequired,
@@ -62,7 +62,7 @@ TutorialTaskPanelHeader.propTypes = {
   category: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   handleTogglePanel: PropTypes.func.isRequired
-};
+}
 
 const tutorialTaskPanelHeaderStyle = {
   container: {
@@ -97,6 +97,6 @@ const tutorialTaskPanelHeaderStyle = {
       marginLeft: '0.5em'
     }
   }
-};
+}
 
-export default TutorialTaskPanelHeader;
+export default TutorialTaskPanelHeader

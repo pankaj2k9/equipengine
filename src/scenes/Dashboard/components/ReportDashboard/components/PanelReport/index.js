@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const ReportPanel = styled(({ className, title, children }) => (
   <div className={className}>
@@ -27,11 +27,11 @@ const ReportPanel = styled(({ className, title, children }) => (
   > div {
     padding: 1.4em;
   }
-`;
+`
 
 ReportPanel.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.element.isRequired
-};
+}
 
-export default ReportPanel;
+export default ReportPanel

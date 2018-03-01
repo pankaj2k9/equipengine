@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 // this is the container of the major layouts that we will use to our several admin panel pages.
 export default styled.div`
@@ -6,4 +6,4 @@ export default styled.div`
     display: flex;
     min-height: 90vh;
   }
-`;
+`

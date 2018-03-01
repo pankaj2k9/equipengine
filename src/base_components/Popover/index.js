@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 import {
   Popover as BootstrapPopover,
   OverlayTrigger,
   Badge
-} from 'react-bootstrap';
+} from 'react-bootstrap'
 
-import './styles.css';
+import './styles.css'
 
 const Popover = ({
   popoverContentElement,
@@ -16,29 +16,29 @@ const Popover = ({
 }) => {
   // this is our popover container
   const popoverContainerElement = (
-    <BootstrapPopover className="Popover" id="popover-trigger-click-root-close">
-      <div className="Popover__content">{popoverContentElement}</div>
+    <BootstrapPopover className='Popover' id='popover-trigger-click-root-close'>
+      <div className='Popover__content'>{popoverContentElement}</div>
     </BootstrapPopover>
-  );
+  )
 
   return (
     <OverlayTrigger
-      trigger="click"
+      trigger='click'
       rootClose
-      placement="bottom"
+      placement='bottom'
       overlay={popoverContainerElement}
     >
-      <button className="Popover__button" type="button" style={buttonStyle}>
+      <button className='Popover__button' type='button' style={buttonStyle}>
         {buttonIcon}
-        {dataCount && <Badge className="Popover__button__badge">10</Badge>}
+        {dataCount && <Badge className='Popover__button__badge'>10</Badge>}
       </button>
     </OverlayTrigger>
-  );
-};
+  )
+}
 
 Popover.propTypes = {
   popoverContentElement: PropTypes.element.isRequired,
   dataCount: PropTypes.number
-};
+}
 
-export default Popover;
+export default Popover

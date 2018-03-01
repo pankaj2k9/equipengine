@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const Switch = styled(({ className, name }) => (
   <label className={className}>
-    <input type="checkbox" name={name} />
-    <span className="slider round" />
+    <input type='checkbox' name={name} />
+    <span className='slider round' />
   </label>
 ))`
   position: relative;
@@ -67,11 +67,11 @@ const Switch = styled(({ className, name }) => (
   .slider.round:before {
     border-radius: 50%;
   }
-`;
+`
 
 Switch.propTypes = {
   name: PropTypes.string.isRequired,
   className: PropTypes.string
-};
+}
 
-export default Switch;
+export default Switch

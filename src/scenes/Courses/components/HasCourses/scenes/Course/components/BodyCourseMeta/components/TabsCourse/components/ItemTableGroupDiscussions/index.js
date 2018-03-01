@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import userURL from 'resources/images/user.png';
-import TableDiscussions from './components/TableDiscussions';
-import Thread from './components/Thread';
+import userURL from 'resources/images/user.png'
+import TableDiscussions from './components/TableDiscussions'
+import Thread from './components/Thread'
 
 const ItemTableGroupDiscussions = ({ className }) => {
   // discussion items.
@@ -123,14 +123,14 @@ const ItemTableGroupDiscussions = ({ className }) => {
       },
       dateAdded: '22 April 17'
     }
-  ];
+  ]
 
   return (
     <div>
       <Thread thread={discussions[0]} />
       <TableDiscussions discussions={discussions} />
     </div>
-  );
-};
+  )
+}
 
-export default ItemTableGroupDiscussions;
+export default ItemTableGroupDiscussions

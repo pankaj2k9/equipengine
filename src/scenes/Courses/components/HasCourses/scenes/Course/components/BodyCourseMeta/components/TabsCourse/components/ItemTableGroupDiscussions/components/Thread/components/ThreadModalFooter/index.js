@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import ModalFooter from 'react-bootstrap/lib/ModalFooter';
+import React from 'react'
+import styled from 'styled-components'
+import ModalFooter from 'react-bootstrap/lib/ModalFooter'
 
-import MessageForm from 'base_components/MessageForm';
+import MessageForm from 'base_components/MessageForm'
 
 const ThreadModalFooter = styled(({ className }) => (
   <ModalFooter className={className}>
@@ -17,6 +17,6 @@ const ThreadModalFooter = styled(({ className }) => (
     max-width: 774px;
     margin: 0 auto;
   }
-`;
+`
 
-export default ThreadModalFooter;
+export default ThreadModalFooter

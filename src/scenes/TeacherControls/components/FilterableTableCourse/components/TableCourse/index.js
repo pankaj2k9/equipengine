@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-import Tables, { TableRow } from 'base_components/Tables';
-import TableRowCourse from './components/TableRowCourse';
-import './styles.css';
-import userAvatar from 'resources/images/user.png';
+import Tables, { TableRow } from 'base_components/Tables'
+import TableRowCourse from './components/TableRowCourse'
+import './styles.css'
+import userAvatar from 'resources/images/user.png'
 
 const TableCourse = () => {
   const coursesData = [
@@ -54,11 +54,11 @@ const TableCourse = () => {
       ],
       isFlagged: true
     }
-  ];
+  ]
 
   const tableRowCourses = coursesData.map(course => (
     <TableRowCourse key={course.id} course={course} />
-  ));
+  ))
 
   return (
     <Tables>
@@ -76,7 +76,7 @@ const TableCourse = () => {
       </thead>
       <tbody>{tableRowCourses}</tbody>
     </Tables>
-  );
-};
+  )
+}
 
-export default TableCourse;
+export default TableCourse

@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 // for Text
 const Text = styled(({ name, placeholder, className }) => (
@@ -8,8 +8,8 @@ const Text = styled(({ name, placeholder, className }) => (
     className={className}
     name={name}
     placeholder={placeholder}
-    type="text"
-    value=""
+    type='text'
+    value=''
   />
 ))`
   border: 1px solid #dddddd;
@@ -26,12 +26,12 @@ const Text = styled(({ name, placeholder, className }) => (
   ::placeholder {
     color: #c0c0c0;
   }
-`;
+`
 
 Text.proptTypes = {
   name: PropTypes.string.isRequired,
   className: PropTypes.string,
   placeholder: PropTypes.string
-};
+}
 
-export default Text;
+export default Text

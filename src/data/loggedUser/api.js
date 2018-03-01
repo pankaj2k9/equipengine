@@ -1,7 +1,6 @@
-import { identical, isNil } from 'ramda';
-import { reduce } from 'lodash';
+import { identical, isNil, reduce } from 'ramda'
 //
-import userAvatar from 'resources/images/user.png';
+import userAvatar from 'resources/images/user.png'
 
 const fakeUsers = {
   '23423423424jj324': {
@@ -28,7 +27,7 @@ const fakeUsers = {
     password: '123456',
     avatar: userAvatar
   }
-};
+}
 
 /**
  * loggingUser :: Object -> Promise
@@ -40,38 +39,38 @@ const fakeUsers = {
 export const fetchUser = ({ username = '', password = '' }) => {
   // fake users to array.
   const fakeUsersArr = reduce(
-    fakeUsers,
     (users, user) => users.concat(user),
-    []
-  );
+    [],
+    fakeUsers
+  )
 
   // find user.
   const loggedUser = fakeUsersArr.find(
-    user =>
+    (user) =>
       identical(user.username, username) && identical(user.password, password)
-  );
+  )
 
   // create promise which either resolved or rejected.
-  const promise = new Promise((res, rej) => {
+  const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       // success obj
       const successObj = {
         status: 'successfully',
         message: 'Successfully.',
         user: loggedUser
-      };
+      }
 
       // error obj
       const errorObj = {
         status: 'error',
         message: 'Username or password is invalid.',
         user: {}
-      };
+      }
 
       // creating promise data.
-      return !isNil(loggedUser) ? res(successObj) : rej(errorObj);
-    }, 1000);
-  });
+      return !isNil(loggedUser) ? resolve(successObj) : reject(errorObj)
+    }, 1000)
+  })
 
-  return promise;
-};
+  return promise
+}

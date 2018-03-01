@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import LinkNavbarAdmin from '../LinkNavbarAdmin';
+import LinkNavbarAdmin from '../LinkNavbarAdmin'
 
 const ListLinkVertical = styled.ul`
   display: none;
@@ -11,40 +11,40 @@ const ListLinkVertical = styled.ul`
     width: 100%;
     justify-content: space-evenly;
   }
-`;
+`
 
 const ListLinkAdminVertical = ({ className }) => (
   <ListLinkVertical>
     <li>
       <LinkNavbarAdmin
-        activeClassName="active"
-        to="/secure/admin/group-manager"
+        activeClassName='active'
+        to='/secure/admin/group-manager'
       >
         Group Manager
       </LinkNavbarAdmin>
     </li>
     <li>
       <LinkNavbarAdmin
-        activeClassName="active"
-        to="/secure/admin/course-creator"
+        activeClassName='active'
+        to='/secure/admin/course-creator'
       >
         Course Creator
       </LinkNavbarAdmin>
     </li>
     <li>
-      <LinkNavbarAdmin activeClassName="active" to="/secure/admin/user-manager">
+      <LinkNavbarAdmin activeClassName='active' to='/secure/admin/user-manager'>
         User Manager
       </LinkNavbarAdmin>
     </li>
     <li>
       <LinkNavbarAdmin
-        activeClassName="active"
-        to="/secure/admin/organisation-settings"
+        activeClassName='active'
+        to='/secure/admin/organisation-settings'
       >
         Organisation Settings
       </LinkNavbarAdmin>
     </li>
   </ListLinkVertical>
-);
+)
 
-export default ListLinkAdminVertical;
+export default ListLinkAdminVertical

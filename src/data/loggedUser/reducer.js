@@ -4,8 +4,8 @@ import {
   FAILURE_REQUEST,
   ADD_LOGGED_USER,
   REMOVE_LOGGED_USER
-} from './actionTypes';
-import { combineReducers } from 'redux';
+} from './actionTypes'
+import { combineReducers } from 'redux'
 
 // reducers for process
 const processRequest = (
@@ -18,34 +18,34 @@ const processRequest = (
 ) => {
   switch (action.type) {
     case PENDING_REQUEST: {
-      const { isPending } = action.payload;
+      const { isPending } = action.payload
       return {
         ...state,
         pending: isPending
-      };
+      }
     }
     case SUCCESS_REQUEST: {
-      const { isPending } = action.payload;
+      const { isPending } = action.payload
       return {
         ...state,
         pending: isPending,
         success: true,
         error: ''
-      };
+      }
     }
     case FAILURE_REQUEST: {
-      const { isPending, error } = action.payload;
+      const { isPending, error } = action.payload
       return {
         ...state,
         pending: isPending,
         error: error
-      };
+      }
     }
     default: {
-      return state;
+      return state
     }
   }
-};
+}
 
 /**
  * user :: (state, action) -> state
@@ -55,19 +55,19 @@ const processRequest = (
 const user = (state = {}, action) => {
   switch (action.type) {
     case ADD_LOGGED_USER: {
-      const { loggedUser } = action.payload;
-      return loggedUser;
+      const { loggedUser } = action.payload
+      return loggedUser
     }
     case REMOVE_LOGGED_USER: {
-      return {};
+      return {}
     }
     default: {
-      return state;
+      return state
     }
   }
-};
+}
 
 export default combineReducers({
   processRequest,
   user
-});
+})

@@ -1,22 +1,22 @@
-import React from 'react';
+import React from 'react'
 
-import TutorialTaskPanel from './TutorialTaskPanel';
-import QuestionPanelContent from './QuestionPanelContent';
+import TutorialTaskPanel from './TutorialTaskPanel'
+import QuestionPanelContent from './QuestionPanelContent'
 
 const TutorialReadingGroup = () => {
   return (
     <div>
       <TutorialTaskPanel
-        category="Reading"
+        category='Reading'
         title="Read the PDF document 'BEC' pages 22-25"
-        isReadingGroup={true}
+        isReadingGroup
       >
         <QuestionPanelContent />
       </TutorialTaskPanel>
     </div>
-  );
-};
+  )
+}
 
-TutorialReadingGroup.propTypes = {};
+TutorialReadingGroup.propTypes = {}
 
-export default TutorialReadingGroup;
+export default TutorialReadingGroup

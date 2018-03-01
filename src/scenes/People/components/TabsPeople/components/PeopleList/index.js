@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import UserAvatar from 'base_components/UserAvatar';
-import avatar from 'resources/images/user.png';
-import Button from 'base_components/RootButton';
+import UserAvatar from 'base_components/UserAvatar'
+import avatar from 'resources/images/user.png'
+import Button from 'base_components/RootButton'
 
 // People item template
 const PeopleItem = styled(({ className }) => (
@@ -34,7 +34,7 @@ const PeopleItem = styled(({ className }) => (
   @media screen and (min-width: 768px) {
     margin-right: 1.5em;
   }
-`;
+`
 
 // this is for people list template.
 const PeopleList = styled.ul`
@@ -47,6 +47,6 @@ const PeopleList = styled.ul`
     flex-direction: row;
     flex-wrap: wrap;
   }
-`;
+`
 
-export { PeopleList as default, PeopleItem };
+export { PeopleList as default, PeopleItem }

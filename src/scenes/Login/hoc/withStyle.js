@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export default WrappedComponent =>
   styled(WrappedComponent)`
@@ -54,4 +54,4 @@ export default WrappedComponent =>
         width: 30%;
       }
     }
-  `;
+  `

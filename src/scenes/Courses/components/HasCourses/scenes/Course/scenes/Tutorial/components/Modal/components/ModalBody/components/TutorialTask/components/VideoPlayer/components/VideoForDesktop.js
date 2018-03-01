@@ -1,21 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { Player } from 'video-react';
-import videoSrc from '../sample.mp4';
-import posterSrc from '../poster.png';
+import { Player } from 'video-react'
+import videoSrc from '../sample.mp4'
+import posterSrc from '../poster.png'
 
 class VideoForDesktop extends React.Component {
-  componentDidMount() {
+  componentDidMount () {
     // subscribe state change
-    this.refs.player.subscribeToStateChange(this.props.handleStateChange);
+    this.refs.player.subscribeToStateChange(this.props.handleStateChange)
   }
 
-  render() {
+  render () {
     return (
       <div style={videoForDesktopStyle}>
         <Player
-          ref="player"
+          ref='player'
           poster={posterSrc}
           playsInline
           fluid={false}
@@ -25,16 +25,16 @@ class VideoForDesktop extends React.Component {
           <source src={videoSrc} />
         </Player>
       </div>
-    );
+    )
   }
 }
 
 const videoForDesktopStyle = {
   order: 2
-};
+}
 
 VideoForDesktop.propTypes = {
   handleStateChange: PropTypes.func.isRequired
-};
+}
 
-export default VideoForDesktop;
+export default VideoForDesktop

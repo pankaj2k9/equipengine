@@ -1,19 +1,19 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import ListMessages from './components/ListMessages';
-import iconPen from './write-pen.svg';
+import ListMessages from './components/ListMessages'
+import iconPen from './write-pen.svg'
 
 const MessagesList = styled(({ className }) => {
   return (
     <div className={className}>
       <header>
         <span>New Message</span>
-        <img alt="Icon pen" src={iconPen} />
+        <img alt='Icon pen' src={iconPen} />
       </header>
       <ListMessages />
     </div>
-  );
+  )
 })`
   header {
     border-bottom: 1px solid #dadada;
@@ -31,6 +31,6 @@ const MessagesList = styled(({ className }) => {
       margin-bottom: 0.4em;
     }
   }
-`;
+`
 
-export default MessagesList;
+export default MessagesList

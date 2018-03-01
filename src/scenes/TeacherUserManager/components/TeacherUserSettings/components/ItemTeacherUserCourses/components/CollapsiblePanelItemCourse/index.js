@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Panel } from 'react-bootstrap';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import { Panel } from 'react-bootstrap'
 // sub components.
-import ListTutorialCourse from './components/ListTutorialCourse';
+import ListTutorialCourse from './components/ListTutorialCourse'
 
 // overriding the styles for the root panel component.
 const ContainerCollapsiblePanel = styled(Panel)`
@@ -17,16 +17,16 @@ const ContainerCollapsiblePanel = styled(Panel)`
       padding: 0 2.4em;
     }
   }
-`;
+`
 
 const CollapsiblePanelItemCourse = ({ isOpenPanel }) => (
   <ContainerCollapsiblePanel collapsible expanded={isOpenPanel}>
     <ListTutorialCourse />
   </ContainerCollapsiblePanel>
-);
+)
 
 CollapsiblePanelItemCourse.propTypes = {
   isOpenPanel: PropTypes.bool.isRequired
-};
+}
 
-export default CollapsiblePanelItemCourse;
+export default CollapsiblePanelItemCourse

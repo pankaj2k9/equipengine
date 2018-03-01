@@ -1,32 +1,32 @@
-import React from 'react';
+import React from 'react'
 
-import LinkNavbarAdmin from '../LinkNavbarAdmin';
+import LinkNavbarAdmin from '../LinkNavbarAdmin'
 
 export default () => (
   <div>
     <li>
       {' '}
-      <LinkNavbarAdmin activeClassName="active" to="/admin/group-manager">
+      <LinkNavbarAdmin activeClassName='active' to='/admin/group-manager'>
         Group Manager
       </LinkNavbarAdmin>
     </li>
     <li>
-      <LinkNavbarAdmin activeClassName="active" to="/admin/course-create">
+      <LinkNavbarAdmin activeClassName='active' to='/admin/course-create'>
         Course Creator
       </LinkNavbarAdmin>
     </li>
     <li>
-      <LinkNavbarAdmin activeClassName="active" to="/admin/user-manager">
+      <LinkNavbarAdmin activeClassName='active' to='/admin/user-manager'>
         User Manager
       </LinkNavbarAdmin>
     </li>
     <li>
       <LinkNavbarAdmin
-        activeClassName="active"
-        to="/admin/organisation-settings"
+        activeClassName='active'
+        to='/admin/organisation-settings'
       >
         Organisation Settings
       </LinkNavbarAdmin>
     </li>
   </div>
-);
+)

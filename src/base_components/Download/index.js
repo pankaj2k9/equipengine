@@ -1,21 +1,21 @@
-import React from 'react';
+import React from 'react'
 
 const Download = () => {
-    return (
-        <span
-            style={{
-                color: '#c9c9c9',
-                fontWeight: 800,
-                textTransform: 'uppercase',
-                fontSize: 12,
-                marginRight: 10
-            }}
-        >
+  return (
+    <span
+      style={{
+        color: '#c9c9c9',
+        fontWeight: 800,
+        textTransform: 'uppercase',
+        fontSize: 12,
+        marginRight: 10
+      }}
+    >
             Download
-        </span>
-    );
-};
+    </span>
+  )
+}
 
-Download.propTypes = {};
+Download.propTypes = {}
 
-export default Download;
+export default Download

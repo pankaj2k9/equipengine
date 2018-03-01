@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 // components
-import ContainerFlex from 'base_components/ContainerFlex';
-import Panel from 'base_components/Panel';
-import ButtonAdd from 'base_components/ButtonAdd';
-import ListGroups from './components/ListGroups';
+import ContainerFlex from 'base_components/ContainerFlex'
+import Panel from 'base_components/Panel'
+import ButtonAdd from 'base_components/ButtonAdd'
+import ListGroups from './components/ListGroups'
 
 // button add group
 const ButtonAddGroup = styled(ButtonAdd)`
@@ -17,18 +17,18 @@ const ButtonAddGroup = styled(ButtonAdd)`
     background-color: #e2e2e2;
     color: #000000;
   }
-`;
+`
 
 const TextHint = styled.p`
   width: 20%;
   font-size: 0.79rem;
   color: #777777;
-`;
+`
 
 const PanelGroups = styled(({ className }) => (
   <Panel
-    title="Groups"
-    AdditionalTitle={() => <ButtonAddGroup text="Add group" />}
+    title='Groups'
+    AdditionalTitle={() => <ButtonAddGroup text='Add group' />}
     className={className}
   >
     <ContainerFlex>
@@ -45,6 +45,6 @@ const PanelGroups = styled(({ className }) => (
   header {
     width: 75%;
   }
-`;
+`
 
-export default PanelGroups;
+export default PanelGroups

@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 // the loading notification component
 const LoadingNotification = styled(({ className }) => (
@@ -29,6 +29,6 @@ const LoadingNotification = styled(({ className }) => (
   @media screen and (min-width: 768px) {
     margin-top: 3.5em;
   }
-`;
+`
 
-export default LoadingNotification;
+export default LoadingNotification

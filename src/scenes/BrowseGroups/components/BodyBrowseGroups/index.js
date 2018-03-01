@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 //
-import TabsGroup from './components/TabsGroup';
-import ListLatestNotification from './components/ListLatestNotification';
-import ContainerFlex from 'base_components/ContainerFlex';
+import TabsGroup from './components/TabsGroup'
+import ListLatestNotification from './components/ListLatestNotification'
+import ContainerFlex from 'base_components/ContainerFlex'
 
 const BodyBrowseGroups = ({ className }) => {
   // your group items.
@@ -44,15 +44,15 @@ const BodyBrowseGroups = ({ className }) => {
       isJoined: true,
       type: 'public-group'
     }
-  ];
+  ]
 
   return (
     <ContainerFlex className={className}>
       <TabsGroup groups={groups} />
       <ListLatestNotification />
     </ContainerFlex>
-  );
-};
+  )
+}
 
 export default styled(BodyBrowseGroups)`
   flex-direction: column;
@@ -66,4 +66,4 @@ export default styled(BodyBrowseGroups)`
       width: 49%;
     }
   }
-`;
+`

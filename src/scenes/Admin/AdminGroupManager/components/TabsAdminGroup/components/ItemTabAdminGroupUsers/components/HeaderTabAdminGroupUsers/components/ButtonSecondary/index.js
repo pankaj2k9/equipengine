@@ -1,4 +1,4 @@
-import Button from 'base_components/RootButton';
+import Button from 'base_components/RootButton'
 
 export default Button.extend`
   margin-bottom: 10px;
@@ -15,4 +15,4 @@ export default Button.extend`
     margin-right: 1em;
     margin-bottom: 0;
   }
-`;
+`

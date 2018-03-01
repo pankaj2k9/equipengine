@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-import PanelReport from '../PanelReport';
-import ListReport from '../ListReport';
+import PanelReport from '../PanelReport'
+import ListReport from '../ListReport'
 
 const ReportLatestGroupActivity = () => (
-  <PanelReport title="Latest Group Activiy">
+  <PanelReport title='Latest Group Activiy'>
     <ListReport
       reports={[
         {
@@ -28,6 +28,6 @@ const ReportLatestGroupActivity = () => (
       ]}
     />
   </PanelReport>
-);
+)
 
-export default ReportLatestGroupActivity;
+export default ReportLatestGroupActivity

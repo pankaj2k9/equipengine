@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const TableDataPosted = styled(({ discussion, className }) => (
   <td className={className}>
@@ -30,10 +30,10 @@ const TableDataPosted = styled(({ discussion, className }) => (
       color: #7e7e7e;
     }
   }
-`;
+`
 
 TableDataPosted.propTypes = {
   discussion: PropTypes.object.isRequired
-};
+}
 
-export default TableDataPosted;
+export default TableDataPosted

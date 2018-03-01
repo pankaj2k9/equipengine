@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const HeaderItemCourse = styled(({ className }) => (
   <header className={className}>
@@ -51,6 +51,6 @@ const HeaderItemCourse = styled(({ className }) => (
     display: flex;
     justify-content: space-between;
   }
-`;
+`
 
-export default HeaderItemCourse;
+export default HeaderItemCourse

@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Media from 'react-media';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Media from 'react-media'
 
 const ModalInner = ({ children }) => (
-  <Media query="(max-width: 767px)">
+  <Media query='(max-width: 767px)'>
     {matches =>
       matches ? (
         <div
@@ -23,10 +23,10 @@ const ModalInner = ({ children }) => (
         </div>
       )}
   </Media>
-);
+)
 
 ModalInner.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired
-};
+}
 
-export default ModalInner;
+export default ModalInner

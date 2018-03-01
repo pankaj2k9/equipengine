@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Media from 'react-media';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Media from 'react-media'
 
-import ModalBox from '../../../../../../ModalBox.js';
+import ModalBox from '../../../../../../ModalBox.js'
 
 const ModalBoxVideoInfo = ({ style, children }) => (
-  <Media query="(max-width: 767px)">
+  <Media query='(max-width: 767px)'>
     {matches =>
       matches ? (
         <ModalBox
@@ -27,7 +27,7 @@ const ModalBoxVideoInfo = ({ style, children }) => (
         </ModalBox>
       )}
   </Media>
-);
+)
 
 // styles
 const modalBoxVideoInfoStyle = {
@@ -37,7 +37,7 @@ const modalBoxVideoInfoStyle = {
   desktopViewport: {
     width: '25%'
   }
-};
+}
 
 ModalBoxVideoInfo.propTypes = {
   children: PropTypes.oneOfType([
@@ -45,6 +45,6 @@ ModalBoxVideoInfo.propTypes = {
     PropTypes.element
   ]),
   style: PropTypes.object
-};
+}
 
-export default ModalBoxVideoInfo;
+export default ModalBoxVideoInfo

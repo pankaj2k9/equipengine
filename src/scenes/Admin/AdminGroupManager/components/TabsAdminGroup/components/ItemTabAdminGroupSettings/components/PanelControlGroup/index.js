@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import Panel from 'base_components/Panel';
-import ListControl, { ListItemControl } from 'base_components/ListControl';
+import Panel from 'base_components/Panel'
+import ListControl, { ListItemControl } from 'base_components/ListControl'
 
 // for list item control.
-import Button from 'base_components/RootButton';
-import { Label } from 'base_components/RootForm';
+import Button from 'base_components/RootButton'
+import { Label } from 'base_components/RootForm'
 
 const PanelControlGroup = () => (
   <Panel>
@@ -29,6 +29,6 @@ const PanelControlGroup = () => (
       </ListItemControl>
     </ListControl>
   </Panel>
-);
+)
 
-export default PanelControlGroup;
+export default PanelControlGroup
