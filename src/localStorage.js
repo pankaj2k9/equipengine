@@ -26,7 +26,7 @@ export const loadState = () => {
  * @param {Object} state is the input data on the key 'state'
  * @return {void}
  */
-export const saveState = state => {
+export const saveState = (state) => {
   try {
     // we will convert all the input state into a JSON format. - JSON.stringify is an expensive function.
     const serializedState = JSON.stringify(state);
