@@ -44,7 +44,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
-      "standard --fix",
+      "standard --parser babel-eslint --fix",
       "git add"
     ]
   },

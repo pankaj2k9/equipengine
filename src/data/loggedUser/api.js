@@ -1,4 +1,5 @@
-import { identical, isNil, reduce } from 'ramda'
+import { identical, isNil } from 'ramda'
+import { reduce } from 'lodash'
 //
 import userAvatar from 'resources/images/user.png'
 
@@ -39,9 +40,9 @@ const fakeUsers = {
 export const fetchUser = ({ username = '', password = '' }) => {
   // fake users to array.
   const fakeUsersArr = reduce(
+    fakeUsers,
     (users, user) => users.concat(user),
-    [],
-    fakeUsers
+    []
   )
 
   // find user.

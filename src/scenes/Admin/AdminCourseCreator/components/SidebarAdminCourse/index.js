@@ -7,6 +7,7 @@ import ListLinkItem from './components/ListLinkItem'
 import iconNewCourse from './new-course.svg'
 import iconCourseLibrary from './course-library.svg'
 import iconAddOns from './add-ons.svg'
+import iconVideos from './video.svg'
 
 const ListLink = styled.ul`
   min-height: 100vh;
@@ -31,6 +32,11 @@ const SidebarAdminCourse = ({ match }) => (
       icon={iconAddOns}
       text='Add-ons'
       url={`${match.path}/add-ons`}
+    />
+    <ListLinkItem
+      icon={iconVideos}
+      text='Videos'
+      url={`${match.path}/videos`}
     />
   </ListLink>
 )

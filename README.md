@@ -2,7 +2,6 @@ Project EquipEngine Site
 
 passphrase: irishjane
 
-
 Login information to dev site:
 
 User: admin

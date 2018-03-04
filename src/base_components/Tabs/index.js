@@ -4,11 +4,11 @@ import { Tabs as TabBootstrap } from 'react-bootstrap'
 
 import './styles.css'
 
-const Tabs = ({ style, children }) => {
+const Tabs = ({ style, children, className }) => {
   return (
     <TabBootstrap
       style={style}
-      className='Tabs'
+      className={`Tabs ${className}`}
       defaultActiveKey={1}
       id='uncontrolled-tab-example'
     >
@@ -22,7 +22,12 @@ Tabs.propTypes = {
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element)
   ]).isRequired,
-  style: PropTypes.object
+  style: PropTypes.object,
+  className: PropTypes.string
+}
+
+Tabs.defaultProps = {
+  className: ''
 }
 
 export default Tabs
