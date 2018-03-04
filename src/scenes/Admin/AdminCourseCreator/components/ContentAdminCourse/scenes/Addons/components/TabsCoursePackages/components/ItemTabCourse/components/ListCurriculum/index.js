@@ -19,7 +19,7 @@ const ListItemCurriculum = styled(({className}) => (
       </p>
       <div className='ListItem__buttonGroup'>
         <LinkButton text='Details' url='/details' />
-        <ButtonAdd text='Add to library' />
+        <ButtonAdd text='Add to library' iconPosition='left' />
       </div>
     </section>
   </article>
