@@ -61,23 +61,46 @@ const ListItemCurriculum = styled(({className}) => (
       color: #9FA6AD;
     }
 
-    .ListItem__buttonGroup {
+  }
 
-      a {
-        width: 100%;
-        margin-bottom: 1em;
-        padding: 10px 0;
-      }
+  .ListItem__buttonGroup {
+    a {
+      width: 100%;
+      margin-bottom: 1em;
+      padding: 10px 0;
+    }
 
-      button {
-        margin-bottom: 1.5em;
-      }
+    button {
+      margin-bottom: 1.5em;
     }
   }
 
   @media screen and (min-width: 768px) {
     width: 32.5%;
     margin-bottom: 1.5em;
+
+    section {
+      padding: 0 1.3em;
+
+      p {
+        margin-bottom: 2em;
+      }
+    }
+
+    .ListItem__buttonGroup {
+      display: flex;
+      justify-content: space-between;
+
+      a, button {
+        width: 49%;
+      }
+
+      button {
+        width: 49%;
+        height: 37px;
+        margin: 0.6em 0 1em;
+      }
+    }
   }
 `
 
