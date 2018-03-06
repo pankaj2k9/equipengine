@@ -9,12 +9,7 @@ const ContainerTableCourses = Container.extend`
   .table-responsive {
     width: 100%;
   }
-
-  @media screen and (min-width: 768px) {
-    .table-responsive {
-      width: calc(100% - 201.59px);
-    }
-  }
+}
 `
 
 const TableCourses = ({ match }) => (

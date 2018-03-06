@@ -36,6 +36,14 @@ const Text = styled.span`
   font-size: 16px;
 `
 
+const TableData = Td.extend`
+@media screen and (min-width: 768px) {
+  &:last-child {
+    width: 40%;
+  }
+}
+`
+
 const TableRowCourses = ({ match }) => (
   <tbody>
     <TableRow>
@@ -46,26 +54,26 @@ const TableRowCourses = ({ match }) => (
           Program.
         </span>
       </TableDataName>
-      <Td center>
+      <TableData center>
         <Text>19 March 17</Text>
-      </Td>
-      <Td center>
+      </TableData>
+      <TableData center>
         <ContainerActiveUser isAlignCenter>
           <i>
             <IconUser />
           </i>
           <Text>33</Text>
         </ContainerActiveUser>
-      </Td>
-      <Td center>
+      </TableData>
+      <TableData center>
         <Text>8</Text>
-      </Td>
-      <Td>
+      </TableData>
+      <TableData>
         <LinkButton
           url={`${match.url}/communication-and-culture`}
           text='Details'
         />
-      </Td>
+      </TableData>
     </TableRow>
     <TableRow>
       <TableDataName>
@@ -75,23 +83,23 @@ const TableRowCourses = ({ match }) => (
           Program.
         </span>
       </TableDataName>
-      <Td center>
+      <TableData center>
         <Text>19 March 17</Text>
-      </Td>
-      <Td center>
+      </TableData>
+      <TableData center>
         <ContainerActiveUser isAlignCenter>
           <i>
             <IconUser />
           </i>
           <Text>44</Text>
         </ContainerActiveUser>
-      </Td>
-      <Td center>
+      </TableData>
+      <TableData center>
         <Text>5</Text>
-      </Td>
-      <Td>
+      </TableData>
+      <TableData>
         <LinkButton url={`${match.url}/language-and-culture`} text='Details' />
-      </Td>
+      </TableData>
     </TableRow>
   </tbody>
 )

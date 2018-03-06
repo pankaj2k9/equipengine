@@ -11,13 +11,19 @@ import Loadable from 'react-loadable'
 // Course library
 const AsyncCourses = Loadable({
   loader: () => import('./scenes/Courses'),
-  loading: Loader, // before this component gets loaded, we will render first this Loader component.
+  loading: Loader,
   timeout: 10000
 })
 // Add-ons
 const AsyncAddons = Loadable({
   loader: () => import('./scenes/Addons'),
-  loading: Loader, // before this component gets loaded, we will render first this Loader component.
+  loading: Loader,
+  timeout: 10000
+})
+// Videos
+const AsyncVideos = Loadable({
+  loader: () => import('./scenes/Videos'),
+  loading: Loader,
   timeout: 10000
 })
 
@@ -50,6 +56,15 @@ const ContentAdminCourse = ({ match }) => (
         render={(props) => (
           <ErrorBoundary errMsg='Something went wrong in displaying the courses page.'>
             <AsyncAddons {...props} />
+          </ErrorBoundary>
+        )}
+      />
+      <Route
+        strict
+        path={`${match.url}/videos`}
+        render={(props) => (
+          <ErrorBoundary errMsg='Something went wrong in displaying the courses page.'>
+            <AsyncVideos {...props} />
           </ErrorBoundary>
         )}
       />
