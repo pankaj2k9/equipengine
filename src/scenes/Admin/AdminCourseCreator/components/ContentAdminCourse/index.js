@@ -8,6 +8,8 @@ import Breadcrumbs from 'base_components/Breadcrumbs'
 // Scenes
 import Loader from 'base_components/Loader'
 import Loadable from 'react-loadable'
+// New Course Modal
+import NewCourse from './scenes/NewCourse'
 // Course library
 const AsyncCourses = Loadable({
   loader: () => import('./scenes/Courses'),
@@ -37,9 +39,10 @@ const ContainerContent = styled.div`
   }
 `
 
-const ContentAdminCourse = ({ match }) => (
+const ContentAdminCourse = ({ match, handleClose, isOpen }) => (
   <ContainerContent>
     <Breadcrumbs />
+    <NewCourse handleClose={handleClose} isOpen={isOpen} />
     <Switch>
       <Route
         strict
@@ -73,7 +76,9 @@ const ContentAdminCourse = ({ match }) => (
 )
 
 ContentAdminCourse.propTypes = {
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired
 }
 
 export default ContentAdminCourse

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { withRouter } from 'react-router-dom'
 // components
@@ -16,9 +17,10 @@ const ListLink = styled.ul`
   position: fixed;
 `
 
-const SidebarAdminCourse = ({ match }) => (
+const SidebarAdminCourse = ({ match, handleShow }) => (
   <ListLink>
     <ListLinkItem
+      handleClick={handleShow}
       icon={iconNewCourse}
       text='New Course'
       url={`${match.path}/new-course`}
@@ -40,5 +42,9 @@ const SidebarAdminCourse = ({ match }) => (
     />
   </ListLink>
 )
+
+SidebarAdminCourse.propTypes = {
+  handleShow: PropTypes.func.isRequired
+}
 
 export default withRouter(SidebarAdminCourse)

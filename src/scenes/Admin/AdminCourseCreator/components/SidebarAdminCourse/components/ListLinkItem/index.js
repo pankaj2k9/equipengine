@@ -5,13 +5,14 @@ import { NavLink } from 'react-router-dom'
 //
 import UserAvatar from 'base_components/UserAvatar'
 
-const ListLinkItem = styled(({ className, icon, text, url }) => (
+const ListLinkItem = styled(({ className, icon, text, url, handleClick }) => (
   <NavLink
     className={className}
     to={url}
     activeStyle={{
       backgroundColor: '#25282A'
     }}
+    onClick={handleClick}
   >
     <UserAvatar image={icon} />
     <span>{text}</span>
