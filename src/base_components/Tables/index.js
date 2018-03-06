@@ -20,12 +20,8 @@ const Tables = styled(({ children, className }) => (
       background: #f2f3f6;
     }
   }
-  & .Tables__row th,
-  & .Tables__row td {
+  & .Tables__row th {
     border: 0;
-  }
-  & .Tables__row td:last-child {
-    text-align: right;
   }
   & .Tables__row th {
     font-size: 12px;
@@ -33,10 +29,6 @@ const Tables = styled(({ children, className }) => (
     color: #636363;
     text-transform: uppercase;
     padding-bottom: 3px;
-  }
-  & .Tables__row td {
-    vertical-align: middle;
-    color: #111111;
   }
 `
 
