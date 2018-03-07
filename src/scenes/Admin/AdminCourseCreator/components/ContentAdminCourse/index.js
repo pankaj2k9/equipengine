@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Route, Switch } from 'react-router-dom'
-// components
+// Components
 import ErrorBoundary from 'base_components/ErrorBoundary'
 import Breadcrumbs from 'base_components/Breadcrumbs'
 // Scenes
 import Loader from 'base_components/Loader'
 import Loadable from 'react-loadable'
-// New Course Modal
-import NewCourse from './scenes/NewCourse'
+// New course modal
+import NewCourseModal from './scenes/NewCourseModal'
 // Course library
 const AsyncCourses = Loadable({
   loader: () => import('./scenes/Courses'),
@@ -29,7 +29,7 @@ const AsyncVideos = Loadable({
   timeout: 10000
 })
 
-// the styled container of ContentAdminCourse component.
+// The styled container of ContentAdminCourse component.
 const ContainerContent = styled.div`
   margin-left: 75px;
   width: 100%;
@@ -42,7 +42,7 @@ const ContainerContent = styled.div`
 const ContentAdminCourse = ({ match, handleClose, isOpen }) => (
   <ContainerContent>
     <Breadcrumbs />
-    <NewCourse handleClose={handleClose} isOpen={isOpen} />
+    <NewCourseModal handleClose={handleClose} isOpen={isOpen} />
     <Switch>
       <Route
         strict
