@@ -57,7 +57,7 @@ const RootButton = styled.button`
   font-weight: 800;
   text-transform: uppercase;
   border-radius: 3px;
-  transition: background-color 300ms ease-in;
+  transition: all 300ms ease-in;
   pointer-events: ${(props) => props.disabled && 'none'};
 
   &:hover {

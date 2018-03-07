@@ -10,7 +10,7 @@ const ExtendModalHeader = styled(Modal.Header)`
 `
 
 const ModalHeader = ({children}) => (
-  <ExtendModalHeader closeButton>
+  <ExtendModalHeader>
     {children}
   </ExtendModalHeader>
 )

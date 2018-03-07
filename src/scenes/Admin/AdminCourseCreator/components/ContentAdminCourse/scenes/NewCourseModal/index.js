@@ -2,10 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 //
 import AdminCourseModal from '../components/AdminCourseModal'
-
-const Body = () => (
-  <span>new course modal body</span>
-)
+import BodyContent from './components/BodyContent'
 
 const NewCourseModal = ({handleClose, isOpen}) => {
   // informations use by the modal
@@ -14,7 +11,7 @@ const NewCourseModal = ({handleClose, isOpen}) => {
       title: 'Create a new course'
     },
     body: {
-      children: <Body /> // we will pass the element of Body
+      children: <BodyContent /> // we will pass the element of Body
     },
     footer: {
       buttonTitle: 'Create',
