@@ -79,6 +79,7 @@ const ListItem = styled(({ className }) => (
   }
 `
 
+// TODO: Add drag and drop features to this list.
 const ListTutorial = () => (
   <ul>
     <ListItem />
