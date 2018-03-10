@@ -21,7 +21,20 @@ export default styled(Box)`
       font-weight: 800;
       margin-bottom: 0.5em;
       text-transform: capitalize;
-      color: #0000007d;
+      color: #ffffff;
+    }
+  }
+
+  .containerControllButton > div{
+    font-size: 12px;
+    margin-right: 4em;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    img {
+      margin-right: 0.9em;
     }
   }
 
