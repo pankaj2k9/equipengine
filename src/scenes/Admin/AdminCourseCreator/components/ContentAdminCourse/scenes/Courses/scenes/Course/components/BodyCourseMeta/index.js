@@ -8,9 +8,14 @@ import Box from 'base_components/Box'
 import ItemTutorialCourse from './components/ItemTutorialCourse'
 import ItemReportingCourse from './components/ItemReportingCourse'
 
+// Override the defaul styles of .tab-content
 const BoxBodyCourse = styled(Box)`
   @media screen and (min-width: 768px) {
     padding-bottom: 85px;
+
+    .tab-content {
+      margin-top: 0;
+    }
   }
 `
 

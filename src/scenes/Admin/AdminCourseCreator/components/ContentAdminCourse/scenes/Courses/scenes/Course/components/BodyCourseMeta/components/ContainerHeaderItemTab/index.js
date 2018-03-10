@@ -5,6 +5,7 @@ export default styled.div`
   border-bottom: 1px solid #d8d8d8;
 
   @media screen and (min-width: 768px) {
-    padding-bottom: 1.5em;
+    padding: 1.5em 0;
+    text-align: right;
   }
-`
+:`
