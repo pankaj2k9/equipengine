@@ -8,28 +8,25 @@ import Box from 'base_components/Box'
 import ItemTutorialCourse from './components/ItemTutorialCourse'
 import ItemReportingCourse from './components/ItemReportingCourse'
 
-// Override the defaul styles of .tab-content
-const BoxBodyCourse = styled(Box)`
+const BodyCourseMeta = styled(({className}) => (
+  <Box className={className}>
+    <Tabs className='TabsCourse'>
+      <Tab eventKey={1} title='Tutorials'>
+        <ItemTutorialCourse />
+      </Tab>
+      <Tab eventKey={2} title='Reporting/Assessing'>
+        <ItemReportingCourse />
+      </Tab>
+    </Tabs>
+  </Box>
+))`
   @media screen and (min-width: 768px) {
     padding-bottom: 85px;
 
-    .tab-content {
+    .TabsCourse > .tab-content {
       margin-top: 0;
     }
   }
 `
-
-const BodyCourseMeta = () => (
-  <BoxBodyCourse>
-    <Tabs>
-      <Tab eventKey={1} title='Tutorials'>
-        <ItemTutorialCourse />
-      </Tab>
-      <Tab eventKey={2} title='Reporting/Assesing'>
-        <ItemReportingCourse />
-      </Tab>
-    </Tabs>
-  </BoxBodyCourse>
-)
 
 export default BodyCourseMeta

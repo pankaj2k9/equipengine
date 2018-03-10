@@ -1,5 +1,6 @@
 import React from 'react'
 //
+import DragDrop from 'base_components/DragDrop'
 import ContainerFilterableList from 'scenes/Admin/components/ContainerAdminPanel/components/ContainerFilterableList'
 import HeaderTutorialCourse from './components/HeaderTutorialCourse'
 import ListTutorial from './components/ListTutorial'
@@ -13,7 +14,9 @@ const ContainerListTutorialCourse = ContainerFilterableList.extend`
 const ListTutorialCourse = () => (
   <ContainerListTutorialCourse>
     <HeaderTutorialCourse />
-    <ListTutorial />
+    <DragDrop>
+      <ListTutorial />
+    </DragDrop>
   </ContainerListTutorialCourse>
 )
 

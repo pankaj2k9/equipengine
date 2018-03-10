@@ -29,7 +29,7 @@ class DragDrop extends Component {
     // pass props to a children. we will loop to all given chilren and pass a props.
     const childrenWithProps = Children.map(
       children,
-      child => React.cloneElement(child, { list: this.state.list }) // pass the list state
+      (child) => React.cloneElement(child, { list: this.state.list }) // pass the list state
     )
 
     return (
