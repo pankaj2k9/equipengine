@@ -1,13 +1,20 @@
 import React, { Fragment } from 'react'
-import styled from 'styled-components'
-//
+// components
 import Form, { FormGroup, Label, Text, TextArea } from 'base_components/RootForm'
+import ButtonAdd from 'base_components/ButtonAdd'
 import IconMenu from 'react-icons/lib/md/dehaze'
 import IconClose from 'react-icons/lib/md/close'
 import DragDrop, { DroppableList, DroppableListItem } from 'base_components/DragDrop'
+// propTypes and defaultProps
+import { labelGroupProps } from './propTypes'
+import { labelGroupDefaultProps } from './defaultProps'
+// styles
+import { labelGroupStyles, ContainerList, listThingsStyles } from './styles'
 
 /**
- * /////////////////////////// Item tab basics component
+ * -------------------------------------
+ * Item tab basics
+ * -------------------------------------
  */
 const ItemTabBasics = () => (
   <Form>
@@ -24,25 +31,37 @@ const ItemTabBasics = () => (
       />
     </FormGroup>
     <FormGroup>
-      <Label>Things to do</Label>
+      <LabelGroup title='Things to do' />
       <ListThingsToDo />
     </FormGroup>
     <FormGroup>
-      <Label>Featured Video / Audio</Label>
-      <ListThingsToDo />
+      <LabelGroup title='Featured Video / Audio' />
     </FormGroup>
   </Form>
 )
 
-/**
- * /////////////////////////// List things to do
- */
-const ContainerList = styled.div`
-  border: 1px solid #D8D8D8;
-  margin-top: 0.7em;
-  padding: 1em;
-`
+export default ItemTabBasics
 
+/**
+ * -------------------------------------
+ * Label group
+ * -------------------------------------
+ */
+const LabelGroup = labelGroupStyles(({className, title, onHandlerClick}) => (
+  <div className={className}>
+    <span>{title}</span>
+    <ButtonAdd text='Add' iconPosition='right' onHandlerClick={onHandlerClick} />
+  </div>
+))
+
+LabelGroup.propTypes = labelGroupProps
+LabelGroup.defaultProps = labelGroupDefaultProps
+
+/**
+ * -------------------------------------
+ * List things to do
+ * -------------------------------------
+ */
 const ListThingsToDo = () => (
   <ContainerList>
     <DragDrop>
@@ -73,9 +92,11 @@ const ListThingsToDo = () => (
 )
 
 /**
- * /////////////////////////// List things to do item
+ * -------------------------------------
+ * List things to do item
+ * -------------------------------------
  */
-const ListThingsToDoItem = styled(({className}) => (
+const ListThingsToDoItem = listThingsStyles(({className}) => (
   <li className={className}>
     <div>
       <i><IconMenu /></i>
@@ -83,22 +104,4 @@ const ListThingsToDoItem = styled(({className}) => (
     </div>
     <i><IconClose /></i>
   </li>
-))`
-
-  padding-bottom: 1.2em;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  color: #D8D8D8;
-
-  i {
-    font-size: 1.4rem;
-  }
-
-  span {
-    color: #000000;
-    margin-left: 1em;
-  }
-`
-
-export default ItemTabBasics
+))
