@@ -4,12 +4,13 @@ import styled from 'styled-components'
 import ContainerBodyAdmin from 'scenes/Admin/components/ContainerAdminPanel/components/ContainerBodyAdmin'
 import { Tab } from 'react-bootstrap'
 import Tabs from 'base_components/Tabs'
+import ItemTabBasics from './components/ItemTabBasics'
 
 const TabsLesson = styled(({className}) => (
   <ContainerBodyAdmin className={className}>
     <Tabs className='TabsLesson'>
       <Tab eventKey={1} title='Basics'>
-        basics
+        <ItemTabBasics />
       </Tab>
       <Tab eventKey={2} title='Actions'>
         actions
