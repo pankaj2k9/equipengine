@@ -1,26 +1,25 @@
-import styled from 'styled-components'
+import addStyles from 'utils/addStyles'
 
-// TODO: Think of solution on how to make this function as point-free
 /**
- * -------------------------------------
  * Header actions styles
+ * @function
  * -------------------------------------
  */
-export const headerActionsStyles = (Wc) => styled(Wc)`
+export const headerActionsStyles = addStyles(`
   border-bottom: 1px solid #D8D8D8;
   padding-bottom: 1em;
   margin-bottom: 1.8em;
   display: flex;
   justify-content: flex-end;
-`
+`)
 
 /**
-  *
   * -------------------------------------
   * List actions styles
+  * @function
   * -------------------------------------
 */
-export const listActionsStyles = (Wc) => styled(Wc)`
+export const listActionsStyles = addStyles(`
   li {
     display: flex;
     flex-direction: column;
@@ -68,4 +67,4 @@ export const listActionsStyles = (Wc) => styled(Wc)`
     }
 
   }
-`
+`)

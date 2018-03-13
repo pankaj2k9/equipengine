@@ -1,25 +1,27 @@
-import styled from 'styled-components'
+import addStyles from 'utils/addStyles'
 
 /**
  * -------------------------------------
  * Add styles in LabelGroup
+ * @function
  * -------------------------------------
  */
-export const labelGroupStyles = (Wc) => styled(Wc)`
+export const labelGroupStyles = addStyles(`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
   color: #000000;
-`
+`)
 
 /**
  * -------------------------------------
  * add styles in ListThingsToDo
+ * @function
  * -------------------------------------
  */
-export const listThingsStyles = (Wc) => styled(Wc)`
+export const listThingsStyles = addStyles(`
   border: 1px solid #D8D8D8;
   margin-top: 0.7em;
   padding: 1em;
@@ -41,4 +43,4 @@ export const listThingsStyles = (Wc) => styled(Wc)`
       margin-left: 1em;
     }
   }
-`
+`)
