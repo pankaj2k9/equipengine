@@ -6,7 +6,6 @@ import iconPlay from 'resources/images/play-button.svg'
 import IconMenu from 'react-icons/lib/md/dehaze'
 import IconClose from 'react-icons/lib/md/close'
 import Form, { Switch } from 'base_components/RootForm'
-import Button from 'base_components/RootButton'
 
 const ListItemTutorial = styled(({ className }) => (
   <li className={className}>
@@ -24,7 +23,6 @@ const ListItemTutorial = styled(({ className }) => (
       <ContainerFlex className='ListItem__right'>
         <Form>
           <Switch name='switchTutorial' />
-          <Button secondary>Edit</Button>
           <i>
             <IconClose />
           </i>

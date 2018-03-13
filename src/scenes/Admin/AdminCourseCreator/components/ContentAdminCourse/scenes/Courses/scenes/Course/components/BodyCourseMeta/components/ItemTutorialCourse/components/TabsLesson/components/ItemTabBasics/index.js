@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 // components
 import Form, { FormGroup, Label, Text, TextArea } from 'base_components/RootForm'
-import ButtonAdd from 'base_components/ButtonAdd'
 import IconMenu from 'react-icons/lib/md/dehaze'
 import IconClose from 'react-icons/lib/md/close'
 import DragDrop, { DroppableList, DroppableListItem } from 'base_components/DragDrop'
@@ -9,7 +8,8 @@ import DragDrop, { DroppableList, DroppableListItem } from 'base_components/Drag
 import { labelGroupProps } from './propTypes'
 import { labelGroupDefaultProps } from './defaultProps'
 // styles
-import { labelGroupStyles, ContainerList, listThingsStyles } from './styles'
+import { ButtonAdd } from '../../styles'
+import { labelGroupStyles, listThingsStyles } from './styles'
 
 /**
  * -------------------------------------
@@ -62,8 +62,8 @@ LabelGroup.defaultProps = labelGroupDefaultProps
  * List things to do
  * -------------------------------------
  */
-const ListThingsToDo = () => (
-  <ContainerList>
+const ListThingsToDo = listThingsStyles(({className}) => (
+  <div className={className}>
     <DragDrop>
       <DroppableList droppableId='droppable-01' type='GROUP_THINGS_TODO'>
         {(list) => (
@@ -88,20 +88,20 @@ const ListThingsToDo = () => (
         )}
       </DroppableList>
     </DragDrop>
-  </ContainerList>
-)
+  </div>
+))
 
 /**
  * -------------------------------------
  * List things to do item
  * -------------------------------------
  */
-const ListThingsToDoItem = listThingsStyles(({className}) => (
-  <li className={className}>
+const ListThingsToDoItem = () => (
+  <li>
     <div>
       <i><IconMenu /></i>
       <span>1 x Reading Activity</span>
     </div>
     <i><IconClose /></i>
   </li>
-))
+)
