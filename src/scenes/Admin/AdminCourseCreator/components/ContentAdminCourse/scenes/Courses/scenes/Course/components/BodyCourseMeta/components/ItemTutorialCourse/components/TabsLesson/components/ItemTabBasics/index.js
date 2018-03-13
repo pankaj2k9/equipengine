@@ -5,8 +5,10 @@ import IconMenu from 'react-icons/lib/md/dehaze'
 import IconClose from 'react-icons/lib/md/close'
 import DragDrop, { DroppableList, DroppableListItem } from 'base_components/DragDrop'
 // propTypes and defaultProps
-import { labelGroupProps } from './propTypes'
-import { labelGroupDefaultProps } from './defaultProps'
+import {
+  labelGroup
+}
+  from './propTypes'
 // styles
 import { ButtonAdd } from '../../styles'
 import { labelGroupStyles, listThingsStyles } from './styles'
@@ -54,8 +56,8 @@ const LabelGroup = labelGroupStyles(({className, title, onHandlerClick}) => (
   </div>
 ))
 
-LabelGroup.propTypes = labelGroupProps
-LabelGroup.defaultProps = labelGroupDefaultProps
+LabelGroup.propTypes = labelGroup.props
+LabelGroup.defaultProps = labelGroup.default
 
 /**
  * -------------------------------------
@@ -63,32 +65,34 @@ LabelGroup.defaultProps = labelGroupDefaultProps
  * -------------------------------------
  */
 const ListThingsToDo = listThingsStyles(({className}) => (
-  <div className={className}>
-    <DragDrop>
-      <DroppableList droppableId='droppable-01' type='GROUP_THINGS_TODO'>
-        {(list) => (
-          <Fragment>
-            <DroppableListItem
-              draggableId='draggable-01'
-              type='GROUP_THINGS_TODO'
-              index={0}
-              key='jjdsfi88sdfj'
-            >
-              <ListThingsToDoItem />
-            </DroppableListItem>
-            <DroppableListItem
-              draggableId='draggable-02'
-              type='GROUP_THINGS_TODO'
-              index={1}
-              key='jjdsfi88sdfm'
-            >
-              <ListThingsToDoItem />
-            </DroppableListItem>
-          </Fragment>
-        )}
-      </DroppableList>
-    </DragDrop>
-  </div>
+  <DragDrop>
+    <DroppableList
+      droppableId='droppable-01'
+      type='GROUP_THINGS_TODO'
+      className={className}
+    >
+      {(list) => (
+        <Fragment>
+          <DroppableListItem
+            draggableId='draggable-01'
+            type='GROUP_THINGS_TODO'
+            index={0}
+            key='jjdsfi88sdfj'
+          >
+            <ListThingsToDoItem />
+          </DroppableListItem>
+          <DroppableListItem
+            draggableId='draggable-02'
+            type='GROUP_THINGS_TODO'
+            index={1}
+            key='jjdsfi88sdfm'
+          >
+            <ListThingsToDoItem />
+          </DroppableListItem>
+        </Fragment>
+      )}
+    </DroppableList>
+  </DragDrop>
 ))
 
 /**
@@ -97,11 +101,11 @@ const ListThingsToDo = listThingsStyles(({className}) => (
  * -------------------------------------
  */
 const ListThingsToDoItem = () => (
-  <li>
+  <Fragment>
     <div>
       <i><IconMenu /></i>
       <span>1 x Reading Activity</span>
     </div>
     <i><IconClose /></i>
-  </li>
+  </Fragment>
 )

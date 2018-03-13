@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
 import { compose, reduce, keys, append, prop, assoc } from 'ramda'
 // components
 import IconMenu from 'react-icons/lib/md/dehaze'
@@ -8,15 +7,19 @@ import Button from 'base_components/RootButton'
 import ContainerFlex from 'base_components/ContainerFlex'
 import DragDrop, { DroppableList, DroppableListItem } from 'base_components/DragDrop'
 // props and default prop types.
-import { headerActionsProps } from './propTypes'
-import { headerActionsDefaultProps } from './defaultProps'
+import {
+  headerActions,
+  listActions,
+  listActionsItem
+} from './propTypes'
+
 // styles
 import { ButtonAdd } from '../../styles'
 import { headerActionsStyles, listActionsStyles } from './styles'
 
 // TODO: move this action into data files.
 // static list actions data.
-const listActions = {
+const listActionsData = {
   'jasfkl3243sjadf': {
     label: 'Question',
     content: 'Do you agree with the statement that “absolutes are no longer popular” in our society? Give some examples from your own experience.'
@@ -49,7 +52,7 @@ const dataObjectToArray = (object) =>
 const ItemTabActions = () => (
   <Fragment>
     <HeaderActions />
-    <ListActions list={dataObjectToArray(listActions)} />
+    <ListActions list={dataObjectToArray(listActionsData)} />
   </Fragment>
 )
 
@@ -66,8 +69,8 @@ const HeaderActions = headerActionsStyles(({className, onHandlerClick}) => (
   </header>
 ))
 
-ItemTabActions.propTypes = headerActionsProps
-ItemTabActions.defaultProps = headerActionsDefaultProps
+HeaderActions.propTypes = headerActions.props
+HeaderActions.defaultProps = headerActions.default
 
 /**
  * -------------------------------------
@@ -75,40 +78,35 @@ ItemTabActions.defaultProps = headerActionsDefaultProps
  * -------------------------------------
  */
 const ListActions = listActionsStyles(({className, onHandlerClick, list}) => (
-  <div className={className}>
-    <DragDrop list={list}>
-      <DroppableList droppableId='droppable-01' type='GROUP_ACTIONS'>
-        {(list) => (
-          <Fragment>
-            {
-              list.map((item, i) => ( // when adding border, we need to include the border in inlineStyle
-                <DroppableListItem
-                  draggableId={item.id}
-                  type='GROUP_ACTIONS'
-                  index={i}
-                  key={item.id}
-                  inlineStyle={{border: '1px solid #dadada'}}
-                >
-                  <ListActionsItem item={item} />
-                </DroppableListItem>
-              ))
-            }
-          </Fragment>
-        )}
-      </DroppableList>
-    </DragDrop>
-  </div>
+  <DragDrop list={list}>
+    <DroppableList
+      droppableId='droppable-01'
+      type='GROUP_ACTIONS'
+      className={className}
+    >
+      {(list) => (
+        <Fragment>
+          {
+            list.map((item, i) => ( // when adding border, we need to include the border in inlineStyle
+              <DroppableListItem
+                draggableId={item.id}
+                type='GROUP_ACTIONS'
+                index={i}
+                key={item.id}
+                inlineStyle={{border: '1px solid #dadada'}}
+              >
+                <ListActionsItem item={item} />
+              </DroppableListItem>
+            ))
+          }
+        </Fragment>
+      )}
+    </DroppableList>
+  </DragDrop>
 ))
 
-// TODO: Move this assignment statement into propTypes file.
-ListActions.propTypes = {
-  list: PropTypes.array.isRequired
-}
-
-// TODO: Move this assignment statement into defaultProps file.
-ListActions.defaultProps = {
-  list: []
-}
+ListActions.propTypes = listActions.props
+ListActions.defaultProps = listActions.default
 
 /**
  * -------------------------------------
@@ -131,12 +129,5 @@ const ListActionsItem = ({item}) => (
   </Fragment>
 )
 
-// TODO: Move this assignment statement into propTypes file.
-ListActionsItem.propTypes = {
-  item: PropTypes.object.isRequired
-}
-
-// TODO: Move this assignment statement into defaultProps file.
-ListActions.defaultProps = {
-  object: {}
-}
+ListActionsItem.propTypes = listActionsItem.props
+ListActions.defaultProps = listActionsItem.default

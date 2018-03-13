@@ -21,10 +21,9 @@ export const headerActionsStyles = addStyles(`
   * -------------------------------------
 */
 export const listActionsStyles = addStyles(`
-  ul {
-    padding: 0.5em 0 0.1em;
+  padding: 0.5em 0 0.1em;
 
-  > div {
+  > li {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -64,7 +63,7 @@ export const listActionsStyles = addStyles(`
   }
 
   @media screen and (min-width: 768px) {
-    ul > div {
+    > li {
       align-items: center;
       flex-direction: row;
     }

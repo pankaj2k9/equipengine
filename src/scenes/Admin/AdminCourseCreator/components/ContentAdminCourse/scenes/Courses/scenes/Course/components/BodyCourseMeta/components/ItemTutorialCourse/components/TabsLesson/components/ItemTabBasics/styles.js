@@ -24,15 +24,15 @@ export const labelGroupStyles = addStyles(`
 export const listThingsStyles = addStyles(`
   border: 1px solid #D8D8D8;
   margin-top: 0.7em;
-  padding: 1em;
   border-radius: 4px;
+  padding-bottom: 4em;
 
-  li {
-    padding-bottom: 1.2em;
+  li{
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     color: #D8D8D8;
+    padding: 0.7em;
 
     i {
       font-size: 1.4rem;

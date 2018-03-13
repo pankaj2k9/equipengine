@@ -11,10 +11,18 @@ export default {
 
 /**
  * -------------------------------------
- * Add prop types in LabelGroup
+ * Add prop types and default props in LabelGroup
  * -------------------------------------
  */
-export const labelGroupProps = {
-  title: PropTypes.string.isRequired,
-  onHandlerClick: PropTypes.func.isRequired
+export const labelGroup = {
+  props: {
+    title: PropTypes.string.isRequired,
+    onHandlerClick: PropTypes.func.isRequired
+  },
+  default: {
+    title: '',
+    onHandlerClick () {
+      console.log('click')
+    }
+  }
 }

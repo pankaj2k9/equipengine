@@ -25,14 +25,14 @@ const DroppableListItem = ({
       }
       return (
         <Fragment>
-          <div
+          <li
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             style={style}
           >
             {children}
-          </div>
+          </li>
           {provided.placeholder}
         </Fragment>
       )

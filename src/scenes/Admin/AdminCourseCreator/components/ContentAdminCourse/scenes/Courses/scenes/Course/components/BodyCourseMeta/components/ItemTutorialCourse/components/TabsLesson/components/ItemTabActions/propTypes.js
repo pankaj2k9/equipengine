@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 /**
  * -------------------------------------
- * Add prop types in ItemTabActions
+ * Add prop types and default props in ItemTabActions
  * -------------------------------------
  */
 export default {
@@ -10,9 +10,44 @@ export default {
 
 /**
  * -------------------------------------
- * Add prop types in HeaderActions
+ * Add prop types and default props in HeaderActions
  * -------------------------------------
  */
-export const headerActionsProps = {
-  onHandlerClick: PropTypes.func.isRequired
+export const headerActions = {
+  props: {
+    onHandlerClick: PropTypes.func.isRequired
+  },
+  default: {
+    onHandlerClick () {
+      console.log('click')
+    }
+  }
+}
+
+/**
+ * -------------------------------------
+ * Add prop types and default props in ListActions
+ * -------------------------------------
+ */
+export const listActions = {
+  props: {
+    list: PropTypes.array.isRequired
+  },
+  default: {
+    list: []
+  }
+}
+
+/**
+ * -------------------------------------
+ * Add prop types and default props in ListActionsItem
+ * -------------------------------------
+ */
+export const listActionsItem = {
+  props: {
+    item: PropTypes.object.isRequired
+  },
+  default: {
+    item: {}
+  }
 }
