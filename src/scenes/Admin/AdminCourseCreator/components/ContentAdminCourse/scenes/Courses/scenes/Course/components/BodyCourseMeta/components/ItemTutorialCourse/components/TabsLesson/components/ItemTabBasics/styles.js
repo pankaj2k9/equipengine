@@ -35,6 +35,7 @@ export const ContainerList = styled.div`
   border: 1px solid #D8D8D8;
   margin-top: 0.7em;
   padding: 1em;
+  border-radius: 4px;
 `
 
 /**
