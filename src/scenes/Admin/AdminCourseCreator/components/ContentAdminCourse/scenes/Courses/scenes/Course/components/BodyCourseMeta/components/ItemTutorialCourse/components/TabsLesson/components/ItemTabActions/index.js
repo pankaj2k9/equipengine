@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { compose, reduce, keys, append, prop, assoc } from 'ramda'
 // components
 import IconMenu from 'react-icons/lib/md/dehaze'
 import IconClose from 'react-icons/lib/md/close'
@@ -12,37 +11,11 @@ import {
   listActions,
   listActionsItem
 } from './propTypes'
-
-// styles
+// resources
 import { ButtonAdd } from '../../styles'
 import { headerActionsStyles, listActionsStyles } from './styles'
-
-// TODO: move this action into data files.
-// static list actions data.
-const listActionsData = {
-  'jasfkl3243sjadf': {
-    label: 'Question',
-    content: 'Do you agree with the statement that “absolutes are no longer popular” in our society? Give some examples from your own experience.'
-  },
-  'jasfkl3243sjgjh': {
-    label: 'Reading',
-    content: 'Read the PDF document “BEC” pages 22-25.'
-  }
-}
-
-// TODO: Move this function into utils.
-// trasform the data as object into array.
-const dataObjectToArray = (object) =>
-  reduce(
-    (arr, property) => {
-      // create new object based on the given object. We will add id field on the existing shape of object.
-      const getObject = compose(assoc('id', property), prop(property))
-      // append the new object on the list
-      return append(getObject(object), arr)
-    },
-    [],
-    keys(object) // return an array of enumerable properties of object.
-  )
+import { listActionsData } from './data'
+import dataToArray from 'utils/dataToArray'
 
 /**
  * -------------------------------------
@@ -52,7 +25,7 @@ const dataObjectToArray = (object) =>
 const ItemTabActions = () => (
   <Fragment>
     <HeaderActions />
-    <ListActions list={dataObjectToArray(listActionsData)} />
+    <ListActions list={dataToArray(listActionsData)} />
   </Fragment>
 )
 
