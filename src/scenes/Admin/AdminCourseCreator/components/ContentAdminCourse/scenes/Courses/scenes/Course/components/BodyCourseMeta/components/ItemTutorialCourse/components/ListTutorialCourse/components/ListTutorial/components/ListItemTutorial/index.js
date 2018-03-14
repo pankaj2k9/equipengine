@@ -8,33 +8,31 @@ import IconClose from 'react-icons/lib/md/close'
 import Form, { Switch } from 'base_components/RootForm'
 
 const ListItemTutorial = styled(({ className }) => (
-  <li className={className}>
+  <ContainerFlex isAlignCenter isSpaceBetween className={className}>
     <ContainerFlex isAlignCenter isSpaceBetween>
-      <ContainerFlex isAlignCenter isSpaceBetween className='ListItem__left'>
-        <i>
-          <IconMenu />
-        </i>
-        <img alt='icon play' src={iconPlay} />
-        <div>
-          <p>Tutorial 1</p>
-          <span>00:05:25</span>
-        </div>
-      </ContainerFlex>
-      <ContainerFlex className='ListItem__right'>
-        <Form>
-          <Switch name='switchTutorial' />
-          <i>
-            <IconClose />
-          </i>
-        </Form>
-      </ContainerFlex>
+      <i>
+        <IconMenu />
+      </i>
+      <img alt='icon play' src={iconPlay} />
+      <div>
+        <p>Tutorial 1</p>
+        <span>00:05:25</span>
+      </div>
     </ContainerFlex>
-  </li>
+    <ContainerFlex>
+      <Form>
+        <Switch name='switchTutorial' />
+        <i>
+          <IconClose />
+        </i>
+      </Form>
+    </ContainerFlex>
+  </ContainerFlex>
 ))`
   border-bottom: 1px solid #d8d8d8;
   padding: 1.5em 0;
 
-  .ListItem__left {
+  > div:first-child {
     > i:first-child {
       font-size: 1.2rem;
       color: #d8d8d8;
@@ -58,7 +56,7 @@ const ListItemTutorial = styled(({ className }) => (
     }
   }
 
-  .ListItem__right {
+  > div:last-child {
     > form {
       display: flex;
       align-items: center;
@@ -73,6 +71,10 @@ const ListItemTutorial = styled(({ className }) => (
         font-size: 1.4rem;
       }
     }
+  }
+
+  @media screen and (min-width:768px) {
+    padding: 1.5em 1.5em 1.5em 0;
   }
 `
 
