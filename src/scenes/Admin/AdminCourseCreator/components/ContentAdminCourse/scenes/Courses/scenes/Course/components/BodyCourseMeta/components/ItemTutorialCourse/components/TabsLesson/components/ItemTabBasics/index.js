@@ -1,3 +1,4 @@
+/** @module ItemTabBasics */
 import React, { Fragment } from 'react'
 // components
 import Form, { FormGroup, Label, Text, TextArea } from 'base_components/RootForm'
@@ -16,6 +17,8 @@ import { labelGroupStyles, listThingsStyles } from './styles'
 /**
  * -------------------------------------
  * Item tab basics
+ * @see LabelGroup
+ * @see ListThingsToDo
  * -------------------------------------
  */
 const ItemTabBasics = () => (
@@ -47,6 +50,7 @@ export default ItemTabBasics
 /**
  * -------------------------------------
  * Label group
+ * @see ItemTabBasics
  * -------------------------------------
  */
 const LabelGroup = labelGroupStyles(({className, title, onHandlerClick}) => (
@@ -62,6 +66,8 @@ LabelGroup.defaultProps = labelGroup.default
 /**
  * -------------------------------------
  * List things to do
+ * @see ItemTabBasics
+ * @see ListThingsToDoItem
  * -------------------------------------
  */
 const ListThingsToDo = listThingsStyles(({className}) => (
@@ -95,9 +101,12 @@ const ListThingsToDo = listThingsStyles(({className}) => (
   </DragDrop>
 ))
 
+// TODO: Rename this component - it should be ListItem
+// Our naming convention will be - {Semantic Name}{Namespace} . E.g - ListTutorial
 /**
  * -------------------------------------
  * List things to do item
+ * @see ListThingsToDo
  * -------------------------------------
  */
 const ListThingsToDoItem = () => (

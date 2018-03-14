@@ -1,3 +1,5 @@
+/** @module ItemTabActions */
+
 import React, { Fragment } from 'react'
 // components
 import IconMenu from 'react-icons/lib/md/dehaze'
@@ -20,6 +22,8 @@ import dataToArray from 'utils/dataToArray'
 /**
  * -------------------------------------
  * Item tab actions
+ * @see HeaderActions
+ * @see ListActions
  * -------------------------------------
  */
 const ItemTabActions = () => (
@@ -34,6 +38,7 @@ export default ItemTabActions
 /**
  * -------------------------------------
  * Header item tab actions
+ * @see ItemTabActions
  * -------------------------------------
  */
 const HeaderActions = headerActionsStyles(({className, onHandlerClick}) => (
@@ -48,6 +53,8 @@ HeaderActions.defaultProps = headerActions.default
 /**
  * -------------------------------------
  * List actions
+ * @see ItemTabActions
+ * @see ListActionsItem
  * -------------------------------------
  */
 const ListActions = listActionsStyles(({className, onHandlerClick, list}) => (
@@ -84,6 +91,7 @@ ListActions.defaultProps = listActions.default
 /**
  * -------------------------------------
  * List actions item
+ * @see ListActions
  * -------------------------------------
  */
 const ListActionsItem = ({item}) => (
