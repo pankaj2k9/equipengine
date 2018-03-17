@@ -67,7 +67,7 @@ LabelGroup.defaultProps = labelGroup.default
  * -------------------------------------
  * List things to do
  * @see ItemTabBasics
- * @see ListThingsToDoItem
+ * @see ListItemThingsToDo
  * -------------------------------------
  */
 const ListThingsToDo = listThingsStyles(({className}) => (
@@ -85,7 +85,7 @@ const ListThingsToDo = listThingsStyles(({className}) => (
             index={0}
             key='jjdsfi88sdfj'
           >
-            <ListThingsToDoItem />
+            <ListItemThingsToDo />
           </DroppableListItem>
           <DroppableListItem
             draggableId='draggable-02'
@@ -93,7 +93,7 @@ const ListThingsToDo = listThingsStyles(({className}) => (
             index={1}
             key='jjdsfi88sdfm'
           >
-            <ListThingsToDoItem />
+            <ListItemThingsToDo />
           </DroppableListItem>
         </Fragment>
       )}
@@ -101,15 +101,13 @@ const ListThingsToDo = listThingsStyles(({className}) => (
   </DragDrop>
 ))
 
-// TODO: Rename this component - it should be ListItem
-// Our naming convention will be - {Semantic Name}{Namespace} . E.g - ListTutorial
 /**
  * -------------------------------------
  * List things to do item
  * @see ListThingsToDo
  * -------------------------------------
  */
-const ListThingsToDoItem = () => (
+const ListItemThingsToDo = () => (
   <Fragment>
     <div>
       <i><IconMenu /></i>
