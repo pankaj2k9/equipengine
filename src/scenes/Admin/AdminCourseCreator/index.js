@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 import ContainerFlex from 'base_components/ContainerFlex'
 import SidebarAdminCourse from './components/SidebarAdminCourse'
 import ContentAdminCourse from './components/ContentAdminCourse'
-import withModal from './hoc/withModal'
+import modal from 'hoc/modal'
 
-const AdminCourseCreator = ({ match, handleShow, handleClose, isOpen }) => (
+const AdminCourseCreator = ({ match, onOpen, onClose, isOpen }) => (
   <ContainerFlex>
-    <SidebarAdminCourse handleShow={handleShow} />
+    <SidebarAdminCourse onOpen={onOpen} />
     <ContentAdminCourse
-      handleClose={handleClose}
+      onClose={onClose}
       isOpen={isOpen}
       match={match}
     />
@@ -19,9 +19,9 @@ const AdminCourseCreator = ({ match, handleShow, handleClose, isOpen }) => (
 
 AdminCourseCreator.propTypes = {
   match: PropTypes.object.isRequired,
-  handleShow: PropTypes.func.isRequired,
-  handleClose: PropTypes.func.isRequired,
+  onOpen: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired
 }
 
-export default withModal(AdminCourseCreator)
+export default modal(AdminCourseCreator)

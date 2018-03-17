@@ -17,10 +17,10 @@ const ListLink = styled.ul`
   position: fixed;
 `
 
-const SidebarAdminCourse = ({ match, handleShow }) => (
+const SidebarAdminCourse = ({ match, onOpen }) => (
   <ListLink>
     <ListLinkItem
-      handleClick={handleShow}
+      handleClick={onOpen}
       icon={iconNewCourse}
       text='New Course'
       url={`${match.path}/new-course`}
@@ -44,7 +44,7 @@ const SidebarAdminCourse = ({ match, handleShow }) => (
 )
 
 SidebarAdminCourse.propTypes = {
-  handleShow: PropTypes.func.isRequired
+  onOpen: PropTypes.func.isRequired
 }
 
 export default withRouter(SidebarAdminCourse)

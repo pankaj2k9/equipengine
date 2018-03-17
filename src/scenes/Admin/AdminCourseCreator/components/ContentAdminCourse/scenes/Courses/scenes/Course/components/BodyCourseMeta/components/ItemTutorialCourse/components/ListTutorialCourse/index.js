@@ -1,4 +1,3 @@
-/** @module ListTutorialCourse */
 import React, { Fragment } from 'react'
 // components
 import ContainerHeaderItemTab from '../../../ContainerHeaderItemTab'

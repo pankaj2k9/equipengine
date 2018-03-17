@@ -15,10 +15,10 @@ export default {
  */
 export const headerActions = {
   props: {
-    onHandlerClick: PropTypes.func.isRequired
+    handleShow: PropTypes.func.isRequired
   },
   default: {
-    onHandlerClick () {
+    handleShow () {
       console.log('click')
     }
   }

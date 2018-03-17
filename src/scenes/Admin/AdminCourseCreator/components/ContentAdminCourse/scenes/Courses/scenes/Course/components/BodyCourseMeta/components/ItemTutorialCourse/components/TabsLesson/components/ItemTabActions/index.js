@@ -1,7 +1,6 @@
-/** @module ItemTabActions */
-
 import React, { Fragment } from 'react'
 // components
+import ModalActions from './components/ModalActions'
 import IconMenu from 'react-icons/lib/md/dehaze'
 import IconClose from 'react-icons/lib/md/close'
 import Button from 'base_components/RootButton'
@@ -14,6 +13,7 @@ import {
   listActionsItem
 } from './propTypes'
 // resources
+import modal from 'hoc/modal'
 import { ButtonAdd } from '../../styles'
 import { headerActionsStyles, listActionsStyles } from './styles'
 import { listActionsData } from './data'
@@ -26,14 +26,15 @@ import dataToArray from 'utils/dataToArray'
  * @see ListActions
  * -------------------------------------
  */
-const ItemTabActions = () => (
+const ItemTabActions = ({isOpen, onOpen, onClose}) => (
   <Fragment>
-    <HeaderActions />
+    <HeaderActions handleShow={onOpen} />
     <ListActions list={dataToArray(listActionsData)} />
+    <ModalActions isOpen={isOpen} handleClose={onClose} />
   </Fragment>
 )
 
-export default ItemTabActions
+export default modal(ItemTabActions)
 
 /**
  * -------------------------------------
@@ -41,9 +42,9 @@ export default ItemTabActions
  * @see ItemTabActions
  * -------------------------------------
  */
-const HeaderActions = headerActionsStyles(({className, onHandlerClick}) => (
+const HeaderActions = headerActionsStyles(({className, handleShow}) => (
   <header className={className}>
-    <ButtonAdd text='Add' iconPosition='right' onHandlerClick={onHandlerClick} />
+    <ButtonAdd text='Add' iconPosition='right' onHandlerClick={handleShow} />
   </header>
 ))
 

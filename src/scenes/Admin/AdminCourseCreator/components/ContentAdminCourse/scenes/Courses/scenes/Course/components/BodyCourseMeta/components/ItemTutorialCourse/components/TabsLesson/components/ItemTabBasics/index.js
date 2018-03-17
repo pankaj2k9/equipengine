@@ -1,4 +1,3 @@
-/** @module ItemTabBasics */
 import React, { Fragment } from 'react'
 // components
 import Form, { FormGroup, Label, Text, TextArea } from 'base_components/RootForm'

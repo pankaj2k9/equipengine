@@ -25,7 +25,7 @@ const AdminCourseModal = ({
 }) => (
   <Modal
     isOpen={isOpen}
-    handleClose={handleClose}
+    onClose={handleClose}
     header={<ModalHeader title={title} />}
     body={
       <ModalBody>

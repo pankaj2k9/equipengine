@@ -39,10 +39,10 @@ const ContainerContent = styled.div`
   }
 `
 
-const ContentAdminCourse = ({ match, handleClose, isOpen }) => (
+const ContentAdminCourse = ({ match, onClose, isOpen }) => (
   <ContainerContent>
     <Breadcrumbs />
-    <NewCourseModal handleClose={handleClose} isOpen={isOpen} />
+    <NewCourseModal handleClose={onClose} isOpen={isOpen} />
     <Switch>
       <Route
         strict
@@ -77,7 +77,7 @@ const ContentAdminCourse = ({ match, handleClose, isOpen }) => (
 
 ContentAdminCourse.propTypes = {
   match: PropTypes.object.isRequired,
-  handleClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired
 }
 

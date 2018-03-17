@@ -1,33 +1,31 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-const modal = WrappedComponent => {
+const modal = (WrappedComponent) => {
   return class Modal extends Component {
-    constructor() {
-      super();
-      this.state = {
-        showModal: false
-      };
+    state = {
+      isOpen: false
     }
 
-    close = () => {
-      this.setState({ showModal: false });
-    };
+    handleClose = () => {
+      this.setState({ isOpen: false })
+    }
 
-    open = () => {
-      this.setState({ showModal: true });
-    };
+    handleOpen = (e) => {
+      e.preventDefault()
+      this.setState({ isOpen: true })
+    }
 
-    render() {
+    render () {
       return (
         <WrappedComponent
           {...this.props}
-          onOpen={this.open}
-          onClose={this.close}
-          isOpen={this.state.showModal}
+          onOpen={this.handleOpen}
+          onClose={this.handleClose}
+          isOpen={this.state.isOpen}
         />
-      );
+      )
     }
-  };
-};
+  }
+}
 
-export default modal;
+export default modal
