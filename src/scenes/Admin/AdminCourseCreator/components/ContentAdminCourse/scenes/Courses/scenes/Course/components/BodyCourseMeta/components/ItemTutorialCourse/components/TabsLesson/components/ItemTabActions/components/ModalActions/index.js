@@ -5,7 +5,6 @@ import AdminCourseModal from 'scenes/Admin/AdminCourseCreator/components/Content
 import Form, { FormGroup, Label } from 'base_components/RootForm'
 // react select
 import Select from 'react-select'
-import 'react-select/dist/react-select.css'
 
 /**
  * -------------------------------------
