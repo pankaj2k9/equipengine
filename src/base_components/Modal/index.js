@@ -7,6 +7,7 @@ import ModalBody from './components/ModalBody'
 import ModalFooter from './components/ModalFooter'
 import Form from 'base_components/RootForm'
 
+// TODO: Accept className for our ModalBody
 const Modal = ({isOpen, onClose, header, body, footer}) => (
   <RootModal show={isOpen} onHide={onClose}>
     {/* TODO: We gonna add option if the modal is used for form or not */}
