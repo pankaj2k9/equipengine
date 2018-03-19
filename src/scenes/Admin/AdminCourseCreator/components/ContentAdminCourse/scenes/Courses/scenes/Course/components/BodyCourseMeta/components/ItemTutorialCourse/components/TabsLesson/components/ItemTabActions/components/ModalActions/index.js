@@ -65,6 +65,7 @@ export default modalActionsStyles(ModalActions)
 const ButtonSelect = buttonExtendStyles(Button)
 
 /**
+ * -------------------------------------
  * ModalBody
  * @see ModalActions
  * -------------------------------------
@@ -101,6 +102,7 @@ ModalBody.propTypes = modalBody.props
 ModalBody.defaultProps = modalBody.default
 
 /**
+ * -------------------------------------
  * ContentModalActions
  * @see ModalBody
  * -------------------------------------

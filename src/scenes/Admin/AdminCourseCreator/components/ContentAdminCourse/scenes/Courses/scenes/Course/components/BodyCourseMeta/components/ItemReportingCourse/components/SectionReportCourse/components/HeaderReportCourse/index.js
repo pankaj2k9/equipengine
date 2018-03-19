@@ -2,24 +2,28 @@ import React from 'react'
 import styled from 'styled-components'
 //
 import TitleSection from '../../../TitleSection'
-import Dropdown from 'base_components/Dropdown'
-import { MenuItem } from 'react-bootstrap'
+import Dropdown from 'base_components/RootDropdown'
+import css from 'utils/addStyles'
 
-const DropdownResult = Dropdown.extend`
+// TODO: Extract the propTypes and styles to other files.
+const DropdownResult = css(`
   width: 160px;
-`
+`)(Dropdown)
 
 const HeaderReportCourse = styled(({ className }) => (
   <header className={className}>
     <TitleSection>Report</TitleSection>
     <div>
       <span>Final Mark Result</span>
-      <DropdownResult title='Result' id='dropdown-size-medium'>
-        <MenuItem eventKey='1'>Percentage</MenuItem>
-        <MenuItem eventKey='2'>Pass/Fail</MenuItem>
-        <MenuItem eventKey='3'>Competency</MenuItem>
-        <MenuItem eventKey='4'>Manual Entry</MenuItem>
-      </DropdownResult>
+      <DropdownResult
+        dropdownName='markResult'
+        options={[
+          { label: 'Percentage', value: 'percentage' },
+          { label: 'Pass/Fail', value: 'fail' },
+          { label: 'Competency', value: 'competency' },
+          { label: 'Manual Entry', value: 'manualEntry' }
+        ]}
+      />
     </div>
   </header>
 ))`
