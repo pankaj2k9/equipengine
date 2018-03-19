@@ -15,7 +15,7 @@ const ButtonUpload = styled(({className}) => (
 ))`
   color: #BDBDBD;
   border-color: #BDBDBD;
-  padding: 5px 0;
+  padding: 0 0 5px 0;
 
   i {
     font-size: 1.2rem;
