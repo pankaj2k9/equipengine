@@ -17,6 +17,7 @@
     "prettier": "^1.10.2",
     "prop-types": "^15.6.0",
     "ramda": "^0.24.1",
+    "ramda-adjunct": "^2.6.0",
     "react": "^16.2.0",
     "react-beautiful-dnd": "^4.0.1",
     "react-bootstrap": "^0.31.3",

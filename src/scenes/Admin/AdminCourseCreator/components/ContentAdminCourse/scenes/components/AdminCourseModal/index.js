@@ -8,6 +8,7 @@ import ModalFooter from './components/ModalFooter'
 
 // Modal facade
 const AdminCourseModal = ({
+  className,
   handleClose,
   isOpen,
   modal: {
@@ -24,6 +25,7 @@ const AdminCourseModal = ({
   }
 }) => (
   <Modal
+    className={className}
     isOpen={isOpen}
     onClose={handleClose}
     header={<ModalHeader title={title} />}
@@ -50,7 +52,8 @@ AdminCourseModal.propTypes = {
       buttonTitle: PropTypes.string.isRequired,
       buttonHandler: PropTypes.func.isRequired
     })
-  })
+  }),
+  className: PropTypes.string
 }
 
 export default AdminCourseModal
