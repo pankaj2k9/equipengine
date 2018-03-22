@@ -45,7 +45,6 @@ DroppableList.defaultProps = {
   droppableId: 'droppable-1',
   type: 'DEFAULT',
   list: [],
-  className: '',
   colorState: {
     isDragColor: '#DEDEDE',
     notDragColor: '#ffffff'

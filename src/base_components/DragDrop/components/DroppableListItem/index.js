@@ -8,7 +8,8 @@ const DroppableListItem = ({
   type,
   children,
   colorState: {isDragColor, notDragColor},
-  inlineStyle
+  inlineStyle,
+  className
 }) => (
   <Draggable
     draggableId={draggableId}
@@ -30,6 +31,7 @@ const DroppableListItem = ({
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             style={style}
+            className={className}
           >
             {children}
           </li>
@@ -46,6 +48,7 @@ DroppableListItem.propTypes = {
   type: PropTypes.string.isRequired,
   children: PropTypes.element,
   inlineStyle: PropTypes.object,
+  className: PropTypes.string,
   colorState: PropTypes.shape({
     isDragColor: PropTypes.string,
     notDragColor: PropTypes.string

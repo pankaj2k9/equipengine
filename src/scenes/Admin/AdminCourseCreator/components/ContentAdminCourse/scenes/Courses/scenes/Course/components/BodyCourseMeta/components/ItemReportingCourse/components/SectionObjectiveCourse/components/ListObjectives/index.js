@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 //
 import ContainerFlex from 'base_components/ContainerFlex'
@@ -8,6 +8,7 @@ import { Label } from 'base_components/RootForm'
 import Spinner from 'base_components/Spinner'
 import IconMenu from 'react-icons/lib/md/dehaze'
 import IconClose from 'react-icons/lib/md/close'
+import DragDrop, { DroppableList, DroppableListItem } from 'base_components/DragDrop'
 
 const ContainerButton = styled.div`
   display: flex;
@@ -26,8 +27,31 @@ const DropdownResult = Dropdown.extend`
   width: 100%;
 `
 
-const ListItem = styled(({ className }) => (
-  <li className={className}>
+const List = styled(DroppableList)`
+  border: 1px solid #d8d8d8;
+  border-bottom: 0;
+  overflow: auto;
+`
+
+const ListObjectives = () => (
+  <DragDrop>
+    <List droppableId='123'>
+      {
+        () => (
+          <Fragment>
+            <ListItem draggableId='1' index={0} />
+            <ListItem draggableId='2' index={1} />
+          </Fragment>
+        )
+      }
+    </List>
+  </DragDrop>
+)
+
+export default ListObjectives
+
+const ListItem = styled(({ className, draggableId, index }) => (
+  <DroppableListItem draggableId={draggableId} index={index} className={className}>
     <ContainerFlex isSpaceBetween>
       <ContainerFlex isAlignCenter className='ListItem__title'>
         <i>
@@ -54,7 +78,7 @@ const ListItem = styled(({ className }) => (
         </i>
       </ContainerFlex>
     </ContainerFlex>
-  </li>
+  </DroppableListItem>
 ))`
   padding: 1.2em 0.8em 1.2em;
   border-bottom: 1px solid #d8d8d8;
@@ -73,19 +97,3 @@ const ListItem = styled(({ className }) => (
     }
   }
 `
-
-const List = styled.ul`
-  border: 1px solid #d8d8d8;
-  padding-bottom: 1.5em;
-  overflow: auto;
-`
-
-const ListObjectives = () => (
-  <List>
-    <ListItem />
-    <ListItem />
-    <ListItem />
-  </List>
-)
-
-export default ListObjectives
