@@ -1,5 +1,6 @@
 import css, { extendCss } from 'utils/addStyles'
 import ContainerFlex from 'base_components/ContainerFlex'
+import Dropdown from 'base_components/RootDropdown'
 
 /**
  * -------------------------------------
@@ -10,7 +11,6 @@ import ContainerFlex from 'base_components/ContainerFlex'
 export default css(`
   border: 1px solid #d8d8d8;
   border-bottom: 0;
-  overflow: auto;
 
   li {
     padding: 1.2em 0.8em 1.2em;
@@ -49,4 +49,9 @@ export const ContainerAction = extendCss(`
     font-size: 0.7rem;
     margin-top: 1em;
   }
-`)(ContainerFlex)
+`, ContainerFlex)
+
+export const DropdownResult = css(`
+  width: 128px;
+  text-align: left;
+`, Dropdown)

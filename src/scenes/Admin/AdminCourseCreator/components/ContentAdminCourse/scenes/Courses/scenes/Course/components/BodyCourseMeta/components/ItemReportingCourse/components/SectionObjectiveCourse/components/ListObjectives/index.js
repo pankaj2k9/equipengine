@@ -1,19 +1,13 @@
 import React, { Fragment } from 'react'
 //
 import ContainerFlex from 'base_components/ContainerFlex'
-import Dropdown from 'base_components/Dropdown'
-import { MenuItem } from 'react-bootstrap'
 import { Label } from 'base_components/RootForm'
 import Spinner from 'base_components/Spinner'
 import IconMenu from 'react-icons/lib/md/dehaze'
 import IconClose from 'react-icons/lib/md/close'
 import DragDrop, { DroppableList, DroppableListItem } from 'base_components/DragDrop'
 // assets
-import listObjectivesStyles, { ContainerAction } from './styles'
-
-const DropdownResult = Dropdown.extend`
-  width: 100%;
-`
+import listObjectivesStyles, { ContainerAction, DropdownResult } from './styles'
 
 /**
  * -------------------------------------
@@ -59,12 +53,15 @@ const ListItemObjective = () => (
       </ContainerFlex>
       <ContainerFlex isAlignCenter className='ListItem__action'>
         <ContainerAction>
-          <DropdownResult title='Pass/Fail' id='dropdown-size-medium'>
-            <MenuItem eventKey='1'>Percentage</MenuItem>
-            <MenuItem eventKey='2'>Pass/Fail</MenuItem>
-            <MenuItem eventKey='3'>Competency</MenuItem>
-            <MenuItem eventKey='4'>Manual Entry</MenuItem>
-          </DropdownResult>
+          <DropdownResult
+            name='dropdownObjective'
+            options={[
+              {label: 'Percentage', value: 'percentage'},
+              {label: 'Pass/Fail', value: 'passFail'},
+              {label: 'Competency', value: 'competency'},
+              {label: 'Manual Entry', value: 'manualEntry'}
+            ]}
+          />
           <Label>Assesment Method</Label>
         </ContainerAction>
         <ContainerAction>

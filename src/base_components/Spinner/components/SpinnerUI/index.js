@@ -12,7 +12,6 @@ const ContainerSpinner = ContainerFlex.extend`
   border: 1px solid #d8d8d8;
   border-radius: 3px;
   padding: 6px 12px;
-  color: #000000;
 `
 
 const ButtonSpinner = styled.button`
@@ -20,6 +19,11 @@ const ButtonSpinner = styled.button`
   background: transparent;
   padding: 0;
   cursor: pointer;
+  color: #999999;
+
+  &:hover {
+    color: #666666;
+  }
 `
 
 const TextSpinner = styled.input`

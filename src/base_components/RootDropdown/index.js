@@ -13,11 +13,11 @@ class Dropdown extends Component {
 
   render () {
     const { selectedOption } = this.state
-    const { dropdownName, options, className } = this.props
+    const { name, options, className } = this.props
     const selectValue = isNotNil(selectedOption) && selectedOption.value
     return (
       <Select
-        name={dropdownName}
+        name={name}
         value={selectValue}
         onChange={this.handleChange}
         options={options}

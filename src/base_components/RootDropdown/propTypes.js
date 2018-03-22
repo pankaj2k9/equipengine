@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
  */
 export default {
   props: {
-    dropdownName: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(
       PropTypes.shape({
         value: PropTypes.string,
@@ -17,7 +17,7 @@ export default {
     className: PropTypes.string
   },
   default: {
-    dropdownName: 'dropdown',
+    name: 'dropdown',
     options: []
   }
 }
