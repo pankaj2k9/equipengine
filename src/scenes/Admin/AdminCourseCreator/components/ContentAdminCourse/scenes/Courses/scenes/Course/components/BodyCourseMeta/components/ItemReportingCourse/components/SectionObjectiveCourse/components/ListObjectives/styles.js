@@ -11,6 +11,7 @@ import Dropdown from 'base_components/RootDropdown'
 export default css(`
   border: 1px solid #d8d8d8;
   border-bottom: 0;
+  overflow-x: auto;
 
   li {
     padding: 1.2em 0.8em 1.2em;
@@ -39,8 +40,8 @@ export default css(`
  * -------------------------------------
  */
 export const ContainerAction = extendCss(`
-  display: flex;
   flex-direction: column;
+  align-items: center;
   margin-right: 2.4em;
   text-align: center;
 

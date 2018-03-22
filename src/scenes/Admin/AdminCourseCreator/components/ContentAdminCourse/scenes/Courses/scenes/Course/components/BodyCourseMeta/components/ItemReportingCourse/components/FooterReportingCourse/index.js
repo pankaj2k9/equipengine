@@ -13,7 +13,6 @@ const FooterReportingCourse = styled(({ className }) => (
       <span>Total mark is over - adjust weights</span>
     </div>
     <Button>Update</Button>
-    <Button secondary>Preview Report</Button>
   </footer>
 ))`
   > div {
@@ -28,17 +27,6 @@ const FooterReportingCourse = styled(({ className }) => (
 
   button {
     width: 130px;
-  }
-
-  button:last-child {
-    display: block;
-    margin-top: 1.1em;
-  }
-
-  @media screen and (min-width: 768px) {
-    button:last-child {
-      margin-top: 1.4em;
-    }
   }
 `
 
