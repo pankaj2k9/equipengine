@@ -1,4 +1,4 @@
-import css, { extendCss } from 'utils/addStyles'
+import css, { extendCss } from 'utils/css'
 import ContainerFlex from 'base_components/ContainerFlex'
 import Dropdown from 'base_components/RootDropdown'
 
@@ -8,7 +8,7 @@ import Dropdown from 'base_components/RootDropdown'
  * @function
  * -------------------------------------
  */
-export default css(`
+export default css`
   border: 1px solid #d8d8d8;
   border-bottom: 0;
   overflow-x: auto;
@@ -31,7 +31,7 @@ export default css(`
       }
     }
   }
-`)
+`
 
 /**
  * -------------------------------------
@@ -39,7 +39,7 @@ export default css(`
  * @function
  * -------------------------------------
  */
-export const ContainerAction = extendCss(`
+export const ContainerAction = extendCss`
   flex-direction: column;
   align-items: center;
   margin-right: 2.4em;
@@ -50,9 +50,9 @@ export const ContainerAction = extendCss(`
     font-size: 0.7rem;
     margin-top: 1em;
   }
-`, ContainerFlex)
+`(ContainerFlex)
 
-export const DropdownResult = css(`
+export const DropdownResult = css`
   width: 128px;
   text-align: left;
-`, Dropdown)
+`(Dropdown)

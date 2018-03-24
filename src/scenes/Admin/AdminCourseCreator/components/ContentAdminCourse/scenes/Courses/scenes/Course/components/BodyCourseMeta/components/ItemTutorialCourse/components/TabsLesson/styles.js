@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import css from 'utils/css'
 import RootButtonAdd from 'base_components/ButtonAdd'
 
 /**
@@ -6,7 +6,7 @@ import RootButtonAdd from 'base_components/ButtonAdd'
  * add styles in TabsLesson
  * -------------------------------------
  */
-export const tabsLessonStyles = (Wc) => styled(Wc)`
+export const tabsLessonStyles = css`
   .TabsLesson {
     margin-top: 1.4em;
   }
@@ -16,7 +16,7 @@ export const tabsLessonStyles = (Wc) => styled(Wc)`
     padding: 16px 0;
 
     .TabsLesson {
-      margin-top: 20px;
+      margin-top: 22px;
 
       .nav-tabs, .tab-content {
         padding: 0 35px;
@@ -25,14 +25,11 @@ export const tabsLessonStyles = (Wc) => styled(Wc)`
   }
 `
 
-export const ButtonAdd = styled(RootButtonAdd)`
+/**
+ * -------------------------------------
+ * ButtonAdd styled-components.
+ * -------------------------------------
+ */
+export const ButtonAdd = css`
   margin-right: 0;
-  border: 1px solid #979797;
-  background: transparent;
-  color: #000000;
-
-  &:hover {
-    background-color: #e2e2e2;
-    color: #000000;
-  }
-`
+`(RootButtonAdd)

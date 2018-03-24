@@ -1,4 +1,4 @@
-import addStyles from 'utils/addStyles'
+import css from 'utils/css'
 
 /**
  * -------------------------------------
@@ -6,14 +6,14 @@ import addStyles from 'utils/addStyles'
  * @function
  * -------------------------------------
  */
-export const labelGroupStyles = addStyles(`
+export const labelGroupStyles = css`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
   color: #000000;
-`)
+`
 
 /**
  * -------------------------------------
@@ -21,7 +21,7 @@ export const labelGroupStyles = addStyles(`
  * @function
  * -------------------------------------
  */
-export const listThingsStyles = addStyles(`
+export const listThingsStyles = css`
   border: 1px solid #D8D8D8;
   margin-top: 0.7em;
   border-radius: 4px;
@@ -43,4 +43,4 @@ export const listThingsStyles = addStyles(`
       margin-left: 1em;
     }
   }
-`)
+`

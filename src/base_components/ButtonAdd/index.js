@@ -8,6 +8,14 @@ const Button = ButtonIcon.extend`
   width: 100%;
   margin-bottom: 10px;
   padding: 5px 13px 8px 13px;
+  border: 1px solid #979797;
+  background: transparent;
+  color: #000000;
+
+  &:hover {
+    background-color: #e2e2e2;
+    color: #000000;
+  }
 
   @media screen and (min-width: 768px) {
     width: initial;

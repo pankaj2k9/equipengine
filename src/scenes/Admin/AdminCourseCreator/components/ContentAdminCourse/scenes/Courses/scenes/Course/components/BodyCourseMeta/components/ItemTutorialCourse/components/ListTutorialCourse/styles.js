@@ -1,7 +1,5 @@
-/** @module styles */
-
 import ContainerFilterableList from 'scenes/Admin/components/ContainerAdminPanel/components/ContainerFilterableList'
-import addStyles from 'utils/addStyles'
+import css, { extendCss } from 'utils/css'
 
 /**
  * -------------------------------------
@@ -9,11 +7,11 @@ import addStyles from 'utils/addStyles'
  * @function
  * -------------------------------------
  */
-export const ContainerListTutorialCourse = ContainerFilterableList.extend`
+export const ContainerListTutorialCourse = extendCss`
   @media screen and (min-width: 768px) {
     position: relative;
   }
-`
+`(ContainerFilterableList)
 
 /**
  * -------------------------------------
@@ -21,7 +19,7 @@ export const ContainerListTutorialCourse = ContainerFilterableList.extend`
  * @function
  * -------------------------------------
  */
-export const listItemTutorialStyles = addStyles(`
+export const listItemTutorialStyles = css`
   border-bottom: 1px solid #d8d8d8;
   padding: 1.5em 0;
 
@@ -69,4 +67,4 @@ export const listItemTutorialStyles = addStyles(`
   @media screen and (min-width:768px) {
     padding: 1.5em 1.5em 1.5em 0;
   }
-`)
+`

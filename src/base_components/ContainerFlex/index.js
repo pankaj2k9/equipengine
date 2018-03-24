@@ -1,45 +1,56 @@
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
+import css from 'utils/css'
 
 /**
  * -------------------------------------
+ * All instances inherit these prop-types:
+ *   isAlignCenter: PropTypes.bool,
+ *   isSpaceBetween: PropTypes.bool,
+ *   justifyContent: PropTypes.string,
+ *   alignItems: PropTypes.string,
+ *   flexDirection: PropTypes.string,
+ *   backgroundColor: PropTypes.string
  * Default flex styles
  * @function
  * -------------------------------------
  */
-const DefaultFlex = styled('div')`
+export const defaultFlexStyles = css`
   display: flex;
-  flex-direction: ${(props) => props.isColumn && 'column'};
+  flex-direction: ${(props) => props.isColumn ? 'column' : props.flexDirection};
   align-items: ${(props) => props.isAlignCenter ? 'center' : props.alignItems};
   justify-content: ${(props) => props.isSpaceBetween ? 'space-between' : props.justifyContent};
+  background-color: ${(props) => props.backgroundColor};
 `
 
 /**
  * -------------------------------------
- * ContainerFlex - for div tag
+ * ContainerFlex - for div tag. Based on the default flex styles.
  * @function
  * -------------------------------------
  */
-const ContainerFlex = DefaultFlex
-
-ContainerFlex.propTypes = {
-  isAlignCenter: PropTypes.bool,
-  isSpaceBetween: PropTypes.bool,
-  justifyContent: PropTypes.string,
-  alignItems: PropTypes.string
-}
-
-ContainerFlex.defaultProps = {
-  justifyContent: 'flex-start',
-  alignItems: 'flex-start'
-}
+const ContainerFlex = defaultFlexStyles('div')
 
 export default ContainerFlex
 
 /**
  * -------------------------------------
- * FooterFlex - for footer tag
+ * FooterFlex - for footer tag. Based on the default flex styles.
  * @function
  * -------------------------------------
  */
-export const FooterFlex = ContainerFlex.withComponent('footer')
+export const FooterFlex = defaultFlexStyles('footer')
+
+/**
+ * -------------------------------------
+ * SectionFlex - for section tag. Based on the default flex styles.
+ * @function
+ * -------------------------------------
+ */
+export const SectionFlex = defaultFlexStyles('section')
+
+/**
+ * -------------------------------------
+ * SectionFlex - for section tag. Based on the default flex styles.
+ * @function
+ * -------------------------------------
+ */
+export const ArticleFlex = defaultFlexStyles('section')

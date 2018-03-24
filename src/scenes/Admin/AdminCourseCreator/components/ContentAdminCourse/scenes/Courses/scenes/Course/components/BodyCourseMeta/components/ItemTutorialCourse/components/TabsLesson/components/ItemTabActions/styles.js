@@ -1,4 +1,4 @@
-import css from 'utils/addStyles'
+import css from 'utils/css'
 
 /**
  * -------------------------------------
@@ -6,13 +6,13 @@ import css from 'utils/addStyles'
  * @function
  * -------------------------------------
  */
-export const headerActionsStyles = css(`
+export const headerActionsStyles = css`
   border-bottom: 1px solid #D8D8D8;
   padding-bottom: 1em;
   margin-bottom: 1.8em;
   display: flex;
   justify-content: flex-end;
-`)
+`
 
 /**
   * -------------------------------------
@@ -20,7 +20,7 @@ export const headerActionsStyles = css(`
   * @function
   * -------------------------------------
 */
-export const listActionsStyles = css(`
+export const listActionsStyles = css`
   padding: 0.5em 0 0.1em;
 
   > li {
@@ -69,4 +69,4 @@ export const listActionsStyles = css(`
     }
 
   }
-`)
+`
