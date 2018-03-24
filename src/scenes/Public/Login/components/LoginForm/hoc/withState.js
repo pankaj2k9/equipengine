@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default WrappedComponent => {
   class EnhancedLoginForm extends Component {
@@ -8,12 +8,12 @@ export default WrappedComponent => {
     };
 
     handleChange = e => {
-      const { value, name } = e.target;
+      const { value, name } = e.target
 
       // update the state
       this.setState({
         [name]: value
-      });
+      })
     };
 
     clearForm = () => {
@@ -21,11 +21,11 @@ export default WrappedComponent => {
       this.setState({
         username: '',
         password: ''
-      });
+      })
     };
 
-    render() {
-      const { username, password } = this.state;
+    render () {
+      const { username, password } = this.state
 
       return (
         <WrappedComponent
@@ -35,9 +35,9 @@ export default WrappedComponent => {
           username={username}
           password={password}
         />
-      );
+      )
     }
   }
 
-  return EnhancedLoginForm;
-};
+  return EnhancedLoginForm
+}

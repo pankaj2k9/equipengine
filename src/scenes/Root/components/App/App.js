@@ -1,19 +1,23 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
+import { Switch, Route, Redirect } from 'react-router-dom'
 /* for code splitting - loadable */
-import Loadable from 'react-loadable';
-import Loader from 'base_components/Loader';
+import Loadable from 'react-loadable'
+import Loader from 'base_components/Loader'
 //
-import PrivateRoutes from './components/PrivateRoutes';
+import PrivateRoutes from './components/PrivateRoutes'
 
-import Sample from './Sample';
-
-const AsyncLogin = Loadable({
-  loader: () => import('scenes/Login'),
+const AsyncHome = Loadable({
+  loader: () => import('scenes/Public/Home'),
   loading: Loader, // before this component gets loaded, we will render first this Loader component.
   timeout: 10000
-});
+})
+
+const AsyncLogin = Loadable({
+  loader: () => import('scenes/Public/Login'),
+  loading: Loader, // before this component gets loaded, we will render first this Loader component.
+  timeout: 10000
+})
 
 /**
  * App component will render either Public or Private routes based on the type.
@@ -22,34 +26,34 @@ const AsyncLogin = Loadable({
 const App = ({ loggedUser, isUserAuthenticated }) => (
   <Fragment>
     <Switch>
-      <Route exact strict path="/" component={Sample} />
+      <Route exact strict path='/' component={AsyncHome} />
       <Route
         exact
         strict
-        path="/login"
-        component={props =>
+        path='/login'
+        component={(props) =>
           isUserAuthenticated ? (
-            <Redirect to="/secure/browse-groups" />
+            <Redirect to='/secure/browse-groups' />
           ) : (
             <AsyncLogin {...props} />
           )}
       />
       <Route
-        path="/secure"
-        component={props =>
+        path='/secure'
+        component={(props) =>
           isUserAuthenticated ? (
             <PrivateRoutes {...props} type={loggedUser.type} />
           ) : (
-            <Redirect to="/login" />
+            <Redirect to='/login' />
           )}
       />
     </Switch>
   </Fragment>
-);
+)
 
 App.propTypes = {
   loggedUser: PropTypes.object.isRequired,
   isUserAuthenticated: PropTypes.bool.isRequired
-};
+}
 
-export default App;
+export default App
