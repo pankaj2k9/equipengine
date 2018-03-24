@@ -1,4 +1,4 @@
-import css, { extendCss } from 'utils/addStyles'
+import css, { extendCss } from 'utils/css'
 
 /**
  * -------------------------------------
@@ -6,7 +6,7 @@ import css, { extendCss } from 'utils/addStyles'
  * @function
  * -------------------------------------
  */
-export default css(`
+export default css`
   .Select {
     width: 160px;
   }
@@ -24,7 +24,7 @@ export default css(`
       }
     }
   }
-`)
+`
 
 /**
  * -------------------------------------
@@ -32,8 +32,8 @@ export default css(`
  * @function
  * -------------------------------------
  */
-export const buttonExtendStyles = extendCss(`
+export const buttonExtendStyles = extendCss`
   color: #BDBDBD;
   border-color: #BDBDBD;
   display: block;
-`)
+`

@@ -3,7 +3,7 @@ import { identical, ifElse, type, compose } from 'ramda'
 
 /**
  * ---------------------------------------------------------------------------------------
- * css :: String -> {String | Component} -> Component
+ * css :: (Array[String], Array[Function]) -> Component -> Component
  *
  * A tag function which accepts css template string and type of component for creating styled-component.
  * @param {Array[String]} arrStrings Array of strings which include styles for component.
@@ -23,7 +23,7 @@ export default css
 
 /**
  * ---------------------------------------------------------------------------------------
- * extendCss :: Array[String] -> Array(Function) -> Component -> Component
+ * extendCss :: (Array[String] -> Array[Function]) -> Component -> Component
  *
  * A tag function which accepts css template string and type of component for overriding the styles of given component.
  * @param {Array[String]} arrStrings Array of strings which include styles for component.
