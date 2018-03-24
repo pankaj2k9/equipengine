@@ -1,4 +1,4 @@
-import css, { extendCss } from 'utils/css'
+import css from 'utils/css'
 
 /**
  * -------------------------------------
@@ -32,7 +32,7 @@ export default css`
  * @function
  * -------------------------------------
  */
-export const buttonExtendStyles = extendCss`
+export const buttonExtendStyles = css`
   color: #BDBDBD;
   border-color: #BDBDBD;
   display: block;

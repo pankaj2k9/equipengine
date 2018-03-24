@@ -1,5 +1,5 @@
 import ContainerFilterableList from 'scenes/Admin/components/ContainerAdminPanel/components/ContainerFilterableList'
-import css, { extendCss } from 'utils/css'
+import css from 'utils/css'
 
 /**
  * -------------------------------------
@@ -7,7 +7,7 @@ import css, { extendCss } from 'utils/css'
  * @function
  * -------------------------------------
  */
-export const ContainerListTutorialCourse = extendCss`
+export const ContainerListTutorialCourse = css`
   @media screen and (min-width: 768px) {
     position: relative;
   }

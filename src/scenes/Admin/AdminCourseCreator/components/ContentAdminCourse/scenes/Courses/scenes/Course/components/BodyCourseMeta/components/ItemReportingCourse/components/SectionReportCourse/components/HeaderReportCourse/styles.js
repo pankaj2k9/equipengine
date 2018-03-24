@@ -1,4 +1,4 @@
-import css from 'utils/addStyles'
+import css from 'utils/css'
 import Dropdown from 'base_components/RootDropdown'
 
 /**
@@ -7,7 +7,7 @@ import Dropdown from 'base_components/RootDropdown'
  * @function
  * -------------------------------------
  */
-export default css(`
+export default css`
   padding-bottom: 0.8em;
   border-bottom: 1px solid #d8d8d8;
 
@@ -19,7 +19,6 @@ export default css(`
     }
   }
 `
-)
 
 /**
  * -------------------------------------
@@ -27,4 +26,6 @@ export default css(`
  * @function
  * -------------------------------------
  */
-export const DropdownResult = css('width: 160px;')(Dropdown)
+export const DropdownResult = css`
+  width: 160px;
+`(Dropdown)
