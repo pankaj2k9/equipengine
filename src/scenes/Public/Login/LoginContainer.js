@@ -10,13 +10,13 @@ const { loggedUser } = loggedUserActions
 // loggedUserSelectors
 const { getErrorMessage, isUserValid } = loggedUserSelectors
 
-const mapState = state => ({
+const mapState = (state) => ({
   errorMsg: getErrorMessage(state),
   isUserValid: isUserValid(state),
   isPending: state.loggedUser.processRequest.pending
 })
 
-const mapDispatch = dispatch =>
+const mapDispatch = (dispatch) =>
   bindActionCreators(
     {
       loggedUser
