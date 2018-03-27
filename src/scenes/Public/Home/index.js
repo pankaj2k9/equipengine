@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 // assets
 import MastheadHeaderHome from './components/MastheadHeaderHome'
 import NavbarHeaderHome from './components/NavbarHeaderHome'
-import { headerHomeStyles } from './styles'
+import homeStyles, { headerHomeStyles, mainHomeStyles } from './styles'
 
 /**
  * -------------------------------------
@@ -10,12 +10,12 @@ import { headerHomeStyles } from './styles'
  * @see HeaderHome
  * -------------------------------------
  */
-const Home = () => (
-  <Fragment>
+const Home = homeStyles(({className}) => (
+  <div className={className}>
     <HeaderHome />
-    <main />
-  </Fragment>
-)
+    <MainHome />
+  </div>
+))
 
 export default Home
 
@@ -30,4 +30,18 @@ const HeaderHome = headerHomeStyles(({className}) => (
     <NavbarHeaderHome />
     <MastheadHeaderHome />
   </header>
+))
+
+/**
+ * -------------------------------------
+ * MainHome
+ * @see Home
+ * -------------------------------------
+ */
+const MainHome = mainHomeStyles(({className}) => (
+  <main className={className}>
+    <section>
+      <h3>Why EquipEngine?</h3>
+    </section>
+  </main>
 ))

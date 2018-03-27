@@ -15,8 +15,6 @@ export default css`
 
   h2 {
     color: #ffffff;
-    font-family: "Avenir Next", sans-serif;
-    font-weight: 800;
     font-size: 1.6rem;
     text-align: center;
     margin-top: 1em;
