@@ -18,7 +18,7 @@ const Header = MainHeaderTitle.extend`
     margin-right: 0.5em;
   }
 
-  @media screen and (min-with: 768px) {
+  @media screen and (min-width: 768px) {
     border-right: 0px;
   }
 `

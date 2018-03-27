@@ -23,7 +23,7 @@ const MetaInfo = styled.span`
 const ListItemTutorial = styled(({ className, isReport }) => (
   <li className={`${className} ListItemTutorial`}>
     {!isReport ? (
-      <div>
+      <div className='ListItemTutorial__container'>
         <div className='ListItemTutorial__media'>
           <img alt='Icon play button' src={iconPlayButton} />
           <div>
@@ -51,7 +51,7 @@ const ListItemTutorial = styled(({ className, isReport }) => (
         <LinkButton text='View' url='/view' />
       </div>
     ) : (
-      <div>
+      <div className='ListItemTutorial__container'>
         <LinkButton
           style={{ backgroundColor: '#596065' }}
           text='Create Report'
@@ -61,11 +61,10 @@ const ListItemTutorial = styled(({ className, isReport }) => (
     )}
   </li>
 ))`
-  > div {
+  > .ListItemTutorial__container {
     display: flex;
     align-items: center;
-    justify-content: ${props =>
-    props.isReport ? 'flex-end' : 'space-between'};
+    justify-content: ${(props) => props.isReport ? 'flex-end' : 'space-between'};
     padding: 1.7em 0 1.3em 0;
     border-bottom: 1px solid #dadada;
 
@@ -109,14 +108,12 @@ const ListItemTutorial = styled(({ className, isReport }) => (
     }
   }
 
-  &:last-child {
-    > div {
-      border-bottom: 0;
-    }
+  &:last-child > .ListItemTutorial__container {
+    border-bottom: 0;
   }
 
   @media screen and (min-width: 768px) {
-    > div {
+    > .ListItemTutorial__container {
       padding: 2.3em 0;
     }
   }

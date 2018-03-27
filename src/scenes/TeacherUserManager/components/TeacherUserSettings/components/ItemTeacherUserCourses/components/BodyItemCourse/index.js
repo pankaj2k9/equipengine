@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
+// assets
 import IconRight from 'react-icons/lib/fa/angle-right'
 import IconDown from 'react-icons/lib/fa/angle-down'
 import Form, { Switch } from 'base_components/RootForm'
-
-import './styles.css'
 
 // we will use this for button of a panel
 const ButtonPanel = styled.p`

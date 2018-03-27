@@ -33,16 +33,15 @@ ItemReport.propTypes = {
 }
 
 // -------------------LIST COMPONENT-----------------------------//
-const List = styled.ul``
 
 // this is the list report component
 const ListReport = ({ reports }) => {
   const listReport = map(
-    report => <ItemReport key={report.id} report={report} />,
+    (report) => <ItemReport key={report.id} report={report} />,
     reports
   )
 
-  return <List>{listReport}</List>
+  return <ul>{listReport}</ul>
 }
 
 ListReport.propTypes = {

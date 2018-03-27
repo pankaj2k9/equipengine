@@ -22,6 +22,16 @@ const PopoverProfileContent = styled(({ className, removeLoggedUser }) => (
     width: 100px;
     margin-bottom: 0.9em;
 
+    a, button {
+      font-family: 'Karla', 'Helvetica Neaue', sans-serif;
+      color: #000000;
+      display: block;
+
+      &:hover {
+        color: rgb(14, 144, 224);
+      }
+    }
+
     &:first-child a {
       text-transform: uppercase;
       color: #9fa6ad;
@@ -36,17 +46,6 @@ const PopoverProfileContent = styled(({ className, removeLoggedUser }) => (
         border: 0;
         transition: all 300ms ease-in;
         padding: 0;
-      }
-    }
-
-    a,
-    button {
-      font-family: 'Karla', 'Helvetica Neaue', sans-serif;
-      color: #000000;
-      display: block;
-
-      &:hover {
-        color: rgb(14, 144, 224);
       }
     }
   }

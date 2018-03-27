@@ -30,7 +30,7 @@ const NoGroups = styled(({ className }) => (
     font-size: 1.5rem;
     color: #505050;
     font-weight: 500;
-    font-family: 'Avenir Next';
+    font-family: 'Avenir Next', sans-serif;
     margin-bottom: 1em;
   }
 

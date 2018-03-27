@@ -14,7 +14,7 @@ const DropdownRefine = Dropdown.extend`
   background-color: #d8d8d8;
   border: 0;
   text-transform: uppercase;
-  font-family: 'karla';
+  font-family: 'karla', sans-serif;
   font-size: 12px;
   font-weight: 800;
   border-radius: 3px;

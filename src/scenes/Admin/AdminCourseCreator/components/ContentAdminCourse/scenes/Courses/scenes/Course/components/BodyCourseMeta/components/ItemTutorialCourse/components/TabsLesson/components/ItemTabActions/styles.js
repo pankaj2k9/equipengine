@@ -36,6 +36,12 @@ export const listActionsStyles = css`
         font-size: 1.4rem;
       }
 
+      div:last-child {
+        button:first-child {
+          margin-right: 0.7em;
+        }
+      }
+
       div:first-child {
         i {
           margin-right: 0.7em;
@@ -53,12 +59,6 @@ export const listActionsStyles = css`
             }
         }
       }
-
-      div:last-child {
-        button:first-child {
-          margin-right: 0.7em;
-        }
-      }
     }
   }
 
@@ -67,6 +67,4 @@ export const listActionsStyles = css`
       align-items: center;
       flex-direction: row;
     }
-
-  }
 `

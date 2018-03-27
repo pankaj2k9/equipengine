@@ -28,7 +28,7 @@ const AccountContainer = styled(({ className }) => (
   padding: 1.8em;
   margin-bottom: 2em;
 
-  > div{
+  > div {
     margin-bottom: 1.2em;
 
     > label{
@@ -43,11 +43,12 @@ const AccountContainer = styled(({ className }) => (
         &:last-child{
           width: 42px;
         }
-    
+   }
 
     &:last-child{
       margin-bottom: 0;
     }
+
   }
 `
 

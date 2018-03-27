@@ -48,7 +48,7 @@ const ListLinkItem = styled(({ className, icon, text, url, handleClick }) => (
     span {
       display: inline-block;
       color: #9fa6ad;
-      font-family: karla;
+      font-family: 'karla', sans-serif;
       font-weight: 800;
       font-size: 12px;
       margin-top: 0.5em;

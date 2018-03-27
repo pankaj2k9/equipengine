@@ -50,7 +50,7 @@ const ThreadModalBody = styled(({ className, thread }) => {
   ))
   return (
     <ModalBody className={className}>
-      <div>
+      <div className='ModalBody__content'>
         <header>
           <h3>{thread.title}</h3>
           <p>{`Posted by ${thread.name}`}</p>
@@ -61,7 +61,7 @@ const ThreadModalBody = styled(({ className, thread }) => {
     </ModalBody>
   )
 })`
-  > div {
+  .ModalBody__content {
     max-width: 774px;
     margin: 0 auto;
 
@@ -78,6 +78,7 @@ const ThreadModalBody = styled(({ className, thread }) => {
       color: #7e7e7e;
       margin-left: 0.8em;
     }
+
     h3 {
       margin-top: 0.5em;
       font-size: 1.6rem;

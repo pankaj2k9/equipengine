@@ -64,6 +64,7 @@ export default css`
         margin-right: 0.7em;
       }
     }
+  }
 `
 
 /**
@@ -142,6 +143,9 @@ export const Nav = css`
   }
 
   @media screen and (min-width: 768px) {
+    li {
+      padding: 0;
+    }
 
     &:first-child {
       margin-left: 2.7em;
@@ -160,10 +164,6 @@ export const Nav = css`
       li:last-child {
         margin-left: 0.8em;
       }
-    }
-
-    li {
-      padding: 0;
     }
   }
 `('nav')

@@ -8,4 +8,4 @@ export default styled.div`
     padding: 1.5em 0;
     text-align: right;
   }
-:`
+`

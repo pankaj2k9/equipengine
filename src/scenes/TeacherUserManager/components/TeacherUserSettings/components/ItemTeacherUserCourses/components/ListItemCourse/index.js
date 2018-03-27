@@ -61,6 +61,10 @@ const StyledListItemCourse = styled(ListItemCourse)`
     }
   }
 
+  .panel {
+    border-top: 0;
+  }
+
   @media screen and (min-width: 768px) {
     > div:first-child {
       display: flex;

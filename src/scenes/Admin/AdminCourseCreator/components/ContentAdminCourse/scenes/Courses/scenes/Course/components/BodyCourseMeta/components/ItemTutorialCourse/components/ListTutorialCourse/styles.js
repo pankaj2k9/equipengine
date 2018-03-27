@@ -23,6 +23,23 @@ export const listItemTutorialStyles = css`
   border-bottom: 1px solid #d8d8d8;
   padding: 1.5em 0;
 
+  > div:last-child {
+    > form {
+      display: flex;
+      align-items: center;
+
+      > label,
+      > button {
+        margin-right: 12px;
+      }
+
+      > i {
+        color: #afafaf;
+        font-size: 1.4rem;
+      }
+    }
+  }
+
   > div:first-child {
     > i:first-child {
       font-size: 1.2rem;
@@ -43,23 +60,6 @@ export const listItemTutorialStyles = css`
 
       span {
         color: #9fa6ad;
-      }
-    }
-  }
-
-  > div:last-child {
-    > form {
-      display: flex;
-      align-items: center;
-
-      > label,
-      > button {
-        margin-right: 12px;
-      }
-
-      > i {
-        color: #afafaf;
-        font-size: 1.4rem;
       }
     }
   }
