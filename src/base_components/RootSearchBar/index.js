@@ -41,7 +41,9 @@ const SearchBar = styled(({ className, placeholder }) => (
       <input name='searchbar' type='text' placeholder={placeholder} value='' />
     </TextContainer>
   </Form>
-))``
+))`
+  display: block;
+`
 
 SearchBar.propTypes = {
   placeholder: PropTypes.string

@@ -29,7 +29,6 @@ const Switch = styled(({ className, name }) => (
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    -webkit-transition: 0.4s;
     transition: 0.4s;
   }
 
@@ -41,7 +40,6 @@ const Switch = styled(({ className, name }) => (
     left: 2px;
     bottom: 1px;
     background-color: white;
-    -webkit-transition: 0.4s;
     transition: 0.4s;
   }
 
@@ -54,8 +52,6 @@ const Switch = styled(({ className, name }) => (
   }
 
   input:checked + .slider:before {
-    -webkit-transform: translateX(19px);
-    -ms-transform: translateX(19px);
     transform: translateX(19px);
   }
 

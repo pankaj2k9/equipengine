@@ -13,24 +13,26 @@ const Tables = styled(({ children, className }) => (
     {children}
   </Table>
 ))`
-  & .Tables__row {
+  .Tables__row {
     border-bottom: 1px solid #dadada;
     transition: background 300ms ease-in;
+
     &:hover {
       background: #f2f3f6;
     }
+
+    th {
+      border: 0;
+      font-size: 12px;
+      font-weight: 400;
+      color: #636363;
+      text-transform: uppercase;
+      padding-bottom: 3px;
+    }
+
   }
-  & .Tables__row th {
-    border: 0;
-  }
-  & .Tables__row th {
-    font-size: 12px;
-    font-weight: 400;
-    color: #636363;
-    text-transform: uppercase;
-    padding-bottom: 3px;
-  }
-`
+
+  `
 
 Tables.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,

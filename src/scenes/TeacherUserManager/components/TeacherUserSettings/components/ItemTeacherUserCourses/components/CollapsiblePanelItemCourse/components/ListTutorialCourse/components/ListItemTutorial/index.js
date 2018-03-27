@@ -16,7 +16,7 @@ import Form, { CheckboxCircleSecondary } from 'base_components/RootForm'
 // this is for meta span information component
 const MetaInfo = styled.span`
   color: #9fa6ad;
-  font-size: ${props => (props.default ? '14px' : '10px')};
+  font-size: ${(props) => (props.default ? '14px' : '10px')};
 `
 
 // this is for list item

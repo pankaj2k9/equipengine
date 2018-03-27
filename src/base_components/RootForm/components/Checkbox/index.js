@@ -6,37 +6,12 @@ import styled from 'styled-components'
 const Checkbox = styled(({ name, className }) => (
   <div className={className}>
     <input className='Checkbox' name={name} type='checkbox' />
-    <label className='Label' htmlFor={name} />
+    <label htmlFor={name} />
   </div>
 ))`
   width: 15px;
   height: 15px;
   position: relative;
-
-  .Label {
-    background-color: transparent;
-    border: 2px solid #cccccc;
-    border-radius: 2px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
-
-    &:after {
-      border: 2px solid #fff;
-      border-top: none;
-      border-right: none;
-      content: '';
-      height: 5px;
-      width: 9px;
-      opacity: 0;
-      position: absolute;
-      top: 2px;
-      left: 1px;
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
-  }
 
   .Checkbox {
     position: relative;
@@ -45,17 +20,41 @@ const Checkbox = styled(({ name, className }) => (
     height: 100%;
     width: 100%;
     cursor: pointer;
-  }
 
-  .Checkbox:checked + label{
-    background-color: #338ffc;
-    border-color: #338ffc;
-  }
+    + label {
+      background-color: transparent;
+      border: 2px solid #cccccc;
+      border-radius: 2px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100%;
 
-  .Checkbox:checked + label:after {
-    opacity: 1;
-  }
+      &:after {
+        content: '';
+        border: 2px solid #fff;
+        border-top: none;
+        border-right: none;
+        height: 5px;
+        width: 9px;
+        opacity: 0;
+        position: absolute;
+        top: 2px;
+        left: 1px;
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
 
+   &:checked + label {
+      background-color: #338ffc;
+      border-color: #338ffc;
+    }
+
+    &:checked + label:after {
+      opacity: 1;
+    }
+  }
 `
 
 Checkbox.propTypes = {
@@ -63,10 +62,64 @@ Checkbox.propTypes = {
   className: PropTypes.string
 }
 
+const CheckboxCircleSecondary = styled(({ name, className }) => (
+  <div className={className}>
+    <input className='Checkbox--secondary' name={name} type='checkbox' />
+    <label className='Label--secondary' htmlFor={name} />
+  </div>
+))`
+  width: 25px;
+  height: 25px;
+  position: relative;
+
+  .Checkbox--secondary {
+    position: relative;
+    opacity: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    margin: 0;
+
+    + .Label--secondary {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: transparent;
+      border: 1px solid #bbbbbb;
+      border-radius: 50%;
+
+      &:after {
+        content: '';
+        height: 5px;
+        width: 12px;
+        position: absolute;
+        top: 10px;
+        left: 11px;
+        border: 1px solid #000000;
+        border-top: none;
+        border-right: none;
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+
+    &:checked + .Label--secondary:after {
+      opacity: 1;
+    }
+  }
+`
+
+CheckboxCircleSecondary.propTypes = {
+  name: PropTypes.string.isRequired
+}
+
 const CheckboxCircle = styled(({ name, className }) => (
   <div className={className}>
-    <input className='Checkbox' name={name} type='checkbox' />
-    <label className='Label' htmlFor={name} />
+    <input className='Checkbox--circle' name={name} type='checkbox' />
+    <label className='Label--circle' htmlFor={name} />
   </div>
 ))`
   display: inline-block;
@@ -76,92 +129,38 @@ const CheckboxCircle = styled(({ name, className }) => (
   border-radius: 50%;
   border: 2px solid #bbbbbb;
 
-  .Checkbox {
+  .Checkbox--circle {
     position: relative;
     opacity: 0;
     z-index: 1;
     height: 100%;
     width: 100%;
     cursor: pointer;
-  }
 
-  .Label {
-    background-color: transparent;
-    border-radius: 50%;
-    left: 2px;
-    position: absolute;
-    top: 2px;
-    height: 75%;
-    width: 75%;
-  }
+    + .Label--circle {
+      background-color: transparent;
+      border-radius: 50%;
+      left: 2px;
+      position: absolute;
+      top: 2px;
+      height: 75%;
+      width: 75%;
+    }
 
-  .Checkbox:checked + label {
-    background-color: #bbbbbb;
-    border-color: #bbbbbb;
-  }
+    &:checked + .Label--circle {
+      background-color: #bbbbbb;
+      border-color: #bbbbbb;
+    }
 
-  .Checkbox:checked + label:after {
-    opacity: 1;
+    &:checked + .Label--circle:after {
+      opacity: 1;
+    }
   }
 `
 
 CheckboxCircle.propTypes = {
   name: PropTypes.string.isRequired,
   className: PropTypes.string
-}
-
-const CheckboxCircleSecondary = styled(({ name, className }) => (
-  <div className={className}>
-    <input className='Checkbox' name={name} type='checkbox' />
-    <label className='Label' htmlFor={name} />
-  </div>
-))`
-  width: 25px;
-  height: 25px;
-  position: relative;
-
-  .Label {
-    background-color: transparent;
-    border: 1px solid #bbbbbb;
-    border-radius: 50%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
-
-    &:after {
-      border: 1px solid #000000;
-      border-top: none;
-      border-right: none;
-      content: '';
-      height: 5px;
-      width: 12px;
-      opacity: 0;
-      position: absolute;
-      top: 8px;
-      left: 6px;
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
-  }
-
-  .Checkbox {
-    position: relative;
-    opacity: 0;
-    z-index: 1;
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-    margin: 0;
-  }
-
-  .Checkbox:checked + label:after {
-    opacity: 1;
-  }
-`
-
-CheckboxCircleSecondary.propTypes = {
-  name: PropTypes.string.isRequired
 }
 
 export { Checkbox, CheckboxCircle, CheckboxCircleSecondary }

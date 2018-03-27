@@ -9,7 +9,6 @@ const ContainerTableCourses = Container.extend`
   .table-responsive {
     width: 100%;
   }
-}
 `
 
 const TableCourses = ({ match }) => (
