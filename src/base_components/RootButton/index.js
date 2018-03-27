@@ -52,7 +52,7 @@ const RootButton = styled.button`
   width: ${(props) => (props.large ? '146px' : '104px')};
   border: ${(props) => (props.lightBorder ? '1px solid #979797' : '0')};
   padding: 10px 0;
-  font-family: 'karla';
+  font-family: 'karla', sans-serif;
   font-size: 12px;
   font-weight: 800;
   text-transform: uppercase;
