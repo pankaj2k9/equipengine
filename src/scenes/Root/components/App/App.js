@@ -44,7 +44,7 @@ const App = ({ loggedUser, isUserAuthenticated }) => (
           isUserAuthenticated ? (
             <PrivateRoutes {...props} type={loggedUser.type} />
           ) : (
-            <Redirect to='/login' />
+            <Redirect to='/' />
           )}
       />
     </Switch>
