@@ -7,7 +7,7 @@ import { defaultFlexStyles } from 'base_components/ContainerFlex'
 
 /**
  * -------------------------------------
- * Styles for NavbarHome
+ * Styles for NavbarHeaderHome
  * @function
  * -------------------------------------
  */

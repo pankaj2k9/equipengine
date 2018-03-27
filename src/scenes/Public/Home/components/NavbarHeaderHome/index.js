@@ -1,7 +1,7 @@
 import React from 'react'
 // resources
 import { Navbar } from 'react-bootstrap'
-import navbarHomeStyles, {
+import navbarHeaderHomeStyles, {
   Logo,
   Nav,
   NavLink,
@@ -12,11 +12,11 @@ import logoImg from 'resources/images/logo.svg'
 
 /**
  * -------------------------------------
- * NavbarHome
+ * NavbarHeaderHome
  * @see Home
  * -------------------------------------
  */
-const NavbarHome = navbarHomeStyles(({className}) => (
+const NavbarHeaderHome = navbarHeaderHomeStyles(({className}) => (
   <Navbar inverse collapseOnSelect className={className}>
     <Navbar.Header>
       <Navbar.Brand>
@@ -48,4 +48,4 @@ const NavbarHome = navbarHomeStyles(({className}) => (
   </Navbar>
 ))
 
-export default NavbarHome
+export default NavbarHeaderHome
