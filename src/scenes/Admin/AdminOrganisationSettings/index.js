@@ -4,6 +4,7 @@ import { Tab } from 'react-bootstrap'
 import Tabs from 'base_components/Tabs'
 import Breadcrumbs from 'base_components/Breadcrumbs'
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic'
+import ItemTabMainSettings from './components/ItemTabMainSettings'
 // assets
 import {tabOrganisationSettingsStyles} from './styles'
 import adminOrganisationSettings from './propTypes'
@@ -35,7 +36,7 @@ export default AdminOrganisationSettings
 const TabOrganisationSettings = tabOrganisationSettingsStyles(({className}) => (
   <Tabs className={className}>
     <Tab eventKey={1} title='Main Settings'>
-      main settings
+      <ItemTabMainSettings />
     </Tab>
     <Tab eventKey={2} title='Domain Mapping'>
       domain mapping

@@ -14,8 +14,10 @@ const Panel = styled(({ className, title, children, AdditionalTitle }) => (
     {children}
   </section>
 ))`
-  padding: 28px 0;
-  border-bottom: 1px solid #dadada;
+  padding-top: 28px;
+  padding-bottom: ${(props) => props.paddingBottom};
+  border-bottom: ${(props) => props.borderBottom};
+  margin-bottom: ${(props) => props.marginBottom};
 
   header {
     display: flex;
@@ -32,7 +34,7 @@ const Panel = styled(({ className, title, children, AdditionalTitle }) => (
   }
 
   @media screen and (min-width: 768px) {
-    width: ${props => (props.isFullWidth ? '100%' : '65%')};
+    width: ${(props) => (props.isFullWidth ? '100%' : '65%')};
 
     header {
       margin-bottom: 1.8em;
@@ -47,7 +49,15 @@ Panel.propTypes = {
     PropTypes.arrayOf(PropTypes.element)
   ]).isRequired,
   AdditionalTitle: PropTypes.func,
-  isFullWidth: PropTypes.bool
+  isFullWidth: PropTypes.bool,
+  marginBottom: PropTypes.string,
+  paddingBottom: PropTypes.string
+}
+
+Panel.defaultProps = {
+  borderBottom: '1px solid #dadada',
+  marginBottom: '0',
+  paddingBottom: '0'
 }
 
 export default Panel

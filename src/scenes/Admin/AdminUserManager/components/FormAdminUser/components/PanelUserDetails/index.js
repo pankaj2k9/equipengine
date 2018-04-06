@@ -25,6 +25,7 @@ const ButtonSetPassword = Button.extend`
 // removing the padding-top for Panel
 const Panel = PanelAdminUser.extend`
   padding-top: 0;
+  padding-bottom: 1.3em;
 `
 
 const FormGroups = ({ className }) => (

@@ -14,10 +14,12 @@ export default {
         label: PropTypes.string
       })
     ).isRequired,
-    className: PropTypes.string
+    className: PropTypes.string,
+    placeholder: PropTypes.string
   },
   default: {
     name: 'dropdown',
-    options: []
+    options: [],
+    placeholder: 'Select...'
   }
 }

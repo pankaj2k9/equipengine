@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { isNotNil } from 'ramda-adjunct'
-//
-import Select from 'react-select'
+// components
+import StyledSelect from './styles'
 import dropdown from './propTypes'
 
 class Dropdown extends Component {
@@ -13,15 +13,16 @@ class Dropdown extends Component {
 
   render () {
     const { selectedOption } = this.state
-    const { name, options, className } = this.props
+    const { name, options, className, placeholder } = this.props
     const selectValue = isNotNil(selectedOption) && selectedOption.value
     return (
-      <Select
+      <StyledSelect
         name={name}
         value={selectValue}
         onChange={this.handleChange}
         options={options}
         className={className}
+        placeholder={placeholder}
       />
     )
   }
