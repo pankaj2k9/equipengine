@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
-import css from 'utils/css'
 // components
 import { Tab } from 'react-bootstrap'
 import Tabs from 'base_components/Tabs'
 import Breadcrumbs from 'base_components/Breadcrumbs'
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic'
+// assets
+import {tabOrganisationSettingsStyles} from './styles'
+import adminOrganisationSettings from './propTypes'
 
 /**
   * -------------------------------------
@@ -21,38 +22,9 @@ const AdminOrganisationSettings = ({match}) => (
   </Fragment>
 )
 
-AdminOrganisationSettings.propTypes = {
-  match: PropTypes.object.isRequired
-}
+AdminOrganisationSettings.propTypes = adminOrganisationSettings.prop
 
 export default AdminOrganisationSettings
-
-/**
-  * -------------------------------------
-  * Styles for TabOrganisationSettings
-  * @function
-  * -------------------------------------
-*/
-const tabOrganisationSettingsStyles = css`
-  .nav-tabs {
-    display: flex;
-    overflow: auto;
-
-    li > a:last-child {
-      height: 100%;
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    .nav-tabs, .tab-content {
-      padding: 0 35px;
-    }
-
-    .nav-tabs {
-      overflow: hidden;
-    }
-  }
-`
 
 /**
   * -------------------------------------

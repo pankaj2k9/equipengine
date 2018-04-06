@@ -62,6 +62,7 @@
     "node": "9.3.0"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.5.1",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
     "jest-enzyme": "^4.0.1",
