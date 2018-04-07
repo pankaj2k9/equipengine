@@ -8,7 +8,7 @@ import Loader from 'base_components/Loader'
 import PrivateRoutes from './components/PrivateRoutes'
 
 const AsyncHome = Loadable({
-  loader: () => import('scenes/Public/Home'),
+  loader: () => import('scenes/Public/Home/FilterableListData'),
   loading: Loader, // before this component gets loaded, we will render first this Loader component.
   timeout: 10000
 })
