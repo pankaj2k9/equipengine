@@ -51,7 +51,6 @@ class TableStudent extends React.Component {
   }
 
   render () {
-    console.log('rerender table student')
     return (
       <div style={{width: '25%', margin: '5em auto'}}>
         <Searchbar />

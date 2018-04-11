@@ -73,10 +73,11 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
     }
 
     // Produce an update to our states through invoking an updater function. Updater function returns an object which tells about the updated information.
-    produce = (updaterInfo) => {
-      this.updaterInfo = updaterInfo
+    produce = (updater) => {
+      // pass the current state of the app then the return value is assign to the instance property.
+      this.updaterInfo = updater(this.state)
       // update the state based on the updaterInfo.newState
-      this.setState(updaterInfo.newState)
+      this.setState(this.updaterInfo.newState)
     }
 
     // Iterate on the given object and execute the bindActionToThis to each handler.
@@ -84,7 +85,7 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
       // Helper function for binding each action to this Class Object.
       const bindActionToThis = bind(__, this)
       // return new object.
-      return map(bindActionToThis, handlers({state, props}, this.produce))
+      return map(bindActionToThis, handlers(this.produce))
     }
 
     // TODO: Add configuration to our Provider which gives our user an option if they need or don't ndeed this state logger.

@@ -9,7 +9,7 @@ import { values, filter, equals, compose, prop, append } from 'ramda'
  * A factory function which shows what state is gonna be updated.
  * @return {Object} UpdateInfo
  */
-const getStudentsUpdater = () => {
+const getStudentsUpdater = () => (state) => {
   // Student data.
   const students = {
     '0012018': {
@@ -37,14 +37,22 @@ const getStudentsUpdater = () => {
   }
 }
 
-const addUserUpdater = (student, students) => ({
-  type: 'addUser',
-  newState: {
-    students: append(student, students) // add the student object at the end of students list array.
+const addUserUpdater = () => (state) => {
+  const { fields: {id, firstName, lastName}, students } = state
+  const student = {
+    id,
+    firstName,
+    lastName
   }
-})
+  return {
+    type: 'addUser',
+    newState: {
+      students: append(student, students) // add the student object at the end of students list array.
+    }
+  }
+}
 
-const inputChangeUpdater = (target, fields) => {
+const inputChangeUpdater = (target) => (state) => {
   const value = target.type === 'checkbox' ? target.checked : target.value
   const name = target.name
   return (
@@ -52,7 +60,7 @@ const inputChangeUpdater = (target, fields) => {
       type: 'inputChange',
       newState: {
         fields: {
-          ...fields,
+          ...state.fields,
           [name]: value // es6 computed property name.
         }
       }
@@ -60,7 +68,9 @@ const inputChangeUpdater = (target, fields) => {
   )
 }
 
-const filterStudentsUpdater = (search, students) => {
+const filterStudentsUpdater = () => (state) => {
+  const { fields: {search}, students } = state
+
   // check if the firstName value of student object is equal to search.
   const isFirstnameEqualTo = compose(equals(search), prop('firstName'))
   // filtering array based on the given predicate
@@ -94,23 +104,21 @@ const initialState = {
  * @return {Object} handlers object
  * @function - Factory Function (impure function)
  */
-const handlers = ({state, props}, produce) => ({
+const handlers = (produce) => ({
   handleInputChange ({target}) {
-    produce(inputChangeUpdater(target, state.fields))
+    produce(inputChangeUpdater(target))
   },
   getStudents () {
     // Produce an updates to our store.
     produce(getStudentsUpdater())
   },
   addUser (e) {
-    const { fields: {id, firstName, lastName}, students } = state
     // prevent default
     e.preventDefault()
-    produce(addUserUpdater({id, firstName, lastName}, students))
+    produce(addUserUpdater())
   },
-  filterStudents ({target}) {
-    const { fields: {search}, students } = state
-    produce(filterStudentsUpdater(search, students))
+  filterStudents () {
+    produce(filterStudentsUpdater())
   }
 })
 
