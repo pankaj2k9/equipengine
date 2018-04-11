@@ -3,17 +3,22 @@
 import React, { createContext } from 'react'
 import { map, bind, __ } from 'ramda'
 import { isNotEqual, getDisplayName } from './lib/utils'
-import EventEmitter from 'events'
+import createStoreEmitter from './lib/createStoreEmitter'
 
-// We use this emitter for subscribing creating events.
-const createStoreEmitter = () => {
-  class StoreEmitter extends EventEmitter {}
-  // return the instance of StoreEmitter Class.
-  return new StoreEmitter()
+// This object holds the initial value for our option parameter. The option isLoggerOn is defaulted to true
+const initialOption = {
+  isLoggerOn: true
 }
 
-// This wil create store for the specific feature of our application. Our store holds the state and the handlers.
-const createStore = (initialState = {}, handlers, config) => {
+/**
+ * createStore :: (Object, Object, Object) -> Object
+ *
+ * This wil create store for the specific feature of our application. Our store holds the state and the handlers.
+ * @param {Object} initialState
+ * @param {Object} handlers Handlers object.
+ * @param {Object} config Optional . Holds the config for creating store. For an instance, showing the logger to the browser's console.
+ */
+const createStore = (initialState = {}, handlers, option = initialOption) => {
   // creating context
   const { Provider: RootProvider, Consumer } = createContext(initialState)
 
@@ -37,9 +42,6 @@ const createStore = (initialState = {}, handlers, config) => {
   }
 
   /**
-  * TODO: We need to expose an event which listens everytime our Provider Component is re-rendered.
-  * provider :: Component -> Component
-  *
   * Create a generic Provider component which encapsulates the important behavior of being a provider.
   * @param {Object} state This object represents the state which is managed by the passed Component.
   * @param {Function} handlers A function which accepts object of state and props, and dispatch function(dispatching function) . It returns an handlers object.
@@ -99,7 +101,10 @@ const createStore = (initialState = {}, handlers, config) => {
     }
 
     shouldComponentUpdate (nextProps, nextState) {
-      this.loggerStates(this.state, nextState)
+      // if config isLoggerOn is true, we will display logger to the console.
+      if (option.isLoggerOn) {
+        this.loggerStates(this.state, nextState)
+      }
 
       // Emit the stateChanged event. Pass the nextState as 2 argument to our emit. This argument is passed as an input to all listeners of stateChanged event.
       storeEmitter.emit('stateChanged', nextState)
