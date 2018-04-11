@@ -5,9 +5,101 @@
  *          - Table to display the data.
  *          - The order of the data can be re-ordered using table headers.
  */
-import React, { Fragment, Component } from 'react'
+import React, { Component } from 'react'
 import { values, map, filter, equals, compose, prop } from 'ramda'
-import { provider, connect } from 'utils/context'
+import createStore from 'utils/context'
+
+// Updater is a pure function
+
+/**
+ * getStudentsUpdater :: Null -> Object
+ *
+ * A factory function which shows what state is gonna be updated.
+ * @return {Object} UpdateInfo
+ */
+const getStudentsUpdater = () => {
+  // Student data.
+  const students = {
+    '0012018': {
+      id: '0012018',
+      firstName: 'Irish Jane',
+      lastName: 'Bulangis-Cual'
+    },
+    '0022018': {
+      id: '0022018',
+      firstName: 'Drish Jane',
+      lastName: 'Cual'
+    },
+    '0032018': {
+      id: '0032018',
+      firstName: 'Dennis',
+      lastName: 'Martin'
+    }
+  }
+
+  return {
+    type: 'getStudents',
+    newState: {
+      students: values(students)
+    }
+  }
+}
+
+const searchChangeUpdater = (key) => ({
+  type: 'searchChange',
+  newState: {
+    searchKey: key
+  }
+})
+
+const filterStudentsUpdater = (key, students) => {
+  // check if the firstName value of student object is equal to searchKey.
+  const isFirstnameEqualTo = compose(equals(key), prop('firstName'))
+  // filtering array based on the given predicate
+  const filteredStudents = filter(isFirstnameEqualTo, students)
+
+  return {
+    type: 'filterStudents',
+    newState: {
+      students: filteredStudents
+    }
+  }
+}
+
+// Use the provider API. Create a provider component for student data.
+const state = {
+  students: [], // convert object to array.
+  searchKey: ''
+}
+
+/**
+ * handlers :: Object -> Object(handlers function)
+ *
+ * Actions is an object where the fields are all action. Action can be used for updating the state, firing a request, and etc.
+ * @param {Object} containerProperties
+ * @param {Function} produce Produce an updates through invoking an updater function.
+ * @return {Object} handlers object
+ * @function - Factory Function (impure function)
+ */
+const handlers = ({state, props}, produce) => ({
+  searchChange ({target}) {
+    produce(searchChangeUpdater(target.value))
+  },
+  getStudents () {
+    produce(getStudentsUpdater())
+  },
+  filterStudents ({target}) {
+    const { searchKey, students } = state
+    produce(filterStudentsUpdater(searchKey, students))
+  }
+})
+
+const { Provider, connect, subscribe } = createStore(state, handlers)
+
+// subscribe function returns a function to unsubscribe the listener to an event.
+subscribe(function (state) {
+  console.log('the state is ', state)
+})
 
 // ---------------------------------PRESENTATIONAL COMPONENT-----------------------//
 
@@ -70,102 +162,14 @@ const TableRow = ({student}) => (
 )
 
 // ---------------------------------CONTAINER COMPONENT-----------------------//
-// Updater is a pure function
-
-/**
- * getStudentsUpdater :: Null -> Object
- *
- * A factory function which shows what state is gonna be updated.
- * @return {Object} UpdateInfo
- */
-const getStudentsUpdater = () => {
-  // Student data.
-  const students = {
-    '0012018': {
-      id: '0012018',
-      firstName: 'Irish Jane',
-      lastName: 'Bulangis-Cual'
-    },
-    '0022018': {
-      id: '0022018',
-      firstName: 'Drish Jane',
-      lastName: 'Cual'
-    },
-    '0032018': {
-      id: '0032018',
-      firstName: 'Dennis',
-      lastName: 'Martin'
-    }
-  }
-
-  return {
-    type: 'getStudents',
-    newState: {
-      students: values(students)
-    }
-  }
-}
-
-const searchChangeUpdater = (key) => ({
-  type: 'searchChange',
-  newState: {
-    searchKey: key
-  }
-})
-
-const filterStudentsUpdater = (key, students) => {
-  // check if the firstName value of student object is equal to searchKey.
-  const isFirstnameEqualTo = compose(equals(key), prop('firstName'))
-  // filtering array based on the given predicate
-  const filteredStudents = filter(isFirstnameEqualTo, students)
-
-  return {
-    type: 'filterStudents',
-    newState: {
-      students: filteredStudents
-    }
-  }
-}
-
-// Use the provider API. Create a provider component for student data.
-const states = {
-  students: [], // convert object to array.
-  searchKey: ''
-}
-
-/**
- * FIXME: Don't directly mutate our state on the action because we can't track the updates happen to the state. We need to find a way to get the data used in updates.
- * actions :: Object -> Object
- *
- * Actions is an object where the fields are all action. Action can be used for updating the state, firing a request, and etc.
- * @param {Object} containerProperties
- * @param {Function} dispatch Dispatching an updater function
- * @return {Object} handlers object
- * @function - Factory Function (impure function)
- */
-const handlers = ({state, props}, dispatch) => ({
-  searchChange ({target}) {
-    dispatch(searchChangeUpdater(target.value))
-  },
-  getStudents () {
-    dispatch(getStudentsUpdater())
-  },
-  filterStudents ({target}) {
-    const { searchKey, students } = state
-    dispatch(filterStudentsUpdater(searchKey, students))
-  }
-})
-
-// Create provider component
-const ProviderStudent = provider(states, handlers)(StudentTable)
 
 // ---------------------------------EXPORTED COMPONENT-----------------------//
 class FilterableTableStudent extends Component {
   render () {
     return (
-      <Fragment>
-        <ProviderStudent sample='Sample props' />
-      </Fragment>
+      <Provider>
+        <StudentTable />
+      </Provider>
     )
   }
 }
