@@ -105,8 +105,8 @@ const initialState = {
  * @function - Factory Function (impure function)
  */
 const handlers = (produce) => ({
-  handleInputChange ({target}) {
-    produce(inputChangeUpdater(target))
+  handleInputChange (e) {
+    produce(inputChangeUpdater(e.target))
   },
   getStudents () {
     // Produce an updates to our store.

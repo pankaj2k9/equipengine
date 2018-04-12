@@ -5,15 +5,26 @@ import StudentProvider, { connect } from './context'
 // ---------------------------------PRESENTATIONAL COMPONENT-----------------------//
 
 // Searchbar
-const Searchbar = connect(({state: {search}, handlers: {filterStudents, handleInputChange}}) => (
+const Searchbar = ({search, filterStudents, handleInputChange}) => (
   <form style={{marginBottom: '1em'}}>
     <label htmlFor='search' style={{marginRight: '1em'}}>Search</label>
     <input name='search' type='text' value={search} onKeyUp={filterStudents} onChange={handleInputChange} />
   </form>
-))
+)
+
+const mapStateSearchbar = (state) => ({
+  search: state.fields.search
+})
+
+const mapHandlerToProps = (handlers) => ({
+  filterStudents: handlers.filterStudents,
+  handleInputChange: handlers.handleInputChange
+})
+
+const SearchbarStudent = connect(mapStateSearchbar, mapHandlerToProps)(Searchbar)
 
 // Table
-const Table = connect(({state, handlers}) => (
+const Table = ({students, getStudents}) => (
   <table style={{marginBottom: '1em', width: '100%'}}>
     <thead>
       <tr>
@@ -24,16 +35,26 @@ const Table = connect(({state, handlers}) => (
     </thead>
     <tbody>
       {
-        map((student) => <TableRow student={student} key={student.id} />, state.students)
+        map((student) => <TableRow student={student} key={student.id} />, students)
       }
     </tbody>
     <tfoot>
       <tr>
-        <td><button onClick={handlers.getStudents}>Refresh</button></td>
+        <td><button onClick={getStudents}>Refresh</button></td>
       </tr>
     </tfoot>
   </table>
-))
+)
+
+const mapStateTable = (state) => ({
+  students: state.students
+})
+
+const mapHandlerTable = (handlers) => ({
+  getStudents: handlers.getStudents
+})
+
+const ConnectedTable = connect(mapStateTable, mapHandlerTable)(Table)
 
 // TableRow
 const TableRow = ({student}) => (
@@ -47,32 +68,36 @@ const TableRow = ({student}) => (
 // Filterable table for student data.
 class TableStudent extends React.Component {
   componentDidMount () {
-    this.props.handlers.getStudents()
+    this.props.getStudents()
   }
 
   render () {
     return (
       <div style={{width: '25%', margin: '5em auto'}}>
-        <Searchbar />
-        <Table />
+        <SearchbarStudent />
+        <ConnectedTable />
       </div>
     )
   }
 }
 
-const StudentTable = connect(TableStudent)
+const mapHandlerTableStudent = (handlers) => ({
+  getStudents: handlers.getStudents
+})
+
+const ConnectedTableStudent = connect({}, mapHandlerTableStudent)(TableStudent)
 
 // Create form for adding student data.
-const Form = ({state: {id, firstName, lastName}, handlers: {addUser, handleInputChange}}) => (
+const Form = ({fields, addUser, handleInputChange}) => (
   <form onSubmit={addUser}>
     <div>
-      <input name='id' type='text' value={id} placeholder='ID' onChange={handleInputChange} />
+      <input name='id' type='text' value={fields.id} placeholder='ID' onChange={handleInputChange} />
     </div>
     <div>
-      <input name='firstName' type='text' value={firstName} placeholder='First Name' onChange={handleInputChange} />
+      <input name='firstName' type='text' value={fields.firstName} placeholder='First Name' onChange={handleInputChange} />
     </div>
     <div>
-      <input name='lastName' type='text' value={lastName} placeholder='Last Name' onChange={handleInputChange} />
+      <input name='lastName' type='text' value={fields.lastName} placeholder='Last Name' onChange={handleInputChange} />
     </div>
     <div>
       <button>Add User</button>
@@ -80,14 +105,23 @@ const Form = ({state: {id, firstName, lastName}, handlers: {addUser, handleInput
   </form>
 )
 
-const FormStudent = connect(Form)
+const mapStateForm = (state) => ({
+  fields: state.fields
+})
+
+const mapHandlerForm = (handlers) => ({
+  addUser: handlers.addUser,
+  handleInputChange: handlers.handleInputChange
+})
+
+const FormStudent = connect(mapStateForm, mapHandlerForm)(Form)
 
 // ---------------------------------EXPORTED COMPONENT-----------------------//
 class FilterableTableStudent extends Component {
   render () {
     return (
       <StudentProvider>
-        <StudentTable />
+        <ConnectedTableStudent />
         <FormStudent />
       </StudentProvider>
     )

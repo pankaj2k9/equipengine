@@ -1,7 +1,7 @@
 // TODO: Add test for the API's.
 // TODO: Add validation to our API's.
 import React, { createContext } from 'react'
-import { map, bind, __ } from 'ramda'
+import { map, bind, __, compose, identical, type, when } from 'ramda'
 import { isNotEqual, getDisplayName } from './lib/utils'
 import createStoreEmitter from './lib/createStoreEmitter'
 
@@ -42,6 +42,7 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
   }
 
   /**
+  * TODO: We gonna remove the passing of handlers when creating store, instead we gonna pass the handlers when our component is subscribing to our store.
   * Create a generic Provider component which encapsulates the important behavior of being a provider.
   * @param {Object} state This object represents the state which is managed by the passed Component.
   * @param {Function} handlers A function which accepts object of state and props, and dispatch function(dispatching function) . It returns an handlers object.
@@ -57,10 +58,7 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
       // We gonna pass our store to the children components using Provider component.
       this.store = {
         state: this.state, // The given state for the Root component
-        handlers: this.createHandlers({
-          state: this.state, // pass the initial state.
-          props: this.props // pass the initial props.
-        })
+        handlers: this.createHandlers()
       }
       // this will hold the updated object information.
       this.updaterInfo = {}
@@ -81,7 +79,9 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
     }
 
     // Iterate on the given object and execute the bindActionToThis to each handler.
-    createHandlers = ({state, props}) => {
+    // TODO: We gonna pass this createHandlers as part of the this.value of Provider. We will execute this to connect method.
+    // TODO: We dont need to bind each handler to our Provider object.
+    createHandlers = () => {
       // Helper function for binding each action to this Class Object.
       const bindActionToThis = bind(__, this)
       // return new object.
@@ -115,10 +115,7 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
         // replace the existing store of instance this.store.
         this.store = {
           state: nextState,
-          handlers: this.createHandlers({
-            state: nextState, // pass the new state.
-            props: nextProps // pass the new props.
-          })
+          handlers: this.createHandlers()
         }
 
         return true
@@ -142,20 +139,43 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
   }
 
   /**
+  * TODO: We need to give an option to our component about what states and handlers the component needs to the Provider. In this way, we can avoid passing unnecessary props to the components and this will control the re-rendering issues of the Connected component.
   * connect :: Component -> Component
   *
   * An HOC for connecting the component into provider.
+  * @param {Function|Object|null} mapStateToProps When function is passed, it returns an object which tells the Consumer what state should be map to our WrappedComponet. When empty object or null is passed, no mapping of state to props.
+  * @param {Function|Object|null} mapHandlerToProps When function is passed, it returns an object which tells the Consumer what handlers should be map to our WrappedComponet. When empty object or null is passed, no mapping of handlers to props.
   * @param {Function} WrappedComponent.
   * @return {Function} New component which wraps in Consumer.
   */
-  const connect = (WrappedComponent) => {
+  const connect = (mapStateToProps, mapHandlerToProps) => (WrappedComponent) => {
     const Connected = (props) => {
       // Wrap the Display Name for Easy Debugging
-      Connected.displayName = `Connect(${getDisplayName(WrappedComponent)})`
+      Connected.displayName = `Connected(${getDisplayName(WrappedComponent)})`
       // return the WrappedComponent which is wrapped to Consumer.
       return (
         <Consumer>
-          {(store) => <WrappedComponent {...props} {...store} />}
+          {
+            (store) => {
+              // TODO: Received the createHandlers instance method of Provider here and pass the mapHandlerToProps function. Return value will be the handlers which are mapped to our component and each handler is bind to our Provider component.
+              // check if the data is a function
+              const isFunction = compose(identical('Function'), type)
+              // Tests the final argument by passing it to the given predicate function. If the final argument is a function, we gonna execute the 2nd argument function which receives the final argument.
+              // Get the state which are mapped to props.
+              const state = when(
+                isFunction, // predicateFn.
+                (mapStateFn) => mapStateFn(store.state) // mapStateToProps returns a state object which is need by the component
+              )(mapStateToProps)
+              // Get the handlers which are mapped to props.
+              const handlers = when(
+                isFunction, // predicateFn.
+                (mapHandlerFn) => mapHandlerFn(store.handlers) // mapStateToProps returns a state object which is need by the component
+              )(mapHandlerToProps)
+              return (
+                <WrappedComponent {...props} {...state} {...handlers} />
+              )
+            }
+          }
         </Consumer>
       )
     }
