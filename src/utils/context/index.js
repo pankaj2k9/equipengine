@@ -80,17 +80,13 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
      * @return {Void}
      */
     produce = (updater) => {
+      this.updaterName = updater.name
       // Update the current state of the apps. We pass updater function instead of object. Its better to pass an updater function rather than object because passing of object has caveats.
       this.setState(
         (prevState, props) => {
-          console.log(updater.name)
-          console.log(prevState)
           // Execute the updater function. Pass the prevState and props. It returns a stateChange object. We will assign the stateChange to this.stateChange instance and use the stateChange as return value of the function.
           this.stateChange = updater(prevState, props)
           return this.stateChange
-        },
-        // TODO: We gonna use the setState callback function to get the updated states. We can get the prevState inside the updater scope.
-        () => {
         }
       )
     }
