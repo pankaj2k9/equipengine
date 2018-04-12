@@ -1,15 +1,18 @@
 import createStore from 'utils/context'
 import { values, filter, equals, compose, prop, append } from 'ramda'
+import update from 'immutability-helper'
 
 // Updater is a pure function
 
 /**
- * getStudentsUpdater :: Null -> Object
+ * getStudentsUpdater :: (Object, Object) -> Object
  *
- * A factory function which shows what state is gonna be updated.
- * @return {Object} UpdateInfo
+ * A factory function which shows what state is gonna be updated. It receives the prevState and props which are passed to Provider component. This updater function under the hood passed in this.setState of Component. Don't directly mutate the prevState in here.
+ * @param {Object} prevState
+ * @param {Object} props
+ * @return {Object} stateChange
  */
-const getStudentsUpdater = () => (state) => {
+const getStudentsUpdater = (prevState, props) => {
   // Student data.
   const students = {
     '0012018': {
@@ -30,46 +33,50 @@ const getStudentsUpdater = () => (state) => {
   }
 
   return {
-    type: 'getStudents',
-    newState: {
-      students: values(students)
-    }
+    students: values(students),
+    sample: 'Irish Jane'
   }
 }
 
-const addUserUpdater = () => (state) => {
-  const { fields: {id, firstName, lastName}, students } = state
+const addUserUpdater = (prevState, props) => {
+  const { fields: {id, firstName, lastName}, students } = prevState
   const student = {
     id,
     firstName,
     lastName
   }
   return {
-    type: 'addUser',
-    newState: {
-      students: append(student, students) // add the student object at the end of students list array.
-    }
+    students: append(student, students) // add the student object at the end of students list array.
   }
 }
 
-const inputChangeUpdater = (target) => (state) => {
+// A function which accepts a target object and returns an updater.
+const changeInput = (target) => {
   const value = target.type === 'checkbox' ? target.checked : target.value
   const name = target.name
-  return (
-    {
-      type: 'inputChange',
-      newState: {
-        fields: {
-          ...state.fields,
-          [name]: value // es6 computed property name.
-        }
+
+  const inputChangeUpdater = (prevState, props) => ({
+    fields: update(prevState.fields, { // using immutability-helper. We update the given property value using computed property syntax.
+      [name]: {
+        $set: value
       }
-    }
-  )
+    })
+  })
+  // return the updater.
+  return inputChangeUpdater
 }
 
-const filterStudentsUpdater = () => (state) => {
-  const { fields: {search}, students } = state
+const resetFormUpdater = (prevState, props) => ({
+  fields: {
+    id: '',
+    firstName: '',
+    lastName: '',
+    search: prevState.fields.search
+  }
+})
+
+const filterStudentsUpdater = (prevState, props) => {
+  const { fields: {search}, students } = prevState
 
   // check if the firstName value of student object is equal to search.
   const isFirstnameEqualTo = compose(equals(search), prop('firstName'))
@@ -77,10 +84,7 @@ const filterStudentsUpdater = () => (state) => {
   const filteredStudents = filter(isFirstnameEqualTo, students)
 
   return {
-    type: 'filterStudents',
-    newState: {
-      students: filteredStudents
-    }
+    students: filteredStudents
   }
 }
 
@@ -92,7 +96,8 @@ const initialState = {
     id: '',
     firstName: '',
     lastName: ''
-  }
+  },
+  sample: ''
 }
 
 /**
@@ -106,19 +111,20 @@ const initialState = {
  */
 const handlers = (produce) => ({
   handleInputChange (e) {
-    produce(inputChangeUpdater(e.target))
+    produce(changeInput(e.target))
   },
   getStudents () {
-    // Produce an updates to our store.
-    produce(getStudentsUpdater())
+    // Pass the updater function to produce.
+    produce(getStudentsUpdater)
   },
   addUser (e) {
     // prevent default
     e.preventDefault()
-    produce(addUserUpdater())
+    produce(addUserUpdater)
+    produce(resetFormUpdater)
   },
   filterStudents () {
-    produce(filterStudentsUpdater())
+    produce(filterStudentsUpdater)
   }
 })
 

@@ -1,7 +1,7 @@
 // TODO: Add test for the API's.
 // TODO: Add validation to our API's.
 import React, { createContext } from 'react'
-import { map, bind, __, compose, identical, type, when } from 'ramda'
+import { map, bind, __, compose, identical, type, when, keys, reduce, prop } from 'ramda'
 import { isNotEqual, getDisplayName } from './lib/utils'
 import createStoreEmitter from './lib/createStoreEmitter'
 
@@ -60,8 +60,10 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
         state: this.state, // The given state for the Root component
         handlers: this.createHandlers()
       }
-      // this will hold the updated object information.
-      this.updaterInfo = {}
+      // this will hold the state change information.
+      this.stateChange = {}
+      // updater function name
+      this.updaterName = ''
     }
 
     // We gonna invoke all function here which has a sideEffects.
@@ -70,12 +72,27 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
       storeEmitter.emit('stateChanged', this.state)
     }
 
-    // Produce an update to our states through invoking an updater function. Updater function returns an object which tells about the updated information.
+    /**
+     * produce :: Function -> void
+     *
+     * Produce an update to our states through invoking an updater function. Updater function returns an object which tells about the updated information.
+     * @param {Function} updater
+     * @return {Void}
+     */
     produce = (updater) => {
-      // pass the current state of the app then the return value is assign to the instance property.
-      this.updaterInfo = updater(this.state)
-      // update the state based on the updaterInfo.newState
-      this.setState(this.updaterInfo.newState)
+      // Update the current state of the apps. We pass updater function instead of object. Its better to pass an updater function rather than object because passing of object has caveats.
+      this.setState(
+        (prevState, props) => {
+          console.log(updater.name)
+          console.log(prevState)
+          // Execute the updater function. Pass the prevState and props. It returns a stateChange object. We will assign the stateChange to this.stateChange instance and use the stateChange as return value of the function.
+          this.stateChange = updater(prevState, props)
+          return this.stateChange
+        },
+        // TODO: We gonna use the setState callback function to get the updated states. We can get the prevState inside the updater scope.
+        () => {
+        }
+      )
     }
 
     // Iterate on the given object and execute the bindActionToThis to each handler.
@@ -88,16 +105,23 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
       return map(bindActionToThis, handlers(this.produce))
     }
 
-    // TODO: Add configuration to our Provider which gives our user an option if they need or don't ndeed this state logger.
     // TODO: Enhanced the logger text.
+    // loggerStates get executed when the state is updated due to firing an updater fn.
     loggerStates = (prevState, nextState) => {
-      console.group(`updater %c${this.updaterInfo.type}`, 'color: #348f29;')
-      console.log('Prev State', prevState)
-      console.log('Updater', {
-        type: this.updaterInfo.type,
-        newState: this.updaterInfo.newState // the state which is affected when the updater function is executed.
-      })
-      console.log('Next State', nextState)
+      // Get all the keys of the stateChange.
+      const newStateKeys = keys(this.stateChange)
+      // prev state, we need to extract the fields which are affected in updates through the keys.
+      const getAffectedState = reduce(
+        (obj, value) =>
+          prevState.hasOwnProperty(value)
+            ? {...obj, [value]: prop(value, prevState)}
+            : obj
+        , {}, newStateKeys)
+      console.group(`updater %c${this.updaterName}`, 'color: #348f29;')
+      console.log('Affected state', getAffectedState)
+      console.log('State change', this.stateChange)
+      console.log('Prev whole state', prevState)
+      console.log('Next whole state', nextState)
       console.groupEnd()
     }
 
