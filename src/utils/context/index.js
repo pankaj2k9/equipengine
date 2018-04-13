@@ -11,7 +11,7 @@ const initialOption = {
 }
 
 /**
- * createStore :: (Object, Object, Object) -> Object
+ * createStore :: (Object, Object) -> Object
  *
  * This wil create store for the specific feature of our application. Our store holds the state and the handlers.
  * @param {Object} initialState
@@ -41,7 +41,6 @@ const createStore = (initialState = {}, option = initialOption) => {
   }
 
   /**
-  * TODO: We gonna remove the passing of handlers when creating store, instead we gonna pass the handlers when our component is subscribing to our store.
   * Create a generic Provider component which encapsulates the important behavior of being a provider.
   * @param {Object} state This object represents the state which is managed by the passed Component.
   * @param {Function} handlers A function which accepts object of state and props, and dispatch function(dispatching function) . It returns an handlers object.
@@ -138,51 +137,50 @@ const createStore = (initialState = {}, option = initialOption) => {
   }
 
   /**
-  * TODO: We need to give an option to our component about what states and handlers the component needs to the Provider. In this way, we can avoid passing unnecessary props to the components and this will control the re-rendering issues of the Connected component.
-  * connect :: Component -> Component
+  * consume :: Component -> Component
   *
-  * An HOC for connecting the component into provider.
+  * An HOC for consuming the state from the store.
   * @param {Function|Object|null} mapStateToProps When function is passed, it returns an object which tells the Consumer what state should be map to our WrappedComponet. When empty object or null is passed, no mapping of state to props. It receives the current state of the app and ownProps
-  * @param {Function|Object|null} mapProducersToProps When function is passed, it returns an object which tells the Consumer what producers should be map to our WrappedComponet. When empty object or null is passed, no mapping of handlers to props. This function receives the produce instance method of Provider. We gonna pass the updater to produce.
+  * @param {Function|Object|null} mapHandlersToProps When function is passed, the return object are all handlers. This object is mapped to the props of WrappedComponent. When empty object or null is passed, no mapping of handlers. This function receives the produce instance method of Provider.
   * @param {Function} WrappedComponent.
   * @return {Function} New component which wraps in Consumer.
   */
-  const connect = (mapStateToProps, mapProducersToProps) => (WrappedComponent) => {
-    const Connected = (props) => {
+  const consume = (mapStateToProps, mapHandlersToProps) => (WrappedComponent) => {
+    const Consumed = (props) => {
       // Wrap the Display Name for Easy Debugging
-      Connected.displayName = `Connected(${getDisplayName(WrappedComponent)})`
+      Consumed.displayName = `Consumed(${getDisplayName(WrappedComponent)})`
       // return the WrappedComponent which is wrapped to Consumer.
       return (
         <Consumer>
           {
             (state) => {
-              // TODO: Received the createHandlers instance method of Provider here and pass the mapProducersToProps function. Return value will be the handlers which are mapped to our component and each handler is bind to our Provider component.
               // check if the data is a function
               const isFunction = compose(identical('Function'), type)
               // Get the state which are mapped to props.
-              const passState = when(
+              const mapState = when(
                 isFunction, // predicateFn.
-                (mapStateFn) => mapStateFn(state, props) // mapStateToProps returns a state object which is need by the component
+                (mapStateFn) => mapStateFn(state, props) // mapStateToProps returns a state object which is need by the wrapped component.
               )(mapStateToProps)
               // Get the handlers which are mapped to props.
-              const passProducers = when(
+              const mapHandlers = when(
                 isFunction, // predicateFn.
-                (mapProducersFn) => mapProducersFn(state.produce) // mapStateToProps returns a state object which is need by the component
-              )(mapProducersToProps)
+                (mapHandlersFn) => mapHandlersFn(state.produce) // mapHandlersToProps returns a handlers object which is need by the wrapped component.
+              )(mapHandlersToProps)
               return (
-                <WrappedComponent {...props} {...passState} {...passProducers} />
+                // We will pass to our WrappedComponent all the props passed to the Wrapper(Consumed component). Pass the state and producers need by our WrappedComponent(Presentational Component) and also the producers.
+                <WrappedComponent {...props} {...mapState} {...mapHandlers} produce={state.produce} />
               )
             }
           }
         </Consumer>
       )
     }
-    return Connected
+    return Consumed
   }
 
   return {
     Provider,
-    connect,
+    consume,
     subscribe
   }
 }

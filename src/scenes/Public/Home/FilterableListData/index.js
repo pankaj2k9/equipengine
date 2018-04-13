@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { map } from 'ramda'
-import StudentProvider, { connect, updater } from './context'
+import StudentProvider, { consume, updater } from './context'
 
 // ---------------------------------PRESENTATIONAL COMPONENT-----------------------//
 
@@ -85,7 +85,7 @@ const mapStateSearchbar = (state) => ({
   search: state.fields.search
 })
 
-const mapProducersToProps = (produce) => ({
+const mapHandlersToProps = (produce) => ({
   handleInputChange (e) {
     produce(updater.changeInput(e.target))
   },
@@ -94,35 +94,37 @@ const mapProducersToProps = (produce) => ({
   }
 })
 
-const SearchbarStudent = connect(mapStateSearchbar, mapProducersToProps)(Searchbar)
+// Consume hoc will return a Container Component
+const SearchbarStudent = consume(mapStateSearchbar, mapHandlersToProps)(Searchbar)
 
 // ConnectedTable
 const mapStateTable = (state) => ({
   students: state.students
 })
 
-const mapProducersTable = (produce) => ({
+const mapHandlersTable = (produce) => ({
   getStudents () {
     produce(updater.getStudents)
   }
 })
 
-const ConnectedTable = connect(mapStateTable, mapProducersTable)(Table)
+const ConnectedTable = consume(mapStateTable, mapHandlersTable)(Table)
+
+// ConnectedTableStudent
+const mapHandlersTableStudent = (produce) => ({
+  getStudents () {
+    produce(updater.getStudents)
+  }
+})
+
+const ConnectedTableStudent = consume({}, mapHandlersTableStudent)(TableStudent)
 
 // FormStudent
-const mapProducersFormStudent = (produce) => ({
-  getStudents () {
-    produce(updater.getStudents)
-  }
-})
-
-const ConnectedTableStudent = connect({}, mapProducersFormStudent)(TableStudent)
-
 const mapStateForm = (state) => ({
   fields: state.fields
 })
 
-const mapProducersForm = (produce) => ({
+const mapHandlersForm = (produce) => ({
   addUser (e) {
     e.preventDefault()
     produce(updater.addUserAndResetForm)
@@ -132,7 +134,7 @@ const mapProducersForm = (produce) => ({
   }
 })
 
-const FormStudent = connect(mapStateForm, mapProducersForm)(Form)
+const FormStudent = consume(mapStateForm, mapHandlersForm)(Form)
 
 // ---------------------------------EXPORTED COMPONENT-----------------------//
 class FilterableTableStudent extends Component {

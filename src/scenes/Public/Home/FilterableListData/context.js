@@ -114,11 +114,11 @@ const initialState = {
   }
 }
 
-const { Provider: StudentProvider, connect } = createStore(initialState, {isLoggerOn: true})
+const { Provider: StudentProvider, consume } = createStore(initialState, {isLoggerOn: true})
 
 // we gonna export the store object.
 export {
   StudentProvider as default,
-  connect,
+  consume,
   updater
 }
