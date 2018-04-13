@@ -137,6 +137,7 @@ const createStore = (initialState = {}, option = initialOption) => {
   }
 
   /**
+  * TODO: About unnecessary re-rendering, we need to tell our users about the rendering behavior of our utility.
   * consume :: Component -> Component
   *
   * An HOC for consuming the state from the store.

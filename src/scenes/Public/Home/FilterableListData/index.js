@@ -63,14 +63,6 @@ class TableStudent extends React.Component {
 
 // Create form for adding student data.
 class Form extends React.Component {
-  shouldComponentUpdate = (nextProps, nextState) => {
-    // FIXME: Unnecessary re-rendering.
-    // About unnecessary re-rendering, we need to tell our users about the rendering behavior of our utility.
-    console.log(this.props.handlers)
-    console.log('is equal', nextProps.handlers === this.props.handlers)
-    return true
-  }
-
   render () {
     const { fields, handlers: {addUser, handleInputChange} } = this.props
     return (
