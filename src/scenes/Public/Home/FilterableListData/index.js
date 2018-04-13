@@ -5,7 +5,7 @@ import StudentProvider, { consume, updater } from './context'
 // ---------------------------------PRESENTATIONAL COMPONENT-----------------------//
 
 // Searchbar
-const Searchbar = ({search, filterStudents, handleInputChange}) => (
+const Searchbar = ({search, handlers: {filterStudents, handleInputChange}}) => (
   <form style={{marginBottom: '1em'}}>
     <label htmlFor='search' style={{marginRight: '1em'}}>Search</label>
     <input name='search' type='text' value={search} onKeyUp={filterStudents} onChange={handleInputChange} />
@@ -13,7 +13,7 @@ const Searchbar = ({search, filterStudents, handleInputChange}) => (
 )
 
 // Table
-const Table = ({students, getStudents}) => (
+const Table = ({students, handlers: {getStudents}}) => (
   <table style={{marginBottom: '1em', width: '100%'}}>
     <thead>
       <tr>
@@ -47,12 +47,13 @@ const TableRow = ({student}) => (
 // Filterable table for student data.
 class TableStudent extends React.Component {
   componentDidMount () {
-    this.props.getStudents()
+    this.props.handlers.getStudents()
   }
 
   render () {
     return (
       <div style={{width: '25%', margin: '5em auto'}}>
+        <span>{this.props.studentsTotal}</span>
         <SearchbarStudent />
         <ConnectedTable />
       </div>
@@ -61,22 +62,35 @@ class TableStudent extends React.Component {
 }
 
 // Create form for adding student data.
-const Form = ({fields, addUser, handleInputChange}) => (
-  <form onSubmit={addUser}>
-    <div>
-      <input name='id' type='text' value={fields.id} placeholder='ID' onChange={handleInputChange} />
-    </div>
-    <div>
-      <input name='firstName' type='text' value={fields.firstName} placeholder='First Name' onChange={handleInputChange} />
-    </div>
-    <div>
-      <input name='lastName' type='text' value={fields.lastName} placeholder='Last Name' onChange={handleInputChange} />
-    </div>
-    <div>
-      <button>Add User</button>
-    </div>
-  </form>
-)
+class Form extends React.Component {
+  shouldComponentUpdate = (nextProps, nextState) => {
+    // FIXME: Unnecessary re-rendering.
+    // About unnecessary re-rendering, we need to tell our users about the rendering behavior of our utility.
+    console.log(this.props.handlers)
+    console.log('is equal', nextProps.handlers === this.props.handlers)
+    return true
+  }
+
+  render () {
+    const { fields, handlers: {addUser, handleInputChange} } = this.props
+    return (
+      <form onSubmit={addUser}>
+        <div>
+          <input name='id' type='text' value={fields.id} placeholder='ID' onChange={handleInputChange} />
+        </div>
+        <div>
+          <input name='firstName' type='text' value={fields.firstName} placeholder='First Name' onChange={handleInputChange} />
+        </div>
+        <div>
+          <input name='lastName' type='text' value={fields.lastName} placeholder='Last Name' onChange={handleInputChange} />
+        </div>
+        <div>
+          <button>Add User</button>
+        </div>
+      </form>
+    )
+  }
+}
 
 // ---------------------------------CONTAINER COMPONENT-----------------------//
 
@@ -111,13 +125,17 @@ const mapHandlersTable = (produce) => ({
 const ConnectedTable = consume(mapStateTable, mapHandlersTable)(Table)
 
 // ConnectedTableStudent
+const mapStateTableStudent = (state) => ({
+  studentsTotal: state.students.length
+})
+
 const mapHandlersTableStudent = (produce) => ({
   getStudents () {
     produce(updater.getStudents)
   }
 })
 
-const ConnectedTableStudent = consume({}, mapHandlersTableStudent)(TableStudent)
+const ConnectedTableStudent = consume(mapStateTableStudent, mapHandlersTableStudent)(TableStudent)
 
 // FormStudent
 const mapStateForm = (state) => ({

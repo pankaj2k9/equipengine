@@ -168,7 +168,7 @@ const createStore = (initialState = {}, option = initialOption) => {
               )(mapHandlersToProps)
               return (
                 // We will pass to our WrappedComponent all the props passed to the Wrapper(Consumed component). Pass the state and producers need by our WrappedComponent(Presentational Component) and also the producers.
-                <WrappedComponent {...props} {...mapState} {...mapHandlers} produce={state.produce} />
+                <WrappedComponent {...props} {...mapState} handlers={mapHandlers} produce={state.produce} />
               )
             }
           }
