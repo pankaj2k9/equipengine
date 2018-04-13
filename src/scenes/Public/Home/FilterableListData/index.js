@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { map } from 'ramda'
-import StudentProvider, { connect } from './context'
+import StudentProvider, { connect, updater } from './context'
 
 // ---------------------------------PRESENTATIONAL COMPONENT-----------------------//
 
@@ -11,17 +11,6 @@ const Searchbar = ({search, filterStudents, handleInputChange}) => (
     <input name='search' type='text' value={search} onKeyUp={filterStudents} onChange={handleInputChange} />
   </form>
 )
-
-const mapStateSearchbar = (state) => ({
-  search: state.fields.search
-})
-
-const mapHandlerToProps = (handlers) => ({
-  filterStudents: handlers.filterStudents,
-  handleInputChange: handlers.handleInputChange
-})
-
-const SearchbarStudent = connect(mapStateSearchbar, mapHandlerToProps)(Searchbar)
 
 // Table
 const Table = ({students, getStudents}) => (
@@ -45,16 +34,6 @@ const Table = ({students, getStudents}) => (
     </tfoot>
   </table>
 )
-
-const mapStateTable = (state) => ({
-  students: state.students
-})
-
-const mapHandlerTable = (handlers) => ({
-  getStudents: handlers.getStudents
-})
-
-const ConnectedTable = connect(mapStateTable, mapHandlerTable)(Table)
 
 // TableRow
 const TableRow = ({student}) => (
@@ -81,12 +60,6 @@ class TableStudent extends React.Component {
   }
 }
 
-const mapHandlerTableStudent = (handlers) => ({
-  getStudents: handlers.getStudents
-})
-
-const ConnectedTableStudent = connect({}, mapHandlerTableStudent)(TableStudent)
-
 // Create form for adding student data.
 const Form = ({fields, addUser, handleInputChange}) => (
   <form onSubmit={addUser}>
@@ -105,16 +78,61 @@ const Form = ({fields, addUser, handleInputChange}) => (
   </form>
 )
 
+// ---------------------------------CONTAINER COMPONENT-----------------------//
+
+// SearchbarStudent
+const mapStateSearchbar = (state) => ({
+  search: state.fields.search
+})
+
+const mapProducersToProps = (produce) => ({
+  handleInputChange (e) {
+    produce(updater.changeInput(e.target))
+  },
+  filterStudents () {
+    produce(updater.filterStudents)
+  }
+})
+
+const SearchbarStudent = connect(mapStateSearchbar, mapProducersToProps)(Searchbar)
+
+// ConnectedTable
+const mapStateTable = (state) => ({
+  students: state.students
+})
+
+const mapProducersTable = (produce) => ({
+  getStudents () {
+    produce(updater.getStudents)
+  }
+})
+
+const ConnectedTable = connect(mapStateTable, mapProducersTable)(Table)
+
+// FormStudent
+const mapProducersFormStudent = (produce) => ({
+  getStudents () {
+    produce(updater.getStudents)
+  }
+})
+
+const ConnectedTableStudent = connect({}, mapProducersFormStudent)(TableStudent)
+
 const mapStateForm = (state) => ({
   fields: state.fields
 })
 
-const mapHandlerForm = (handlers) => ({
-  addUser: handlers.addUser,
-  handleInputChange: handlers.handleInputChange
+const mapProducersForm = (produce) => ({
+  addUser (e) {
+    e.preventDefault()
+    produce(updater.addUserAndResetForm)
+  },
+  handleInputChange (e) {
+    produce(updater.changeInput(e.target))
+  }
 })
 
-const FormStudent = connect(mapStateForm, mapHandlerForm)(Form)
+const FormStudent = connect(mapStateForm, mapProducersForm)(Form)
 
 // ---------------------------------EXPORTED COMPONENT-----------------------//
 class FilterableTableStudent extends Component {

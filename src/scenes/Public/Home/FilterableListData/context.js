@@ -12,7 +12,7 @@ import update from 'immutability-helper'
  * @param {Object} props
  * @return {Object} stateChange
  */
-const getStudentsUpdater = (prevState, props) => {
+const getStudents = (prevState, props) => {
   // Student data.
   const students = {
     '0012018': {
@@ -33,8 +33,7 @@ const getStudentsUpdater = (prevState, props) => {
   }
 
   return {
-    students: values(students),
-    sample: 'Irish Jane'
+    students: values(students)
   }
 }
 
@@ -43,7 +42,7 @@ const changeInput = (target) => {
   const value = target.type === 'checkbox' ? target.checked : target.value
   const name = target.name
 
-  const inputChangeUpdater = (prevState, props) => ({
+  const handlerInputChange = (prevState, props) => ({
     fields: update(prevState.fields, { // using immutability-helper. We update the given property value using computed property syntax.
       [name]: {
         $set: value
@@ -51,10 +50,10 @@ const changeInput = (target) => {
     })
   })
   // return the updater.
-  return inputChangeUpdater
+  return handlerInputChange
 }
 
-const resetFormUpdater = (prevState) => ({
+const resetForm = (prevState) => ({
   fields: {
     id: '',
     firstName: '',
@@ -63,7 +62,7 @@ const resetFormUpdater = (prevState) => ({
   }
 })
 
-const addUserUpdater = (prevState) => {
+export const addUser = (prevState) => {
   const { fields: {id, firstName, lastName}, students } = prevState
   const student = {
     id,
@@ -78,10 +77,10 @@ const addUserUpdater = (prevState) => {
 // This construct a new stateChange based on the return stateChange of other updater function.
 // Updater composition -> An updater function which the return stateChange is based on the other stateChange of 2 or more updaters.
 // A function which compose an object - Object composition. - “Favor object composition over class inheritance” the Gang of Four, “Design Patterns: Elements of Reusable Object Oriented Software”
-const addUserAndResetFormUpdater = (prevState) =>
-  merge(addUserUpdater(prevState), resetFormUpdater(prevState))
+const addUserAndResetForm = (prevState) =>
+  merge(addUser(prevState), resetForm(prevState))
 
-const filterStudentsUpdater = (prevState, props) => {
+const filterStudents = (prevState, props) => {
   const { fields: {search}, students } = prevState
 
   // check if the firstName value of student object is equal to search.
@@ -94,6 +93,16 @@ const filterStudentsUpdater = (prevState, props) => {
   }
 }
 
+// Updater functions
+const updater = {
+  getStudents,
+  changeInput,
+  resetForm,
+  addUser,
+  addUserAndResetForm,
+  filterStudents
+}
+
 // Use the provider API. Create a provider component for student data.
 const initialState = {
   students: [], // convert object to array.
@@ -102,43 +111,14 @@ const initialState = {
     id: '',
     firstName: '',
     lastName: ''
-  },
-  sample: ''
+  }
 }
 
-/**
- * handlers :: Object -> Object(handlers function)
- *
- * Actions is an object where the fields are all action. Action can be used for updating the state, firing a request, and etc.
- * @param {Object} containerProperties
- * @param {Function} produce Produce an updates through invoking an updater function.
- * @return {Object} handlers object
- * @function - Factory Function (impure function)
- */
-const handlers = (produce) => ({
-  handleInputChange (e) {
-    produce(changeInput(e.target))
-  },
-  getStudents () {
-    // Pass the updater function to produce.
-    produce(getStudentsUpdater)
-  },
-  addUser (e) {
-    // prevent default
-    e.preventDefault()
-    produce(addUserAndResetFormUpdater)
-    // produce(addUserUpdater)
-    // produce(resetFormUpdater)
-  },
-  filterStudents () {
-    produce(filterStudentsUpdater)
-  }
-})
-
-const { Provider: StudentProvider, connect } = createStore(initialState, handlers, {isLoggerOn: true})
+const { Provider: StudentProvider, connect } = createStore(initialState, {isLoggerOn: true})
 
 // we gonna export the store object.
 export {
   StudentProvider as default,
-  connect
+  connect,
+  updater
 }

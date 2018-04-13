@@ -1,7 +1,7 @@
 // TODO: Add test for the API's.
 // TODO: Add validation to our API's.
 import React, { createContext } from 'react'
-import { map, bind, __, compose, identical, type, when, keys, reduce, prop } from 'ramda'
+import { compose, identical, type, when, keys, reduce, prop } from 'ramda'
 import { isNotEqual, getDisplayName } from './lib/utils'
 import createStoreEmitter from './lib/createStoreEmitter'
 
@@ -15,10 +15,9 @@ const initialOption = {
  *
  * This wil create store for the specific feature of our application. Our store holds the state and the handlers.
  * @param {Object} initialState
- * @param {Object} handlers Handlers object.
  * @param {Object} config Optional . Holds the config for creating store. For an instance, showing the logger to the browser's console.
  */
-const createStore = (initialState = {}, handlers, option = initialOption) => {
+const createStore = (initialState = {}, option = initialOption) => {
   // creating context
   const { Provider: RootProvider, Consumer } = createContext(initialState)
 
@@ -29,7 +28,7 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
    * subscribe :: Function -> Function
    *
    * A function which subscribes the given listener to the stateChanged event of storeEmitter object. The listener receives the current state of the application. This is the best place to check the current state of the store.
-   * @param {Function} listener A callback function which listen to stateChanged event.
+   * @param {Function} listener A callback function which listen to stateChanged event. The listener receives the current state of the store.
    * @return {Function} Unsubscribe function.
    */
   const subscribe = (listener) => {
@@ -52,13 +51,9 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
   class Provider extends React.Component {
     constructor (props) {
       super(props)
-      // initial store for our state.
-      this.state = initialState
-      // Initial store. Store holds the states and handlers which update states.
-      // We gonna pass our store to the children components using Provider component.
-      this.store = {
-        state: this.state, // The given state for the Root component
-        handlers: this.createHandlers()
+      this.state = {
+        ...initialState, // Initial state for our store.
+        produce: this.produce
       }
       // this will hold the state change information.
       this.stateChange = {}
@@ -91,17 +86,6 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
       )
     }
 
-    // Iterate on the given object and execute the bindActionToThis to each handler.
-    // TODO: We gonna pass this createHandlers as part of the this.value of Provider. We will execute this to connect method.
-    // TODO: We dont need to bind each handler to our Provider object.
-    createHandlers = () => {
-      // Helper function for binding each action to this Class Object.
-      const bindActionToThis = bind(__, this)
-      // return new object.
-      return map(bindActionToThis, handlers(this.produce))
-    }
-
-    // TODO: Enhanced the logger text.
     // loggerStates get executed when the state is updated due to firing an updater fn.
     loggerStates = (prevState, nextState) => {
       // Get all the keys of the stateChange.
@@ -132,12 +116,7 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
 
       // check if the this.state/this.props is not equal to nextState/nextProps.
       if (isNotEqual(this.state, nextState) || isNotEqual(this.prop, nextProps)) {
-        // replace the existing store of instance this.store.
-        this.store = {
-          state: nextState,
-          handlers: this.createHandlers()
-        }
-
+        // re-render the component.
         return true
       }
       // don't re-render the component.
@@ -151,7 +130,7 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
 
     render () {
       return (
-        <RootProvider value={this.store}>
+        <RootProvider value={this.state}>
           {this.props.children}
         </RootProvider>
       )
@@ -163,12 +142,12 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
   * connect :: Component -> Component
   *
   * An HOC for connecting the component into provider.
-  * @param {Function|Object|null} mapStateToProps When function is passed, it returns an object which tells the Consumer what state should be map to our WrappedComponet. When empty object or null is passed, no mapping of state to props.
-  * @param {Function|Object|null} mapHandlerToProps When function is passed, it returns an object which tells the Consumer what handlers should be map to our WrappedComponet. When empty object or null is passed, no mapping of handlers to props.
+  * @param {Function|Object|null} mapStateToProps When function is passed, it returns an object which tells the Consumer what state should be map to our WrappedComponet. When empty object or null is passed, no mapping of state to props. It receives the current state of the app and ownProps
+  * @param {Function|Object|null} mapProducersToProps When function is passed, it returns an object which tells the Consumer what producers should be map to our WrappedComponet. When empty object or null is passed, no mapping of handlers to props. This function receives the produce instance method of Provider. We gonna pass the updater to produce.
   * @param {Function} WrappedComponent.
   * @return {Function} New component which wraps in Consumer.
   */
-  const connect = (mapStateToProps, mapHandlerToProps) => (WrappedComponent) => {
+  const connect = (mapStateToProps, mapProducersToProps) => (WrappedComponent) => {
     const Connected = (props) => {
       // Wrap the Display Name for Easy Debugging
       Connected.displayName = `Connected(${getDisplayName(WrappedComponent)})`
@@ -176,23 +155,22 @@ const createStore = (initialState = {}, handlers, option = initialOption) => {
       return (
         <Consumer>
           {
-            (store) => {
-              // TODO: Received the createHandlers instance method of Provider here and pass the mapHandlerToProps function. Return value will be the handlers which are mapped to our component and each handler is bind to our Provider component.
+            (state) => {
+              // TODO: Received the createHandlers instance method of Provider here and pass the mapProducersToProps function. Return value will be the handlers which are mapped to our component and each handler is bind to our Provider component.
               // check if the data is a function
               const isFunction = compose(identical('Function'), type)
-              // Tests the final argument by passing it to the given predicate function. If the final argument is a function, we gonna execute the 2nd argument function which receives the final argument.
               // Get the state which are mapped to props.
-              const state = when(
+              const passState = when(
                 isFunction, // predicateFn.
-                (mapStateFn) => mapStateFn(store.state) // mapStateToProps returns a state object which is need by the component
+                (mapStateFn) => mapStateFn(state, props) // mapStateToProps returns a state object which is need by the component
               )(mapStateToProps)
               // Get the handlers which are mapped to props.
-              const handlers = when(
+              const passProducers = when(
                 isFunction, // predicateFn.
-                (mapHandlerFn) => mapHandlerFn(store.handlers) // mapStateToProps returns a state object which is need by the component
-              )(mapHandlerToProps)
+                (mapProducersFn) => mapProducersFn(state.produce) // mapStateToProps returns a state object which is need by the component
+              )(mapProducersToProps)
               return (
-                <WrappedComponent {...props} {...state} {...handlers} />
+                <WrappedComponent {...props} {...passState} {...passProducers} />
               )
             }
           }
