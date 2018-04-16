@@ -1,4 +1,5 @@
 import createStore from 'utils/context'
+import { createSelector } from 'reselect'
 import { values, filter, equals, compose, prop, append, mergeAll, merge } from 'ramda'
 import { isNotEmpty } from 'ramda-adjunct'
 import update from 'immutability-helper'
@@ -177,7 +178,22 @@ const initialState = {
   }
 }
 
-const { Provider: StudentProvider, consume } = createStore(initialState, {isLoggerOn: true})
+// selectors
+// students total selector
+const getStudentsTotal = createSelector(
+  (state) => state.filterStudents,
+  (filterStudents) => {
+    console.log('compute the getStudentsTotal selector')
+    return filterStudents.length
+  }
+)
+
+// create the shared selectors
+const selectors = {
+  getStudentsTotal
+}
+
+const { Provider: StudentProvider, consume } = createStore(initialState, selectors, {isLoggerOn: true})
 
 // we gonna export the store object.
 export {

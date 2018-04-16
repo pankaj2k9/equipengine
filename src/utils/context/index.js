@@ -9,7 +9,6 @@
  *   - selectors
  *   - peformance optimization for re-rendering of components
  */
-
 // TODO: Add test for the API's.
 // TODO: Add validation to our API's.
 import React, { createContext } from 'react'
@@ -27,9 +26,10 @@ const initialOption = {
  *
  * This wil create store for the specific feature of our application. Our store holds the state and the handlers.
  * @param {Object} initialState
+ * @param {Object} selectors Shared selectors which the consumed components can use.
  * @param {Object} config Optional . Holds the config for creating store. For an instance, showing the logger to the browser's console.
  */
-const createStore = (initialState = {}, option = initialOption) => {
+const createStore = (initialState = {}, selectors = {}, option = initialOption) => {
   // creating context
   const { Provider: RootProvider, Consumer } = createContext(initialState)
 
@@ -64,7 +64,8 @@ const createStore = (initialState = {}, option = initialOption) => {
       super(props)
       this.state = {
         ...initialState, // Initial state for our store.
-        produce: this.produce
+        produce: this.produce,
+        selectors // assign the passed selectors to our selectors state.
       }
       // this will hold the state change information.
       this.stateChange = {}
@@ -149,7 +150,6 @@ const createStore = (initialState = {}, option = initialOption) => {
   }
 
   /**
-  * TODO: About unnecessary re-rendering, we need to tell our users about the rendering behavior of our utility.
   * consume :: Component -> Component
   *
   * An HOC for consuming the state from the store.
@@ -167,21 +167,22 @@ const createStore = (initialState = {}, option = initialOption) => {
         <Consumer>
           {
             (state) => {
+              const { produce, selectors } = state
               // check if the data is a function
               const isFunction = compose(identical('Function'), type)
               // Get the state which are mapped to props.
               const mapState = when(
                 isFunction, // predicateFn.
-                (mapStateFn) => mapStateFn(state, props) // mapStateToProps returns a state object which is need by the wrapped component.
+                (mapStateFn) => mapStateFn({state, props, selectors}) // mapStateToProps returns a state object which is need by the wrapped component. It accepts object which has the state, props, and selectors.
               )(mapStateToProps)
               // Get the handlers which are mapped to props.
               const mapHandlers = when(
                 isFunction, // predicateFn.
-                (mapHandlersFn) => mapHandlersFn(state.produce) // mapHandlersToProps returns a handlers object which is need by the wrapped component.
+                (mapHandlersFn) => mapHandlersFn(produce) // mapHandlersToProps returns a handlers object which is need by the wrapped component.
               )(mapHandlersToProps)
               return (
                 // We will pass to our WrappedComponent all the props passed to the Wrapper(Consumed component). Pass the state and producers need by our WrappedComponent(Presentational Component) and also the producers.
-                <WrappedComponent {...props} {...mapState} handlers={mapHandlers} produce={state.produce} />
+                <WrappedComponent {...props} {...mapState} handlers={mapHandlers} produce={produce} />
               )
             }
           }

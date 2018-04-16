@@ -1,7 +1,6 @@
 import React, { Fragment, Component } from 'react'
 import { map, not, identical } from 'ramda'
 import { debounce } from 'lodash'
-import { createSelector } from 'reselect'
 import StudentProvider, { consume, updater } from './context'
 
 // ---------------------------------PRESENTATIONAL COMPONENT-----------------------//
@@ -150,7 +149,7 @@ const mapHandlersToProps = (produce) => ({
 const SearchbarStudent = consume({}, mapHandlersToProps)(Searchbar)
 
 // ConnectedTable
-const mapStateTable = (state) => ({
+const mapStateTable = ({state}) => ({
   students: state.filterStudents
 })
 
@@ -162,17 +161,8 @@ const mapHandlersTable = (produce) => ({
 
 const ConnectedTable = consume(mapStateTable, mapHandlersTable)(Table)
 
-// students total selector
-const getStudentsTotal = createSelector(
-  (state) => state.filterStudents,
-  (filterStudents) => {
-    console.log('compute the getStudentsTotal selector')
-    return filterStudents.length
-  }
-)
-
 // TableStudent
-const mapStateTableStudent = (state) => ({
+const mapStateTableStudent = ({state, selectors: {getStudentsTotal}}) => ({
   studentsTotal: getStudentsTotal(state),
   pending: state.processRequest.pending
 })
@@ -186,7 +176,7 @@ const mapHandlersTableStudent = (produce) => ({
 const ConnectedTableStudent = consume(mapStateTableStudent, mapHandlersTableStudent)(TableStudent)
 
 // FormStudent
-const mapStateForm = (state) => ({
+const mapStateForm = ({state}) => ({
   fields: state.fields
 })
 
