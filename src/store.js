@@ -29,7 +29,7 @@ const composedEnhancers = compose(
   ...enhancers
 )
 
-// load up the the state that is persisted on the local storage
+// load up the state that is persisted on the local storage
 // this became our initial state.
 const persistedState = loadState()
 

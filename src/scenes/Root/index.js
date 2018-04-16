@@ -11,7 +11,7 @@ import AppContainer from './components/App'
 import ThemeProvider from './components/ThemeProvider'
 
 // subscribe event will fire every time the state is changing.
-// we user throttle function from lodash, creates a throttled function that only invokes func
+// we use throttle function from lodash, creates a throttled function that only invokes func
 // at most once per every wait milliseconds
 store.subscribe(
   throttle(() => {

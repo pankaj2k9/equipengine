@@ -1,19 +1,44 @@
 import React, { Component } from 'react'
 import { map } from 'ramda'
+import { debounce } from 'lodash'
 import StudentProvider, { consume, updater } from './context'
 
 // ---------------------------------PRESENTATIONAL COMPONENT-----------------------//
 
 // Searchbar
-const Searchbar = ({search, handlers: {filterStudents, handleInputChange}}) => (
-  <form style={{marginBottom: '1em'}}>
-    <label htmlFor='search' style={{marginRight: '1em'}}>Search</label>
-    <input name='search' type='text' value={search} onKeyUp={filterStudents} onChange={handleInputChange} />
-  </form>
-)
+class Searchbar extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      search: ''
+    }
+    // We create an instance of our Searchbar class. We assign the return function of debounce. Then we gonna pass this instance method as handler of event keyUp. We need to avoid the recreation of debounce function. Because of that, we create the debounce on the constructor method. Constructor method only invoke once when our component is initialized.
+    // This is hacks for debouncing our searchChange handler to prevent the cleanup of the event object. Alternative, we can use the event.persist() - https://reactjs.org/docs/events.html#event-pooling
+    this.debounceHandleSearch = debounce(() => {
+      props.handlers.searchChange(this.state.search)
+    }, 300)
+  }
+
+  handleSearch = (e) => {
+    this.setState({
+      search: e.target.value
+    }, () => {
+      this.debounceHandleSearch()
+    })
+  }
+
+  render () {
+    return (
+      <form style={{marginBottom: '1em'}}>
+        <label htmlFor='search' style={{marginRight: '1em'}}>Search</label>
+        <input name='search' type='text' value={this.state.search} onChange={this.handleSearch} />
+      </form>
+    )
+  }
+}
 
 // Table
-const Table = ({students, handlers: {getStudents}}) => (
+const Table = ({students, handlers: {refreshFilterStudents}}) => (
   <table style={{marginBottom: '1em', width: '100%'}}>
     <thead>
       <tr>
@@ -29,7 +54,7 @@ const Table = ({students, handlers: {getStudents}}) => (
     </tbody>
     <tfoot>
       <tr>
-        <td><button onClick={getStudents}>Refresh</button></td>
+        <td><button onClick={refreshFilterStudents}>Refresh</button></td>
       </tr>
     </tfoot>
   </table>
@@ -92,11 +117,8 @@ const mapStateSearchbar = (state) => ({
 })
 
 const mapHandlersToProps = (produce) => ({
-  handleInputChange (e) {
-    produce(updater.changeInput(e.target))
-  },
-  filterStudents () {
-    produce(updater.filterStudents)
+  searchChange (search) {
+    produce(updater.searchStudents(search))
   }
 })
 
@@ -105,12 +127,12 @@ const SearchbarStudent = consume(mapStateSearchbar, mapHandlersToProps)(Searchba
 
 // ConnectedTable
 const mapStateTable = (state) => ({
-  students: state.students
+  students: state.filterStudents
 })
 
 const mapHandlersTable = (produce) => ({
-  getStudents () {
-    produce(updater.getStudents)
+  refreshFilterStudents () {
+    produce(updater.refreshFilterStudents)
   }
 })
 
@@ -118,12 +140,12 @@ const ConnectedTable = consume(mapStateTable, mapHandlersTable)(Table)
 
 // ConnectedTableStudent
 const mapStateTableStudent = (state) => ({
-  studentsTotal: state.students.length
+  studentsTotal: state.filterStudents.length
 })
 
 const mapHandlersTableStudent = (produce) => ({
   getStudents () {
-    produce(updater.getStudents)
+    updater.fetchStudents(produce)
   }
 })
 
