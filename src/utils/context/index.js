@@ -1,3 +1,15 @@
+/**
+ * Support features:
+ *   - easy to implement
+ *   - creating of store
+ *   - shared states
+ *   - all components can consume the state of the stores
+ *   - mapping of states to props
+ *   - mapping of handlers to props
+ *   - selectors
+ *   - peformance optimization for re-rendering of components
+ */
+
 // TODO: Add test for the API's.
 // TODO: Add validation to our API's.
 import React, { createContext } from 'react'

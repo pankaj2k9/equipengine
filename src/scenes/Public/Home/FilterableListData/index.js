@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import { map } from 'ramda'
+import React, { Fragment, Component } from 'react'
+import { map, not, identical } from 'ramda'
 import { debounce } from 'lodash'
+import { createSelector } from 'reselect'
 import StudentProvider, { consume, updater } from './context'
 
 // ---------------------------------PRESENTATIONAL COMPONENT-----------------------//
@@ -27,7 +28,17 @@ class Searchbar extends React.Component {
     })
   }
 
+  shouldComponentUpdate (nextProps, nextState) {
+    // if not identical, render the component
+    if (not(identical(this.state.search, nextState.search))) {
+      return true
+    }
+
+    return false
+  }
+
   render () {
+    /* console.log('re-render searchbar') */
     return (
       <form style={{marginBottom: '1em'}}>
         <label htmlFor='search' style={{marginRight: '1em'}}>Search</label>
@@ -75,12 +86,29 @@ class TableStudent extends React.Component {
     this.props.handlers.getStudents()
   }
 
+  shouldComponentUpdate (nextProps, nextState) {
+    if (not(identical(nextProps.studentsTotal, this.props.studentsTotal))) {
+      return true
+    }
+    return false
+  }
+
   render () {
+    const { studentsTotal, pending } = this.props
+    /* console.log('re render our table student') */
     return (
       <div style={{width: '25%', margin: '5em auto'}}>
-        <span>{this.props.studentsTotal}</span>
-        <SearchbarStudent />
-        <ConnectedTable />
+        {
+          pending ? (
+            <p>Fetching students...</p>
+          ) : (
+            <Fragment>
+              <span>{studentsTotal}</span>
+              <SearchbarStudent />
+              <ConnectedTable />
+            </Fragment>
+          )
+        }
       </div>
     )
   }
@@ -112,10 +140,6 @@ class Form extends React.Component {
 // ---------------------------------CONTAINER COMPONENT-----------------------//
 
 // SearchbarStudent
-const mapStateSearchbar = (state) => ({
-  search: state.fields.search
-})
-
 const mapHandlersToProps = (produce) => ({
   searchChange (search) {
     produce(updater.searchStudents(search))
@@ -123,7 +147,7 @@ const mapHandlersToProps = (produce) => ({
 })
 
 // Consume hoc will return a Container Component
-const SearchbarStudent = consume(mapStateSearchbar, mapHandlersToProps)(Searchbar)
+const SearchbarStudent = consume({}, mapHandlersToProps)(Searchbar)
 
 // ConnectedTable
 const mapStateTable = (state) => ({
@@ -138,9 +162,19 @@ const mapHandlersTable = (produce) => ({
 
 const ConnectedTable = consume(mapStateTable, mapHandlersTable)(Table)
 
-// ConnectedTableStudent
+// students total selector
+const getStudentsTotal = createSelector(
+  (state) => state.filterStudents,
+  (filterStudents) => {
+    console.log('compute the getStudentsTotal selector')
+    return filterStudents.length
+  }
+)
+
+// TableStudent
 const mapStateTableStudent = (state) => ({
-  studentsTotal: state.filterStudents.length
+  studentsTotal: getStudentsTotal(state),
+  pending: state.processRequest.pending
 })
 
 const mapHandlersTableStudent = (produce) => ({

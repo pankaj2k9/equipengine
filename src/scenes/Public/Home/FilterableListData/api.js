@@ -22,7 +22,7 @@ const fetchStudents = () =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(students)
-    }, 2000)
+    }, 1000)
   })
 
 export default {
