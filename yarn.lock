@@ -7766,6 +7766,12 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
+storext@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/storext/-/storext-0.1.4.tgz#518c1989ae068802e3d6101a705f90b2eb44c082"
+  dependencies:
+    immutable v4.0.0-rc.9
+
 stream-browserify@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/stream-browserify/-/stream-browserify-2.0.1.tgz#66266ee5f9bdb9940a4e4514cafb43bb71e5c9db"
