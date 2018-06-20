@@ -39,7 +39,7 @@ export default (WrappedComponent) =>
       letter-spacing: 0.7px;
       color: #9fa6ad;
       text-transform: uppercase;
-      font-weight: 800;
+      font-weight: 400;
       font-size: 12px;
     }
 
@@ -72,7 +72,7 @@ export default (WrappedComponent) =>
       }
 
       .Sidebar__body__mainPages {
-        padding: 25px 35px 17px 35px;
+        padding: 6px 20px 17px 20px;
       }
     }
   `
