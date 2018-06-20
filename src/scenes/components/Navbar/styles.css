@@ -1,18 +1,14 @@
 .Navbar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 2%;
-  border-bottom: 1px solid #dadada;
-  z-index: 1;
-}
+  border-bottom: 1px solid #DADADA;
+  z-index: 1; }
 
 @media screen and (min-width: 768px) {
   .Navbar {
-    padding: 14px 35px;
+    padding: 9px 20px 10px 20px;
     position: fixed;
     top: 0;
     width: 100%;
-    background: #fff;
-  }
-}
+    background: #fff; } }

@@ -6,7 +6,7 @@ import DropdownMediaFile from './components/DropdownMediaFile/index.js'
 
 const VideoMedia = () => (
   <Media query='(max-width: 767px)'>
-    {matches =>
+    {(matches) =>
       matches ? (
         <ModalBoxVideoInfo>
           <DropdownMediaFile />

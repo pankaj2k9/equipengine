@@ -24,14 +24,14 @@ const addPaddingLeft = ({ type, pathname }) => {
 
 const Main = styled.main`
   padding-bottom: 2em;
-  margin-top: ${props => identical(props.type, 'Admin') && '55px'};
+  margin-top: ${(props) => identical(props.type, 'Admin') && '55px'};
 
   @media screen and (min-width: 768px) {
-    padding-left: ${props =>
+    padding-left: ${(props) =>
     addPaddingLeft({ type: props.type, pathname: props.pathname })};
     padding-bottom: 0;
     position: absolute;
-    top: 68px;
+    top: 59px;
     width: 100%;
     margin-top: 0;
   }

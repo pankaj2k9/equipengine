@@ -7,7 +7,7 @@ import TutorialTask from './components/TutorialTask'
 const ModalBody = () => {
   return (
     <Media query='(max-width: 767px)'>
-      {matches =>
+      {(matches) =>
         matches ? (
           <div style={modalBodyStyle} className='ModalBody'>
             <TutorialInfo />

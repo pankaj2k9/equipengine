@@ -19,7 +19,7 @@ export const headerActions = {
   },
   default: {
     handleShow () {
-      console.log('click')
+      //console.log('click')
     }
   }
 }

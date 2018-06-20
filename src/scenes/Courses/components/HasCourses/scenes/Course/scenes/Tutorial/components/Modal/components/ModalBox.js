@@ -6,7 +6,7 @@ import Box from 'base_components/Box'
 
 const ModalBox = ({ className, children, style }) => (
   <Media query='(max-width: 767px)'>
-    {matches =>
+    {(matches) =>
       matches ? (
         <Box
           className={className}

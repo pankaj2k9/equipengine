@@ -20,7 +20,7 @@ const ListItem = styled(({ className }) => (
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${props => props.active && 'rgba(184, 184, 184, .2)'};
+  background-color: ${(props) => props.active && 'rgba(184, 184, 184, .2)'};
   color: #111111;
 
   > div span:first-child {

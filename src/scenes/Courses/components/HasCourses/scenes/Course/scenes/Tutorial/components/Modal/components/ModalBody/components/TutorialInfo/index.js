@@ -7,7 +7,7 @@ import TutorialThingsToDo from './components/TutorialThingsToDo'
 const TutorialInfo = () => {
   return (
     <Media query='(max-width: 767px)'>
-      {matches =>
+      {(matches) =>
         matches ? (
           <div className='TutorialInfo' style={tutorialInfoContainer}>
             <TutorialDetails />

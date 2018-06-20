@@ -42,7 +42,7 @@ class ModalActions extends Component {
             },
             footer: {
               buttonTitle: 'Save',
-              buttonHandler: () => console.log('handle click')
+              //buttonHandler: () => console.log('handle click')
             }
           }}
         />

@@ -14,7 +14,7 @@ export default {
   default: {
     isOpen: false,
     handleClose () {
-      console.log('Default click')
+      //console.log('Default click')
     }
   }
 }
@@ -34,7 +34,7 @@ export const modalBody = {
   },
   default: {
     selectedOption: '',
-    handleChange: () => console.log('Handle change')
+    //handleChange: () => console.log('Handle change')
   }
 }
 

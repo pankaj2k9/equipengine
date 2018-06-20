@@ -6,7 +6,7 @@ import { LinkHorizontal } from '../LinkNavbarAdmin'
 
 const ListLinkHorizontal = styled.ul`
   margin-top: 0.8em;
-  display: ${props => (props.isOpenPanel ? 'block' : 'none')};
+  display: ${(props) => (props.isOpenPanel ? 'block' : 'none')};
 
   @media screen and (min-width: 768px) {
     display: none;

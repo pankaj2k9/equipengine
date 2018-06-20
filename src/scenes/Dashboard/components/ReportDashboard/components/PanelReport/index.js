@@ -20,8 +20,8 @@ const ReportPanel = styled(({ className, title, children }) => (
   > header {
     border-bottom: 1px solid #e2e2e2;
     color: #111111;
-    text-align: center;
-    padding: 0.6em 0;
+    text-align: left;
+    padding: 0.6em 0 0.6em 1.5em;
   }
 
   > div {

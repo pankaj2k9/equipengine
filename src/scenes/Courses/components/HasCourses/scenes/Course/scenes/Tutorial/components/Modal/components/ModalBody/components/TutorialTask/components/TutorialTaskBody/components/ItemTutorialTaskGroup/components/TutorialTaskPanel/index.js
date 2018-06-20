@@ -1,26 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 // sub-components
-import TutorialTaskPanelHeader from './components/TutorialTaskPanelHeader';
-import TutorialTaskPanelContent from './components/TutorialTaskPanelContent';
+import TutorialTaskPanelHeader from './components/TutorialTaskPanelHeader'
+import TutorialTaskPanelContent from './components/TutorialTaskPanelContent'
 
 class TutorialTaskPanel extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
       isPanelOpen: false
-    };
+    }
   }
-  handleTogglePanel = e => {
-    e.preventDefault();
+  handleTogglePanel = (e) => {
+    e.preventDefault()
     // update the state
     this.setState({
       isPanelOpen: !this.state.isPanelOpen
-    });
+    })
   };
   render() {
-    const { category, title, children, isReadingGroup } = this.props;
+    const { category, title, children, isReadingGroup } = this.props
     return (
       <div style={tutorialTaskPanelStyle} className="TutorialTaskPanel">
         <TutorialTaskPanelHeader
@@ -34,7 +34,7 @@ class TutorialTaskPanel extends React.Component {
           {children}
         </TutorialTaskPanelContent>
       </div>
-    );
+    )
   }
 }
 
@@ -46,17 +46,17 @@ TutorialTaskPanel.propTypes = {
   category: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   isReadingGroup: PropTypes.bool
-};
+}
 
 // default props
 TutorialTaskPanel.defaultProps = {
   isReadingGroup: false
-};
+}
 
 const tutorialTaskPanelStyle = {
   border: '1px solid #cbcbcb',
   borderRadius: 4,
   marginBottom: '1em'
-};
+}
 
-export default TutorialTaskPanel;
+export default TutorialTaskPanel

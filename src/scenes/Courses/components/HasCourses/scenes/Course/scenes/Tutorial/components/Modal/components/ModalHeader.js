@@ -9,7 +9,7 @@ import closeSrc from '../close-button.svg'
 const ModalHeader = ({ handleCloseModal }) => {
   return (
     <Media query='(max-width: 767px)'>
-      {matches =>
+      {(matches) =>
         matches ? (
           <ModalBox
             style={{

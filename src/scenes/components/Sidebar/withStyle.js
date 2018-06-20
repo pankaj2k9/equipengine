@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export default WrappedComponent =>
+export default (WrappedComponent) =>
   styled(WrappedComponent)`
     position: fixed;
     top: 0;
@@ -61,10 +61,10 @@ export default WrappedComponent =>
       margin-left: 0px;
       z-index: 1;
       opacity: 1;
-      height: ${props => (props.isBrowseGroupPath ? '0px' : '100vh')};
+      height: ${(props) => (props.isBrowseGroupPath ? '0px' : '100vh')};
 
       .Sidebar__body {
-        display: ${props => (props.isBrowseGroupPath ? 'none' : 'block')};
+        display: ${(props) => (props.isBrowseGroupPath ? 'none' : 'block')};
       }
 
       .Sidebar__inner {

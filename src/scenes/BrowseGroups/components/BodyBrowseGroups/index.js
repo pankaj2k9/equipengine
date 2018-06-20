@@ -10,19 +10,19 @@ const BodyBrowseGroups = ({ className }) => {
   const groups = [
     {
       id: '5fgjsdflsadjflksafmsmf',
-      title: 'Connect: Level 2',
+      title: 'Connect: Level 1 Pathway',
       desc:
-        'This group is for people who are in level 3 pathway in the Connect Program. ',
+        'This group is for people who are in level 1 pathway in the Connect Program.',
       people: 12,
       isSelected: false,
       type: 'your-group'
     },
     {
       id: '5fgjsdflsadjsajfmsdfn',
-      title: 'Connect: Level 3',
+      title: 'Connect: Level 2 Pathway',
       desc:
-        'This group is for people who are in level 3 pathway in the Connect Program. ',
-      people: 5,
+        'This group is for people who are in level 2 pathway in the Connect Program.',
+      people: 16,
       isSelected: false,
       type: 'your-group'
     },
@@ -56,14 +56,25 @@ const BodyBrowseGroups = ({ className }) => {
 
 export default styled(BodyBrowseGroups)`
   flex-direction: column;
-
+  .nav-tabs > li {
+    margin-bottom: 0px;
+  }
+  .nav-tabs > li.active > a {
+    border-bottom: none;
+    &:hover, &:focus {
+      border-bottom: none;
+    }
+  }
+  > div:first-child h5 {
+      font-size: 14px;
+  }
   @media screen and (min-width: 768px) {
     justify-content: space-between;
     flex-direction: row;
     margin-top: 1em;
 
     > div {
-      width: 49%;
+      width: 47%;
     }
   }
 `

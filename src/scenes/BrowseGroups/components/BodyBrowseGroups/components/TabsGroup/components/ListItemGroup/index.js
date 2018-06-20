@@ -68,11 +68,15 @@ const ListItemGroup = styled(({ className, group }) => {
   )
 })`
   border-bottom: 1px solid #e2e2e2;
-  padding: 2em;
+  padding: 1em 0em 1em 1em;
   margin-bottom: 1.2em;
-  background-color: ${props => (props.isSelected ? '#F6F6F6' : 'none')};
+  background-color: ${(props) => (props.isSelected ? '#F6F6F6' : 'none')};
 
   a {
+    background-color: #0d90e0;
+    font-weight: 400;
+    padding: 7px 0;
+    margin-top: 0px;
     width: 104px;
   }
 
@@ -83,11 +87,14 @@ const ListItemGroup = styled(({ className, group }) => {
       margin: 0 0 0.7em 0;
     }
     span:first-child {
-      margin-right: 0.2em;
+      margin-right: 0.5em;
+      position: relative;
+      top: -3px;
     }
     p {
       color: #9fa6ad;
       margin-bottom: 1em;
+      text-align: inherit;
     }
   }
 

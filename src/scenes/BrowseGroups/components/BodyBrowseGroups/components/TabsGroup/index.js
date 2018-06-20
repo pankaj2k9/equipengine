@@ -11,7 +11,7 @@ import ItemTabYourGroup from './components/ItemTabYourGroup'
 const TabsGroup = ({ groups }) => {
   // get the yourGroups item on the groups array.
   const yourGroups = filter(
-    group => identical(group.type, 'your-group'),
+    (group) => identical(group.type, 'your-group'),
     groups
   )
   // get the public groups item on the groups array.
@@ -22,7 +22,7 @@ const TabsGroup = ({ groups }) => {
 
   return (
     <Tabs>
-      <Tab eventKey={1} title='Your Groups'>
+      <Tab eventKey={1} title='Your groups'>
         <ItemTabYourGroup yourGroups={yourGroups} />
       </Tab>
       {/* <Tab eventKey={2} title="Public Groups">
@@ -31,6 +31,7 @@ const TabsGroup = ({ groups }) => {
     </Tabs>
   )
 }
+
 TabsGroup.propTypes = {
   groups: PropTypes.array.isRequired
 }

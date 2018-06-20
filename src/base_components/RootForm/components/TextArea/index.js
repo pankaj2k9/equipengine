@@ -17,6 +17,7 @@ const TextArea = styled(({ name, placeholder, className, row }) => (
   border-radius: 3px;
   font-size: 14px;
   width: 100%;
+  resize: none;
 
   &:focus {
     outline: 0;

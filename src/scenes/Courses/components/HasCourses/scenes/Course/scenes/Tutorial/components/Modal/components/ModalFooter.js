@@ -11,12 +11,12 @@ const ModalFooter = () => {
       }}
     >
       <SlideControl
-        handleClick={_ => console.log('prev')}
+        //handleClick={_ => console.log('prev')}
         text='Previous'
         arrow='&#60;'
       />
       <SlideControl
-        handleClick={_ => console.log('next')}
+        //handleClick={_ => console.log('next')}
         text='Next'
         arrow='&#62;'
       />

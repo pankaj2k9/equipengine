@@ -15,10 +15,10 @@ const LoginForm = ({
   history
 }) => {
   // event handler for form onSubmit event.
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault()
     // chaining on the promise data
-    loggedUser({ username, password }).then(res => {
+    loggedUser({ username, password }).then((res) => {
       // if successfull, we will redirect to other page.
       if (identical(res.status, 'successfully')) {
         // redirec based on the user type.

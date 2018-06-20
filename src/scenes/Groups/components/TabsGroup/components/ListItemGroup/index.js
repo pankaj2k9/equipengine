@@ -72,7 +72,7 @@ const ListItemGroup = styled(({ className, group }) => {
   border-radius: 5px;
   padding: 2em;
   margin-bottom: 1.2em;
-  background-color: ${props => (props.isSelected ? '#F6F6F6' : 'none')};
+  background-color: ${(props) => (props.isSelected ? '#F6F6F6' : 'none')};
 
   > div:first-child {
     h5 {

@@ -4,7 +4,7 @@ import Media from 'react-media'
 
 const ModalInner = ({ children }) => (
   <Media query='(max-width: 767px)'>
-    {matches =>
+    {(matches) =>
       matches ? (
         <div
           style={{

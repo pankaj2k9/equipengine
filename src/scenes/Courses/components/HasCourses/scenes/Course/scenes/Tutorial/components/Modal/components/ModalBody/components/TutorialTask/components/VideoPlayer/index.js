@@ -1,21 +1,21 @@
-import React from 'react';
-import Media from 'react-media';
-import moment from 'moment';
+import React from 'react'
+import Media from 'react-media'
+import moment from 'moment'
 /* import './styles.css';*/
 
 // sub-components
-import VideoForMobile from './components/VideoForMobile';
-import VideoForDesktop from './components/VideoForDesktop';
-import VideoMedia from './components/VideoMedia/index.js';
-import VideoRunningTime from './components/VideoRunningTime';
+import VideoForMobile from './components/VideoForMobile'
+import VideoForDesktop from './components/VideoForDesktop'
+import VideoMedia from './components/VideoMedia/index.js'
+import VideoRunningTime from './components/VideoRunningTime'
 
 class VideoPlayer extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
       player: {},
       currentTime: ''
-    };
+    }
   }
 
   handleStateChange = (state, prevState) => {
@@ -23,7 +23,7 @@ class VideoPlayer extends React.Component {
     this.setState({
       player: state,
       currentTime: state.currentTime
-    });
+    })
   };
 
   render() {
@@ -31,11 +31,11 @@ class VideoPlayer extends React.Component {
     const currentTime = moment()
       .startOf('day')
       .seconds(this.state.currentTime)
-      .format('H:mm:ss');
+      .format('H:mm:ss')
 
     return (
       <Media query="(max-width: 767px)">
-        {matches =>
+        {(matches) =>
           matches ? (
             <div className="VideoPlayer" style={videoPlayerStyle.container}>
               <VideoForMobile handleStateChange={this.handleStateChange} />
@@ -53,7 +53,7 @@ class VideoPlayer extends React.Component {
             </div>
           )}
       </Media>
-    );
+    )
   }
 }
 
@@ -68,6 +68,6 @@ const videoPlayerStyle = {
     justifyContent: 'space-between',
     background: '#000000'
   }
-};
+}
 
-export default VideoPlayer;
+export default VideoPlayer

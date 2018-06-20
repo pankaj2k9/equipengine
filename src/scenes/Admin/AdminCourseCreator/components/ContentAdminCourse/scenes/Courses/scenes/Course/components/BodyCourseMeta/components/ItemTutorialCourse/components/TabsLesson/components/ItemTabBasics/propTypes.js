@@ -22,7 +22,7 @@ export const labelGroup = {
   default: {
     title: '',
     onHandlerClick () {
-      console.log('click')
+      //console.log('click')
     }
   }
 }

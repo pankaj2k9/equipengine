@@ -56,33 +56,33 @@ function registerValidSW (swUrl) {
               // the fresh content will have been added to the cache.
               // It's the perfect time to display a "New content is
               // available; please refresh." message in your web app.
-              console.log('New content is available; please refresh.')
+              //console.log('New content is available; please refresh.')
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
-              console.log('Content is cached for offline use.')
+              //console.log('Content is cached for offline use.')
             }
           }
         }
       }
     })
-    .catch(error => {
-      console.error('Error during service worker registration:', error)
+    .catch((error) => {
+      //console.error('Error during service worker registration:', error)
     })
 }
 
 function checkValidServiceWorker (swUrl) {
   // Check if the service worker can be found. If it can't reload the page.
   window.fetch(swUrl)
-    .then(response => {
+    .then((response) => {
       // Ensure service worker exists, and that we really are getting a JS file.
       if (
         response.status === 404 ||
         response.headers.get('content-type').indexOf('javascript') === -1
       ) {
         // No service worker found. Probably a different app. Reload the page.
-        navigator.serviceWorker.ready.then(registration => {
+        navigator.serviceWorker.ready.then((registration) => {
           registration.unregister().then(() => {
             window.location.reload()
           })
@@ -93,15 +93,13 @@ function checkValidServiceWorker (swUrl) {
       }
     })
     .catch(() => {
-      console.log(
-        'No internet connection found. App is running in offline mode.'
-      )
+      //console.log('No internet connection found. App is running in offline mode.')
     })
 }
 
 export function unregister () {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.ready.then(registration => {
+    navigator.serviceWorker.ready.then((registration) => {
       registration.unregister()
     })
   }

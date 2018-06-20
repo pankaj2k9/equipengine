@@ -10,7 +10,7 @@ import FlaggedIcon from '../../../FlaggedIcon'
 
 // for table row data.
 const TableRowCourseTd = styled.td`
-  text-align: ${props => (props.middle ? 'center' : 'left')};
+  text-align: ${(props) => (props.middle ? 'center' : 'left')};
   margin-top: 0.7em;
 `
 
@@ -42,7 +42,7 @@ const TableRowCourse = ({ course }) => {
   let feedbacksItem
   if (feedbacks.length) {
     feedbacksItem = map(
-      item => <ExtendUserAvatar key={item.id} small image={item.avatarURL} />,
+      (item) => <ExtendUserAvatar key={item.id} small image={item.avatarURL} />,
       feedbacks
     )
   }

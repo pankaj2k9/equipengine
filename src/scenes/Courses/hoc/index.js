@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import data from 'scenes/Courses/data.json'
 
-const subscribingOnCourses = WrappedComponent => {
+const subscribingOnCourses = (WrappedComponent) => {
   class EnhancedCourses extends Component {
     constructor () {
       super()

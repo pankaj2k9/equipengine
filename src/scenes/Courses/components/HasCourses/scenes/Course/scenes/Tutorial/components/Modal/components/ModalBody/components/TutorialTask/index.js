@@ -7,7 +7,7 @@ import TutorialTaskBody from './components/TutorialTaskBody'
 const TutorialTask = () => {
   return (
     <Media query='(max-width: 767px)'>
-      {matches =>
+      {(matches) =>
         matches ? (
           <div className='TutorialTask'>
             <VideoPlayer />

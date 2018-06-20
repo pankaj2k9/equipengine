@@ -28,19 +28,24 @@ const ItemNotice = styled(({ className }) => (
   border-bottom: 1px solid #dadada;
   padding: 2em 0 1.5em 0;
 
+  span {
+    font-size: 12px;
+  }
+
   > div:first-child {
     display: flex;
     flex-direction: column;
     margin-right: 0.8em;
+    width: 115px;
 
     span:first-child {
       font-size: 10px;
-      color: #1e1e1e;
     }
   }
 
   p {
     color: #000000;
+    text-align: inherit;
   }
 `
 

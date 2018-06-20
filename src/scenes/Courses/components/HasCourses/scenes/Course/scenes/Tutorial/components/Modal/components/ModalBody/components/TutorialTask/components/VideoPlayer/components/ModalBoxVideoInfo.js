@@ -6,7 +6,7 @@ import ModalBox from '../../../../../../ModalBox.js'
 
 const ModalBoxVideoInfo = ({ style, children }) => (
   <Media query='(max-width: 767px)'>
-    {matches =>
+    {(matches) =>
       matches ? (
         <ModalBox
           style={{

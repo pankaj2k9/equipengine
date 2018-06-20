@@ -6,7 +6,7 @@ import ListItemGroup from '../../../ListItemGroup'
 
 const ListYourGroup = ({ yourGroups }) => {
   // create list your group items
-  const listItemYourGroup = map(group => {
+  const listItemYourGroup = map((group) => {
     return (
       <ListItemGroup
         isSelected={group.isSelected}

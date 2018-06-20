@@ -97,6 +97,16 @@ h4{
     padding: 0;
 }
 
+#popover-trigger-click-root-close {
+    margin-top: 12px;
+    margin-left: -24px;
+    border-radius: 3px;
+}
+
+#popover-trigger-click-root-close > .arrow {
+    top: 0;
+    border-bottom-color: transparent;
+}
 
 // dropdown
 .dropdown{

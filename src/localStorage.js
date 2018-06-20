@@ -33,6 +33,6 @@ export const saveState = (state) => {
     // save the state on the key of 'state' to the localStorage.
     window.localStorage.setItem('state', serializedState)
   } catch (err) {
-    console.log(err)
+    //console.log(err)
   }
 }

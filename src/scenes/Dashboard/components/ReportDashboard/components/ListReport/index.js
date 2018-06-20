@@ -25,6 +25,7 @@ const ItemReport = styled(({ className, report }) => (
     margin-left: 0.8em;
     font-size: 13px;
     color: #4f4f4f;
+    text-align: inherit;
   }
 `
 

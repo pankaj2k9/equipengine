@@ -5,7 +5,7 @@ import { loggedUserSelectors } from 'data/loggedUser'
 
 const { selectLoggedUser } = loggedUserSelectors
 
-const mapState = state => ({
+const mapState = (state) => ({
   accountType: selectLoggedUser(state).type // get the accountType
 })
 

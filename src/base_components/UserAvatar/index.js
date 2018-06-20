@@ -5,8 +5,8 @@ import styled from 'styled-components'
 const UserAvatar = styled(({ image, className }) => (
   <img alt='user avatar' className={className} src={image} />
 ))`
-  height: ${props => (props.small ? '25px' : '35px')};
-  width: ${props => (props.small ? '25px' : '35px')};
+  height: ${(props) => (props.small ? '25px' : '30px')};
+  width: ${(props) => (props.small ? '25px' : '30px')};
   border-radius: 50%;
   object-position: top;
   object-fit: cover;

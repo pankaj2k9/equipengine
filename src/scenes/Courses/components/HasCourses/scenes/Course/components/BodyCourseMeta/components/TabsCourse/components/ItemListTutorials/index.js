@@ -16,7 +16,7 @@ const ViewButton = styled(LinkButton)`
   }
 `
 const ItemListTutorials = ({ tutorials, match }) => {
-  const listOfTutorials = tutorials.map(tutorial => (
+  const listOfTutorials = tutorials.map((tutorial) => (
     <ListRow key={tutorial.tutorialId}>
       <ListRowLeft>
         {tutorial.type === 'video' ? (

@@ -8,7 +8,7 @@ import { loggedUserSelectors } from 'data/loggedUser'
 // destructuring loggedUser selectors
 const { isUserAuthenticated } = loggedUserSelectors
 
-const mapState = state => ({
+const mapState = (state) => ({
   loggedUser: state.loggedUser.user,
   isUserAuthenticated: isUserAuthenticated(state)
 })

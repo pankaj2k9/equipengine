@@ -18,7 +18,7 @@ const TutorialThingsToDo = () => (
       <h5 style={thingsToDoStyle.headline}>Things to do</h5>
     </header>
     <Media query='(max-width: 767px)'>
-      {matches =>
+      {(matches) =>
         matches ? (
           <ul style={thingsToDoStyle.list}>
             <li style={thingsToDoStyle.list.row}>

@@ -16,7 +16,7 @@ const NewCourseModal = ({handleClose, isOpen}) => {
     footer: {
       buttonTitle: 'Create',
       buttonHandler () {
-        console.log('Create new course!')
+        //console.log('Create new course!')
       }
     }
   }

@@ -15,7 +15,7 @@ const ReportLatestFeedback = () => (
             time: '2:00am'
           },
           description:
-            'Jill Mane commented on Tutorial 1.3: Becoming Equipped to Communicate'
+            <p>Jill Mane commented on <a href="javascript:;">Tutorial 1.3: Becoming Equipped to Communicate</a></p>
         },
         {
           id: 'jsladfj3j4l',
@@ -24,7 +24,7 @@ const ReportLatestFeedback = () => (
             time: '2:00am'
           },
           description:
-            'Jon Mcall commented on Tutorial 1.1: Communication and Culture'
+          <p>Jon Mcall commented on <a href="javascript:;">Tutorial 1.1: Communication and Culture</a></p>
         }
       ]}
     />

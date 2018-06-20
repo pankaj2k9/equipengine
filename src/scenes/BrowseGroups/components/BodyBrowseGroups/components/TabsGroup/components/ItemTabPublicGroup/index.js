@@ -6,7 +6,7 @@ import ListItemGroup from '../ListItemGroup'
 
 const ItemTabPublicGroup = ({ publicGroups }) => {
   // create list your group items
-  const listItemPublicGroup = map(group => {
+  const listItemPublicGroup = map((group) => {
     return (
       <ListItemGroup isJoined={group.isJoined} key={group.id} group={group} />
     )

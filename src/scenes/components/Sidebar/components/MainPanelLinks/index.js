@@ -6,7 +6,7 @@ import DropdownGroups from '../DropdownGroups'
 import Menu from '../Menu'
 import Link from 'base_components/Link'
 
-const isStudentType = type => identical(type, 'Student')
+const isStudentType = (type) => identical(type, 'Student')
 
 const MainPanelLinks = ({ accountType }) => (
   <div className='Sidebar__body__mainPages'>

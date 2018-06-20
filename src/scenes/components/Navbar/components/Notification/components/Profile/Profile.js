@@ -15,7 +15,10 @@ const Profile = ({ name, avatar, removeLoggedUser }) => {
       <Popover
         buttonIcon={<IconDown />}
         buttonStyle={{
-          fontSize: '1.5rem'
+          fontSize: '16px',
+          position: 'relative',
+          top: '-3px',
+          marginLeft: '3px'
         }}
         popoverContentElement={
           <PopoverProfileContent removeLoggedUser={removeLoggedUser} />

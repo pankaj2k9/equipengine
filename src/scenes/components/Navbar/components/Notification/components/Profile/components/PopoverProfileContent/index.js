@@ -16,14 +16,14 @@ const PopoverProfileContent = styled(({ className, removeLoggedUser }) => (
     </li>
   </ul>
 ))`
-  padding: 1em 1.3em;
+  padding: 1.3em;
 
   li {
     width: 100px;
     margin-bottom: 0.9em;
 
     a, button {
-      font-family: 'Karla', 'Helvetica Neaue', sans-serif;
+      font-family: 'Avenir Next', 'Helvetica Neau', 'Open Sans', sans-serif;
       color: #000000;
       display: block;
 
@@ -35,7 +35,8 @@ const PopoverProfileContent = styled(({ className, removeLoggedUser }) => (
     &:first-child a {
       text-transform: uppercase;
       color: #9fa6ad;
-      font-weight: 800;
+      font-weight: 400;
+      font-size: 11px;
     }
 
     &:last-child {

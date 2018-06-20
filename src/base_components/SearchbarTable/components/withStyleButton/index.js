@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const withStyleButton = WrappedComponent =>
+const withStyleButton = (WrappedComponent) =>
   // styling the dropdown component.
   styled(WrappedComponent)`
     background: #eeeeee;

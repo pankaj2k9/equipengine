@@ -7,6 +7,6 @@ export default styled(({ className }) => (
     <IconFlag className={className} />
   </span>
 ))`
-  font-size: ${props => (props.big ? '1.4rem' : '1rem')};
-  color: ${props => (props.isFlagged ? '#F44336' : '#D7D7D7')};
+  font-size: ${(props) => (props.big ? '1.4rem' : '1rem')};
+  color: ${(props) => (props.isFlagged ? '#F44336' : '#D7D7D7')};
 `

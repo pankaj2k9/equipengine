@@ -7,7 +7,7 @@ import iconDownload from 'resources/images/download.svg'
 import MediaQuery from 'react-responsive'
 
 const TableFiles = ({ files }) => {
-  const listOfFiles = files.map(file => (
+  const listOfFiles = files.map((file) => (
     <TableRow key={file.id}>
       <td>{file.file}</td>
       <td>{file.date}</td>

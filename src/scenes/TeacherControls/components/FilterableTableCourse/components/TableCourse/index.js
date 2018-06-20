@@ -56,7 +56,7 @@ const TableCourse = () => {
     }
   ]
 
-  const tableRowCourses = coursesData.map(course => (
+  const tableRowCourses = coursesData.map((course) => (
     <TableRowCourse key={course.id} course={course} />
   ))
 

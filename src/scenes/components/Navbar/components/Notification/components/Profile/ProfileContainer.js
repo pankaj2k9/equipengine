@@ -8,12 +8,12 @@ import { loggedUserActions, loggedUserSelectors } from 'data/loggedUser'
 const { removeLoggedUser } = loggedUserActions
 const { selectLoggedUser } = loggedUserSelectors
 
-const mapState = state => ({
+const mapState = (state) => ({
   name: selectLoggedUser(state).name,
   avatar: selectLoggedUser(state).avatar
 })
 
-const mapDispatch = dispatch =>
+const mapDispatch = (dispatch) =>
   bindActionCreators(
     {
       removeLoggedUser

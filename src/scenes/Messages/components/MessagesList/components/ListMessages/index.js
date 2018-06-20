@@ -24,7 +24,7 @@ const ListMessagesItem = styled(({ className }) => (
   a {
     display: flex;
     padding: 1.3em;
-    background: ${props => props.active && 'rgba(186, 186, 186, 0.21)'};
+    background: ${(props) => props.active && 'rgba(186, 186, 186, 0.21)'};
     transition: background 300ms ease-in;
 
     img {

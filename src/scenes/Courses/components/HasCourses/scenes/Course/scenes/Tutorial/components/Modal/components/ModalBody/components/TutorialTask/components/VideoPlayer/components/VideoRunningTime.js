@@ -9,7 +9,7 @@ const VideoRunningTime = ({ currentTime }) => {
 
   return (
     <Media query='(max-width: 767px)'>
-      {matches =>
+      {(matches) =>
         matches ? (
           <ModalBoxVideoInfo>
             <div>

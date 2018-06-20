@@ -17,7 +17,12 @@ const Header = MainHeaderTitle.extend`
     text-transform: uppercase;
     margin-right: 0.5em;
   }
-
+  svg {
+    position: relative;
+    top: -4px;
+    left: -4px;
+    color: #5c5c5c;
+  }
   @media screen and (min-width: 768px) {
     border-right: 0px;
   }

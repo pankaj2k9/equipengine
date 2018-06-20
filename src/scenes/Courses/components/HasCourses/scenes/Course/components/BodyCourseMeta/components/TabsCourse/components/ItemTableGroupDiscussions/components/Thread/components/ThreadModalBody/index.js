@@ -35,7 +35,7 @@ const ListRow = styled.li`
 `
 
 const ThreadModalBody = styled(({ className, thread }) => {
-  const commentList = thread.comments.map(comment => (
+  const commentList = thread.comments.map((comment) => (
     <ListRow key={comment.id}>
       <div>
         <div>

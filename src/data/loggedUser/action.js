@@ -23,7 +23,7 @@ const success = () => ({
   }
 })
 // failure, status type - failure
-const failure = error => ({
+const failure = (error) => ({
   type: FAILURE_REQUEST,
   payload: {
     isPending: false,
@@ -38,7 +38,7 @@ const failure = error => ({
  * @param {Object} loggedUser
  * @return {Object}
 */
-const addLoggedUser = loggedUser => ({
+const addLoggedUser = (loggedUser) => ({
   type: ADD_LOGGED_USER,
   payload: {
     loggedUser
@@ -52,20 +52,20 @@ const addLoggedUser = loggedUser => ({
  * @param {Object} account user account
  * @return {Function}
  */
-export const loggedUser = account => dispatch => {
+export const loggedUser = (account) => (dispatch) => {
   // dispatch pending AC
   dispatch(pending())
   // execute the loggingUser api
   // we can return the promise once the async dispatch function execute.
   return fetchUser(account)
-    .then(data => {
+    .then((data) => {
       // dispatch success AC
       dispatch(success())
       // dispatch addLoggedUser AC
       dispatch(addLoggedUser(data.user))
       return data
     })
-    .catch(err => {
+    .catch((err) => {
       dispatch(failure(err))
       return err
     })

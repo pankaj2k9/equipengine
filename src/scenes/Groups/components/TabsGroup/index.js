@@ -11,7 +11,7 @@ import ItemTabYourGroup from './components/ItemTabYourGroup'
 const TabsGroup = ({ groups }) => {
   // get the yourGroups item on the groups array.
   const yourGroups = filter(
-    group => identical(group.type, 'your-group'),
+    (group) => identical(group.type, 'your-group'),
     groups
   )
   // get the public groups item on the groups array.

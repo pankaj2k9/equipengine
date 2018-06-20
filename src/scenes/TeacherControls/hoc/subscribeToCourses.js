@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import data from 'scenes/Courses/data.json'
 
-const subscribeToCourses = WrappedComponent => {
+const subscribeToCourses = (WrappedComponent) => {
   // check if the input is component.
   if (typeof WrappedComponent === 'function') {
     class EnhancedTeacherControls extends Component {

@@ -1,14 +1,14 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import IconArrowRight from 'react-icons/lib/fa/angle-right';
-import IconArrowDown from 'react-icons/lib/fa/angle-down';
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import IconArrowRight from 'react-icons/lib/fa/angle-right'
+import IconArrowDown from 'react-icons/lib/fa/angle-down'
 
-import LinkButton from 'base_components/LinkButton';
-import Box from 'base_components/Box';
-import CollapsibleCourseHeaderPanel from './components/CollapsibleCourseHeaderPanel';
-import bgImage from './course-bg.png';
-import './styles.css';
+import LinkButton from 'base_components/LinkButton'
+import Box from 'base_components/Box'
+import CollapsibleCourseHeaderPanel from './components/CollapsibleCourseHeaderPanel'
+import bgImage from './course-bg.png'
+import './styles.css'
 
 // Report button component.
 const ReportButton = styled(LinkButton)`
@@ -17,31 +17,31 @@ const ReportButton = styled(LinkButton)`
   @media screen and (max-width: 767px) {
     display: none;
   }
-`;
+`
 
 // Report Container component.
 const ReportContainer = styled.div`
   display: flex;
   align-items: center;
-`;
+`
 
 class HeaderCourseMeta extends PureComponent {
   constructor(...args) {
-    super(...args);
+    super(...args)
     this.state = {
       open: false
-    };
+    }
   }
 
-  triggerPanel = e => {
-    e.preventDefault();
+  triggerPanel = (e) => {
+    e.preventDefault()
     this.setState({
       open: !this.state.open
-    });
+    })
   };
 
   render() {
-    const { title, description } = this.props.course;
+    const { title, description } = this.props.course
     return (
       <div>
         <Box
@@ -81,12 +81,12 @@ class HeaderCourseMeta extends PureComponent {
           isOpen={this.state.open}
         />
       </div>
-    );
+    )
   }
 }
 
 HeaderCourseMeta.propTypes = {
   course: PropTypes.object.isRequired
-};
+}
 
-export default HeaderCourseMeta;
+export default HeaderCourseMeta

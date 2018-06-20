@@ -2,15 +2,15 @@ import { createSelector } from 'reselect'
 import { isEmpty, compose, not } from 'ramda'
 
 // get loggedUser
-export const selectLoggedUser = state => state.loggedUser.user
+export const selectLoggedUser = (state) => state.loggedUser.user
 
 // select logged user proccess error
-const selectProcessError = state => state.loggedUser.processRequest.error
+const selectProcessError = (state) => state.loggedUser.processRequest.error
 
 // get error message
 export const getErrorMessage = createSelector(
   selectProcessError,
-  error => (isEmpty(error) ? error : error.message)
+  (error) => (isEmpty(error) ? error : error.message)
 )
 
 /**

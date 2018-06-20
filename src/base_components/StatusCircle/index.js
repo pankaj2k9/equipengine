@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const backgroundColorState = props => {
+const backgroundColorState = (props) => {
   switch (props.state) {
     case 'active': {
       return '#2FE330'

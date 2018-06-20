@@ -4,14 +4,10 @@
   padding: 0;
   background: none;
   border: none;
-  transition: color 300ms ease-in;
-}
-.ButtonTriggerSidebar:hover {
-  color: #338ffc;
-}
+  transition: color 300ms ease-in; }
+  .ButtonTriggerSidebar:hover {
+    color: #338FFC; }
 
 @media screen and (min-width: 768px) {
   .ButtonTriggerSidebar {
-    visibility: hidden;
-  }
-}
+    visibility: hidden; } }

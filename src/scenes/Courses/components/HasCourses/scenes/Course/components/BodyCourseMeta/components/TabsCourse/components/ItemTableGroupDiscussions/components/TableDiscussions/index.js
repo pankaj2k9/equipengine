@@ -7,7 +7,7 @@ import TableDataActivity from './components/TableDataActivity'
 import Tables, { TableRow } from 'base_components/Tables'
 
 const TableDiscussions = ({ discussions }) => {
-  const discussionRows = discussions.map(item => (
+  const discussionRows = discussions.map((item) => (
     <TableRow key={item.id}>
       <TableDataPosted discussion={item} />
       <TableData>{item.dateAdded}</TableData>

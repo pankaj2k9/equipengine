@@ -19,7 +19,7 @@ const BodyDashboard = () => (
   <Body>
     <Form>
       <TextArea
-        row={3}
+        row={2}
         name='noticeboard'
         placeholder='Write on the noticeboard...'
       />

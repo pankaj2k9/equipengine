@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-export default WrappedComponent => {
+export default (WrappedComponent) => {
   class EnhancedLoginForm extends Component {
     state = {
       username: '',
       password: ''
     };
 
-    handleChange = e => {
+    handleChange = (e) => {
       const { value, name } = e.target
 
       // update the state
