@@ -12,7 +12,7 @@ const HasDiscussions = styled(({ className, discussions }) => {
       <p>
         {`${item.name} `}
         <strong>{`${item.task.action} `}</strong>
-        <em>{item.task.meta}</em>
+        {item.task.meta}
       </p>
       <div>
         <span>{item.date.day}</span>
@@ -33,6 +33,11 @@ const HasDiscussions = styled(({ className, discussions }) => {
     p {
       margin-bottom: 0.7rem;
       max-width: 250px;
+      text-align: inherit;
+
+      strong {
+        color: #2093e9;
+      }
     }
 
     > div {

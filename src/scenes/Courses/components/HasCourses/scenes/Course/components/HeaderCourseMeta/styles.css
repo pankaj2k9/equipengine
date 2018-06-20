@@ -11,9 +11,9 @@
     color: #fff;
     position: relative; }
     .HeaderCourseMeta header .course-sm-img {
-      width: 170px;
+      width: 249px;
       position: absolute;
-      top: 2em; }
+      top: 1.5em; }
       .HeaderCourseMeta header .course-sm-img img {
         width: 100%;
         border-radius: 4px; }
@@ -46,9 +46,9 @@
 
 @media screen and (min-width: 768px) {
   .HeaderCourseMeta {
-    height: 245px; }
+    height: 280px; }
     .HeaderCourseMeta header {
-      padding-top: 139px; }
+      padding-top: 170px; }
       .HeaderCourseMeta header h3 {
         width: 745px; }
       .HeaderCourseMeta header .HeaderCourseMeta__completed {

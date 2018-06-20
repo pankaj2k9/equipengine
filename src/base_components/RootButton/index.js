@@ -4,7 +4,7 @@ import { identical } from 'ramda'
 // for background color variation
 const backgroundColorVariation = (props) => {
   if (props.secondary) {
-    return '#d8d8d8'
+    return '#ebebeb'
   } else if (props.light) {
     return 'transparent'
   } else {
@@ -26,7 +26,7 @@ const fontColorVariation = (props) => {
 // when hover, set a background color depending on props given
 const hoverBackgroundColorVariation = (props) => {
   if (props.secondary) {
-    return '#a2a0a0'
+    return '#c1c1c1'
   } else if (props.light) {
     return '#e2e2e2'
   } else {
@@ -54,7 +54,7 @@ const RootButton = styled.button`
   padding: 10px 0;
   font-family: 'karla', sans-serif;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 400;
   text-transform: uppercase;
   border-radius: 3px;
   transition: all 300ms ease-in;
@@ -72,7 +72,7 @@ const ButtonIcon = RootButton.extend`
   i {
     font-size: 1rem;
     vertical-align: 0.1em;
-    margin: ${({iconPosition}) => identical(iconPosition, 'right') ? '0 0 0 0.5em' : '0 0.5em 0 0'};
+    margin: ${({iconPosition}) => identical(iconPosition, 'right') ? '0 0 0 0.5em' : '0px 0.5em 0 0.5em'};
   }
 `
 

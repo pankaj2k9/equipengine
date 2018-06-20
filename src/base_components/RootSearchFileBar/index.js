@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import IconSearch from 'react-icons/lib/fa/search'
+import iconSearchO from 'resources/images/searchO.svg'
 
 import Form from 'base_components/RootForm'
 
@@ -20,10 +20,17 @@ const TextContainer = styled.div`
     font-size: 1.1rem;
     top: -4px;
     position: relative;
+
+    img {
+      position: absolute;
+      top: -10px;
+      width: 30px;
+      left: -9px;
+    }
   }
 
   > input {
-    margin-left: 0.5em;
+    margin-left: 1.5em;
     border: 0;
     &:focus {
       outline: 0;
@@ -38,7 +45,7 @@ const SearchBar = styled(({ className, placeholder }) => (
   <Form className={className}>
     <TextContainer>
       <span>
-        <IconSearch />
+        <img alt='icon Search' src={iconSearchO} />
       </span>
       <input name='searchbar' type='text' placeholder="Search files" value='' />
     </TextContainer>

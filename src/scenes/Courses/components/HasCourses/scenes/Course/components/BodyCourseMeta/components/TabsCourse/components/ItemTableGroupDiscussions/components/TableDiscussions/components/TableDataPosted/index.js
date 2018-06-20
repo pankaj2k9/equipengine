@@ -18,6 +18,7 @@ const TableDataPosted = styled(({ discussion, className }) => (
       color: #111111;
       font-size: 16px;
       margin-bottom: 0.2em;
+      text-align: inherit;
     }
     span {
       font-size: 10px;

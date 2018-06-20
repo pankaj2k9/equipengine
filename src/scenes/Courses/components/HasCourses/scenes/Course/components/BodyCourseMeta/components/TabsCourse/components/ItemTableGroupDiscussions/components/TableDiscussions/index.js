@@ -21,9 +21,9 @@ const TableDiscussions = ({ discussions }) => {
       <thead>
         <TableRow>
           <th />
-          <th>Date Added</th>
+          <th width="24%" style={{ textAlign: 'center'}}>Date Added</th>
           <th>Comment</th>
-          <th>Latest Activity</th>
+          <th width="22%">Latest Activity</th>
         </TableRow>
       </thead>
       <tbody>{discussionRows}</tbody>
