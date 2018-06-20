@@ -7,7 +7,7 @@ import {
   MainRight
 } from 'base_components/Main'
 import TableFiles from 'base_components/TableFiles'
-import SearchBar from 'base_components/RootSearchBar'
+import SearchBar from 'base_components/RootSearchFileBar'
 
 // test data
 const files = [

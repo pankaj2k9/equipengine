@@ -127,6 +127,9 @@ h4 {
 .dropdown {
   width: 100%; }
 
+.dropdown-menu {
+  width: 100%; }
+
 .panel-default {
   border-bottom: 0; }
 

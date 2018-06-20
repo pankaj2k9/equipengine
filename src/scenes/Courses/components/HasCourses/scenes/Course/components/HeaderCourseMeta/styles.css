@@ -8,7 +8,15 @@
     align-items: center;
     width: 100%;
     padding-top: 78px;
-    color: #fff; }
+    color: #fff;
+    position: relative; }
+    .HeaderCourseMeta header .course-sm-img {
+      width: 170px;
+      position: absolute;
+      top: 2em; }
+      .HeaderCourseMeta header .course-sm-img img {
+        width: 100%;
+        border-radius: 4px; }
     .HeaderCourseMeta header h3 {
       width: 40px;
       margin-top: 0px;

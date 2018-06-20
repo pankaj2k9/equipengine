@@ -11,7 +11,7 @@ const PeopleItem = styled(({ className }) => (
     <div>
       <UserAvatar image={avatar} />
       <p>Jane Doe</p>
-      <Button large>Send Message</Button>
+      <a href="/secure/messages"><Button large>Send Message</Button></a>
     </div>
   </li>
 ))`

@@ -4,20 +4,11 @@ import styled from 'styled-components'
 import IconArrowRight from 'react-icons/lib/fa/angle-right'
 import IconArrowDown from 'react-icons/lib/fa/angle-down'
 
-import LinkButton from 'base_components/LinkButton'
 import Box from 'base_components/Box'
 import CollapsibleCourseHeaderPanel from './components/CollapsibleCourseHeaderPanel'
 import bgImage from './course-bg.png'
+import courseImg from 'resources/images/steve-bible-teaching.jpg'
 import './styles.css'
-
-// Report button component.
-const ReportButton = styled(LinkButton)`
-  margin-right: 1.1em;
-
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-`
 
 // Report Container component.
 const ReportContainer = styled.div`
@@ -51,6 +42,9 @@ class HeaderCourseMeta extends PureComponent {
           className="HeaderCourseMeta"
         >
           <header>
+            <div className="course-sm-img">
+              <img alt="Course Img" src={courseImg} width="150px" />
+            </div>
             <div>
               <h3>{title}</h3>
               <a
@@ -65,7 +59,6 @@ class HeaderCourseMeta extends PureComponent {
             </div>
             <div>
               <ReportContainer>
-                <ReportButton secondary text="Report" url="/report" />
                 <div className="HeaderCourseMeta__completed">
                   <div>
                     <span>2 of 3</span>

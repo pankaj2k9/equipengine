@@ -10,6 +10,18 @@
         width: 100%;
         padding-top: 78px;
         color: #fff;
+        position: relative;
+
+        .course-sm-img {
+            width: 170px;
+            position: absolute;
+            top: 2em;
+
+            img {
+                width: 100%;
+                border-radius: 4px;
+            }
+        }
 
         h3{
             width: 40px;

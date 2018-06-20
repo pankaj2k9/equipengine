@@ -1,6 +1,7 @@
 .TutorialsCompleted {
   display: flex;
-  align-items: center; }
+  align-items: center;
+  margin-left: 26px; }
   .TutorialsCompleted div {
     width: 34px;
     height: 34px;
@@ -9,4 +10,5 @@
     margin-right: 10px; }
   .TutorialsCompleted span {
     font-size: 10px;
-    color: #9FA6AD; }
+    color: #9FA6AD;
+    width: 60px; }

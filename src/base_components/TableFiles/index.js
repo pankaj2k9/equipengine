@@ -14,7 +14,9 @@ const TableFiles = ({ files }) => {
       <td>
         <div
           style={{
-            display: 'inline'
+            display: 'block',
+            textAlign: 'right',
+            paddingRight: '15px'
           }}
         >
           <MediaQuery query='(min-device-width: 768px)'>

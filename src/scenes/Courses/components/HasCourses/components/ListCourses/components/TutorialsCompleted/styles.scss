@@ -1,6 +1,7 @@
 .TutorialsCompleted{
     display: flex;
     align-items: center;
+    margin-left: 26px;
 
     div{
         width: 34px;
@@ -13,5 +14,6 @@
     span{
         font-size: 10px;
         color: #9FA6AD;
+        width: 60px;
     }
 }

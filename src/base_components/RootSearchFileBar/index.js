@@ -40,7 +40,7 @@ const SearchBar = styled(({ className, placeholder }) => (
       <span>
         <IconSearch />
       </span>
-      <input name='searchbar' type='text' placeholder="Search People" value='' />
+      <input name='searchbar' type='text' placeholder="Search files" value='' />
     </TextContainer>
   </Form>
 ))`
