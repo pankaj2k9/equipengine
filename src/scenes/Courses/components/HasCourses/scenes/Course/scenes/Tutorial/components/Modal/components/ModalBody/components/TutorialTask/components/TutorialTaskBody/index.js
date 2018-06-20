@@ -23,10 +23,6 @@ const TutorialTaskBody = () => {
     }
   ]
 
-
-
-  
-
   return (
     <Box>
       <Tabs>

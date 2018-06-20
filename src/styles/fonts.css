@@ -33,9 +33,3 @@
   src: url("../resources/fonts/avenir/AvenirNext-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal; }
-
-@font-face {
-  font-family: 'avenir-next-regular';
-  src: url("../resources/fonts/avenir/avenir-next-regular.woff") format("woff");
-  font-weight: 500;
-  font-style: normal; }
