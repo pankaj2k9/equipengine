@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom'
 const PopoverProfileContent = styled(({ className, removeLoggedUser }) => (
   <ul className={className}>
     <li>
-      <Link to="'/account">Your Account</Link>
+      <Link to="/secure/settings">Your Account</Link>
     </li>
     <li>
-      <Link to="'/settings">Settings</Link>
+      <Link to="/secure/settings">Settings</Link>
     </li>
     <li>
       <button onClick={removeLoggedUser}>Logout</button>

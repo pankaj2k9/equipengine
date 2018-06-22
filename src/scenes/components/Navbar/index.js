@@ -3,12 +3,15 @@ import PropTypes from 'prop-types'
 //
 import ButtonTriggerSidebar from './components/ButtonTriggerSidebar'
 import Notification from './components/Notification'
+
+import SiteListLinkHorizontal from './components/SiteListLinkHorizontal'
 import './styles.css'
 
 const Navbar = ({ onOpenSidebar, accountType }) => {
   return (
     <nav className='Navbar'>
       <ButtonTriggerSidebar onOpenSidebar={onOpenSidebar} />
+      <div className="SiteHorizontal"><SiteListLinkHorizontal /></div>
       <Notification />
     </nav>
   )

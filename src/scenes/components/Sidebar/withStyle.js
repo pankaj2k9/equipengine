@@ -1,4 +1,82 @@
 import styled from 'styled-components'
+import { identical } from 'ramda'
+
+
+// Add Height based on the passed object.
+const addHeight = ({ type, pathname }) => {
+  const browseGroupPath = '/secure/browse-groups'
+  // check first if the current location is equal to browseGroupPath.
+  if (identical(pathname, browseGroupPath)) {
+    return '0px'
+  }
+
+  const homePath = '/secure/home'
+  // check first if the current location is equal to homePath.
+  if (identical(pathname, homePath)) {
+    return '0px'
+  }
+
+  const activityPath = '/secure/activity'
+  // check first if the current location is equal to activityPath.
+  if (identical(pathname, activityPath)) {
+    return '0px'
+  }
+
+  const settingsPath = '/secure/settings'
+  // check first if the current location is equal to settingsPath.
+  if (identical(pathname, settingsPath)) {
+    return '0px'
+  }
+
+  const yourAccountPath = '/secure/your-account'
+  // check first if the current location is equal to yourAccountPath.
+  if (identical(pathname, yourAccountPath)) {
+    return '0px'
+  }
+
+  // return 0
+  return '100vh'
+}
+
+
+
+// Add Display left based on the passed object.
+const addDisplay = ({ type, pathname }) => {
+  const browseGroupPath1 = '/secure/browse-groups'
+  // check first if the current location is equal to browseGroupPath.
+  if (identical(pathname, browseGroupPath1)) {
+    return 'none'
+  }
+
+  const homePath2 = '/secure/home'
+  // check first if the current location is equal to homePath.
+  if (identical(pathname, homePath2)) {
+    return 'none'
+  }
+
+  const activityPath = '/secure/activity'
+  // check first if the current location is equal to activityPath.
+  if (identical(pathname, activityPath)) {
+    return 'none'
+  }
+
+  const settingsPath = '/secure/settings'
+  // check first if the current location is equal to settingsPath.
+  if (identical(pathname, settingsPath)) {
+    return 'none'
+  }
+
+  const yourAccountPath = '/secure/your-account'
+  // check first if the current location is equal to yourAccountPath.
+  if (identical(pathname, yourAccountPath)) {
+    return 'none'
+  }
+
+  // return block
+  return 'block'
+}
+
+
 
 export default (WrappedComponent) =>
   styled(WrappedComponent)`
@@ -57,14 +135,14 @@ export default (WrappedComponent) =>
     }
 
     @media screen and (min-width: 768px) {
-      width: 257px;
+      width: 225px;
       margin-left: 0px;
       z-index: 1;
       opacity: 1;
-      height: ${(props) => (props.isBrowseGroupPath ? '0px' : '100vh')};
+      height: ${(props) => addHeight({ type: props.type, pathname: props.pathname })};
 
       .Sidebar__body {
-        display: ${(props) => (props.isBrowseGroupPath ? 'none' : 'block')};
+        display: ${(props) => addDisplay({ type: props.type, pathname: props.pathname })};
       }
 
       .Sidebar__inner {

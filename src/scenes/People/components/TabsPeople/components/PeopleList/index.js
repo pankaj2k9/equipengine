@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import UserAvatar from 'base_components/UserAvatar'
 import avatar from 'resources/images/user.png'
@@ -11,7 +12,7 @@ const PeopleItem = styled(({ className }) => (
     <div>
       <UserAvatar image={avatar} />
       <p>Jane Doe</p>
-      <a href="/secure/messages"><Button large>Send Message</Button></a>
+      <Link to='/secure/messages'><Button large>Send Message</Button></Link>
     </div>
   </li>
 ))`

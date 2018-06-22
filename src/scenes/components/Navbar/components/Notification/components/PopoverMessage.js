@@ -9,7 +9,7 @@ const PopoverMessage = ({ MessageRowData }) => {
     <Popover
       buttonIcon={<IconMessage />}
       buttonStyle={{
-        marginLeft: 10
+        marginLeft: 24
       }}
       popoverContentElement={<MessageRowData />}
       dataCount={12}

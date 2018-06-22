@@ -14,9 +14,34 @@ const addPaddingLeft = ({ type, pathname }) => {
   if (identical(pathname, browseGroupPath)) {
     return '0px'
   }
+
+  const homePath = '/secure/home'
+  // check first if the current location is equal to homePath.
+  if (identical(pathname, homePath)) {
+    return '0px'
+  }
+
+  const activityPath = '/secure/activity'
+  // check first if the current location is equal to activityPath.
+  if (identical(pathname, activityPath)) {
+    return '0px'
+  }
+
+  const settingsPath = '/secure/settings'
+  // check first if the current location is equal to settingsPath.
+  if (identical(pathname, settingsPath)) {
+    return '0px'
+  }
+
+  const yourAccountPath = '/secure/your-account'
+  // check first if the current location is equal to yourAccountPath.
+  if (identical(pathname, yourAccountPath)) {
+    return '0px'
+  }
+
   // else, check the account type.
   if (!identical(type, 'Admin')) {
-    return '257px'
+    return '225px'
   }
   // return 0
   return '0px'

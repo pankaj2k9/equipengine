@@ -1,7 +1,8 @@
 .Profile {
   display: flex;
   align-items: center;
-  margin-top: 5px; }
+  margin-top: 5px;
+  margin-left: 17px; }
   .Profile p {
     margin: 0 10px 0 0;
     font-size: 12px;

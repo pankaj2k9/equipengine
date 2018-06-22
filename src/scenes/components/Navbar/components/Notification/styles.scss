@@ -1,11 +1,12 @@
 .Notification{
     display: flex;
     width: 140px;
-    justify-content: space-between;
 }
 
 @media screen and(min-width: 768px){
     .Notification{
-        width: 210px;
+        width: 100%;
+        flex-direction: row;
+    	justify-content: flex-end;
     }
 }

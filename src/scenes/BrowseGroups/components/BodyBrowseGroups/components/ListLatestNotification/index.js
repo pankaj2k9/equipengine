@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+
 //
 import DateTime from 'base_components/DateTime'
 import ContainerFlex from 'base_components/ContainerFlex'
@@ -10,31 +12,31 @@ const ListItem = styled(({ className }) => (
     <ContainerFlex isSpaceBetween isAlignCenter>
       <DateTime date='22 Sep' time='2:22am' />
       <p>Jon Mcall commented on
-        <a href="javascript:;">Tutorial 1.1: Communication and Culture</a>
+        <Link to='/secure/activity'>Tutorial 1.1: Communication and Culture</Link>
       </p>
     </ContainerFlex>
     <ContainerFlex isSpaceBetween isAlignCenter>
       <DateTime date='22 Sep' time='2:22am' />
       <p>Jill Mane commented on
-        <a href="javascript:;">Tutorial 1.3: Becoming Equipped to Communicate</a>
+        <Link to='/secure/activity'>Tutorial 1.3: Becoming Equipped to Communicate</Link>
       </p>
     </ContainerFlex>
     <ContainerFlex isSpaceBetween isAlignCenter>
       <DateTime date='22 Sep' time='2:22am' />
       <p>Jon Mcall commented on
-        <a href="javascript:;">Tutorial 1.1: Communication and Culture</a>
+        <Link to='/secure/activity'>Tutorial 1.1: Communication and Culture</Link>
       </p>
     </ContainerFlex>
     <ContainerFlex isSpaceBetween isAlignCenter>
       <DateTime date='22 Sep' time='2:22am' />
       <p>Jill Mane commented on
-        <a href="javascript:;">Tutorial 1.3: Becoming Equipped to Communicate</a>
+        <Link to='/secure/activity'>Tutorial 1.3: Becoming Equipped to Communicate</Link>
       </p>
     </ContainerFlex>
     <ContainerFlex isSpaceBetween isAlignCenter>
       <DateTime date='22 Sep' time='2:22am' />
       <p>Jill Mane commented on
-        <a href="javascript:;">Tutorial 1.3: Becoming Equipped to Communicate</a>
+        <Link to='/secure/activity'>Tutorial 1.3: Becoming Equipped to Communicate</Link>
       </p>
     </ContainerFlex>
   </li>
@@ -77,7 +79,7 @@ const ListContainer = styled.ul`
 
 const ListLatestNotification = () => (
   <div>
-    <HeaderListLatest>Latest Activity <a href='/secure/activity'><img alt='icon arrow right' src={iconArrowRight} /></a></HeaderListLatest>
+    <HeaderListLatest>Latest Activity <Link to='/secure/activity'><img alt='icon arrow right' src={iconArrowRight} /></Link></HeaderListLatest>
     <ListContainer>
       <ListItem />
     </ListContainer>

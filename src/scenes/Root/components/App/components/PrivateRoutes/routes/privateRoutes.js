@@ -53,6 +53,30 @@ const AsyncFiles = Loadable({
   timeout: 10000
 })
 
+const AsyncActivity = Loadable({
+  loader: () => import('scenes/Activity'),
+  loading: Loader,
+  timeout: 10000
+})
+
+const AsyncHome = Loadable({
+  loader: () => import('scenes/Home'),
+  loading: Loader,
+  timeout: 10000
+})
+
+const AsyncSettings = Loadable({
+  loader: () => import('scenes/Settings'),
+  loading: Loader,
+  timeout: 10000
+})
+
+const AsyncYourAccount = Loadable({
+  loader: () => import('scenes/YourAccount'),
+  loading: Loader,
+  timeout: 10000
+})
+
 const privateRoutes = [
   {
     id: 'private00',
@@ -139,6 +163,50 @@ const privateRoutes = [
     AsyncComponent: (props) => (
       <ErrorBoundary errMsg="Something went wrong in displaying the files page.">
         <AsyncFiles {...props} />
+      </ErrorBoundary>
+    )
+  },
+  {
+    id: 'private08',
+    path: '/secure/activity',
+    strict: true,
+    exact: true,
+    AsyncComponent: (props) => (
+      <ErrorBoundary errMsg="Something went wrong in displaying the dashboard page.">
+        <AsyncActivity {...props} />
+      </ErrorBoundary>
+    )
+  },
+  {
+    id: 'private09',
+    path: '/secure/home',
+    strict: true,
+    exact: true,
+    AsyncComponent: (props) => (
+      <ErrorBoundary errMsg="Something went wrong in displaying the files page.">
+        <AsyncHome {...props} />
+      </ErrorBoundary>
+    )
+  },
+  {
+    id: 'private10',
+    path: '/secure/settings',
+    strict: true,
+    exact: true,
+    AsyncComponent: (props) => (
+      <ErrorBoundary errMsg="Something went wrong in displaying the dashboard page.">
+        <AsyncSettings {...props} />
+      </ErrorBoundary>
+    )
+  },
+  {
+    id: 'private11',
+    path: '/secure/your-account',
+    strict: true,
+    exact: true,
+    AsyncComponent: (props) => (
+      <ErrorBoundary errMsg="Something went wrong in displaying the files page.">
+        <AsyncYourAccount {...props} />
       </ErrorBoundary>
     )
   }
