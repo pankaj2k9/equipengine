@@ -2,6 +2,17 @@
   padding: 2%;
 }
 
+.TeacherGroupsActivity .Tables thead tr th {
+  text-align: center;
+}
+
+.TeacherGroupsActivity .Tables tbody tr td p {
+	text-align: inherit;
+	margin-bottom: 0;
+	position: relative;
+	top: 5px;
+}
+
 @media screen and (min-width: 768px) {
   .TeacherGroupsActivity > .table-responsive {
     padding: 27px 40px;

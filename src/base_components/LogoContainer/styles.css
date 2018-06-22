@@ -15,8 +15,7 @@
 @media screen and (min-width: 768px) {
   .LogoContainer {
     padding: 9px 35px 9px 20px;
-    margin-bottom: 0px;
-    border-bottom: 1px solid #dadada; }
+    margin-bottom: 0px; }
     .LogoContainer img {
       margin-right: 1em;
       height: 100%; }

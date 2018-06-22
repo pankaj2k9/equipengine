@@ -17,10 +17,10 @@ const ContainerActivity = styled.section`
   }
 `
 
-const Activity = () => (
+const Settings = () => (
   <ContainerActivity>
     <HeaderActivity />
   </ContainerActivity>
 )
 
-export default Activity
+export default Settings

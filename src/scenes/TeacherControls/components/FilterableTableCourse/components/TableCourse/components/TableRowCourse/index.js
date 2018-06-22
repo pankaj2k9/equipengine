@@ -12,11 +12,14 @@ import FlaggedIcon from '../../../FlaggedIcon'
 const TableRowCourseTd = styled.td`
   text-align: ${(props) => (props.middle ? 'center' : 'left')};
   margin-top: 0.7em;
+  vertical-align: middle !important;
 `
 
 // for table row course.
 const DateSpan = styled.span`
   color: #7e7e7e;
+  position: relative;
+  left: 11px;
   display: block;
 `
 
