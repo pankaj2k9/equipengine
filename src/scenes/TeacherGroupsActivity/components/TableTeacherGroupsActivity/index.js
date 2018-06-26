@@ -39,9 +39,7 @@ const TableTeacherGroupsActivity = () => (
             <AvatarActivity image={iconUser} />
             <p>
               Jane <strong>wrote something in</strong>{' '}
-              <em>
-                How does our culture impact decisions made by the government?
-              </em>
+              How does our culture impact decisions made by the government?
             </p>
           </ContainerActivity>
         </td>
@@ -58,9 +56,7 @@ const TableTeacherGroupsActivity = () => (
             <AvatarActivity image={iconUser} />
             <p>
               Jane <strong>wrote something in</strong>{' '}
-              <em>
-                How does our culture impact decisions made by the government?
-              </em>
+              How does our culture impact decisions made by the government?
             </p>
           </ContainerActivity>
         </td>

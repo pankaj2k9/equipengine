@@ -15,7 +15,7 @@ const LinkMain = styled(NavLink)`
     color: #9ea6ad;
   }
   &.active {
-    background: rgba(70, 70, 70, 0.82);
+    background: transparent;
     color: #0e90e0;
   }
 

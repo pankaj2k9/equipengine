@@ -51,11 +51,11 @@ const TableRowCourse = ({ course }) => {
   }
   return (
     <TableRow>
-      <TableRowCourseTd>
+      <TableRowCourseTd middle style={{ textAlign: 'left' }}>
         <DateSpan>{date.day}</DateSpan>
         <DateSpan>{date.time}</DateSpan>
       </TableRowCourseTd>
-      <TableRowCourseTd>{title}</TableRowCourseTd>
+      <TableRowCourseTd middle style={{ textAlign: 'left' }}>{title}</TableRowCourseTd>
       <TableRowCourseTd>{lesson}</TableRowCourseTd>
       <TableRowCourseTd>
         <ExtendUserAvatar small image={course.person.avatarURL} />

@@ -19,7 +19,7 @@ const TableCourse = () => {
         name: 'Jane Doe',
         avatarURL: userAvatar
       },
-      lastAction: 'Jane wrote something',
+      lastAction: <p>Jane <strong>wrote something</strong></p>,
       feedbacks: [
         {
           id: '548sfjkjk324jksjfkxjjgjdfl',
@@ -36,7 +36,7 @@ const TableCourse = () => {
     {
       id: '548sfjkjk324jksjfkxjkjhg',
       date: {
-        day: '22 October',
+        day: '28 Sep',
         time: '1:00 pm'
       },
       title: 'Culture and Language',
@@ -45,7 +45,7 @@ const TableCourse = () => {
         name: 'Jane Doe',
         avatarURL: userAvatar
       },
-      lastAction: 'Jane wrote something',
+      lastAction: <p>Jane <strong>completed a quiz</strong></p>,
       feedbacks: [
         {
           id: '548sfjkjk324jksjfkxjjgjdjnm',
@@ -68,7 +68,7 @@ const TableCourse = () => {
           <th>Course</th>
           <th>Lesson</th>
           <th>Person</th>
-          <th>Last Action</th>
+          <th>Last</th>
           <th>Feedback</th>
           <th>Flagged</th>
           <th>Read</th>

@@ -20,7 +20,7 @@ const PeopleItem = styled(({ className }) => (
 
   > div {
     display: inline-block;
-    padding: 1.7em;
+    padding: 1em;
     border: 1px solid #e2e2e2;
     border-radius: 5px;
 
@@ -29,6 +29,10 @@ const PeopleItem = styled(({ className }) => (
       margin-top: 0.7em;
       font-size: 14px;
       color: #111111;
+    }
+
+    button {
+      padding: 8px 0;
     }
   }
 

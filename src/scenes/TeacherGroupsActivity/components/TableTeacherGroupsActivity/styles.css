@@ -1,16 +1,35 @@
+.TeacherGroupsActivity button {
+	font-weight: 400;
+	padding: 10px 20px;
+}
+
 .TeacherGroupsActivity > .table-responsive {
   padding: 2%;
 }
 
 .TeacherGroupsActivity .Tables thead tr th {
   text-align: center;
+  color: #111111;
+}
+
+.TeacherGroupsActivity .Tables tbody tr td {
+  vertical-align: middle;
 }
 
 .TeacherGroupsActivity .Tables tbody tr td p {
 	text-align: inherit;
 	margin-bottom: 0;
+  	color: #111111;
 	position: relative;
-	top: 5px;
+}
+
+.TeacherGroupsActivity .Tables tbody tr td:first-child {
+	text-align: center;;
+}
+
+.TeacherGroupsActivity .Tables tbody tr td strong {
+	color: #0d90e0;
+  font-weight: 400;
 }
 
 @media screen and (min-width: 768px) {

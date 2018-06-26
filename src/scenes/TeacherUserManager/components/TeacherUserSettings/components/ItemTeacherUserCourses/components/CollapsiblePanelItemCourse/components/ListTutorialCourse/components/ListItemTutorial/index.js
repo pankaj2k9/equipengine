@@ -27,7 +27,7 @@ const ListItemTutorial = styled(({ className, isReport }) => (
         <div className='ListItemTutorial__media'>
           <img alt='Icon play button' src={iconPlayButton} />
           <div>
-            <p>Vivamus suscipit tortor eget felis porttitor</p>
+            <p>Tutorial 1</p>
             <MetaInfo default>00:05:25</MetaInfo>
           </div>
         </div>
@@ -81,6 +81,7 @@ const ListItemTutorial = styled(({ className, isReport }) => (
         p {
           margin-bottom: 0;
           font-size: 16px;
+          text-align: inherit;
           max-width: 150px;
         }
       }
@@ -110,6 +111,9 @@ const ListItemTutorial = styled(({ className, isReport }) => (
 
   &:last-child > .ListItemTutorial__container {
     border-bottom: 0;
+    padding: 1em 0;
+    > a
+    margin-top: 0;
   }
 
   @media screen and (min-width: 768px) {

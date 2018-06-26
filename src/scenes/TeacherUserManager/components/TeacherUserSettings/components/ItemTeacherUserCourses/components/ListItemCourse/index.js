@@ -70,7 +70,7 @@ const StyledListItemCourse = styled(ListItemCourse)`
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 2.3em 2.4em 1.5em;
+      padding: 2.3em 2.4em 0.5em;
     }
 
     &:first-child {

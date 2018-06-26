@@ -10,7 +10,7 @@ import Tabs from 'base_components/Tabs'
 import ItemTeacherUserCourses from './components/ItemTeacherUserCourses'
 
 // for teacher user settings.
-const ItemTeacherUserSettings = () => <div>user settings</div>
+const ItemTeacherUserSettings = () => <div style={{fontSize:'1.09rem', padding:'0px 20px', color:'#111'}}>User Details</div>
 
 const TeacherUserSettings = styled(({className}) => (
   <MainInnerContainer className={className}>
@@ -20,7 +20,7 @@ const TeacherUserSettings = styled(({className}) => (
           <ItemTeacherUserCourses />
         </DragDrop>
       </Tab>
-      <Tab eventKey={2} title='Settings'>
+      <Tab eventKey={2} title='User Settings'>
         <ItemTeacherUserSettings />
       </Tab>
     </Tabs>

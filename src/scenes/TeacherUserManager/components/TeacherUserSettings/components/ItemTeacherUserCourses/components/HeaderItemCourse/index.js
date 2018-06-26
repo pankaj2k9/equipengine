@@ -25,6 +25,7 @@ const HeaderItemCourse = styled(({ className }) => (
 
     p {
       color: #9fa6ad;
+      padding-right: 20px;
     }
   }
 
