@@ -11,7 +11,10 @@ const Navbar = ({ onOpenSidebar, accountType }) => {
   return (
     <nav className='Navbar'>
       <ButtonTriggerSidebar onOpenSidebar={onOpenSidebar} />
-      <div className="SiteHorizontal"><SiteListLinkHorizontal /></div>
+      <div className='SiteHorizontal'>
+        <SiteListLinkHorizontal
+          accountType={accountType} />
+      </div>
       <Notification />
     </nav>
   )

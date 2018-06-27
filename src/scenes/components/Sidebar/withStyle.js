@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { identical } from 'ramda'
 
-
 // Add Height based on the passed object.
 const addHeight = ({ type, pathname }) => {
   const browseGroupPath = '/secure/browse-groups'
@@ -37,8 +36,6 @@ const addHeight = ({ type, pathname }) => {
   // return 0
   return '100vh'
 }
-
-
 
 // Add Display left based on the passed object.
 const addDisplay = ({ type, pathname }) => {
@@ -76,8 +73,6 @@ const addDisplay = ({ type, pathname }) => {
   return 'block'
 }
 
-
-
 export default (WrappedComponent) =>
   styled(WrappedComponent)`
     position: fixed;
@@ -93,6 +88,7 @@ export default (WrappedComponent) =>
     &.isOpen {
       opacity: 1;
       margin-left: 0px;
+      z-index: 2;
     }
 
     .Sidebar__inner {
