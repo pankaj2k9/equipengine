@@ -2,9 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const Switch = styled(({ className, name }) => (
+const Switch = styled(({ className, name, value, onChange }) => (
   <label className={className}>
-    <input type='checkbox' name={name} />
+    <input
+      type='checkbox'
+      name={name}
+      checked={value}
+      onChange={onChange}
+    />
     <span className='slider round' />
   </label>
 ))`

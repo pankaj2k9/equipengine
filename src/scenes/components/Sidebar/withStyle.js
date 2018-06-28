@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { identical } from 'ramda'
 
-
 // Add Height based on the passed object.
 const addHeight = ({ type, pathname }) => {
   const browseGroupPath = '/secure/browse-groups'
@@ -28,17 +27,9 @@ const addHeight = ({ type, pathname }) => {
     return '0px'
   }
 
-  const yourAccountPath = '/secure/your-account'
-  // check first if the current location is equal to yourAccountPath.
-  if (identical(pathname, yourAccountPath)) {
-    return '0px'
-  }
-
   // return 0
   return '100vh'
 }
-
-
 
 // Add Display left based on the passed object.
 const addDisplay = ({ type, pathname }) => {
@@ -66,17 +57,9 @@ const addDisplay = ({ type, pathname }) => {
     return 'none'
   }
 
-  const yourAccountPath = '/secure/your-account'
-  // check first if the current location is equal to yourAccountPath.
-  if (identical(pathname, yourAccountPath)) {
-    return 'none'
-  }
-
   // return block
   return 'block'
 }
-
-
 
 export default (WrappedComponent) =>
   styled(WrappedComponent)`

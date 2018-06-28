@@ -11,9 +11,8 @@ const Profile = ({ name, avatar, removeLoggedUser }) => {
   return (
     <div className='Profile'>
       <p>{name}</p>
-      <UserAvatar image={avatar} />
       <Popover
-        buttonIcon={<IconDown />}
+        buttonIcon={<span><UserAvatar image={avatar} /><IconDown /></span>}
         buttonStyle={{
           fontSize: '16px',
           position: 'relative',

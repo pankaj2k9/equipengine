@@ -33,12 +33,6 @@ const addPaddingLeft = ({ type, pathname }) => {
     return '0px'
   }
 
-  const yourAccountPath = '/secure/your-account'
-  // check first if the current location is equal to yourAccountPath.
-  if (identical(pathname, yourAccountPath)) {
-    return '0px'
-  }
-
   // else, check the account type.
   if (!identical(type, 'Admin')) {
     return '225px'

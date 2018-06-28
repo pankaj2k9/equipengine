@@ -14,7 +14,7 @@ const ReportLatestGroupActivity = () => (
             time: '2:00am'
           },
           description:
-            <p>Jill Mane commented on <a href="javascript:;">Tutorial 1.3: Becoming Equipped to Communicate</a></p>
+  <p>Jill Mane commented on <a>Tutorial 1.3: Becoming Equipped to Communicate</a></p>
         },
         {
           id: 'jsladfj3j4l',
@@ -23,7 +23,7 @@ const ReportLatestGroupActivity = () => (
             time: '2:00am'
           },
           description:
-          <p>Jon Mcall commented on <a href="javascript:;">Tutorial 1.1: Communication and Culture</a></p>
+  <p>Jon Mcall commented on <a>Tutorial 1.1: Communication and Culture</a></p>
         }
       ]}
     />

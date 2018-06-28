@@ -71,12 +71,6 @@ const AsyncSettings = Loadable({
   timeout: 10000
 })
 
-const AsyncYourAccount = Loadable({
-  loader: () => import('scenes/YourAccount'),
-  loading: Loader,
-  timeout: 10000
-})
-
 const privateRoutes = [
   {
     id: 'private00',
@@ -84,7 +78,7 @@ const privateRoutes = [
     strict: true,
     exact: true,
     AsyncComponent: (props) => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the dashboard page.">
+      <ErrorBoundary errMsg='Something went wrong in displaying the dashboard page.'>
         <AsyncBrowseGroups {...props} />
       </ErrorBoundary>
     )
@@ -95,7 +89,7 @@ const privateRoutes = [
     strict: true,
     exact: true,
     AsyncComponent: (props) => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the dashboard page.">
+      <ErrorBoundary errMsg='Something went wrong in displaying the dashboard page.'>
         <AsyncDashboard {...props} />
       </ErrorBoundary>
     )
@@ -106,7 +100,7 @@ const privateRoutes = [
     strict: true,
     exact: true,
     AsyncComponent: (props) => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the messages page.">
+      <ErrorBoundary errMsg='Something went wrong in displaying the messages page.'>
         <AsyncMessages {...props} />
       </ErrorBoundary>
     )
@@ -117,7 +111,7 @@ const privateRoutes = [
     strict: true,
     exact: true,
     AsyncComponent: (props) => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the notifications page.">
+      <ErrorBoundary errMsg='Something went wrong in displaying the notifications page.'>
         <AsyncNotifications {...props} />
       </ErrorBoundary>
     )
@@ -128,7 +122,7 @@ const privateRoutes = [
     strict: true,
     exact: false,
     AsyncRenderComponent: (props) => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the courses page.">
+      <ErrorBoundary errMsg='Something went wrong in displaying the courses page.'>
         <AsyncCourses {...props} />
       </ErrorBoundary>
     )
@@ -139,7 +133,7 @@ const privateRoutes = [
     strict: true,
     exact: true,
     AsyncComponent: (props) => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the groups page.">
+      <ErrorBoundary errMsg='Something went wrong in displaying the groups page.'>
         <AsyncGroups {...props} />
       </ErrorBoundary>
     )
@@ -150,7 +144,7 @@ const privateRoutes = [
     strict: true,
     exact: true,
     AsyncComponent: (props) => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the people page.">
+      <ErrorBoundary errMsg='Something went wrong in displaying the people page.'>
         <AsyncPeople {...props} />
       </ErrorBoundary>
     )
@@ -161,7 +155,7 @@ const privateRoutes = [
     strict: true,
     exact: true,
     AsyncComponent: (props) => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the files page.">
+      <ErrorBoundary errMsg='Something went wrong in displaying the files page.'>
         <AsyncFiles {...props} />
       </ErrorBoundary>
     )
@@ -172,7 +166,7 @@ const privateRoutes = [
     strict: true,
     exact: true,
     AsyncComponent: (props) => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the dashboard page.">
+      <ErrorBoundary errMsg='Something went wrong in displaying the dashboard page.'>
         <AsyncActivity {...props} />
       </ErrorBoundary>
     )
@@ -183,7 +177,7 @@ const privateRoutes = [
     strict: true,
     exact: true,
     AsyncComponent: (props) => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the files page.">
+      <ErrorBoundary errMsg='Something went wrong in displaying the files page.'>
         <AsyncHome {...props} />
       </ErrorBoundary>
     )
@@ -194,19 +188,8 @@ const privateRoutes = [
     strict: true,
     exact: true,
     AsyncComponent: (props) => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the dashboard page.">
+      <ErrorBoundary errMsg='Something went wrong in displaying the dashboard page.'>
         <AsyncSettings {...props} />
-      </ErrorBoundary>
-    )
-  },
-  {
-    id: 'private11',
-    path: '/secure/your-account',
-    strict: true,
-    exact: true,
-    AsyncComponent: (props) => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the files page.">
-        <AsyncYourAccount {...props} />
       </ErrorBoundary>
     )
   }
