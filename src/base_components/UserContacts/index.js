@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import ContainerFlex from 'base_components/ContainerFlex'
-import { FormGroup, Label, Text, TextArea, TextWithIcon } from 'base_components/RootForm'
+import { FormGroup, Label, Text, TextWithIcon } from 'base_components/RootForm'
 import InputAddress from 'base_components/InputAddress'
 import calendarIcon from 'resources/images/calendar.svg'
 
@@ -43,8 +43,7 @@ class UserContacts extends Component {
         </ContainerFlex>
         <FormGroup>
           <Label>Address</Label>
-          <TextArea
-            row={4}
+          <Text
             placeholder='Address'
             value={address}
             onChange={this.handleAddressChange}
