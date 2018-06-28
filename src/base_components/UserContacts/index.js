@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import ContainerFlex from 'base_components/ContainerFlex'
-import { FormGroup, Label, Text, TextArea } from 'base_components/RootForm'
+import { FormGroup, Label, Text, TextArea, TextWithIcon } from 'base_components/RootForm'
 import InputAddress from 'base_components/InputAddress'
+import calendarIcon from 'resources/images/calendar.svg'
 
 const Spacing = styled.span`
   margin-right: 0.7em;
@@ -32,7 +33,8 @@ class UserContacts extends Component {
           <Spacing />
           <FormGroup>
             <Label>Date of Birth</Label>
-            <Text
+            <TextWithIcon
+              icon={calendarIcon}
               placeholder='December 05, 1995'
               value={birthDate}
               onChange={this.handleBirthDateChange}

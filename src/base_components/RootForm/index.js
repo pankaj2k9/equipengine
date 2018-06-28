@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import FormGroup from './components/FormGroup'
 import Label from './components/Label'
 import Text from './components/Text'
+import TextWithIcon from './components/TextWithIcon'
 import TextArea from './components/TextArea'
 import {
   Checkbox,
@@ -29,6 +30,7 @@ RootForm.propTypes = {
 export {
   RootForm as default,
   Text,
+  TextWithIcon,
   TextArea,
   Checkbox,
   CheckboxCircle,
