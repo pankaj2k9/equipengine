@@ -13,7 +13,6 @@ const Sidebar = ({
   isOpen,
   onCloseSidebar,
   accountType,
-  pathname,
   className
 }) => {
   // when the isOpen props is true, add other classname on sidebar

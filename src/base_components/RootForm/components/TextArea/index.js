@@ -3,13 +3,15 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 // for TextArea
-const TextArea = styled(({ name, placeholder, className, row }) => (
+const TextArea = styled(({ name, placeholder, className, row, value, onChange }) => (
   <textarea
     placeholder={placeholder}
     name={name}
     className={className}
     cols='30'
     rows={row}
+    value={value || ''}
+    onChange={onChange}
   />
 ))`
   border: 1px solid #dddddd;

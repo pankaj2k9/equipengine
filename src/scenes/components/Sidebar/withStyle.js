@@ -27,12 +27,6 @@ const addHeight = ({ type, pathname }) => {
     return '0px'
   }
 
-  const yourAccountPath = '/secure/your-account'
-  // check first if the current location is equal to yourAccountPath.
-  if (identical(pathname, yourAccountPath)) {
-    return '0px'
-  }
-
   // return 0
   return '100vh'
 }
@@ -60,12 +54,6 @@ const addDisplay = ({ type, pathname }) => {
   const settingsPath = '/secure/settings'
   // check first if the current location is equal to settingsPath.
   if (identical(pathname, settingsPath)) {
-    return 'none'
-  }
-
-  const yourAccountPath = '/secure/your-account'
-  // check first if the current location is equal to yourAccountPath.
-  if (identical(pathname, yourAccountPath)) {
     return 'none'
   }
 
