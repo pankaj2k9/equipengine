@@ -27,9 +27,9 @@ const H1 = styled.h1`
   }
 `
 
-const LogoContainer = () => {
+const LogoContainer = ({ className }) => {
   return (
-    <Link to='/secure/browse-groups'>
+    <Link className={className} to='/secure/browse-groups'>
       <Img alt='Logo' src={Logo} />
       <H1 style={{ color: $textBoldColor }}>EquipEngine</H1>
     </Link>
