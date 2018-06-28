@@ -33,17 +33,18 @@ const addPaddingLeft = ({ type, pathname }) => {
     return '0px'
   }
 
-  // else, check the account type.
-  if (!identical(type, 'Admin')) {
-    return '225px'
+  const yourAccountPath = '/secure/your-account'
+  // check first if the current location is equal to yourAccountPath.
+  if (identical(pathname, yourAccountPath)) {
+    return '0px'
   }
-  // return 0
-  return '0px'
+
+  // else, add padding for sidebar.
+  return '225px'
 }
 
 const Main = styled.main`
   padding-bottom: 2em;
-  margin-top: ${(props) => identical(props.type, 'Admin') && '55px'};
 
   @media screen and (min-width: 768px) {
     padding-left: ${(props) =>

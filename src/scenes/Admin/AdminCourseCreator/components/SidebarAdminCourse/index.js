@@ -15,6 +15,8 @@ const ListLink = styled.ul`
   height: 100%;
   background-color: #000000;
   position: fixed;
+  margin-top: -1px;
+  z-index: 1;
 `
 
 const SidebarAdminCourse = ({ match, onOpen }) => (

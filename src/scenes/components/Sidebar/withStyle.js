@@ -76,6 +76,7 @@ export default (WrappedComponent) =>
     &.isOpen {
       opacity: 1;
       margin-left: 0px;
+      z-index: 2;
     }
 
     .Sidebar__inner {

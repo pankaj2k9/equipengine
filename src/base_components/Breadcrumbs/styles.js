@@ -31,7 +31,7 @@ export default css`
   @media screen and (min-width: 768px) {
     padding: 16px 35px;
     position: ${({position}) => position};
-    top: 68px;
+    top: 59px;
     background: #fff;
     width: 100%;
   }

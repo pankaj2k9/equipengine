@@ -7,6 +7,7 @@ const LinkMain = styled(NavLink)`
   text-transform: uppercase;
   display: block;
   transition: all 300ms ease-in;
+  ${({ width }) => width && ({ width })}
 
   &:hover {
     color: #0e90e0;

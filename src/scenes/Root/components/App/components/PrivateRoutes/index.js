@@ -12,18 +12,19 @@ import routes from './routes'
 
 /* create our async component in here
  * this will optimize the loading of components of our app
- * dynamically importing our scenes here*/
+ * dynamically importing our scenes here */
 const AsyncMainBars = Loadable({
   loader: () => import('scenes/components/MainBars'),
   loading: () => null, // before this component gets loaded, we will render first this Loader component.
   timeout: 10000
 })
 
-const AsyncNavbarAdmin = Loadable({
-  loader: () => import('scenes/components/NavbarAdmin'),
-  loading: Loader,
-  timeout: 10000
-})
+// TODO: remove NavbarAdmin and its components
+// const AsyncNavbarAdmin = Loadable({
+//   loader: () => import('scenes/components/NavbarAdmin'),
+//   loading: Loader,
+//   timeout: 10000
+// })
 
 const AsyncNotFound = Loadable({
   loader: () => import('scenes/NotFound'),
@@ -35,13 +36,13 @@ const PrivateRoutes = ({ type, location }) => (
   <Fragment>
     {/* Displaying the Navbar and Sidebar */}
     <Route
-      path="/secure"
+      path='/secure'
       render={(props) =>
         // conditional rendering.
         identical(type, 'Student') || identical(type, 'Teacher') ? (
           <AsyncMainBars {...props} />
         ) : (
-          <AsyncNavbarAdmin />
+          <AsyncMainBars {...props} />
         )}
     />
     <Main type={type} pathname={location.pathname}>

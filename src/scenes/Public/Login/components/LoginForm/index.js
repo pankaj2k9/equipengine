@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 //
 import Button from 'base_components/RootButton'
 import withState from './hoc/withState'
-import { identical, compose, not } from 'ramda'
+import { identical } from 'ramda'
 
 const LoginForm = ({
   onHandleChange,
@@ -23,11 +23,11 @@ const LoginForm = ({
       if (identical(res.status, 'successfully')) {
         // redirec based on the user type.
         // if type is student or teacher
-        if (compose(not, identical(res.user.type))('Admin')) {
-          return history.push('/secure/browse-groups')
-        }
+        // if (compose(not, identical(res.user.type))('Admin')) {
+        //   return history.push('/secure/browse-groups')
+        // }
         // else admin, redirect to /admin/group-manager
-        return history.push('/secure/admin/group-manager')
+        // return history.push('/secure/admin/group-manager')
         /* redirectBasedOnType(res.user.type); */
       }
 
