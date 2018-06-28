@@ -1,14 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import './styles.css'
-
-const Menu = ({ children }) => {
-  return <ul className='Menu'>{children}</ul>
-}
-
-Menu.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired
-}
+const Menu = styled.ul`
+  margin-left: 1em;
+`
 
 export default Menu

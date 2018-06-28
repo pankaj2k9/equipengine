@@ -20,8 +20,7 @@ const Sidebar = ({
   return (
     <div
       onClick={onCloseSidebar}
-      className={`${sidebarClassnames} ${className}`}
-    >
+      className={`${sidebarClassnames} ${className}`}>
       <div className='Sidebar__inner'>
         <LogoContainer />
         <div className='Sidebar__body'>
