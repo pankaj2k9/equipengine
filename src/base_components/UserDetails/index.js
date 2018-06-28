@@ -32,7 +32,7 @@ class UserDetails extends Component {
         <div>
           <ContainerFlex>
             <FormGroup>
-              <Label>First Name</Label>
+              <Label>First Name &#42;</Label>
               <Text
                 placeholder='First name'
                 value={firstName}
@@ -41,7 +41,7 @@ class UserDetails extends Component {
             </FormGroup>
             <Spacing />
             <FormGroup>
-              <Label>Last Name</Label>
+              <Label>Last Name &#42;</Label>
               <Text
                 placeholder='Last name'
                 value={lastName}
