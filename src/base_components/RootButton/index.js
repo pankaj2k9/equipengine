@@ -1,5 +1,10 @@
+import React from 'react'
 import styled from 'styled-components'
 import { identical } from 'ramda'
+
+const Button = ({ children, ...rest }) => (
+  <button {...rest}>{children}</button>
+)
 
 // for background color variation
 const backgroundColorVariation = (props) => {
@@ -45,7 +50,7 @@ const hoverFontColorVariation = (props) => {
   }
 }
 
-const RootButton = styled.button`
+const RootButton = styled(Button)`
   background-color: ${backgroundColorVariation};
   opacity: ${(props) => (props.disabled ? '0.5' : '1')};
   color: ${fontColorVariation};

@@ -6,7 +6,7 @@ import StatusUser from './components/StatusUser'
 import { TableRow, Td } from 'base_components/Tables'
 import UserAvatar from 'base_components/UserAvatar'
 import iconUser from 'resources/images/user.png'
-import Button from 'base_components/RootButton'
+import RouteButton from 'base_components/RouteButton'
 import Form, { Checkbox } from 'base_components/RootForm'
 
 // compose a table data.
@@ -33,9 +33,9 @@ const RowsTableAdminGroupUsers = () => (
         <RoleUser roleUser='Teacher' />
       </TableDataGroupUser>
       <TableDataGroupUser>
-        <Button light lightBorder>
+        <RouteButton to='/secure/admin/user-manager' light lightBorder>
           User Details
-        </Button>
+        </RouteButton>
       </TableDataGroupUser>
     </TableRow>
     <TableRow>
@@ -55,9 +55,9 @@ const RowsTableAdminGroupUsers = () => (
       </TableDataGroupUser>
       <TableDataGroupUser />
       <TableDataGroupUser>
-        <Button light lightBorder>
+        <RouteButton to='/secure/admin/user-manager' light lightBorder>
           User Details
-        </Button>
+        </RouteButton>
       </TableDataGroupUser>
     </TableRow>
   </tbody>
