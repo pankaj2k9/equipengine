@@ -1,10 +1,28 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+import iconArrowLeft from 'resources/images/arrowLeft.svg'
 import iconWheel from 'resources/images/wheel.svg'
 import ProfileForm from './components/ProfileForm'
 
-const ResponsiveContainer = styled.section`
+// TODO probably move to base_component as RouteIconButton
+const BackIconButton = styled(({ className }) => (
+  <Link className={className} to='/secure/home'>
+    <img alt='icon arrow left' src={iconArrowLeft} />
+  </Link>
+))`
+  @media screen and (min-width: 768px) {
+    position: fixed;
+    top: 55px;
+  }
+  margin: 0.5em;
+  img {
+    width: 30px;
+  }
+`
+
+const Centerer = styled.section`
   max-width: 615px;
   width: 80%;
   margin: 3em auto;
@@ -36,7 +54,7 @@ class AccountSettings extends Component {
       firstName: 'Alex',
       lastName: 'Soroka',
       phone: '+123456',
-      birthDate: 'December 05, 1995',
+      birthDate: null,
       address: '415 Acacia Ave. Jamaica, NY 11435',
       notificationFrequency: {
         activitySummary: false,
@@ -56,17 +74,20 @@ class AccountSettings extends Component {
     // TODO from props
     const { profile } = this.state
     return (
-      <ResponsiveContainer>
-        <Header
-          icon={iconWheel}
-          title='Account Settings'
-        />
-        <ProfileForm
-          profile={profile}
-          onSubmit={this.handleUpdate}
-          onResetPassword={this.handleResetPassword}
-        />
-      </ResponsiveContainer>
+      <div>
+        <BackIconButton />
+        <Centerer>
+          <Header
+            icon={iconWheel}
+            title='Account Settings'
+          />
+          <ProfileForm
+            profile={profile}
+            onSubmit={this.handleUpdate}
+            onResetPassword={this.handleResetPassword}
+          />
+        </Centerer>
+      </div>
     )
   }
 }

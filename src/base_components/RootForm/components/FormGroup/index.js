@@ -8,6 +8,7 @@ const FormGroup = styled(({ className, children }) => (
   margin-bottom: 1.3em;
 
   display: ${(props) => props.isFlex && 'flex'};
+  flex: ${(props) => props.flex && 'auto'};
 
   &:last-child {
     margin-bottom: 0;

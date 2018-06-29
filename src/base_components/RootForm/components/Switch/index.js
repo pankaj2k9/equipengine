@@ -15,7 +15,7 @@ const Switch = styled(({ className, name, value, onChange }) => (
 ))`
   position: relative;
   display: inline-block;
-  width: 42px;
+  width: 55px;
   height: 22px;
   margin-bottom: 0;
 
@@ -35,6 +35,8 @@ const Switch = styled(({ className, name, value, onChange }) => (
     bottom: 0;
     background-color: #ccc;
     transition: 0.4s;
+    padding-top: 3px;
+    font-size: 12px;
   }
 
   .slider:before {
@@ -48,6 +50,24 @@ const Switch = styled(({ className, name, value, onChange }) => (
     transition: 0.4s;
   }
 
+  /**
+   * On-Off customizations
+   */
+  .slider:after {
+    content: 'OFF';
+    float: right;
+    color: white;
+    padding-right: 7px;
+    transition: 0.4s;
+  }
+
+  input:checked + .slider:after {
+    content: 'ON';
+    float: left;
+    color: white;
+    padding-left: 10px;
+  }
+
   input:checked + .slider {
     background-color: #2196f3;
   }
@@ -57,7 +77,7 @@ const Switch = styled(({ className, name, value, onChange }) => (
   }
 
   input:checked + .slider:before {
-    transform: translateX(19px);
+    transform: translateX(31px);
   }
 
   /* Rounded sliders */

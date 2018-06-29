@@ -9,7 +9,8 @@ const theme = {
   black: '#000000',
   lightblack: '#9C9C9C',
   lightgray: '#dadada',
-  gray: '#d8d8d8'
+  gray: '#d8d8d8',
+  fontFamily: 'karla, sans-serif'
 }
 
 const ThemeProvider = ({children}) => (
