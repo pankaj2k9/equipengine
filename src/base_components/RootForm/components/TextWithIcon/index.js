@@ -1,5 +1,5 @@
-import Text from '../Text'
-import PropTypes from 'prop-types'
+import Text from "../Text"
+import PropTypes from "prop-types"
 
 const TextWithIcon = Text.extend`
   background-image: url(${({ icon }) => icon});

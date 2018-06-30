@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const WhiteArea = styled.div`
   border: 2px solid #cccccc;

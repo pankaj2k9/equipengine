@@ -27,7 +27,7 @@
     "react-responsive": "^4.1.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
-    "react-scripts": "1.1.2",
+    "react-scripts": "^1.1.4",
     "react-select": "^1.2.1",
     "redux": "^3.7.2",
     "redux-devtools": "^3.4.1",
@@ -38,12 +38,6 @@
     "styled-components": "^2.2.3",
     "video-react": "^0.8.8"
   },
-  "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --no-semi --write",
-      "git add"
-    ]
-  },
   "scripts": {
     "precommit": "lint-staged",
     "start": "react-scripts start",
@@ -52,6 +46,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "eslint",
+      "git add"
+    ]
   },
   "engines": {
     "node": "10.1.0"
