@@ -8,7 +8,7 @@ import { MenuItem } from "react-bootstrap"
 import Button from "base_components/RootButton"
 import Form, { Text } from "base_components/RootForm"
 
-const DropdownRefine = Dropdown.extend`
+const DropdownExtend = Dropdown.extend`
   padding: 11px 15px 12px;
   background-color: #d8d8d8;
   border: 0;
@@ -27,13 +27,13 @@ const DropdownRefine = Dropdown.extend`
 const SearchbarListAdminUser = styled(({ className }) => (
   <ContainerSearchbarList className={className}>
     <Button secondary>Show All</Button>
-    <DropdownRefine title="Refine" id="dropdown-size-medium">
+    <DropdownExtend title="Refine" id="dropdown-size-medium">
       <MenuItem eventKey="1">Action</MenuItem>
       <MenuItem eventKey="2">Another action</MenuItem>
       <MenuItem eventKey="3">Something else here</MenuItem>
       <MenuItem divider />
       <MenuItem eventKey="4">Separated link</MenuItem>
-    </DropdownRefine>
+    </DropdownExtend>
     <Form>
       <Text name="create-user" placeholder="Search users" />
     </Form>
