@@ -7,27 +7,50 @@ import ListControl, { ListItemControl } from 'base_components/ListControl'
 import Button from 'base_components/RootButton'
 import { Label } from 'base_components/RootForm'
 
+const StyledPanel = Panel.extend`
+  border-bottom: none;
+  
+  @media screen and (min-width: 768px) {
+    margin-bottom: 17px;
+    width: 75%;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: initial;
+  }
+`
+
+const StyledButton = Button.extend`
+  height: 28px;
+  padding: 0;
+  padding-top: 2px;
+`
+
+const StyledLabel = Label.extend`
+  max-width: initial!important;
+`
+
 const PanelControlGroup = () => (
-  <Panel>
+  <StyledPanel>
     <ListControl>
       <ListItemControl>
-        <Button large light lightBorder>
+        <StyledButton large light lightBorder>
           Suspend user
-        </Button>
-        <Label light>
+        </StyledButton>
+        <StyledLabel light>
           Once student account is suspended you can activate again at any time.
-        </Label>
+        </StyledLabel>
       </ListItemControl>
       <ListItemControl>
-        <Button light large lightBorder>
+        <StyledButton light large lightBorder>
           Remove user
-        </Button>
-        <Label light>
+        </StyledButton>
+        <StyledLabel light>
           If this user is removed all data associated with the user is lost.
-        </Label>
+        </StyledLabel>
       </ListItemControl>
     </ListControl>
-  </Panel>
+  </StyledPanel>
 )
 
 export default PanelControlGroup
