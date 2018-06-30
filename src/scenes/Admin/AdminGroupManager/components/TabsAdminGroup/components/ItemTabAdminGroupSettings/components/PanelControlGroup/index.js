@@ -7,8 +7,12 @@ import ListControl, { ListItemControl } from "base_components/ListControl"
 import Button from "base_components/RootButton"
 import { Label } from "base_components/RootForm"
 
+const PanelExtend = Panel.extend`
+  padding-bottom: 28px;
+`
+
 const PanelControlGroup = () => (
-  <Panel>
+  <PanelExtend>
     <ListControl>
       <ListItemControl>
         <Button large light lightBorder>
@@ -28,7 +32,7 @@ const PanelControlGroup = () => (
         </Label>
       </ListItemControl>
     </ListControl>
-  </Panel>
+  </PanelExtend>
 )
 
 export default PanelControlGroup
