@@ -1,12 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import React from "react"
+import PropTypes from "prop-types"
+import { Link } from "react-router-dom"
 
-import './styles.css'
+import "./styles.css"
 
 const RowLink = ({ text, url }) => {
   return (
-    <Link className='RowLink' to={url}>
+    <Link className="RowLink" to={url}>
       {text}
     </Link>
   )

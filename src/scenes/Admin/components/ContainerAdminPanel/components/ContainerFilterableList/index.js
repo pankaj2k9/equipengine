@@ -1,4 +1,4 @@
-import Container from 'base_components/Container'
+import Container from "base_components/Container"
 
 const ContainerFilterableList = Container.extend`
   padding: 1% 2%;

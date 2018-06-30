@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types"
 
 /**
  * -------------------------------------
@@ -11,7 +11,7 @@ export default {
     padding: PropTypes.string
   },
   default: {
-    position: 'fixed',
-    padding: '4% 6%'
+    position: "fixed",
+    padding: "4% 6%"
   }
 }

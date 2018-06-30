@@ -1,24 +1,24 @@
-import React from 'react'
+import React from "react"
 
-import ModalBox from './ModalBox'
-import SlideControl from './SlideControl'
+import ModalBox from "./ModalBox"
+import SlideControl from "./SlideControl"
 
 const ModalFooter = () => {
   return (
     <ModalBox
       style={{
-        justifyContent: 'space-between'
+        justifyContent: "space-between"
       }}
     >
       <SlideControl
         //handleClick={_ => console.log('prev')}
-        text='Previous'
-        arrow='&#60;'
+        text="Previous"
+        arrow="&#60;"
       />
       <SlideControl
         //handleClick={_ => console.log('next')}
-        text='Next'
-        arrow='&#62;'
+        text="Next"
+        arrow="&#62;"
       />
     </ModalBox>
   )

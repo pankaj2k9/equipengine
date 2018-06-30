@@ -1,12 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 // Sub-components
-import HeaderItemCourse from '../HeaderItemCourse'
-import BodyItemCourse from '../BodyItemCourse'
-import CollapsiblePanelItemCourse from '../CollapsiblePanelItemCourse'
-import withCollapsiblePanel from 'hoc/withCollapsiblePanel'
-import IconMenu from 'react-icons/lib/fa/align-justify'
+import HeaderItemCourse from "../HeaderItemCourse"
+import BodyItemCourse from "../BodyItemCourse"
+import CollapsiblePanelItemCourse from "../CollapsiblePanelItemCourse"
+import withCollapsiblePanel from "hoc/withCollapsiblePanel"
+import IconMenu from "react-icons/lib/fa/align-justify"
 
 // container that will hold the info course
 const ContainerInfoCourse = styled.div`
@@ -24,7 +24,7 @@ const MenuButton = styled.span`
 `
 
 // this is the shape of the list item course.
-const ListItemCourse = ({className, isOpenPanel, onToggle}) => (
+const ListItemCourse = ({ className, isOpenPanel, onToggle }) => (
   <li className={className}>
     <div>
       <ContainerInfoCourse>

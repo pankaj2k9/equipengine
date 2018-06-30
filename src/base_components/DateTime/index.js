@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 
 const DateTime = styled(({ className, date, time }) => (
   <div className={className}>
@@ -11,9 +11,9 @@ const DateTime = styled(({ className, date, time }) => (
   display: flex;
   flex-direction: column;
   font-size: 10px;
-  font-weight: ${(props) => props.bold && '800'};
-  color: ${(props) => (props.accent ? '#338FFC' : '#7e7e7e')};
-  text-align: ${(props) => props.center && 'center'};
+  font-weight: ${props => props.bold && "800"};
+  color: ${props => (props.accent ? "#338FFC" : "#7e7e7e")};
+  text-align: ${props => props.center && "center"};
 `
 
 DateTime.proTypes = {

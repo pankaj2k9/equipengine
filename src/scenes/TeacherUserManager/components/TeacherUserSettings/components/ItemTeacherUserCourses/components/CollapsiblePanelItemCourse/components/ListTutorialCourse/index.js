@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import ListItemTutorial from './components/ListItemTutorial'
+import ListItemTutorial from "./components/ListItemTutorial"
 
 // this is for list
 const List = styled.ul`

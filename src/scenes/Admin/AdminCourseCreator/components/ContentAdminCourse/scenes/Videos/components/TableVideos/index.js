@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react"
 //
-import Container from 'base_components/Container'
-import Tables, { TableRow } from 'base_components/Tables'
-import TableRowVideos from './components/TableRowVideos'
+import Container from "base_components/Container"
+import Tables, { TableRow } from "base_components/Tables"
+import TableRowVideos from "./components/TableRowVideos"
 
 const ContainerTableVideos = Container.extend`
   .table-responsive {

@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
 /**
  * Wrapper around simple browser file chooser.
@@ -22,17 +22,19 @@ export default class FileChooserDialog extends React.Component {
     this.fileChooser.click()
   }
 
-  render () {
+  render() {
     const { accept, multiple } = this.props
 
     return (
       <input
-        type='file'
+        type="file"
         accept={accept}
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
         onChange={this.handleChooseFiles}
         multiple={!!multiple}
-        ref={(input) => { this.fileChooser = input }}
+        ref={input => {
+          this.fileChooser = input
+        }}
       />
     )
   }

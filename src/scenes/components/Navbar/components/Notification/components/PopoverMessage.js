@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
-import IconMessage from 'react-icons/lib/fa/envelope'
-import Popover from 'base_components/Popover'
+import IconMessage from "react-icons/lib/fa/envelope"
+import Popover from "base_components/Popover"
 
 const PopoverMessage = ({ MessageRowData }) => {
   return (

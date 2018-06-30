@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react"
 // base
-import Panel from 'base_components/Panel'
-import Button from 'base_components/RootButton'
+import Panel from "base_components/Panel"
+import Button from "base_components/RootButton"
 
 /* extending the panel styles */
 const PanelUpdate = Panel.extend`

@@ -1,4 +1,4 @@
-import Container from 'base_components/Container'
+import Container from "base_components/Container"
 
 export default Container.extend`
   .Tabs {

@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { NavLink as LinkRoute } from 'react-router-dom'
+import React from "react"
+import PropTypes from "prop-types"
+import { NavLink as LinkRoute } from "react-router-dom"
 
 const Link = ({ text, url, isStrict, className }) => {
   // check if the link is strict not exact - get active
@@ -10,8 +10,9 @@ const Link = ({ text, url, isStrict, className }) => {
       <LinkRoute
         className={className}
         strict
-        activeStyle={{ color: '#0E90E0' }}
-        to={url}>
+        activeStyle={{ color: "#0E90E0" }}
+        to={url}
+      >
         {text}
       </LinkRoute>
     )
@@ -21,8 +22,9 @@ const Link = ({ text, url, isStrict, className }) => {
     <LinkRoute
       className={className}
       exact
-      activeStyle={{ color: '#0E90E0' }}
-      to={url}>
+      activeStyle={{ color: "#0E90E0" }}
+      to={url}
+    >
       {text}
     </LinkRoute>
   )

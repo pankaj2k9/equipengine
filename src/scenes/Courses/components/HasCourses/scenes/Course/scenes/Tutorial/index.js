@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
-import Modal from './components/Modal'
+import Modal from "./components/Modal"
 
 const Tutorial = ({ match, history }) => {
   return (

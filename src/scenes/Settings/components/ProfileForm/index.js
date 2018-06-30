@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import Button from 'base_components/RootButton'
-import ButtonUpdate from 'base_components/ButtonUpdate'
-import ContainerFlex from 'base_components/ContainerFlex'
-import Divider from 'base_components/Divider'
-import { Label, Switch } from 'base_components/RootForm'
-import UserContacts from 'base_components/UserContacts'
-import UserDetails from 'base_components/UserDetails'
+import React, { Component } from "react"
+import Button from "base_components/RootButton"
+import ButtonUpdate from "base_components/ButtonUpdate"
+import ContainerFlex from "base_components/ContainerFlex"
+import Divider from "base_components/Divider"
+import { Label, Switch } from "base_components/RootForm"
+import UserContacts from "base_components/UserContacts"
+import UserDetails from "base_components/UserDetails"
 
-import NotificationFrequency from './NotificationFrequency'
+import NotificationFrequency from "./NotificationFrequency"
 
 // extending for button set password
 const ButtonSetPassword = Button.extend`
@@ -18,7 +18,7 @@ const ButtonSetPassword = Button.extend`
 `
 
 class Profile extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       firstName: props.profile.firstName,
@@ -32,21 +32,21 @@ class Profile extends Component {
     }
   }
 
-  handleFirstNameChange = (firstName) => this.setState({ firstName })
-  handleLastNameChange = (lastName) => this.setState({ lastName })
-  handleEmailChange = (email) => this.setState({ email })
-  handlePhoneChange = (phone) => this.setState({ phone })
-  handleBirthDateChange = (birthDate) => this.setState({ birthDate })
-  handleAddressChange = (address) => this.setState({ address })
+  handleFirstNameChange = firstName => this.setState({ firstName })
+  handleLastNameChange = lastName => this.setState({ lastName })
+  handleEmailChange = email => this.setState({ email })
+  handlePhoneChange = phone => this.setState({ phone })
+  handleBirthDateChange = birthDate => this.setState({ birthDate })
+  handleAddressChange = address => this.setState({ address })
   handlePrivateMessengerToggle = () =>
     this.setState({ privateMessenger: !this.state.privateMessenger })
-  handleNotificationFrequencyChange = (notificationFrequency) =>
+  handleNotificationFrequencyChange = notificationFrequency =>
     this.setState({ notificationFrequency })
 
   handleSubmit = () => this.props.onSubmit(this.state)
-  handleResetPassword = () => this.props.onResetPassword();
+  handleResetPassword = () => this.props.onResetPassword()
 
-  render () {
+  render() {
     const {
       address,
       birthDate,
@@ -72,11 +72,7 @@ class Profile extends Component {
         />
 
         {/* Reset password button */}
-        <ButtonSetPassword
-          light
-          lightBorder
-          onClick={this.handleResetPassword}
-        >
+        <ButtonSetPassword light lightBorder onClick={this.handleResetPassword}>
           Reset password
         </ButtonSetPassword>
         <Divider />

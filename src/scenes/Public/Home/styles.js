@@ -1,7 +1,10 @@
-import css from 'utils/css'
+import css from "utils/css"
 
 export default css`
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: "Avenir Next", sans-serif;
     font-weight: 800;
   }
@@ -14,7 +17,7 @@ export default css`
  * -------------------------------------
  */
 export const headerHomeStyles = css`
-  background-color: #2F3036;
+  background-color: #2f3036;
 
   @media screen and (min-width: 768px) {
     padding: 14px 35px 0px;
@@ -47,5 +50,5 @@ export const mainHomeStyles = css`
         font-size: 1.74rem;
       }
     }
-}
+  }
 `

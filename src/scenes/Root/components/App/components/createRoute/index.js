@@ -1,6 +1,6 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
-import { isNil } from 'ramda'
+import React from "react"
+import { Route } from "react-router-dom"
+import { isNil } from "ramda"
 
 /**
  * Function which create a route based on the passed route info.

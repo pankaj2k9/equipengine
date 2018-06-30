@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types"
 
 /**
  * -------------------------------------
@@ -18,8 +18,8 @@ export default {
     placeholder: PropTypes.string
   },
   default: {
-    name: 'dropdown',
+    name: "dropdown",
     options: [],
-    placeholder: 'Select...'
+    placeholder: "Select..."
   }
 }

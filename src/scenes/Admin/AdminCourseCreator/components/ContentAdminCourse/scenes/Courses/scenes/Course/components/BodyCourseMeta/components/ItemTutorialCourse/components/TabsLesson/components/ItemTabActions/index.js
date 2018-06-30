@@ -1,23 +1,22 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from "react"
 // components
-import ModalActions from './components/ModalActions'
-import IconMenu from 'react-icons/lib/md/dehaze'
-import IconClose from 'react-icons/lib/md/close'
-import Button from 'base_components/RootButton'
-import ContainerFlex from 'base_components/ContainerFlex'
-import DragDrop, { DroppableList, DroppableListItem } from 'base_components/DragDrop'
+import ModalActions from "./components/ModalActions"
+import IconMenu from "react-icons/lib/md/dehaze"
+import IconClose from "react-icons/lib/md/close"
+import Button from "base_components/RootButton"
+import ContainerFlex from "base_components/ContainerFlex"
+import DragDrop, {
+  DroppableList,
+  DroppableListItem
+} from "base_components/DragDrop"
 // props and default prop types.
-import {
-  headerActions,
-  listActions,
-  listActionsItem
-} from './propTypes'
+import { headerActions, listActions, listActionsItem } from "./propTypes"
 // resources
-import modal from 'hoc/modal'
-import { ButtonAdd } from '../../styles'
-import { headerActionsStyles, listActionsStyles } from './styles'
-import { listActionsData } from './data'
-import dataToArray from 'utils/dataToArray'
+import modal from "hoc/modal"
+import { ButtonAdd } from "../../styles"
+import { headerActionsStyles, listActionsStyles } from "./styles"
+import { listActionsData } from "./data"
+import dataToArray from "utils/dataToArray"
 
 /**
  * -------------------------------------
@@ -26,7 +25,7 @@ import dataToArray from 'utils/dataToArray'
  * @see ListActions
  * -------------------------------------
  */
-const ItemTabActions = ({isOpen, onOpen, onClose}) => (
+const ItemTabActions = ({ isOpen, onOpen, onClose }) => (
   <Fragment>
     <HeaderActions handleShow={onOpen} />
     <ListActions list={dataToArray(listActionsData)} />
@@ -42,9 +41,9 @@ export default modal(ItemTabActions)
  * @see ItemTabActions
  * -------------------------------------
  */
-const HeaderActions = headerActionsStyles(({className, handleShow}) => (
+const HeaderActions = headerActionsStyles(({ className, handleShow }) => (
   <header className={className}>
-    <ButtonAdd text='Add' iconPosition='right' onHandlerClick={handleShow} />
+    <ButtonAdd text="Add" iconPosition="right" onHandlerClick={handleShow} />
   </header>
 ))
 
@@ -58,28 +57,29 @@ HeaderActions.defaultProps = headerActions.default
  * @see ListActionsItem
  * -------------------------------------
  */
-const ListActions = listActionsStyles(({className, onHandlerClick, list}) => (
+const ListActions = listActionsStyles(({ className, onHandlerClick, list }) => (
   <DragDrop list={list}>
     <DroppableList
-      droppableId='droppable-01'
-      type='GROUP_ACTIONS'
+      droppableId="droppable-01"
+      type="GROUP_ACTIONS"
       className={className}
     >
-      {(list) => (
+      {list => (
         <Fragment>
-          {
-            list.map((item, i) => ( // when adding border, we need to include the border in inlineStyle
-              <DroppableListItem
-                draggableId={item.id}
-                type='GROUP_ACTIONS'
-                index={i}
-                key={item.id}
-                inlineStyle={{border: '1px solid #dadada'}}
-              >
-                <ListActionsItem item={item} />
-              </DroppableListItem>
-            ))
-          }
+          {list.map((
+            item,
+            i // when adding border, we need to include the border in inlineStyle
+          ) => (
+            <DroppableListItem
+              draggableId={item.id}
+              type="GROUP_ACTIONS"
+              index={i}
+              key={item.id}
+              inlineStyle={{ border: "1px solid #dadada" }}
+            >
+              <ListActionsItem item={item} />
+            </DroppableListItem>
+          ))}
         </Fragment>
       )}
     </DroppableList>
@@ -95,10 +95,12 @@ ListActions.defaultProps = listActions.default
  * @see ListActions
  * -------------------------------------
  */
-const ListActionsItem = ({item}) => (
+const ListActionsItem = ({ item }) => (
   <Fragment>
     <ContainerFlex isAlignCenter>
-      <i><IconMenu /></i>
+      <i>
+        <IconMenu />
+      </i>
       <div>
         <span>{item.label}</span>
         <p>{item.content}</p>
@@ -106,7 +108,9 @@ const ListActionsItem = ({item}) => (
     </ContainerFlex>
     <ContainerFlex>
       <Button secondary>Edit</Button>
-      <i><IconClose /></i>
+      <i>
+        <IconClose />
+      </i>
     </ContainerFlex>
   </Fragment>
 )

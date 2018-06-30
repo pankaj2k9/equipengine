@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 // components
-import Container from 'base_components/Container'
-import { Tab } from 'react-bootstrap'
-import Tabs from 'base_components/Tabs'
-import ItemTabCourse from './components/ItemTabCourse'
+import Container from "base_components/Container"
+import { Tab } from "react-bootstrap"
+import Tabs from "base_components/Tabs"
+import ItemTabCourse from "./components/ItemTabCourse"
 
-const TabsCoursePackages = styled(({className}) => (
+const TabsCoursePackages = styled(({ className }) => (
   <Container className={className}>
-    <Tabs style={{marginTop: 0}}>
-      <Tab eventKey={1} title='Course Packages'>
+    <Tabs style={{ marginTop: 0 }}>
+      <Tab eventKey={1} title="Course Packages">
         <ItemTabCourse />
       </Tab>
     </Tabs>

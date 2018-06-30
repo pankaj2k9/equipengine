@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import React, { Component } from "react"
+import { Link } from "react-router-dom"
+import styled from "styled-components"
 
-import iconArrowLeft from 'resources/images/arrowLeft.svg'
-import iconWheel from 'resources/images/wheel.svg'
-import ProfileForm from './components/ProfileForm'
+import iconArrowLeft from "resources/images/arrowLeft.svg"
+import iconWheel from "resources/images/wheel.svg"
+import ProfileForm from "./components/ProfileForm"
 
 // TODO probably move to base_component as RouteIconButton
 const BackIconButton = styled(({ className }) => (
-  <Link className={className} to='/secure/home'>
-    <img alt='icon arrow left' src={iconArrowLeft} />
+  <Link className={className} to="/secure/home">
+    <img alt="icon arrow left" src={iconArrowLeft} />
   </Link>
 ))`
   @media screen and (min-width: 768px) {
@@ -50,12 +50,12 @@ class AccountSettings extends Component {
   // TODO componentDidMount() { this.props.actions.fetchProfile() }
   state = {
     profile: {
-      email: 'bla@example.com',
-      firstName: 'Alex',
-      lastName: 'Soroka',
-      phone: '+123456',
+      email: "bla@example.com",
+      firstName: "Alex",
+      lastName: "Soroka",
+      phone: "+123456",
       birthDate: null,
-      address: '415 Acacia Ave. Jamaica, NY 11435',
+      address: "415 Acacia Ave. Jamaica, NY 11435",
       notificationFrequency: {
         activitySummary: false,
         courseResponse: true,
@@ -68,19 +68,16 @@ class AccountSettings extends Component {
 
   handleResetPassword = () => {}
 
-  handleUpdate = (profile) => {}
+  handleUpdate = profile => {}
 
-  render () {
+  render() {
     // TODO from props
     const { profile } = this.state
     return (
       <div>
         <BackIconButton />
         <Centerer>
-          <Header
-            icon={iconWheel}
-            title='Account Settings'
-          />
+          <Header icon={iconWheel} title="Account Settings" />
           <ProfileForm
             profile={profile}
             onSubmit={this.handleUpdate}

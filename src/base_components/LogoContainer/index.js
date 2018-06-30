@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React from "react"
+import styled from "styled-components"
+import { Link } from "react-router-dom"
 
-import Logo from 'resources/images/logo.svg'
-import { $textBoldColor } from 'shared/color.js'
+import Logo from "resources/images/logo.svg"
+import { $textBoldColor } from "shared/color.js"
 
 const Img = styled.img`
   margin-right: 0.5em;
@@ -16,7 +16,7 @@ const Img = styled.img`
 `
 
 const H1 = styled.h1`
-  font-family: 'Avenir Next', sans-serif;
+  font-family: "Avenir Next", sans-serif;
   font-weight: 800;
   font-size: 18px;
   margin-bottom: 0;
@@ -29,8 +29,8 @@ const H1 = styled.h1`
 
 const LogoContainer = ({ className }) => {
   return (
-    <Link className={className} to='/secure/browse-groups'>
-      <Img alt='Logo' src={Logo} />
+    <Link className={className} to="/secure/browse-groups">
+      <Img alt="Logo" src={Logo} />
       <H1 style={{ color: $textBoldColor }}>EquipEngine</H1>
     </Link>
   )

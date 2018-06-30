@@ -1,4 +1,4 @@
-import css from 'utils/css'
+import css from "utils/css"
 
 /**
  * -------------------------------------
@@ -7,15 +7,15 @@ import css from 'utils/css'
  * -------------------------------------
  */
 export default css`
-  padding: ${({padding}) => padding};
-  border-bottom: 1px solid #DADADA;
+  padding: ${({ padding }) => padding};
+  border-bottom: 1px solid #dadada;
   z-index: 1;
 
   a.active {
-    color: #AAAAAA;
+    color: #aaaaaa;
 
-    &:hover{
-        color: #338FFC;
+    &:hover {
+      color: #338ffc;
     }
   }
 
@@ -25,12 +25,12 @@ export default css`
 
   .Breadcrumbs__separator {
     margin: 0 0.2em;
-    color: #AAAAAA;
+    color: #aaaaaa;
   }
 
   @media screen and (min-width: 768px) {
     padding: 16px 35px;
-    position: ${({position}) => position};
+    position: ${({ position }) => position};
     top: 59px;
     background: #fff;
     width: 100%;

@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { identical } from 'ramda'
+import React from "react"
+import PropTypes from "prop-types"
+import { identical } from "ramda"
 //
-import Navbar from '../Navbar'
-import Sidebar from '../Sidebar'
-import toggleSidebar from './hoc/toggleSidebar'
+import Navbar from "../Navbar"
+import Sidebar from "../Sidebar"
+import toggleSidebar from "./hoc/toggleSidebar"
 
 const MainBars = ({
   openSidebar,
@@ -14,7 +14,7 @@ const MainBars = ({
   location
 }) => {
   // browse group path
-  const browseGroupPath = '/secure/browse-groups'
+  const browseGroupPath = "/secure/browse-groups"
   return (
     <div>
       <Navbar onOpenSidebar={openSidebar} accountType={accountType} />

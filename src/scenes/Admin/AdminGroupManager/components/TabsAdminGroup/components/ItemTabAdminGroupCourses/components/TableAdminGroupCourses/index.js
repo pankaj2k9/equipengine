@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react"
 // base components
-import Tables, {TableRow, Th} from 'base_components/Tables'
-import DragDrop from 'base_components/DragDrop'
+import Tables, { TableRow, Th } from "base_components/Tables"
+import DragDrop from "base_components/DragDrop"
 // sub components
-import RowsTableAdminGroupCourses from './components/RowsTableAdminGroupCourses'
+import RowsTableAdminGroupCourses from "./components/RowsTableAdminGroupCourses"
 
 // compose a table header
-const TableHeaderGroupUser = ({children}) => <Th center>{children}</Th>
+const TableHeaderGroupUser = ({ children }) => <Th center>{children}</Th>
 
 const TableAdminGroupCourses = () => (
   <Tables>

@@ -1,5 +1,5 @@
-import css from 'utils/css'
-import RootButtonAdd from 'base_components/ButtonAdd'
+import css from "utils/css"
+import RootButtonAdd from "base_components/ButtonAdd"
 
 /**
  * -------------------------------------
@@ -18,7 +18,8 @@ export const tabsLessonStyles = css`
     .TabsLesson {
       margin-top: 22px;
 
-      .nav-tabs, .tab-content {
+      .nav-tabs,
+      .tab-content {
         padding: 0 35px;
       }
     }

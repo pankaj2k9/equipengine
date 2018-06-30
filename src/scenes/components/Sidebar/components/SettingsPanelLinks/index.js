@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react"
 //
-import Menu from '../Menu'
-import Link from '../Link'
+import Menu from "../Menu"
+import Link from "../Link"
 
 // this is for public other link
 const SettingsPanelLinks = () => (
-  <div className='Sidebar__body__otherPages Sidebar__body__otherPages--settings'>
+  <div className="Sidebar__body__otherPages Sidebar__body__otherPages--settings">
     <Menu>
-      <Link text='Groups' url='/groups' />
-      <Link text='Settings' url='/settings' />
+      <Link text="Groups" url="/groups" />
+      <Link text="Settings" url="/settings" />
     </Menu>
   </div>
 )

@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import Button from 'base_components/RootButton'
+import Button from "base_components/RootButton"
 
-const ModalFooter = ({buttonTitle, buttonHandler}) => (
+const ModalFooter = ({ buttonTitle, buttonHandler }) => (
   <Button onClick={buttonHandler}>{buttonTitle}</Button>
 )
 

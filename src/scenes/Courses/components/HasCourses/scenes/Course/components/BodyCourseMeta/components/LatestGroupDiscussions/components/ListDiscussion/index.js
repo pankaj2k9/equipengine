@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 
-import UserAvatar from 'base_components/UserAvatar'
+import UserAvatar from "base_components/UserAvatar"
 
 const HasDiscussions = styled(({ className, discussions }) => {
   // creating list of dicussion list
@@ -77,7 +77,7 @@ const ListDiscussion = ({ discussions }) => {
   return (
     <p
       style={{
-        color: '#CECECE',
+        color: "#CECECE",
         fontSize: 14
       }}
     >

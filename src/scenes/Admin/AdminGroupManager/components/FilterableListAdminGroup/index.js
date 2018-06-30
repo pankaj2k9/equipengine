@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react"
 // # Containers
-import ContainerFilterableList from '../../../components/ContainerAdminPanel/components/ContainerFilterableList'
-import SearchbarListAdminGroup from './components/SearchbarListAdminGroup'
-import ListAdminGroup from './components/ListAdminGroup'
+import ContainerFilterableList from "../../../components/ContainerAdminPanel/components/ContainerFilterableList"
+import SearchbarListAdminGroup from "./components/SearchbarListAdminGroup"
+import ListAdminGroup from "./components/ListAdminGroup"
 
 const FilterableListAdminGroup = () => (
   <ContainerFilterableList>

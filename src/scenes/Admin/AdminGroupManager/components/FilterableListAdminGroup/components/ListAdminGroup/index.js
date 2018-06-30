@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 
-import IconUser from 'react-icons/lib/fa/user'
+import IconUser from "react-icons/lib/fa/user"
 
 // this is for list group
 const ListItem = styled(({ className }) => (
@@ -20,7 +20,7 @@ const ListItem = styled(({ className }) => (
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${(props) => props.active && 'rgba(184, 184, 184, .2)'};
+  background-color: ${props => props.active && "rgba(184, 184, 184, .2)"};
   color: #111111;
 
   > div span:first-child {

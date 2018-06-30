@@ -1,9 +1,9 @@
-import React from 'react'
-import { createProvider } from 'storext'
+import React from "react"
+import { createProvider } from "storext"
 // assets
-import MastheadHeaderHome from './components/MastheadHeaderHome'
-import NavbarHeaderHome from './components/NavbarHeaderHome'
-import homeStyles, { headerHomeStyles, mainHomeStyles } from './styles'
+import MastheadHeaderHome from "./components/MastheadHeaderHome"
+import NavbarHeaderHome from "./components/NavbarHeaderHome"
+import homeStyles, { headerHomeStyles, mainHomeStyles } from "./styles"
 
 /**
  * -------------------------------------
@@ -11,7 +11,7 @@ import homeStyles, { headerHomeStyles, mainHomeStyles } from './styles'
  * @see Home
  * -------------------------------------
  */
-const HeaderHome = headerHomeStyles(({className}) => (
+const HeaderHome = headerHomeStyles(({ className }) => (
   <header className={className}>
     <NavbarHeaderHome />
     <MastheadHeaderHome />
@@ -24,7 +24,7 @@ const HeaderHome = headerHomeStyles(({className}) => (
  * @see Home
  * -------------------------------------
  */
-const MainHome = mainHomeStyles(({className}) => (
+const MainHome = mainHomeStyles(({ className }) => (
   <main className={className}>
     <section>
       <h3>Why EquipEngine?</h3>
@@ -32,7 +32,7 @@ const MainHome = mainHomeStyles(({className}) => (
   </main>
 ))
 
-const { Provider } = createProvider({isLoggerOn: true})
+const { Provider } = createProvider({ isLoggerOn: true })
 
 /**
  * -------------------------------------
@@ -40,7 +40,7 @@ const { Provider } = createProvider({isLoggerOn: true})
  * @see HeaderHome
  * -------------------------------------
  */
-const Home = homeStyles(({className}) => (
+const Home = homeStyles(({ className }) => (
   <Provider>
     <div className={className}>
       <HeaderHome />

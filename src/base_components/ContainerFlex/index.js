@@ -1,4 +1,4 @@
-import defaultFlexStyles from './styles'
+import defaultFlexStyles from "./styles"
 
 /**
  * -------------------------------------
@@ -6,9 +6,7 @@ import defaultFlexStyles from './styles'
  * @function
  * -------------------------------------
  */
-const ContainerFlex = defaultFlexStyles('div')
+const ContainerFlex = defaultFlexStyles("div")
 
-export {
-  ContainerFlex as default,
-  defaultFlexStyles // create styled-components based on this styles
-}
+// create styled-components based on this styles
+export { ContainerFlex as default, defaultFlexStyles }

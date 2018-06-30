@@ -1,4 +1,4 @@
-import css from 'utils/css'
+import css from "utils/css"
 
 /**
  * -------------------------------------
@@ -17,7 +17,8 @@ export const tabOrganisationSettingsStyles = css`
   }
 
   @media screen and (min-width: 768px) {
-    .nav-tabs, .tab-content {
+    .nav-tabs,
+    .tab-content {
       padding: 0 35px;
     }
 

@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 
 // subscribing on this function makes your component handles a collapsible panel.
-const withCollapsiblePanel = (WrappedComponent) => {
+const withCollapsiblePanel = WrappedComponent => {
   class CollapsiblePanel extends Component {
     constructor(...args) {
       super(...args)
@@ -11,7 +11,7 @@ const withCollapsiblePanel = (WrappedComponent) => {
     }
 
     // to toggle the state open.
-    onToggle = () => this.setState({ open: !this.state.open });
+    onToggle = () => this.setState({ open: !this.state.open })
 
     render() {
       return (

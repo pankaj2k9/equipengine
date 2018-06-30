@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import TeacherUser from './components/TeacherUser'
-import TeacherUserSettings from './components/TeacherUserSettings'
+import TeacherUser from "./components/TeacherUser"
+import TeacherUserSettings from "./components/TeacherUserSettings"
 
 // this is for the teacher user manager container.
 const ContainerTeacherUserManager = styled.div`

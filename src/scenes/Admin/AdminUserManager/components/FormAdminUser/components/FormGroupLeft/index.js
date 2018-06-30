@@ -1,4 +1,4 @@
-import { FormGroup } from 'base_components/RootForm'
+import { FormGroup } from "base_components/RootForm"
 
 // extending form groups
 export default FormGroup.extend`

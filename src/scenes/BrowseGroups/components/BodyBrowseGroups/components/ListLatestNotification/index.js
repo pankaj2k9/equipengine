@@ -1,42 +1,57 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React from "react"
+import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 //
-import DateTime from 'base_components/DateTime'
-import ContainerFlex from 'base_components/ContainerFlex'
-import iconArrowRight from 'resources/images/arrowRight.svg'
+import DateTime from "base_components/DateTime"
+import ContainerFlex from "base_components/ContainerFlex"
+import iconArrowRight from "resources/images/arrowRight.svg"
 
 const ListItem = styled(({ className }) => (
   <li className={className}>
     <ContainerFlex isSpaceBetween isAlignCenter>
-      <DateTime date='22 Sep' time='2:22am' />
-      <p>Jon Mcall commented on
-        <Link to='/secure/activity'>Tutorial 1.1: Communication and Culture</Link>
+      <DateTime date="22 Sep" time="2:22am" />
+      <p>
+        Jon Mcall commented on
+        <Link to="/secure/activity">
+          Tutorial 1.1: Communication and Culture
+        </Link>
       </p>
     </ContainerFlex>
     <ContainerFlex isSpaceBetween isAlignCenter>
-      <DateTime date='22 Sep' time='2:22am' />
-      <p>Jill Mane commented on
-        <Link to='/secure/activity'>Tutorial 1.3: Becoming Equipped to Communicate</Link>
+      <DateTime date="22 Sep" time="2:22am" />
+      <p>
+        Jill Mane commented on
+        <Link to="/secure/activity">
+          Tutorial 1.3: Becoming Equipped to Communicate
+        </Link>
       </p>
     </ContainerFlex>
     <ContainerFlex isSpaceBetween isAlignCenter>
-      <DateTime date='22 Sep' time='2:22am' />
-      <p>Jon Mcall commented on
-        <Link to='/secure/activity'>Tutorial 1.1: Communication and Culture</Link>
+      <DateTime date="22 Sep" time="2:22am" />
+      <p>
+        Jon Mcall commented on
+        <Link to="/secure/activity">
+          Tutorial 1.1: Communication and Culture
+        </Link>
       </p>
     </ContainerFlex>
     <ContainerFlex isSpaceBetween isAlignCenter>
-      <DateTime date='22 Sep' time='2:22am' />
-      <p>Jill Mane commented on
-        <Link to='/secure/activity'>Tutorial 1.3: Becoming Equipped to Communicate</Link>
+      <DateTime date="22 Sep" time="2:22am" />
+      <p>
+        Jill Mane commented on
+        <Link to="/secure/activity">
+          Tutorial 1.3: Becoming Equipped to Communicate
+        </Link>
       </p>
     </ContainerFlex>
     <ContainerFlex isSpaceBetween isAlignCenter>
-      <DateTime date='22 Sep' time='2:22am' />
-      <p>Jill Mane commented on
-        <Link to='/secure/activity'>Tutorial 1.3: Becoming Equipped to Communicate</Link>
+      <DateTime date="22 Sep" time="2:22am" />
+      <p>
+        Jill Mane commented on
+        <Link to="/secure/activity">
+          Tutorial 1.3: Becoming Equipped to Communicate
+        </Link>
       </p>
     </ContainerFlex>
   </li>
@@ -79,7 +94,12 @@ const ListContainer = styled.ul`
 
 const ListLatestNotification = () => (
   <div>
-    <HeaderListLatest>Latest Activity <Link to='/secure/activity'><img alt='icon arrow right' src={iconArrowRight} /></Link></HeaderListLatest>
+    <HeaderListLatest>
+      Latest Activity{" "}
+      <Link to="/secure/activity">
+        <img alt="icon arrow right" src={iconArrowRight} />
+      </Link>
+    </HeaderListLatest>
     <ListContainer>
       <ListItem />
     </ListContainer>

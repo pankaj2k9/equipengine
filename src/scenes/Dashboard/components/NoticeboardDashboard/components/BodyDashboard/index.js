@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react"
 
-import Form, { TextArea } from 'base_components/RootForm'
-import Container from 'base_components/Container'
-import ListNotice from './components/ListNotice'
+import Form, { TextArea } from "base_components/RootForm"
+import Container from "base_components/Container"
+import ListNotice from "./components/ListNotice"
 
 // for body container
 const Body = Container.extend`
@@ -20,8 +20,8 @@ const BodyDashboard = () => (
     <Form>
       <TextArea
         row={2}
-        name='noticeboard'
-        placeholder='Write on the noticeboard...'
+        name="noticeboard"
+        placeholder="Write on the noticeboard..."
       />
     </Form>
     <ListNotice />

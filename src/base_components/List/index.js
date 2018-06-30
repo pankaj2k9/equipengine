@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
 // import all subcomponents
-import ListRow from './components/ListRow'
-import ListRowLeft from './components/ListRowLeft'
-import ListRowRight from './components/ListRowRight'
-import './styles.css'
+import ListRow from "./components/ListRow"
+import ListRowLeft from "./components/ListRowLeft"
+import ListRowRight from "./components/ListRowRight"
+import "./styles.css"
 
 const List = ({ className, children }) => {
   return <ul className={className}>{children}</ul>

@@ -1,31 +1,31 @@
-import { identical, isNil } from 'ramda'
-import { reduce } from 'lodash'
+import { identical, isNil } from "ramda"
+import { reduce } from "lodash"
 //
-import userAvatar from 'resources/images/user.png'
+import userAvatar from "resources/images/user.png"
 
 const fakeUsers = {
-  '23423423424jj324': {
-    _id: '23423423424jj324',
-    name: 'Irish Jane Cual',
-    type: 'Admin',
-    username: 'admin',
-    password: '123456',
+  "23423423424jj324": {
+    _id: "23423423424jj324",
+    name: "Irish Jane Cual",
+    type: "Admin",
+    username: "admin",
+    password: "123456",
     avatar: userAvatar
   },
-  '234238sdjf34234j': {
-    _id: '234238sdjf34234j',
-    name: 'Dennis Cual',
-    type: 'Student',
-    username: 'student',
-    password: '123456',
+  "234238sdjf34234j": {
+    _id: "234238sdjf34234j",
+    name: "Dennis Cual",
+    type: "Student",
+    username: "student",
+    password: "123456",
     avatar: userAvatar
   },
-  '234234nj23lkj423': {
-    _id: '234234nj23lkj423',
-    name: 'Drish Cual',
-    type: 'Teacher',
-    username: 'teacher',
-    password: '123456',
+  "234234nj23lkj423": {
+    _id: "234234nj23lkj423",
+    name: "Drish Cual",
+    type: "Teacher",
+    username: "teacher",
+    password: "123456",
     avatar: userAvatar
   }
 }
@@ -37,7 +37,7 @@ const fakeUsers = {
  * @param {Object} account
  * @return {Promise}
  */
-export const fetchUser = ({ username = '', password = '' }) => {
+export const fetchUser = ({ username = "", password = "" }) => {
   // fake users to array.
   const fakeUsersArr = reduce(
     fakeUsers,
@@ -47,7 +47,7 @@ export const fetchUser = ({ username = '', password = '' }) => {
 
   // find user.
   const loggedUser = fakeUsersArr.find(
-    (user) =>
+    user =>
       identical(user.username, username) && identical(user.password, password)
   )
 
@@ -56,15 +56,15 @@ export const fetchUser = ({ username = '', password = '' }) => {
     setTimeout(() => {
       // success obj
       const successObj = {
-        status: 'successfully',
-        message: 'Successfully.',
+        status: "successfully",
+        message: "Successfully.",
         user: loggedUser
       }
 
       // error obj
       const errorObj = {
-        status: 'error',
-        message: 'Username or password is invalid.',
+        status: "error",
+        message: "Username or password is invalid.",
         user: {}
       }
 

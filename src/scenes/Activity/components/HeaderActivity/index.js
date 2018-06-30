@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 //
-import ContainerFlex from 'base_components/ContainerFlex'
+import ContainerFlex from "base_components/ContainerFlex"
 
 const HeaderActivity = styled(({ className }) => (
   <ContainerFlex isAlignCenter isSpaceBetween className={className}>

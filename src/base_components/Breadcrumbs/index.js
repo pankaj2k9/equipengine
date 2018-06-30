@@ -1,19 +1,19 @@
-import React from 'react'
+import React from "react"
 //
-import { NavLink } from 'react-router-dom'
-import { Breadcrumbs as RootBreadcrumbs } from 'react-breadcrumbs-dynamic/dist/src'
+import { NavLink } from "react-router-dom"
+import { Breadcrumbs as RootBreadcrumbs } from "react-breadcrumbs-dynamic/dist/src"
 // assets
-import breadCrumbsStyles from './styles'
-import breadCrumbs from './propTypes'
+import breadCrumbsStyles from "./styles"
+import breadCrumbs from "./propTypes"
 
-const Breadcrumbs = breadCrumbsStyles(({className}) => (
+const Breadcrumbs = breadCrumbsStyles(({ className }) => (
   <div className={className}>
     <RootBreadcrumbs
-      separator={<span className='Breadcrumbs__separator'> > </span>}
+      separator={<span className="Breadcrumbs__separator"> > </span>}
       item={NavLink}
-      finalItem={'span'}
+      finalItem={"span"}
       finalProps={{
-        style: { color: '#616161' }
+        style: { color: "#616161" }
       }}
     />
   </div>

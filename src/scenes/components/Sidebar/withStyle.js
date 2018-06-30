@@ -1,67 +1,67 @@
-import styled from 'styled-components'
-import { identical } from 'ramda'
+import styled from "styled-components"
+import { identical } from "ramda"
 
 // Add Height based on the passed object.
 const addHeight = ({ type, pathname }) => {
-  const browseGroupPath = '/secure/browse-groups'
+  const browseGroupPath = "/secure/browse-groups"
   // check first if the current location is equal to browseGroupPath.
   if (identical(pathname, browseGroupPath)) {
-    return '0px'
+    return "0px"
   }
 
-  const homePath = '/secure/home'
+  const homePath = "/secure/home"
   // check first if the current location is equal to homePath.
   if (identical(pathname, homePath)) {
-    return '0px'
+    return "0px"
   }
 
-  const activityPath = '/secure/activity'
+  const activityPath = "/secure/activity"
   // check first if the current location is equal to activityPath.
   if (identical(pathname, activityPath)) {
-    return '0px'
+    return "0px"
   }
 
-  const settingsPath = '/secure/settings'
+  const settingsPath = "/secure/settings"
   // check first if the current location is equal to settingsPath.
   if (identical(pathname, settingsPath)) {
-    return '0px'
+    return "0px"
   }
 
   // return 0
-  return '100vh'
+  return "100vh"
 }
 
 // Add Display left based on the passed object.
 const addDisplay = ({ type, pathname }) => {
-  const browseGroupPath1 = '/secure/browse-groups'
+  const browseGroupPath1 = "/secure/browse-groups"
   // check first if the current location is equal to browseGroupPath.
   if (identical(pathname, browseGroupPath1)) {
-    return 'none'
+    return "none"
   }
 
-  const homePath2 = '/secure/home'
+  const homePath2 = "/secure/home"
   // check first if the current location is equal to homePath.
   if (identical(pathname, homePath2)) {
-    return 'none'
+    return "none"
   }
 
-  const activityPath = '/secure/activity'
+  const activityPath = "/secure/activity"
   // check first if the current location is equal to activityPath.
   if (identical(pathname, activityPath)) {
-    return 'none'
+    return "none"
   }
 
-  const settingsPath = '/secure/settings'
+  const settingsPath = "/secure/settings"
   // check first if the current location is equal to settingsPath.
   if (identical(pathname, settingsPath)) {
-    return 'none'
+    return "none"
   }
 
   // return block
-  return 'block'
+  return "block"
 }
 
-export default (WrappedComponent) =>
+export default WrappedComponent =>
   styled(WrappedComponent)`
     position: fixed;
     top: 0;
@@ -123,10 +123,12 @@ export default (WrappedComponent) =>
       margin-left: 0px;
       z-index: 1;
       opacity: 1;
-      height: ${(props) => addHeight({ type: props.type, pathname: props.pathname })};
+      height: ${props =>
+        addHeight({ type: props.type, pathname: props.pathname })};
 
       .Sidebar__body {
-        display: ${(props) => addDisplay({ type: props.type, pathname: props.pathname })};
+        display: ${props =>
+          addDisplay({ type: props.type, pathname: props.pathname })};
       }
 
       .Sidebar__inner {

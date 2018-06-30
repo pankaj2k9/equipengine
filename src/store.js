@@ -1,11 +1,11 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import { routerMiddleware } from 'react-router-redux'
-import { loadState } from 'localStorage'
+import { createStore, applyMiddleware, compose } from "redux"
+import { routerMiddleware } from "react-router-redux"
+import { loadState } from "localStorage"
 // middlewares
-import thunk from 'redux-thunk'
-import logger from 'redux-logger'
-import createHistory from 'history/createBrowserHistory'
-import rootReducer from './reducer'
+import thunk from "redux-thunk"
+import logger from "redux-logger"
+import createHistory from "history/createBrowserHistory"
+import rootReducer from "./reducer"
 
 // Our history syncs our browserHistory with our store and must be exported so we can use it within our routes later.
 const history = createHistory()
@@ -16,10 +16,10 @@ const enhancers = []
 const middleware = [thunk, routerMiddleware(history), logger]
 
 // we will use dev tools if and only if the environment is on development.
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   const devToolsExtension = window.devToolsExtension
 
-  if (typeof devToolsExtension === 'function') {
+  if (typeof devToolsExtension === "function") {
     enhancers.push(devToolsExtension())
   }
 }

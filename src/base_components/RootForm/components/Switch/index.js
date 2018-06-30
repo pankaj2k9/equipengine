@@ -1,16 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 
 const Switch = styled(({ className, name, value, onChange }) => (
   <label className={className}>
-    <input
-      type='checkbox'
-      name={name}
-      checked={value}
-      onChange={onChange}
-    />
-    <span className='slider round' />
+    <input type="checkbox" name={name} checked={value} onChange={onChange} />
+    <span className="slider round" />
   </label>
 ))`
   position: relative;
@@ -41,7 +36,7 @@ const Switch = styled(({ className, name, value, onChange }) => (
 
   .slider:before {
     position: absolute;
-    content: '';
+    content: "";
     height: 20px;
     width: 20px;
     left: 2px;
@@ -54,7 +49,7 @@ const Switch = styled(({ className, name, value, onChange }) => (
    * On-Off customizations
    */
   .slider:after {
-    content: 'OFF';
+    content: "OFF";
     float: right;
     color: white;
     padding-right: 7px;
@@ -62,7 +57,7 @@ const Switch = styled(({ className, name, value, onChange }) => (
   }
 
   input:checked + .slider:after {
-    content: 'ON';
+    content: "ON";
     float: left;
     color: white;
     padding-left: 10px;

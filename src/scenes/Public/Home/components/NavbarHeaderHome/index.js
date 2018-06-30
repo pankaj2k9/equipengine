@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react"
 // resources
-import { Navbar } from 'react-bootstrap'
+import { Navbar } from "react-bootstrap"
 import navbarHeaderHomeStyles, {
   Logo,
   Nav,
   NavLink,
   LinkLogin,
   LinkSignup
-} from './styles'
-import logoImg from 'resources/images/logo.svg'
+} from "./styles"
+import logoImg from "resources/images/logo.svg"
 
 /**
  * -------------------------------------
@@ -16,12 +16,12 @@ import logoImg from 'resources/images/logo.svg'
  * @see Home
  * -------------------------------------
  */
-const NavbarHeaderHome = navbarHeaderHomeStyles(({className}) => (
+const NavbarHeaderHome = navbarHeaderHomeStyles(({ className }) => (
   <Navbar inverse collapseOnSelect className={className}>
     <Navbar.Header>
       <Navbar.Brand>
-        <Logo to='/'>
-          <img alt='logo img' src={logoImg} />
+        <Logo to="/">
+          <img alt="logo img" src={logoImg} />
           EquipEngine
         </Logo>
       </Navbar.Brand>
@@ -30,18 +30,24 @@ const NavbarHeaderHome = navbarHeaderHomeStyles(({className}) => (
     <Navbar.Collapse>
       <Nav>
         <li>
-          <NavLink to='/features'>Features</NavLink>
+          <NavLink to="/features">Features</NavLink>
         </li>
       </Nav>
       <Nav>
         <li>
-          <NavLink activeClassName='active' to='/help'>Help</NavLink>
+          <NavLink activeClassName="active" to="/help">
+            Help
+          </NavLink>
         </li>
         <li>
-          <LinkLogin activeClassName='active' to='/login'>Login</LinkLogin>
+          <LinkLogin activeClassName="active" to="/login">
+            Login
+          </LinkLogin>
         </li>
         <li>
-          <LinkSignup activeClassName='active' to='/signup'>Signup</LinkSignup>
+          <LinkSignup activeClassName="active" to="/signup">
+            Signup
+          </LinkSignup>
         </li>
       </Nav>
     </Navbar.Collapse>

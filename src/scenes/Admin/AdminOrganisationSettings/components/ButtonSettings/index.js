@@ -1,5 +1,5 @@
-import css from 'utils/css'
-import Button from 'base_components/RootButton'
+import css from "utils/css"
+import Button from "base_components/RootButton"
 
 const ButtonSettings = css`
   margin-top: 3em;

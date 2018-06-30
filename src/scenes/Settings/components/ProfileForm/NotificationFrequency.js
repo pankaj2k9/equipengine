@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import ContainerFlex from 'base_components/ContainerFlex'
-import { Label, Switch } from 'base_components/RootForm'
+import React, { Component } from "react"
+import styled from "styled-components"
+import ContainerFlex from "base_components/ContainerFlex"
+import { Label, Switch } from "base_components/RootForm"
 
 const GreyPanel = styled.div`
-  background: #F3F3F3;
+  background: #f3f3f3;
   padding: 1.8em;
   margin-bottom: 2em;
 
@@ -16,24 +16,27 @@ const GreyPanel = styled.div`
 class NotificationFrequency extends Component {
   handleEmailNotificationsChange = ({ target: { checked } }) => {
     this.props.onChange(
-      checked ? {
-        ...this.props.notificationFrequency,
-        emailNotifications: true
-      } : {
-        emailNotifications: false,
-        activitySummary: false,
-        courseResponse: false,
-        groupDiscussion: false,
-        privateMessage: false
-      })
+      checked
+        ? {
+            ...this.props.notificationFrequency,
+            emailNotifications: true
+          }
+        : {
+            emailNotifications: false,
+            activitySummary: false,
+            courseResponse: false,
+            groupDiscussion: false,
+            privateMessage: false
+          }
+    )
   }
 
-  handleActivitySummaryChange = () => this.handleConfigChange('activitySummary')
-  handleCourseResponseChange = () => this.handleConfigChange('courseResponse')
-  handleGroupDiscussionChange = () => this.handleConfigChange('groupDiscussion')
-  handlePrivateMessageChange = () => this.handleConfigChange('privateMessage')
+  handleActivitySummaryChange = () => this.handleConfigChange("activitySummary")
+  handleCourseResponseChange = () => this.handleConfigChange("courseResponse")
+  handleGroupDiscussionChange = () => this.handleConfigChange("groupDiscussion")
+  handlePrivateMessageChange = () => this.handleConfigChange("privateMessage")
 
-  handleConfigChange = (configName) => {
+  handleConfigChange = configName => {
     const { notificationFrequency } = this.props
     this.props.onChange({
       ...notificationFrequency,
@@ -41,7 +44,7 @@ class NotificationFrequency extends Component {
     })
   }
 
-  render () {
+  render() {
     const {
       activitySummary,
       courseResponse,

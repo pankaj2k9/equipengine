@@ -1,30 +1,30 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { Route, Switch } from 'react-router-dom'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import { Route, Switch } from "react-router-dom"
 // Components
-import ErrorBoundary from 'base_components/ErrorBoundary'
-import Breadcrumbs from 'base_components/Breadcrumbs'
+import ErrorBoundary from "base_components/ErrorBoundary"
+import Breadcrumbs from "base_components/Breadcrumbs"
 // Scenes
-import Loader from 'base_components/Loader'
-import Loadable from 'react-loadable'
+import Loader from "base_components/Loader"
+import Loadable from "react-loadable"
 // New course modal
-import NewCourseModal from './scenes/NewCourseModal'
+import NewCourseModal from "./scenes/NewCourseModal"
 // Course library
 const AsyncCourses = Loadable({
-  loader: () => import('./scenes/Courses'),
+  loader: () => import("./scenes/Courses"),
   loading: Loader,
   timeout: 10000
 })
 // Add-ons
 const AsyncAddons = Loadable({
-  loader: () => import('./scenes/Addons'),
+  loader: () => import("./scenes/Addons"),
   loading: Loader,
   timeout: 10000
 })
 // Videos
 const AsyncVideos = Loadable({
-  loader: () => import('./scenes/Videos'),
+  loader: () => import("./scenes/Videos"),
   loading: Loader,
   timeout: 10000
 })
@@ -47,8 +47,8 @@ const ContentAdminCourse = ({ match, onClose, isOpen }) => (
       <Route
         strict
         path={`${match.url}/courses`}
-        render={(props) => (
-          <ErrorBoundary errMsg='Something went wrong in displaying the courses page.'>
+        render={props => (
+          <ErrorBoundary errMsg="Something went wrong in displaying the courses page.">
             <AsyncCourses {...props} />
           </ErrorBoundary>
         )}
@@ -56,8 +56,8 @@ const ContentAdminCourse = ({ match, onClose, isOpen }) => (
       <Route
         strict
         path={`${match.url}/add-ons`}
-        render={(props) => (
-          <ErrorBoundary errMsg='Something went wrong in displaying the courses page.'>
+        render={props => (
+          <ErrorBoundary errMsg="Something went wrong in displaying the courses page.">
             <AsyncAddons {...props} />
           </ErrorBoundary>
         )}
@@ -65,8 +65,8 @@ const ContentAdminCourse = ({ match, onClose, isOpen }) => (
       <Route
         strict
         path={`${match.url}/videos`}
-        render={(props) => (
-          <ErrorBoundary errMsg='Something went wrong in displaying the courses page.'>
+        render={props => (
+          <ErrorBoundary errMsg="Something went wrong in displaying the courses page.">
             <AsyncVideos {...props} />
           </ErrorBoundary>
         )}

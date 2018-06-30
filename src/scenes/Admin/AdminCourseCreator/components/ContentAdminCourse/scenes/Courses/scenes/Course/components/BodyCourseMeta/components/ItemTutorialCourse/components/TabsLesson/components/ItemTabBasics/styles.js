@@ -1,4 +1,4 @@
-import css from 'utils/css'
+import css from "utils/css"
 
 /**
  * -------------------------------------
@@ -22,16 +22,16 @@ export const labelGroupStyles = css`
  * -------------------------------------
  */
 export const listThingsStyles = css`
-  border: 1px solid #D8D8D8;
+  border: 1px solid #d8d8d8;
   margin-top: 0.7em;
   border-radius: 4px;
   padding-bottom: 4em;
 
-  li{
+  li {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    color: #D8D8D8;
+    color: #d8d8d8;
     padding: 0.7em;
 
     i {

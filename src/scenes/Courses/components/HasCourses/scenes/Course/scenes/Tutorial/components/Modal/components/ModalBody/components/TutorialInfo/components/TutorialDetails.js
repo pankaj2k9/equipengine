@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react"
 
-import ModalBox from '../../../../ModalBox'
-import { $black, $border } from 'shared/color.js'
+import ModalBox from "../../../../ModalBox"
+import { $black, $border } from "shared/color.js"
 
 const TutorialDetails = () => (
-  <ModalBox style={tutorialDetailsStyle.div} className='TutorialInfo__details'>
+  <ModalBox style={tutorialDetailsStyle.div} className="TutorialInfo__details">
     <h3 style={tutorialDetailsStyle.headline}>Tutorial 1</h3>
     <p>
       Text goes here that explains what this tutorial is about. It could inlude
@@ -20,13 +20,13 @@ const TutorialDetails = () => (
 const tutorialDetailsStyle = {
   div: {
     borderBottom: $border,
-    flexDirection: 'column'
+    flexDirection: "column"
   },
   headline: {
     color: $black,
-    fontSize: '1.2rem',
+    fontSize: "1.2rem",
     fontWeight: 800,
-    margin: '15px 0px 15px'
+    margin: "15px 0px 15px"
   }
 }
 

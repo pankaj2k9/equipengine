@@ -1,25 +1,25 @@
-import React from 'react'
+import React from "react"
 
 import {
   MainInnerContainer,
   MainHeaderTitle,
   MainLeft,
   MainRight
-} from 'base_components/Main'
-import TableFiles from 'base_components/TableFiles'
-import SearchBar from 'base_components/RootSearchFileBar'
+} from "base_components/Main"
+import TableFiles from "base_components/TableFiles"
+import SearchBar from "base_components/RootSearchFileBar"
 
 // test data
 const files = [
   {
-    id: 'ysdjfk',
-    file: 'Submissions instructions.pdf',
-    date: '22 April 17'
+    id: "ysdjfk",
+    file: "Submissions instructions.pdf",
+    date: "22 April 17"
   },
   {
-    id: 'yskjdksf',
-    file: 'Showing culture.ptt',
-    date: '19 March 17'
+    id: "yskjdksf",
+    file: "Showing culture.ptt",
+    date: "19 March 17"
   }
 ]
 

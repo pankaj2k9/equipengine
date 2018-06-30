@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import IconPlus from 'react-icons/lib/fa/plus'
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import IconPlus from "react-icons/lib/fa/plus"
 /* For Modal */
-import { Modal } from 'react-bootstrap'
-import ThreadModalBody from './components/ThreadModalBody'
-import ThreadModalFooter from './components/ThreadModalFooter'
-import ModalHeader from 'react-bootstrap/lib/ModalHeader'
+import { Modal } from "react-bootstrap"
+import ThreadModalBody from "./components/ThreadModalBody"
+import ThreadModalFooter from "./components/ThreadModalFooter"
+import ModalHeader from "react-bootstrap/lib/ModalHeader"
 /* other component */
-import { ButtonIcon } from 'base_components/RootButton'
+import { ButtonIcon } from "base_components/RootButton"
 
 const ThreadModal = styled(Modal)`
   .modal-dialog {
@@ -16,7 +16,8 @@ const ThreadModal = styled(Modal)`
     height: 100%;
     margin: 0;
 
-    .modal-header, .modal-footer {
+    .modal-header,
+    .modal-footer {
       border-bottom: 1px solid #dadada;
     }
 
@@ -31,7 +32,7 @@ const ThreadModal = styled(Modal)`
 
 // New Thread Component.
 class Thread extends Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
       showModal: false
@@ -40,13 +41,13 @@ class Thread extends Component {
 
   close = () => {
     this.setState({ showModal: false })
-  };
+  }
 
   open = () => {
     this.setState({ showModal: true })
-  };
+  }
 
-  render () {
+  render() {
     return (
       <div>
         <ButtonIcon secondary onClick={this.open}>

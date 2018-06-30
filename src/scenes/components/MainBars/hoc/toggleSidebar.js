@@ -1,24 +1,24 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from "react"
+import PropTypes from "prop-types"
 
-const toggleSidebar = (WrappedComponent) => {
+const toggleSidebar = WrappedComponent => {
   class ToggleSidebar extends Component {
     static propTypes = {
       location: PropTypes.object.isRequired
-    };
+    }
 
     state = {
       isSidebarOpen: false
-    };
+    }
 
     // opening the sidebar
     openSidebar = () =>
       this.setState({
         isSidebarOpen: true
-      });
+      })
 
     // closing the sidebar
-    closeSidebar = (e) => {
+    closeSidebar = e => {
       // we only want to update the state when the sidebar wrapper is clicked
       // if the child of the sidebar is clicked, we dont want to close the sidebar
       if (e.target === e.currentTarget) {
@@ -26,7 +26,7 @@ const toggleSidebar = (WrappedComponent) => {
           isSidebarOpen: false
         })
       }
-    };
+    }
 
     componentWillReceiveProps(nextProps) {
       // we need to check here if the key of location is changed.

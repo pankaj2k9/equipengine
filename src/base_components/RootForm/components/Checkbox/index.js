@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 
 // for checkbox
 const Checkbox = styled(({ name, className }) => (
   <div className={className}>
-    <input className='Checkbox' name={name} type='checkbox' />
+    <input className="Checkbox" name={name} type="checkbox" />
     <label htmlFor={name} />
   </div>
 ))`
@@ -32,7 +32,7 @@ const Checkbox = styled(({ name, className }) => (
       width: 100%;
 
       &:after {
-        content: '';
+        content: "";
         border: 2px solid #fff;
         border-top: none;
         border-right: none;
@@ -46,7 +46,7 @@ const Checkbox = styled(({ name, className }) => (
       }
     }
 
-   &:checked + label {
+    &:checked + label {
       background-color: #338ffc;
       border-color: #338ffc;
     }
@@ -64,8 +64,8 @@ Checkbox.propTypes = {
 
 const CheckboxCircleSecondary = styled(({ name, className }) => (
   <div className={className}>
-    <input className='Checkbox--secondary' name={name} type='checkbox' />
-    <label className='Label--secondary' htmlFor={name} />
+    <input className="Checkbox--secondary" name={name} type="checkbox" />
+    <label className="Label--secondary" htmlFor={name} />
   </div>
 ))`
   width: 25px;
@@ -92,7 +92,7 @@ const CheckboxCircleSecondary = styled(({ name, className }) => (
       border-radius: 50%;
 
       &:after {
-        content: '';
+        content: "";
         height: 5px;
         width: 12px;
         position: absolute;
@@ -118,8 +118,8 @@ CheckboxCircleSecondary.propTypes = {
 
 const CheckboxCircle = styled(({ name, className }) => (
   <div className={className}>
-    <input className='Checkbox--circle' name={name} type='checkbox' />
-    <label className='Label--circle' htmlFor={name} />
+    <input className="Checkbox--circle" name={name} type="checkbox" />
+    <label className="Label--circle" htmlFor={name} />
   </div>
 ))`
   display: inline-block;

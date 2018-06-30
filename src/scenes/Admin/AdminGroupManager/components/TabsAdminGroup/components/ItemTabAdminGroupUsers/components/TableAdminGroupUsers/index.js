@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 // base
-import Tables, { TableRow, Th } from 'base_components/Tables'
+import Tables, { TableRow, Th } from "base_components/Tables"
 // sub components
-import RowsTableAdminGroupUsers from './components/RowsTableAdminGroupUsers'
+import RowsTableAdminGroupUsers from "./components/RowsTableAdminGroupUsers"
 // resources
-import arrowDown from 'resources/images/arrowDown.svg'
+import arrowDown from "resources/images/arrowDown.svg"
 
 const Icon = styled.img`
   margin-left: 1px;
@@ -16,7 +16,7 @@ const Icon = styled.img`
 const TableHeaderGroupUser = ({ children, withIcon }) => (
   <Th center>
     {children}
-    {withIcon && <Icon alt='icon Search' src={arrowDown} />}
+    {withIcon && <Icon alt="icon Search" src={arrowDown} />}
   </Th>
 )
 

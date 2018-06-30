@@ -1,5 +1,5 @@
-import css from 'utils/css'
-import { defaultFlexStyles } from 'base_components/ContainerFlex'
+import css from "utils/css"
+import { defaultFlexStyles } from "base_components/ContainerFlex"
 
 // Styles for FooterTotalWeights
 export default css`
@@ -20,7 +20,7 @@ export default css`
 `
 
 // default flex styles is used for creating styled component based on the styles.
-export const FooterFlex = defaultFlexStyles('footer')
+export const FooterFlex = defaultFlexStyles("footer")
 
 // for label component
 export const LabelTotal = css`
@@ -28,5 +28,5 @@ export const LabelTotal = css`
   text-align: center;
   background-color: #e9e9e9;
   font-size: 1.5rem;
-  color: ${(props) => props.color};
-`('label')
+  color: ${props => props.color};
+`("label")

@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import iconSearchO from 'resources/images/searchO.svg'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import iconSearchO from "resources/images/searchO.svg"
 
-import Form from 'base_components/RootForm'
+import Form from "base_components/RootForm"
 
 // create Input text
 const TextContainer = styled.div`
@@ -45,9 +45,14 @@ const SearchBar = styled(({ className, placeholder }) => (
   <Form className={className}>
     <TextContainer>
       <span>
-        <img alt='icon Search' src={iconSearchO} />
+        <img alt="icon Search" src={iconSearchO} />
       </span>
-      <input name='searchbar' type='text' placeholder="Search People" value='' />
+      <input
+        name="searchbar"
+        type="text"
+        placeholder="Search People"
+        value=""
+      />
     </TextContainer>
   </Form>
 ))`

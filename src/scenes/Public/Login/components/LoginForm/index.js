@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import Button from 'base_components/RootButton'
-import withState from './hoc/withState'
-import { identical } from 'ramda'
+import Button from "base_components/RootButton"
+import withState from "./hoc/withState"
+import { identical } from "ramda"
 
 const LoginForm = ({
   onHandleChange,
@@ -15,12 +15,12 @@ const LoginForm = ({
   history
 }) => {
   // event handler for form onSubmit event.
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault()
     // chaining on the promise data
-    loggedUser({ username, password }).then((res) => {
+    loggedUser({ username, password }).then(res => {
       // if successfull, we will redirect to other page.
-      if (identical(res.status, 'successfully')) {
+      if (identical(res.status, "successfully")) {
         // redirec based on the user type.
         // if type is student or teacher
         // if (compose(not, identical(res.user.type))('Admin')) {
@@ -41,17 +41,17 @@ const LoginForm = ({
       <input
         autoFocus
         onChange={onHandleChange}
-        name='username'
-        type='text'
+        name="username"
+        type="text"
         value={username}
-        placeholder='Username'
+        placeholder="Username"
       />
       <input
         onChange={onHandleChange}
-        name='password'
-        type='password'
+        name="password"
+        type="password"
         value={password}
-        placeholder='Password'
+        placeholder="Password"
       />
       <Button disabled={isPending}>Login</Button>
     </form>

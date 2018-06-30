@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react"
 
-import './styles.css'
+import "./styles.css"
 
 const TutorialsCompleted = () => {
   return (
-    <div className='TutorialsCompleted'>
+    <div className="TutorialsCompleted">
       <div />
       <span>0 of 22 completed</span>
     </div>

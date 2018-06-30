@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import { Link } from "react-router-dom"
 
-import iconInfo from './info.svg'
+import iconInfo from "./info.svg"
 
 const InformationText = styled(({ className, text, to }) => (
   <Link className={className} to={to}>
-    <img alt='Icon group info' src={iconInfo} />
+    <img alt="Icon group info" src={iconInfo} />
     {text}
   </Link>
 ))`

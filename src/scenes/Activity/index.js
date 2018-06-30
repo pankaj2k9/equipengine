@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 //
-import HeaderActivity from './components/HeaderActivity'
+import HeaderActivity from "./components/HeaderActivity"
 
 /**
    TODO:

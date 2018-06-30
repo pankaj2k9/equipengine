@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 
-const modal = (WrappedComponent) => {
+const modal = WrappedComponent => {
   return class Modal extends Component {
     state = {
       isOpen: false
@@ -10,12 +10,12 @@ const modal = (WrappedComponent) => {
       this.setState({ isOpen: false })
     }
 
-    handleOpen = (e) => {
+    handleOpen = e => {
       e.preventDefault()
       this.setState({ isOpen: true })
     }
 
-    render () {
+    render() {
       return (
         <WrappedComponent
           {...this.props}

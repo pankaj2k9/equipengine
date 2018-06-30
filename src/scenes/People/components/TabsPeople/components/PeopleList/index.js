@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React from "react"
+import styled from "styled-components"
+import { Link } from "react-router-dom"
 
-import UserAvatar from 'base_components/UserAvatar'
-import avatar from 'resources/images/user.png'
-import Button from 'base_components/RootButton'
+import UserAvatar from "base_components/UserAvatar"
+import avatar from "resources/images/user.png"
+import Button from "base_components/RootButton"
 
 // People item template
 const PeopleItem = styled(({ className }) => (
@@ -12,7 +12,9 @@ const PeopleItem = styled(({ className }) => (
     <div>
       <UserAvatar image={avatar} />
       <p>Jane Doe</p>
-      <Link to='/secure/messages'><Button large>Send Message</Button></Link>
+      <Link to="/secure/messages">
+        <Button large>Send Message</Button>
+      </Link>
     </div>
   </li>
 ))`

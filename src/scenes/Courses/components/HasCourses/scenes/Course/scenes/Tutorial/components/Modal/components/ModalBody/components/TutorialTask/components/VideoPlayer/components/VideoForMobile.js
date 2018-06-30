@@ -1,19 +1,19 @@
-import React from 'react'
-import { Player } from 'video-react'
+import React from "react"
+import { Player } from "video-react"
 
-import videoSrc from '../sample.mp4'
-import posterSrc from '../poster.png'
+import videoSrc from "../sample.mp4"
+import posterSrc from "../poster.png"
 
 class VideoForMobile extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     // subscribe state change
     this.refs.player.subscribeToStateChange(this.props.handleStateChange)
   }
 
-  render () {
+  render() {
     return (
       <div>
-        <Player ref='player' poster={posterSrc} playsInline>
+        <Player ref="player" poster={posterSrc} playsInline>
           <source src={videoSrc} />
         </Player>
       </div>

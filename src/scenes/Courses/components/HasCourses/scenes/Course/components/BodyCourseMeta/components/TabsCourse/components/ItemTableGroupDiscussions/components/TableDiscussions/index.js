@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
-import TableData from './components/TableData'
-import TableDataPosted from './components/TableDataPosted'
-import TableDataActivity from './components/TableDataActivity'
-import Tables, { TableRow } from 'base_components/Tables'
+import TableData from "./components/TableData"
+import TableDataPosted from "./components/TableDataPosted"
+import TableDataActivity from "./components/TableDataActivity"
+import Tables, { TableRow } from "base_components/Tables"
 
 const TableDiscussions = ({ discussions }) => {
-  const discussionRows = discussions.map((item) => (
+  const discussionRows = discussions.map(item => (
     <TableRow key={item.id}>
       <TableDataPosted discussion={item} />
       <TableData>{item.dateAdded}</TableData>
@@ -21,7 +21,9 @@ const TableDiscussions = ({ discussions }) => {
       <thead>
         <TableRow>
           <th />
-          <th width="24%" style={{ textAlign: 'center'}}>Date Added</th>
+          <th width="24%" style={{ textAlign: "center" }}>
+            Date Added
+          </th>
           <th>Comment</th>
           <th width="22%">Latest Activity</th>
         </TableRow>

@@ -1,28 +1,28 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 // for item table files
-import Download from 'base_components/Download'
-import Table, { TableRow } from 'base_components/Tables'
-import iconDownload from 'resources/images/download.svg'
-import MediaQuery from 'react-responsive'
+import Download from "base_components/Download"
+import Table, { TableRow } from "base_components/Tables"
+import iconDownload from "resources/images/download.svg"
+import MediaQuery from "react-responsive"
 
 const TableFiles = ({ files }) => {
-  const listOfFiles = files.map((file) => (
+  const listOfFiles = files.map(file => (
     <TableRow key={file.id}>
       <td>{file.file}</td>
       <td>{file.date}</td>
       <td>
         <div
           style={{
-            display: 'block',
-            textAlign: 'right',
-            paddingRight: '15px'
+            display: "block",
+            textAlign: "right",
+            paddingRight: "15px"
           }}
         >
-          <MediaQuery query='(min-device-width: 768px)'>
+          <MediaQuery query="(min-device-width: 768px)">
             <Download />
           </MediaQuery>
-          <img style={{ cursor: 'pointer' }} alt='' src={iconDownload} />
+          <img style={{ cursor: "pointer" }} alt="" src={iconDownload} />
         </div>
       </td>
     </TableRow>

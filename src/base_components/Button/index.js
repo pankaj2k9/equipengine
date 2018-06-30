@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
-import './styles.css'
+import "./styles.css"
 
 const Button = ({ style, text, handleClick, children }) => {
   return (
     <button
       style={style}
       onClick={handleClick}
-      className='Button'
-      type='button'
+      className="Button"
+      type="button"
     >
       {text}
       {children}

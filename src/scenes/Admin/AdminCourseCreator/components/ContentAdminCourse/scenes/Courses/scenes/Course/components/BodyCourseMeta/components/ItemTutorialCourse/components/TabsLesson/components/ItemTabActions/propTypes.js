@@ -1,12 +1,11 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types"
 
 /**
  * -------------------------------------
  * Add prop types and default props in ItemTabActions
  * -------------------------------------
  */
-export default {
-}
+export default {}
 
 /**
  * -------------------------------------
@@ -18,7 +17,7 @@ export const headerActions = {
     handleShow: PropTypes.func.isRequired
   },
   default: {
-    handleShow () {
+    handleShow() {
       //console.log('click')
     }
   }

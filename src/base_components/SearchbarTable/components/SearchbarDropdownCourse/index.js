@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react"
 
-import SearchbarDropdown from '../SeachbarDropdown'
+import SearchbarDropdown from "../SeachbarDropdown"
 
 const SearchbarDropdownCourse = () => (
-  <SearchbarDropdown title='Search by course' />
+  <SearchbarDropdown title="Search by course" />
 )
 
 export default SearchbarDropdownCourse

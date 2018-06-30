@@ -1,17 +1,17 @@
-import React from 'react'
+import React from "react"
 
 const Download = () => {
   return (
     <span
       style={{
-        color: '#c9c9c9',
+        color: "#c9c9c9",
         fontWeight: 800,
-        textTransform: 'uppercase',
+        textTransform: "uppercase",
         fontSize: 12,
         marginRight: 10
       }}
     >
-            Download
+      Download
     </span>
   )
 }

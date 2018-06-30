@@ -1,19 +1,19 @@
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
+import styled from "styled-components"
+import PropTypes from "prop-types"
 
-const backgroundColorState = (props) => {
+const backgroundColorState = props => {
   switch (props.state) {
-    case 'active': {
-      return '#2FE330'
+    case "active": {
+      return "#2FE330"
     }
-    case 'inActive': {
-      return '#E82929'
+    case "inActive": {
+      return "#E82929"
     }
-    case 'disabled': {
-      return '#AEAEAE'
+    case "disabled": {
+      return "#AEAEAE"
     }
     default: {
-      return '#2FE330'
+      return "#2FE330"
     }
   }
 }

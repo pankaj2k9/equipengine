@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
-import './styles.css'
+import "./styles.css"
 
 const Box = ({ style, children, className }) => {
   return (
@@ -12,7 +12,7 @@ const Box = ({ style, children, className }) => {
 }
 
 Box.defaultProps = {
-  className: ''
+  className: ""
 }
 
 Box.propTypes = {

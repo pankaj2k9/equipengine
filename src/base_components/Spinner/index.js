@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { isEmpty } from 'ramda'
-import SpinnerUI from './components/SpinnerUI'
+import React, { Component } from "react"
+import { isEmpty } from "ramda"
+import SpinnerUI from "./components/SpinnerUI"
 
 class Spinner extends Component {
   constructor() {
@@ -10,24 +10,24 @@ class Spinner extends Component {
     }
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { value } = e.target
     this.setState({
       count: isEmpty(value) ? 0 : parseInt(value, 10)
     })
-  };
+  }
 
   incrementCounter = () => {
     this.setState({
       count: this.state.count + 1
     })
-  };
+  }
 
   decrementCounter = () => {
     this.setState({
       count: this.state.count - 1
     })
-  };
+  }
 
   render() {
     return (

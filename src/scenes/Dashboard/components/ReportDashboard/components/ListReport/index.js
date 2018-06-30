@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { map } from 'ramda'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import { map } from "ramda"
 
-import DateTime from 'base_components/DateTime'
+import DateTime from "base_components/DateTime"
 
 // -------------------ITEM REPORT COMPONENT-----------------------------//
 const ItemReport = styled(({ className, report }) => (
@@ -26,7 +26,7 @@ const ItemReport = styled(({ className, report }) => (
     font-size: 13px;
     color: #4f4f4f;
     text-align: inherit;
-    
+
     a:focus {
       color: #23527c;
     }
@@ -42,7 +42,7 @@ ItemReport.propTypes = {
 // this is the list report component
 const ListReport = ({ reports }) => {
   const listReport = map(
-    (report) => <ItemReport key={report.id} report={report} />,
+    report => <ItemReport key={report.id} report={report} />,
     reports
   )
 

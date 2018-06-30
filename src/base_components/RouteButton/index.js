@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
-import Button from 'base_components/RootButton'
+import React from "react"
+import PropTypes from "prop-types"
+import { withRouter } from "react-router-dom"
+import Button from "base_components/RootButton"
 
 const navigate = (history, to) => history.push(to)
 

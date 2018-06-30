@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
-import data from 'scenes/Courses/data.json'
+import React, { Component } from "react"
+import data from "scenes/Courses/data.json"
 
-const subscribingOnCourses = (WrappedComponent) => {
+const subscribingOnCourses = WrappedComponent => {
   class EnhancedCourses extends Component {
-    constructor () {
+    constructor() {
       super()
       this.state = {
         courses: data
       }
     }
 
-    render () {
+    render() {
       return <WrappedComponent {...this.props} courses={this.state.courses} />
     }
   }

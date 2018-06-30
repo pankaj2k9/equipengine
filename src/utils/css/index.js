@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { identical, ifElse, type, compose } from 'ramda'
+import styled from "styled-components"
+import { identical, ifElse, type, compose } from "ramda"
 
 /**
  * ---------------------------------------------------------------------------------------
@@ -14,9 +14,12 @@ import { identical, ifElse, type, compose } from 'ramda'
  */
 const css = (arrStrings, ...interpolatedFns) =>
   ifElse(
-    compose(identical('Function'), type),
-    (Component) => styled(Component)(arrStrings, ...interpolatedFns), // OnTrue, create styled component
-    (Component) => styled[Component](arrStrings, ...interpolatedFns) // OnFalse, create styled component based on string.
+    compose(
+      identical("Function"),
+      type
+    ),
+    Component => styled(Component)(arrStrings, ...interpolatedFns), // OnTrue, create styled component
+    Component => styled[Component](arrStrings, ...interpolatedFns) // OnFalse, create styled component based on string.
   )
 
 export default css
@@ -32,6 +35,5 @@ export default css
  * @return {Function} Styled component
  * ---------------------------------------------------------------------------------------
  */
-export const extendCss =
-  (arrStrings, ...interpolatedFns) =>
-    (Component) => Component.extend(arrStrings, ...interpolatedFns)
+export const extendCss = (arrStrings, ...interpolatedFns) => Component =>
+  Component.extend(arrStrings, ...interpolatedFns)

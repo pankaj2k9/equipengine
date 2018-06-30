@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 //
-import Container from 'base_components/Container'
-import SearchBar from 'base_components/RootSearchBar'
+import Container from "base_components/Container"
+import SearchBar from "base_components/RootSearchBar"
 
 // create a higher-order-components for extending the styles of Searchbar
 const SearchbarAdminCourse = styled(SearchBar)`
@@ -35,17 +35,11 @@ const ContainerHeader = Container.extend`
 
 const HeaderAdminCourse = ({
   ControlButtonsGroup,
-  searchbarInfo: {
-    placeholder,
-    onSubmit
-  }
+  searchbarInfo: { placeholder, onSubmit }
 }) => (
   <ContainerHeader>
     <ControlButtonsGroup />
-    <SearchbarAdminCourse
-      placeholder={placeholder}
-      onClick={onSubmit}
-    />
+    <SearchbarAdminCourse placeholder={placeholder} onClick={onSubmit} />
   </ContainerHeader>
 )
 

@@ -1,14 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import React from "react"
+import { Link } from "react-router-dom"
+import styled from "styled-components"
 
 const ListSettingsLink = styled(({ className }) => (
   <ul className={className}>
     <li>
-      <Link to='/groups'>Groups</Link>
+      <Link to="/groups">Groups</Link>
     </li>
     <li>
-      <Link to='/settings'>Settings</Link>
+      <Link to="/settings">Settings</Link>
     </li>
   </ul>
 ))`

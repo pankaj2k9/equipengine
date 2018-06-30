@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import UserAvatar from 'base_components/UserAvatar'
-import avatar from 'resources/images/user.png'
+import UserAvatar from "base_components/UserAvatar"
+import avatar from "resources/images/user.png"
 
 const ListMessagesItem = styled(({ className }) => (
   <li className={className}>

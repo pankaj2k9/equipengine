@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import Container from 'base_components/Container'
-import Tables, { TableRow } from 'base_components/Tables'
-import TableRowCourses from './components/TableRowCourses'
+import Container from "base_components/Container"
+import Tables, { TableRow } from "base_components/Tables"
+import TableRowCourses from "./components/TableRowCourses"
 
 const ContainerTableCourses = Container.extend`
   .table-responsive {

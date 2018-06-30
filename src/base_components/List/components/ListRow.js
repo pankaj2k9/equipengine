@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
 const ListRow = ({ style, children }) => {
   return (
-    <li style={{ style }} className='List__row'>
+    <li style={{ style }} className="List__row">
       {children}
     </li>
   )

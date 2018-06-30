@@ -1,30 +1,30 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 
-export default (WrappedComponent) => {
+export default WrappedComponent => {
   class EnhancedLoginForm extends Component {
     state = {
-      username: '',
-      password: ''
-    };
+      username: "",
+      password: ""
+    }
 
-    handleChange = (e) => {
+    handleChange = e => {
       const { value, name } = e.target
 
       // update the state
       this.setState({
         [name]: value
       })
-    };
+    }
 
     clearForm = () => {
       // TODO: add auto-focus feature.
       this.setState({
-        username: '',
-        password: ''
+        username: "",
+        password: ""
       })
-    };
+    }
 
-    render () {
+    render() {
       const { username, password } = this.state
 
       return (

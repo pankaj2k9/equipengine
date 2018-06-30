@@ -1,5 +1,5 @@
-import css from 'utils/css'
-import Select from 'react-select'
+import css from "utils/css"
+import Select from "react-select"
 
 /**
  * -------------------------------------

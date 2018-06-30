@@ -1,5 +1,5 @@
-import css from 'utils/css'
-import { defaultFlexStyles } from 'base_components/ContainerFlex'
+import css from "utils/css"
+import { defaultFlexStyles } from "base_components/ContainerFlex"
 
 /**
  * -------------------------------------
@@ -8,7 +8,8 @@ import { defaultFlexStyles } from 'base_components/ContainerFlex'
  * -------------------------------------
  */
 export default css`
-  h2, img {
+  h2,
+  img {
     max-width: 720px;
     width: 100%;
   }
@@ -46,4 +47,4 @@ export default css`
  * @function
  * -------------------------------------
  */
-export const SectionFlex = defaultFlexStyles('section')
+export const SectionFlex = defaultFlexStyles("section")

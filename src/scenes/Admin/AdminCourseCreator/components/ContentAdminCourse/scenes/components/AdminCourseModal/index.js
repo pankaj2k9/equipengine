@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import Modal from 'base_components/Modal'
-import ModalHeader from './components/ModalHeader'
-import ModalBody from './components/ModalBody'
-import ModalFooter from './components/ModalFooter'
+import Modal from "base_components/Modal"
+import ModalHeader from "./components/ModalHeader"
+import ModalBody from "./components/ModalBody"
+import ModalFooter from "./components/ModalFooter"
 
 // Modal facade
 const AdminCourseModal = ({
@@ -12,16 +12,9 @@ const AdminCourseModal = ({
   handleClose,
   isOpen,
   modal: {
-    header: {
-      title
-    },
-    body: {
-      children: bodyChildren
-    },
-    footer: {
-      buttonTitle,
-      buttonHandler
-    }
+    header: { title },
+    body: { children: bodyChildren },
+    footer: { buttonTitle, buttonHandler }
   }
 }) => (
   <Modal
@@ -29,12 +22,10 @@ const AdminCourseModal = ({
     isOpen={isOpen}
     onClose={handleClose}
     header={<ModalHeader title={title} />}
-    body={
-      <ModalBody>
-        {bodyChildren}
-      </ModalBody>
+    body={<ModalBody>{bodyChildren}</ModalBody>}
+    footer={
+      <ModalFooter buttonTitle={buttonTitle} buttonHandler={buttonHandler} />
     }
-    footer={<ModalFooter buttonTitle={buttonTitle} buttonHandler={buttonHandler} />}
   />
 )
 

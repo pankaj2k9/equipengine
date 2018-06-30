@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import NoticeboardDashboard from './components/NoticeboardDashboard'
-import ReportDashboard from './components/ReportDashboard'
+import NoticeboardDashboard from "./components/NoticeboardDashboard"
+import ReportDashboard from "./components/ReportDashboard"
 
 const Dashboard = styled(({ className }) => (
   <div className={className}>

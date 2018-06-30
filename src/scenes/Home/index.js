@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 //
-import HeaderHome from './components/HeaderHome'
-import BodyHome from './components/BodyHome'
+import HeaderHome from "./components/HeaderHome"
+import BodyHome from "./components/BodyHome"
 
 /**
    TODO:

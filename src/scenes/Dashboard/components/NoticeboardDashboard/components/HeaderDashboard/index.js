@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react"
 // NoticeboardDashboard Header
-import { MainHeaderTitle } from 'base_components/Main'
-import Caret from 'react-icons/lib/fa/caret-down'
+import { MainHeaderTitle } from "base_components/Main"
+import Caret from "react-icons/lib/fa/caret-down"
 
 const Header = MainHeaderTitle.extend`
   display: flex;

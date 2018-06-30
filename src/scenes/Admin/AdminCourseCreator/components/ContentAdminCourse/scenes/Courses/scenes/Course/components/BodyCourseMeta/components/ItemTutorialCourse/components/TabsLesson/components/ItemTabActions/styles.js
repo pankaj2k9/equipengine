@@ -1,4 +1,4 @@
-import css from 'utils/css'
+import css from "utils/css"
 
 /**
  * -------------------------------------
@@ -7,7 +7,7 @@ import css from 'utils/css'
  * -------------------------------------
  */
 export const headerActionsStyles = css`
-  border-bottom: 1px solid #D8D8D8;
+  border-bottom: 1px solid #d8d8d8;
   padding-bottom: 1em;
   margin-bottom: 1.8em;
   display: flex;
@@ -15,11 +15,11 @@ export const headerActionsStyles = css`
 `
 
 /**
-  * -------------------------------------
-  * List actions styles
-  * @function
-  * -------------------------------------
-*/
+ * -------------------------------------
+ * List actions styles
+ * @function
+ * -------------------------------------
+ */
 export const listActionsStyles = css`
   padding: 0.5em 0 0.1em;
 

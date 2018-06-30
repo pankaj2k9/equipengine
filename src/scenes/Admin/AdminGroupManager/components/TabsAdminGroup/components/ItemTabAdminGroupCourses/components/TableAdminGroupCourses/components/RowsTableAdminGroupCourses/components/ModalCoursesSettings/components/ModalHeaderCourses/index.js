@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 // assets
-import iconBigSettings from 'resources/images/iconBigSettings.svg'
+import iconBigSettings from "resources/images/iconBigSettings.svg"
 
 const ModalHeaderCourses = styled(({ className }) => (
   <header className={className}>
-    <img alt='icon big settings' src={iconBigSettings} />
+    <img alt="icon big settings" src={iconBigSettings} />
     <h4>Group Settings for: Communication and Culture</h4>
   </header>
 ))`

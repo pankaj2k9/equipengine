@@ -1,34 +1,32 @@
-import React, { Component } from 'react'
-import data from 'scenes/Courses/data.json'
+import React, { Component } from "react"
+import data from "scenes/Courses/data.json"
 
-const subscribeToCourses = (WrappedComponent) => {
+const subscribeToCourses = WrappedComponent => {
   // check if the input is component.
-  if (typeof WrappedComponent === 'function') {
+  if (typeof WrappedComponent === "function") {
     class EnhancedTeacherControls extends Component {
-      constructor () {
+      constructor() {
         super()
         this.state = {
           courses: []
         }
       }
 
-      componentDidMount () {
+      componentDidMount() {
         this.setState({
           courses: data
         })
       }
 
-      render () {
-        return (
-          <WrappedComponent {...this.props} courses={this.state.courses} />
-        )
+      render() {
+        return <WrappedComponent {...this.props} courses={this.state.courses} />
       }
     }
 
     return EnhancedTeacherControls
   }
 
-  throw new Error('The input is not a component')
+  throw new Error("The input is not a component")
 }
 
 export default subscribeToCourses

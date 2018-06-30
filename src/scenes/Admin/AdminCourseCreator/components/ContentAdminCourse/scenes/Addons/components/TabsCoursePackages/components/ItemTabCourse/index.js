@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 //
-import Container from 'base_components/Container'
-import ListCurriculum from './components/ListCurriculum'
+import Container from "base_components/Container"
+import ListCurriculum from "./components/ListCurriculum"
 
-const ItemTabCourse = styled(({className}) => (
+const ItemTabCourse = styled(({ className }) => (
   <Container className={className}>
     <h3>The AccessTruth Curriculum</h3>
     <ListCurriculum />

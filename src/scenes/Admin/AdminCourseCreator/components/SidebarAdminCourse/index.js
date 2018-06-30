@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { withRouter } from 'react-router-dom'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import { withRouter } from "react-router-dom"
 // components
-import ListLinkItem from './components/ListLinkItem'
+import ListLinkItem from "./components/ListLinkItem"
 //
-import iconNewCourse from './new-course.svg'
-import iconCourseLibrary from './course-library.svg'
-import iconAddOns from './add-ons.svg'
-import iconVideos from './video.svg'
+import iconNewCourse from "./new-course.svg"
+import iconCourseLibrary from "./course-library.svg"
+import iconAddOns from "./add-ons.svg"
+import iconVideos from "./video.svg"
 
 const ListLink = styled.ul`
   min-height: 100vh;
@@ -24,22 +24,22 @@ const SidebarAdminCourse = ({ match, onOpen }) => (
     <ListLinkItem
       handleClick={onOpen}
       icon={iconNewCourse}
-      text='New Course'
+      text="New Course"
       url={`${match.path}/new-course`}
     />
     <ListLinkItem
       icon={iconCourseLibrary}
-      text='Course Library'
+      text="Course Library"
       url={`${match.path}/courses`}
     />
     <ListLinkItem
       icon={iconAddOns}
-      text='Add-ons'
+      text="Add-ons"
       url={`${match.path}/add-ons`}
     />
     <ListLinkItem
       icon={iconVideos}
-      text='Videos'
+      text="Videos"
       url={`${match.path}/videos`}
     />
   </ListLink>

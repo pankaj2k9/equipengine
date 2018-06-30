@@ -1,20 +1,20 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import UserAvatar from 'base_components/UserAvatar'
-import FileChooser from 'base_components/FileChooser'
+import UserAvatar from "base_components/UserAvatar"
+import FileChooser from "base_components/FileChooser"
 
 class UploadableAvatar extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       image: props.image
     }
   }
 
-  handleUploadButtonClick = () => this.fileChooserDialog.open();
+  handleUploadButtonClick = () => this.fileChooserDialog.open()
 
-  handleChooseFilesButtonClick = (files) => {
+  handleChooseFilesButtonClick = files => {
     const reader = new window.FileReader()
     const file = files[0]
 
@@ -27,7 +27,7 @@ class UploadableAvatar extends React.Component {
     reader.readAsDataURL(file)
   }
 
-  render () {
+  render() {
     const { className, small } = this.props
     const { image } = this.state
     return (
@@ -36,13 +36,15 @@ class UploadableAvatar extends React.Component {
         <UserAvatar image={image} small={small} />
 
         {/* Text on image */}
-        <span className='centered'>Upload</span>
+        <span className="centered">Upload</span>
 
         {/* Browser file chooser, not visible by default */}
         <FileChooser
-          accept='image/*'
+          accept="image/*"
           onChooseFiles={this.handleChooseFilesButtonClick}
-          ref={(input) => { this.fileChooserDialog = input }}
+          ref={input => {
+            this.fileChooserDialog = input
+          }}
         />
       </div>
     )
@@ -67,15 +69,15 @@ export default styled(UploadableAvatar)`
     color: white;
   }
 
-  &:hover > img {
-    z-index: 5;
-    opacity: 0.5;
-  }
-
   img {
     width: 98px;
     height: 98px;
     transition: 0.3s;
+  }
+
+  &:hover > img {
+    z-index: 5;
+    opacity: 0.5;
   }
 
   .centered {

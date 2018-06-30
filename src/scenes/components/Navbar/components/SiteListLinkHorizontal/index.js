@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { identical } from 'ramda'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import { identical } from "ramda"
 
-import { LinkHorizontal } from '../SiteLinkNavbar'
+import { LinkHorizontal } from "../SiteLinkNavbar"
 
 const ListLinkHorizontal = styled.ul`
   list-style-type: none;
@@ -20,25 +20,25 @@ const ListLinkHorizontal = styled.ul`
   }
 `
 
-const SiteListLinkHorizontal = ({
-  isOpenPanel,
-  onToggle,
-  accountType
-}) => (
+const SiteListLinkHorizontal = ({ isOpenPanel, onToggle, accountType }) => (
   <ListLinkHorizontal isOpenPanel={isOpenPanel}>
     <li onClick={onToggle}>
-      <LinkHorizontal activeClassName='active' to='/secure/home'>
+      <LinkHorizontal activeClassName="active" to="/secure/home">
         Home
       </LinkHorizontal>
     </li>
     <li onClick={onToggle}>
-      <LinkHorizontal activeClassName='active' to='/secure/activity'>
+      <LinkHorizontal activeClassName="active" to="/secure/activity">
         Actvity
       </LinkHorizontal>
     </li>
-    {identical(accountType, 'Admin') && (
+    {identical(accountType, "Admin") && (
       <li onClick={onToggle}>
-        <LinkHorizontal width='80px' activeClassName='active' to='/secure/admin/group-manager'>
+        <LinkHorizontal
+          width="80px"
+          activeClassName="active"
+          to="/secure/admin/group-manager"
+        >
           Admin Area
         </LinkHorizontal>
       </li>

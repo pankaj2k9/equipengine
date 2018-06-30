@@ -1,18 +1,18 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 // Container
-import ContainerBodyAdmin from '../../../components/ContainerAdminPanel/components/ContainerBodyAdmin'
+import ContainerBodyAdmin from "../../../components/ContainerAdminPanel/components/ContainerBodyAdmin"
 // form
-import Button from 'base_components/RootButton'
-import ButtonUpdate from 'base_components/ButtonUpdate'
-import Form from 'base_components/RootForm'
-import Panel from 'base_components/Panel'
+import Button from "base_components/RootButton"
+import ButtonUpdate from "base_components/ButtonUpdate"
+import Form from "base_components/RootForm"
+import Panel from "base_components/Panel"
 // sub-components
-import UserDetails from 'base_components/UserDetails'
-import UserContacts from 'base_components/UserContacts'
-import PanelGroups from './components/PanelGroups'
-import PanelAccountRole from './components/PanelAccountRole'
-import PanelControlGroup from './components/PanelControlGroup'
+import UserDetails from "base_components/UserDetails"
+import UserContacts from "base_components/UserContacts"
+import PanelGroups from "./components/PanelGroups"
+import PanelAccountRole from "./components/PanelAccountRole"
+import PanelControlGroup from "./components/PanelControlGroup"
 
 const ResponsivePanel = Panel.extend`
   @media screen and (min-width: 768px) {
@@ -37,7 +37,7 @@ const MainForm = styled(Form)`
 const FormAdminUser = () => (
   <ContainerBodyAdmin>
     <MainForm>
-      <ResponsivePanel title='User Details'>
+      <ResponsivePanel title="User Details">
         <UserDetails />
         <ButtonSetPassword>Send set password link</ButtonSetPassword>
       </ResponsivePanel>

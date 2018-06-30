@@ -4,15 +4,15 @@ import {
   FAILURE_REQUEST,
   ADD_LOGGED_USER,
   REMOVE_LOGGED_USER
-} from './actionTypes'
-import { combineReducers } from 'redux'
+} from "./actionTypes"
+import { combineReducers } from "redux"
 
 // reducers for process
 const processRequest = (
   state = {
     pending: false,
     success: false,
-    error: ''
+    error: ""
   },
   action
 ) => {
@@ -30,7 +30,7 @@ const processRequest = (
         ...state,
         pending: isPending,
         success: true,
-        error: ''
+        error: ""
       }
     }
     case FAILURE_REQUEST: {

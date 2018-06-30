@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-import './styles.css'
+import "./styles.css"
 
 class Form extends React.Component {
   constructor() {
@@ -10,17 +10,17 @@ class Form extends React.Component {
     }
   }
 
-  handleInputChange = (e) => {
+  handleInputChange = e => {
     const { target } = e
     // check if the target is checkbox or text
-    const value = target.type === 'checkbox' ? target.checked : target.value
+    const value = target.type === "checkbox" ? target.checked : target.value
     // we need to get the name value attribute of the target.
     const name = target.name
     // update the state based on the target
     this.setState({
       [name]: value
     })
-  };
+  }
 
   render() {
     return (
@@ -45,7 +45,7 @@ export const fetchUser = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       reject(() => {
-        throw new Error('Rejected by the server')
+        throw new Error("Rejected by the server")
       })
     }, 500)
   })

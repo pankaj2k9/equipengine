@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 //
-import ContainerFlex from 'base_components/ContainerFlex'
-import TitleSection from '../TitleSection'
-import ButtonAdd from 'base_components/ButtonAdd'
-import ListObjectives from './components/ListObjectives'
-import FooterTotalWeights from './components/FooterTotalWeights'
+import ContainerFlex from "base_components/ContainerFlex"
+import TitleSection from "../TitleSection"
+import ButtonAdd from "base_components/ButtonAdd"
+import ListObjectives from "./components/ListObjectives"
+import FooterTotalWeights from "./components/FooterTotalWeights"
 
 const ContainerTitle = ContainerFlex.extend`
   padding-bottom: 0.5em;
@@ -38,7 +38,7 @@ const SectionObjectiveCourse = () => (
   <section>
     <ContainerTitle isAlignCenter isSpaceBetween>
       <TitleObjective>Objectives / Outcomes</TitleObjective>
-      <ButtonAddObjective text='Add' />
+      <ButtonAddObjective text="Add" />
     </ContainerTitle>
     <ListObjectives />
     <FooterTotalWeights />
