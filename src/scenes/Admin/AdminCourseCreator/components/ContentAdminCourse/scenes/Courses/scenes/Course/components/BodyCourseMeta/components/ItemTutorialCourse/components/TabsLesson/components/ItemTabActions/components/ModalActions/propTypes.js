@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types"
 
 /**
  * -------------------------------------
@@ -13,7 +13,7 @@ export default {
   },
   default: {
     isOpen: false,
-    handleClose () {
+    handleClose() {
       //console.log('Default click')
     }
   }
@@ -26,14 +26,11 @@ export default {
  */
 export const modalBody = {
   props: {
-    selectedOption: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.string
-    ]),
+    selectedOption: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     handleChange: PropTypes.func.isRequired
   },
   default: {
-    selectedOption: '',
+    selectedOption: ""
     //handleChange: () => console.log('Handle change')
   }
 }
@@ -49,7 +46,7 @@ export const contentModalActions = {
     actionType: PropTypes.string.isRequired
   },
   default: {
-    labelText: '',
-    actionType: 'reading'
+    labelText: "",
+    actionType: "reading"
   }
 }

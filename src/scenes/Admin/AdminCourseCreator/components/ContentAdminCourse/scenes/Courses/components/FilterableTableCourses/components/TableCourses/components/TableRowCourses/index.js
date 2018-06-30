@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import IconUser from 'react-icons/lib/fa/user'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import IconUser from "react-icons/lib/fa/user"
 //
-import { TableRow, Td } from 'base_components/Tables'
-import LinkButton from 'base_components/LinkButton'
-import ContainerFlex from 'base_components/ContainerFlex'
+import { TableRow, Td } from "base_components/Tables"
+import LinkButton from "base_components/LinkButton"
+import ContainerFlex from "base_components/ContainerFlex"
 
 // Table data for name column
 const TableDataName = styled.td`
@@ -37,11 +37,11 @@ const Text = styled.span`
 `
 
 const TableData = Td.extend`
-@media screen and (min-width: 768px) {
-  &:last-child {
-    width: 40%;
+  @media screen and (min-width: 768px) {
+    &:last-child {
+      width: 40%;
+    }
   }
-}
 `
 
 const TableRowCourses = ({ match }) => (
@@ -71,7 +71,7 @@ const TableRowCourses = ({ match }) => (
       <TableData>
         <LinkButton
           url={`${match.url}/communication-and-culture`}
-          text='Details'
+          text="Details"
         />
       </TableData>
     </TableRow>
@@ -98,7 +98,7 @@ const TableRowCourses = ({ match }) => (
         <Text>5</Text>
       </TableData>
       <TableData>
-        <LinkButton url={`${match.url}/language-and-culture`} text='Details' />
+        <LinkButton url={`${match.url}/language-and-culture`} text="Details" />
       </TableData>
     </TableRow>
   </tbody>

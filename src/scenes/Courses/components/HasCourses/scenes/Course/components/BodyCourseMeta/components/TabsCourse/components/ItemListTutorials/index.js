@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { withRouter } from 'react-router-dom'
-import { isNil } from 'ramda'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import { withRouter } from "react-router-dom"
+import { isNil } from "ramda"
 
-import List, { ListRow, ListRowLeft, ListRowRight } from 'base_components/List'
-import LinkButton from 'base_components/LinkButton'
-import iconPlayButton from './play-button.svg'
-import iconExam from './exam.svg'
-import './styles.css'
+import List, { ListRow, ListRowLeft, ListRowRight } from "base_components/List"
+import LinkButton from "base_components/LinkButton"
+import iconPlayButton from "./play-button.svg"
+import iconExam from "./exam.svg"
+import "./styles.css"
 
 const ViewButton = styled(LinkButton)`
   @media screen and (min-width: 768px) {
@@ -16,13 +16,13 @@ const ViewButton = styled(LinkButton)`
   }
 `
 const ItemListTutorials = ({ tutorials, match }) => {
-  const listOfTutorials = tutorials.map((tutorial) => (
+  const listOfTutorials = tutorials.map(tutorial => (
     <ListRow key={tutorial.tutorialId}>
       <ListRowLeft>
-        {tutorial.type === 'video' ? (
-          <img src={iconPlayButton} alt='Play button icon' />
+        {tutorial.type === "video" ? (
+          <img src={iconPlayButton} alt="Play button icon" />
         ) : (
-          <img src={iconExam} alt='Exam icon' />
+          <img src={iconExam} alt="Exam icon" />
         )}
         <div>
           <p>{tutorial.title}</p>
@@ -30,14 +30,14 @@ const ItemListTutorials = ({ tutorials, match }) => {
         </div>
       </ListRowLeft>
       <ListRowRight>
-        <ViewButton url={`${match.url}/tutorials/${tutorial.id}`} text='View' />
+        <ViewButton url={`${match.url}/tutorials/${tutorial.id}`} text="View" />
       </ListRowRight>
     </ListRow>
   ))
 
   return (
     <div>
-      <List className='ItemListTutorials'>{listOfTutorials}</List>
+      <List className="ItemListTutorials">{listOfTutorials}</List>
     </div>
   )
 }

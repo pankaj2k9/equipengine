@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react"
 //
-import TitleSection from '../../../TitleSection'
-import ContainerFlex from 'base_components/ContainerFlex'
+import TitleSection from "../../../TitleSection"
+import ContainerFlex from "base_components/ContainerFlex"
 // assets
-import headerReportCourseStyles, { DropdownResult } from './styles'
+import headerReportCourseStyles, { DropdownResult } from "./styles"
 
 const HeaderReportCourse = headerReportCourseStyles(({ className }) => (
   <header className={className}>
@@ -11,12 +11,12 @@ const HeaderReportCourse = headerReportCourseStyles(({ className }) => (
     <ContainerFlex isAlignCenter>
       <span>Final Mark Result</span>
       <DropdownResult
-        dropdownName='markResult'
+        dropdownName="markResult"
         options={[
-          { label: 'Percentage', value: 'percentage' },
-          { label: 'Pass/Fail', value: 'fail' },
-          { label: 'Competency', value: 'competency' },
-          { label: 'Manual Entry', value: 'manualEntry' }
+          { label: "Percentage", value: "percentage" },
+          { label: "Pass/Fail", value: "fail" },
+          { label: "Competency", value: "competency" },
+          { label: "Manual Entry", value: "manualEntry" }
         ]}
       />
     </ContainerFlex>

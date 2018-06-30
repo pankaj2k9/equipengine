@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import DateTime from 'base_components/DateTime'
+import DateTime from "base_components/DateTime"
 
 // the list component
 const List = styled.ul`
@@ -16,7 +16,7 @@ const List = styled.ul`
 // the list item component.
 const Item = styled(({ className }) => (
   <li className={className}>
-    <DateTime date='22 Sep' time='1:00pm' />
+    <DateTime date="22 Sep" time="1:00pm" />
     <p>You have recieved access to a new course - Communication and Culture.</p>
   </li>
 ))`

@@ -1,16 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { map } from 'ramda'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import { map } from "ramda"
 
-import { TableRow } from 'base_components/Tables'
-import RootForm, { CheckboxCircle } from 'base_components/RootForm'
-import UserAvatar from 'base_components/UserAvatar'
-import FlaggedIcon from '../../../FlaggedIcon'
+import { TableRow } from "base_components/Tables"
+import RootForm, { CheckboxCircle } from "base_components/RootForm"
+import UserAvatar from "base_components/UserAvatar"
+import FlaggedIcon from "../../../FlaggedIcon"
 
 // for table row data.
 const TableRowCourseTd = styled.td`
-  text-align: ${(props) => (props.middle ? 'center' : 'left')};
+  text-align: ${props => (props.middle ? "center" : "left")};
   margin-top: 0.7em;
   vertical-align: middle !important;
 `
@@ -45,17 +45,19 @@ const TableRowCourse = ({ course }) => {
   let feedbacksItem
   if (feedbacks.length) {
     feedbacksItem = map(
-      (item) => <ExtendUserAvatar key={item.id} small image={item.avatarURL} />,
+      item => <ExtendUserAvatar key={item.id} small image={item.avatarURL} />,
       feedbacks
     )
   }
   return (
     <TableRow>
-      <TableRowCourseTd middle style={{ textAlign: 'left' }}>
+      <TableRowCourseTd middle style={{ textAlign: "left" }}>
         <DateSpan>{date.day}</DateSpan>
         <DateSpan>{date.time}</DateSpan>
       </TableRowCourseTd>
-      <TableRowCourseTd middle style={{ textAlign: 'left' }}>{title}</TableRowCourseTd>
+      <TableRowCourseTd middle style={{ textAlign: "left" }}>
+        {title}
+      </TableRowCourseTd>
       <TableRowCourseTd>{lesson}</TableRowCourseTd>
       <TableRowCourseTd>
         <ExtendUserAvatar small image={course.person.avatarURL} />
@@ -66,9 +68,9 @@ const TableRowCourse = ({ course }) => {
       <TableRowCourseTd middle>
         <FlaggedIcon big isFlagged={isFlagged} />
       </TableRowCourseTd>
-      <TableRowCourseTd middle style={{ textAlign: 'center' }}>
+      <TableRowCourseTd middle style={{ textAlign: "center" }}>
         <RootForm>
-          <CheckboxCircle name='read' />
+          <CheckboxCircle name="read" />
         </RootForm>
       </TableRowCourseTd>
     </TableRow>

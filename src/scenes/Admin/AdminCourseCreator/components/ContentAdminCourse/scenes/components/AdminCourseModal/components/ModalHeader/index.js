@@ -1,12 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 //
-import iconAdd from './add.svg'
+import iconAdd from "./add.svg"
 
-const ModalHeader = styled(({className, title}) => (
+const ModalHeader = styled(({ className, title }) => (
   <header className={className}>
-    <img alt='icon add' src={iconAdd} />
+    <img alt="icon add" src={iconAdd} />
     <h5>{title}</h5>
   </header>
 ))`

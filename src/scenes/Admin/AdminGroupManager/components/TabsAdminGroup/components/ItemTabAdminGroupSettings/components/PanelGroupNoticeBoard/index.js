@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import Panel from 'base_components/Panel'
-import { FormGroup, Label, Switch } from 'base_components/RootForm'
+import Panel from "base_components/Panel"
+import { FormGroup, Label, Switch } from "base_components/RootForm"
 
 const PanelExtend = Panel.extend`
   padding-bottom: 0;
@@ -38,17 +38,17 @@ const ContainerFormGroups = styled.div`
 
 const PanelGroupNoticeBoard = () => (
   <PanelExtend
-    title='Group Noticeboard'
-    AdditionalTitle={() => <Switch name='toggle-all' />}
+    title="Group Noticeboard"
+    AdditionalTitle={() => <Switch name="toggle-all" />}
   >
     <ContainerFormGroups>
       <FormGroup isFlex>
         <LabelNoticeBoard>Students can post new content</LabelNoticeBoard>
-        <Switch name='post-content' />
+        <Switch name="post-content" />
       </FormGroup>
       <FormGroup isFlex>
         <LabelNoticeBoard>Students can comment</LabelNoticeBoard>
-        <Switch name='post-comment' />
+        <Switch name="post-comment" />
       </FormGroup>
     </ContainerFormGroups>
   </PanelExtend>

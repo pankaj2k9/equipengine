@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { identical } from 'ramda'
-import styled from 'styled-components'
-import IconUser from 'react-icons/lib/fa/user'
+import React from "react"
+import PropTypes from "prop-types"
+import { identical } from "ramda"
+import styled from "styled-components"
+import IconUser from "react-icons/lib/fa/user"
 
-import Button from 'base_components/RootButton'
+import Button from "base_components/RootButton"
 
 // compose button, group button
 const GroupButton = Button.extend`
@@ -50,7 +50,7 @@ const ListItemGroup = styled(({ className, group }) => {
         {/** check if the group item is type public group.
             we also need to check if the item is already joined or not.
           */}
-        {identical(group.type, 'your-group') ? (
+        {identical(group.type, "your-group") ? (
           group.isSelected ? (
             <GroupButton disabled>Selected</GroupButton>
           ) : (
@@ -72,7 +72,7 @@ const ListItemGroup = styled(({ className, group }) => {
   border-radius: 5px;
   padding: 2em;
   margin-bottom: 1.2em;
-  background-color: ${(props) => (props.isSelected ? '#F6F6F6' : 'none')};
+  background-color: ${props => (props.isSelected ? "#F6F6F6" : "none")};
 
   > div:first-child {
     h5 {

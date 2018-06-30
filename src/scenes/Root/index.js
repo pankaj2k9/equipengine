@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import { throttle } from 'lodash'
-import { saveState } from 'localStorage'
+import React, { Component } from "react"
+import { throttle } from "lodash"
+import { saveState } from "localStorage"
 // importing store and history
-import store, { history } from 'store'
+import store, { history } from "store"
 // components
-import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
-import { BreadcrumbsProvider } from 'react-breadcrumbs-dynamic/dist/src'
-import AppContainer from './components/App'
-import ThemeProvider from './components/ThemeProvider'
+import { Provider } from "react-redux"
+import { ConnectedRouter } from "react-router-redux"
+import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic/dist/src"
+import AppContainer from "./components/App"
+import ThemeProvider from "./components/ThemeProvider"
 
 // subscribe event will fire every time the state is changing.
 // we use throttle function from lodash, creates a throttled function that only invokes func
@@ -24,7 +24,7 @@ store.subscribe(
 )
 
 class Root extends Component {
-  render () {
+  render() {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>

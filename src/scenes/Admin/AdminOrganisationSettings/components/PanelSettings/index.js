@@ -1,5 +1,5 @@
-import css from 'utils/css'
-import Panel from 'base_components/Panel'
+import css from "utils/css"
+import Panel from "base_components/Panel"
 
 /**
  * -------------------------------------

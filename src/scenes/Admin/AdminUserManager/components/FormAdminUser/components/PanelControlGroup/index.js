@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react"
 
-import Panel from 'base_components/Panel'
-import ListControl, { ListItemControl } from 'base_components/ListControl'
+import Panel from "base_components/Panel"
+import ListControl, { ListItemControl } from "base_components/ListControl"
 
 // for list item control.
-import Button from 'base_components/RootButton'
-import { Label } from 'base_components/RootForm'
+import Button from "base_components/RootButton"
+import { Label } from "base_components/RootForm"
 
 const StyledPanel = Panel.extend`
   border-bottom: none;
-  
+
   @media screen and (min-width: 768px) {
     margin-bottom: 17px;
     width: 75%;
@@ -27,7 +27,7 @@ const StyledButton = Button.extend`
 `
 
 const StyledLabel = Label.extend`
-  max-width: initial!important;
+  max-width: initial !important;
 `
 
 const PanelControlGroup = () => (

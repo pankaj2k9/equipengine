@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
-import { isNotNil } from 'ramda-adjunct'
+import React, { Component } from "react"
+import { isNotNil } from "ramda-adjunct"
 // components
-import StyledSelect from './styles'
-import dropdown from './propTypes'
+import StyledSelect from "./styles"
+import dropdown from "./propTypes"
 
 class Dropdown extends Component {
   state = {
-    selectedOption: ''
+    selectedOption: ""
   }
 
-  handleChange = (selectedOption) => this.setState({ selectedOption })
+  handleChange = selectedOption => this.setState({ selectedOption })
 
-  render () {
+  render() {
     const { selectedOption } = this.state
     const { name, options, className, placeholder } = this.props
     const selectValue = isNotNil(selectedOption) && selectedOption.value

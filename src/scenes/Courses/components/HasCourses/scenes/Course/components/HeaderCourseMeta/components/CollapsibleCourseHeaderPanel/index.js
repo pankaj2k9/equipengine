@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { Panel } from 'react-bootstrap'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import { Panel } from "react-bootstrap"
 
-import './styles.css'
+import "./styles.css"
 
 const AccessableContainer = styled.div`
   margin-top: 1.4em;
@@ -31,9 +31,9 @@ const AccessableContainer = styled.div`
 
 const CollapsibleHeaderCoursePanel = ({ description, isOpen }) => {
   const assessableItems = [
-    'Text goes here that explains what this course is about and can include instructions.',
-    'Text goes here that explains what this course is about and can include instructions.',
-    'Text goes here that explains what this course is about and can include instructions.'
+    "Text goes here that explains what this course is about and can include instructions.",
+    "Text goes here that explains what this course is about and can include instructions.",
+    "Text goes here that explains what this course is about and can include instructions."
   ]
 
   // assessable items list
@@ -42,7 +42,7 @@ const CollapsibleHeaderCoursePanel = ({ description, isOpen }) => {
   ))
 
   return (
-    <div className='CollapsibleHeaderCoursePanel'>
+    <div className="CollapsibleHeaderCoursePanel">
       <Panel collapsible expanded={isOpen}>
         <p>{description}</p>
         <AccessableContainer>

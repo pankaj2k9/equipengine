@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Media from 'react-media'
+import React from "react"
+import PropTypes from "prop-types"
+import Media from "react-media"
 
 const ModalInner = ({ children }) => (
-  <Media query='(max-width: 767px)'>
-    {(matches) =>
+  <Media query="(max-width: 767px)">
+    {matches =>
       matches ? (
         <div
           style={{
-            backgroundColor: '#fff'
+            backgroundColor: "#fff"
           }}
         >
           {children}
@@ -16,12 +16,13 @@ const ModalInner = ({ children }) => (
       ) : (
         <div
           style={{
-            backgroundColor: '#fff'
+            backgroundColor: "#fff"
           }}
         >
           {children}
         </div>
-      )}
+      )
+    }
   </Media>
 )
 

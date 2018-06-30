@@ -1,21 +1,21 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 //
-import HomeTabsGroup from './components/HomeTabsGroup'
-import HomeListLatestNotification from './components/HomeListLatestNotification'
-import ContainerFlex from 'base_components/ContainerFlex'
+import HomeTabsGroup from "./components/HomeTabsGroup"
+import HomeListLatestNotification from "./components/HomeListLatestNotification"
+import ContainerFlex from "base_components/ContainerFlex"
 
 const BodyHome = ({ className }) => {
   // your group items.
   const groups = [
     {
-      id: '5fgjsdflsadjflksafmsmf',
+      id: "5fgjsdflsadjflksafmsmf",
       desc:
-        'You are not part of any groups. Contact the system administrator about joining a group.',
-        infoIcon: 'Learn more about groups',
+        "You are not part of any groups. Contact the system administrator about joining a group.",
+      infoIcon: "Learn more about groups",
       isSelected: false,
-      type: 'your-group'
-    },
+      type: "your-group"
+    }
   ]
 
   return (
@@ -31,17 +31,18 @@ export default styled(BodyHome)`
   .nav-tabs > li {
     margin-bottom: 0px;
     > a {
-        padding: 10px 15px 12px 15px;
+      padding: 10px 15px 12px 15px;
     }
   }
   .nav-tabs > li.active > a {
     border-bottom: none;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       border-bottom: none;
     }
   }
   > div:first-child h5 {
-      font-size: 14px;
+    font-size: 14px;
   }
   .tab-content {
     margin-top: 14px;

@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import { Modal as RootModal } from 'react-bootstrap'
-import ModalHeader from './components/ModalHeader'
-import ModalBody from './components/ModalBody'
-import ModalFooter from './components/ModalFooter'
-import Form from 'base_components/RootForm'
+import { Modal as RootModal } from "react-bootstrap"
+import ModalHeader from "./components/ModalHeader"
+import ModalBody from "./components/ModalBody"
+import ModalFooter from "./components/ModalFooter"
+import Form from "base_components/RootForm"
 
 // TODO: Accept className for our ModalBody
-const Modal = ({isOpen, onClose, header, body, footer, className}) => (
+const Modal = ({ isOpen, onClose, header, body, footer, className }) => (
   <RootModal show={isOpen} onHide={onClose} className={className}>
     {/* TODO: We gonna add option if the modal is used for form or not */}
     <Form>

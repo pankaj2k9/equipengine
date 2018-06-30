@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types"
 
-import Container from 'base_components/Container'
+import Container from "base_components/Container"
 
 const MainInnerContainer = Container
 

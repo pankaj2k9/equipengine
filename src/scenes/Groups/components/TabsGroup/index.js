@@ -1,17 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { filter, identical } from 'ramda'
+import React from "react"
+import PropTypes from "prop-types"
+import { filter, identical } from "ramda"
 // for Tab Component
-import { Tab } from 'react-bootstrap'
-import Tabs from 'base_components/Tabs'
+import { Tab } from "react-bootstrap"
+import Tabs from "base_components/Tabs"
 
-import ItemTabYourGroup from './components/ItemTabYourGroup'
+import ItemTabYourGroup from "./components/ItemTabYourGroup"
 /* import ItemTabPublicGroup from './components/ItemTabPublicGroup'; */
 
 const TabsGroup = ({ groups }) => {
   // get the yourGroups item on the groups array.
   const yourGroups = filter(
-    (group) => identical(group.type, 'your-group'),
+    group => identical(group.type, "your-group"),
     groups
   )
   // get the public groups item on the groups array.
@@ -22,7 +22,7 @@ const TabsGroup = ({ groups }) => {
 
   return (
     <Tabs>
-      <Tab eventKey={1} title='Your Groups'>
+      <Tab eventKey={1} title="Your Groups">
         <ItemTabYourGroup yourGroups={yourGroups} />
       </Tab>
       {/* <Tab eventKey={2} title="Public Groups">

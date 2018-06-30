@@ -1,16 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import FlaggedIcon from '../../../FlaggedIcon'
-import RootForm, { Checkbox } from 'base_components/RootForm'
+import FlaggedIcon from "../../../FlaggedIcon"
+import RootForm, { Checkbox } from "base_components/RootForm"
 
 const Flagged = styled(({ className }) => (
   <div className={className}>
     <RootForm>
-      <Checkbox name='show-flagged' />
+      <Checkbox name="show-flagged" />
     </RootForm>
     <FlaggedIcon isFlagged />
-    <span className='Flagged__total'>(12)</span>
+    <span className="Flagged__total">(12)</span>
   </div>
 ))`
   display: flex;

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import Box from 'base_components/Box'
+import styled from "styled-components"
+import Box from "base_components/Box"
 
 export default styled(Box)`
   background-size: cover;
@@ -25,7 +25,7 @@ export default styled(Box)`
     }
   }
 
-  .containerControllButton > div{
+  .containerControllButton > div {
     font-size: 12px;
     margin-right: 4em;
 

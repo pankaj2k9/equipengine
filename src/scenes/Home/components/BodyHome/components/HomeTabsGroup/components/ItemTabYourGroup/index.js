@@ -1,10 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
-import ListYourGroup from './components/ListYourGroup'
+import ListYourGroup from "./components/ListYourGroup"
 
 const ItemTabYourGroup = ({ yourGroups }) => {
-
   // else
   return <ListYourGroup yourGroups={yourGroups} />
 }

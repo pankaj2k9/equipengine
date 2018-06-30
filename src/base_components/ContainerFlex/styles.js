@@ -1,4 +1,4 @@
-import css from 'utils/css'
+import css from "utils/css"
 
 /**
  * -------------------------------------
@@ -15,8 +15,9 @@ import css from 'utils/css'
  */
 export default css`
   display: flex;
-  flex-direction: ${(props) => props.isColumn ? 'column' : props.flexDirection};
-  align-items: ${(props) => props.isAlignCenter ? 'center' : props.alignItems};
-  justify-content: ${(props) => props.isSpaceBetween ? 'space-between' : props.justifyContent};
-  background-color: ${(props) => props.backgroundColor};
+  flex-direction: ${props => (props.isColumn ? "column" : props.flexDirection)};
+  align-items: ${props => (props.isAlignCenter ? "center" : props.alignItems)};
+  justify-content: ${props =>
+    props.isSpaceBetween ? "space-between" : props.justifyContent};
+  background-color: ${props => props.backgroundColor};
 `

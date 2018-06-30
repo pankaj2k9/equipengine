@@ -1,13 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 //
-import ContainerHeaderItemTab from '../../../ContainerHeaderItemTab'
-import { Switch } from 'base_components/RootForm'
+import ContainerHeaderItemTab from "../../../ContainerHeaderItemTab"
+import { Switch } from "base_components/RootForm"
 
 const HeaderReportingCourse = styled(({ className }) => (
   <ContainerHeaderItemTab className={className}>
     <span>Reporting System</span>
-    <Switch name='reportingSystem' />
+    <Switch name="reportingSystem" />
   </ContainerHeaderItemTab>
 ))`
   display: flex;

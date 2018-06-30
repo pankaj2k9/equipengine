@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 
-import Box from 'base_components/Box'
-import TutorialsCompleted from './components/TutorialsCompleted'
-import LinkButton from 'base_components/LinkButton'
-import List, { ListRow, ListRowLeft, ListRowRight } from 'base_components/List'
-import courseImg from 'resources/images/course-img.png'
+import Box from "base_components/Box"
+import TutorialsCompleted from "./components/TutorialsCompleted"
+import LinkButton from "base_components/LinkButton"
+import List, { ListRow, ListRowLeft, ListRowRight } from "base_components/List"
+import courseImg from "resources/images/course-img.png"
 
-import './styles.css'
+import "./styles.css"
 
 const ViewButton = styled(LinkButton)`
   width: 100%;
@@ -25,10 +25,10 @@ const ListCourses = ({ courses, match }) => {
           <p>{course.title}</p>
           <p>{course.subtitle}</p>
         </ListRowLeft>
-        <ListRowRight className='ListCourses__right'>
+        <ListRowRight className="ListCourses__right">
           <div>
             <TutorialsCompleted />
-            <ViewButton text='View' url={`${match.url}/${course.id}`} />
+            <ViewButton text="View" url={`${match.url}/${course.id}`} />
           </div>
         </ListRowRight>
       </ListRow>
@@ -36,7 +36,7 @@ const ListCourses = ({ courses, match }) => {
   })
   return (
     <Box>
-      <List className='ListCourses'>{listCourses}</List>
+      <List className="ListCourses">{listCourses}</List>
     </Box>
   )
 }

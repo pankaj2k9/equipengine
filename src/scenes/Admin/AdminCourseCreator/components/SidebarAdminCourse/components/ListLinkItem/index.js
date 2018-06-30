@@ -1,16 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import { NavLink } from "react-router-dom"
 //
-import UserAvatar from 'base_components/UserAvatar'
+import UserAvatar from "base_components/UserAvatar"
 
 const ListLinkItem = styled(({ className, icon, text, url, handleClick }) => (
   <NavLink
     className={className}
     to={url}
     activeStyle={{
-      backgroundColor: '#25282A'
+      backgroundColor: "#25282A"
     }}
     onClick={handleClick}
   >
@@ -48,7 +48,7 @@ const ListLinkItem = styled(({ className, icon, text, url, handleClick }) => (
     span {
       display: inline-block;
       color: #9fa6ad;
-      font-family: 'karla', sans-serif;
+      font-family: "karla", sans-serif;
       font-weight: 800;
       font-size: 12px;
       margin-top: 0.5em;

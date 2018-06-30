@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import Link from 'base_components/Link'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import Link from "base_components/Link"
 
 const StyledLi = styled.li`
   margin-bottom: 1.6em;
@@ -9,7 +9,7 @@ const StyledLi = styled.li`
 
 const StyledLink = styled(Link)`
   letter-spacing: 0.7px;
-  color: #9FA6AD;
+  color: #9fa6ad;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 12px;

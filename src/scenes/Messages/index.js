@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import MessagesList from './components/MessagesList'
-import MessagesConvo from './components/MessagesConvo'
+import MessagesList from "./components/MessagesList"
+import MessagesConvo from "./components/MessagesConvo"
 
 const Messages = styled(({ className }) => {
   return (

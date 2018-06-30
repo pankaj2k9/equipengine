@@ -1,5 +1,5 @@
-import ContainerFilterableList from 'scenes/Admin/components/ContainerAdminPanel/components/ContainerFilterableList'
-import css from 'utils/css'
+import ContainerFilterableList from "scenes/Admin/components/ContainerAdminPanel/components/ContainerFilterableList"
+import css from "utils/css"
 
 /**
  * -------------------------------------
@@ -64,7 +64,7 @@ export const listItemTutorialStyles = css`
     }
   }
 
-  @media screen and (min-width:768px) {
+  @media screen and (min-width: 768px) {
     padding: 1.5em 1.5em 1.5em 0;
   }
 `

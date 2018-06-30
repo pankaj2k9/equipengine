@@ -1,4 +1,4 @@
-import { List } from 'immutable'
+import { List } from "immutable"
 
 // a little function to help us with reordering the result
 export default (list, startIndex, endIndex) =>

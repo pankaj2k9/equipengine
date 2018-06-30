@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
-import styled from 'styled-components'
+import styled from "styled-components"
 //
-import IconUser from 'react-icons/lib/fa/info-circle'
+import IconUser from "react-icons/lib/fa/info-circle"
 
 // compose button, group button
 /* const GroupButton = Button.extend`
@@ -30,14 +30,13 @@ const ListItemGroup = styled(({ className, group }) => {
         {/** check if the group item is type public group.
             we also need to check if the item is already joined or not.
           */}
-        
       </div>
     </li>
   )
 })`
   padding: 0px 0em 1em 1em;
   margin-bottom: 1.2em;
-  background-color: ${(props) => (props.isSelected ? '#F6F6F6' : 'none')};
+  background-color: ${props => (props.isSelected ? "#F6F6F6" : "none")};
 
   > div:first-child {
     h5 {

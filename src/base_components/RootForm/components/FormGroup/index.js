@@ -1,13 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 
 const FormGroup = styled(({ className, children }) => (
   <div className={className}>{children}</div>
 ))`
   margin-bottom: 1.3em;
 
-  display: ${(props) => props.isFlex && 'flex'};
+  display: ${props => props.isFlex && "flex"};
+  flex: ${props => props.flex && "auto"};
 
   &:last-child {
     margin-bottom: 0;

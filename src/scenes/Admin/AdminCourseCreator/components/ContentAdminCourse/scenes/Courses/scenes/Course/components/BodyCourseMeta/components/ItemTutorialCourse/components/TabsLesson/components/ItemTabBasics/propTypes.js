@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types"
 
 /**
  * -------------------------------------
@@ -6,8 +6,7 @@ import PropTypes from 'prop-types'
  * Add prop types in ItemTabBasics
  * -------------------------------------
  */
-export default {
-}
+export default {}
 
 /**
  * -------------------------------------
@@ -20,8 +19,8 @@ export const labelGroup = {
     onHandlerClick: PropTypes.func.isRequired
   },
   default: {
-    title: '',
-    onHandlerClick () {
+    title: "",
+    onHandlerClick() {
       //console.log('click')
     }
   }

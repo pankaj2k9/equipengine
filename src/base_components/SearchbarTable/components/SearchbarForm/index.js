@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import RootForm, { Text } from 'base_components/RootForm'
+import RootForm, { Text } from "base_components/RootForm"
 
 const StyledForm = styled(RootForm)`
   @media screen and (min-width: 768px) {
@@ -12,7 +12,7 @@ const StyledForm = styled(RootForm)`
 `
 const SearchbarForm = () => (
   <StyledForm>
-    <Text name='person' placeholder='Show by person...' />
+    <Text name="person" placeholder="Show by person..." />
   </StyledForm>
 )
 

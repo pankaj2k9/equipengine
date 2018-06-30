@@ -1,13 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import UserAvatar from 'base_components/UserAvatar'
-import avatar from 'resources/images/user.png'
+import UserAvatar from "base_components/UserAvatar"
+import avatar from "resources/images/user.png"
 
 // list messages item
 const ListMessagesItem = styled(({ className }) => (
   <li className={className}>
-    <a href=''>
+    <a href="">
       <UserAvatar small image={avatar} />
       <div>
         <div>
@@ -24,7 +24,7 @@ const ListMessagesItem = styled(({ className }) => (
   a {
     display: flex;
     padding: 1.3em;
-    background: ${(props) => props.active && 'rgba(186, 186, 186, 0.21)'};
+    background: ${props => props.active && "rgba(186, 186, 186, 0.21)"};
     transition: background 300ms ease-in;
 
     img {

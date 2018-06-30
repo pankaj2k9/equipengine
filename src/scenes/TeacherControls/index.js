@@ -1,6 +1,6 @@
-import React from 'react'
-import subscribeToCourses from './hoc/subscribeToCourses'
-import FilterableTableCourse from './components/FilterableTableCourse'
+import React from "react"
+import subscribeToCourses from "./hoc/subscribeToCourses"
+import FilterableTableCourse from "./components/FilterableTableCourse"
 
 const TeacherControls = ({ courses }) => (
   <FilterableTableCourse courses={courses} />

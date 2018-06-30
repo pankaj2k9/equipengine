@@ -1,23 +1,28 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 //
-import PopoverProfileContent from './components/PopoverProfileContent'
-import Popover from 'base_components/Popover'
-import UserAvatar from 'base_components/UserAvatar'
-import IconDown from 'react-icons/lib/fa/angle-down'
-import './styles.css'
+import PopoverProfileContent from "./components/PopoverProfileContent"
+import Popover from "base_components/Popover"
+import UserAvatar from "base_components/UserAvatar"
+import IconDown from "react-icons/lib/fa/angle-down"
+import "./styles.css"
 
 const Profile = ({ name, avatar, removeLoggedUser }) => {
   return (
-    <div className='Profile'>
+    <div className="Profile">
       <p>{name}</p>
       <Popover
-        buttonIcon={<span><UserAvatar image={avatar} /><IconDown /></span>}
+        buttonIcon={
+          <span>
+            <UserAvatar image={avatar} />
+            <IconDown />
+          </span>
+        }
         buttonStyle={{
-          fontSize: '16px',
-          position: 'relative',
-          top: '-3px',
-          marginLeft: '3px'
+          fontSize: "16px",
+          position: "relative",
+          top: "-3px",
+          marginLeft: "3px"
         }}
         popoverContentElement={
           <PopoverProfileContent removeLoggedUser={removeLoggedUser} />

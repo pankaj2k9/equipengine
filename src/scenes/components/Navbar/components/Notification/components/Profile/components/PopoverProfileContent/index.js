@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 const PopoverProfileContent = styled(({ className, removeLoggedUser }) => (
   <ul className={className}>
@@ -22,8 +22,9 @@ const PopoverProfileContent = styled(({ className, removeLoggedUser }) => (
     width: 100px;
     margin-bottom: 0.9em;
 
-    a, button {
-      font-family: 'Avenir Next', 'Helvetica Neau', 'Open Sans', sans-serif;
+    a,
+    button {
+      font-family: "Avenir Next", "Helvetica Neau", "Open Sans", sans-serif;
       color: #000000;
       display: block;
 

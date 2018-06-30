@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
-import Media from 'react-media'
-import ModalBoxVideoInfo from './ModalBoxVideoInfo'
+import Media from "react-media"
+import ModalBoxVideoInfo from "./ModalBoxVideoInfo"
 
 const VideoRunningTime = ({ currentTime }) => {
   const { infoRunningTime, infoCurrentTime, boxInfo } = videoRunningTimeStyle
 
   return (
-    <Media query='(max-width: 767px)'>
-      {(matches) =>
+    <Media query="(max-width: 767px)">
+      {matches =>
         matches ? (
           <ModalBoxVideoInfo>
             <div>
@@ -19,7 +19,7 @@ const VideoRunningTime = ({ currentTime }) => {
           </ModalBoxVideoInfo>
         ) : (
           <ModalBoxVideoInfo style={boxInfo.desktopViewport}>
-            <div style={{ textAlign: 'right' }}>
+            <div style={{ textAlign: "right" }}>
               <span
                 style={{
                   ...infoRunningTime,
@@ -38,7 +38,8 @@ const VideoRunningTime = ({ currentTime }) => {
               </p>
             </div>
           </ModalBoxVideoInfo>
-        )}
+        )
+      }
     </Media>
   )
 }
@@ -46,26 +47,26 @@ const VideoRunningTime = ({ currentTime }) => {
 const videoRunningTimeStyle = {
   infoRunningTime: {
     fontSize: 10,
-    color: '#4e4e4e',
+    color: "#4e4e4e",
     desktopViewport: {
-      color: '#ffffff'
+      color: "#ffffff"
     }
   },
   infoCurrentTime: {
     fontSize: 14,
     marginBottom: 0,
     desktopViewport: {
-      color: '#ffffff',
-      textAlign: 'right',
-      paddingRight: '1em'
+      color: "#ffffff",
+      textAlign: "right",
+      paddingRight: "1em"
     }
   },
   boxInfo: {
     desktopViewport: {
       order: 3,
-      flexDirection: 'column',
-      justifyContent: 'flex-end',
-      marginBottom: '1.1em'
+      flexDirection: "column",
+      justifyContent: "flex-end",
+      marginBottom: "1.1em"
     }
   }
 }

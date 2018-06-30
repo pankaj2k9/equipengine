@@ -1,12 +1,12 @@
-import React from 'react'
-import Media from 'react-media'
+import React from "react"
+import Media from "react-media"
 
-import ModalBoxVideoInfo from '../ModalBoxVideoInfo'
-import DropdownMediaFile from './components/DropdownMediaFile/index.js'
+import ModalBoxVideoInfo from "../ModalBoxVideoInfo"
+import DropdownMediaFile from "./components/DropdownMediaFile/index.js"
 
 const VideoMedia = () => (
-  <Media query='(max-width: 767px)'>
-    {(matches) =>
+  <Media query="(max-width: 767px)">
+    {matches =>
       matches ? (
         <ModalBoxVideoInfo>
           <DropdownMediaFile />
@@ -15,7 +15,8 @@ const VideoMedia = () => (
         <ModalBoxVideoInfo style={{ order: 1 }}>
           <DropdownMediaFile />
         </ModalBoxVideoInfo>
-      )}
+      )
+    }
   </Media>
 )
 

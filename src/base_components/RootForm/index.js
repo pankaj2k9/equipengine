@@ -1,20 +1,20 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
-import FormGroup from './components/FormGroup'
-import Label from './components/Label'
-import Text from './components/Text'
-import TextWithIcon from './components/TextWithIcon'
-import TextArea from './components/TextArea'
+import FormGroup from "./components/FormGroup"
+import Label from "./components/Label"
+import Text from "./components/Text"
+import TextArea from "./components/TextArea"
+import TextWithIcon from "./components/TextWithIcon"
 import {
   Checkbox,
   CheckboxCircle,
   CheckboxCircleSecondary
-} from './components/Checkbox'
-import Switch from './components/Switch'
+} from "./components/Checkbox"
+import Switch from "./components/Switch"
 
 const RootForm = ({ children, className }) => (
-  <form className={className} action=''>
+  <form className={className} action="">
     {children}
   </form>
 )

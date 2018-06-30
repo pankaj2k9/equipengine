@@ -1,18 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Media from 'react-media'
+import React from "react"
+import PropTypes from "prop-types"
+import Media from "react-media"
 
-import Box from 'base_components/Box'
+import Box from "base_components/Box"
 
 const ModalBox = ({ className, children, style }) => (
-  <Media query='(max-width: 767px)'>
-    {(matches) =>
+  <Media query="(max-width: 767px)">
+    {matches =>
       matches ? (
         <Box
           className={className}
           style={{
-            padding: '3%',
-            display: 'flex',
+            padding: "3%",
+            display: "flex",
             ...style
           }}
         >
@@ -22,14 +22,15 @@ const ModalBox = ({ className, children, style }) => (
         <Box
           className={className}
           style={{
-            padding: '16px 35px',
-            display: 'flex',
+            padding: "16px 35px",
+            display: "flex",
             ...style
           }}
         >
           {children}
         </Box>
-      )}
+      )
+    }
   </Media>
 )
 

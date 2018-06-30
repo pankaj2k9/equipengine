@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
-export default (WrappedComponent) =>
+export default WrappedComponent =>
   styled(WrappedComponent)`
     background: #f5f5f5;
     height: 100vh;

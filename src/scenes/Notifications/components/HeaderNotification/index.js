@@ -1,4 +1,4 @@
-import { MainHeaderTitle } from 'base_components/Main'
+import { MainHeaderTitle } from "base_components/Main"
 
 const HeaderNotification = MainHeaderTitle.extend`
   display: flex;

@@ -1,22 +1,22 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
-import './styles.css'
+import "./styles.css"
 
 const RowData = ({ userName, date, message, avatar }) => {
   return (
-    <li className='RowData'>
+    <li className="RowData">
       {avatar && (
-        <div className='RowData__avatar'>
+        <div className="RowData__avatar">
           <img style={rowDataStyle.rowDataImg} src={avatar} alt={userName} />
         </div>
       )}
-      <div className='RowData__info'>
-        <div className='RowData__info__header'>
+      <div className="RowData__info">
+        <div className="RowData__info__header">
           {userName && <p>{userName}</p>}
           <span>{date}</span>
         </div>
-        <div className='RowData__info__body'>
+        <div className="RowData__info__body">
           <p>{message}</p>
         </div>
       </div>
@@ -35,8 +35,8 @@ const rowDataStyle = {
   rowDataImg: {
     height: 30,
     width: 30,
-    objectFit: 'cover',
-    objectPosition: 'top'
+    objectFit: "cover",
+    objectPosition: "top"
   }
 }
 

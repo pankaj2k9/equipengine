@@ -1,13 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import { MainRight } from 'base_components/Main'
-import SearchBar from 'base_components/RootSearchBar'
+import { MainRight } from "base_components/Main"
+import SearchBar from "base_components/RootSearchBar"
 
 const Sidebar = styled(({ className }) => (
   <MainRight className={className}>
     <SearchBar />
-    <p>People can turn off their communication function. If you want to enable/disable messages go to settings.</p>
+    <p>
+      People can turn off their communication function. If you want to
+      enable/disable messages go to settings.
+    </p>
   </MainRight>
 ))`
   p {

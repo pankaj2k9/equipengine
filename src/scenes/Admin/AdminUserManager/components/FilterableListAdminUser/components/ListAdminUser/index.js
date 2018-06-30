@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 // user avatar
-import UserAvatar from 'base_components/UserAvatar'
-import iconUser from 'resources/images/user.png'
+import UserAvatar from "base_components/UserAvatar"
+import iconUser from "resources/images/user.png"
 // some sub components
-import RoleUser from 'base_components/RoleUser'
-import ContainerFlex from 'base_components/ContainerFlex'
-import StatusCircle from 'base_components/StatusCircle'
+import RoleUser from "base_components/RoleUser"
+import ContainerFlex from "base_components/ContainerFlex"
+import StatusCircle from "base_components/StatusCircle"
 
 // Handling the list item of the list admin user
 const ListItemAdminUser = styled(({ className }) => (
@@ -17,8 +17,8 @@ const ListItemAdminUser = styled(({ className }) => (
         <span>Tim Hall</span>
       </ContainerFlex>
       <ContainerFlex isAlignCenter>
-        <RoleUser roleUser='Teacher' />
-        <StatusCircle state='disabled' />
+        <RoleUser roleUser="Teacher" />
+        <StatusCircle state="disabled" />
       </ContainerFlex>
     </ContainerFlex>
   </li>

@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
-import HeaderTableCourses from './components/HeaderTableCourses'
-import TableCourses from './components/TableCourses'
+import HeaderTableCourses from "./components/HeaderTableCourses"
+import TableCourses from "./components/TableCourses"
 
 const FilterableTableCourses = ({ match }) => (
   <div>

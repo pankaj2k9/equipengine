@@ -1,21 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 
 const Switch = styled(({ className, name, value, onChange }) => (
   <label className={className}>
-    <input
-      type='checkbox'
-      name={name}
-      checked={value}
-      onChange={onChange}
-    />
-    <span className='slider round' />
+    <input type="checkbox" name={name} checked={value} onChange={onChange} />
+    <span className="slider round" />
   </label>
 ))`
   position: relative;
   display: inline-block;
-  width: 42px;
+  width: 55px;
   height: 22px;
   margin-bottom: 0;
 
@@ -35,17 +30,37 @@ const Switch = styled(({ className, name, value, onChange }) => (
     bottom: 0;
     background-color: #ccc;
     transition: 0.4s;
+    padding-top: 3px;
+    font-size: 12px;
   }
 
   .slider:before {
     position: absolute;
-    content: '';
+    content: "";
     height: 20px;
     width: 20px;
     left: 2px;
     bottom: 1px;
     background-color: white;
     transition: 0.4s;
+  }
+
+  /**
+   * On-Off customizations
+   */
+  .slider:after {
+    content: "OFF";
+    float: right;
+    color: white;
+    padding-right: 7px;
+    transition: 0.4s;
+  }
+
+  input:checked + .slider:after {
+    content: "ON";
+    float: left;
+    color: white;
+    padding-left: 10px;
   }
 
   input:checked + .slider {
@@ -57,7 +72,7 @@ const Switch = styled(({ className, name, value, onChange }) => (
   }
 
   input:checked + .slider:before {
-    transform: translateX(19px);
+    transform: translateX(31px);
   }
 
   /* Rounded sliders */

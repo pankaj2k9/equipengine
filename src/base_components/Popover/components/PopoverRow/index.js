@@ -1,12 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import React from "react"
+import PropTypes from "prop-types"
+import { Link } from "react-router-dom"
 
-import './style.css'
+import "./style.css"
 
 const PopoverRow = ({ text, url }) => {
   return (
-    <li className='PopoverRow'>
+    <li className="PopoverRow">
       <Link to={url}>{text}</Link>
     </li>
   )

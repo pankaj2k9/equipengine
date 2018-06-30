@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 //
-import ContainerFlex from 'base_components/ContainerFlex'
-import IconCaretLeft from 'react-icons/lib/fa/caret-left'
-import IconCaretRight from 'react-icons/lib/fa/caret-right'
+import ContainerFlex from "base_components/ContainerFlex"
+import IconCaretLeft from "react-icons/lib/fa/caret-left"
+import IconCaretRight from "react-icons/lib/fa/caret-right"
 
 const ContainerSpinner = ContainerFlex.extend`
   width: 98px;
@@ -45,8 +45,8 @@ const SpinnerUI = ({
       </i>
     </ButtonSpinner>
     <TextSpinner
-      name='counter'
-      type='text'
+      name="counter"
+      type="text"
       onChange={onHandleChange}
       value={count}
     />

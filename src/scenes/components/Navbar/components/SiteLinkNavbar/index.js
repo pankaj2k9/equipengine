@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
+import styled from "styled-components"
+import { NavLink } from "react-router-dom"
 
 const LinkMain = styled(NavLink)`
   color: #9ea6ad;
@@ -7,9 +7,7 @@ const LinkMain = styled(NavLink)`
   text-transform: uppercase;
   display: block;
   transition: all 300ms ease-in;
-  ${({ width }) => width && ({ width })}
-
-  &:hover {
+  ${({ width }) => width && { width }} &:hover {
     color: #0e90e0;
   }
   &:focus {

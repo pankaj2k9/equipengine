@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 //
-import Button from 'base_components/RootButton'
-import IconUpload from 'react-icons/lib/md/file-upload'
+import Button from "base_components/RootButton"
+import IconUpload from "react-icons/lib/md/file-upload"
 
 // FIXME: We will fix the padding. The content is not slightly horizontally center.
-const ButtonUpload = styled(({className}) => (
+const ButtonUpload = styled(({ className }) => (
   <Button light lightBorder className={className}>
     Upload
     <i>
@@ -13,8 +13,8 @@ const ButtonUpload = styled(({className}) => (
     </i>
   </Button>
 ))`
-  color: #BDBDBD;
-  border-color: #BDBDBD;
+  color: #bdbdbd;
+  border-color: #bdbdbd;
   padding: 0 0 5px 0;
 
   i {

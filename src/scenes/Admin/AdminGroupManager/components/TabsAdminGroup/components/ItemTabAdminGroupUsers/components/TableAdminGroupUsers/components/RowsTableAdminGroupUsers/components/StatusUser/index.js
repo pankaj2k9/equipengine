@@ -1,12 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 // base components
-import StatusCircle from 'base_components/StatusCircle'
+import StatusCircle from "base_components/StatusCircle"
 
 const StatusUser = styled(({ className, isActive }) => (
   <div className={className}>
-    <StatusCircle state={isActive ? 'active' : 'inActive'} />
+    <StatusCircle state={isActive ? "active" : "inActive"} />
     <span>Active</span>
   </div>
 ))`

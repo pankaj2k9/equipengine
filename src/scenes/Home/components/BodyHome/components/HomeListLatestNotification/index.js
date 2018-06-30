@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React from "react"
+import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 //
-import ContainerFlex from 'base_components/ContainerFlex'
-import iconArrowRight from 'resources/images/arrowRight.svg'
+import ContainerFlex from "base_components/ContainerFlex"
+import iconArrowRight from "resources/images/arrowRight.svg"
 
 const ListItem = styled(({ className }) => (
   <li className={className}>
@@ -41,7 +41,12 @@ const ListContainer = styled.ul`
 
 const HomeListLatestNotification = () => (
   <div>
-    <HeaderListLatest>Latest Activity <Link to='/secure/activity'><img alt='icon arrow right' src={iconArrowRight} /></Link></HeaderListLatest>
+    <HeaderListLatest>
+      Latest Activity{" "}
+      <Link to="/secure/activity">
+        <img alt="icon arrow right" src={iconArrowRight} />
+      </Link>
+    </HeaderListLatest>
     <ListContainer>
       <ListItem />
     </ListContainer>

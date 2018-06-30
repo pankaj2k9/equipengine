@@ -1,14 +1,14 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import IconArrowRight from 'react-icons/lib/fa/angle-right'
-import IconArrowDown from 'react-icons/lib/fa/angle-down'
+import React, { PureComponent } from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import IconArrowRight from "react-icons/lib/fa/angle-right"
+import IconArrowDown from "react-icons/lib/fa/angle-down"
 
-import Box from 'base_components/Box'
-import CollapsibleCourseHeaderPanel from './components/CollapsibleCourseHeaderPanel'
-import bgImage from './course-bg.png'
-import courseImg from 'resources/images/steve-bible-teaching.jpg'
-import './styles.css'
+import Box from "base_components/Box"
+import CollapsibleCourseHeaderPanel from "./components/CollapsibleCourseHeaderPanel"
+import bgImage from "./course-bg.png"
+import courseImg from "resources/images/steve-bible-teaching.jpg"
+import "./styles.css"
 
 // Report Container component.
 const ReportContainer = styled.div`
@@ -24,12 +24,12 @@ class HeaderCourseMeta extends PureComponent {
     }
   }
 
-  triggerPanel = (e) => {
+  triggerPanel = e => {
     e.preventDefault()
     this.setState({
       open: !this.state.open
     })
-  };
+  }
 
   render() {
     const { title, description } = this.props.course

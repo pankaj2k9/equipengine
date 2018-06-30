@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-import Box from 'base_components/Box'
+import Box from "base_components/Box"
 
 const NotFound = () => {
   return (

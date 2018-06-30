@@ -1,16 +1,21 @@
-import React, { Component, Fragment } from 'react'
-import { identical } from 'ramda'
-import { isNotNil } from 'ramda-adjunct'
+import React, { Component, Fragment } from "react"
+import { identical } from "ramda"
+import { isNotNil } from "ramda-adjunct"
 // components
-import AdminCourseModal from 'scenes/Admin/AdminCourseCreator/components/ContentAdminCourse/scenes/components/AdminCourseModal'
-import Form, { FormGroup, Label, TextArea, Text } from 'base_components/RootForm'
-import ButtonUpload from 'base_components/ButtonUpload'
-import Button from 'base_components/RootButton'
+import AdminCourseModal from "scenes/Admin/AdminCourseCreator/components/ContentAdminCourse/scenes/components/AdminCourseModal"
+import Form, {
+  FormGroup,
+  Label,
+  TextArea,
+  Text
+} from "base_components/RootForm"
+import ButtonUpload from "base_components/ButtonUpload"
+import Button from "base_components/RootButton"
 // react select
-import Select from 'react-select'
+import Select from "react-select"
 // resources
-import modalActionsStyles, { buttonExtendStyles } from './styles'
-import modalActions, { modalBody, contentModalActions } from './propTypes'
+import modalActionsStyles, { buttonExtendStyles } from "./styles"
+import modalActions, { modalBody, contentModalActions } from "./propTypes"
 
 /**
  * -------------------------------------
@@ -20,12 +25,12 @@ import modalActions, { modalBody, contentModalActions } from './propTypes'
  */
 class ModalActions extends Component {
   state = {
-    selectedOption: ''
+    selectedOption: ""
   }
 
-  handleChange = (selectedOption) => this.setState({ selectedOption })
+  handleChange = selectedOption => this.setState({ selectedOption })
 
-  render () {
+  render() {
     const { handleClose, isOpen, className } = this.props
     return (
       <Form>
@@ -35,13 +40,18 @@ class ModalActions extends Component {
           className={className}
           modal={{
             header: {
-              title: 'New Action'
+              title: "New Action"
             },
             body: {
-              children: <ModalBody selectedOption={this.state.selectedOption} handleChange={this.handleChange} />
+              children: (
+                <ModalBody
+                  selectedOption={this.state.selectedOption}
+                  handleChange={this.handleChange}
+                />
+              )
             },
             footer: {
-              buttonTitle: 'Save',
+              buttonTitle: "Save"
               //buttonHandler: () => console.log('handle click')
             }
           }}
@@ -70,30 +80,32 @@ const ButtonSelect = buttonExtendStyles(Button)
  * @see ModalActions
  * -------------------------------------
  */
-const ModalBody = ({selectedOption, handleChange}) => {
+const ModalBody = ({ selectedOption, handleChange }) => {
   // if tehre is selected option, assign the value in value variable
   const actionType = selectedOption ? selectedOption.value : null
   // label text
-  const labelText = identical('question', actionType) ? 'Question' : 'Description'
+  const labelText = identical("question", actionType)
+    ? "Question"
+    : "Description"
 
   return (
     <Fragment>
       <FormGroup>
         <Label>Select action type</Label>
         <Select
-          name='dropdown-action'
+          name="dropdown-action"
           value={actionType}
           onChange={handleChange}
           options={[
-            { value: 'reading', label: 'Reading' },
-            { value: 'question', label: 'Question' },
-            { value: 'watch', label: 'Watch' }
+            { value: "reading", label: "Reading" },
+            { value: "question", label: "Question" },
+            { value: "watch", label: "Watch" }
           ]}
         />
       </FormGroup>
-      {
-        isNotNil(actionType) && <ContentModalActions labelText={labelText} actionType={actionType} />
-      }
+      {isNotNil(actionType) && (
+        <ContentModalActions labelText={labelText} actionType={actionType} />
+      )}
     </Fragment>
   )
 }
@@ -107,14 +119,14 @@ ModalBody.defaultProps = modalBody.default
  * @see ModalBody
  * -------------------------------------
  */
-const ContentModalActions = ({labelText, actionType}) => (
+const ContentModalActions = ({ labelText, actionType }) => (
   <Fragment>
     <div>
       <FormGroup>
         <Label>{labelText}</Label>
         <TextArea
-          name='description'
-          placeholder='Communication and culture is focused on those who want to serve in their local community.'
+          name="description"
+          placeholder="Communication and culture is focused on those who want to serve in their local community."
           row={7}
         />
       </FormGroup>
@@ -125,21 +137,20 @@ const ContentModalActions = ({labelText, actionType}) => (
         </div>
       </FormGroup>
     </div>
-    {
-      identical('watch', actionType) &&
-        (
-          <div>
-            <FormGroup>
-              <Label>Paste video link:</Label>
-              <Text name='videoLink' />
-            </FormGroup>
-            <FormGroup>
-              <Label>Choose from your library</Label>
-              <ButtonSelect light lightBorder>Select</ButtonSelect>
-            </FormGroup>
-          </div>
-        )
-    }
+    {identical("watch", actionType) && (
+      <div>
+        <FormGroup>
+          <Label>Paste video link:</Label>
+          <Text name="videoLink" />
+        </FormGroup>
+        <FormGroup>
+          <Label>Choose from your library</Label>
+          <ButtonSelect light lightBorder>
+            Select
+          </ButtonSelect>
+        </FormGroup>
+      </div>
+    )}
   </Fragment>
 )
 

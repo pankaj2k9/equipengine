@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
-import { identical } from 'ramda'
-import { ButtonIcon } from 'base_components/RootButton'
-import IconPlus from 'react-icons/lib/md/add'
+import React, { Fragment } from "react"
+import PropTypes from "prop-types"
+import { identical } from "ramda"
+import { ButtonIcon } from "base_components/RootButton"
+import IconPlus from "react-icons/lib/md/add"
 
 const Button = ButtonIcon.extend`
   width: 100%;
@@ -25,26 +25,26 @@ const Button = ButtonIcon.extend`
 `
 
 const ButtonAdd = ({ onHandlerClick, text, className, iconPosition }) => (
-  <Button iconPosition={iconPosition} className={className} onClick={onHandlerClick}>
-    {
-      identical(iconPosition, 'right')
-        ? (
-          <Fragment>
-            <span>{text}</span>
-            <i>
-              <IconPlus />
-            </i>
-          </Fragment>
-        )
-        : (
-          <Fragment>
-            <i>
-              <IconPlus />
-            </i>
-            <span>{text}</span>
-          </Fragment>
-        )
-    }
+  <Button
+    iconPosition={iconPosition}
+    className={className}
+    onClick={onHandlerClick}
+  >
+    {identical(iconPosition, "right") ? (
+      <Fragment>
+        <span>{text}</span>
+        <i>
+          <IconPlus />
+        </i>
+      </Fragment>
+    ) : (
+      <Fragment>
+        <i>
+          <IconPlus />
+        </i>
+        <span>{text}</span>
+      </Fragment>
+    )}
   </Button>
 )
 
@@ -56,7 +56,7 @@ ButtonAdd.propTypes = {
 }
 
 ButtonAdd.defaultProps = {
-  iconPosition: 'RIGHT'
+  iconPosition: "RIGHT"
 }
 
 export default ButtonAdd

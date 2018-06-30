@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {Droppable} from 'react-beautiful-dnd'
-import DroppableListItemWrapper from './components/DroppableListItemWrapper'
+import React from "react"
+import PropTypes from "prop-types"
+import { Droppable } from "react-beautiful-dnd"
+import DroppableListItemWrapper from "./components/DroppableListItemWrapper"
 
 const DroppableList = ({
   droppableId,
@@ -9,7 +9,7 @@ const DroppableList = ({
   children,
   list,
   className,
-  colorState: {isDragColor, notDragColor}
+  colorState: { isDragColor, notDragColor }
 }) => (
   <Droppable droppableId={droppableId} type={type}>
     {(provided, snapshot) => (
@@ -42,12 +42,12 @@ DroppableList.propTypes = {
 }
 
 DroppableList.defaultProps = {
-  droppableId: 'droppable-1',
-  type: 'DEFAULT',
+  droppableId: "droppable-1",
+  type: "DEFAULT",
   list: [],
   colorState: {
-    isDragColor: '#DEDEDE',
-    notDragColor: '#ffffff'
+    isDragColor: "#DEDEDE",
+    notDragColor: "#ffffff"
   }
 }
 

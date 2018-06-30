@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
-import ModalButton from './ModalButton'
+import ModalButton from "./ModalButton"
 
 const SlideControl = ({ text, arrow, handleClick }) => (
   <ModalButton style={{ padding: 0 }} handleClick={handleClick}>
     <span
       style={{
-        marginRight: '0.3em'
+        marginRight: "0.3em"
       }}
     >
       {arrow}

@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react"
 
 import SearchbarTable, {
   SearchbarButtonFilter,
   SearchbarDropdownCourse
-} from 'base_components/SearchbarTable'
+} from "base_components/SearchbarTable"
 
 const SearchbarTableGroups = () => (
   <SearchbarTable>
-    <SearchbarButtonFilter title='Show All' />
+    <SearchbarButtonFilter title="Show All" />
     <SearchbarDropdownCourse />
   </SearchbarTable>
 )

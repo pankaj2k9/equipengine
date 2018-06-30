@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 // base components
-import Button from 'base_components/RootButton'
+import Button from "base_components/RootButton"
 // for modal
-import modal from 'hoc/modal'
-import { Modal } from 'react-bootstrap'
+import modal from "hoc/modal"
+import { Modal } from "react-bootstrap"
 // assets
-import iconSettings from 'resources/images/iconSettings.svg'
+import iconSettings from "resources/images/iconSettings.svg"
 // sub-components
-import ModalBodyCourses from './components/ModalBodyCourses'
-import ModalHeaderCourses from './components/ModalHeaderCourses'
+import ModalBodyCourses from "./components/ModalBodyCourses"
+import ModalHeaderCourses from "./components/ModalHeaderCourses"
 
 // styled button settings to use for opening modal.
 const ButtonSettings = Button.extend`
@@ -32,7 +32,7 @@ const ContainerModalCourses = styled.div`
 const ModalCoursesSettings = ({ isOpen, onOpen, onClose }) => (
   <ContainerModalCourses>
     <ButtonSettings onClick={onOpen}>
-      <img alt='icon settings' src={iconSettings} />
+      <img alt="icon settings" src={iconSettings} />
     </ButtonSettings>
     <Modal show={isOpen} onHide={onClose}>
       <ModalHeaderCourses />

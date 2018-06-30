@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import MessageForm from 'base_components/MessageForm'
-import MessagesConvoList from './components/MessagesConvoList'
+import MessageForm from "base_components/MessageForm"
+import MessagesConvoList from "./components/MessagesConvoList"
 
 const MessagesConvo = styled(({ className }) => (
   <div className={className}>

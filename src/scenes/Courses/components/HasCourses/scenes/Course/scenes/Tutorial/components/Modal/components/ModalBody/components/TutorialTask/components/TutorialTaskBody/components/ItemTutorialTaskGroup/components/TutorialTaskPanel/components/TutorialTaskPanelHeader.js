@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react"
+import PropTypes from "prop-types"
 
 // for button
-import Button from 'base_components/Button'
-import IconDownload from 'react-icons/lib/fa/download'
+import Button from "base_components/Button"
+import IconDownload from "react-icons/lib/fa/download"
 
-import IconArrowRight from 'react-icons/lib/fa/angle-right'
-import IconArrowDown from 'react-icons/lib/fa/angle-down'
-import Interactive from 'react-interactive'
+import IconArrowRight from "react-icons/lib/fa/angle-right"
+import IconArrowDown from "react-icons/lib/fa/angle-down"
+import Interactive from "react-interactive"
 
 const TutorialTaskPanelHeader = ({
   isReadingGroup,
@@ -24,19 +24,19 @@ const TutorialTaskPanelHeader = ({
     downloadButton
   } = tutorialTaskPanelHeaderStyle
   return (
-    <div style={container} className='TutorialTaskPanelHeader'>
+    <div style={container} className="TutorialTaskPanelHeader">
       <div>
         <p style={headerCategory}>{category}</p>
         <Interactive
-          as='p'
-          hover={{ color: '#338FFC' }}
+          as="p"
+          hover={{ color: "#338FFC" }}
           onClick={handleTogglePanel}
           style={headerTitle}
         >
           {title}
         </Interactive>
         {isReadingGroup && (
-          <Button style={downloadButton} text='Download'>
+          <Button style={downloadButton} text="Download">
             <span>
               <IconDownload style={downloadButton.span} />
             </span>
@@ -66,35 +66,35 @@ TutorialTaskPanelHeader.propTypes = {
 
 const tutorialTaskPanelHeaderStyle = {
   container: {
-    padding: '1em',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    padding: "1em",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   headerCategory: {
-    color: '#9FA6AD',
-    marginBottom: '0.8em'
+    color: "#9FA6AD",
+    marginBottom: "0.8em"
   },
   headerTitle: {
     fontSize: 16,
-    color: '#111111',
+    color: "#111111",
     marginBottom: 0,
     maxWidth: 600,
-    transition: 'all 300ms ease-in',
-    cursor: 'pointer'
+    transition: "all 300ms ease-in",
+    cursor: "pointer"
   },
   icon: {
-    fontSize: '1.2rem',
-    color: '#6c6c6c',
-    cursor: 'pointer'
+    fontSize: "1.2rem",
+    color: "#6c6c6c",
+    cursor: "pointer"
   },
   downloadButton: {
-    background: '#ffffff',
-    border: '1px solid #d4d4d4',
-    color: '#c9c9c9',
-    marginTop: '0.6em',
+    background: "#ffffff",
+    border: "1px solid #d4d4d4",
+    color: "#c9c9c9",
+    marginTop: "0.6em",
     span: {
-      marginLeft: '0.5em'
+      marginLeft: "0.5em"
     }
   }
 }

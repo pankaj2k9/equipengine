@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react"
 //
-import Dropdown from 'base_components/Dropdown'
-import { MenuItem } from 'react-bootstrap'
+import Dropdown from "base_components/Dropdown"
+import { MenuItem } from "react-bootstrap"
 
 // extending the dropdown button style.
 const ExtendDropdown = Dropdown.extend`
@@ -9,7 +9,7 @@ const ExtendDropdown = Dropdown.extend`
   background-color: #d8d8d8;
   border: 0;
   text-transform: uppercase;
-  font-family: 'karla', sans-serif;
+  font-family: "karla", sans-serif;
   font-size: 12px;
   font-weight: 800;
   border-radius: 3px;
@@ -25,12 +25,12 @@ const ExtendDropdown = Dropdown.extend`
 `
 
 const DropdownSortBy = () => (
-  <ExtendDropdown title='Sort by' id='dropdown-size-medium'>
-    <MenuItem eventKey='1'>Action</MenuItem>
-    <MenuItem eventKey='2'>Another action</MenuItem>
-    <MenuItem eventKey='3'>Something else here</MenuItem>
+  <ExtendDropdown title="Sort by" id="dropdown-size-medium">
+    <MenuItem eventKey="1">Action</MenuItem>
+    <MenuItem eventKey="2">Another action</MenuItem>
+    <MenuItem eventKey="3">Something else here</MenuItem>
     <MenuItem divider />
-    <MenuItem eventKey='4'>Separated link</MenuItem>
+    <MenuItem eventKey="4">Separated link</MenuItem>
   </ExtendDropdown>
 )
 

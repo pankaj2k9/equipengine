@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 //
 export default styled.div`
   @media screen and (min-width: 768px) {

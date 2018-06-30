@@ -1,7 +1,7 @@
-import css from 'utils/css'
-import { compose } from 'ramda'
-import { Link, NavLink as RootNavLink } from 'react-router-dom'
-import { defaultFlexStyles } from 'base_components/ContainerFlex'
+import css from "utils/css"
+import { compose } from "ramda"
+import { Link, NavLink as RootNavLink } from "react-router-dom"
+import { defaultFlexStyles } from "base_components/ContainerFlex"
 
 // -------------------------STYLED FUNCTION------------------------------------
 
@@ -17,7 +17,7 @@ export default css`
   border-radius: 0;
 
   .navbar-brand {
-    font-family: 'Avenir Next', sans-serif;
+    font-family: "Avenir Next", sans-serif;
     font-weight: 800;
     font-size: 18px;
     align-items: center;
@@ -104,7 +104,7 @@ const navLinkStyles = css`
  */
 const linkActionStyles = css`
   @media screen and (min-width: 768px) {
-    background-color: #8F8F8F;
+    background-color: #8f8f8f;
     border-radius: 3px;
     padding: 0.5em 2.5em;
 
@@ -122,7 +122,7 @@ const linkActionStyles = css`
  */
 const signupStyles = css`
   @media screen and (min-width: 768px) {
-    background-color: #338FFC;
+    background-color: #338ffc;
 
     &:hover {
       background-color: #125eb7;
@@ -166,7 +166,7 @@ export const Nav = css`
       }
     }
   }
-`('nav')
+`("nav")
 
 // -------------------------STYLED COMPONENTS------------------------------------
 
@@ -192,7 +192,10 @@ export const NavLink = navLinkStyles(RootNavLink)
  * @function
  * -------------------------------------
  */
-export const LinkLogin = compose(linkActionStyles, navLinkStyles)(RootNavLink)
+export const LinkLogin = compose(
+  linkActionStyles,
+  navLinkStyles
+)(RootNavLink)
 
 /**
  * -------------------------------------
@@ -200,4 +203,8 @@ export const LinkLogin = compose(linkActionStyles, navLinkStyles)(RootNavLink)
  * @function
  * -------------------------------------
  */
-export const LinkSignup = compose(signupStyles, linkActionStyles, navLinkStyles)(RootNavLink)
+export const LinkSignup = compose(
+  signupStyles,
+  linkActionStyles,
+  navLinkStyles
+)(RootNavLink)

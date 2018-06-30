@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Tabs as TabBootstrap } from 'react-bootstrap'
+import React from "react"
+import PropTypes from "prop-types"
+import { Tabs as TabBootstrap } from "react-bootstrap"
 
-import './styles.css'
+import "./styles.css"
 
 const Tabs = ({ style, children, className }) => {
   return (
@@ -10,7 +10,7 @@ const Tabs = ({ style, children, className }) => {
       style={style}
       className={`Tabs ${className}`}
       defaultActiveKey={1}
-      id='uncontrolled-tab-example'
+      id="uncontrolled-tab-example"
     >
       {children}
     </TabBootstrap>
@@ -27,7 +27,7 @@ Tabs.propTypes = {
 }
 
 Tabs.defaultProps = {
-  className: ''
+  className: ""
 }
 
 export default Tabs

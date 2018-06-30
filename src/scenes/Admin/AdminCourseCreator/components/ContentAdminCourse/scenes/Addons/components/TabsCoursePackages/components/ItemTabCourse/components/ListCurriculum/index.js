@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 //
-import imageBackground from 'resources/images/background-image.png'
-import LinkButton from 'base_components/LinkButton'
-import ButtonAdd from 'base_components/ButtonAdd'
+import imageBackground from "resources/images/background-image.png"
+import LinkButton from "base_components/LinkButton"
+import ButtonAdd from "base_components/ButtonAdd"
 
-const ListItemCurriculum = styled(({className}) => (
+const ListItemCurriculum = styled(({ className }) => (
   <article className={className}>
     <header>
       <span />
@@ -15,17 +15,18 @@ const ListItemCurriculum = styled(({className}) => (
         <h6>The AccessTruth Curriculum</h6>
       </header>
       <p>
-        This group is for people who are in level 3 pathway in the Connect Program.
+        This group is for people who are in level 3 pathway in the Connect
+        Program.
       </p>
-      <div className='ListItem__buttonGroup'>
-        <LinkButton text='Details' url='/details' />
-        <ButtonAdd text='Add to library' iconPosition='left' />
+      <div className="ListItem__buttonGroup">
+        <LinkButton text="Details" url="/details" />
+        <ButtonAdd text="Add to library" iconPosition="left" />
       </div>
     </section>
   </article>
 ))`
   border-radius: 5px;
-  border: 1px solid #D8D8D8;
+  border: 1px solid #d8d8d8;
   margin-bottom: 1em;
 
   &:last-child {
@@ -58,9 +59,8 @@ const ListItemCurriculum = styled(({className}) => (
     }
 
     p {
-      color: #9FA6AD;
+      color: #9fa6ad;
     }
-
   }
 
   .ListItem__buttonGroup {
@@ -91,7 +91,8 @@ const ListItemCurriculum = styled(({className}) => (
       display: flex;
       justify-content: space-between;
 
-      a, button {
+      a,
+      button {
         width: 49%;
       }
 

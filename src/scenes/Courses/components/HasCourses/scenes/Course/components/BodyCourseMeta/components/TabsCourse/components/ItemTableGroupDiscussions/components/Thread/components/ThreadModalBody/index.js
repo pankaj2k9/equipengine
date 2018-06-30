@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import ModalBody from 'react-bootstrap/lib/ModalBody'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
+import ModalBody from "react-bootstrap/lib/ModalBody"
 
-import UserAvatar from 'base_components/UserAvatar'
+import UserAvatar from "base_components/UserAvatar"
 
 const ListRow = styled.li`
   padding: 1em 0;
@@ -35,7 +35,7 @@ const ListRow = styled.li`
 `
 
 const ThreadModalBody = styled(({ className, thread }) => {
-  const commentList = thread.comments.map((comment) => (
+  const commentList = thread.comments.map(comment => (
     <ListRow key={comment.id}>
       <div>
         <div>
@@ -50,7 +50,7 @@ const ThreadModalBody = styled(({ className, thread }) => {
   ))
   return (
     <ModalBody className={className}>
-      <div className='ModalBody__content'>
+      <div className="ModalBody__content">
         <header>
           <h3>{thread.title}</h3>
           <p>{`Posted by ${thread.name}`}</p>

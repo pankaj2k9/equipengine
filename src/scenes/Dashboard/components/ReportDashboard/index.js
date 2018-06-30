@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react"
 
-import Container from 'base_components/Container'
-import ReportTutorialCompleted from './components/ReportTutorialCompleted'
-import ReportLatestFeedback from './components/ReportLatestFeedback'
-import ReportLatestGroupActivity from './components/ReportLatestGroupActivity'
+import Container from "base_components/Container"
+import ReportTutorialCompleted from "./components/ReportTutorialCompleted"
+import ReportLatestFeedback from "./components/ReportLatestFeedback"
+import ReportLatestGroupActivity from "./components/ReportLatestGroupActivity"
 
 // Container all the components for report
 const ReportContainer = Container.extend`

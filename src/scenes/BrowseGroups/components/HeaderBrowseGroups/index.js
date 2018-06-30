@@ -1,14 +1,18 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React from "react"
+import styled from "styled-components"
+import { Link } from "react-router-dom"
 //
-import ContainerFlex from 'base_components/ContainerFlex'
-import iconSettings from 'resources/images/iconSettings.svg'
+import ContainerFlex from "base_components/ContainerFlex"
+import iconSettings from "resources/images/iconSettings.svg"
 
 const HeaderBrowseGroups = styled(({ className }) => (
   <ContainerFlex isAlignCenter isSpaceBetween className={className}>
     <h4>Hi Jane!</h4>
-    <Link to='/secure/settings'><button><img alt='icon settings' src={iconSettings} /> Settings</button></Link>
+    <Link to="/secure/settings">
+      <button>
+        <img alt="icon settings" src={iconSettings} /> Settings
+      </button>
+    </Link>
   </ContainerFlex>
 ))`
   padding-left: 15px;

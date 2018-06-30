@@ -1,18 +1,20 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 
 // for Text
-const Text = styled(({ className, name, placeholder, value, type, onChange }) => (
-  <input
-    className={className}
-    name={name}
-    placeholder={placeholder}
-    type={type || 'text'}
-    value={value || ''}
-    onChange={onChange}
-  />
-))`
+const Text = styled(
+  ({ className, name, placeholder, value, type, onChange }) => (
+    <input
+      className={className}
+      name={name}
+      placeholder={placeholder}
+      type={type || "text"}
+      value={value || ""}
+      onChange={onChange}
+    />
+  )
+)`
   border: 1px solid #dddddd;
   padding: 0.8em 1em;
   border-radius: 3px;
