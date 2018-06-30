@@ -24,9 +24,14 @@ const FormGroupSetLesson = FormGroup.extend`
   }
 `
 
+const ContainerFlexExtend = ContainerFlex.extend`
+  display: flex;
+  align-items: center;
+`
+
 const PanelSetLesson = styled(({ className }) => (
   <Panel isFullWidth className={className}>
-    <ContainerFlex>
+    <ContainerFlexExtend>
       <span>Who is able to set lessons as complete?</span>
       <FormGroups>
         <FormGroupSetLesson>
@@ -38,9 +43,11 @@ const PanelSetLesson = styled(({ className }) => (
           <Label>Teacher</Label>
         </FormGroupSetLesson>
       </FormGroups>
-    </ContainerFlex>
+    </ContainerFlexExtend>
   </Panel>
 ))`
+  padding-bottom: 22px;
+
   span {
     width: 145px;
   }

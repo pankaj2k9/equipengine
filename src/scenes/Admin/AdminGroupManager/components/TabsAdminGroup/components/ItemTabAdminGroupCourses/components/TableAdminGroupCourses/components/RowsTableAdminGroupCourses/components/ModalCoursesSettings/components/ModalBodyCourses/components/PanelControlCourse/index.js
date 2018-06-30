@@ -6,8 +6,12 @@ import ListControl, { ListItemControl } from "base_components/ListControl"
 import Button from "base_components/RootButton"
 import { Label } from "base_components/RootForm"
 
+const PanelExtend = Panel.extend`
+  padding-bottom: 29px;
+`
+
 const PanelControlCourse = () => (
-  <Panel isFullWidth>
+  <PanelExtend isFullWidth>
     <ListControl>
       <ListItemControl>
         <Button large light lightBorder>
@@ -27,7 +31,7 @@ const PanelControlCourse = () => (
         </Label>
       </ListItemControl>
     </ListControl>
-  </Panel>
+  </PanelExtend>
 )
 
 export default PanelControlCourse
