@@ -10,10 +10,10 @@ const ListItem = styled.li`
 // list container
 const List = styled.ul`
   width: 75%;
-  background-color: #d8d8d8;
   border: 1px solid #e0e0e0;
   margin-right: 1em;
   padding: 0em 1em 1em;
+  margin-bottom: 30px;
 `
 
 const ListGroups = () => (

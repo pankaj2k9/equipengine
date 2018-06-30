@@ -8,6 +8,7 @@ import MessengerAccess from "./components/MessengerAccess"
 
 const PanelFormAccountRole = styled(PanelAdminUser)`
   border-top: 1px solid #dadada;
+  padding-bottom: 21px;
 `
 
 const PanelAccountRole = () => (
