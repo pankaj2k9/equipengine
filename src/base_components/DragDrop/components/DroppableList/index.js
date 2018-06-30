@@ -9,26 +9,32 @@ const DroppableList = ({
   children,
   list,
   className,
-  colorState: { isDragColor, notDragColor }
-}) => (
-  <Droppable droppableId={droppableId} type={type}>
-    {(provided, snapshot) => (
-      <ul
-        className={className}
-        ref={provided.innerRef}
-        style={{
-          backgroundColor: snapshot.isDraggingOver ? isDragColor : notDragColor
-        }}
-      >
-        <DroppableListItemWrapper list={list}>
-          {children(list)}
-          {provided.placeholder}
-        </DroppableListItemWrapper>
-      </ul>
-    )}
-  </Droppable>
-)
+  colorState: { isDragColor, notDragColor },
+  wrapperElement
+}) => {
+  const WrapperElement = wrapperElement
 
+  return (
+    <Droppable droppableId={droppableId} type={type}>
+      {(provided, snapshot) => (
+        <WrapperElement
+          className={className}
+          innerRef={provided.innerRef}
+          style={{
+            backgroundColor: snapshot.isDraggingOver
+              ? isDragColor
+              : notDragColor
+          }}
+        >
+          <DroppableListItemWrapper list={list}>
+            {children(list)}
+            {provided.placeholder}
+          </DroppableListItemWrapper>
+        </WrapperElement>
+      )}
+    </Droppable>
+  )
+}
 DroppableList.propTypes = {
   droppableId: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
@@ -48,7 +54,12 @@ DroppableList.defaultProps = {
   colorState: {
     isDragColor: "#DEDEDE",
     notDragColor: "#ffffff"
-  }
+  },
+  wrapperElement: ({ children, innerRef, ...props }) => (
+    <ul ref={innerRef} {...props}>
+      {children}
+    </ul>
+  )
 }
 
 export default DroppableList
