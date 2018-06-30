@@ -41,7 +41,7 @@ export default styled(LogoContainer)`
   align-items: center;
   padding: 5% 5% 4% 5%;
   background-color: #fff;
-  min-height: 59px;
+  min-height: 58px;
 
   @media screen and (min-width: 768px) {
     padding: 9px 35px 9px 20px;
