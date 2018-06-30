@@ -37,7 +37,7 @@ const ListLinkItem = styled(({ className, icon, text, url, handleClick }) => (
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
-    padding: 18px 35px;
+    padding: 14px 35px;
     align-items: center;
 
     img {

@@ -13,15 +13,40 @@ import iconVideos from "./video.svg"
 const ListLink = styled.ul`
   min-height: 100vh;
   height: 100%;
+  width: 91px;
   background-color: #000000;
   position: fixed;
   margin-top: -1px;
   z-index: 1;
+
+  @media screen and (max-width: 767px) {
+    width: initial;
+  }
+`
+
+const ListLinkItemExtend = ListLinkItem.extend`
+  @media screen and (min-width: 768px) {
+    img {
+      width: 55px;
+      height: 51px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 20px 0;
+
+    img {
+      margin: 0 auto;
+      display: block;
+      width: 37px;
+      height: 34px;
+    }
+  }
 `
 
 const SidebarAdminCourse = ({ match, onOpen }) => (
   <ListLink>
-    <ListLinkItem
+    <ListLinkItemExtend
       handleClick={onOpen}
       icon={iconNewCourse}
       text="New Course"
