@@ -49,7 +49,6 @@ const SidebarAdminCourse = ({ match, onOpen }) => (
     <ListLinkItemExtend
       handleClick={onOpen}
       icon={iconNewCourse}
-      text="New Course"
       url={`${match.path}/new-course`}
     />
     <ListLinkItem
