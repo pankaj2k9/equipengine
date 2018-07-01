@@ -47,12 +47,7 @@ const SearchBar = styled(({ className, placeholder }) => (
       <span>
         <img alt="icon Search" src={iconSearchO} />
       </span>
-      <input
-        name="searchbar"
-        type="text"
-        placeholder="Search People"
-        value=""
-      />
+      <input name="searchbar" type="text" placeholder={placeholder} value="" />
     </TextContainer>
   </Form>
 ))`
