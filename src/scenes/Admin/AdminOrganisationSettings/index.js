@@ -6,6 +6,7 @@ import Breadcrumbs from "base_components/Breadcrumbs"
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic"
 import ItemTabMainSettings from "./components/ItemTabMainSettings"
 import ItemTabDomainMapping from "./components/ItemTabDomainMapping"
+import ItemTabAccountSettings from "./components/ItemTabAccountSettings"
 // assets
 import { tabOrganisationSettingsStyles } from "./styles"
 import adminOrganisationSettings from "./propTypes"
@@ -44,7 +45,7 @@ const TabOrganisationSettings = tabOrganisationSettingsStyles(
         <ItemTabDomainMapping />
       </Tab>
       <Tab eventKey={3} title="Account Settings">
-        account settings
+        <ItemTabAccountSettings />
       </Tab>
       <Tab eventKey={4} title="Notifications">
         notification
