@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 //
 import Container from "base_components/Container"
-import Tables, { TableRow } from "base_components/Tables"
+import Tables, { TableRow, ThWithSort as Th } from "base_components/Tables"
 import TableRowCourses from "./components/TableRowCourses"
 
 const ContainerTableCourses = Container.extend`
@@ -16,11 +16,11 @@ const TableCourses = ({ match }) => (
     <Tables>
       <thead>
         <TableRow>
-          <th>Name</th>
-          <th>Date Created</th>
-          <th>Active Users</th>
-          <th>Lessons</th>
-          <th />
+          <Th>Name</Th>
+          <Th>Date Created</Th>
+          <Th>Active Users</Th>
+          <Th>Lessons</Th>
+          <Th />
         </TableRow>
       </thead>
       <TableRowCourses match={match} />
