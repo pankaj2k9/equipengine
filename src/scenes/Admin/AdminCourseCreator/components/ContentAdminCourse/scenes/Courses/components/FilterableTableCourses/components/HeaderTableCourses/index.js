@@ -7,7 +7,7 @@ const HeaderTableCourses = () => (
   <HeaderAdminCourse
     ControlButtonsGroup={ControlButtonsGroup}
     searchbarInfo={{
-      placeholder: "Search courses"
+      placeholder: "Search Courses"
     }}
   />
 )
