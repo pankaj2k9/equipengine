@@ -3,13 +3,14 @@ import PropTypes from "prop-types"
 
 import "./styles.css"
 
-const Button = ({ style, text, handleClick, onClick, children }) => {
+const Button = ({ style, text, onClick, children, ...rest }) => {
   return (
     <button
       style={style}
-      onClick={handleClick || onClick}
+      onClick={onClick}
       className="Button"
       type="button"
+      {...rest}
     >
       {text}
       {children}
@@ -19,7 +20,7 @@ const Button = ({ style, text, handleClick, onClick, children }) => {
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  handleClick: PropTypes.func,
+  onClick: PropTypes.func,
   style: PropTypes.object,
   children: PropTypes.element
 }

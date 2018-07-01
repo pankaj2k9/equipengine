@@ -56,7 +56,7 @@ class Notifications extends React.Component {
           />
         }
         title="Notifications"
-        header={
+        actionBar={
           <OutlineButton onClick={onClearAll}>
             <IconDelete /> CLEAR ALL
           </OutlineButton>

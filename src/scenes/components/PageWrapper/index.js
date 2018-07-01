@@ -13,6 +13,7 @@ class PageWrapper extends Component {
       title,
       disableBack,
       disableMargin,
+      actionBar,
       header
     } = this.props
     return (
@@ -22,14 +23,15 @@ class PageWrapper extends Component {
           className={className}
           margin={disableMargin ? "0" : "3em"}
         >
-          {title && (
+          {header}
+          {(title || icon) && (
             <ContainerFlex isAlignCenter isSpaceBetween>
               <h4 className="page-wrapper-header">
                 {icon}
                 {icon && <span className="page-wrapper-icon-title-divider" />}
                 {title}
               </h4>
-              {header}
+              {actionBar}
             </ContainerFlex>
           )}
           {this.props.children}

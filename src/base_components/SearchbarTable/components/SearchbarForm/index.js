@@ -10,9 +10,9 @@ const StyledForm = styled(RootForm)`
     margin-bottom: 0.3em;
   }
 `
-const SearchbarForm = () => (
+const SearchbarForm = ({ placeholder }) => (
   <StyledForm>
-    <Text name="person" placeholder="Show by person..." />
+    <Text name="person" placeholder={placeholder || "Show by person..."} />
   </StyledForm>
 )
 

@@ -1,7 +1,10 @@
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
+import Flagged from "./components/Flagged"
+import FlaggedIcon from "./components/FlaggedIcon"
 import SearchbarButtonFilter from "./components/SearchbarButtonFilter"
+import SearchbarDropdown from "./components/SeachbarDropdown"
 import SearchbarDropdownCourse from "./components/SearchbarDropdownCourse"
 import SearchbarDropdownLesson from "./components/SearchbarDropdownLesson"
 import SearchbarForm from "./components/SearchbarForm"
@@ -15,9 +18,9 @@ const SearchbarTable = styled.div`
 
   @media screen and (min-width: 768px) {
     margin-top: 0;
-    padding: 27px 40px;
     display: flex;
     align-items: center;
+    padding: ${props => (props.noDesktopPadding ? "2%" : "27px 40px")};
   }
 `
 
@@ -31,7 +34,10 @@ SearchbarTable.propTypes = {
 export {
   SearchbarTable as default,
   SearchbarButtonFilter,
+  SearchbarDropdown,
   SearchbarDropdownCourse,
   SearchbarDropdownLesson,
-  SearchbarForm
+  SearchbarForm,
+  Flagged,
+  FlaggedIcon
 }
