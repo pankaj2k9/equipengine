@@ -1,10 +1,10 @@
-import React from "react"
+import React, { Fragment } from "react"
 import styled from "styled-components"
 // sub-components
 import ModalCoursesSettings from "../ModalCoursesSettings"
 //
 import Button from "base_components/RootButton"
-import { TableRow, Td } from "base_components/Tables"
+import { Td } from "base_components/Tables"
 import IconMenu from "react-icons/lib/fa/align-justify"
 import StatusCircle from "base_components/StatusCircle"
 
@@ -22,7 +22,7 @@ const ButtonCourseDetails = Button.extend`
 `
 
 const RowAdminGroupCourse = () => (
-  <TableRow>
+  <Fragment>
     <td>
       <IconMenuContainer>
         <IconMenu />
@@ -41,7 +41,7 @@ const RowAdminGroupCourse = () => (
         </ButtonCourseDetails>
       </div>
     </TableDataGroupUser>
-  </TableRow>
+  </Fragment>
 )
 
 export default RowAdminGroupCourse

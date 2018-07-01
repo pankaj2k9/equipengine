@@ -12,31 +12,30 @@ const FormGroupUser = FormGroup.extend`
   align-items: center;
 `
 
+const StyledButtonTopbar = styled(ButtonToolbar)`
+  margin-top: -27px;
+`
+
+const DropdownExtend = Dropdown.extend`
+  display: flex;
+  width: 82px;
+  align-items: center;
+  justify-content: space-evenly;
+`
+
 const PanelUsers = styled(({ className }) => (
   <Panel className={className} title="Users">
     <FormGroupUser>
       <Label>Group Size Limit</Label>
-      <ButtonToolbar>
-        <Dropdown title="2" id="dropdown-size-medium">
+      <StyledButtonTopbar>
+        <DropdownExtend title="2" id="dropdown-size-medium">
           <MenuItem eventKey="1">Action</MenuItem>
           <MenuItem eventKey="2">Another action</MenuItem>
           <MenuItem eventKey="3">Something else here</MenuItem>
           <MenuItem divider />
           <MenuItem eventKey="4">Separated link</MenuItem>
-        </Dropdown>
-      </ButtonToolbar>
-    </FormGroupUser>
-    <FormGroupUser>
-      <Label>Is group Public or Private?</Label>
-      <ButtonToolbar>
-        <Dropdown title="Private" id="dropdown-size-medium">
-          <MenuItem eventKey="1">Action</MenuItem>
-          <MenuItem eventKey="2">Another action</MenuItem>
-          <MenuItem eventKey="3">Something else here</MenuItem>
-          <MenuItem divider />
-          <MenuItem eventKey="4">Separated link</MenuItem>
-        </Dropdown>
-      </ButtonToolbar>
+        </DropdownExtend>
+      </StyledButtonTopbar>
     </FormGroupUser>
   </Panel>
 ))`
@@ -44,6 +43,7 @@ const PanelUsers = styled(({ className }) => (
     width: 100px;
     margin-right: 2em;
     padding-top: 0.2em;
+    margin-bottom: 33px;
 
     &:first-child {
       margin-right: 1.7em;

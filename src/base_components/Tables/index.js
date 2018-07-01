@@ -13,7 +13,11 @@ const Tables = styled(({ children, className }) => (
     {children}
   </Table>
 ))`
-  .Tables__row {
+  ${({ isLayoutFixed }) =>
+    isLayoutFixed &&
+    `
+    table-layout: fixed;
+  `} .Tables__row {
     border-bottom: 1px solid #dadada;
     transition: background 300ms ease-in;
 
@@ -31,10 +35,13 @@ const Tables = styled(({ children, className }) => (
     }
   }
 `
-
+Tables.defaultProps = {
+  isLayoutFixed: false
+}
 Tables.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
+  isLayoutFixed: PropTypes.bool
 }
 
 export { Tables as default, TableRow, Th, Td }

@@ -9,38 +9,44 @@ const DroppableListItem = ({
   children,
   colorState: { isDragColor, notDragColor },
   inlineStyle,
-  className
-}) => (
-  <Draggable
-    draggableId={draggableId}
-    type={type}
-    index={index}
-    key={draggableId}
-  >
-    {(provided, snapshot) => {
-      // extending the DraggableStyle with our own inline styles
-      const style = {
-        backgroundColor: snapshot.isDragging ? isDragColor : notDragColor,
-        ...inlineStyle,
-        ...provided.draggableProps.style
-      }
-      return (
-        <Fragment>
-          <li
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            style={style}
-            className={className}
-          >
-            {children}
-          </li>
-          {provided.placeholder}
-        </Fragment>
-      )
-    }}
-  </Draggable>
-)
+  className,
+  wrapperElement
+}) => {
+  const WrapperElement = wrapperElement
+
+  return (
+    <Draggable
+      draggableId={draggableId}
+      type={type}
+      index={index}
+      key={draggableId}
+    >
+      {(provided, snapshot) => {
+        // extending the DraggableStyle with our own inline styles
+        const style = {
+          backgroundColor: snapshot.isDragging ? isDragColor : notDragColor,
+          ...inlineStyle,
+          ...provided.draggableProps.style,
+          display: snapshot.isDragging && "table"
+        }
+        return (
+          <Fragment>
+            <WrapperElement
+              innerRef={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+              style={style}
+              className={className}
+            >
+              {children}
+            </WrapperElement>
+            {provided.placeholder}
+          </Fragment>
+        )
+      }}
+    </Draggable>
+  )
+}
 
 DroppableListItem.propTypes = {
   draggableId: PropTypes.string.isRequired,
@@ -52,7 +58,8 @@ DroppableListItem.propTypes = {
   colorState: PropTypes.shape({
     isDragColor: PropTypes.string,
     notDragColor: PropTypes.string
-  }).isRequired
+  }).isRequired,
+  wrapperElement: PropTypes.element
 }
 
 DroppableListItem.defaultProps = {
@@ -61,7 +68,12 @@ DroppableListItem.defaultProps = {
   colorState: {
     isDragColor: "#e9f2fc",
     notDragColor: "#FFFFFF"
-  }
+  },
+  wrapperElement: ({ children, innerRef, ...props }) => (
+    <li ref={innerRef} {...props}>
+      {children}
+    </li>
+  )
 }
 
 export default DroppableListItem

@@ -6,6 +6,7 @@ import { FormGroup, Text, TextArea, Label } from "base_components/RootForm"
 // we will extending the panel base styles
 const PanelExtend = Panel.extend`
   padding-top: 6px;
+  padding-bottom: 33px;
 `
 
 const PanelGeneralInfo = () => (

@@ -9,7 +9,7 @@ import RowsTableAdminGroupCourses from "./components/RowsTableAdminGroupCourses"
 const TableHeaderGroupUser = ({ children }) => <Th center>{children}</Th>
 
 const TableAdminGroupCourses = () => (
-  <Tables>
+  <Tables isLayoutFixed>
     <thead>
       <TableRow>
         <Th />
