@@ -5,7 +5,7 @@ import { Table } from "react-bootstrap"
 
 import TableRow from "./components/TableRow"
 import Td from "./components/Td"
-import Th from "./components/Th"
+import Th, { ThWithSort } from "./components/Th"
 
 // TODO -> turn the sub components into styled component.
 const Tables = styled(({ children, className }) => (
@@ -44,4 +44,4 @@ Tables.propTypes = {
   isLayoutFixed: PropTypes.bool
 }
 
-export { Tables as default, TableRow, Th, Td }
+export { Tables as default, TableRow, Th, Td, ThWithSort }
