@@ -1,4 +1,6 @@
 import React, { Fragment } from "react"
+// ramda helpers
+import { isNil } from "ramda"
 // components
 import ModalActions from "./components/ModalActions"
 import IconMenu from "react-icons/lib/md/dehaze"
@@ -104,6 +106,11 @@ const ListActionsItem = ({ item }) => (
       <div>
         <span>{item.label}</span>
         <p>{item.content}</p>
+        {!isNil(item.fileRef) && (
+          <Button light lightBorder>
+            Download
+          </Button>
+        )}
       </div>
     </ContainerFlex>
     <ContainerFlex>
