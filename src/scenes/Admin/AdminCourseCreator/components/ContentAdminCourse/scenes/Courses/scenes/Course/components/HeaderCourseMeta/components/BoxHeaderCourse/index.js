@@ -8,11 +8,21 @@ export default styled(Box)`
 
   header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
-    padding-top: 78px;
     color: #fff;
+    flex-direction: column;
+    padding-top: 10px;
+    align-items: start;
+    justify-content: space-between;
+
+    .course-sm-img {
+      border: 1px solid #979797;
+      border-radius: 3px;
+
+      img {
+        width: 211px;
+      }
+    }
 
     h3 {
       width: 40px;
@@ -46,7 +56,8 @@ export default styled(Box)`
     height: 245px;
 
     header {
-      padding-top: 139px;
+      padding-top: 11px;
+      height: 100%;
 
       h3 {
         width: 714px;

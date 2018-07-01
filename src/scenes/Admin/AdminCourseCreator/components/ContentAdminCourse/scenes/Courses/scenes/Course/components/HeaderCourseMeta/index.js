@@ -5,6 +5,7 @@ import ContainerFlex from "base_components/ContainerFlex"
 import bgImage from "../../course-bg.png"
 import settings from "resources/images/settings.svg"
 import iconPencil from "resources/images/iconPencil.svg"
+import courseImg from "resources/images/steve-bible-teaching.jpg"
 
 const HeaderCourseMeta = ({ courseTitle }) => (
   <StyledBoxHeaderCourse
@@ -13,6 +14,9 @@ const HeaderCourseMeta = ({ courseTitle }) => (
     }}
   >
     <header>
+      <div className="course-sm-img">
+        <img alt="Course Img" src={courseImg} width="150px" />
+      </div>
       <div>
         <h3>{courseTitle}</h3>
         <ContainerFlex className="containerControllButton">
