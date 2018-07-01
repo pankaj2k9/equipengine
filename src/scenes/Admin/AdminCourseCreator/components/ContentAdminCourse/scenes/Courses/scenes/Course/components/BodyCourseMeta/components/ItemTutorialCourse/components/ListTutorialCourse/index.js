@@ -1,7 +1,7 @@
 import React, { Fragment } from "react"
 // components
 import ContainerHeaderItemTab from "../../../ContainerHeaderItemTab"
-import ButtonAdd from "base_components/ButtonAdd"
+import ButtonAdd from "./components/ButtonAdd"
 import DragDrop, {
   DroppableList,
   DroppableListItem
@@ -24,7 +24,7 @@ import { DROPPABLE_LIST_TYPE } from "./constants"
 const ListTutorialCourse = () => (
   <ContainerListTutorialCourse>
     <ContainerHeaderItemTab>
-      <ButtonAdd text="Add new lesson" iconPosition="right" />
+      <ButtonAdd text="Add new" iconPosition="right" />
     </ContainerHeaderItemTab>
     <DragDrop>
       <ListTutorial />
