@@ -1,28 +1,25 @@
 import React from "react"
-import styled from "styled-components"
+import IconSettings from "react-icons/lib/fa/cog"
+import OutlineButton from "base_components/OutlineButton"
+import { Link } from "react-router-dom"
 //
-import HeaderBrowseGroups from "./components/HeaderBrowseGroups"
 import BodyBrowseGroups from "./components/BodyBrowseGroups"
-
-/**
-   TODO:
-   - Add components to Body.
- */
-
-const ContainerBrowseGroups = styled.section`
-  width: 80%;
-  margin: 3em auto;
-
-  @media screen and (min-width: 768px) {
-    width: 60%;
-  }
-`
+import PageWrapper from "../components/PageWrapper"
 
 const BrowseGroups = () => (
-  <ContainerBrowseGroups>
-    <HeaderBrowseGroups />
+  <PageWrapper
+    title="Hi Jane!"
+    disableBack
+    header={
+      <Link to="/secure/settings">
+        <OutlineButton>
+          <IconSettings /> Settings
+        </OutlineButton>
+      </Link>
+    }
+  >
     <BodyBrowseGroups />
-  </ContainerBrowseGroups>
+  </PageWrapper>
 )
 
 export default BrowseGroups

@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import Button from "base_components/RootButton"
 import ButtonUpdate from "base_components/ButtonUpdate"
 import ContainerFlex from "base_components/ContainerFlex"
 import Divider from "base_components/Divider"
@@ -8,14 +7,6 @@ import UserContacts from "base_components/UserContacts"
 import UserDetails from "base_components/UserDetails"
 
 import NotificationFrequency from "./NotificationFrequency"
-
-// extending for button set password
-const ButtonSetPassword = Button.extend`
-  width: inherit;
-  padding: 10px;
-  margin-top: 2em;
-  margin-left: 9.6em;
-`
 
 class Profile extends Component {
   constructor(props) {
@@ -69,12 +60,9 @@ class Profile extends Component {
           onFirstNameChange={this.handleFirstNameChange}
           onLastNameChange={this.handleLastNameChange}
           onEmailChange={this.handleEmailChange}
+          onResetPasswordClick={this.handleResetPassword}
         />
 
-        {/* Reset password button */}
-        <ButtonSetPassword light lightBorder onClick={this.handleResetPassword}>
-          Reset password
-        </ButtonSetPassword>
         <Divider />
 
         {/* Additional user info */}

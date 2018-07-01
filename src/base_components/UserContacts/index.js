@@ -5,6 +5,7 @@ import DatePicker from "base_components/DatePicker"
 import { Desktop, Mobile } from "base_components/Responsive"
 import { FormGroup, Label, Text, TextArea } from "base_components/RootForm"
 import InputAddress from "base_components/InputAddress"
+import ItemFlex from "base_components/ItemFlex"
 
 const Spacing = styled.span`
   margin-right: 0.7em;
@@ -17,7 +18,7 @@ class UserContacts extends Component {
     this.props.onAddressChange(value)
 
   renderPhoneInput = value => (
-    <FormGroup flex={1}>
+    <FormGroup>
       <Label>Phone Number</Label>
       <Text
         placeholder="+61908434"
@@ -28,7 +29,7 @@ class UserContacts extends Component {
   )
 
   renderBirthDateInput = value => (
-    <FormGroup flex={1}>
+    <FormGroup>
       <Label>Date of Birth</Label>
       <DatePicker
         placeholder="09/15/1994"
@@ -56,9 +57,9 @@ class UserContacts extends Component {
       <React.Fragment>
         <Desktop>
           <ContainerFlex>
-            {this.renderPhoneInput(phone)}
+            <ItemFlex>{this.renderPhoneInput(phone)}</ItemFlex>
             <Spacing />
-            {this.renderBirthDateInput(birthDate)}
+            <ItemFlex>{this.renderBirthDateInput(birthDate)}</ItemFlex>
           </ContainerFlex>
         </Desktop>
         <Mobile>

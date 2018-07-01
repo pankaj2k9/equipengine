@@ -3,7 +3,6 @@ import styled from "styled-components"
 // Container
 import ContainerBodyAdmin from "../../../components/ContainerAdminPanel/components/ContainerBodyAdmin"
 // form
-import Button from "base_components/RootButton"
 import ButtonUpdate from "base_components/ButtonUpdate"
 import Form from "base_components/RootForm"
 import Panel from "base_components/Panel"
@@ -21,14 +20,6 @@ const ResponsivePanel = Panel.extend`
   padding-bottom: 1.3em;
 `
 
-// extending for button set password
-const ButtonSetPassword = Button.extend`
-  width: inherit;
-  padding: 10px;
-  margin-top: 2em;
-  margin-left: 9.6em;
-`
-
 // extend-form
 const MainForm = styled(Form)`
   width: 100%;
@@ -39,7 +30,6 @@ const FormAdminUser = () => (
     <MainForm>
       <ResponsivePanel title="User Details">
         <UserDetails />
-        <ButtonSetPassword>Send set password link</ButtonSetPassword>
       </ResponsivePanel>
       <ResponsivePanel>
         <UserContacts />

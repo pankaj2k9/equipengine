@@ -1,26 +1,12 @@
 import React from "react"
-import styled from "styled-components"
+import IconActivity from "react-icons/lib/fa/line-chart"
 //
-import HeaderActivity from "./components/HeaderActivity"
-
-/**
-   TODO:
-   - Add components to Body.
- */
-
-const ContainerActivity = styled.section`
-  width: 80%;
-  margin: 3em auto;
-
-  @media screen and (min-width: 768px) {
-    width: 60%;
-  }
-`
+import PageWrapper from "../components/PageWrapper"
 
 const Settings = () => (
-  <ContainerActivity>
-    <HeaderActivity />
-  </ContainerActivity>
+  <PageWrapper title="Activity" icon={<IconActivity size={21} />}>
+    Some activities will be here quite soon
+  </PageWrapper>
 )
 
 export default Settings

@@ -6892,6 +6892,13 @@ react-dom@^16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
+react-epic-spinners@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-epic-spinners/-/react-epic-spinners-0.2.1.tgz#2f236c911a91a24e24b5411815a19fdeccafa0d1"
+  dependencies:
+    react ">=0.14.x"
+    styled-components "^2.4.0"
+
 react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
@@ -7092,7 +7099,7 @@ react-through@^1.0.3:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-through/-/react-through-1.1.1.tgz#4a0465ad1f870e74d45df98fd3f78114deca4717"
 
-react@^16.0.0:
+react@>=0.14.x, react@^16.0.0:
   version "16.4.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.4.1.tgz#de51ba5764b5dbcd1f9079037b862bd26b82fe32"
   dependencies:
@@ -8102,7 +8109,7 @@ style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
 
-styled-components@^2.2.3:
+styled-components@^2.2.3, styled-components@^2.4.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-2.4.1.tgz#663bd0485d4b6ab46f946210dc03d2398d1ade74"
   dependencies:

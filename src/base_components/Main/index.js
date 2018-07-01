@@ -39,6 +39,18 @@ const addPaddingLeft = ({ type, pathname }) => {
     return "0px"
   }
 
+  const notificationsPath = "/secure/notifications"
+  // check first if the current location is equal to notifiactionsPath.
+  if (identical(pathname, notificationsPath)) {
+    return "0px"
+  }
+
+  const messagesPath = "/secure/messages"
+  // check first if the current location is equal to messagesPath.
+  if (identical(pathname, messagesPath)) {
+    return "0px"
+  }
+
   // else, add padding for sidebar.
   return "225px"
 }

@@ -3,13 +3,16 @@ import styled from "styled-components"
 
 import MessagesList from "./components/MessagesList"
 import MessagesConvo from "./components/MessagesConvo"
+import PageWrapper from "../components/PageWrapper"
 
 const Messages = styled(({ className }) => {
   return (
-    <div className={className}>
-      <MessagesList />
-      <MessagesConvo />
-    </div>
+    <PageWrapper disableMargin>
+      <div className={className}>
+        <MessagesList />
+        <MessagesConvo />
+      </div>
+    </PageWrapper>
   )
 })`
   @media screen and (min-width: 768px) {

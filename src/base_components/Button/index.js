@@ -3,11 +3,11 @@ import PropTypes from "prop-types"
 
 import "./styles.css"
 
-const Button = ({ style, text, handleClick, children }) => {
+const Button = ({ style, text, handleClick, onClick, children }) => {
   return (
     <button
       style={style}
-      onClick={handleClick}
+      onClick={handleClick || onClick}
       className="Button"
       type="button"
     >

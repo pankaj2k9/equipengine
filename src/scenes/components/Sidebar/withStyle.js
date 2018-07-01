@@ -27,6 +27,18 @@ const addHeight = ({ type, pathname }) => {
     return "0px"
   }
 
+  const notificationsPath = "/secure/notifications"
+  // check first if the current location is equal to notifiactionsPath.
+  if (identical(pathname, notificationsPath)) {
+    return "0px"
+  }
+
+  const messagesPath = "/secure/messages"
+  // check first if the current location is equal to messagesPath.
+  if (identical(pathname, messagesPath)) {
+    return "0px"
+  }
+
   // return 0
   return "100vh"
 }
@@ -39,9 +51,9 @@ const addDisplay = ({ type, pathname }) => {
     return "none"
   }
 
-  const homePath2 = "/secure/home"
+  const homePath = "/secure/home"
   // check first if the current location is equal to homePath.
-  if (identical(pathname, homePath2)) {
+  if (identical(pathname, homePath)) {
     return "none"
   }
 
@@ -54,6 +66,18 @@ const addDisplay = ({ type, pathname }) => {
   const settingsPath = "/secure/settings"
   // check first if the current location is equal to settingsPath.
   if (identical(pathname, settingsPath)) {
+    return "none"
+  }
+
+  const notificationsPath = "/secure/notifications"
+  // check first if the current location is equal to notifiactionsPath.
+  if (identical(pathname, notificationsPath)) {
+    return "none"
+  }
+
+  const messagesPath = "/secure/messages"
+  // check first if the current location is equal to messagesPath.
+  if (identical(pathname, messagesPath)) {
     return "none"
   }
 

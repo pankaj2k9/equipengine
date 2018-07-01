@@ -20,7 +20,7 @@ const MessagesList = styled(({ className }) => {
     padding: 0.8em;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     span {
       font-size: 0.8rem;
       text-transform: uppercase;
