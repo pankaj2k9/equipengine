@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import { NavLink } from "react-router-dom"
+import { isNil } from "ramda"
 //
 import UserAvatar from "base_components/UserAvatar"
 
@@ -15,7 +16,7 @@ const ListLinkItem = styled(({ className, icon, text, url, handleClick }) => (
     onClick={handleClick}
   >
     <UserAvatar image={icon} />
-    <span>{text}</span>
+    {!isNil(text) && <span>{text}</span>}
   </NavLink>
 ))`
   display: block;
@@ -37,7 +38,7 @@ const ListLinkItem = styled(({ className, icon, text, url, handleClick }) => (
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
-    padding: 18px 35px;
+    padding: 14px 35px;
     align-items: center;
 
     img {
@@ -62,7 +63,7 @@ const ListLinkItem = styled(({ className, icon, text, url, handleClick }) => (
 
 ListLinkItem.propTypes = {
   icon: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   url: PropTypes.string.isRequired
 }
 
