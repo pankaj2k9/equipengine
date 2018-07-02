@@ -41,11 +41,11 @@ export default ItemTabMainSettings
 const PanelGeneralInformation = () => (
   <PanelSettings title="General Information" paddingBottom="1.6em">
     <FormGroup>
-      <Label>Organisation Name</Label>
+      <Label>Organisation Name &#42;</Label>
       <Text name="crossView" placeholder="CrossView" />
     </FormGroup>
     <FormGroup>
-      <Label>Display Name</Label>
+      <Label>Display Name &#42;</Label>
       <Text name="name" />
     </FormGroup>
     <FormGroup>
@@ -111,16 +111,16 @@ const DisplayTextLogo = css`
 const PanelContactDetails = () => (
   <PanelSettings title="Contact Details" borderBottom="0" paddingBottom="0">
     <FormGroup>
-      <Label>Address</Label>
+      <Label>Address &#42;</Label>
       <Text name="address" placeholder="Connect: Level 1" />
     </FormGroup>
     <InputAddress />
     <FormGroup>
-      <Label>Website</Label>
+      <Label>Website &#42;</Label>
       <Text name="website" placeholder="crossview.com.au" />
     </FormGroup>
     <FormGroup>
-      <Label>Email</Label>
+      <Label>Email &#42;</Label>
       <Text name="email" placeholder="crossview.com.au" />
     </FormGroup>
     <FormGroup>
