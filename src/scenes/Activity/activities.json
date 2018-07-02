@@ -9,8 +9,7 @@
       "first_name": "Jon",
       "last_name": "Mcall",
       "avatar": {
-        "url":
-          "https: //s3.amazonaws.com/uifaces/faces/twitter/ripplemdk/128.jpg"
+        "url": null
       }
     },
     "course": {

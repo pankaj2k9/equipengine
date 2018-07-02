@@ -3,7 +3,11 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 
 const UserAvatar = styled(({ image, className }) => (
-  <img alt="user avatar" className={className} src={image} />
+  <img
+    className={className}
+    src={image || "http://www.gravatar.com/avatar?d=mp"}
+    alt="Avatar"
+  />
 ))`
   height: ${props => (props.small ? "25px" : "30px")};
   width: ${props => (props.small ? "25px" : "30px")};
