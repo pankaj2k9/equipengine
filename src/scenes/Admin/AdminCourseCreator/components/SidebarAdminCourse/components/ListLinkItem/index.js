@@ -6,14 +6,14 @@ import { isNil } from "ramda"
 //
 import UserAvatar from "base_components/UserAvatar"
 
-const ListLinkItem = styled(({ className, icon, text, url, handleClick }) => (
+const ListLinkItem = styled(({ className, icon, text, url, onClick }) => (
   <NavLink
     className={className}
     to={url}
     activeStyle={{
       backgroundColor: "#25282A"
     }}
-    onClick={handleClick}
+    onClick={onClick}
   >
     <UserAvatar image={icon} />
     {!isNil(text) && <span>{text}</span>}

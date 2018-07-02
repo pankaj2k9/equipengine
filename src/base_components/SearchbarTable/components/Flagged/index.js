@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import FlaggedIcon from "../../../FlaggedIcon"
+import { FlaggedIcon } from "base_components/SearchbarTable"
 import RootForm, { Checkbox } from "base_components/RootForm"
 
 const Flagged = styled(({ className }) => (
@@ -21,6 +21,11 @@ const Flagged = styled(({ className }) => (
   & > span,
   & > img {
     margin-left: 0.5em;
+  }
+
+  .Checkbox + label:after {
+    top: 4px;
+    left: 5px;
   }
 
   .Flagged__total {

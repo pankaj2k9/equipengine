@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "text":
+      "You have recieved access to a new course - Communication and Culture.",
+    "date": "22 Sep",
+    "time": "1:00pm"
+  },
+  {
+    "id": 2,
+    "text": "New post was made on the noticeboard",
+    "date": "23 Sep",
+    "time": "2:00pm"
+  }
+]

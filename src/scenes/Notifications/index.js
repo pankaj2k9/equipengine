@@ -3,6 +3,7 @@ import IconBell from "react-icons/lib/fa/bell"
 import IconDelete from "react-icons/lib/fa/trash"
 import Loading from "base_components/Loading"
 
+import notificationsData from "./notifications.json"
 import ListNotification from "./components/ListNotification"
 import OutlineButton from "../../base_components/OutlineButton"
 import PageWrapper from "../components/PageWrapper"
@@ -19,21 +20,7 @@ class Notifications extends React.Component {
       () =>
         this.setState({
           fetchingNotifications: false,
-          notifications: [
-            {
-              id: 1,
-              text:
-                "You have recieved access to a new course - Communication and Culture.",
-              date: "22 Sep",
-              time: "1:00pm"
-            },
-            {
-              id: 2,
-              text: "New post was made on the noticeboard",
-              date: "23 Sep",
-              time: "2:00pm"
-            }
-          ]
+          notifications: notificationsData
         }),
       2000
     )
@@ -56,7 +43,7 @@ class Notifications extends React.Component {
           />
         }
         title="Notifications"
-        header={
+        actionBar={
           <OutlineButton onClick={onClearAll}>
             <IconDelete /> CLEAR ALL
           </OutlineButton>

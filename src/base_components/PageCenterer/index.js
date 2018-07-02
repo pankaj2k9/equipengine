@@ -5,6 +5,6 @@ export default styled.section`
   width: 80%;
 
   @media screen and (min-width: 768px) {
-    width: 60%;
+    width: 65%;
   }
 `

@@ -2,13 +2,13 @@ import React from "react"
 import PropTypes from "prop-types"
 import Interactive from "react-interactive"
 
-const ModalButton = ({ className, style, children, handleClick }) => (
+const ModalButton = ({ className, style, children, onClick }) => (
   /* this wrapper component makes our element to be interactive - adding some hover/focus/active state */
   <Interactive
     as="button"
     hover={{ color: "#338FFC" }}
     focus={{ outline: 0 }}
-    onClick={handleClick}
+    onClick={onClick}
     style={{
       color: "#000000",
       background: "none",
@@ -28,7 +28,7 @@ ModalButton.propTypes = {
     PropTypes.element
   ]).isRequired,
   style: PropTypes.object,
-  handleClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   className: PropTypes.string
 }
 

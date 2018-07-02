@@ -1,12 +1,12 @@
 import React from "react"
 
 import SearchbarTable, {
+  Flagged,
   SearchbarButtonFilter,
   SearchbarDropdownCourse,
   SearchbarDropdownLesson,
   SearchbarForm
 } from "base_components/SearchbarTable"
-import Flagged from "./components/Flagged"
 
 const SearchbarTableCourse = () => (
   <SearchbarTable>

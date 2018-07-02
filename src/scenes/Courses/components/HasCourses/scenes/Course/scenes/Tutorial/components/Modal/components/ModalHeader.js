@@ -18,7 +18,7 @@ const ModalHeader = ({ handleCloseModal }) => {
             }}
           >
             <ModalButton
-              handleClick={handleCloseModal}
+              onClick={handleCloseModal}
               style={{
                 padding: 0,
                 fontSize: "1.2rem"
@@ -40,7 +40,7 @@ const ModalHeader = ({ handleCloseModal }) => {
             }}
           >
             <ModalButton
-              handleClick={handleCloseModal}
+              onClick={handleCloseModal}
               style={{
                 padding: 0,
                 fontSize: "1.2rem"

@@ -53,7 +53,9 @@ const SearchBar = styled(({ className, placeholder }) => (
 ))`
   display: block;
 `
-
+SearchBar.defaultProps = {
+  placeholder: ""
+}
 SearchBar.propTypes = {
   placeholder: PropTypes.string
 }

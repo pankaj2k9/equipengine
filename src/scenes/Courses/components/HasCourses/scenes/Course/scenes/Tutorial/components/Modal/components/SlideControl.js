@@ -3,8 +3,8 @@ import PropTypes from "prop-types"
 
 import ModalButton from "./ModalButton"
 
-const SlideControl = ({ text, arrow, handleClick }) => (
-  <ModalButton style={{ padding: 0 }} handleClick={handleClick}>
+const SlideControl = ({ text, arrow, onClick }) => (
+  <ModalButton style={{ padding: 0 }} onClick={onClick}>
     <span
       style={{
         marginRight: "0.3em"
@@ -19,7 +19,7 @@ const SlideControl = ({ text, arrow, handleClick }) => (
 SlideControl.propTypes = {
   text: PropTypes.string.isRequired,
   arrow: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired
 }
 
 export default SlideControl

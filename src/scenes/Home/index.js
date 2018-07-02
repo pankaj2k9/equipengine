@@ -10,7 +10,7 @@ const Home = () => (
   <PageWrapper
     title="Hi Jane!"
     disableBack
-    header={
+    actionBar={
       <Link to="/secure/settings">
         <OutlineButton>
           <IconSettings /> Settings

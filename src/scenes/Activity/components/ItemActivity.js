@@ -1,7 +1,6 @@
 import React from "react"
-import PropTypes from "prop-types"
 import styled from "styled-components"
-import { map } from "ramda"
+import { Link } from "react-router-dom"
 
 import { FlaggedIcon } from "base_components/SearchbarTable"
 import { TableRow } from "base_components/Tables"
@@ -11,7 +10,8 @@ import UserAvatar from "base_components/UserAvatar"
 // for table row data.
 const TableRowCourseTd = styled.td`
   text-align: ${props => (props.middle ? "center" : "left")};
-  margin-top: 0.7em;
+  margin: 1em 0;
+  padding: 25px 8px !important;
   vertical-align: middle !important;
 `
 
@@ -23,50 +23,38 @@ const DateSpan = styled.span`
   display: block;
 `
 
-// extending the user avatar component.
-const ExtendUserAvatar = UserAvatar.extend`
-  margin-right: 0.5em;
-  &:last-child {
-    margin-right: 0;
-  }
-`
-
-// component for the table row course.
-const TableRowCourse = ({ course }) => {
-  const {
-    feedbacks,
-    title,
-    person,
-    date,
-    lesson,
-    lastAction,
-    isFlagged
-  } = course
-  let feedbacksItem
-  if (feedbacks.length) {
-    feedbacksItem = map(
-      item => <ExtendUserAvatar key={item.id} small image={item.avatarURL} />,
-      feedbacks
+const formatActivityTitle = ({ eventable_type, user, course, lesson }) => {
+  if (eventable_type && eventable_type === "Comment") {
+    return (
+      <React.Fragment>
+        {user.first_name} {user.last_name} commented on{" "}
+        <Link to={`/secure/courses/${course.id}`}>
+          {lesson.title}: {course.title}
+        </Link>
+      </React.Fragment>
     )
   }
+  return eventable_type
+}
+
+// component for the table row course.
+const ItemActivity = ({ activity }) => {
+  const { created_at, flagged, user } = activity
+
   return (
     <TableRow>
       <TableRowCourseTd middle style={{ textAlign: "left" }}>
-        <DateSpan>{date.day}</DateSpan>
-        <DateSpan>{date.time}</DateSpan>
+        <DateSpan>{created_at.date}</DateSpan>
+        <DateSpan>{created_at.time}</DateSpan>
       </TableRowCourseTd>
       <TableRowCourseTd middle style={{ textAlign: "left" }}>
-        {title}
+        {formatActivityTitle(activity)}
       </TableRowCourseTd>
-      <TableRowCourseTd>{lesson}</TableRowCourseTd>
       <TableRowCourseTd>
-        <ExtendUserAvatar small image={course.person.avatarURL} />
-        <span>{person.name}</span>
+        <UserAvatar small image={user.avatar.url} />
       </TableRowCourseTd>
-      <TableRowCourseTd>{lastAction}</TableRowCourseTd>
-      <TableRowCourseTd>{feedbacksItem}</TableRowCourseTd>
       <TableRowCourseTd middle>
-        <FlaggedIcon big isFlagged={isFlagged} />
+        <FlaggedIcon big isFlagged={flagged} />
       </TableRowCourseTd>
       <TableRowCourseTd middle style={{ textAlign: "center" }}>
         <RootForm>
@@ -77,8 +65,4 @@ const TableRowCourse = ({ course }) => {
   )
 }
 
-TableRowCourse.propTypes = {
-  course: PropTypes.object.isRequired
-}
-
-export default TableRowCourse
+export default ItemActivity

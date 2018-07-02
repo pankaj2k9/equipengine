@@ -43,9 +43,10 @@ const ItemNotification = styled(({ className, notification }) => (
 
 const ListNotification = ({ notifications }) => (
   <List>
-    {notifications.map(notification => (
-      <ItemNotification key={notification.id} notification={notification} />
-    ))}
+    {Array.isArray(notifications) &&
+      notifications.map(notification => (
+        <ItemNotification key={notification.id} notification={notification} />
+      ))}
   </List>
 )
 
