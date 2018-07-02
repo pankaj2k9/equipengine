@@ -123,7 +123,7 @@ const ContentModalActions = ({ labelText, actionType }) => (
   <Fragment>
     <div>
       <FormGroup>
-        <Label>{labelText}</Label>
+        <Label>{labelText} &#42;</Label>
         <TextArea
           name="description"
           placeholder="Communication and culture is focused on those who want to serve in their local community."
