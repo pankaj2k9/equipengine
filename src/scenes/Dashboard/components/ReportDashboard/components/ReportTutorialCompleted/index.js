@@ -5,8 +5,23 @@ import CircleProgressBar from "base_components/CircleProgressBar"
 import PanelReport from "../PanelReport"
 import BoxMeta from "./components/BoxMeta"
 
-// this will hold the components for tutorials completed panel
-const ContainerReportTutorial = styled.div`
+// we need to compose component for tutorials completed
+const ReportTutorialCompleted = ({ className }) => (
+  <PanelReport title="Total Tutorials Completed">
+    <div className={className}>
+      <BoxMeta spanFirst="2 of 3" spanLast="Completed" />
+      <CircleProgressBar
+        className={`${className}__circle-progress-bar`}
+        strokeWidth={2}
+        percentage={(100 * 2) / 3}
+        text="Tutorials"
+      />
+      <BoxMeta spanFirst="1" spanLast="Remaining" />
+    </div>
+  </PanelReport>
+)
+
+export default styled(ReportTutorialCompleted)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,21 +30,8 @@ const ContainerReportTutorial = styled.div`
     flex-direction: row;
     justify-content: center;
   }
+
+  &__circle-progress-bar {
+    margin: 20px;
+  }
 `
-
-// we need to compose component for tutorials completed
-const ReportTutorialCompleted = () => (
-  <PanelReport title="Total Tutorials Completed">
-    <ContainerReportTutorial>
-      <BoxMeta spanFirst="2 of 3" spanLast="Completed" />
-      <CircleProgressBar
-        strokeWidth={2}
-        percentage={(100 * 2) / 3}
-        text="Tutorials"
-      />
-      <BoxMeta spanFirst="1" spanLast="Remaining" />
-    </ContainerReportTutorial>
-  </PanelReport>
-)
-
-export default ReportTutorialCompleted
