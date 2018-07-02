@@ -18,6 +18,10 @@ import { labelGroup } from "./propTypes"
 // styles
 import { ButtonAdd } from "../../styles"
 import { labelGroupStyles, listThingsStyles } from "./styles"
+import ModalActions from "./components/ModalActions"
+import { pure, compose, withStateHandlers } from "recompose"
+// resourses
+import modal from "hoc/modal"
 
 /**
  * -------------------------------------
@@ -26,31 +30,41 @@ import { labelGroupStyles, listThingsStyles } from "./styles"
  * @see ListThingsToDo
  * -------------------------------------
  */
-const ItemTabBasics = () => (
-  <Form>
-    <FormGroup>
-      <Label>Lesson Name</Label>
-      <Text name="name" placeholder="Communication and culture" />
-    </FormGroup>
-    <FormGroup>
-      <Label>Lesson Description</Label>
-      <TextArea
-        name="description"
-        placeholder="Communication and culture is focused on those who want to serve in their local community."
-        row={7}
-      />
-    </FormGroup>
-    <FormGroup>
-      <LabelGroup title="Things to do" />
-      <ListThingsToDo />
-    </FormGroup>
-    <FormGroup>
-      <LabelGroup title="Featured Video / Audio" withButton />
-    </FormGroup>
-  </Form>
+const ItemTabBasics = ({ isOpen, onOpen, onClose }) => (
+  <Fragment>
+    <Form>
+      <FormGroup>
+        <Label>Lesson Name</Label>
+        <Text name="name" placeholder="Communication and culture" />
+      </FormGroup>
+      <FormGroup>
+        <Label>Lesson Description</Label>
+        <TextArea
+          name="description"
+          placeholder="Communication and culture is focused on those who want to serve in their local community."
+          row={7}
+        />
+      </FormGroup>
+      <FormGroup>
+        <LabelGroup title="Things to do" />
+        <ListThingsToDo />
+      </FormGroup>
+      <FormGroup>
+        <LabelGroup
+          title="Featured Video / Audio"
+          withButton
+          onHandlerClick={onOpen}
+        />
+      </FormGroup>
+    </Form>
+    <ModalActions isOpen={isOpen} handleClose={onClose} />
+  </Fragment>
 )
 
-export default ItemTabBasics
+export default compose(
+  modal,
+  pure
+)(ItemTabBasics)
 
 /**
  * -------------------------------------
