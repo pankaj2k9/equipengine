@@ -1,4 +1,5 @@
 import React, { Fragment } from "react"
+import { isNotNil } from "ramda-adjunct"
 // components
 import Form, {
   FormGroup,
@@ -44,7 +45,7 @@ const ItemTabBasics = () => (
       <ListThingsToDo />
     </FormGroup>
     <FormGroup>
-      <LabelGroup title="Featured Video / Audio" />
+      <LabelGroup title="Featured Video / Audio" withButton />
     </FormGroup>
   </Form>
 )
@@ -57,16 +58,20 @@ export default ItemTabBasics
  * @see ItemTabBasics
  * -------------------------------------
  */
-const LabelGroup = labelGroupStyles(({ className, title, onHandlerClick }) => (
-  <div className={className}>
-    <span>{title}</span>
-    <ButtonAdd
-      text="Add"
-      iconPosition="right"
-      onHandlerClick={onHandlerClick}
-    />
-  </div>
-))
+const LabelGroup = labelGroupStyles(
+  ({ className, title, onHandlerClick, withButton }) => (
+    <div className={className}>
+      <span>{title}</span>
+      {withButton && (
+        <ButtonAdd
+          text="Add"
+          iconPosition="right"
+          onHandlerClick={onHandlerClick}
+        />
+      )}
+    </div>
+  )
+)
 
 LabelGroup.propTypes = labelGroup.props
 LabelGroup.defaultProps = labelGroup.default
