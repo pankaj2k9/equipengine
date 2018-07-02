@@ -5,6 +5,7 @@ import IconArrowRight from "react-icons/lib/fa/angle-right"
 import IconArrowDown from "react-icons/lib/fa/angle-down"
 
 import Box from "base_components/Box"
+import CircleProgressBar from "base_components/CircleProgressBar"
 import CollapsibleCourseHeaderPanel from "./components/CollapsibleCourseHeaderPanel"
 import bgImage from "./course-bg.png"
 import courseImg from "resources/images/steve-bible-teaching.jpg"
@@ -60,10 +61,12 @@ class HeaderCourseMeta extends PureComponent {
             <div>
               <ReportContainer>
                 <div className="HeaderCourseMeta__completed">
-                  <div>
-                    <span>2 of 3</span>
-                    <span>completed</span>
-                  </div>
+                  <CircleProgressBar
+                    strokeWidth={4}
+                    percentage={(100 * 2) / 3}
+                    text="2 of 3 done"
+                    textColor="#fff"
+                  />
                 </div>
               </ReportContainer>
             </div>

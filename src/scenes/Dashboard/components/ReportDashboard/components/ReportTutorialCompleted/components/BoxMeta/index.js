@@ -10,7 +10,7 @@ const BoxMeta = styled(({ className, spanFirst, spanLast }) => (
 ))`
   text-align: center;
   span {
-    color: #1b93ec;
+    color: #338ffc;
     font-size: 14px;
 
     &:first-child {

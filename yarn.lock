@@ -6855,6 +6855,12 @@ react-breadcrumbs-dynamic@^1.0.8:
   dependencies:
     react-through "^1.0.3"
 
+react-circular-progressbar@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-circular-progressbar/-/react-circular-progressbar-1.0.0.tgz#0d2a6c07c9f14fcafca4510f27829e4276dee3e0"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-datepicker@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-1.5.0.tgz#7eacd9609313189c84a21bb7421486054939a4b2"

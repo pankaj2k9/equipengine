@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
+import CircleProgressBar from "base_components/CircleProgressBar"
 
 import PanelReport from "../PanelReport"
 import BoxMeta from "./components/BoxMeta"
-import BoxCompleted from "./components/BoxCompleted"
 
 // this will hold the components for tutorials completed panel
 const ContainerReportTutorial = styled.div`
@@ -11,7 +11,7 @@ const ContainerReportTutorial = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 992px) {
     flex-direction: row;
     justify-content: center;
   }
@@ -22,7 +22,11 @@ const ReportTutorialCompleted = () => (
   <PanelReport title="Total Tutorials Completed">
     <ContainerReportTutorial>
       <BoxMeta spanFirst="2 of 3" spanLast="Completed" />
-      <BoxCompleted />
+      <CircleProgressBar
+        strokeWidth={2}
+        percentage={(100 * 2) / 3}
+        text="Tutorials"
+      />
       <BoxMeta spanFirst="1" spanLast="Remaining" />
     </ContainerReportTutorial>
   </PanelReport>

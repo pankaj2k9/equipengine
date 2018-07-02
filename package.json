@@ -16,6 +16,7 @@
     "react-beautiful-dnd": "^4.0.1",
     "react-bootstrap": "^0.31.3",
     "react-breadcrumbs-dynamic": "^1.0.8",
+    "react-circular-progressbar": "^1.0.0",
     "react-datepicker": "^1.5.0",
     "react-dom": "^16.0.0",
     "react-epic-spinners": "^0.2.1",
@@ -50,7 +51,7 @@
     "eject": "react-scripts eject"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
+    "src/**/*.{js,jsx,json}": [
       "eslint",
       "git add"
     ]

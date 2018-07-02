@@ -33,26 +33,15 @@
         margin-left: 4px;
         font-size: 1rem; }
     .HeaderCourseMeta header .HeaderCourseMeta__completed {
-      width: 75px;
-      height: 75px;
-      border: 4px solid #1B93EC;
-      border-radius: 50%; }
-      .HeaderCourseMeta header .HeaderCourseMeta__completed div {
-        text-align: center;
-        padding: 19px 13px 13px 10px; }
-      .HeaderCourseMeta header .HeaderCourseMeta__completed span {
-        font-size: 10px;
-        display: block; }
+      width: 100px;
+      height: 100px; }
 
 @media screen and (min-width: 768px) {
   .HeaderCourseMeta {
     height: 280px; }
     .HeaderCourseMeta header {
-      padding-top: 170px; }
+      padding-top: 150px; }
       .HeaderCourseMeta header h3 {
         width: 745px; }
-      .HeaderCourseMeta header .HeaderCourseMeta__completed {
-        width: 80px;
-        height: 80px; }
         .HeaderCourseMeta header .HeaderCourseMeta__completed div {
           padding: 22px 15px 13px 13px; } }

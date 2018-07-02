@@ -10,6 +10,8 @@ import { BreadcrumbsItem } from "react-breadcrumbs-dynamic/dist/src"
 /* for our code splitting, render this components asynchronous*/
 import Loader from "base_components/Loader"
 import Loadable from "react-loadable"
+
+// TODO move Course loading to app router
 const AsyncCourse = Loadable({
   loader: () => import("./scenes/Course"),
   loading: Loader, // before this component gets loaded, we will render first this Loader component.
