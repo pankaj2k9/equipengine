@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, Redirect } from "react-router-dom"
 // Components
 import ErrorBoundary from "base_components/ErrorBoundary"
 import Breadcrumbs from "base_components/Breadcrumbs"
@@ -71,6 +71,8 @@ const ContentAdminCourse = ({ match, onClose, isOpen }) => (
           </ErrorBoundary>
         )}
       />
+      {/* redirect to courses library if no match */}
+      <Redirect to={`${match.url}/courses`} />
     </Switch>
   </ContainerContent>
 )
