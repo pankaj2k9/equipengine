@@ -5,10 +5,9 @@ import styled from "styled-components"
 // TODO probably try to move CompletedCircleBar component
 const TutorialsCompleted = ({ className }) => (
   <div className={className}>
-    <div className="progress-bar-wrapper">
-      <CircleProgressBar small percentage={(20 / 22) * 100} />
-    </div>
-    <span className="status-wrapper">0 of 22 completed</span>
+    <CircleProgressBar small percentage={(20 / 22) * 100} />
+    <span className={`${className}__delimeter`} />
+    <span className={`${className}__status`}>20 of 22 completed</span>
   </div>
 )
 
@@ -16,14 +15,15 @@ TutorialsCompleted.propTypes = {}
 
 export default styled(TutorialsCompleted)`
   display: flex;
-  align-items: center;
-  margin-left: 26px;
+  justify-content: center;
+  margin: 0 10px;
 
-  .progress-bar-wrapper {
-    margin-right: 10px;
+  &__delimeter {
+    margin-right: 8px;
   }
 
-  .status-wrapper {
+  &__status {
+    margin-top: 4px;
     font-size: 10px;
     color: #9fa6ad;
     width: 60px;
