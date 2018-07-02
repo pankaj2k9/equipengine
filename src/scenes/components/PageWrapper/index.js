@@ -26,9 +26,9 @@ class PageWrapper extends Component {
           {header}
           {(title || icon) && (
             <ContainerFlex isAlignCenter isSpaceBetween>
-              <h4 className="page-wrapper-header">
+              <h4 className={`${className}__header`}>
                 {icon}
-                {icon && <span className="page-wrapper-icon-title-divider" />}
+                {icon && <span className={`${className}__delimiter`} />}
                 {title}
               </h4>
               {actionBar}
@@ -42,13 +42,13 @@ class PageWrapper extends Component {
 }
 
 export default styled(PageWrapper)`
-  .page-wrapper-header {
+  &__header {
     margin-top: 0;
     font-weight: 400;
     color: #80808b;
   }
 
-  .page-wrapper-icon-title-divider {
-    margin-left: 15px;
+  &__delimiter {
+    margin: 0 7px;
   }
 `
