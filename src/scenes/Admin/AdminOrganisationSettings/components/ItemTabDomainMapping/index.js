@@ -8,19 +8,6 @@ import Wrapper from "./components/Wrapper"
 import { FormGroup, Label, Text, Switch } from "base_components/RootForm"
 import ContainerFlex from "base_components/ContainerFlex"
 
-const ItemTabDomainMapping = () => (
-  <Wrapper>
-    <Form>
-      <PanelWebAddress />
-      <PanelDomainMapping />
-      <Button>Update</Button>
-    </Form>
-    <Descriptions />
-  </Wrapper>
-)
-
-export default ItemTabDomainMapping
-
 //
 const PanelWebAddress = () => (
   <Panel title="Web Address" paddingBottom="1.6em">
@@ -136,3 +123,17 @@ const Descriptions = styled(({ className }) => (
     padding-right: 2%;
   }
 `
+
+//
+const ItemTabDomainMapping = () => (
+  <Wrapper>
+    <Form>
+      <PanelWebAddress />
+      <PanelDomainMapping />
+      <Button>Update</Button>
+    </Form>
+    <Descriptions />
+  </Wrapper>
+)
+
+export default ItemTabDomainMapping

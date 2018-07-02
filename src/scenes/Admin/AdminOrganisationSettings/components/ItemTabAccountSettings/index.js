@@ -10,16 +10,6 @@ import ContainerFlex from "base_components/ContainerFlex"
 import Divider from "base_components/Divider"
 import Dropdown from "base_components/RootDropdown"
 
-const ItemTabAccountSettings = () => (
-  <Form>
-    <PanelWebAddress />
-    <PanelLanguage />
-    <Button>Update</Button>
-  </Form>
-)
-
-export default ItemTabAccountSettings
-
 const users = [
   {
     name: "User1"
@@ -100,3 +90,14 @@ const LanguageLabel = styled.span`
 const LanguageDropdown = styled(Dropdown)`
   width: 130px;
 `
+
+//
+const ItemTabAccountSettings = () => (
+  <Form>
+    <PanelWebAddress />
+    <PanelLanguage />
+    <Button>Update</Button>
+  </Form>
+)
+
+export default ItemTabAccountSettings
