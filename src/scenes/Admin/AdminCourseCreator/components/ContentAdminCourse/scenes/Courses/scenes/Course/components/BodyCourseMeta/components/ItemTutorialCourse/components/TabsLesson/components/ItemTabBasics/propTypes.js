@@ -16,12 +16,14 @@ export default {}
 export const labelGroup = {
   props: {
     title: PropTypes.string.isRequired,
-    onHandlerClick: PropTypes.func.isRequired
+    onHandlerClick: PropTypes.func.isRequired,
+    withButton: PropTypes.bool
   },
   default: {
     title: "",
     onHandlerClick() {
       //console.log('click')
-    }
+    },
+    withButton: false
   }
 }
