@@ -9,7 +9,7 @@ const ContainerFilterableList = Container.extend`
     flex-direction: column;
     margin: 0;
     padding: 0;
-    width: 40%;
+    width: 488px;
     border-right: 1px solid #dadada;
   }
 `

@@ -16,12 +16,19 @@ class DragDrop extends Component {
   }
 
   // this handler is used for re-ordering the items on the list.
-  onDragEnd = ({ source, destination }) =>
-    not(isNil(destination)) // handle not null or undefined destination
-      ? this.setState({
-          list: reorderItems(this.state.list, source.index, destination.index)
-        })
-      : undefined
+  onDragEnd = ({ source, destination }) => {
+    this.props.onDragEndListener()
+
+    if (not(isNil(destination))) {
+      this.setState({
+        list: reorderItems(this.state.list, source.index, destination.index)
+      })
+    }
+  }
+
+  onDragStart = () => {
+    this.props.onDragStartListener()
+  }
 
   render() {
     const { children } = this.props
@@ -33,7 +40,10 @@ class DragDrop extends Component {
     )
 
     return (
-      <DragDropContext onDragEnd={this.onDragEnd}>
+      <DragDropContext
+        onDragStart={this.onDragStart}
+        onDragEnd={this.onDragEnd}
+      >
         {childrenWithProps}
       </DragDropContext>
     )
@@ -41,11 +51,15 @@ class DragDrop extends Component {
 }
 
 DragDrop.propTypes = {
-  list: PropTypes.array.isRequired
+  list: PropTypes.array.isRequired,
+  onDragStartListener: PropTypes.func,
+  onDragEndListener: PropTypes.func
 }
 
 DragDrop.defaultProps = {
-  list: []
+  list: [],
+  onDragStartListener: () => {},
+  onDragEndListener: () => {}
 }
 
 export { DragDrop as default, DroppableList, DroppableListItem }

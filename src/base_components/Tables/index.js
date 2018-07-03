@@ -8,11 +8,21 @@ import Td from "./components/Td"
 import Th, { ThWithSort } from "./components/Th"
 
 // TODO -> turn the sub components into styled component.
-const Tables = styled(({ children, className }) => (
+const Tables = ({ children, className }) => (
   <Table className={`Tables ${className}`} responsive>
     {children}
   </Table>
-))`
+)
+Tables.defaultProps = {
+  isLayoutFixed: false
+}
+Tables.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  className: PropTypes.string,
+  isLayoutFixed: PropTypes.bool
+}
+
+export default styled(Tables)`
   ${({ isLayoutFixed }) =>
     isLayoutFixed &&
     `
@@ -35,13 +45,5 @@ const Tables = styled(({ children, className }) => (
     }
   }
 `
-Tables.defaultProps = {
-  isLayoutFixed: false
-}
-Tables.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
-  className: PropTypes.string,
-  isLayoutFixed: PropTypes.bool
-}
 
-export { Tables as default, TableRow, Th, Td, ThWithSort }
+export { TableRow, Th, Td, ThWithSort }

@@ -1,15 +1,16 @@
 import React from "react"
-// base components
+//
+import { compose, pure, withStateHandlers } from "recompose"
+//
 import Tables, { TableRow, Th } from "base_components/Tables"
 import DragDrop from "base_components/DragDrop"
-// sub components
+//
 import RowsTableAdminGroupCourses from "./components/RowsTableAdminGroupCourses"
 
-// compose a table header
 const TableHeaderGroupUser = ({ children }) => <Th center>{children}</Th>
 
-const TableAdminGroupCourses = () => (
-  <Tables isLayoutFixed>
+const TableAdminGroupCourses = ({ isDragging, onDragStart, onDragEnd }) => (
+  <Tables isLayoutFixed={isDragging}>
     <thead>
       <TableRow>
         <Th />
@@ -19,10 +20,29 @@ const TableAdminGroupCourses = () => (
         <TableHeaderGroupUser />
       </TableRow>
     </thead>
-    <DragDrop list={[]}>
+    <DragDrop
+      onDragStartListener={onDragStart}
+      onDragEndListener={onDragEnd}
+      list={[]}
+    >
       <RowsTableAdminGroupCourses />
     </DragDrop>
   </Tables>
 )
 
-export default TableAdminGroupCourses
+export default compose(
+  withStateHandlers(
+    {
+      isDragging: false
+    },
+    {
+      onDragStart: () => () => ({
+        isDragging: true
+      }),
+      onDragEnd: () => () => ({
+        isDragging: false
+      })
+    }
+  ),
+  pure
+)(TableAdminGroupCourses)
