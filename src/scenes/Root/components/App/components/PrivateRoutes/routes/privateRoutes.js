@@ -23,6 +23,18 @@ const AsyncCourses = Loadable({
   timeout: 10000
 })
 
+const AsyncCourse = Loadable({
+  loader: () => import("scenes/Course"),
+  loading: Loader, // before this component gets loaded, we will render first this Loader component.
+  timeout: 10000
+})
+
+const AsyncTutorial = Loadable({
+  loader: () => import("scenes/Tutorial"),
+  loading: Loader, // before this component gets loaded, we will render first this Loader component.
+  timeout: 10000
+})
+
 const AsyncGroups = Loadable({
   loader: () => import("scenes/Groups"),
   loading: Loader,
@@ -73,7 +85,6 @@ const AsyncSettings = Loadable({
 
 const privateRoutes = [
   {
-    id: "private00",
     path: "/secure/browse-groups",
     strict: true,
     exact: true,
@@ -84,7 +95,6 @@ const privateRoutes = [
     )
   },
   {
-    id: "private01",
     path: "/secure/dashboard",
     strict: true,
     exact: true,
@@ -95,7 +105,6 @@ const privateRoutes = [
     )
   },
   {
-    id: "private02",
     path: "/secure/messages",
     strict: true,
     exact: true,
@@ -106,7 +115,6 @@ const privateRoutes = [
     )
   },
   {
-    id: "private03",
     path: "/secure/notifications",
     strict: true,
     exact: true,
@@ -117,10 +125,9 @@ const privateRoutes = [
     )
   },
   {
-    id: "private04",
     path: "/secure/courses",
     strict: true,
-    exact: false,
+    exact: true,
     AsyncRenderComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the courses page.">
         <AsyncCourses {...props} />
@@ -128,7 +135,26 @@ const privateRoutes = [
     )
   },
   {
-    id: "private05",
+    path: "/secure/courses/:id",
+    strict: true,
+    exact: true,
+    AsyncRenderComponent: props => (
+      <ErrorBoundary errMsg="Something went wrong in displaying the course page.">
+        <AsyncCourse {...props} />
+      </ErrorBoundary>
+    )
+  },
+  {
+    path: "/secure/courses/:courseId/tutorials/:id",
+    strict: true,
+    exact: true,
+    AsyncRenderComponent: props => (
+      <ErrorBoundary errMsg="Something went wrong in displaying the tutorial page.">
+        <AsyncTutorial {...props} />
+      </ErrorBoundary>
+    )
+  },
+  {
     path: "/secure/groups",
     strict: true,
     exact: true,
@@ -139,7 +165,6 @@ const privateRoutes = [
     )
   },
   {
-    id: "private06",
     path: "/secure/people",
     strict: true,
     exact: true,
@@ -150,7 +175,6 @@ const privateRoutes = [
     )
   },
   {
-    id: "private07",
     path: "/secure/files",
     strict: true,
     exact: true,
@@ -161,7 +185,6 @@ const privateRoutes = [
     )
   },
   {
-    id: "private08",
     path: "/secure/activity",
     strict: true,
     exact: true,
@@ -172,7 +195,6 @@ const privateRoutes = [
     )
   },
   {
-    id: "private09",
     path: "/secure/home",
     strict: true,
     exact: true,
@@ -183,7 +205,6 @@ const privateRoutes = [
     )
   },
   {
-    id: "private10",
     path: "/secure/settings",
     strict: true,
     exact: true,

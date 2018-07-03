@@ -1,11 +1,7 @@
 import React from "react"
 
-import {
-  MainInnerContainer,
-  MainHeaderTitle,
-  MainLeft,
-  MainRight
-} from "base_components/Main"
+import Breadcrumbs from "base_components/Breadcrumbs"
+import { MainInnerContainer, MainLeft, MainRight } from "base_components/Main"
 import TableFiles from "base_components/TableFiles"
 import SearchBar from "base_components/RootSearchFileBar"
 
@@ -25,9 +21,14 @@ const files = [
 
 const Files = () => (
   <div>
-    <MainHeaderTitle>
-      <span>Files</span>
-    </MainHeaderTitle>
+    <Breadcrumbs
+      items={[
+        {
+          to: "/secure/files",
+          label: "Files"
+        }
+      ]}
+    />
     <MainInnerContainer>
       <MainLeft>
         <TableFiles files={files} />

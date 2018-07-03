@@ -1,12 +1,15 @@
 import React from "react"
 //
 import { NavLink } from "react-router-dom"
-import { Breadcrumbs as RootBreadcrumbs } from "react-breadcrumbs-dynamic/dist/src"
+import {
+  Breadcrumbs as RootBreadcrumbs,
+  BreadcrumbsItem
+} from "react-breadcrumbs-dynamic/dist/src"
 // assets
 import breadCrumbsStyles from "./styles"
 import breadCrumbs from "./propTypes"
 
-const Breadcrumbs = breadCrumbsStyles(({ className }) => (
+const Breadcrumbs = breadCrumbsStyles(({ className, items }) => (
   <div className={className}>
     <RootBreadcrumbs
       separator={<span className="Breadcrumbs__separator"> > </span>}
@@ -16,6 +19,10 @@ const Breadcrumbs = breadCrumbsStyles(({ className }) => (
         style: { color: "#616161" }
       }}
     />
+    {Array.isArray(items) &&
+      items.map(item => (
+        <BreadcrumbsItem to={item.to}>{item.label}</BreadcrumbsItem>
+      ))}
   </div>
 ))
 

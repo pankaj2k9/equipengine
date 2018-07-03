@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import data from "scenes/Courses/data.json"
+import data from "scenes/Courses/coursesData.json"
 
 const subscribeToCourses = WrappedComponent => {
   // check if the input is component.

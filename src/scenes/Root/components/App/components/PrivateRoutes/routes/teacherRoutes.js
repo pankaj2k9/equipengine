@@ -32,7 +32,6 @@ const AsyncTeacherUserManager = Loadable({
 
 const teacherRoutes = [
   {
-    id: "teacher01",
     path: "/secure/teacher/groups-activity",
     strict: true,
     exact: true,
@@ -43,7 +42,6 @@ const teacherRoutes = [
     )
   },
   {
-    id: "teacher02",
     path: "/secure/teacher/submissions-activity",
     strict: true,
     exact: true,
@@ -54,7 +52,6 @@ const teacherRoutes = [
     )
   },
   {
-    id: "teacher03",
     path: "/secure/teacher/files",
     strict: true,
     exact: true,
@@ -65,7 +62,6 @@ const teacherRoutes = [
     )
   },
   {
-    id: "teacher04",
     path: "/secure/teacher/user-manager",
     strict: true,
     exact: true,
