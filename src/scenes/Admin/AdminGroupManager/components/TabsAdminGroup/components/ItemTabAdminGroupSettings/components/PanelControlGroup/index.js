@@ -11,8 +11,8 @@ const PanelExtend = Panel.extend`
   padding-bottom: 28px;
 `
 
-const PanelControlGroup = () => (
-  <PanelExtend>
+const PanelControlGroup = ({ className }) => (
+  <PanelExtend className={className}>
     <ListControl>
       <ListItemControl>
         <Button large light lightBorder>
