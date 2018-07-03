@@ -88,6 +88,35 @@
     lodash "^4.17.5"
     to-fast-properties "^2.0.0"
 
+"@devexpress/dx-core@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-core/-/dx-core-1.4.0.tgz#ceac2e3fc6971995e0fefbdb08abefc10b4841e4"
+
+"@devexpress/dx-grid-core@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-grid-core/-/dx-grid-core-1.4.0.tgz#5f7f92648c9674886247203d69cd1e01ab703c88"
+
+"@devexpress/dx-react-core@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-core/-/dx-react-core-1.4.0.tgz#14a1b8b9d0a291b5b0ddfa36bc4d36d01738eea7"
+  dependencies:
+    "@devexpress/dx-core" "1.4.0"
+    prop-types "^15.6.2"
+
+"@devexpress/dx-react-grid-bootstrap3@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-grid-bootstrap3/-/dx-react-grid-bootstrap3-1.4.0.tgz#fe31a3a660b50315585135c0f29c23a2f3835917"
+  dependencies:
+    classnames "^2.2.6"
+    prop-types "^15.6.2"
+
+"@devexpress/dx-react-grid@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-grid/-/dx-react-grid-1.4.0.tgz#9a502df3820c2fe1ba837106f129721b446b6455"
+  dependencies:
+    "@devexpress/dx-grid-core" "1.4.0"
+    prop-types "^15.6.2"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -1647,7 +1676,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.3, classnames@^2.2.4, classnames@^2.2.5:
+classnames@^2.2.3, classnames@^2.2.4, classnames@^2.2.5, classnames@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
 

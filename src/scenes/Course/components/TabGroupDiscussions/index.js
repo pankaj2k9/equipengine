@@ -1,8 +1,8 @@
 import React from "react"
 
 import userURL from "resources/images/user.png"
-import TableDiscussions from "./components/TableDiscussions"
-import Thread from "./components/Thread"
+import TableDiscussions from "../TableDiscussions"
+import Thread from "../Thread"
 
 const TabGroupDiscussions = ({ className }) => {
   // discussion items.
@@ -73,7 +73,7 @@ const TabGroupDiscussions = ({ className }) => {
           }
         }
       ],
-      dateAdded: "22 April 17"
+      dateAdded: "22 April 18"
     },
     {
       id: "5f44348jjsfn34234dsffhgns",
@@ -81,12 +81,12 @@ const TabGroupDiscussions = ({ className }) => {
       title: "Western Sydney Phrases",
       activities: [
         {
-          name: "Jane Doe",
+          name: "Jack Sparrow",
           action: "created a new discussion thread",
           avatarURL:
             "https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg",
           date: {
-            day: "2 Sep",
+            day: "1 Sep",
             time: "1:00pm"
           }
         }
