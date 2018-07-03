@@ -1,5 +1,4 @@
 import React, { Fragment } from "react"
-import { isNotNil } from "ramda-adjunct"
 // components
 import Form, {
   FormGroup,
