@@ -20,7 +20,7 @@ import adminOrganisationSettings from "./propTypes"
  */
 const AdminOrganisationSettings = ({ match }) => (
   <Fragment>
-    <Breadcrumbs position="sticky" padding="4% 2%" />
+    <Breadcrumbs padding="4% 2%" />
     <BreadcrumbsItem to={match.url}>Organisation Settings</BreadcrumbsItem>
     <TabOrganisationSettings />
   </Fragment>

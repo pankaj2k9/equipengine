@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
+import Breadcrumbs from "base_components/Breadcrumbs"
 
-import HeaderDashboard from "./components/HeaderDashboard"
 import BodyDashboard from "./components/BodyDashboard"
 
 const ContainerNoticeboard = styled.div`
@@ -15,7 +15,14 @@ const ContainerNoticeboard = styled.div`
 // noticeboard component.
 const NoticeboardDashboard = () => (
   <ContainerNoticeboard>
-    <HeaderDashboard />
+    <Breadcrumbs
+      items={[
+        {
+          to: "/secure/dashboard",
+          label: "Noticeboard"
+        }
+      ]}
+    />
     <BodyDashboard />
   </ContainerNoticeboard>
 )

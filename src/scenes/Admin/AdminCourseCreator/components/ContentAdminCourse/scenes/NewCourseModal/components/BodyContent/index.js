@@ -11,7 +11,7 @@ const ContainerBodyContent = styled.div`
 const BodyContent = () => (
   <ContainerBodyContent>
     <FormGroup>
-      <Label>Course Name</Label>
+      <Label>Course Name &#42;</Label>
       <Text name="course" placeholder="Communication and culture" />
     </FormGroup>
     <FormGroup>
@@ -23,7 +23,13 @@ const BodyContent = () => (
       />
     </FormGroup>
     <FormGroup>
-      <Label>Course Featured Image</Label>
+      <Label>Course Main Image</Label>
+      <div>
+        <ButtonUpload />
+      </div>
+    </FormGroup>
+    <FormGroup>
+      <Label>Course Banner Image</Label>
       <div>
         <ButtonUpload />
       </div>

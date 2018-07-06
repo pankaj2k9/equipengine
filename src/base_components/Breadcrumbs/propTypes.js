@@ -11,7 +11,7 @@ export default {
     padding: PropTypes.string
   },
   default: {
-    position: "fixed",
+    position: "sticky",
     padding: "4% 6%"
   }
 }

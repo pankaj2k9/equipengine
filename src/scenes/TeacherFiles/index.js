@@ -2,12 +2,8 @@ import React from "react"
 import styled from "styled-components"
 
 import iconUpload from "./iconUpload.svg"
-import {
-  MainInnerContainer,
-  MainHeaderTitle,
-  MainLeft,
-  MainRight
-} from "base_components/Main"
+import Breadcrumbs from "base_components/Breadcrumbs"
+import { MainInnerContainer, MainLeft, MainRight } from "base_components/Main"
 import TableFiles from "base_components/TableFiles"
 import SearchBar from "base_components/RootSearchBar"
 import Button from "base_components/RootButton"
@@ -39,9 +35,14 @@ const files = [
 
 const TeacherFiles = () => (
   <div>
-    <MainHeaderTitle>
-      <span>Files</span>
-    </MainHeaderTitle>
+    <Breadcrumbs
+      items={[
+        {
+          to: "/secure/teacher-files",
+          label: "Files"
+        }
+      ]}
+    />
     <MainInnerContainer>
       <MainLeft>
         <TableFiles files={files} />

@@ -32,7 +32,6 @@ const AsyncAdminOrganisationSettings = Loadable({
 
 const adminRoutes = [
   {
-    id: "admin01",
     path: "/secure/admin/group-manager",
     strict: true,
     exact: true,
@@ -43,7 +42,6 @@ const adminRoutes = [
     )
   },
   {
-    id: "admin02",
     path: "/secure/admin/user-manager",
     strict: true,
     exact: true,
@@ -54,7 +52,6 @@ const adminRoutes = [
     )
   },
   {
-    id: "admin03",
     path: "/secure/admin/course-creator",
     strict: true,
     exact: false,
@@ -65,7 +62,6 @@ const adminRoutes = [
     )
   },
   {
-    id: "admin03",
     path: "/secure/admin/organisation-settings",
     strict: true,
     exact: false,

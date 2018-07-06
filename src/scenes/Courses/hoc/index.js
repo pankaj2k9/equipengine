@@ -1,12 +1,12 @@
 import React, { Component } from "react"
-import data from "scenes/Courses/data.json"
+import coursesData from "scenes/Courses/coursesData.json"
 
 const subscribingOnCourses = WrappedComponent => {
   class EnhancedCourses extends Component {
     constructor() {
       super()
       this.state = {
-        courses: data
+        courses: coursesData
       }
     }
 

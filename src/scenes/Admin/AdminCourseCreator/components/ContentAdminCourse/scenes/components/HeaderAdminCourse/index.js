@@ -38,7 +38,7 @@ const HeaderAdminCourse = ({
   searchbarInfo: { placeholder, onSubmit }
 }) => (
   <ContainerHeader>
-    <ControlButtonsGroup />
+    {ControlButtonsGroup && <ControlButtonsGroup />}
     <SearchbarAdminCourse placeholder={placeholder} onClick={onSubmit} />
   </ContainerHeader>
 )

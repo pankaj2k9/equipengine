@@ -14,7 +14,7 @@ const ContainerAddons = styled(ContainerAdminCourse)`
 
 const Addons = ({ match }) => (
   <ContainerAddons>
-    <BreadcrumbsItem to={match.url}>Addons</BreadcrumbsItem>
+    <BreadcrumbsItem to={match.url}>Add-ons</BreadcrumbsItem>
     <SearchbarAddons />
     <TabsCoursePackages />
   </ContainerAddons>
