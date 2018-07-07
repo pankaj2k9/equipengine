@@ -3,7 +3,7 @@ import React from "react"
 import Breadcrumbs from "base_components/Breadcrumbs"
 import { MainInnerContainer, MainLeft, MainRight } from "base_components/Main"
 import TableFiles from "base_components/TableFiles"
-import SearchBar from "base_components/RootSearchFileBar"
+import SearchBar from "base_components/RootSearchBar"
 
 // test data
 const files = [
@@ -34,7 +34,7 @@ const Files = () => (
         <TableFiles files={files} />
       </MainLeft>
       <MainRight>
-        <SearchBar />
+        <SearchBar placeholder="Search files" />
       </MainRight>
     </MainInnerContainer>
   </div>

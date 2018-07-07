@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
+// TODO merge with RootButton
 const OutlineButton = ({ className, children, ...rest }) => (
   <button className={className} {...rest}>
     {children}

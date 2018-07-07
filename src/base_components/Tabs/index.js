@@ -10,7 +10,6 @@ const Tabs = ({ style, children, className }) => {
       style={style}
       className={`Tabs ${className}`}
       defaultActiveKey={1}
-      id="uncontrolled-tab-example"
     >
       {children}
     </TabBootstrap>

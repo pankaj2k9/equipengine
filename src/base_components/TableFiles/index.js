@@ -31,7 +31,7 @@ const filesToRows = files =>
     : []
 
 const TableFiles = ({ files }) => (
-  <Table columns={columns} rows={filesToRows(files)} />
+  <Table columns={columns} rows={filesToRows(files)} sorting />
 )
 
 TableFiles.propTypes = {

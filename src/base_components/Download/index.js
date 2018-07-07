@@ -1,5 +1,6 @@
 import React from "react"
 
+// Simple grey download text
 const Download = () => {
   return (
     <span

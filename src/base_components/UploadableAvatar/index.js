@@ -4,6 +4,7 @@ import styled from "styled-components"
 import UserAvatar from "base_components/UserAvatar"
 import FileChooser from "base_components/FileChooser"
 
+// TODO probably move as a separate github library
 class UploadableAvatar extends React.Component {
   constructor(props) {
     super(props)

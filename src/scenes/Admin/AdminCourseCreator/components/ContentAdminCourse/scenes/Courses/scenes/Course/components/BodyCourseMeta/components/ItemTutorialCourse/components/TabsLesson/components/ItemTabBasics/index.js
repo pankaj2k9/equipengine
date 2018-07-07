@@ -18,7 +18,7 @@ import { labelGroup } from "./propTypes"
 import { ButtonAdd } from "../../styles"
 import { labelGroupStyles, listThingsStyles } from "./styles"
 import ModalActions from "./components/ModalActions"
-import { pure, compose, withStateHandlers } from "recompose"
+import { pure, compose } from "recompose"
 // resourses
 import modal from "hoc/modal"
 
