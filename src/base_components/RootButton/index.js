@@ -1,8 +1,5 @@
-import React from "react"
 import styled from "styled-components"
 import { identical } from "ramda"
-
-const Button = ({ children, ...rest }) => <button {...rest}>{children}</button>
 
 // for background color variation
 const backgroundColorVariation = props => {
@@ -20,7 +17,7 @@ const fontColorVariation = props => {
   if (props.secondary) {
     return "#333333"
   } else if (props.light) {
-    return "#D4D4D4"
+    return "#80808b"
   } else {
     return "#ffffff"
   }
@@ -48,12 +45,18 @@ const hoverFontColorVariation = props => {
   }
 }
 
-const RootButton = styled(Button)`
+/**
+ * @param secondary - flat contained button with grey background (like https://material-ui.com/demos/buttons/#contained-buttons)
+ * @param light - grey text button without border and background (like https://material-ui.com/demos/buttons/#text-buttons)
+ * @param lightBorder - add tiny grey button border (like https://material-ui.com/demos/buttons/#outlined-buttons)
+ */
+// TODO rename to Button
+const RootButton = styled.button`
   background-color: ${backgroundColorVariation};
   opacity: ${props => (props.disabled ? "0.5" : "1")};
   color: ${fontColorVariation};
   width: ${props => (props.large ? "146px" : "104px")};
-  border: ${props => (props.lightBorder ? "1px solid #D4D4D4" : "0")};
+  border: ${props => (props.lightBorder ? "1px solid #d4d4d4" : "0")};
   padding: 10px 0;
   font-family: "karla", sans-serif;
   font-size: 12px;
@@ -65,11 +68,12 @@ const RootButton = styled(Button)`
 
   &:hover {
     background-color: ${hoverBackgroundColorVariation};
+    border: ${props => (props.lightBorder ? "1px solid #b9b9b9" : "0")};
     color: ${hoverFontColorVariation};
   }
 `
 
-// for button icon
+// For text button with icon on the left/right side
 const ButtonIcon = RootButton.extend`
   width: 148px;
   i {
@@ -80,4 +84,14 @@ const ButtonIcon = RootButton.extend`
   }
 `
 
-export { RootButton as default, ButtonIcon }
+// For button with icon only
+const IconButton = styled.button`
+  border: 0;
+  img,
+  svg {
+    width: 30px;
+  }
+  background-color: white;
+`
+
+export { RootButton as default, ButtonIcon, IconButton }

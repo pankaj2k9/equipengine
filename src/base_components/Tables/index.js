@@ -7,7 +7,7 @@ import TableRow from "./components/TableRow"
 import Td from "./components/Td"
 import Th, { ThWithSort } from "./components/Th"
 
-// TODO -> turn the sub components into styled component.
+// TODO fully replace with customizable base_components/Table
 const Tables = styled(({ children, className }) => (
   <Table className={`Tables ${className}`} responsive>
     {children}

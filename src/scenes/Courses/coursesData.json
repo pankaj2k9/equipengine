@@ -9,7 +9,7 @@
       "Text goes here that explains what this course is about and can include instructions. Text goes here that explains what this course is about and can include instructions. Text goes here that explains what this course is about and can include instructions. Text goes here that explains what this course is about and can include instructions.Text goes here that explains what this course is about and can include instructions. Text goes here that explains what this course is about and can include instructions.",
     "tutorials": [
       {
-        "id": "communication-tutorial-1",
+        "id": "1",
         "tutorialId": "tsfjksaf",
         "title": "Communication Tutorial 1",
         "type": "video",
@@ -24,7 +24,7 @@
         ]
       },
       {
-        "id": "communication-tutorial-2",
+        "id": "2",
         "tutorialId": "tjksafj",
         "title": "Communication Tutorial 2",
         "questions": [
@@ -60,7 +60,7 @@
       "Text goes here that explains what this course is about and can include instructions. Text goes here that explains what this course is about and can include instructions. Text goes here that explains what this course is about and can include instructions. Text goes here that explains what this course is about and can include instructions.Text goes here that explains what this course is about and can include instructions. Text goes here that explains what this course is about and can include instructions.",
     "tutorials": [
       {
-        "id": "becoming-tutorial-1",
+        "id": "1",
         "tutorialId": "tsfjksgh",
         "title": "Becoming Tutorial 1",
         "video": {
@@ -74,7 +74,7 @@
         ]
       },
       {
-        "id": "becoming-tutorial-2",
+        "id": "2",
         "tutorialId": "tjksakg",
         "title": "Becoming Tutorial 2",
         "video": {

@@ -41,7 +41,7 @@ export default MyComponent
 # elements.js
 
 import styled from "styled-components"
-import Button from "base_components/Button"
+import Button from "base_components/RootButton"
 import { Text } from "base_components/RootForm"
 
 export const Root = styled.div`
