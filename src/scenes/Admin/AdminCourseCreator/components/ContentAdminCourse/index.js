@@ -35,7 +35,7 @@ const ContainerContent = styled.div`
   width: 100%;
 
   @media screen and (min-width: 768px) {
-    margin-left: 127px;
+    margin-left: 91px; /* courses sidebar width */
   }
 `
 
