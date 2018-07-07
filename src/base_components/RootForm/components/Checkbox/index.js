@@ -40,8 +40,8 @@ const Checkbox = styled(({ name, className }) => (
         width: 9px;
         opacity: 0;
         position: absolute;
-        top: 2px;
-        left: 1px;
+        top: 4px;
+        left: 5px;
         transform: translate(-50%, -50%) rotate(-45deg);
       }
     }
