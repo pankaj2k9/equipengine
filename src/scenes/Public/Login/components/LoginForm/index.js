@@ -1,71 +1,50 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, { Component } from "react"
 //
-import Button from "base_components/RootButton"
-import withState from "./hoc/withState"
-import { identical } from "ramda"
+import { Form, Input, StyledButton } from "./elements"
 
-const LoginForm = ({
-  onHandleChange,
-  clearForm,
-  username,
-  password,
-  loggedUser,
-  isPending,
-  history
-}) => {
-  // event handler for form onSubmit event.
-  const onSubmit = e => {
-    e.preventDefault()
-    // chaining on the promise data
-    loggedUser({ username, password }).then(res => {
-      // if successfull, we will redirect to other page.
-      if (identical(res.status, "successfully")) {
-        // redirec based on the user type.
-        // if type is student or teacher
-        // if (compose(not, identical(res.user.type))('Admin')) {
-        //   return history.push('/secure/browse-groups')
-        // }
-        // else admin, redirect to /admin/group-manager
-        // return history.push('/secure/admin/group-manager')
-        /* redirectBasedOnType(res.user.type); */
-      }
-
-      // not successfull. clear the form
-      clearForm()
-    })
+// TODO try to implement by compose
+class LoginForm extends Component {
+  state = {
+    username: "",
+    password: ""
   }
 
-  return (
-    <form onSubmit={onSubmit}>
-      <input
-        autoFocus
-        onChange={onHandleChange}
-        name="username"
-        type="text"
-        value={username}
-        placeholder="Username"
-      />
-      <input
-        onChange={onHandleChange}
-        name="password"
-        type="password"
-        value={password}
-        placeholder="Password"
-      />
-      <Button disabled={isPending}>Login</Button>
-    </form>
-  )
+  handleSubmit = () =>
+    this.props.onSubmit({
+      username: this.state.username,
+      password: this.state.password
+    })
+
+  handleChange = ({ target: { value, name } }) =>
+    this.setState({
+      [name]: value
+    })
+
+  render() {
+    const { username, password } = this.state
+    return (
+      <Form onSubmit={this.handleSubmit}>
+        <Input
+          autoFocus
+          onChange={this.handleChange}
+          name="username"
+          type="text"
+          value={username}
+          placeholder="Username"
+        />
+        <Input
+          onChange={this.handleChange}
+          name="password"
+          type="password"
+          value={password}
+          placeholder="Password"
+        />
+        <StyledButton type="submit" onClick={this.handleSubmit}>
+          Login
+        </StyledButton>
+      </Form>
+    )
+  }
 }
 
-LoginForm.propTypes = {
-  onHandleChange: PropTypes.func.isRequired,
-  clearForm: PropTypes.func.isRequired,
-  username: PropTypes.string,
-  password: PropTypes.string,
-  loggedUser: PropTypes.func.isRequired,
-  isPending: PropTypes.bool.isRequired,
-  history: PropTypes.object.isRequired
-}
-
-export default withState(LoginForm)
+export default LoginForm

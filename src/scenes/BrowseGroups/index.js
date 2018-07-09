@@ -4,7 +4,7 @@ import OutlineButton from "base_components/OutlineButton"
 import { Link } from "react-router-dom"
 //
 import BodyBrowseGroups from "./components/BodyBrowseGroups"
-import PageWrapper from "../components/PageWrapper"
+import PageWrapper from "global/PageWrapper"
 
 const BrowseGroups = () => (
   <PageWrapper

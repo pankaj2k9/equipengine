@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import IconSettings from "react-icons/lib/fa/cog"
 
-import PageWrapper from "../components/PageWrapper"
+import PageWrapper from "global/PageWrapper"
 import ProfileForm from "./components/ProfileForm"
 
 class AccountSettings extends Component {

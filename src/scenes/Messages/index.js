@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import MessagesList from "./components/MessagesList"
 import MessagesConvo from "./components/MessagesConvo"
-import PageWrapper from "../components/PageWrapper"
+import PageWrapper from "global/PageWrapper"
 
 const Messages = styled(({ className }) => {
   return (

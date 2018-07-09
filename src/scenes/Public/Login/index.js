@@ -1,4 +1,4 @@
 // here we will expose all the resources of Login scene/feature
-import LoginContainer from "./LoginContainer"
+import LoginPage from "./components/LoginPage"
 
-export { LoginContainer as default }
+export { LoginPage as default }
