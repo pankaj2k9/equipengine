@@ -1,0 +1,35 @@
+import styled from "styled-components"
+
+import { Checkbox as BaseCheckbox } from "base_components/RootForm"
+
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+`
+
+export const H5 = styled.h5`
+  margin-left: 1.1em;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #000000;
+`
+
+export const List = styled.div`
+  border: 1px solid #dddddd;
+  padding: 15px;
+  margin-top: 20px;
+`
+
+export const ListItem = styled.div`
+  display: flex;
+  margin-bottom: 20px;
+`
+
+export const ListItemLabel = styled.div`
+  position: relative;
+  top: -3px;
+`
+
+export const Checkbox = styled(BaseCheckbox)`
+  margin-right: 20px;
+`
