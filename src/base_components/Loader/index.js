@@ -2,13 +2,14 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import Box from "base_components/Box"
+import Loading from "base_components/Loading"
 import "./styles.css"
 
 const Loader = ({ isLoading, error, timedOut }) => {
   let renderElement
   // loading component that didn't reach the time out value.
   if (isLoading && !timedOut) {
-    renderElement = <h4 className="Loader">Please wait...</h4>
+    renderElement = <Loading />
   } else if (timedOut) {
     // if the load time gets too long and match the given timeOut value, return this component
     renderElement = (

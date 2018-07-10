@@ -38,14 +38,14 @@ const userIsNotAuthenticated = connectedRouterRedirect({
   authenticatedSelector: authSelectors.selectIsNotLoggedIn()
 })
 
-const AsyncHome = Loadable({
-  loader: () => import("scenes/Public/Home"),
+const AsyncLandingPage = Loadable({
+  loader: () => import("scenes/LandingPage"),
   loading: Loader, // before this component gets loaded, we will render first this Loader component.
   timeout: 10000
 })
 
 const AsyncLogin = Loadable({
-  loader: () => import("scenes/Public/Login"),
+  loader: () => import("scenes/Login"),
   loading: Loader, // before this component gets loaded, we will render first this Loader component.
   timeout: 10000
 })
@@ -53,7 +53,7 @@ const AsyncLogin = Loadable({
 const Routes = () => (
   <Fragment>
     <Switch>
-      <Route exact strict path="/" component={AsyncHome} />
+      <Route exact strict path="/" component={AsyncLandingPage} />
       <Route
         exact
         strict

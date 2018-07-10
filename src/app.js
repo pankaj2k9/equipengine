@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic/dist/src"
 import { ConnectedRouter } from "react-router-redux"
 import { PersistGate } from "redux-persist/integration/react"
