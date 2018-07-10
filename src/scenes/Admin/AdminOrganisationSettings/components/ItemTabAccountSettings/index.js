@@ -1,26 +1,29 @@
-import React from "react"
+import React, { Fragment } from "react"
 import styled from "styled-components"
-// components
-import Form from "./components/Form"
-import Panel from "./components/Panel"
-import Button from "./components/Button"
-import ButtonAdd from "./components/ButtonAdd"
-import User from "./components/User"
+
 import ContainerFlex from "base_components/ContainerFlex"
 import Divider from "base_components/Divider"
 import Dropdown from "base_components/RootDropdown"
 
+import modal from "hoc/modal"
+
+import Modal from "./Modal"
+
+import { Form, Panel, Button, ButtonAdd, User } from "./elements"
+
 const users = [
   {
-    name: "User1"
+    name: "User1",
+    avatar: "/static/media/user.002ba69c.png"
   },
   {
-    name: "User2"
+    name: "User2",
+    avatar: "/static/media/user.002ba69c.png"
   }
 ]
 
 //
-const PanelWebAddress = () => (
+const PanelWebAddress = ({ onOpen }) => (
   <Panel title="Accounts" paddingBottom="1.6em">
     <HintText>
       Be careful - this will provide users access to everything related to this
@@ -28,7 +31,13 @@ const PanelWebAddress = () => (
     </HintText>
     <AddUserWrapper isAlignCenter isSpaceBetween>
       <Title>Administrators</Title>
-      <ButtonAdd text="Add user" iconPosition="right" />
+      <ButtonAdd
+        onHandlerClick={() => {
+          onOpen()
+        }}
+        text="Add user"
+        iconPosition="right"
+      />
     </AddUserWrapper>
     <GrayBorderContainer>
       {users.map(user => <User user={user} />)}
@@ -92,12 +101,15 @@ const LanguageDropdown = styled(Dropdown)`
 `
 
 //
-const ItemTabAccountSettings = () => (
-  <Form>
-    <PanelWebAddress />
-    <PanelLanguage />
-    <Button>Update</Button>
-  </Form>
+const ItemTabAccountSettings = ({ onOpen, onClose, isOpen }) => (
+  <Fragment>
+    <Form>
+      <PanelWebAddress onOpen={onOpen} />
+      <PanelLanguage />
+      <Button>Update</Button>
+    </Form>
+    <Modal items={users} handleClose={onClose} isOpen={isOpen} />
+  </Fragment>
 )
 
-export default ItemTabAccountSettings
+export default modal(ItemTabAccountSettings)

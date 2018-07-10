@@ -11,7 +11,8 @@ const modal = WrappedComponent => {
     }
 
     handleOpen = e => {
-      e.preventDefault()
+      if (e) e.preventDefault()
+
       this.setState({ isOpen: true })
     }
 
