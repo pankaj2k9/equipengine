@@ -5,7 +5,7 @@ import ButtonAdd from "base_components/ButtonAdd"
 
 import TableAdminGroupCourses from "./TableAdminGroupCourses"
 
-import Modal from "./Modal"
+import Modal from "../Modal"
 
 import modal from "hoc/modal"
 
@@ -24,7 +24,13 @@ const ItemTabAdminGroupCourses = ({ onOpen, onClose, isOpen }) => (
       <ButtonAdd onHandlerClick={onOpen} text="Add course to group" />
     </HeaderItemTab>
     <TableAdminGroupCourses />
-    <Modal courses={courses} handleClose={onClose} isOpen={isOpen} />
+    <Modal
+      items={courses}
+      handleClose={onClose}
+      isOpen={isOpen}
+      searchBarPlaceholder="Search courses"
+      headerText="Add course to group"
+    />
   </div>
 )
 

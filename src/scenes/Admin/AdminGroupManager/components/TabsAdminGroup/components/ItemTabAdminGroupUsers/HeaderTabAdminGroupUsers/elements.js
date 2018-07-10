@@ -1,6 +1,6 @@
 import Button from "base_components/RootButton"
 
-export default Button.extend`
+export const ButtonSecondary = Button.extend`
   margin-bottom: 10px;
 
   &:last-child {

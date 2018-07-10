@@ -23,13 +23,18 @@ export const List = styled.div`
 export const ListItem = styled.div`
   display: flex;
   margin-bottom: 20px;
-`
-
-export const ListItemLabel = styled.div`
-  position: relative;
-  top: -3px;
+  align-items: center;
 `
 
 export const Checkbox = styled(BaseCheckbox)`
+  margin-right: 20px;
+`
+
+export const Avatar = styled.img`
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  object-position: top;
+  object-fit: cover;
   margin-right: 20px;
 `
