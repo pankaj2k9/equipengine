@@ -6,7 +6,7 @@ import IconUpload from "react-icons/lib/md/file-upload"
 
 // FIXME: We will fix the padding. The content is not slightly horizontally center.
 const ButtonUpload = styled(({ className }) => (
-  <Button light lightBorder className={className}>
+  <Button type="file" light lightBorder className={className}>
     Upload
     <i>
       <IconUpload />
