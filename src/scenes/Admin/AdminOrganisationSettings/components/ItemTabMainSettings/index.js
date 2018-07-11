@@ -1,9 +1,6 @@
 import React from "react"
-import css from "utils/css"
-
 import { compose, withStateHandlers } from "recompose"
 
-// components
 import PanelSettings from "../PanelSettings"
 import FormSettings from "../FormSettings"
 import {
@@ -15,88 +12,24 @@ import {
 } from "base_components/RootForm"
 import ButtonUpload from "base_components/ButtonUpload"
 import ContainerFlex from "base_components/ContainerFlex"
-import ButtonSettings from "../ButtonSettings"
+import FileChooser from "base_components/FileChooser"
 import InputAddress from "base_components/InputAddress"
 
-/**
- * -------------------------------------
- * ItemTabMainSettings
- * @see PanelGeneralInformation
- * @see PanelContactDetails
- * -------------------------------------
- */
-const ItemTabMainSettings = ({
-  organizationName,
-  displayName,
-  organizationDescription,
-  logo,
-  displayLogoInsteadOfDisplay,
-  contactAddress,
+import { HintTextLogo, ContainerDisplayLogo, DisplayTextLogo } from "./elements"
 
-  // TODO: use these fields
-  contactAddressCountry,
-  contactAddressState,
-  contactAddressZipCode,
+import ButtonSettings from "../ButtonSettings"
 
-  website,
-  email,
-  telephone,
-  updateVal
-}) => (
-  <FormSettings>
-    <PanelGeneralInformation
-      organizationName={organizationName}
-      displayName={displayName}
-      organizationDescription={organizationDescription}
-      logo={logo}
-      displayLogoInsteadOfDisplay={displayLogoInsteadOfDisplay}
-      updateVal={updateVal}
-    />
-    <PanelContactDetails
-      contactAddress={contactAddress}
-      website={website}
-      email={email}
-      telephone={telephone}
-      updateVal={updateVal}
-    />
-    <ButtonSettings>Update</ButtonSettings>
-  </FormSettings>
-)
-
-export default compose(
-  withStateHandlers(
-    {
-      organizationName: "",
-      displayName: "",
-      organizationDescription: "",
-      logo: null,
-      displayLogoInsteadOfDisplay: false,
-      contactAddress: "",
-      contactAddressCountry: "",
-      contactAddressState: "",
-      contactAddressZipCode: "",
-      website: "",
-      email: "",
-      telephone: ""
-    },
-    {
-      updateVal: props => (e, selector) => {
-        const value = e.target ? e.target.value : e
-
-        return {
-          ...props,
-          [selector]: value
-        }
-      }
-    }
-  )
-)(ItemTabMainSettings)
+const openFileChooser = (e, ref) => {
+  e.preventDefault()
+  if (ref) ref.open()
+}
 
 const PanelGeneralInformation = ({
   organizationName,
   displayName,
   organizationDescription,
   logo,
+  logoRef,
   displayLogoInsteadOfDisplay,
   updateVal
 }) => {
@@ -132,7 +65,14 @@ const PanelGeneralInformation = ({
       <FormGroup>
         <Label>Logo</Label>
         <ContainerFlex alignItems="center">
-          <ButtonUpload />
+          <ButtonUpload
+            onClick={e => openFileChooser(e, logoRef)}
+            isFileAttached={logo}
+          />
+          <FileChooser
+            onChooseFiles={files => updateVal(files[0], "logo")}
+            ref={el => updateVal(el, "logoRef")}
+          />
           <HintTextLogo>Recommended size: 160 x 55 px</HintTextLogo>
         </ContainerFlex>
         <ContainerDisplayLogo alignItems="center">
@@ -150,44 +90,7 @@ const PanelGeneralInformation = ({
     </PanelSettings>
   )
 }
-/**
- * -------------------------------------
- * HintTextLogo component
- * -------------------------------------
- */
-const HintTextLogo = css`
-  font-size: 12px;
-  color: #666666;
-  width: 119px;
-  display: inline-block;
-  margin-left: 1em;
-`("span")
 
-/**
- * -------------------------------------
- * ContainerDisplayLogo component
- * -------------------------------------
- */
-const ContainerDisplayLogo = css`
-  margin-top: 0.6em;
-`(ContainerFlex)
-
-/**
- * -------------------------------------
- * DisplayTextLogo component
- * -------------------------------------
- */
-const DisplayTextLogo = css`
-  width: 130px;
-  margin-right: 2em;
-`("span")
-
-/**
- * -------------------------------------
- * PanelContactDetails
- * @see ItemTabMainSettings
- * -------------------------------------
- */
 const PanelContactDetails = ({
   contactAddress,
   website,
@@ -235,3 +138,81 @@ const PanelContactDetails = ({
     </FormGroup>
   </PanelSettings>
 )
+
+const ItemTabMainSettings = ({
+  organizationName,
+  displayName,
+  organizationDescription,
+  logo,
+  logoRef,
+  displayLogoInsteadOfDisplay,
+  contactAddress,
+
+  // TODO: use these fields
+  contactAddressCountry,
+  contactAddressState,
+  contactAddressZipCode,
+
+  website,
+  email,
+  telephone,
+  updateVal
+}) => (
+  <FormSettings>
+    <PanelGeneralInformation
+      organizationName={organizationName}
+      displayName={displayName}
+      organizationDescription={organizationDescription}
+      logo={logo}
+      logoRef={logoRef}
+      displayLogoInsteadOfDisplay={displayLogoInsteadOfDisplay}
+      updateVal={updateVal}
+    />
+    <PanelContactDetails
+      contactAddress={contactAddress}
+      website={website}
+      email={email}
+      telephone={telephone}
+      updateVal={updateVal}
+    />
+    <ButtonSettings>Update</ButtonSettings>
+  </FormSettings>
+)
+
+export default compose(
+  withStateHandlers(
+    {
+      organizationName: "",
+      displayName: "",
+      organizationDescription: "",
+      logo: null,
+      logoRef: null,
+      displayLogoInsteadOfDisplay: false,
+      contactAddress: "",
+      contactAddressCountry: "",
+      contactAddressState: "",
+      contactAddressZipCode: "",
+      website: "",
+      email: "",
+      telephone: ""
+    },
+    {
+      updateVal: props => (e, selector) => {
+        if (e === null || e === undefined) return { ...props }
+
+        if (e.preventDefault) e.preventDefault()
+
+        if (!e.target)
+          return {
+            ...props,
+            [selector]: e
+          }
+
+        return {
+          ...props,
+          [selector]: e.target.value
+        }
+      }
+    }
+  )
+)(ItemTabMainSettings)
