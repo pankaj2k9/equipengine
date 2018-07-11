@@ -1,12 +1,16 @@
 import { combineReducers } from "redux"
-import { routerReducer } from "react-router-redux"
-// get reducer
-import { reducer as users } from "data/users"
-import { reducer as loggedUser } from "data/loggedUser"
+import { routerReducer as routing } from "react-router-redux"
+import { reducer as toastr } from "react-redux-toastr"
+
+import { reducer as activities } from "global/Activities"
+import { reducer as auth } from "global/Auth"
+import { reducer as myGroups } from "global/MyGroups"
 
 // this is the root reducers, we will combine all reducers that we are using.
 export default combineReducers({
-  routing: routerReducer,
-  users,
-  loggedUser
+  routing,
+  toastr,
+  activities,
+  auth,
+  myGroups
 })

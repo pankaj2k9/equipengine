@@ -6,7 +6,7 @@ import Loading from "base_components/Loading"
 import notificationsData from "./notifications.json"
 import ListNotification from "./components/ListNotification"
 import OutlineButton from "../../base_components/OutlineButton"
-import PageWrapper from "../components/PageWrapper"
+import PageWrapper from "global/PageWrapper"
 
 class Notifications extends React.Component {
   state = {

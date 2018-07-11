@@ -5,7 +5,7 @@ import Loading from "base_components/Loading"
 import activitiesData from "./activities.json"
 import ActionActivities from "./components/ActionActivities"
 import ListActivities from "./components/ListActivities"
-import PageWrapper from "../components/PageWrapper"
+import PageWrapper from "global/PageWrapper"
 
 class Activity extends Component {
   state = {

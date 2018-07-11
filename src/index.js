@@ -9,11 +9,13 @@ import "bootstrap/dist/css/bootstrap-theme.css"
 import "video-react/dist/video-react.css"
 // react-select
 import "react-select/dist/react-select.css"
+// react-toastr notifications https://github.com/diegoddox/react-redux-toastr
+import "react-redux-toastr/lib/css/react-redux-toastr.min.css"
 // own styles
 import "./styles/index.css"
 
-import Root from "./scenes/Root"
+import App from "./app"
 import registerServiceWorker from "utils/serviceWorker"
 
-ReactDOM.render(<Root />, document.getElementById("root"))
+ReactDOM.render(<App />, document.getElementById("root"))
 registerServiceWorker()

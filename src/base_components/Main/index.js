@@ -8,13 +8,7 @@ import MainInnerContainer from "./components/MainInnerContainer"
 import MainHeaderTitle from "./components/MainHeaderTitle"
 
 // Add padding left based on the passed object.
-const addPaddingLeft = ({ type, pathname }) => {
-  const browseGroupPath = "/secure/browse-groups"
-  // check first if the current location is equal to browseGroupPath.
-  if (identical(pathname, browseGroupPath)) {
-    return "0px"
-  }
-
+const addPaddingLeft = ({ pathname }) => {
   const homePath = "/secure/home"
   // check first if the current location is equal to homePath.
   if (identical(pathname, homePath)) {
@@ -59,8 +53,7 @@ const Main = styled.main`
   padding-bottom: 2em;
 
   @media screen and (min-width: 768px) {
-    padding-left: ${props =>
-      addPaddingLeft({ type: props.type, pathname: props.pathname })};
+    padding-left: ${props => addPaddingLeft({ pathname: props.pathname })};
     padding-bottom: 0;
     position: absolute;
     top: 59px;
