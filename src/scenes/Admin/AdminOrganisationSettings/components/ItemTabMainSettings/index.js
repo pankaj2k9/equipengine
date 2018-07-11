@@ -14,27 +14,46 @@ import ContainerFlex from "base_components/ContainerFlex"
 import FileChooser from "base_components/FileChooser"
 import Dropdown from "base_components/RootDropdown"
 
-import PanelSettings from "../PanelSettings"
-import FormSettings from "../FormSettings"
-import ButtonSettings from "../ButtonSettings"
-
 import {
   HintTextLogo,
   ContainerDisplayLogo,
   DisplayTextLogo,
   FormGroupDropdown,
-  FormGroupZipCode
+  FormGroupZipCode,
+  PanelSettings,
+  FormSettings,
+  ButtonSettings
 } from "./elements"
 
-const openFileChooser = (e, ref) => {
-  e.preventDefault()
-  if (ref) ref.open()
-}
+import {
+  updateFieldValue,
+  validate,
+  openFileChooser,
+  getDropdownValue
+} from "../functions"
 
-const getDropdownValue = selectedOption => {
-  if (!selectedOption) return null
-  return selectedOption.value
-}
+const validationSchema = joi.object().keys({
+  organizationName: joi
+    .string()
+    .required()
+    .label("organization name is required"),
+  displayName: joi
+    .string()
+    .required()
+    .label("display name is required"),
+  contactAddress: joi
+    .string()
+    .required()
+    .label("contact address is required"),
+  website: joi
+    .string()
+    .required()
+    .label("website is required"),
+  email: joi
+    .string()
+    .required()
+    .label("email is required")
+})
 
 const PanelGeneralInformation = ({
   organizationName,
@@ -186,34 +205,6 @@ const PanelContactDetails = ({
   </PanelSettings>
 )
 
-const validationSchema = joi.object().keys({
-  organizationName: joi
-    .string()
-    .required()
-    .label("organization name is required"),
-  displayName: joi
-    .string()
-    .required()
-    .label("display name is required"),
-  contactAddress: joi
-    .string()
-    .required()
-    .label("contact address is required"),
-  website: joi
-    .string()
-    .required()
-    .label("website is required"),
-  email: joi
-    .string()
-    .required()
-    .label("email is required")
-})
-
-const validate = fields =>
-  joi.validate(fields, validationSchema, {
-    allowUnknown: true
-  })
-
 class ItemTabMainSettings extends Component {
   state = {
     organizationName: "",
@@ -232,25 +223,11 @@ class ItemTabMainSettings extends Component {
   }
 
   updateVal = (e, selector) => {
-    if (e === null || e === undefined) {
-      return
-    }
+    const fields = this.state
 
-    if (e.preventDefault) {
-      e.preventDefault()
-    }
+    const nextFields = updateFieldValue(e, selector, fields)
 
-    if (!e.target) {
-      return this.setState(state => ({
-        ...state,
-        [selector]: e
-      }))
-    }
-
-    this.setState(state => ({
-      ...state,
-      [selector]: e.target.value
-    }))
+    this.setState(nextFields)
   }
 
   updateRef = (el, selector) => {
@@ -262,9 +239,9 @@ class ItemTabMainSettings extends Component {
 
     const fields = this.state
 
-    const validationResult = validate(fields)
+    const validationResult = validate(fields, validationSchema)
 
-    if (validationResult.error === null) {
+    if (!validationResult.error) {
       return toastr.success("Main settings", "Data updated successfully")
     }
 

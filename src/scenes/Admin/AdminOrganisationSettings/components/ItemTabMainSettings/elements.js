@@ -1,5 +1,9 @@
 import styled from "styled-components"
+
 import { FormGroup } from "base_components/RootForm"
+import Panel from "base_components/Panel"
+import Form from "base_components/RootForm"
+import Button from "base_components/RootButton"
 
 export const HintTextLogo = styled.span`
   font-size: 12px;
@@ -30,4 +34,34 @@ export const FormGroupDropdown = styled(FormGroup)`
 
 export const FormGroupZipCode = styled(FormGroup)`
   width: 25%;
+`
+
+export const PanelSettings = styled(Panel)`
+  &:first-child {
+    padding-top: 0;
+  }
+
+  header {
+    margin-bottom: 0.8em;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 50%;
+
+    header {
+      margin-bottom: 1em;
+    }
+  }
+`
+
+export const FormSettings = styled(Form)`
+  padding: 0 2%;
+`
+
+export const ButtonSettings = styled(Button)`
+  margin-top: 3em;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 5em;
+  }
 `

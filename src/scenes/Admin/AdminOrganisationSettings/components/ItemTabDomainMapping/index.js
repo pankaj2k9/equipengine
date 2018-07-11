@@ -1,4 +1,6 @@
-import React from "react"
+import React, { Component } from "react"
+import { toastr } from "react-redux-toastr"
+import joi from "joi"
 
 import { FormGroup, Label, Text, Switch } from "base_components/RootForm"
 import ContainerFlex from "base_components/ContainerFlex"
@@ -18,28 +20,47 @@ import {
   Wrapper
 } from "./elements"
 
-const PanelWebAddress = () => (
+import { updateFieldValue, validate } from "../functions"
+
+const validationSchema = joi.object().keys({})
+
+const PanelWebAddress = ({ domain, updateVal }) => (
   <Panel title="Web Address" paddingBottom="1.6em">
     <FormGroup>
       <Label>Name</Label>
       <ContainerFlex isAlignCenter>
-        <SubdomainText name="crossView" placeholder="CrossView" />
+        <SubdomainText
+          value={domain}
+          onChange={e => updateVal(e.target.value, "domain")}
+          placeholder="CrossView"
+        />
         <Postfix>.equipengine.com</Postfix>
       </ContainerFlex>
     </FormGroup>
   </Panel>
 )
 
-const PanelDomainMapping = () => (
+const PanelDomainMapping = ({
+  isUseCustomDomain,
+  customDomainName,
+  updateVal
+}) => (
   <Panel title="Domain Mapping" borderBottom="0" paddingBottom="0">
     <ContainerDisplayLogo alignItems="center">
       <DisplayTextLogo>Use a custom domain</DisplayTextLogo>
-      <Switch name="useCustomDomain" />
+      <Switch
+        value={isUseCustomDomain}
+        onChange={e => updateVal(e.target.checked, "isUseCustomDomain")}
+      />
     </ContainerDisplayLogo>
     <GrayContainer>
       <FormGroup>
         <Label>Domain Name</Label>
-        <Text name="domain-name" placeholder="crossenv.com.ua" />
+        <Text
+          value={customDomainName}
+          onChange={e => updateVal(e.target.value, "customDomainName")}
+          placeholder="crossenv.com.ua"
+        />
       </FormGroup>
     </GrayContainer>
     <GrayContainer>
@@ -82,15 +103,56 @@ const Descriptions = () => (
   </Panel>
 )
 
-const ItemTabDomainMapping = () => (
-  <Wrapper>
-    <Form>
-      <PanelWebAddress />
-      <PanelDomainMapping />
-      <Button>Update</Button>
-    </Form>
-    <Descriptions />
-  </Wrapper>
-)
+class ItemTabDomainMapping extends Component {
+  state = {
+    domain: "",
+    isUseCustomDomain: false,
+    customDomainName: ""
+  }
+
+  updateVal = (e, selector) => {
+    const fields = this.state
+
+    const nextFields = updateFieldValue(e, selector, fields)
+
+    this.setState(nextFields)
+  }
+
+  onSubmit = e => {
+    e.preventDefault()
+
+    const fields = this.state
+
+    const validationResult = validate(fields, validationSchema)
+
+    if (validationResult.error === null) {
+      return toastr.success("Domain mapping", "Data updated successfully")
+    }
+
+    toastr.error(
+      "Validation error",
+      validationResult.error.details[0].context.label
+    )
+  }
+
+  render() {
+    const { domain, isUseCustomDomain, customDomainName } = this.state
+
+    return (
+      <Wrapper>
+        <Form>
+          <PanelWebAddress domain={domain} updateVal={this.updateVal} />
+          <PanelDomainMapping
+            isUseCustomDomain={isUseCustomDomain}
+            customDomainName={customDomainName}
+            updateVal={this.updateVal}
+          />
+          <Button onClick={this.onSubmit}>Update</Button>
+        </Form>
+        <Descriptions />
+      </Wrapper>
+    )
+  }
+}
 
 export default ItemTabDomainMapping
