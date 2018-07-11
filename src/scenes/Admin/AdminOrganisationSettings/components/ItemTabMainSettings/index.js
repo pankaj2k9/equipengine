@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import joi from "joi"
+import { toastr } from "react-redux-toastr"
 
 import {
   FormGroup,
@@ -264,10 +265,13 @@ class ItemTabMainSettings extends Component {
     const validationResult = validate(fields)
 
     if (validationResult.error === null) {
-      return alert("submited successfully")
+      return toastr.success("Main settings", "Data updated successfully")
     }
 
-    alert(validationResult.error.details[0].context.label)
+    toastr.error(
+      "Validation error",
+      validationResult.error.details[0].context.label
+    )
   }
 
   render() {
