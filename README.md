@@ -4,10 +4,11 @@ passphrase: irishjane
 
 Login information to dev site:
 
-User: admin
-User: student
-User: teacher
-Password: 123456
+Student User: student@equipengine.com Password: student@equipengine.com
+
+Teacher User: teacher@equipengine.com Password: teacher@equipengine.com
+
+Admin User: admin@equipengine.com Password: admin@equipengine.com
 
 
 ### Rule of thumb for React code standards:
