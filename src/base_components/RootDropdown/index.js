@@ -9,7 +9,10 @@ class Dropdown extends Component {
     selectedOption: ""
   }
 
-  handleChange = selectedOption => this.setState({ selectedOption })
+  handleChange = selectedOption => {
+    this.props.onChange(selectedOption)
+    this.setState({ selectedOption })
+  }
 
   render() {
     const { selectedOption } = this.state

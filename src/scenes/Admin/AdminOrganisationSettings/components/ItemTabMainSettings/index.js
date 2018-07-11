@@ -1,8 +1,6 @@
 import React from "react"
 import { compose, withStateHandlers } from "recompose"
 
-import PanelSettings from "../PanelSettings"
-import FormSettings from "../FormSettings"
 import {
   FormGroup,
   Label,
@@ -13,15 +11,28 @@ import {
 import ButtonUpload from "base_components/ButtonUpload"
 import ContainerFlex from "base_components/ContainerFlex"
 import FileChooser from "base_components/FileChooser"
-import InputAddress from "base_components/InputAddress"
+import Dropdown from "base_components/RootDropdown"
 
-import { HintTextLogo, ContainerDisplayLogo, DisplayTextLogo } from "./elements"
-
+import PanelSettings from "../PanelSettings"
+import FormSettings from "../FormSettings"
 import ButtonSettings from "../ButtonSettings"
+
+import {
+  HintTextLogo,
+  ContainerDisplayLogo,
+  DisplayTextLogo,
+  FormGroupDropdown,
+  FormGroupZipCode
+} from "./elements"
 
 const openFileChooser = (e, ref) => {
   e.preventDefault()
   if (ref) ref.open()
+}
+
+const getDropdownValue = selectedOption => {
+  if (!selectedOption) return null
+  return selectedOption.value
 }
 
 const PanelGeneralInformation = ({
@@ -93,6 +104,9 @@ const PanelGeneralInformation = ({
 
 const PanelContactDetails = ({
   contactAddress,
+  contactAddressCountry,
+  contactAddressState,
+  contactAddressZipCode,
   website,
   email,
   telephone,
@@ -108,7 +122,42 @@ const PanelContactDetails = ({
         placeholder="Connect: Level 1"
       />
     </FormGroup>
-    <InputAddress />
+    <ContainerFlex>
+      <FormGroupDropdown>
+        <Dropdown
+          placeholder="Country"
+          name="country"
+          onChange={selectedOption =>
+            updateVal(getDropdownValue(selectedOption), "contactAddressCountry")
+          }
+          options={[
+            { label: "Australlia", value: "au" },
+            { label: "Philippines", value: "ph" }
+          ]}
+        />
+      </FormGroupDropdown>
+      <FormGroupDropdown>
+        <Dropdown
+          placeholder="State"
+          name="state"
+          onChange={selectedOption =>
+            updateVal(getDropdownValue(selectedOption), "contactAddressState")
+          }
+          options={[
+            { label: "Australlia", value: "au" },
+            { label: "Philippines", value: "ph" }
+          ]}
+        />
+      </FormGroupDropdown>
+      <FormGroupZipCode>
+        <Text
+          value={contactAddressZipCode}
+          onChange={e => updateVal(e, "contactAddressZipCode")}
+          name="zipCode"
+          placeholder="Zip code"
+        />
+      </FormGroupZipCode>
+    </ContainerFlex>
     <FormGroup>
       <Label>Website &#42;</Label>
       <Text
@@ -170,6 +219,9 @@ const ItemTabMainSettings = ({
     />
     <PanelContactDetails
       contactAddress={contactAddress}
+      contactAddressCountry={contactAddressCountry}
+      contactAddressState={contactAddressState}
+      contactAddressZipCode={contactAddressZipCode}
       website={website}
       email={email}
       telephone={telephone}
