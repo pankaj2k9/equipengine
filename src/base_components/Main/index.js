@@ -9,12 +9,6 @@ import MainHeaderTitle from "./components/MainHeaderTitle"
 
 // Add padding left based on the passed object.
 const addPaddingLeft = ({ pathname }) => {
-  const browseGroupPath = "/secure/browse-groups"
-  // check first if the current location is equal to browseGroupPath.
-  if (identical(pathname, browseGroupPath)) {
-    return "0px"
-  }
-
   const homePath = "/secure/home"
   // check first if the current location is equal to homePath.
   if (identical(pathname, homePath)) {

@@ -2,12 +2,25 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
-const DateTime = styled(({ className, date, time }) => (
-  <div className={className}>
-    <span>{date}</span>
-    <span>{time}</span>
-  </div>
-))`
+const DateTime = styled(({ className, date, time }) => {
+  if (date && date instanceof Date) {
+    time = date.toLocaleString("en-gb", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true
+    })
+    date = date.toLocaleString("en-gb", {
+      month: "short",
+      day: "numeric"
+    })
+  }
+  return (
+    <div className={className}>
+      <span>{date}</span>
+      <span>{time}</span>
+    </div>
+  )
+})`
   display: flex;
   flex-direction: column;
   font-size: 10px;

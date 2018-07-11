@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import classNames from "classnames"
 import { identical } from "ramda"
 //
-import { ADMIN_ROLE, STUDENT_ROLE, TEACHER_ROLE } from "global/constants"
+import { ADMIN_ROLE, STUDENT_ROLE, TEACHER_ROLE } from "services/Auth"
 import LogoContainer from "base_components/LogoContainer"
 import MainPanelLinks from "./components/MainPanelLinks"
 import TeacherPanelLinks from "./components/TeacherPanelLinks"

@@ -11,7 +11,7 @@ import studentRoutes from "./studentRoutes"
 import teacherRoutes from "./teacherRoutes"
 import adminRoutes from "./adminRoutes"
 import { selectors as authSelectors } from "global/Auth"
-import { ADMIN_ROLE, TEACHER_ROLE } from "global/constants"
+import { ADMIN_ROLE, TEACHER_ROLE } from "services/Auth"
 
 /* create our async component in here
  * this will optimize the loading of components of our app

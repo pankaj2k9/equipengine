@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { identical } from "ramda"
 //
-import { STUDENT_ROLE } from "global/constants"
+import { STUDENT_ROLE } from "services/Auth"
 import DropdownGroups from "../DropdownGroups"
 import Menu from "../Menu"
 import Link from "../Link"

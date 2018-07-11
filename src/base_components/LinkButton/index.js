@@ -1,28 +1,30 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
+//
+import Button from "base_components/RootButton"
 
-import "./styles.css"
-
-const LinkButton = ({ secondary, style, text, url, className }) => {
-  const secondaryClass = secondary ? "LinkButton--secondary" : ""
+const LinkButton = ({ text, url, disabled, children, ...rest }) => {
+  if (disabled) {
+    return (
+      <Button disabled={disabled} {...rest}>
+        {text}
+        {children}
+      </Button>
+    )
+  }
   return (
-    <Link
-      style={style}
-      className={`LinkButton ${className} ${secondaryClass}`}
-      to={url}
-    >
-      {text}
+    <Link to={url} {...rest}>
+      <Button {...rest}>
+        {text}
+        {children}
+      </Button>
     </Link>
   )
 }
 
 LinkButton.propTypes = {
-  text: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  style: PropTypes.object,
-  className: PropTypes.string,
-  secondary: PropTypes.bool
+  url: PropTypes.string.isRequired
 }
 
 export default LinkButton

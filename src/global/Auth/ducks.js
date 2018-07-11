@@ -124,6 +124,8 @@ const selectIsNotLoggedIn = () =>
 // TODO probably separate Auth and CurrentUser features
 const selectCurrentUser = () =>
   createSelector(authSelector(), auth => auth.user)
+const selectCurrentUserId = () =>
+  createSelector(selectCurrentUser(), user => user && user.id)
 const selectCurrentUserRole = () =>
   createSelector(
     selectCurrentUser(),
@@ -138,6 +140,7 @@ const selectIsInAnyRole = roles =>
 
 export const selectors = {
   selectCurrentUser,
+  selectCurrentUserId,
   selectCurrentUserRole,
   selectIsInAnyRole,
   selectIsLoggedIn,

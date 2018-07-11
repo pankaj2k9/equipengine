@@ -1,11 +1,11 @@
 import React from "react"
 import styled from "styled-components"
-import { Link } from "react-router-dom"
 
 import { FlaggedIcon } from "base_components/SearchbarTable"
 import { TableRow } from "base_components/Tables"
 import RootForm, { CheckboxCircle } from "base_components/RootForm"
 import UserAvatar from "base_components/UserAvatar"
+import ActivityMessage from "global/Activities/ActivityMessage"
 
 // for table row data.
 const TableRowCourseTd = styled.td`
@@ -23,20 +23,6 @@ const DateSpan = styled.span`
   display: block;
 `
 
-const formatActivityTitle = ({ eventable_type, user, course, lesson }) => {
-  if (eventable_type && eventable_type === "Comment") {
-    return (
-      <React.Fragment>
-        {user.first_name} {user.last_name} commented on{" "}
-        <Link to={`/secure/courses/${course.id}`}>
-          {lesson.title}: {course.title}
-        </Link>
-      </React.Fragment>
-    )
-  }
-  return eventable_type
-}
-
 // component for the table row course.
 const ItemActivity = ({ activity }) => {
   const { created_at, flagged, user } = activity
@@ -48,7 +34,7 @@ const ItemActivity = ({ activity }) => {
         <DateSpan>{created_at.time}</DateSpan>
       </TableRowCourseTd>
       <TableRowCourseTd middle style={{ textAlign: "left" }}>
-        {formatActivityTitle(activity)}
+        <ActivityMessage activity={activity} />
       </TableRowCourseTd>
       <TableRowCourseTd>
         <UserAvatar small image={user.avatar.url} />

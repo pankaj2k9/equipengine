@@ -1,15 +1,8 @@
 import { client } from "./API"
-import store from "../store"
 
-// Add token for every request if provided
-client.interceptors.request.use(config => {
-  // TODO ask DJ if it is more important to have badly implemented remember be functionallity
-  const { auth } = store.getState()
-  if (auth && auth.token) {
-    config.headers.authorization = auth.token
-  }
-  return Promise.resolve(config)
-})
+export const ADMIN_ROLE = "admin"
+export const TEACHER_ROLE = "teacher"
+export const STUDENT_ROLE = "student"
 
 /**
  * @returns user info, role and token

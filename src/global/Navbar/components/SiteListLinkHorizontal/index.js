@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { identical } from "ramda"
 
-import { ADMIN_ROLE } from "global/constants"
+import { ADMIN_ROLE } from "services/Auth"
 import { LinkHorizontal } from "../SiteLinkNavbar"
 
 const ListLinkHorizontal = styled.ul`

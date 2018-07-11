@@ -3,12 +3,6 @@ import { identical } from "ramda"
 
 // Add Height based on the passed object.
 const addHeight = ({ type, pathname }) => {
-  const browseGroupPath = "/secure/browse-groups"
-  // check first if the current location is equal to browseGroupPath.
-  if (identical(pathname, browseGroupPath)) {
-    return "0px"
-  }
-
   const homePath = "/secure/home"
   // check first if the current location is equal to homePath.
   if (identical(pathname, homePath)) {
@@ -45,12 +39,6 @@ const addHeight = ({ type, pathname }) => {
 
 // Add Display left based on the passed object.
 const addDisplay = ({ type, pathname }) => {
-  const browseGroupPath1 = "/secure/browse-groups"
-  // check first if the current location is equal to browseGroupPath.
-  if (identical(pathname, browseGroupPath1)) {
-    return "none"
-  }
-
   const homePath = "/secure/home"
   // check first if the current location is equal to homePath.
   if (identical(pathname, homePath)) {

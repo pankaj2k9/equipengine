@@ -1,4 +1,4 @@
-import * as Auth from "services/Auth"
+import * as API from "services/API"
 import { actions as authActions } from "./ducks"
 import { push } from "react-router-redux"
 
@@ -7,7 +7,7 @@ export const login = ({ email, password }) => {
     dispatch(authActions.loginRequest())
 
     try {
-      const auth = await Auth.login({ email, password })
+      const auth = await API.login({ email, password })
 
       return dispatch(
         authActions.loginSuccess({ user: auth.user, token: auth.token })
@@ -23,7 +23,7 @@ export const logout = () => {
     dispatch(authActions.logoutRequest())
 
     try {
-      await Auth.logout()
+      await API.logout()
 
       return dispatch(authActions.logoutSuccess())
     } catch (error) {
