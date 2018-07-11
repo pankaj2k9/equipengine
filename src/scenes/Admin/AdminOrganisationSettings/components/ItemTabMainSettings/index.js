@@ -1,5 +1,6 @@
-import React from "react"
+import React, { Component } from "react"
 import { compose, withStateHandlers } from "recompose"
+import joi from "joi"
 
 import {
   FormGroup,
@@ -42,65 +43,62 @@ const PanelGeneralInformation = ({
   logo,
   logoRef,
   displayLogoInsteadOfDisplay,
-  updateVal
-}) => {
-  return (
-    <PanelSettings title="General Information" paddingBottom="1.6em">
-      <FormGroup>
-        <Label>Organisation Name &#42;</Label>
-        <Text
-          onChange={e => updateVal(e, "organizationName")}
-          value={organizationName}
-          name="crossView"
-          placeholder="CrossView"
+  updateVal,
+  updateRef
+}) => (
+  <PanelSettings title="General Information" paddingBottom="1.6em">
+    <FormGroup>
+      <Label>Organisation Name &#42;</Label>
+      <Text
+        onChange={e => updateVal(e.target.value, "organizationName")}
+        value={organizationName}
+        name="crossView"
+        placeholder="CrossView"
+      />
+    </FormGroup>
+    <FormGroup>
+      <Label>Display Name &#42;</Label>
+      <Text
+        onChange={e => updateVal(e.target.value, "displayName")}
+        value={displayName}
+        name="name"
+      />
+    </FormGroup>
+    <FormGroup>
+      <Label>Description of Organisation</Label>
+      <TextArea
+        onChange={e => updateVal(e.target.value, "organizationDescription")}
+        value={organizationDescription}
+        name="description"
+        row="4"
+        placeholder="Communication and culture is focused on those who want to serve in their local community."
+      />
+    </FormGroup>
+    <FormGroup>
+      <Label>Logo</Label>
+      <ContainerFlex alignItems="center">
+        <ButtonUpload
+          onClick={e => openFileChooser(e, logoRef)}
+          isFileAttached={logo}
         />
-      </FormGroup>
-      <FormGroup>
-        <Label>Display Name &#42;</Label>
-        <Text
-          onChange={e => updateVal(e, "displayName")}
-          value={displayName}
-          name="name"
+        <FileChooser
+          onChooseFiles={files => updateVal(files[0], "logo")}
+          ref={el => updateRef(el, "logoRef")}
         />
-      </FormGroup>
-      <FormGroup>
-        <Label>Description of Organisation</Label>
-        <TextArea
-          onChange={e => updateVal(e, "organizationDescription")}
-          value={organizationDescription}
-          name="description"
-          row="4"
-          placeholder="Communication and culture is focused on those who want to serve in their local community."
+        <HintTextLogo>Recommended size: 160 x 55 px</HintTextLogo>
+      </ContainerFlex>
+      <ContainerDisplayLogo alignItems="center">
+        <DisplayTextLogo>Display logo instead of display name</DisplayTextLogo>
+        <Switch
+          value={displayLogoInsteadOfDisplay}
+          onChange={e =>
+            updateVal(e.target.checked, "displayLogoInsteadOfDisplay")
+          }
         />
-      </FormGroup>
-      <FormGroup>
-        <Label>Logo</Label>
-        <ContainerFlex alignItems="center">
-          <ButtonUpload
-            onClick={e => openFileChooser(e, logoRef)}
-            isFileAttached={logo}
-          />
-          <FileChooser
-            onChooseFiles={files => updateVal(files[0], "logo")}
-            ref={el => updateVal(el, "logoRef")}
-          />
-          <HintTextLogo>Recommended size: 160 x 55 px</HintTextLogo>
-        </ContainerFlex>
-        <ContainerDisplayLogo alignItems="center">
-          <DisplayTextLogo>
-            Display logo instead of display name
-          </DisplayTextLogo>
-          <Switch
-            value={displayLogoInsteadOfDisplay}
-            onChange={e =>
-              updateVal(e.target.checked, "displayLogoInsteadOfDisplay")
-            }
-          />
-        </ContainerDisplayLogo>
-      </FormGroup>
-    </PanelSettings>
-  )
-}
+      </ContainerDisplayLogo>
+    </FormGroup>
+  </PanelSettings>
+)
 
 const PanelContactDetails = ({
   contactAddress,
@@ -117,7 +115,7 @@ const PanelContactDetails = ({
       <Label>Address &#42;</Label>
       <Text
         value={contactAddress}
-        onChange={e => updateVal(e, "contactAddress")}
+        onChange={e => updateVal(e.target.value, "contactAddress")}
         name="address"
         placeholder="Connect: Level 1"
       />
@@ -152,7 +150,7 @@ const PanelContactDetails = ({
       <FormGroupZipCode>
         <Text
           value={contactAddressZipCode}
-          onChange={e => updateVal(e, "contactAddressZipCode")}
+          onChange={e => updateVal(e.target.value, "contactAddressZipCode")}
           name="zipCode"
           placeholder="Zip code"
         />
@@ -162,7 +160,7 @@ const PanelContactDetails = ({
       <Label>Website &#42;</Label>
       <Text
         value={website}
-        onChange={e => updateVal(e, "website")}
+        onChange={e => updateVal(e.target.value, "website")}
         name="website"
         placeholder="crossview.com.au"
       />
@@ -171,7 +169,7 @@ const PanelContactDetails = ({
       <Label>Email &#42;</Label>
       <Text
         value={email}
-        onChange={e => updateVal(e, "email")}
+        onChange={e => updateVal(e.target.value, "email")}
         name="email"
         placeholder="crossview.com.au"
       />
@@ -180,7 +178,7 @@ const PanelContactDetails = ({
       <Label>Telephone</Label>
       <Text
         value={telephone}
-        onChange={e => updateVal(e, "telephone")}
+        onChange={e => updateVal(e.target.value, "telephone")}
         name="telePhone"
         placeholder="000000"
       />
@@ -188,83 +186,133 @@ const PanelContactDetails = ({
   </PanelSettings>
 )
 
-const ItemTabMainSettings = ({
-  organizationName,
-  displayName,
-  organizationDescription,
-  logo,
-  logoRef,
-  displayLogoInsteadOfDisplay,
-  contactAddress,
+const validationSchema = joi.object().keys({
+  organizationName: joi
+    .string()
+    .required()
+    .label("organization name is required"),
+  displayName: joi
+    .string()
+    .required()
+    .label("display name is required"),
+  contactAddress: joi
+    .string()
+    .required()
+    .label("contact address is required"),
+  website: joi
+    .string()
+    .required()
+    .label("website is required"),
+  email: joi
+    .string()
+    .required()
+    .label("email is required")
+})
 
-  // TODO: use these fields
-  contactAddressCountry,
-  contactAddressState,
-  contactAddressZipCode,
+const validate = fields =>
+  joi.validate(fields, validationSchema, {
+    allowUnknown: true
+  })
 
-  website,
-  email,
-  telephone,
-  updateVal
-}) => (
-  <FormSettings>
-    <PanelGeneralInformation
-      organizationName={organizationName}
-      displayName={displayName}
-      organizationDescription={organizationDescription}
-      logo={logo}
-      logoRef={logoRef}
-      displayLogoInsteadOfDisplay={displayLogoInsteadOfDisplay}
-      updateVal={updateVal}
-    />
-    <PanelContactDetails
-      contactAddress={contactAddress}
-      contactAddressCountry={contactAddressCountry}
-      contactAddressState={contactAddressState}
-      contactAddressZipCode={contactAddressZipCode}
-      website={website}
-      email={email}
-      telephone={telephone}
-      updateVal={updateVal}
-    />
-    <ButtonSettings>Update</ButtonSettings>
-  </FormSettings>
-)
+class ItemTabMainSettings extends Component {
+  state = {
+    organizationName: "",
+    displayName: "",
+    organizationDescription: "",
+    logo: null,
+    logoRef: null,
+    displayLogoInsteadOfDisplay: false,
+    contactAddress: "",
+    contactAddressCountry: "",
+    contactAddressState: "",
+    contactAddressZipCode: "",
+    website: "",
+    email: "",
+    telephone: ""
+  }
 
-export default compose(
-  withStateHandlers(
-    {
-      organizationName: "",
-      displayName: "",
-      organizationDescription: "",
-      logo: null,
-      logoRef: null,
-      displayLogoInsteadOfDisplay: false,
-      contactAddress: "",
-      contactAddressCountry: "",
-      contactAddressState: "",
-      contactAddressZipCode: "",
-      website: "",
-      email: "",
-      telephone: ""
-    },
-    {
-      updateVal: props => (e, selector) => {
-        if (e === null || e === undefined) return { ...props }
-
-        if (e.preventDefault) e.preventDefault()
-
-        if (!e.target)
-          return {
-            ...props,
-            [selector]: e
-          }
-
-        return {
-          ...props,
-          [selector]: e.target.value
-        }
-      }
+  updateVal = (e, selector) => {
+    if (e === null || e === undefined) {
+      return
     }
-  )
-)(ItemTabMainSettings)
+
+    if (e.preventDefault) {
+      e.preventDefault()
+    }
+
+    if (!e.target) {
+      return this.setState(state => ({
+        ...state,
+        [selector]: e
+      }))
+    }
+
+    this.setState(state => ({
+      ...state,
+      [selector]: e.target.value
+    }))
+  }
+
+  updateRef = (el, selector) => {
+    this[selector] = el
+  }
+
+  onSubmit = e => {
+    e.preventDefault()
+
+    const fields = this.state
+
+    const validationResult = validate(fields)
+
+    if (validationResult.error === null) {
+      return alert("submited successfully")
+    }
+
+    alert(validationResult.error.details[0].context.label)
+  }
+
+  render() {
+    const {
+      organizationName,
+      displayName,
+      organizationDescription,
+      logo,
+      displayLogoInsteadOfDisplay,
+      contactAddress,
+      contactAddressCountry,
+      contactAddressState,
+      contactAddressZipCode,
+      website,
+      email,
+      telephone
+    } = this.state
+
+    return (
+      <FormSettings>
+        <PanelGeneralInformation
+          organizationName={organizationName}
+          displayName={displayName}
+          organizationDescription={organizationDescription}
+          logo={logo}
+          logoRef={this.logoRef}
+          displayLogoInsteadOfDisplay={displayLogoInsteadOfDisplay}
+          updateVal={this.updateVal}
+          updateRef={this.updateRef}
+        />
+        <PanelContactDetails
+          contactAddress={contactAddress}
+          contactAddressCountry={contactAddressCountry}
+          contactAddressState={contactAddressState}
+          contactAddressZipCode={contactAddressZipCode}
+          website={website}
+          email={email}
+          telephone={telephone}
+          updateVal={this.updateVal}
+        />
+        <ButtonSettings onClick={this.onSubmit}>Update</ButtonSettings>
+      </FormSettings>
+    )
+  }
+}
+
+export default ItemTabMainSettings
