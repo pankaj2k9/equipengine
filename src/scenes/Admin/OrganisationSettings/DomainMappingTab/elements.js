@@ -3,7 +3,6 @@ import styled from "styled-components"
 import BaseButton from "base_components/RootButton"
 import { Text } from "base_components/RootForm"
 import BasePanel from "base_components/Panel"
-import BaseForm from "base_components/RootForm"
 
 export const SubdomainText = Text.extend`
   max-width: 356px;
@@ -81,15 +80,11 @@ export const Panel = styled(BasePanel)`
   }
 `
 
-export const Form = styled(BaseForm)`
+export const Form = styled.div`
   padding: 0 2%;
-  width: 100%;
-`
-
-export const Wrapper = styled.div`
-  display: flex;
+  width: 50%;
 
   @media screen and (max-width: 767px) {
-    flex-direction: column;
+    width: initial;
   }
 `

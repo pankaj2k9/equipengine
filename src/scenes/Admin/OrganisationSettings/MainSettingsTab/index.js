@@ -235,9 +235,7 @@ class ItemTabMainSettings extends Component {
     this[selector] = el
   }
 
-  onSubmit = e => {
-    e.preventDefault()
-
+  onSubmit = () => {
     const fields = this.state
 
     const validationResult = validate(fields, validationSchema)

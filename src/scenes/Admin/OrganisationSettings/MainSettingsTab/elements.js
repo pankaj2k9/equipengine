@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 import { FormGroup } from "base_components/RootForm"
 import Panel from "base_components/Panel"
-import Form from "base_components/RootForm"
 import Button from "base_components/RootButton"
 
 export const HintTextLogo = styled.span`
@@ -54,7 +53,7 @@ export const PanelSettings = styled(Panel)`
   }
 `
 
-export const FormSettings = styled(Form)`
+export const FormSettings = styled.div`
   padding: 0 2%;
 `
 
