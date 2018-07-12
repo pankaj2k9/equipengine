@@ -1,4 +1,6 @@
 import React, { Fragment } from "react"
+import { withRouter } from "react-router-dom"
+import { compose, pure } from "recompose"
 //
 import styled from "styled-components"
 //
@@ -11,7 +13,7 @@ import ModalCoursesSettings from "../ModalCoursesSettings"
 
 const TableDataGroupUser = ({ children }) => <Td center>{children}</Td>
 
-const RowAdminGroupCourse = ({ className }) => (
+const RowAdminGroupCourse = ({ className, history }) => (
   <Fragment>
     <td>
       <i className={`${className}__iconMenuContainer`}>
@@ -30,6 +32,11 @@ const RowAdminGroupCourse = ({ className }) => (
           className={`${className}__buttonCourseDetail`}
           light
           lightBorder
+          onClick={() =>
+            history.push(
+              "/secure/admin/course-creator/courses/communication-and-culture"
+            )
+          }
         >
           Course Details
         </Button>
@@ -38,18 +45,22 @@ const RowAdminGroupCourse = ({ className }) => (
   </Fragment>
 )
 
-export default styled(RowAdminGroupCourse)`
-  &__buttonsCell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+export default compose(
+  withRouter,
+  comp => styled(comp)`
+    &__buttonsCell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  &__buttonCourseDetail {
-    width: 125px;
-  }
+    &__buttonCourseDetail {
+      width: 125px;
+    }
 
-  &__iconMenuContainer {
-    color: #e3e3e3;
-  }
-`
+    &__iconMenuContainer {
+      color: #e3e3e3;
+    }
+  `,
+  pure
+)(RowAdminGroupCourse)
