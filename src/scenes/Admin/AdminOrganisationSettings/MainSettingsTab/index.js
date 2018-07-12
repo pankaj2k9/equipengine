@@ -30,7 +30,7 @@ import {
   validate,
   openFileChooser,
   getDropdownValue
-} from "../functions"
+} from "utils/formFunctions"
 import { compose, pure } from "recompose"
 
 const validationSchema = joi.object().keys({
@@ -63,14 +63,14 @@ const PanelGeneralInformation = ({
   logo,
   logoRef,
   displayLogoInsteadOfDisplay,
-  updateVal,
+  onChange,
   updateRef
 }) => (
   <PanelSettings title="General Information" paddingBottom="1.6em">
     <FormGroup>
       <Label>Organisation Name &#42;</Label>
       <Text
-        onChange={e => updateVal(e.target.value, "organizationName")}
+        onChange={e => onChange(e.target.value, "organizationName")}
         value={organizationName}
         name="crossView"
         placeholder="CrossView"
@@ -79,7 +79,7 @@ const PanelGeneralInformation = ({
     <FormGroup>
       <Label>Display Name &#42;</Label>
       <Text
-        onChange={e => updateVal(e.target.value, "displayName")}
+        onChange={e => onChange(e.target.value, "displayName")}
         value={displayName}
         name="name"
       />
@@ -87,7 +87,7 @@ const PanelGeneralInformation = ({
     <FormGroup>
       <Label>Description of Organisation</Label>
       <TextArea
-        onChange={e => updateVal(e.target.value, "organizationDescription")}
+        onChange={e => onChange(e.target.value, "organizationDescription")}
         value={organizationDescription}
         name="description"
         row="4"
@@ -102,7 +102,7 @@ const PanelGeneralInformation = ({
           isFileAttached={logo}
         />
         <FileChooser
-          onChooseFiles={files => updateVal(files[0], "logo")}
+          onChooseFiles={files => onChange(files[0], "logo")}
           ref={el => updateRef(el, "logoRef")}
         />
         <HintTextLogo>Recommended size: 160 x 55 px</HintTextLogo>
@@ -112,7 +112,7 @@ const PanelGeneralInformation = ({
         <Switch
           value={displayLogoInsteadOfDisplay}
           onChange={e =>
-            updateVal(e.target.checked, "displayLogoInsteadOfDisplay")
+            onChange(e.target.checked, "displayLogoInsteadOfDisplay")
           }
         />
       </ContainerDisplayLogo>
@@ -128,14 +128,14 @@ const PanelContactDetails = ({
   website,
   email,
   telephone,
-  updateVal
+  onChange
 }) => (
   <PanelSettings title="Contact Details" borderBottom="0" paddingBottom="0">
     <FormGroup>
       <Label>Address &#42;</Label>
       <Text
         value={contactAddress}
-        onChange={e => updateVal(e.target.value, "contactAddress")}
+        onChange={e => onChange(e.target.value, "contactAddress")}
         name="address"
         placeholder="Connect: Level 1"
       />
@@ -146,7 +146,7 @@ const PanelContactDetails = ({
           placeholder="Country"
           name="country"
           onChange={selectedOption =>
-            updateVal(getDropdownValue(selectedOption), "contactAddressCountry")
+            onChange(getDropdownValue(selectedOption), "contactAddressCountry")
           }
           options={[
             { label: "Australlia", value: "au" },
@@ -159,7 +159,7 @@ const PanelContactDetails = ({
           placeholder="State"
           name="state"
           onChange={selectedOption =>
-            updateVal(getDropdownValue(selectedOption), "contactAddressState")
+            onChange(getDropdownValue(selectedOption), "contactAddressState")
           }
           options={[
             { label: "Australlia", value: "au" },
@@ -170,7 +170,7 @@ const PanelContactDetails = ({
       <FormGroupZipCode>
         <Text
           value={contactAddressZipCode}
-          onChange={e => updateVal(e.target.value, "contactAddressZipCode")}
+          onChange={e => onChange(e.target.value, "contactAddressZipCode")}
           name="zipCode"
           placeholder="Zip code"
         />
@@ -180,7 +180,7 @@ const PanelContactDetails = ({
       <Label>Website &#42;</Label>
       <Text
         value={website}
-        onChange={e => updateVal(e.target.value, "website")}
+        onChange={e => onChange(e.target.value, "website")}
         name="website"
         placeholder="crossview.com.au"
       />
@@ -189,7 +189,7 @@ const PanelContactDetails = ({
       <Label>Email &#42;</Label>
       <Text
         value={email}
-        onChange={e => updateVal(e.target.value, "email")}
+        onChange={e => onChange(e.target.value, "email")}
         name="email"
         placeholder="crossview.com.au"
       />
@@ -198,7 +198,7 @@ const PanelContactDetails = ({
       <Label>Telephone</Label>
       <Text
         value={telephone}
-        onChange={e => updateVal(e.target.value, "telephone")}
+        onChange={e => onChange(e.target.value, "telephone")}
         name="telePhone"
         placeholder="000000"
       />
@@ -223,7 +223,7 @@ class ItemTabMainSettings extends Component {
     telephone: ""
   }
 
-  updateVal = (e, selector) => {
+  onChange = (e, selector) => {
     const fields = this.state
 
     const nextFields = updateFieldValue(e, selector, fields)
@@ -277,7 +277,7 @@ class ItemTabMainSettings extends Component {
           logo={logo}
           logoRef={this.logoRef}
           displayLogoInsteadOfDisplay={displayLogoInsteadOfDisplay}
-          updateVal={this.updateVal}
+          onChange={this.onChange}
           updateRef={this.updateRef}
         />
         <PanelContactDetails
@@ -288,7 +288,7 @@ class ItemTabMainSettings extends Component {
           website={website}
           email={email}
           telephone={telephone}
-          updateVal={this.updateVal}
+          onChange={this.onChange}
         />
         <ButtonSettings onClick={this.onSubmit}>Update</ButtonSettings>
       </FormSettings>

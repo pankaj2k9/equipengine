@@ -20,7 +20,7 @@ import {
   Wrapper
 } from "./elements"
 
-import { updateFieldValue, validate } from "../functions"
+import { updateFieldValue, validate } from "utils/formFunctions"
 import { compose, pure } from "recompose"
 
 const validationSchema = joi.object().keys({
@@ -30,14 +30,14 @@ const validationSchema = joi.object().keys({
     .label("Domain field is required")
 })
 
-const PanelWebAddress = ({ domain, updateVal }) => (
+const PanelWebAddress = ({ domain, onChange }) => (
   <Panel title="Web Address" paddingBottom="1.6em">
     <FormGroup>
       <Label>Name &#42;</Label>
       <ContainerFlex isAlignCenter>
         <SubdomainText
           value={domain}
-          onChange={e => updateVal(e.target.value, "domain")}
+          onChange={e => onChange(e.target.value, "domain")}
           placeholder="CrossView"
         />
         <Postfix>.equipengine.com</Postfix>
@@ -49,14 +49,14 @@ const PanelWebAddress = ({ domain, updateVal }) => (
 const PanelDomainMapping = ({
   isUseCustomDomain,
   customDomainName,
-  updateVal
+  onChange
 }) => (
   <Panel title="Domain Mapping" borderBottom="0" paddingBottom="0">
     <ContainerDisplayLogo alignItems="center">
       <DisplayTextLogo>Use a custom domain</DisplayTextLogo>
       <Switch
         value={isUseCustomDomain}
-        onChange={e => updateVal(e.target.checked, "isUseCustomDomain")}
+        onChange={e => onChange(e.target.checked, "isUseCustomDomain")}
       />
     </ContainerDisplayLogo>
     <GrayContainer>
@@ -64,7 +64,7 @@ const PanelDomainMapping = ({
         <Label>Domain Name</Label>
         <Text
           value={customDomainName}
-          onChange={e => updateVal(e.target.value, "customDomainName")}
+          onChange={e => onChange(e.target.value, "customDomainName")}
           placeholder="crossenv.com.ua"
         />
       </FormGroup>
@@ -116,7 +116,7 @@ class ItemTabDomainMapping extends Component {
     customDomainName: ""
   }
 
-  updateVal = (e, selector) => {
+  onChange = (e, selector) => {
     const fields = this.state
 
     const nextFields = updateFieldValue(e, selector, fields)
@@ -147,11 +147,11 @@ class ItemTabDomainMapping extends Component {
     return (
       <Wrapper>
         <Form>
-          <PanelWebAddress domain={domain} updateVal={this.updateVal} />
+          <PanelWebAddress domain={domain} onChange={this.onChange} />
           <PanelDomainMapping
             isUseCustomDomain={isUseCustomDomain}
             customDomainName={customDomainName}
-            updateVal={this.updateVal}
+            onChange={this.onChange}
           />
           <Button onClick={this.onSubmit}>Update</Button>
         </Form>

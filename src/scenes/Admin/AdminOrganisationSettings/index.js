@@ -8,12 +8,10 @@ import { BreadcrumbsItem } from "react-breadcrumbs-dynamic"
 import Tabs from "base_components/Tabs"
 import Breadcrumbs from "base_components/Breadcrumbs"
 
-import {
-  MainSettings,
-  DomainMapping,
-  AccountSettings,
-  Notifications
-} from "./Tabs"
+import MainSettings from "./MainSettingsTab"
+import DomainMapping from "./DomainMappingTab"
+import AccountSettings from "./AccountSettingsTab"
+import Notifications from "./NotificationsTab"
 
 import { Container } from "./elements"
 

@@ -7,7 +7,7 @@ import { FormGroup, Label, Text } from "base_components/RootForm"
 
 import { Form, Panel, Button } from "./elements"
 
-import { updateFieldValue, validate } from "../functions"
+import { updateFieldValue, validate } from "utils/formFunctions"
 
 const validationSchema = joi.object().keys({
   email: joi
@@ -17,14 +17,14 @@ const validationSchema = joi.object().keys({
     .label("Valid email is required")
 })
 
-const PanelEmailAddress = ({ email, updateVal }) => (
+const PanelEmailAddress = ({ email, onChange }) => (
   <Panel title="Email Notifications" paddingBottom="1.6em">
     <FormGroup>
       <Label>Administration email address &#42;</Label>
       <Text
         placeholder="email@email.com"
         value={email}
-        onChange={e => updateVal(e.target.value, "email")}
+        onChange={e => onChange(e.target.value, "email")}
       />
     </FormGroup>
   </Panel>
@@ -35,7 +35,7 @@ class ItemTabAccountSettings extends Component {
     email: ""
   }
 
-  updateVal = (e, selector) => {
+  onChange = (e, selector) => {
     const fields = this.state
 
     const nextFields = updateFieldValue(e, selector, fields)
@@ -66,7 +66,7 @@ class ItemTabAccountSettings extends Component {
 
     return (
       <Form>
-        <PanelEmailAddress email={email} updateVal={this.updateVal} />
+        <PanelEmailAddress email={email} onChange={this.onChange} />
         <Button onClick={this.onSubmit}>Update</Button>
       </Form>
     )

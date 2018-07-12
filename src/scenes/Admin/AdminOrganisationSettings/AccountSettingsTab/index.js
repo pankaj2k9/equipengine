@@ -1,12 +1,12 @@
 import React, { Fragment, Component } from "react"
-import { compose } from "recompose"
+import { compose, pure } from "recompose"
 import joi from "joi"
 import { toastr } from "react-redux-toastr"
 
 import ContainerFlex from "base_components/ContainerFlex"
 import Divider from "base_components/Divider"
 
-import Modal from "./Modal"
+import Modal from "../AccountSettingsTabModal"
 
 import {
   Form,
@@ -25,8 +25,11 @@ import {
 
 import modal from "hoc/modal"
 
-import { getDropdownValue, updateFieldValue, validate } from "../functions"
-import { pure } from "recompose"
+import {
+  getDropdownValue,
+  updateFieldValue,
+  validate
+} from "utils/formFunctions"
 
 const validationSchema = joi.object().keys({})
 
@@ -62,7 +65,7 @@ const UserListItem = ({ user, remove }) => (
   </UserListItemElement>
 )
 
-const PanelWebAddress = ({ onOpen, users, updateVal, removeUser }) => (
+const PanelWebAddress = ({ onOpen, users, onChange, removeUser }) => (
   <Panel title="Accounts" paddingBottom="1.6em">
     <HintText>
       Be careful - this will provide users access to everything related to this
@@ -86,7 +89,7 @@ const PanelWebAddress = ({ onOpen, users, updateVal, removeUser }) => (
   </Panel>
 )
 
-const PanelLanguage = ({ language, updateVal }) => (
+const PanelLanguage = ({ language, onChange }) => (
   <Panel title="Language" borderBottom="0" paddingBottom="0">
     <HintText>
       This will change the default language displayed on all menus within your
@@ -98,7 +101,7 @@ const PanelLanguage = ({ language, updateVal }) => (
         placeholder="Language"
         name="country"
         onChange={selectedOption =>
-          updateVal(getDropdownValue(selectedOption), "language")
+          onChange(getDropdownValue(selectedOption), "language")
         }
         options={[
           { label: "English", value: "en" },
@@ -124,7 +127,7 @@ class ItemTabAccountSettings extends Component {
     this.setState({ allUsers: users, admins, language })
   }
 
-  updateVal = (e, selector) => {
+  onChange = (e, selector) => {
     const fields = this.state
 
     const nextFields = updateFieldValue(e, selector, fields)
@@ -185,10 +188,10 @@ class ItemTabAccountSettings extends Component {
           <PanelWebAddress
             users={admins}
             onOpen={onOpen}
-            updateVal={this.updateVal}
+            onChange={this.onChange}
             removeUser={this.removeAdmin}
           />
-          <PanelLanguage language={language} updateVal={this.updateVal} />
+          <PanelLanguage language={language} onChange={this.onChange} />
           <Button onClick={this.onSubmit}>Update</Button>
         </Form>
         <Modal
