@@ -29,6 +29,7 @@
     "react-interactive": "^0.8.1",
     "react-loadable": "^5.1.0",
     "react-media": "^1.6.1",
+    "react-numeric-input": "^2.2.3",
     "react-overlays": "^0.7.3",
     "react-redux": "^5.0.7",
     "react-redux-toastr": "^7.3.0",
