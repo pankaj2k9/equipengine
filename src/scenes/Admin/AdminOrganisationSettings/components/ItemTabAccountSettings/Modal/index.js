@@ -1,9 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { compose, withStateHandlers, withHandlers, lifecycle } from "recompose"
 
 import BaseModal from "base_components/Modal"
 import Button from "base_components/RootButton"
-import { Text } from "base_components/RootForm"
 
 import {
   Header as HeaderElement,
@@ -18,9 +18,10 @@ import {
 
 import IconAdd from "react-icons/lib/md/add-circle-outline"
 
-const ListItem = ({ name, avatar }) => (
+const ListItem = ({ user: { name, avatar, id }, select, deselect }) => (
   <ListItemElement>
-    <Checkbox /> {avatar && <Avatar src={avatar} />} <div>{name}</div>
+    <Checkbox onChange={e => (e.target.checked ? select(id) : deselect(id))} />{" "}
+    {avatar && <Avatar src={avatar} />} <div>{name}</div>
   </ListItemElement>
 )
 
@@ -31,7 +32,7 @@ const Header = () => (
   </HeaderElement>
 )
 
-const Body = ({ items }) => (
+const Body = ({ users, select, deselect }) => (
   <div>
     <Hint>
       Be careful - this will provide users access to everything related to this
@@ -39,36 +40,68 @@ const Body = ({ items }) => (
     </Hint>
     <ListTitle>Select a user to make an administrator</ListTitle>
     <List>
-      {items.map(({ name, avatar }) => (
-        <ListItem name={name} avatar={avatar} />
+      {!users.length && "No users"}
+      {users.map(user => (
+        <ListItem select={select} deselect={deselect} user={user} />
       ))}
     </List>
   </div>
 )
 
-const Footer = () => (
-  <Button onClick={() => console.log("Create new course!")}>Add</Button>
-)
+const Footer = ({ onSubmit }) => <Button onClick={onSubmit}>Add</Button>
 
-const Modal = ({ items, handleClose, isOpen }) => (
+const Modal = ({ users, handleClose, isOpen, select, deselect, onSubmit }) => (
   <BaseModal
     isOpen={isOpen}
     onClose={handleClose}
     header={<Header />}
-    body={<Body items={items} />}
-    footer={<Footer />}
+    body={<Body select={select} deselect={deselect} users={users} />}
+    footer={<Footer onSubmit={onSubmit} />}
   />
 )
 
 Modal.propTypes = {
   handleClose: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
-  items: PropTypes.arrayOf(
+  users: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       avatar: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  onSubmit: PropTypes.func.isRequired
 }
 
-export default Modal
+export default compose(
+  withStateHandlers(
+    {
+      selectedIds: []
+    },
+    {
+      select: ({ selectedIds }) => idSelect => ({
+        selectedIds: selectedIds.concat(idSelect)
+      }),
+      deselect: ({ selectedIds }) => idDeselect => ({
+        selectedIds: selectedIds.filter(id => id !== idDeselect)
+      }),
+      // Modal does not unmount, so we clear state when it closing
+      clear: () => () => ({ selectedIds: [] })
+    }
+  ),
+  withHandlers({
+    // We must keep this method in separated "withHandlers"
+    handleClose: ({ handleClose, clear }) => () => {
+      clear()
+      handleClose()
+    }
+  }),
+  withHandlers({
+    onSubmit: ({ onSubmit, selectedIds, handleClose }) => e => {
+      e.preventDefault()
+
+      onSubmit(selectedIds)
+
+      handleClose()
+    }
+  })
+)(Modal)

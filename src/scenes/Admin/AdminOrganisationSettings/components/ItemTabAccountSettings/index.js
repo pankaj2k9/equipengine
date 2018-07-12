@@ -1,29 +1,66 @@
-import React, { Fragment } from "react"
-import styled from "styled-components"
+import React, { Fragment, Component } from "react"
+import joi from "joi"
+import { toastr } from "react-redux-toastr"
 
 import ContainerFlex from "base_components/ContainerFlex"
 import Divider from "base_components/Divider"
-import Dropdown from "base_components/RootDropdown"
-
-import modal from "hoc/modal"
 
 import Modal from "./Modal"
 
-import { Form, Panel, Button, ButtonAdd, User } from "./elements"
+import {
+  Form,
+  Panel,
+  Button,
+  ButtonAdd,
+  AddUserWrapper,
+  GrayBorderContainer,
+  HintText,
+  Title,
+  LanguageLabel,
+  LanguageDropdown,
+  UserListItem as UserListItemElement,
+  UserListItemCloseIcon
+} from "./elements"
+
+import modal from "hoc/modal"
+
+import { getDropdownValue, updateFieldValue, validate } from "../functions"
+
+const validationSchema = joi.object().keys({})
 
 const users = [
   {
+    id: "gegae",
     name: "User1",
     avatar: "/static/media/user.002ba69c.png"
   },
   {
+    id: "hjgh",
     name: "User2",
+    avatar: "/static/media/user.002ba69c.png"
+  },
+  {
+    id: "gh554h3",
+    name: "User3",
+    avatar: "/static/media/user.002ba69c.png"
+  },
+  {
+    id: "y657iq",
+    name: "User4",
     avatar: "/static/media/user.002ba69c.png"
   }
 ]
 
-//
-const PanelWebAddress = ({ onOpen }) => (
+const language = "en"
+
+const UserListItem = ({ user, remove }) => (
+  <UserListItemElement>
+    <span>{user.name}</span>
+    <UserListItemCloseIcon onClick={() => remove(user.id)} />
+  </UserListItemElement>
+)
+
+const PanelWebAddress = ({ onOpen, users, updateVal, removeUser }) => (
   <Panel title="Accounts" paddingBottom="1.6em">
     <HintText>
       Be careful - this will provide users access to everything related to this
@@ -40,38 +77,14 @@ const PanelWebAddress = ({ onOpen }) => (
       />
     </AddUserWrapper>
     <GrayBorderContainer>
-      {users.map(user => <User user={user} />)}
+      {!users.length && "No administrators"}
+      {users.map(user => <UserListItem user={user} remove={removeUser} />)}
     </GrayBorderContainer>
     <Divider />
   </Panel>
 )
 
-const HintText = styled.span`
-  color: #6d6d6d;
-  margin-bottom: 15px;
-  display: inline-block;
-`
-
-const Title = styled.h4`
-  font-size: 14px;
-  color: #000000;
-  font-weight: 800;
-  margin: 0;
-  margin-bottom: ${({ isStandard: x }) => (x ? "15px" : 0)};
-`
-
-const AddUserWrapper = styled(ContainerFlex)`
-  margin-bottom: 15px;
-`
-
-const GrayBorderContainer = styled.div`
-  border: 1px solid #e0e0e0;
-  padding: 14px;
-  margin-bottom: 30px;
-`
-
-//
-const PanelLanguage = () => (
+const PanelLanguage = ({ language, updateVal }) => (
   <Panel title="Language" borderBottom="0" paddingBottom="0">
     <HintText>
       This will change the default language displayed on all menus within your
@@ -82,6 +95,9 @@ const PanelLanguage = () => (
       <LanguageDropdown
         placeholder="Language"
         name="country"
+        onChange={selectedOption =>
+          updateVal(getDropdownValue(selectedOption), "language")
+        }
         options={[
           { label: "English", value: "en" },
           { label: "German", value: "he" },
@@ -92,24 +108,96 @@ const PanelLanguage = () => (
   </Panel>
 )
 
-const LanguageLabel = styled.span`
-  margin-right: 25px;
-`
+class ItemTabAccountSettings extends Component {
+  state = {
+    allUsers: [],
+    admins: [],
+    language: ""
+  }
 
-const LanguageDropdown = styled(Dropdown)`
-  width: 130px;
-`
+  componentDidMount = () => {
+    // TODO: Change to getting from store
+    const admins = [users[0], users[1]]
 
-//
-const ItemTabAccountSettings = ({ onOpen, onClose, isOpen }) => (
-  <Fragment>
-    <Form>
-      <PanelWebAddress onOpen={onOpen} />
-      <PanelLanguage />
-      <Button>Update</Button>
-    </Form>
-    <Modal items={users} handleClose={onClose} isOpen={isOpen} />
-  </Fragment>
-)
+    this.setState({ allUsers: users, admins, language })
+  }
+
+  updateVal = (e, selector) => {
+    const fields = this.state
+
+    const nextFields = updateFieldValue(e, selector, fields)
+
+    this.setState(nextFields)
+  }
+
+  addAdmins = newAdminsIds => {
+    const { allUsers } = this.state
+
+    const newAdmins = allUsers.filter(({ id }) =>
+      newAdminsIds.some(adminId => adminId === id)
+    )
+
+    // TODO: Change to action dispatch
+    this.setState(({ admins, ...rest }) => ({
+      admins: admins.concat(newAdmins),
+      ...rest
+    }))
+  }
+
+  removeAdmin = removeId => {
+    const admins = [...this.state.admins]
+
+    const nextAdmins = admins.filter(({ id }) => id !== removeId)
+
+    // TODO: Change to action dispatch
+    this.setState(state => ({ ...state, admins: nextAdmins }))
+  }
+
+  onSubmit = () => {
+    const fields = this.state
+
+    const validationResult = validate(fields, validationSchema)
+
+    if (!validationResult.error) {
+      return toastr.success("Account settings", "Data updated successfully")
+    }
+
+    toastr.error(
+      "Validation error",
+      validationResult.error.details[0].context.label
+    )
+  }
+
+  render() {
+    const { onOpen, onClose, isOpen } = this.props
+
+    const { admins, language, allUsers } = this.state
+
+    const nonAdmins = allUsers.filter(
+      ({ id }) => !admins.some(admin => admin.id === id)
+    )
+
+    return (
+      <Fragment>
+        <Form>
+          <PanelWebAddress
+            users={admins}
+            onOpen={onOpen}
+            updateVal={this.updateVal}
+            removeUser={this.removeAdmin}
+          />
+          <PanelLanguage language={language} updateVal={this.updateVal} />
+          <Button onClick={this.onSubmit}>Update</Button>
+        </Form>
+        <Modal
+          users={nonAdmins}
+          handleClose={onClose}
+          isOpen={isOpen}
+          onSubmit={this.addAdmins}
+        />
+      </Fragment>
+    )
+  }
+}
 
 export default modal(ItemTabAccountSettings)
