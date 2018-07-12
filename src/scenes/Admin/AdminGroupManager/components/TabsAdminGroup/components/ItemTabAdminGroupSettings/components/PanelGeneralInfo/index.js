@@ -16,7 +16,7 @@ const PanelGeneralInfo = ({ className }) => (
       <Text name="group-name" placeholder="Connect: Level 1" />
     </FormGroup>
     <FormGroup>
-      <Label htmlFor="group-discussion">Group Discussion</Label>
+      <Label htmlFor="group-discussion">Group Description</Label>
       <TextArea name="group-name" placeholder="Connect: Level 1" row={4} />
     </FormGroup>
   </PanelExtend>
