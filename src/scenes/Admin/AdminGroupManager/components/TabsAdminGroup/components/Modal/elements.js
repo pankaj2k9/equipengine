@@ -38,3 +38,7 @@ export const Avatar = styled.img`
   object-fit: cover;
   margin-right: 20px;
 `
+
+export const BodyLabel = styled.div`
+  margin-bottom: 15px;
+`

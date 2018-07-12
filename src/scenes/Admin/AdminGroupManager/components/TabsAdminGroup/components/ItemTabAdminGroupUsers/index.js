@@ -27,6 +27,7 @@ const ItemTabAdminGroupUsers = ({ onOpen, onClose, isOpen }) => (
       items={users}
       handleClose={onClose}
       isOpen={isOpen}
+      bodyLabel="Select a user to add to this group"
     />
   </div>
 )

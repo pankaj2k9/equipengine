@@ -30,6 +30,7 @@ const ItemTabAdminGroupCourses = ({ onOpen, onClose, isOpen }) => (
       isOpen={isOpen}
       searchBarPlaceholder="Search courses"
       headerText="Add course to group"
+      bodyLabel={"Select a course to add to this group"}
     />
   </div>
 )

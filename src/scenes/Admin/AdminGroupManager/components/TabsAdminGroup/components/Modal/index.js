@@ -8,6 +8,7 @@ import { Text } from "base_components/RootForm"
 import {
   Header as HeaderElement,
   H5,
+  BodyLabel,
   List,
   ListItem as ListItemElement,
   Checkbox,
@@ -28,8 +29,9 @@ const Header = ({ text }) => (
   </HeaderElement>
 )
 
-const Body = ({ items, placeholder }) => (
+const Body = ({ items, placeholder, text }) => (
   <div>
+    <BodyLabel>{text}</BodyLabel>
     <Text placeholder={placeholder} />
     <List>
       {items.map(({ name, avatar }) => (
@@ -48,13 +50,16 @@ const Modal = ({
   handleClose,
   isOpen,
   searchBarPlaceholder,
-  headerText
+  headerText,
+  bodyLabel
 }) => (
   <BaseModal
     isOpen={isOpen}
     onClose={handleClose}
     header={<Header text={headerText} />}
-    body={<Body items={items} placeholder={searchBarPlaceholder} />}
+    body={
+      <Body items={items} placeholder={searchBarPlaceholder} text={bodyLabel} />
+    }
     footer={<Footer />}
   />
 )
@@ -69,7 +74,8 @@ Modal.propTypes = {
     })
   ).isRequired,
   searchBarPlaceholder: PropTypes.string.isRequired,
-  headerText: PropTypes.string.isRequired
+  headerText: PropTypes.string.isRequired,
+  bodyLabel: PropTypes.string.isRequired
 }
 
 export default Modal
