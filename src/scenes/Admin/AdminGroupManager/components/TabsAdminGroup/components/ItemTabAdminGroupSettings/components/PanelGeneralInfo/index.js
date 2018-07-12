@@ -9,8 +9,8 @@ const PanelExtend = Panel.extend`
   padding-bottom: 33px;
 `
 
-const PanelGeneralInfo = () => (
-  <PanelExtend title="General Information">
+const PanelGeneralInfo = ({ className }) => (
+  <PanelExtend className={className} title="General Information">
     <FormGroup>
       <Label htmlFor="group-name">Group Name</Label>
       <Text name="group-name" placeholder="Connect: Level 1" />

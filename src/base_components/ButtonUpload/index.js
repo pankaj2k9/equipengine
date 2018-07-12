@@ -5,9 +5,9 @@ import Button from "base_components/RootButton"
 import IconUpload from "react-icons/lib/md/file-upload"
 
 // FIXME: We will fix the padding. The content is not slightly horizontally center.
-const ButtonUpload = styled(({ className }) => (
-  <Button light lightBorder className={className}>
-    Upload
+const ButtonUpload = styled(({ className, isFileAttached, ...rest }) => (
+  <Button {...rest} type="file" light lightBorder className={className}>
+    {isFileAttached ? "File attached" : "Upload"}
     <i>
       <IconUpload />
     </i>
@@ -16,6 +16,7 @@ const ButtonUpload = styled(({ className }) => (
   color: #bdbdbd;
   border-color: #bdbdbd;
   padding: 0 0 5px 0;
+  width: ${({ isFileAttached }) => isFileAttached && "126px"};
 
   i {
     font-size: 1.2rem;

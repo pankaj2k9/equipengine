@@ -20,6 +20,8 @@ const Loader = ({ isLoading, error, timedOut }) => {
   }
   // Handle the error state
   if (error) {
+    console.error(error)
+
     renderElement = (
       <h4 className="Loader--isError">
         Sorry, there was a problem loading the page.

@@ -6,4 +6,6 @@ export default styled(DropdownButton)`
   background: #fff;
   text-shadow: none;
   background-image: none;
+  display: flex;
+  justify-content: space-between;
 `

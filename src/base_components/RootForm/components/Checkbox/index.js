@@ -3,9 +3,9 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 
 // for checkbox
-const Checkbox = styled(({ name, className }) => (
+const Checkbox = styled(({ name, className, ...rest }) => (
   <div className={className}>
-    <input className="Checkbox" name={name} type="checkbox" />
+    <input className="Checkbox" name={name} type="checkbox" {...rest} />
     <label htmlFor={name} />
   </div>
 ))`
@@ -40,8 +40,8 @@ const Checkbox = styled(({ name, className }) => (
         width: 9px;
         opacity: 0;
         position: absolute;
-        top: 2px;
-        left: 1px;
+        top: 4px;
+        left: 5px;
         transform: translate(-50%, -50%) rotate(-45deg);
       }
     }

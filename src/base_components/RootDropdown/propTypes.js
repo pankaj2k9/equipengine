@@ -15,11 +15,13 @@ export default {
       })
     ).isRequired,
     className: PropTypes.string,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    onChange: PropTypes.string
   },
   default: {
     name: "dropdown",
     options: [],
-    placeholder: "Select..."
+    placeholder: "Select...",
+    onChange: () => {}
   }
 }

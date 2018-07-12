@@ -36,8 +36,9 @@ const ContainerFormGroups = styled.div`
   }
 `
 
-const PanelGroupNoticeBoard = () => (
+const PanelGroupNoticeBoard = ({ className }) => (
   <PanelExtend
+    className={className}
     title="Group Noticeboard"
     AdditionalTitle={() => <Switch name="toggle-all" />}
   >

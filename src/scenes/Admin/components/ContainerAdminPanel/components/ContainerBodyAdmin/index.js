@@ -6,8 +6,9 @@ export default Container.extend`
   }
 
   @media screen and (min-width: 768px) {
-    margin-left: 45%;
+    margin-left: 488px;
     margin-top: 2px;
-    width: 50%;
+    width: 100%;
+    overflow: hidden;
   }
 `

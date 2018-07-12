@@ -1,20 +1,12 @@
 import React from "react"
 
 import Form, { TextArea } from "base_components/RootForm"
-import Container from "base_components/Container"
-import ListNotice from "./components/ListNotice"
+import Button from "base_components/RootButton"
 
-// for body container
-const Body = Container.extend`
-  margin-bottom: 0;
+import ListNotice from "./ListNotice"
 
-  @media screen and (min-width: 768px) {
-    min-height: 80vh;
-    display: block;
-  }
-`
+import { AttachmentButton, ButtonsContainer, Body } from "./elements"
 
-// the full body dashboard component.
 const BodyDashboard = () => (
   <Body>
     <Form>
@@ -23,6 +15,9 @@ const BodyDashboard = () => (
         name="noticeboard"
         placeholder="Write on the noticeboard..."
       />
+      <ButtonsContainer>
+        <AttachmentButton /> <Button>Submit</Button>
+      </ButtonsContainer>
     </Form>
     <ListNotice />
   </Body>
