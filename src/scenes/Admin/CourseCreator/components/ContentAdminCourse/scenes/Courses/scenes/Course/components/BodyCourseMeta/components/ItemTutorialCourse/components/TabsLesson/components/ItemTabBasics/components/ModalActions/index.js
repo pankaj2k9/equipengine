@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react"
 import { identical } from "ramda"
 import { isNotNil } from "ramda-adjunct"
 // components
-import AdminCourseModal from "scenes/Admin/AdminCourseCreator/components/ContentAdminCourse/scenes/components/AdminCourseModal"
+import AdminCourseModal from "scenes/Admin/CourseCreator/components/ContentAdminCourse/scenes/components/AdminCourseModal"
 import Form, {
   FormGroup,
   Label,
