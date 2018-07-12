@@ -28,7 +28,10 @@ export const validate = (fields, schema) =>
   })
 
 export const openFileChooser = (e, ref) => {
-  e.preventDefault()
+  if (e && e.preventDefault) {
+    e.preventDefault()
+  }
+
   if (ref) ref.open()
 }
 
