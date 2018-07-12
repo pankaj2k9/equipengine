@@ -22,12 +22,17 @@ import {
 
 import { updateFieldValue, validate } from "../functions"
 
-const validationSchema = joi.object().keys({})
+const validationSchema = joi.object().keys({
+  domain: joi
+    .string()
+    .required()
+    .label("Domain field is required")
+})
 
 const PanelWebAddress = ({ domain, updateVal }) => (
   <Panel title="Web Address" paddingBottom="1.6em">
     <FormGroup>
-      <Label>Name</Label>
+      <Label>Name &#42;</Label>
       <ContainerFlex isAlignCenter>
         <SubdomainText
           value={domain}
