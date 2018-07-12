@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { compose, withStateHandlers, withHandlers, lifecycle } from "recompose"
+import { compose, withStateHandlers, withHandlers, pure } from "recompose"
 
 import BaseModal from "base_components/Modal"
 import Button from "base_components/RootButton"
@@ -103,5 +103,6 @@ export default compose(
 
       handleClose()
     }
-  })
+  }),
+  pure
 )(Modal)

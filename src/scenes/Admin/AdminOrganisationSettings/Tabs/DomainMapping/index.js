@@ -21,6 +21,7 @@ import {
 } from "./elements"
 
 import { updateFieldValue, validate } from "../functions"
+import { compose, pure } from "recompose"
 
 const validationSchema = joi.object().keys({
   domain: joi
@@ -160,4 +161,4 @@ class ItemTabDomainMapping extends Component {
   }
 }
 
-export default ItemTabDomainMapping
+export default compose(pure)(ItemTabDomainMapping)

@@ -1,23 +1,41 @@
 import React, { Fragment } from "react"
-// components
+import PropTypes from "prop-types"
+import { compose, pure } from "recompose"
+
 import { Tab } from "react-bootstrap"
+import { BreadcrumbsItem } from "react-breadcrumbs-dynamic"
+
 import Tabs from "base_components/Tabs"
 import Breadcrumbs from "base_components/Breadcrumbs"
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic"
-import ItemTabMainSettings from "./components/ItemTabMainSettings"
-import ItemTabDomainMapping from "./components/ItemTabDomainMapping"
-import ItemTabAccountSettings from "./components/ItemTabAccountSettings"
-import ItemTabNotifications from "./components/ItemTabNotifications"
-// assets
-import { tabOrganisationSettingsStyles } from "./styles"
-import adminOrganisationSettings from "./propTypes"
 
-/**
- * -------------------------------------
- * AdminOrganisationSettings
- * @see TabOrganisationSettings
- * -------------------------------------
- */
+import {
+  MainSettings,
+  DomainMapping,
+  AccountSettings,
+  Notifications
+} from "./Tabs"
+
+import { Container } from "./elements"
+
+const TabOrganisationSettings = () => (
+  <Container>
+    <Tabs>
+      <Tab eventKey={1} title="Main Settings">
+        <MainSettings />
+      </Tab>
+      <Tab eventKey={2} title="Domain Mapping">
+        <DomainMapping />
+      </Tab>
+      <Tab eventKey={3} title="Account Settings">
+        <AccountSettings />
+      </Tab>
+      <Tab eventKey={4} title="Notifications">
+        <Notifications />
+      </Tab>
+    </Tabs>
+  </Container>
+)
+
 const AdminOrganisationSettings = ({ match }) => (
   <Fragment>
     <Breadcrumbs padding="4% 2%" />
@@ -25,32 +43,8 @@ const AdminOrganisationSettings = ({ match }) => (
     <TabOrganisationSettings />
   </Fragment>
 )
+AdminOrganisationSettings.propTypes = {
+  match: PropTypes.object.isRequired
+}
 
-AdminOrganisationSettings.propTypes = adminOrganisationSettings.prop
-
-export default AdminOrganisationSettings
-
-/**
- * -------------------------------------
- * TabOrganisationSettings
- * @see AdminOrganisationSettings
- * -------------------------------------
- */
-const TabOrganisationSettings = tabOrganisationSettingsStyles(
-  ({ className }) => (
-    <Tabs className={className}>
-      <Tab eventKey={1} title="Main Settings">
-        <ItemTabMainSettings />
-      </Tab>
-      <Tab eventKey={2} title="Domain Mapping">
-        <ItemTabDomainMapping />
-      </Tab>
-      <Tab eventKey={3} title="Account Settings">
-        <ItemTabAccountSettings />
-      </Tab>
-      <Tab eventKey={4} title="Notifications">
-        <ItemTabNotifications />
-      </Tab>
-    </Tabs>
-  )
-)
+export default compose(pure)(AdminOrganisationSettings)

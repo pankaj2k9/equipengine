@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from "react"
+import { compose } from "recompose"
 import joi from "joi"
 import { toastr } from "react-redux-toastr"
 
@@ -25,6 +26,7 @@ import {
 import modal from "hoc/modal"
 
 import { getDropdownValue, updateFieldValue, validate } from "../functions"
+import { pure } from "recompose"
 
 const validationSchema = joi.object().keys({})
 
@@ -200,4 +202,7 @@ class ItemTabAccountSettings extends Component {
   }
 }
 
-export default modal(ItemTabAccountSettings)
+export default compose(
+  modal,
+  pure
+)(ItemTabAccountSettings)

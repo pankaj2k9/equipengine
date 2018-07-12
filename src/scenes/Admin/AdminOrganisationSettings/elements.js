@@ -1,12 +1,6 @@
-import css from "utils/css"
+import styled from "styled-components"
 
-/**
- * -------------------------------------
- * Styles for TabOrganisationSettings
- * @function
- * -------------------------------------
- */
-export const tabOrganisationSettingsStyles = css`
+export const Container = styled.div`
   .nav-tabs {
     display: flex;
     overflow: auto;

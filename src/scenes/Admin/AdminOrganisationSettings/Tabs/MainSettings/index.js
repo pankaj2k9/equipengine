@@ -31,6 +31,7 @@ import {
   openFileChooser,
   getDropdownValue
 } from "../functions"
+import { compose, pure } from "recompose"
 
 const validationSchema = joi.object().keys({
   organizationName: joi
@@ -295,4 +296,4 @@ class ItemTabMainSettings extends Component {
   }
 }
 
-export default ItemTabMainSettings
+export default compose(pure)(ItemTabMainSettings)
