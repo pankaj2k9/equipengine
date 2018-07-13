@@ -1,8 +1,7 @@
 import React from "react"
+import Loadable from "react-loadable" // for code splitting
 //
 import ErrorBoundary from "base_components/ErrorBoundary"
-/* for code splitting - loadable */
-import Loadable from "react-loadable"
 import Loader from "base_components/Loader"
 
 //------------------------- TEACHERS PANEL COMPONENT -------------------------------//

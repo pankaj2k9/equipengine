@@ -18,7 +18,7 @@ export const Centerer = styled.div`
   transform: translate(-50%, -50%);
 
   @media screen and (min-width: 768px) {
-    width: 30%;
+    width: 40%;
   }
 `
 

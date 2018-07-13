@@ -2,11 +2,11 @@ import { connect } from "react-redux"
 import { createStructuredSelector } from "reselect"
 
 import MainBars from "./MainBars"
-import { selectors } from "global/Auth"
+import features from "features"
 
 const mapState = () =>
   createStructuredSelector({
-    currentUserRole: selectors.selectCurrentUserRole()
+    currentUserRole: features.auth.selectors.selectCurrentUserRole()
   })
 
 export default connect(

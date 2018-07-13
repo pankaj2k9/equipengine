@@ -8,7 +8,7 @@ import { Switch, Route } from "react-router-dom"
 import AynscNotFound from "./AynscNotFound"
 import Loader from "base_components/Loader"
 import PrivateRoutes from "./PrivateRoutes"
-import { selectors as authSelectors } from "global/Auth"
+import features from "features"
 
 //
 // Adds auth redirecting
@@ -20,7 +20,7 @@ const userIsAuthenticated = connectedRouterRedirect({
   redirectPath: "/login",
   // If selector is true, wrapper will not redirect
   // For example let's check that state contains user data
-  authenticatedSelector: authSelectors.selectIsLoggedIn()
+  authenticatedSelector: features.auth.selectors.selectIsLoggedIn()
 })
 
 // For ?redirect=... parsing
@@ -35,7 +35,7 @@ const userIsNotAuthenticated = connectedRouterRedirect({
   allowRedirectBack: false,
   // If selector is true, wrapper will not redirect
   // So if there is no user data, then we show the page
-  authenticatedSelector: authSelectors.selectIsNotLoggedIn()
+  authenticatedSelector: features.auth.selectors.selectIsNotLoggedIn()
 })
 
 const AsyncLandingPage = Loadable({
@@ -44,8 +44,21 @@ const AsyncLandingPage = Loadable({
   timeout: 10000
 })
 
+// TODO move to index.js LoginPage, so it will be possible just to use features.auth.pages.LoginPage
 const AsyncLogin = Loadable({
-  loader: () => import("scenes/Login"),
+  loader: () => import("scenes/Auth/LoginPage"),
+  loading: Loader, // before this component gets loaded, we will render first this Loader component.
+  timeout: 10000
+})
+
+const AsyncSignup = Loadable({
+  loader: () => import("scenes/Auth/SignupPage"),
+  loading: Loader, // before this component gets loaded, we will render first this Loader component.
+  timeout: 10000
+})
+
+const AsyncVerifyEmail = Loadable({
+  loader: () => import("scenes/Auth/VerifyEmailPage"),
   loading: Loader, // before this component gets loaded, we will render first this Loader component.
   timeout: 10000
 })
@@ -60,6 +73,20 @@ const Routes = () => (
         path="/login"
         // Redirect to secure home page if user is already logged in
         component={userIsNotAuthenticated(AsyncLogin)}
+      />
+      <Route
+        exact
+        strict
+        path="/signup"
+        // Redirect to secure home page if user is already logged in
+        component={userIsNotAuthenticated(AsyncSignup)}
+      />
+      <Route
+        exact
+        strict
+        path="/verify-email"
+        // Redirect to secure home page if user is already logged in
+        component={userIsNotAuthenticated(AsyncVerifyEmail)}
       />
       <Route
         path="/secure"

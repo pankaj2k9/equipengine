@@ -4,15 +4,16 @@ import { connect } from "react-redux"
 import { createStructuredSelector } from "reselect"
 import { toastr } from "react-redux-toastr"
 //
-import Loading from "base_components/Loading"
+import AbstractAuthPage from "../AbstractAuthPage"
 import LoginForm from "../LoginForm"
-import { selectors, thunks, types } from "global/Auth"
-//
-import { Root, Centerer, Title } from "./elements"
+import { selectors, types } from "../ducks"
+import { login } from "../thunks"
 
 class LoginPage extends Component {
-  handleSubmit = ({ username, password }) =>
-    this.props.login({ email: username, password }).then(action => {
+  handleSubmit = ({ email, password }) =>
+    this.props.login({ email, password }).then(action => {
+      // TODO parse action.error response body
+      // to check if email is not confirmed or username/password are invalid
       if (action.type === types.LOGIN_ERROR) {
         toastr.error("Login failed", "Username or password is invalid")
       }
@@ -21,14 +22,9 @@ class LoginPage extends Component {
   render() {
     const { isPending } = this.props
     return (
-      <Root>
-        <Centerer>
-          <header>
-            <Title>Login</Title>
-          </header>
-          {isPending ? <Loading /> : <LoginForm onSubmit={this.handleSubmit} />}
-        </Centerer>
-      </Root>
+      <AbstractAuthPage title="Login" isPending={isPending}>
+        <LoginForm onSubmit={this.handleSubmit} />
+      </AbstractAuthPage>
     )
   }
 }
@@ -41,7 +37,7 @@ const mapState = () =>
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
-      login: thunks.login
+      login
     },
     dispatch
   )

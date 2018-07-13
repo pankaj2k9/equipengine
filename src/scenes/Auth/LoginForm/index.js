@@ -1,40 +1,36 @@
 import React, { Component } from "react"
 //
-import { Form, Input, StyledButton } from "./elements"
+import { Form, Input, StyledButton } from "../AuthFormElements"
 
 // TODO try to implement by compose
 class LoginForm extends Component {
   state = {
-    username: "",
+    email: "",
     password: ""
   }
 
   handleSubmit = () =>
     this.props.onSubmit({
-      username: this.state.username,
+      email: this.state.email,
       password: this.state.password
     })
 
-  handleChange = ({ target: { value, name } }) =>
-    this.setState({
-      [name]: value
-    })
+  handleEmailChange = ({ target: { value } }) => this.setState({ email: value })
+  handlePasswordChange = ({ target: { value } }) =>
+    this.setState({ password: value })
 
   render() {
-    const { username, password } = this.state
+    const { email, password } = this.state
     return (
       <Form onSubmit={this.handleSubmit}>
         <Input
           autoFocus
-          onChange={this.handleChange}
-          name="username"
-          type="text"
-          value={username}
-          placeholder="Username"
+          onChange={this.handleEmailChange}
+          value={email}
+          placeholder="Email"
         />
         <Input
-          onChange={this.handleChange}
-          name="password"
+          onChange={this.handlePasswordChange}
           type="password"
           value={password}
           placeholder="Password"

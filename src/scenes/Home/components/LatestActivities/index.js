@@ -4,10 +4,10 @@ import { connect } from "react-redux"
 import { createStructuredSelector } from "reselect"
 import { Link } from "react-router-dom"
 //
+import features from "features"
 import iconArrowRight from "resources/images/arrowRight.svg"
 import ListActivities from "../ListActivities"
 import Loading from "base_components/Loading"
-import { selectors as authSelectors } from "global/Auth"
 import { selectors as activitiesSelectors, thunks } from "global/Activities"
 import UnderlinedTitle from "base_components/UnderlinedTitle"
 
@@ -41,7 +41,7 @@ const mapState = () =>
   createStructuredSelector({
     activities: activitiesSelectors.selectActivities(),
     isFetchingActivities: activitiesSelectors.selectIsFetchingActivities(),
-    userId: authSelectors.selectCurrentUserId()
+    userId: features.auth.selectors.selectCurrentUserId()
   })
 
 const mapDispatch = dispatch =>

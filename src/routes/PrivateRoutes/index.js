@@ -6,11 +6,11 @@ import { Switch, Route } from "react-router-dom"
 
 import AsyncNotFound from "../AynscNotFound"
 import createRoute from "../createRoute"
+import features from "features"
 import Main from "base_components/Main"
 import studentRoutes from "./studentRoutes"
 import teacherRoutes from "./teacherRoutes"
 import adminRoutes from "./adminRoutes"
-import { selectors as authSelectors } from "global/Auth"
 import { ADMIN_ROLE, TEACHER_ROLE } from "services/Auth"
 
 /* create our async component in here
@@ -23,7 +23,7 @@ const AsyncMainBars = Loadable({
 })
 
 const teacherOrAdmin = connectedAuthWrapper({
-  authenticatedSelector: authSelectors.selectIsInAnyRole([
+  authenticatedSelector: features.auth.selectors.selectIsInAnyRole([
     ADMIN_ROLE,
     TEACHER_ROLE
   ]),
@@ -31,7 +31,9 @@ const teacherOrAdmin = connectedAuthWrapper({
 })
 
 const adminOnly = connectedAuthWrapper({
-  authenticatedSelector: authSelectors.selectIsInAnyRole([ADMIN_ROLE]),
+  authenticatedSelector: features.auth.selectors.selectIsInAnyRole([
+    ADMIN_ROLE
+  ]),
   FailureComponent: AsyncNotFound
 })
 

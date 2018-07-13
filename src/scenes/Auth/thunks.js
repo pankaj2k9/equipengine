@@ -34,3 +34,20 @@ export const logout = () => {
     }
   }
 }
+
+export const signup = ({ email, password }) => {
+  return async dispatch => {
+    dispatch(authActions.signupRequest())
+
+    try {
+      await API.signup({ email, password })
+
+      // Redirect to verify email page
+      dispatch(push("/verify-email"))
+
+      return dispatch(authActions.signupSuccess())
+    } catch (error) {
+      return dispatch(authActions.signupError())
+    }
+  }
+}
