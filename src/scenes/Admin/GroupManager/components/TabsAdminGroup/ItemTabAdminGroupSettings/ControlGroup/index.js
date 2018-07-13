@@ -1,18 +1,13 @@
 import React from "react"
 
-import Panel from "base_components/Panel"
 import ListControl, { ListItemControl } from "base_components/ListControl"
-
-// for list item control.
 import Button from "base_components/RootButton"
 import { Label } from "base_components/RootForm"
 
-const PanelExtend = Panel.extend`
-  padding-bottom: 28px;
-`
+import { Root } from "./elements"
 
-const PanelControlGroup = ({ className }) => (
-  <PanelExtend className={className}>
+const ControlGroup = () => (
+  <Root>
     <ListControl>
       <ListItemControl>
         <Button large light lightBorder>
@@ -32,7 +27,7 @@ const PanelControlGroup = ({ className }) => (
         </Label>
       </ListItemControl>
     </ListControl>
-  </PanelExtend>
+  </Root>
 )
 
-export default PanelControlGroup
+export default ControlGroup

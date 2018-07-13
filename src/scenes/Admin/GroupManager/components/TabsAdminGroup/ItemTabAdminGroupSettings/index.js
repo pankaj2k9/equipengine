@@ -1,26 +1,20 @@
 import React from "react"
-//
-import styled from "styled-components"
-import Form from "base_components/RootForm"
-import ButtonUpdate from "base_components/ButtonUpdate"
-// sub-components
-import PanelGeneralInfo from "./components/PanelGeneralInfo"
-import PanelUsers from "./components/PanelUsers"
-import PanelGroupNoticeBoard from "./components/PanelGroupNoticeBoard"
-import PanelControlGroup from "./components/PanelControlGroup"
 
-const ItemTabAdminGroupSettings = ({ className }) => (
-  <Form>
-    <PanelGeneralInfo className={`${className}__panel`} />
-    <PanelUsers className={`${className}__panel`} />
-    <PanelGroupNoticeBoard className={`${className}__panel`} />
-    <PanelControlGroup className={`${className}__panel`} />
+import ButtonUpdate from "base_components/ButtonUpdate"
+
+import GeneralInfoGroup from "./GeneralInfoGroup"
+import UsersGroup from "./UsersGroup"
+import NoticeboardGroup from "./NoticeboardGroup"
+import ControlGroup from "./ControlGroup"
+
+const ItemTabAdminGroupSettings = () => (
+  <div>
+    <GeneralInfoGroup />
+    <UsersGroup />
+    <NoticeboardGroup />
+    <ControlGroup />
     <ButtonUpdate>Update</ButtonUpdate>
-  </Form>
+  </div>
 )
 
-export default styled(ItemTabAdminGroupSettings)`
-  &__panel {
-    width: 100%;
-  }
-`
+export default ItemTabAdminGroupSettings
