@@ -2,8 +2,8 @@ import React from "react"
 
 import ContainerAdminPanel from "scenes/Admin/components/ContainerAdminPanel"
 
-import FilterableListAdminUser from "./FilterableListAdminUser"
-import FormAdminUser from "./FormAdminUser"
+import FilterableList from "./FilterableList"
+import Form from "./Form"
 
 const users = [
   {
@@ -20,8 +20,8 @@ const users = [
 
 const AdminUserManager = () => (
   <ContainerAdminPanel>
-    <FilterableListAdminUser users={users} />
-    <FormAdminUser users={users} />
+    <FilterableList users={users} />
+    <Form users={users} />
   </ContainerAdminPanel>
 )
 
