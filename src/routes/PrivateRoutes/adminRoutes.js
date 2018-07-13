@@ -7,25 +7,25 @@ import Loader from "base_components/Loader"
 
 // ------------------------- ADMIN PANEL COMPONENT -------------------------------//
 const AsyncAdminGroupManager = Loadable({
-  loader: () => import("scenes/Admin/AdminGroupManager"),
+  loader: () => import("scenes/Admin/GroupManager"),
   loading: Loader,
   timeout: 10000
 })
 
 const AsyncAdminUserManager = Loadable({
-  loader: () => import("scenes/Admin/AdminUserManager"),
+  loader: () => import("scenes/Admin/UserManager"),
   loading: Loader,
   timeout: 10000
 })
 
 const AsyncAdminCourseCreator = Loadable({
-  loader: () => import("scenes/Admin/AdminCourseCreator"),
+  loader: () => import("scenes/Admin/CourseCreator"),
   loading: Loader,
   timeout: 10000
 })
 
 const AsyncAdminOrganisationSettings = Loadable({
-  loader: () => import("scenes/Admin/AdminOrganisationSettings"),
+  loader: () => import("scenes/Admin/OrganisationSettings"),
   loading: Loader,
   timeout: 10000
 })
