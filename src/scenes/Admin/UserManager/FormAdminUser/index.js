@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 // Container
-import ContainerBodyAdmin from "../../../components/ContainerAdminPanel/components/ContainerBodyAdmin"
+import ContainerBodyAdmin from "scenes/Admin/components/ContainerAdminPanel/components/ContainerBodyAdmin"
 // form
 import ButtonUpdate from "base_components/ButtonUpdate"
 import Form from "base_components/RootForm"
