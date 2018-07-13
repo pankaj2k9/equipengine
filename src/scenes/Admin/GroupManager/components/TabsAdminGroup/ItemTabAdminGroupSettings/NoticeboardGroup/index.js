@@ -4,19 +4,40 @@ import { FormGroup, Switch } from "base_components/RootForm"
 
 import { Root, LabelNoticeBoard, ContainerFormGroups } from "./elements"
 
-const PanelGroupNoticeBoard = () => (
+const PanelGroupNoticeBoard = ({
+  isGroupNoticeboardActive,
+  areStudentsCanPostContent,
+  areStudentsCanComment,
+  onChange
+}) => (
   <Root
     title="Group Noticeboard"
-    AdditionalTitle={() => <Switch name="toggle-all" />}
+    AdditionalTitle={() => (
+      <Switch
+        value={isGroupNoticeboardActive}
+        onChange={e => onChange(e.target.checked, "isGroupNoticeboardActive")}
+        name="toggle-all"
+      />
+    )}
   >
     <ContainerFormGroups>
       <FormGroup isFlex>
         <LabelNoticeBoard>Students can post new content</LabelNoticeBoard>
-        <Switch name="post-content" />
+        <Switch
+          value={areStudentsCanPostContent}
+          onChange={e =>
+            onChange(e.target.checked, "areStudentsCanPostContent")
+          }
+          name="post-content"
+        />
       </FormGroup>
       <FormGroup isFlex>
         <LabelNoticeBoard>Students can comment</LabelNoticeBoard>
-        <Switch name="post-comment" />
+        <Switch
+          value={areStudentsCanComment}
+          onChange={e => onChange(e.target.checked, "areStudentsCanComment")}
+          name="post-comment"
+        />
       </FormGroup>
     </ContainerFormGroups>
   </Root>

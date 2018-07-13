@@ -1,4 +1,5 @@
 import React from "react"
+import { withHandlers } from "recompose"
 
 import ListControl, { ListItemControl } from "base_components/ListControl"
 import Button from "base_components/RootButton"
@@ -6,12 +7,12 @@ import { Label } from "base_components/RootForm"
 
 import { Root } from "./elements"
 
-const ControlGroup = () => (
+const ControlGroup = ({ isGroupActive, toggleStatus }) => (
   <Root>
     <ListControl>
       <ListItemControl>
-        <Button large light lightBorder>
-          Pause Group
+        <Button onClick={toggleStatus} large light lightBorder>
+          {isGroupActive ? "Pause Group" : "Start group"}
         </Button>
         <Label light>
           Group remains visible to teachers but access is denied for students.
@@ -30,4 +31,7 @@ const ControlGroup = () => (
   </Root>
 )
 
-export default ControlGroup
+export default withHandlers({
+  toggleStatus: ({ isGroupActive, onChange }) => () =>
+    onChange(!isGroupActive, "isGroupActive")
+})(ControlGroup)

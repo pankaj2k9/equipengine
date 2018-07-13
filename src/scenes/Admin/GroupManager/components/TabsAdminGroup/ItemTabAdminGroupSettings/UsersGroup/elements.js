@@ -1,8 +1,6 @@
 import styled from "styled-components"
 
 import { FormGroup } from "base_components/RootForm"
-import { ButtonToolbar } from "react-bootstrap"
-import Dropdown from "base_components/Dropdown"
 
 import { PanelFullWidth } from "../elements"
 
@@ -22,15 +20,8 @@ export const Root = styled(PanelFullWidth)`
 export const FormGroupUser = FormGroup.extend`
   display: flex;
   align-items: center;
+  padding-bottom: 20px;
 `
-
-export const StyledButtonTopbar = styled(ButtonToolbar)`
-  margin-top: -27px;
-`
-
-export const DropdownExtend = Dropdown.extend`
-  display: flex;
-  width: 82px;
-  align-items: center;
-  justify-content: space-evenly;
+export const Label = styled.div`
+  margin-right: 20px;
 `

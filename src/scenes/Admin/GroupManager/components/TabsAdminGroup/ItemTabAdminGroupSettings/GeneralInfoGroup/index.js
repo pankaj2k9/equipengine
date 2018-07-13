@@ -4,15 +4,26 @@ import { FormGroup, Text, TextArea, Label } from "base_components/RootForm"
 
 import { Root } from "./elements"
 
-const PanelGeneralInfo = () => (
+const PanelGeneralInfo = ({ groupName, groupDescription, onChange }) => (
   <Root title="General Information">
     <FormGroup>
       <Label htmlFor="group-name">Group Name</Label>
-      <Text name="group-name" placeholder="Connect: Level 1" />
+      <Text
+        value={groupName}
+        onChange={e => onChange(e.target.value, "groupName")}
+        name="group-name"
+        placeholder="Connect: Level 1"
+      />
     </FormGroup>
     <FormGroup>
-      <Label htmlFor="group-discussion">Group Discussion</Label>
-      <TextArea name="group-name" placeholder="Connect: Level 1" row={4} />
+      <Label htmlFor="group-description">Group Description</Label>
+      <TextArea
+        value={groupDescription}
+        onChange={e => onChange(e.target.value, "groupDescription")}
+        name="group-description"
+        placeholder="Connect: Level 1"
+        row={4}
+      />
     </FormGroup>
   </Root>
 )
