@@ -2,6 +2,12 @@ import styled from "styled-components"
 
 import BaseForm from "base_components/RootForm"
 import Panel from "base_components/Panel"
+import PanelAdminUser from "../PanelAdminUser"
+
+export const Root = styled(PanelAdminUser)`
+  border-top: 1px solid #dadada;
+  padding-bottom: 21px;
+`
 
 export const MainForm = styled(BaseForm)`
   width: 100%;

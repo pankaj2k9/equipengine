@@ -1,22 +1,17 @@
 import React from "react"
-import styled from "styled-components"
-// components
-import PanelAdminUser from "../PanelAdminUser"
-import DropdownUserRole from "./DropdownUserRole"
-import AccountContainer from "./AccountContainer"
-import MessengerAccess from "./MessengerAccess"
 
-const PanelFormAccountRole = styled(PanelAdminUser)`
-  border-top: 1px solid #dadada;
-  padding-bottom: 21px;
-`
+import DropdownGroup from "./DropdownGroup"
+import AccountGroup from "./AccountGroup"
+import MessengerAccessGroup from "./MessengerAccessGroup"
+
+import { Root } from "./elements"
 
 const PanelAccountRole = () => (
-  <PanelFormAccountRole title="Account Role">
-    <DropdownUserRole />
-    <AccountContainer />
-    <MessengerAccess />
-  </PanelFormAccountRole>
+  <Root title="Account Role">
+    <DropdownGroup />
+    <AccountGroup />
+    <MessengerAccessGroup />
+  </Root>
 )
 
 export default PanelAccountRole
