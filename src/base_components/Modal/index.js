@@ -12,7 +12,7 @@ const Modal = ({ isOpen, onClose, header, body, footer, className }) => (
   <RootModal show={isOpen} onHide={onClose} className={className}>
     {/* TODO: We gonna add option if the modal is used for form or not */}
     <Form>
-      <ModalHeader>{header}</ModalHeader>
+      <ModalHeader onClose={onClose}>{header}</ModalHeader>
       <ModalBody>{body}</ModalBody>
       <ModalFooter>{footer}</ModalFooter>
     </Form>

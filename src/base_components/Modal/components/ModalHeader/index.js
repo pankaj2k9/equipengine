@@ -1,20 +1,17 @@
 import React from "react"
 import PropTypes from "prop-types"
-import styled from "styled-components"
-//
-import { Modal } from "react-bootstrap"
 
-const ExtendModalHeader = styled(Modal.Header)`
-  padding: 20px 35px;
-  border-bottom: 1px solid #d8d8d8;
-`
+import { Root, CloseIcon } from "./elements"
 
-const ModalHeader = ({ children }) => (
-  <ExtendModalHeader>{children}</ExtendModalHeader>
+const ModalHeader = ({ children, onClose }) => (
+  <Root>
+    {children} <CloseIcon onClick={onClose}>x</CloseIcon>
+  </Root>
 )
 
 ModalHeader.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
+  onClose: PropTypes.func.isRequired
 }
 
 export default ModalHeader
