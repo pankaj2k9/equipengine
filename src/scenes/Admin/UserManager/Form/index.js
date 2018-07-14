@@ -11,6 +11,7 @@ import UserContacts from "base_components/UserContacts"
 
 import PanelAccountRole from "./PanelAccountRole"
 import PanelControlGroup from "./PanelControlGroup"
+import PanelGroups from "./PanelGroups"
 
 import { MainForm, ResponsivePanel } from "./elements"
 
@@ -117,6 +118,7 @@ class Form extends Component {
               changeZipCode={e => this.onChange(e.target.value, "zipCode")}
             />
           </ResponsivePanel>
+          <PanelGroups />
           <PanelAccountRole
             role={role}
             hasFileControlPrivelegies={hasFileControlPrivelegies}
