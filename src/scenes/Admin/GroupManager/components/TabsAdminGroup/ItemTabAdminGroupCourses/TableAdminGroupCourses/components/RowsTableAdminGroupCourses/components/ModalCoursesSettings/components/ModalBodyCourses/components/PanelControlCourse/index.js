@@ -1,33 +1,32 @@
 import React from "react"
-
+// base
 import Panel from "base_components/Panel"
-import ListControl, { ListItemControl } from "base_components/ListControl"
-
 // for list item control.
+import ListControl, { ListItemControl } from "base_components/ListControl"
 import Button from "base_components/RootButton"
 import { Label } from "base_components/RootForm"
 
 const PanelExtend = Panel.extend`
-  padding-bottom: 28px;
+  padding-bottom: 29px;
 `
 
-const PanelControlGroup = ({ className }) => (
-  <PanelExtend className={className}>
+const PanelControlCourse = () => (
+  <PanelExtend isFullWidth>
     <ListControl>
       <ListItemControl>
         <Button large light lightBorder>
-          Pause Group
+          Pause course
         </Button>
         <Label light>
-          Group remains visible to teachers but access is denied for students.
+          Course remains visible to teachers but access is denied for students.
         </Label>
       </ListItemControl>
       <ListItemControl>
         <Button light large lightBorder>
-          Remove Group
+          Remove course
         </Button>
         <Label light>
-          Once this group has been removed it cannot be restored. All data will
+          Once this course has been removed it cannot be restored. All data will
           be lost.
         </Label>
       </ListItemControl>
@@ -35,4 +34,4 @@ const PanelControlGroup = ({ className }) => (
   </PanelExtend>
 )
 
-export default PanelControlGroup
+export default PanelControlCourse

@@ -6,6 +6,7 @@ import Label from "./components/Label"
 import Text from "./components/Text"
 import TextArea from "./components/TextArea"
 import TextWithIcon from "./components/TextWithIcon"
+import NumberInput from "./components/Number"
 import {
   Checkbox,
   CheckboxCircle,
@@ -37,5 +38,6 @@ export {
   CheckboxCircleSecondary,
   Switch,
   Label,
-  FormGroup
+  FormGroup,
+  NumberInput
 }

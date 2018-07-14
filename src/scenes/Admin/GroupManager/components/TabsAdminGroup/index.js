@@ -1,15 +1,14 @@
 import React from "react"
-// for Tab Component
-import { Tab } from "react-bootstrap"
-import Tabs from "base_components/Tabs"
-// base components.
-import ContainerBodyAdmin from "../../../components/ContainerAdminPanel/components/ContainerBodyAdmin"
-// sub components
-import ItemTabAdminGroupSettings from "./components/ItemTabAdminGroupSettings"
-import ItemTabAdminGroupUsers from "./components/ItemTabAdminGroupUsers"
-import ItemTabAdminGroupCourses from "./components/ItemTabAdminGroupCourses"
 
-// settings admin manager group.
+import { Tab } from "react-bootstrap"
+
+import Tabs from "base_components/Tabs"
+
+import ContainerBodyAdmin from "../../../components/ContainerAdminPanel/components/ContainerBodyAdmin"
+import ItemTabAdminGroupSettings from "./ItemTabAdminGroupSettings"
+import ItemTabAdminGroupUsers from "./ItemTabAdminGroupUsers"
+import ItemTabAdminGroupCourses from "./ItemTabAdminGroupCourses"
+
 const TabsAdminGroup = () => (
   <ContainerBodyAdmin>
     <Tabs>
