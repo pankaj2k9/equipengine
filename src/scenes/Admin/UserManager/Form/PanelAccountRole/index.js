@@ -6,11 +6,19 @@ import MessengerAccessGroup from "./MessengerAccessGroup"
 
 import { Root } from "./elements"
 
-const PanelAccountRole = () => (
+const PanelAccountRole = ({
+  role,
+  hasFileControlPrivelegies,
+  isSuspended,
+  onChange
+}) => (
   <Root title="Account Role">
-    <DropdownGroup />
-    <AccountGroup />
-    <MessengerAccessGroup />
+    <DropdownGroup role={role} onChange={onChange} />
+    <AccountGroup
+      hasFileControlPrivelegies={hasFileControlPrivelegies}
+      onChange={onChange}
+    />
+    <MessengerAccessGroup isSuspended={isSuspended} onChange={onChange} />
   </Root>
 )
 

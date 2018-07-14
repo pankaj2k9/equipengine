@@ -5,7 +5,7 @@ import { Switch, Checkbox, Label } from "base_components/RootForm"
 
 import { Root, P, User, PrivelegesLabel, Flex } from "./elements"
 
-const AccountContainer = () => (
+const AccountContainer = ({ hasFileControlPrivelegies, onChange }) => (
   <Root>
     <P>
       Submissions teacher can see (if a person is not selected people will not
@@ -27,7 +27,11 @@ const AccountContainer = () => (
     </WhiteArea>
     <Flex isSpaceBetween>
       <PrivelegesLabel>File Control Priveleges</PrivelegesLabel>
-      <Switch name="fileControlPriveleges" />
+      <Switch
+        value={hasFileControlPrivelegies}
+        onChange={e => onChange(e.target.checked, "hasFileControlPrivelegies")}
+        name="fileControlPriveleges"
+      />
     </Flex>
   </Root>
 )

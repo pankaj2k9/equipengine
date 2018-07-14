@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import BaseDropdown from "base_components/RootDropdown"
 
 export const Root = styled.div`
   display: flex;
@@ -8,8 +9,8 @@ export const Root = styled.div`
   label {
     margin-right: 1.8em;
   }
+`
 
-  .dropdown {
-    width: 115px;
-  }
+export const Dropdown = styled(BaseDropdown)`
+  width: 150px;
 `
