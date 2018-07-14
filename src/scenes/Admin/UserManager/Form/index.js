@@ -21,7 +21,21 @@ import {
   getDropdownValue
 } from "utils/formFunctions"
 
-const validationSchema = joi.object().keys({})
+const validationSchema = joi.object().keys({
+  firstName: joi
+    .string()
+    .required()
+    .label("First name is required"),
+  lastName: joi
+    .string()
+    .required()
+    .label("Last name is required"),
+  email: joi
+    .string()
+    .email()
+    .required()
+    .label("Email name is required")
+})
 
 class Form extends Component {
   state = {
@@ -49,16 +63,15 @@ class Form extends Component {
     this.setState(nextFields)
   }
 
-  onSubmit = () => {
+  onSubmit = e => {
+    e.preventDefault()
+
     const fields = this.state
 
     const validationResult = validate(fields, validationSchema)
 
     if (!validationResult.error) {
-      return toastr.success(
-        "Notifications settings",
-        "Data updated successfully"
-      )
+      return toastr.success("User information", "Data updated successfully")
     }
 
     toastr.error(
@@ -93,7 +106,7 @@ class Form extends Component {
               email={email}
               changeFirstName={e => this.onChange(e.target.value, "firstName")}
               changeLastName={e => this.onChange(e.target.value, "lastName")}
-              changeEmail={e => this.onChange(e.target.value, "firstName")}
+              changeEmail={e => this.onChange(e.target.value, "email")}
             />
           </ResponsivePanel>
           <ResponsivePanel>
@@ -128,7 +141,7 @@ class Form extends Component {
           <PanelControlGroup
           // isSuspended
           />
-          <ButtonUpdate>Update</ButtonUpdate>
+          <ButtonUpdate onClick={this.onSubmit}>Update</ButtonUpdate>
         </MainForm>
       </ContainerBodyAdmin>
     )
