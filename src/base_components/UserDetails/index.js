@@ -6,6 +6,9 @@ import { FormGroup, Label, Text } from "base_components/RootForm"
 import iconUser from "resources/images/user.png"
 import ItemFlex from "base_components/ItemFlex"
 import UploadableAvatar from "base_components/UploadableAvatar"
+import ResetPasswordModal from "base_components/ResetPasswordModal"
+
+import modal from "hoc/modal"
 
 import { ButtonSetPassword, Spacing } from "./elemenst"
 
@@ -35,8 +38,8 @@ const EmailInput = ({ value, onChange }) => (
   </FormGroup>
 )
 
-const ResetPasswordButton = () => (
-  <ButtonSetPassword light lightBorder onClick={this.handleResetPasswordClick}>
+const ResetPasswordButton = ({ onClick }) => (
+  <ButtonSetPassword light lightBorder onClick={onClick}>
     Reset password
   </ButtonSetPassword>
 )
@@ -47,7 +50,10 @@ const UserDetails = ({
   email,
   changeFirstName,
   changeLastName,
-  changeEmail
+  changeEmail,
+  onOpen,
+  onClose,
+  isOpen
 }) => (
   <div>
     <Desktop>
@@ -62,7 +68,7 @@ const UserDetails = ({
             <LastName onChange={changeLastName} value={lastName} />
           </ContainerFlex>
           <EmailInput onChange={changeEmail} value={email} />
-          <ResetPasswordButton />
+          <ResetPasswordButton onClick={onOpen} />
         </ItemFlex>
       </ContainerFlex>
     </Desktop>
@@ -71,9 +77,10 @@ const UserDetails = ({
       <FirstName onChange={changeFirstName} value={firstName} />
       <LastName onChange={changeLastName} value={lastName} />
       <EmailInput onChange={changeEmail} value={email} />
-      <ResetPasswordButton />
+      <ResetPasswordButton onClick={() => onOpen} />
     </Mobile>
+    <ResetPasswordModal isOpen={isOpen} handleClose={onClose} />
   </div>
 )
 
-export default UserDetails
+export default modal(UserDetails)
