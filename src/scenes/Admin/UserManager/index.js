@@ -1,13 +1,27 @@
 import React from "react"
-// Containers
-import ContainerAdminPanel from "../components/ContainerAdminPanel"
-import FilterableListAdminUser from "./components/FilterableListAdminUser"
-import FormAdminUser from "./components/FormAdminUser"
+
+import ContainerAdminPanel from "scenes/Admin/components/ContainerAdminPanel"
+
+import FilterableList from "./FilterableList"
+import Form from "./Form"
+
+const users = [
+  {
+    name: "user1",
+    status: "teacher",
+    isActive: false
+  },
+  {
+    name: "user2",
+    status: "teacher",
+    isActive: false
+  }
+]
 
 const AdminUserManager = () => (
   <ContainerAdminPanel>
-    <FilterableListAdminUser />
-    <FormAdminUser />
+    <FilterableList users={users} />
+    <Form users={users} />
   </ContainerAdminPanel>
 )
 

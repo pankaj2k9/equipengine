@@ -1,76 +1,60 @@
-import React, { Component } from "react"
-import styled from "styled-components"
+import React, { Fragment } from "react"
+
 import ContainerFlex from "base_components/ContainerFlex"
 import DatePicker from "base_components/DatePicker"
 import { Desktop, Mobile } from "base_components/Responsive"
 import { FormGroup, Label, Text, TextArea } from "base_components/RootForm"
-import InputAddress from "base_components/InputAddress"
 import ItemFlex from "base_components/ItemFlex"
 
-const Spacing = styled.span`
-  margin-right: 0.7em;
-`
+import { Spacing } from "./elements"
 
-class UserContacts extends Component {
-  handlePhoneChange = ({ target: { value } }) => this.props.onPhoneChange(value)
-  handleBirthDateChange = value => this.props.onBirthDateChange(value)
-  handleAddressChange = ({ target: { value } }) =>
-    this.props.onAddressChange(value)
+const Phone = ({ value, onChange }) => (
+  <FormGroup>
+    <Label>Phone Number</Label>
+    <Text placeholder="+61908434" value={value} onChange={onChange} />
+  </FormGroup>
+)
 
-  renderPhoneInput = value => (
-    <FormGroup>
-      <Label>Phone Number</Label>
-      <Text
-        placeholder="+61908434"
-        value={value}
-        onChange={this.handlePhoneChange}
-      />
-    </FormGroup>
-  )
+const BirthDate = ({ value, onChange }) => (
+  <FormGroup>
+    <Label>Date of Birth</Label>
+    <DatePicker placeholder="09/15/1994" value={value} onChange={onChange} />
+  </FormGroup>
+)
 
-  renderBirthDateInput = value => (
-    <FormGroup>
-      <Label>Date of Birth</Label>
-      <DatePicker
-        placeholder="09/15/1994"
-        value={value}
-        onChange={this.handleBirthDateChange}
-      />
-    </FormGroup>
-  )
+const Address = ({ value, onChange }) => (
+  <FormGroup>
+    <Label>Address</Label>
+    <TextArea row={4} placeholder="Address" value={value} onChange={onChange} />
+  </FormGroup>
+)
 
-  renderAddressInput = value => (
-    <FormGroup>
-      <Label>Address</Label>
-      <TextArea
-        row={4}
-        placeholder="Address"
-        value={value}
-        onChange={this.handleAddressChange}
-      />
-    </FormGroup>
-  )
-
-  render() {
-    const { phone, birthDate, address } = this.props
-    return (
-      <React.Fragment>
-        <Desktop>
-          <ContainerFlex>
-            <ItemFlex>{this.renderPhoneInput(phone)}</ItemFlex>
-            <Spacing />
-            <ItemFlex>{this.renderBirthDateInput(birthDate)}</ItemFlex>
-          </ContainerFlex>
-        </Desktop>
-        <Mobile>
-          {this.renderPhoneInput(phone)}
-          {this.renderBirthDateInput(birthDate)}
-        </Mobile>
-        {this.renderAddressInput(address)}
-        <InputAddress />
-      </React.Fragment>
-    )
-  }
-}
+const UserContacts = ({
+  phone,
+  address,
+  birthDate,
+  changePhone,
+  changeAddress,
+  changeBirthDate
+}) => (
+  <Fragment>
+    <Desktop>
+      <ContainerFlex>
+        <ItemFlex>
+          <Phone value={phone} onChange={changePhone} />
+        </ItemFlex>
+        <Spacing />
+        <ItemFlex>
+          <BirthDate value={birthDate} onChange={changeBirthDate} />
+        </ItemFlex>
+      </ContainerFlex>
+    </Desktop>
+    <Mobile>
+      <Phone value={phone} onChange={changePhone} />
+      <BirthDate value={birthDate} onChange={changePhone} />
+    </Mobile>
+    <Address value={address} onChange={changeAddress} />
+  </Fragment>
+)
 
 export default UserContacts

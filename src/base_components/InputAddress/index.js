@@ -1,16 +1,25 @@
 import React from "react"
-// components
+
 import Dropdown from "base_components/RootDropdown"
 import { Text } from "base_components/RootForm"
 import ContainerFlex from "base_components/ContainerFlex"
 import { FormGroupDropdown, FormGroupZipCode } from "./styles"
 
-const InputAddress = () => (
+const InputAddress = ({
+  country,
+  state,
+  zipCode,
+  changeCountry,
+  changeState,
+  changeZipCode
+}) => (
   <ContainerFlex>
     <FormGroupDropdown>
       <Dropdown
         placeholder="Country"
         name="country"
+        value={country}
+        onChange={changeCountry}
         options={[
           { label: "Australlia", value: "au" },
           { label: "Philippines", value: "ph" }
@@ -21,6 +30,8 @@ const InputAddress = () => (
       <Dropdown
         placeholder="State"
         name="state"
+        value={state}
+        onChange={changeState}
         options={[
           { label: "Australlia", value: "au" },
           { label: "Philippines", value: "ph" }
@@ -28,7 +39,12 @@ const InputAddress = () => (
       />
     </FormGroupDropdown>
     <FormGroupZipCode>
-      <Text name="zipCode" placeholder="Zip code" />
+      <Text
+        value={zipCode}
+        onChange={changeZipCode}
+        name="zipCode"
+        placeholder="Zip code"
+      />
     </FormGroupZipCode>
   </ContainerFlex>
 )
