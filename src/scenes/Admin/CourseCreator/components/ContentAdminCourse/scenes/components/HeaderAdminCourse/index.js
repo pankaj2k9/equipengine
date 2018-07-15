@@ -35,11 +35,16 @@ const ContainerHeader = Container.extend`
 
 const HeaderAdminCourse = ({
   ControlButtonsGroup,
-  searchbarInfo: { placeholder, onSubmit }
+  searchbarInfo: { value, onChange, placeholder, onSubmit }
 }) => (
   <ContainerHeader>
     {ControlButtonsGroup && <ControlButtonsGroup />}
-    <SearchbarAdminCourse placeholder={placeholder} onClick={onSubmit} />
+    <SearchbarAdminCourse
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      onClick={onSubmit}
+    />
   </ContainerHeader>
 )
 
