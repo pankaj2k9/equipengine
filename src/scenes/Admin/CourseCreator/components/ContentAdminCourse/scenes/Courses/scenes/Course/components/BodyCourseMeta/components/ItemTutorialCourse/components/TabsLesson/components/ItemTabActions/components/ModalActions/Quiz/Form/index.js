@@ -51,7 +51,6 @@ const Form = ({ fields: { question }, refs: { file }, onChange }) => (
       <Label>Upload File</Label>
       <ButtonUpload onClick={e => openFileChooser(e, file.current)} />
       <FileChooser
-        // withForwardRef
         onChooseFiles={([file]) => onChange(file, "file")}
         ref={file}
       />
