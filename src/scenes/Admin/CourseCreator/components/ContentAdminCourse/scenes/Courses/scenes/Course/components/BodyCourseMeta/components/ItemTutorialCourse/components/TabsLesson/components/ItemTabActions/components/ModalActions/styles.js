@@ -7,6 +7,10 @@ import css from "utils/css"
  * -------------------------------------
  */
 export default css`
+  .modal-dialog {
+    width: 917px;
+  }
+
   .Select {
     width: 160px;
   }

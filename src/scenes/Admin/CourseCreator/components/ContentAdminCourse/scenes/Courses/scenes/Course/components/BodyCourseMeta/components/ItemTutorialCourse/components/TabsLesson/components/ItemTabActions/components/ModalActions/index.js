@@ -17,6 +17,8 @@ import Select from "react-select"
 import modalActionsStyles, { buttonExtendStyles } from "./styles"
 import modalActions, { modalBody, contentModalActions } from "./propTypes"
 
+import Quiz from "./Quiz"
+
 /**
  * -------------------------------------
  * Modal new actions
@@ -99,7 +101,8 @@ const ModalBody = ({ selectedOption, handleChange }) => {
           options={[
             { value: "reading", label: "Reading" },
             { value: "question", label: "Question" },
-            { value: "watch", label: "Watch" }
+            { value: "watch", label: "Watch" },
+            { value: "quiz", label: "Quiz" }
           ]}
         />
       </FormGroup>
@@ -121,35 +124,41 @@ ModalBody.defaultProps = modalBody.default
  */
 const ContentModalActions = ({ labelText, actionType }) => (
   <Fragment>
-    <div>
-      <FormGroup>
-        <Label>{labelText} &#42;</Label>
-        <TextArea
-          name="description"
-          placeholder="Communication and culture is focused on those who want to serve in their local community."
-          row={7}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label>Upload File</Label>
+    {actionType === "quiz" ? (
+      <Quiz />
+    ) : (
+      <Fragment>
         <div>
-          <ButtonUpload />
+          <FormGroup>
+            <Label>{labelText} &#42;</Label>
+            <TextArea
+              name="description"
+              placeholder="Communication and culture is focused on those who want to serve in their local community."
+              row={7}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Upload File</Label>
+            <div>
+              <ButtonUpload />
+            </div>
+          </FormGroup>
         </div>
-      </FormGroup>
-    </div>
-    {identical("watch", actionType) && (
-      <div>
-        <FormGroup>
-          <Label>Paste video link:</Label>
-          <Text name="videoLink" />
-        </FormGroup>
-        <FormGroup>
-          <Label>Choose from your library</Label>
-          <ButtonSelect light lightBorder>
-            Select
-          </ButtonSelect>
-        </FormGroup>
-      </div>
+        {identical("watch", actionType) && (
+          <div>
+            <FormGroup>
+              <Label>Paste video link:</Label>
+              <Text name="videoLink" />
+            </FormGroup>
+            <FormGroup>
+              <Label>Choose from your library</Label>
+              <ButtonSelect light lightBorder>
+                Select
+              </ButtonSelect>
+            </FormGroup>
+          </div>
+        )}
+      </Fragment>
     )}
   </Fragment>
 )

@@ -12,6 +12,7 @@ const DroppableList = ({
   colorState: { isDragColor, notDragColor },
   wrapperElement
 }) => {
+  console.log({ list })
   const WrapperElement = wrapperElement
 
   return (
