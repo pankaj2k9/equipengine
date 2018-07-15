@@ -1,5 +1,4 @@
 import React, { Fragment } from "react"
-import { withState } from "recompose"
 
 import IconMenu from "react-icons/lib/md/dehaze"
 
@@ -19,34 +18,42 @@ import { ListItemRoot } from "../List/elements"
 
 import { DROPPABLE_LIST_TYPE } from "../constants"
 
-const ListItem = withState("value", "onChange", "")(({ value, onChange }) => (
+import { openFileChooser } from "utils/formFunctions"
+
+import form from "hoc/form"
+
+const ListItem = form({
+  description: ""
+})(({ fields: { description }, onChange }) => (
   <ListItemRoot>
     <i>
       <IconMenu />
     </i>
     <CheckBox />
     <TextArea
-      value={value}
-      onChange={e => onChange(e.target.value)}
+      value={description}
+      onChange={e => onChange(e.target.value, "description")}
       placeholder="Communication and culture is focused on those who want to serve in their local community."
     />
   </ListItemRoot>
 ))
 
-const Form = () => (
+const Form = ({ fields: { question }, refs: { file }, onChange }) => (
   <Root>
     <FormGroup>
       <Label>Question*</Label>
-      <TextArea />
+      <TextArea
+        value={question}
+        onChange={e => onChange(e.target.value, "question")}
+      />
     </FormGroup>
     <FormGroup>
       <Label>Upload File</Label>
-      <ButtonUpload />
+      <ButtonUpload onClick={e => openFileChooser(e, file.current)} />
       <FileChooser
-        onChooseFiles={this.handleChooseFilesButtonClick}
-        ref={input => {
-          this.fileChooserDialog = input
-        }}
+        // withForwardRef
+        onChooseFiles={([file]) => onChange(file, "file")}
+        ref={file}
       />
     </FormGroup>
     <Divider />
@@ -91,4 +98,10 @@ const Form = () => (
   </Root>
 )
 
-export default Form
+export default form(
+  {
+    question: "",
+    file: null
+  },
+  ["file"]
+)(Form)
