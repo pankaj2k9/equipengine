@@ -8,17 +8,6 @@ export const Header = styled.header`
   justify-content: flex-start;
 `
 
-export const Title = styled.span`
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  color: #adadad;
-  margin-right: 0.5em;
-`
-
-export const Icon = styled.span`
-  margin-bottom: 0.4em;
-`
-
 export const ListRoot = styled.ul`
   @media screen and (max-width: 767px) {
     height: 155px;

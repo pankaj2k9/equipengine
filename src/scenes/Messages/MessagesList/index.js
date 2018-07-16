@@ -1,23 +1,53 @@
 import React from "react"
+import { compose } from "recompose"
 
 import ListItem from "./ListItem"
+import NewMessageModal from "../NewMessageModal"
 
-import { Header, Title, Icon, ListRoot } from "./elements"
+import { Header, ListRoot } from "./elements"
 
-import iconPen from "./write-pen.svg"
+import Button from "base_components/RootButton"
 
-const MessagesList = () => {
+import modal from "hoc/modal"
+
+import form from "hoc/form"
+
+const MessagesList = ({
+  isOpen,
+  onOpen,
+  onClose,
+  fields: { message },
+  refs: { attachment: attachmentRef },
+  onChange
+}) => {
   return (
     <div>
       <Header>
-        <Title>New Message</Title>
-        <Icon alt="Icon pen" src={iconPen} />
+        <Button onClick={onOpen} light lightBorder>
+          New Message
+        </Button>
       </Header>
       <ListRoot>
         <ListItem />
       </ListRoot>
+      <NewMessageModal
+        message={message}
+        attachmentRef={attachmentRef}
+        onChange={onChange}
+        isOpen={isOpen}
+        onClose={onClose}
+      />
     </div>
   )
 }
 
-export default MessagesList
+export default compose(
+  modal,
+  form(
+    {
+      message: "",
+      attachment: null
+    },
+    ["attachment"]
+  )
+)(MessagesList)

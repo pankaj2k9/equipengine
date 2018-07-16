@@ -32,7 +32,14 @@ export const openFileChooser = (e, ref) => {
     e.preventDefault()
   }
 
-  if (ref) ref.open()
+  if (ref) {
+    // In case of React.createRef() usage
+    if (ref.current) {
+      return ref.current.open()
+    }
+
+    ref.open()
+  }
 }
 
 export const getDropdownValue = selectedOption => {
