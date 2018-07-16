@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react"
 import { identical } from "ramda"
-import { isNotNil } from "ramda-adjunct"
 // components
 import AdminCourseModal from "scenes/Admin/CourseCreator/components/ContentAdminCourse/scenes/components/AdminCourseModal"
 import Form, {
@@ -11,11 +10,15 @@ import Form, {
 } from "base_components/RootForm"
 import ButtonUpload from "base_components/ButtonUpload"
 import Button from "base_components/RootButton"
-// react select
-import Select from "react-select"
+import FileChooser from "base_components/FileChooser"
+import ContainerFlex from "base_components/ContainerFlex"
 // resources
 import modalActionsStyles, { buttonExtendStyles } from "./styles"
 import modalActions, { modalBody, contentModalActions } from "./propTypes"
+
+import { openFileChooser } from "utils/formFunctions"
+
+import form from "hoc/form"
 
 /**
  * -------------------------------------
@@ -24,14 +27,9 @@ import modalActions, { modalBody, contentModalActions } from "./propTypes"
  * -------------------------------------
  */
 class ModalActions extends Component {
-  state = {
-    selectedOption: ""
-  }
-
-  handleChange = selectedOption => this.setState({ selectedOption })
-
   render() {
     const { handleClose, isOpen, className } = this.props
+
     return (
       <Form>
         <AdminCourseModal
@@ -43,12 +41,7 @@ class ModalActions extends Component {
               title: "New Action"
             },
             body: {
-              children: (
-                <ModalBody
-                  selectedOption={this.state.selectedOption}
-                  handleChange={this.handleChange}
-                />
-              )
+              children: <ModalBody />
             },
             footer: {
               buttonTitle: "Save"
@@ -80,35 +73,41 @@ const ButtonSelect = buttonExtendStyles(Button)
  * @see ModalActions
  * -------------------------------------
  */
-const ModalBody = ({ selectedOption, handleChange }) => {
-  // if tehre is selected option, assign the value in value variable
-  const actionType = selectedOption ? selectedOption.value : null
-  // label text
-  const labelText = identical("question", actionType)
-    ? "Question"
-    : "Description"
-
-  return (
-    <Fragment>
-      <FormGroup>
-        <Label>Select action type</Label>
-        <Select
-          name="dropdown-action"
-          value={actionType}
-          onChange={handleChange}
-          options={[
-            { value: "reading", label: "Reading" },
-            { value: "question", label: "Question" },
-            { value: "watch", label: "Watch" }
-          ]}
+const ModalBody = form(
+  {
+    audioFile: null,
+    videoLink: ""
+  },
+  ["audioFileRef"]
+)(({ fields: { videoLink }, refs: { audioFileRef }, onChange }) => (
+  <Fragment>
+    <FormGroup>
+      <ContainerFlex isColumn>
+        <Label>Upload audio File(mp3)</Label>
+        <ButtonUpload onClick={e => openFileChooser(e, audioFileRef.current)} />
+        <FileChooser
+          onChooseFiles={([file]) => onChange(file, "file")}
+          ref={audioFileRef}
         />
-      </FormGroup>
-      {isNotNil(actionType) && (
-        <ContentModalActions labelText={labelText} actionType={actionType} />
-      )}
-    </Fragment>
-  )
-}
+      </ContainerFlex>
+    </FormGroup>
+    <FormGroup>
+      <Label>Paste video link</Label>
+      <TextArea
+        value={videoLink}
+        onChange={e => onChange(e.target.value, "videoLink")}
+      />
+    </FormGroup>
+    <FormGroup>
+      <ContainerFlex isColumn>
+        <Label>Choose from your library</Label>
+        <Button light lightBorder>
+          Choose
+        </Button>
+      </ContainerFlex>
+    </FormGroup>
+  </Fragment>
+))
 
 ModalBody.propTypes = modalBody.props
 ModalBody.defaultProps = modalBody.default
