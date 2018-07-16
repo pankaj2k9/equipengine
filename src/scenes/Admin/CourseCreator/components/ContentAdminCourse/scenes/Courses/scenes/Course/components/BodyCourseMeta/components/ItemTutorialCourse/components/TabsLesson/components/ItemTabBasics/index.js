@@ -6,6 +6,7 @@ import Form, {
   Text,
   TextArea
 } from "base_components/RootForm"
+import Button from "base_components/RootButton"
 import IconMenu from "react-icons/lib/md/dehaze"
 import IconClose from "react-icons/lib/md/close"
 import DragDrop, {
@@ -55,6 +56,7 @@ const ItemTabBasics = ({ isOpen, onOpen, onClose }) => (
           onHandlerClick={onOpen}
         />
       </FormGroup>
+      <Button>Save</Button>
     </Form>
     <ModalActions isOpen={isOpen} handleClose={onClose} />
   </Fragment>
