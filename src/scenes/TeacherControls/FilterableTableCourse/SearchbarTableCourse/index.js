@@ -8,18 +8,23 @@ import SearchbarTable, {
 } from "base_components/SearchbarTable"
 import SttingsIcon from "react-icons/lib/md/settings"
 
+import SettingsModal from "scenes/TeacherControls/SettingsModal"
+
 import { SettingsButton } from "./elements"
 
-const SearchbarTableCourse = () => (
+import modal from "hoc/modal"
+
+const SearchbarTableCourse = ({ isOpen, onOpen, onClose }) => (
   <SearchbarTable>
     <SearchbarButtonFilter title="Show All" />
     <SearchbarDropdownCourse />
     <SearchbarForm />
-    <SettingsButton light>
+    <SettingsButton light onClick={onOpen}>
       <SttingsIcon fontSize={23} />Filter
     </SettingsButton>
     <Flagged className="Flagged" />
+    <SettingsModal isOpen={true || isOpen} onClose={onClose} />
   </SearchbarTable>
 )
 
-export default SearchbarTableCourse
+export default modal(SearchbarTableCourse)

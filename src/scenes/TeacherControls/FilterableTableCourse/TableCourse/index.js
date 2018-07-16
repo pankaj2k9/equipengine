@@ -1,7 +1,7 @@
 import React from "react"
 
 import Tables, { TableRow } from "base_components/Tables"
-import TableRowCourse from "./components/TableRowCourse"
+import TableRowCourse from "./TableRowCourse"
 import "./styles.css"
 import userAvatar from "resources/images/user.png"
 

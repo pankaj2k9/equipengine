@@ -2,8 +2,8 @@ import React, { Component } from "react"
 import PropTypes from "prop-types"
 
 // import files
-import SearchbarTableCourse from "./components/SearchbarTableCourse"
-import TableCourse from "./components/TableCourse"
+import SearchbarTableCourse from "./SearchbarTableCourse"
+import TableCourse from "./TableCourse"
 
 class FilterableTableCourse extends Component {
   constructor() {
