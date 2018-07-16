@@ -5,6 +5,7 @@ import { Tab } from "react-bootstrap"
 import Tabs from "base_components/Tabs"
 import ItemTabBasics from "./components/ItemTabBasics"
 import ItemTabActions from "./components/ItemTabActions"
+import ItemTabFiles from "./components/ItemTabFiles"
 // styles
 import { tabsLessonStyles } from "./styles"
 
@@ -18,7 +19,7 @@ const TabsLesson = tabsLessonStyles(({ className }) => (
         <ItemTabActions />
       </Tab>
       <Tab eventKey={3} title="Files">
-        files
+        <ItemTabFiles />
       </Tab>
     </Tabs>
   </ContainerBodyAdmin>
