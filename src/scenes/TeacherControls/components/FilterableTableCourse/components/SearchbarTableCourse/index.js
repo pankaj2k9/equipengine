@@ -7,6 +7,9 @@ import SearchbarTable, {
   SearchbarDropdownLesson,
   SearchbarForm
 } from "base_components/SearchbarTable"
+import SttingsIcon from "react-icons/lib/md/settings"
+
+import { SettingsButton } from "./elements"
 
 const SearchbarTableCourse = () => (
   <SearchbarTable>
@@ -14,6 +17,9 @@ const SearchbarTableCourse = () => (
     <SearchbarDropdownCourse />
     <SearchbarDropdownLesson />
     <SearchbarForm />
+    <SettingsButton light>
+      <SttingsIcon fontSize={23} />Filter
+    </SettingsButton>
     <Flagged className="Flagged" />
   </SearchbarTable>
 )
