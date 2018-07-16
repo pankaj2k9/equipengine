@@ -5,7 +5,7 @@ import Button from "base_components/RootButton"
 export const SettingsButton = styled(Button)`
   background-color: #eeeeee;
   margin-right: 15px;
-  width: 95px;
+  width: 84px;
   display: flex;
   justify-content: space-between;
   align-items: center;
