@@ -1,20 +1,15 @@
 import React from "react"
-import Loadable from "react-loadable" // for code splitting
-//
+
 import ErrorBoundary from "base_components/ErrorBoundary"
-import Loader from "base_components/Loader"
+import Loadable from "base_components/Loadable"
 
 // ------------------------- ADMIN PANEL COMPONENT -------------------------------//
 const AsyncAdminGroupManager = Loadable({
-  loader: () => import("scenes/Admin/GroupManager"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Admin/GroupManager")
 })
 
 const AsyncAdminUserManager = Loadable({
-  loader: () => import("scenes/Admin/UserManager"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Admin/UserManager")
 })
 
 // const AsyncAdminCourseCreator = Loadable({
@@ -24,28 +19,20 @@ const AsyncAdminUserManager = Loadable({
 // })
 
 const AsyncAdminOrganisationSettings = Loadable({
-  loader: () => import("scenes/Admin/OrganisationSettings"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Admin/OrganisationSettings")
 })
 
 // Course creator components
 const AsyncCourses = Loadable({
-  loader: () => import("scenes/Admin/Courses"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Admin/Courses")
 })
 
 const AsyncAddons = Loadable({
-  loader: () => import("scenes/Admin/Addons"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Admin/Addons")
 })
 
 const AsyncVideos = Loadable({
-  loader: () => import("scenes/Admin/Videos"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Admin/Videos")
 })
 
 const adminRoutes = [

@@ -1,14 +1,12 @@
 import React, { Fragment } from "react"
 import { connectedRouterRedirect } from "redux-auth-wrapper/history4/redirect"
 import locationHelperBuilder from "redux-auth-wrapper/history4/locationHelper"
-/* for code splitting - loadable */
-import Loadable from "react-loadable"
 import { Switch, Route } from "react-router-dom"
 //
 import AynscNotFound from "./AynscNotFound"
-import Loader from "base_components/Loader"
-import PrivateRoutes from "./PrivateRoutes"
 import features from "features"
+import Loadable from "base_components/Loadable"
+import PrivateRoutes from "./PrivateRoutes"
 
 //
 // Adds auth redirecting
@@ -39,28 +37,7 @@ const userIsNotAuthenticated = connectedRouterRedirect({
 })
 
 const AsyncLandingPage = Loadable({
-  loader: () => import("scenes/LandingPage"),
-  loading: Loader, // before this component gets loaded, we will render first this Loader component.
-  timeout: 10000
-})
-
-// TODO move to index.js LoginPage, so it will be possible just to use features.auth.pages.LoginPage
-const AsyncLogin = Loadable({
-  loader: () => import("scenes/Auth/LoginPage"),
-  loading: Loader, // before this component gets loaded, we will render first this Loader component.
-  timeout: 10000
-})
-
-const AsyncSignup = Loadable({
-  loader: () => import("scenes/Auth/SignupPage"),
-  loading: Loader, // before this component gets loaded, we will render first this Loader component.
-  timeout: 10000
-})
-
-const AsyncVerifyEmail = Loadable({
-  loader: () => import("scenes/Auth/VerifyEmailPage"),
-  loading: Loader, // before this component gets loaded, we will render first this Loader component.
-  timeout: 10000
+  loader: () => import("scenes/LandingPage")
 })
 
 const Routes = () => (
@@ -72,21 +49,21 @@ const Routes = () => (
         strict
         path="/login"
         // Redirect to secure home page if user is already logged in
-        component={userIsNotAuthenticated(AsyncLogin)}
+        component={userIsNotAuthenticated(features.auth.pages.Login)}
       />
       <Route
         exact
         strict
         path="/signup"
         // Redirect to secure home page if user is already logged in
-        component={userIsNotAuthenticated(AsyncSignup)}
+        component={userIsNotAuthenticated(features.auth.pages.Signup)}
       />
       <Route
         exact
         strict
         path="/verify-email"
         // Redirect to secure home page if user is already logged in
-        component={userIsNotAuthenticated(AsyncVerifyEmail)}
+        component={userIsNotAuthenticated(features.auth.pages.VerifyEmail)}
       />
       <Route
         path="/secure"

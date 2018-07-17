@@ -13,7 +13,7 @@ const mapState = () =>
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
-      logout: features.auth.logout
+      logout: features.auth.actions.logout
     },
     dispatch
   )

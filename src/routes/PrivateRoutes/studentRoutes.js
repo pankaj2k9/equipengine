@@ -1,79 +1,54 @@
 import React from "react"
-import Loadable from "react-loadable" // for code splitting
-//
+
 import ErrorBoundary from "base_components/ErrorBoundary"
-import Loader from "base_components/Loader"
+import Loadable from "base_components/Loadable"
 
 const AsyncDashboard = Loadable({
-  loader: () => import("scenes/Dashboard"),
-  loading: Loader, // before this component gets loaded, we will render first this Loader component.
-  timeout: 10000
+  loader: () => import("scenes/Dashboard")
 })
 
 const AsyncCourses = Loadable({
-  loader: () => import("scenes/Courses"),
-  loading: Loader, // before this component gets loaded, we will render first this Loader component.
-  timeout: 10000
+  loader: () => import("scenes/Courses")
 })
 
 const AsyncCourse = Loadable({
-  loader: () => import("scenes/Course"),
-  loading: Loader, // before this component gets loaded, we will render first this Loader component.
-  timeout: 10000
+  loader: () => import("scenes/Course")
 })
 
 const AsyncTutorial = Loadable({
-  loader: () => import("scenes/Tutorial"),
-  loading: Loader, // before this component gets loaded, we will render first this Loader component.
-  timeout: 10000
+  loader: () => import("scenes/Tutorial")
 })
 
 const AsyncGroups = Loadable({
-  loader: () => import("scenes/Groups"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Groups")
 })
 
 const AsyncMessages = Loadable({
-  loader: () => import("scenes/Messages"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Messages")
 })
 
 const AsyncPeople = Loadable({
-  loader: () => import("scenes/People"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/People")
 })
 
 const AsyncNotifications = Loadable({
-  loader: () => import("scenes/Notifications"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Notifications")
 })
 
 const AsyncFiles = Loadable({
-  loader: () => import("scenes/Files"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Files")
 })
 
 const AsyncActivity = Loadable({
-  loader: () => import("scenes/Activity"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Activity")
 })
 
 const AsyncHome = Loadable({
-  loader: () => import("scenes/Home"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Home")
 })
 
 const AsyncSettings = Loadable({
-  loader: () => import("scenes/Settings"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Settings")
 })
 
 const privateRoutes = [
