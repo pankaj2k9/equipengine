@@ -6,7 +6,6 @@ import FlaggedIcon from "./components/FlaggedIcon"
 import SearchbarButtonFilter from "./components/SearchbarButtonFilter"
 import SearchbarDropdown from "./components/SeachbarDropdown"
 import SearchbarDropdownCourse from "./components/SearchbarDropdownCourse"
-import SearchbarDropdownLesson from "./components/SearchbarDropdownLesson"
 import SearchbarForm from "./components/SearchbarForm"
 import { $borderLightColor } from "shared/color"
 
@@ -36,7 +35,6 @@ export {
   SearchbarButtonFilter,
   SearchbarDropdown,
   SearchbarDropdownCourse,
-  SearchbarDropdownLesson,
   SearchbarForm,
   Flagged,
   FlaggedIcon

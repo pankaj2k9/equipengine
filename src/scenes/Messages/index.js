@@ -1,23 +1,21 @@
 import React from "react"
-import styled from "styled-components"
 
-import MessagesList from "./components/MessagesList"
-import MessagesConvo from "./components/MessagesConvo"
 import PageWrapper from "global/PageWrapper"
 
-const Messages = styled(({ className }) => {
+import MessagesSidebar from "./MessagesSidebar"
+import MessagesConvo from "./MessagesConvo"
+
+import { Root } from "./elements"
+
+const Messages = () => {
   return (
     <PageWrapper disableMargin>
-      <div className={className}>
-        <MessagesList />
+      <Root>
+        <MessagesSidebar />
         <MessagesConvo />
-      </div>
+      </Root>
     </PageWrapper>
   )
-})`
-  @media screen and (min-width: 768px) {
-    display: flex;
-  }
-`
+}
 
 export default Messages
