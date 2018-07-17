@@ -1,10 +1,7 @@
-import Loadable from "react-loadable"
-import Loader from "base_components/Loader"
+import Loadable from "base_components/Loadable"
 
 const AsyncNotFound = Loadable({
-  loader: () => import("scenes/NotFound"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("global/NotFound")
 })
 
 export default AsyncNotFound

@@ -1,32 +1,23 @@
 import React from "react"
-import Loadable from "react-loadable" // for code splitting
-//
+
 import ErrorBoundary from "base_components/ErrorBoundary"
-import Loader from "base_components/Loader"
+import Loadable from "base_components/Loadable"
 
 //------------------------- TEACHERS PANEL COMPONENT -------------------------------//
 const AsyncGroupsActivity = Loadable({
-  loader: () => import("scenes/TeacherGroupsActivity"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/TeacherGroupsActivity")
 })
 
 const AsyncTeacherControls = Loadable({
-  loader: () => import("scenes/TeacherControls"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/TeacherControls")
 })
 
 const AsyncTeacherFiles = Loadable({
-  loader: () => import("scenes/TeacherFiles"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/TeacherFiles")
 })
 
 const AsyncTeacherUserManager = Loadable({
-  loader: () => import("scenes/TeacherUserManager"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/TeacherUserManager")
 })
 
 const teacherRoutes = [

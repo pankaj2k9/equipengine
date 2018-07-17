@@ -3,9 +3,9 @@ import { bindActionCreators } from "redux"
 import { connect } from "react-redux"
 import { createStructuredSelector } from "reselect"
 //
+import features from "features"
 import Loading from "base_components/Loading"
 import ListGroups from "../ListGroups"
-import { selectors, thunks } from "global/MyGroups"
 import UnderlinedTitle from "base_components/UnderlinedTitle"
 
 class MyGroups extends Component {
@@ -27,14 +27,14 @@ class MyGroups extends Component {
 
 const mapState = () =>
   createStructuredSelector({
-    groups: selectors.selectMyGroups(),
-    isFetchingGroups: selectors.selectIsFetchingMyGroups()
+    groups: features.myGroups.selectors.selectMyGroups(),
+    isFetchingGroups: features.myGroups.selectors.selectIsFetchingMyGroups()
   })
 
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
-      fetchGroups: thunks.fetchMyGroups
+      fetchGroups: features.myGroups.actions.fetchMyGroups
     },
     dispatch
   )

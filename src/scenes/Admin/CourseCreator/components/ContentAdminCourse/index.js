@@ -6,27 +6,20 @@ import { Route, Switch, Redirect } from "react-router-dom"
 import ErrorBoundary from "base_components/ErrorBoundary"
 import Breadcrumbs from "base_components/Breadcrumbs"
 // Scenes
-import Loader from "base_components/Loader"
-import Loadable from "react-loadable"
+import Loadable from "base_components/Loadable"
 // New course modal
 import NewCourseModal from "./scenes/NewCourseModal"
 // Course library
 const AsyncCourses = Loadable({
-  loader: () => import("./scenes/Courses"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("./scenes/Courses")
 })
 // Add-ons
 const AsyncAddons = Loadable({
-  loader: () => import("./scenes/Addons"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("./scenes/Addons")
 })
 // Videos
 const AsyncVideos = Loadable({
-  loader: () => import("./scenes/Videos"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("./scenes/Videos")
 })
 
 // The styled container of ContentAdminCourse component.

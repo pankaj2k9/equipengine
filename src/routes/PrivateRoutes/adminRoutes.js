@@ -1,32 +1,23 @@
 import React from "react"
-import Loadable from "react-loadable" // for code splitting
-//
+
 import ErrorBoundary from "base_components/ErrorBoundary"
-import Loader from "base_components/Loader"
+import Loadable from "base_components/Loadable"
 
 // ------------------------- ADMIN PANEL COMPONENT -------------------------------//
 const AsyncAdminGroupManager = Loadable({
-  loader: () => import("scenes/Admin/GroupManager"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Admin/GroupManager")
 })
 
 const AsyncAdminUserManager = Loadable({
-  loader: () => import("scenes/Admin/UserManager"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Admin/UserManager")
 })
 
 const AsyncAdminCourseCreator = Loadable({
-  loader: () => import("scenes/Admin/CourseCreator"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Admin/CourseCreator")
 })
 
 const AsyncAdminOrganisationSettings = Loadable({
-  loader: () => import("scenes/Admin/OrganisationSettings"),
-  loading: Loader,
-  timeout: 10000
+  loader: () => import("scenes/Admin/OrganisationSettings")
 })
 
 const adminRoutes = [
