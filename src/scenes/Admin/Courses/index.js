@@ -7,15 +7,14 @@ import ErrorBoundary from "base_components/ErrorBoundary"
 import FilterableTableCourses from "./components/FilterableTableCourses"
 import ContainerAdminCourse from "scenes/Admin/CourseCreator/ContainerAdminCourse"
 // Scenes
-import Loader from "base_components/Loader"
 import Loadable from "react-loadable"
 
 import ContentAdminCourse from "scenes/Admin/CourseCreator/ContentAdminCourse"
+import Loading from "base_components/Loading"
 
 const AsyncCourse = Loadable({
   loader: () => import("./scenes/Course"),
-  loading: Loader, // before this component gets loaded, we will render first this Loader component.
-  timeout: 10000
+  loading: Loading // before this component gets loaded, we will render first this Loader component.
 })
 
 const Courses = ({ match }) => {
