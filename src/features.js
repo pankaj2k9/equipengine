@@ -1,6 +1,8 @@
 import FeatureDisabled from "global/FeatureDisabled"
-import registerAuth from "scenes/Auth"
-import registerMyGroups from "scenes/MyGroups"
+import * as Auth from "scenes/Auth"
+import * as Courses from "scenes/Courses"
+import * as Landing from "scenes/Landing"
+import * as MyGroups from "scenes/MyGroups"
 
 /**
  * Map with all the public accessible features
@@ -92,7 +94,29 @@ const registerFeature = ({
   }
 }
 
-registerAuth()
-registerMyGroups()
+registerFeature({
+  name: "auth",
+  enabled: true,
+  ...Auth
+})
+registerFeature({
+  name: "landing",
+  enabled: true,
+  ...Landing
+})
+registerFeature({
+  name: "myGroups",
+  enabled: true,
+  ...MyGroups
+})
+registerFeature({
+  name: "courses",
+  enabled: true,
+  ...Courses
+})
+registerFeature({
+  name: "course",
+  enabled: true
+})
 
-export { features as default, registerFeature }
+export default features

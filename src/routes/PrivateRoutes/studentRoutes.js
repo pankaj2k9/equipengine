@@ -1,14 +1,11 @@
 import React from "react"
 
 import ErrorBoundary from "base_components/ErrorBoundary"
+import features from "features"
 import Loadable from "base_components/Loadable"
 
 const AsyncDashboard = Loadable({
   loader: () => import("scenes/Dashboard")
-})
-
-const AsyncCourses = Loadable({
-  loader: () => import("scenes/Courses")
 })
 
 const AsyncCourse = Loadable({
@@ -63,7 +60,7 @@ const privateRoutes = [
     )
   },
   {
-    path: "/secure/dashboard",
+    path: "/secure/:groupId/dashboard",
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -93,17 +90,17 @@ const privateRoutes = [
     )
   },
   {
-    path: "/secure/courses",
+    path: "/secure/:groupId/courses",
     strict: true,
     exact: true,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the courses page.">
-        <AsyncCourses {...props} />
+        <features.courses.pages.Courses {...props} />
       </ErrorBoundary>
     )
   },
   {
-    path: "/secure/courses/:id",
+    path: "/secure/:groupId/courses/:id",
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -113,7 +110,7 @@ const privateRoutes = [
     )
   },
   {
-    path: "/secure/courses/:courseId/tutorials/:id",
+    path: "/secure/:groupId/courses/:courseId/tutorials/:id",
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -123,7 +120,7 @@ const privateRoutes = [
     )
   },
   {
-    path: "/secure/groups",
+    path: "/secure/:groupId/groups",
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -133,7 +130,7 @@ const privateRoutes = [
     )
   },
   {
-    path: "/secure/people",
+    path: "/secure/:groupId/people",
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -143,7 +140,7 @@ const privateRoutes = [
     )
   },
   {
-    path: "/secure/files",
+    path: "/secure/:groupId/files",
     strict: true,
     exact: true,
     AsyncComponent: props => (

@@ -1,6 +1,5 @@
 import Loadable from "base_components/Loadable"
 import reducer, { types, selectors } from "./ducks"
-import { registerFeature } from "features"
 import * as thunks from "./thunks"
 
 const AsyncLogin = Loadable({
@@ -27,13 +26,4 @@ const actions = {
   logout: thunks.logout
 }
 
-export default () =>
-  registerFeature({
-    name: "auth",
-    enabled: true,
-    actions,
-    pages,
-    reducer,
-    selectors,
-    types
-  })
+export { actions, pages, reducer, selectors, types }

@@ -4,11 +4,16 @@ import CircleProgressBar from "base_components/CircleProgressBar"
 import { Delimeter, Root, Status } from "./elements"
 
 // TODO probably try to move CompletedCircleBar component
-const TutorialsCompleted = () => (
+const TutorialsCompleted = ({ count, completed }) => (
   <Root>
-    <CircleProgressBar small percentage={(20 / 22) * 100} />
+    <CircleProgressBar
+      small
+      percentage={count === 0 ? 0 : (completed / count) * 100}
+    />
     <Delimeter />
-    <Status>20 of 22 completed</Status>
+    <Status>
+      {completed} of {count} completed
+    </Status>
   </Root>
 )
 

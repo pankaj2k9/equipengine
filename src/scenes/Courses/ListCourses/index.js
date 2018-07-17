@@ -10,7 +10,6 @@ import {
   ViewButton
 } from "./elements"
 import Box from "base_components/Box"
-import Breadcrumbs from "base_components/Breadcrumbs"
 import courseImg from "resources/images/course-img.png"
 import { ListRow } from "base_components/List"
 import NoCourses from "../NoCourses"
@@ -22,43 +21,37 @@ const ListCourses = ({ courses, match }) => {
   }
 
   return (
-    <div>
-      {/* Breadcrubms with courses */}
-      <Breadcrumbs
-        items={[
-          {
-            to: match.url,
-            label: "Courses"
-          }
-        ]}
-      />
-
-      {/* List of courses */}
-      <Box>
-        <StyledList>
-          {courses.map(course => (
-            <ListRow key={course.courseId}>
-              {/* Course default image */}
+    <Box>
+      <StyledList>
+        {courses.map(course => (
+          <ListRow key={course.courseId}>
+            {/* Course default image */}
+            <div>
+              <img
+                alt="Course Img"
+                src={course.image.url || courseImg}
+                width="150px"
+              />
+            </div>
+            {/* Course title */}
+            <StyledListRowLeft>
+              <p>{course.title}</p>
+              <p>{course.description}</p>
+            </StyledListRowLeft>
+            {/* Link to course and completed circle */}
+            <StyledListRowRight>
               <div>
-                <img alt="Course Img" src={courseImg} width="150px" />
+                <TutorialsCompleted
+                  count={course.lessons_count}
+                  completed={0}
+                />
+                <ViewButton text="View" url={`${match.url}/${course.id}`} />
               </div>
-              {/* Course title */}
-              <StyledListRowLeft>
-                <p>{course.title}</p>
-                <p>{course.subtitle}</p>
-              </StyledListRowLeft>
-              {/* Link to course and completed circle */}
-              <StyledListRowRight>
-                <div>
-                  <TutorialsCompleted />
-                  <ViewButton text="View" url={`${match.url}/${course.id}`} />
-                </div>
-              </StyledListRowRight>
-            </ListRow>
-          ))}
-        </StyledList>
-      </Box>
-    </div>
+            </StyledListRowRight>
+          </ListRow>
+        ))}
+      </StyledList>
+    </Box>
   )
 }
 

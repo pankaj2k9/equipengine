@@ -18,6 +18,7 @@ const NoticeboardDashboard = () => (
     <Breadcrumbs
       items={[
         {
+          // TODO change to /secure/groupId/dashboard if it makes sense
           to: "/secure/dashboard",
           label: "Noticeboard"
         }

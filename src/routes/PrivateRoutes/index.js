@@ -41,7 +41,11 @@ const PrivateRoutes = ({ location }) => (
   <Fragment>
     {/* Displaying the Navbar and Sidebar */}
     {/* TODO Replace AsyncNavBar and Main with parameters in createRoute functions as options like { sidebar: false, navbar: true })  */}
-    <Route path="/secure" render={props => <AsyncMainBars {...props} />} />
+    {/* TODO try to remove groupId variable, cause it is not really required for admin panels */}
+    <Route
+      path="/secure/:groupId"
+      render={props => <AsyncMainBars {...props} />}
+    />
     {/* Minor optional padding for sidebar*/}
     <Main pathname={location.pathname}>
       {/* Routes that app uses */}

@@ -1,8 +1,8 @@
 import React from "react"
 import { createProvider } from "storext"
 // assets
-import MastheadHeaderHome from "./components/MastheadHeaderHome"
-import NavbarHeaderHome from "./components/NavbarHeaderHome"
+import MastheadHeaderHome from "../MastheadHeaderHome"
+import NavbarHeaderHome from "../NavbarHeaderHome"
 import homeStyles, { headerHomeStyles, mainHomeStyles } from "./styles"
 
 /**

@@ -26,4 +26,5 @@ export { client }
 
 export * from "./Auth"
 export * from "./Activities"
+export * from "./Courses"
 export * from "./Groups"

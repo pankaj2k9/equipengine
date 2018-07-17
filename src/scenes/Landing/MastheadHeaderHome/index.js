@@ -1,7 +1,7 @@
 import React from "react"
 // assets
 import LinkButton from "base_components/LinkButton"
-import bannerImg from "../../banner.svg"
+import bannerImg from "resources/images/banner.svg"
 import mastheadHomeStyles, { SectionFlex } from "./styles"
 
 const MastheadHome = mastheadHomeStyles(({ className }) => (

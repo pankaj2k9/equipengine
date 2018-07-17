@@ -28,33 +28,33 @@ class TutorialModalPage extends React.Component {
   }
 
   handleCloseModal = () => {
-    const { match, history } = this.props
-    history.push(`/secure/courses/${match.params.courseId}`)
+    const { groupId, courseId } = this.props.match.params
+    this.props.history.push(`/secure/${groupId}/courses/${courseId}`)
   }
 
   handlePreviousClick = () => {
-    const { match, history } = this.props
+    const { groupId, courseId } = this.props.match.params
     const lessonIndex = this.findLessonIndex()
     if (lessonIndex === -1 || lessonIndex === 0) {
       // Fail to get next page cause there are no more lessons
       return
     }
     const previousLessonId = this.state.lessons[lessonIndex - 1].id
-    history.push(
-      `/secure/courses/${match.params.courseId}/tutorials/${previousLessonId}`
+    this.props.history.push(
+      `/secure/${groupId}/courses/${courseId}/tutorials/${previousLessonId}`
     )
   }
 
   handleNextClick = () => {
-    const { match, history } = this.props
+    const { groupId, courseId } = this.props.match.params
     const lessonIndex = this.findLessonIndex()
     if (lessonIndex === -1 || lessonIndex + 1 >= this.state.lessons.length) {
       // Fail to get next page cause there are no more lessons
       return
     }
     const nextLessonId = this.state.lessons[lessonIndex + 1].id
-    history.push(
-      `/secure/courses/${match.params.courseId}/tutorials/${nextLessonId}`
+    this.props.history.push(
+      `/secure/${groupId}/courses/${courseId}/tutorials/${nextLessonId}`
     )
   }
 

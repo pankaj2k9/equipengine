@@ -24,6 +24,7 @@ const Files = () => (
     <Breadcrumbs
       items={[
         {
+          // TODO change to /secure/groupId/files if it makes sense
           to: "/secure/files",
           label: "Files"
         }

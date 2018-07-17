@@ -3,7 +3,7 @@ import React from "react"
 import PageWrapper from "global/PageWrapper"
 
 import MessagesSidebar from "./MessagesSidebar"
-import MessagesConvo from "./MessagesConvo"
+import MessagesList from "./MessagesList"
 
 import { Root } from "./elements"
 
@@ -12,7 +12,7 @@ const Messages = () => {
     <PageWrapper disableMargin>
       <Root>
         <MessagesSidebar />
-        <MessagesConvo />
+        <MessagesList />
       </Root>
     </PageWrapper>
   )

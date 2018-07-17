@@ -1,15 +1,10 @@
-import React from "react"
-import PropTypes from "prop-types"
+import reducer from "./ducks"
+import Loadable from "base_components/Loadable"
 
-import subscribingOnCourses from "./hoc"
-import ListCourses from "./components/ListCourses"
-
-const Courses = ({ courses, match }) => {
-  return <ListCourses courses={courses} match={match} />
+const pages = {
+  Courses: Loadable({
+    loader: () => import("./CoursesPage")
+  })
 }
 
-Courses.propTypes = {
-  courses: PropTypes.array
-}
-
-export default subscribingOnCourses(Courses)
+export { reducer, pages }

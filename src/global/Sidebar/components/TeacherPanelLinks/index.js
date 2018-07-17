@@ -8,18 +8,24 @@ import Link from "../Link"
 import { LinkWithPopover } from "../elements"
 
 // this is for teacher panel links
-const TeacherPanelLinks = () => (
+const TeacherPanelLinks = ({ groupId }) => (
   <div className="Sidebar__body__otherPages">
     <Menu>
-      <Link text="Groups Activiy" url="/secure/teacher/groups-activity" />
+      <Link
+        text="Groups Activity"
+        url={`/secure/${groupId}/teacher/groups-activity`}
+      />
       <LinkWithPopover>
         <Link
           text="Submissions Activity"
-          url="/secure/teacher/submissions-activity"
+          url={`/secure/${groupId}/teacher/submissions-activity`}
         />
         <Popover dataCount={10} />
       </LinkWithPopover>
-      <Link text="User Manager" url="/secure/teacher/user-manager" />
+      <Link
+        text="User Manager"
+        url={`/secure/${groupId}/teacher/user-manager`}
+      />
     </Menu>
   </div>
 )

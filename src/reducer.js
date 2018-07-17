@@ -7,9 +7,10 @@ import { reducer as activities } from "global/Activities"
 
 // this is the root reducers, we will combine all reducers that we are using.
 export default combineReducers({
-  routing,
-  toastr,
   activities,
   auth: features.auth.reducer,
-  myGroups: features.myGroups.reducer
+  courses: features.courses.reducer,
+  myGroups: features.myGroups.reducer,
+  routing,
+  toastr
 })

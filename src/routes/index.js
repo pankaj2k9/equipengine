@@ -5,7 +5,6 @@ import { Switch, Route } from "react-router-dom"
 //
 import AynscNotFound from "./AynscNotFound"
 import features from "features"
-import Loadable from "base_components/Loadable"
 import PrivateRoutes from "./PrivateRoutes"
 
 //
@@ -36,14 +35,10 @@ const userIsNotAuthenticated = connectedRouterRedirect({
   authenticatedSelector: features.auth.selectors.selectIsNotLoggedIn()
 })
 
-const AsyncLandingPage = Loadable({
-  loader: () => import("scenes/LandingPage")
-})
-
 const Routes = () => (
   <Fragment>
     <Switch>
-      <Route exact strict path="/" component={AsyncLandingPage} />
+      <Route exact strict path="/" component={features.landing.pages.Landing} />
       <Route
         exact
         strict

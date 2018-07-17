@@ -9,6 +9,7 @@ export const StyledList = styled(List)`
 export const StyledListRowLeft = styled(ListRowLeft)`
   @media screen and (min-width: 768px) {
     margin: 0 10px;
+    flex: 1;
   }
 `
 
