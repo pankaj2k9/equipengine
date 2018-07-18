@@ -41,13 +41,19 @@ const TextContainer = styled.div`
   }
 `
 
-const SearchBar = styled(({ className, placeholder }) => (
+const SearchBar = styled(({ className, placeholder, value, onChange }) => (
   <Form className={className}>
     <TextContainer>
       <span>
         <img alt="icon Search" src={iconSearchO} />
       </span>
-      <input name="searchbar" type="text" placeholder={placeholder} value="" />
+      <input
+        value={value}
+        onChange={onChange}
+        name="searchbar"
+        type="text"
+        placeholder={placeholder}
+      />
     </TextContainer>
   </Form>
 ))`

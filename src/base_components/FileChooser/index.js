@@ -1,10 +1,11 @@
-import React from "react"
+import React, { forwardRef } from "react"
 import PropTypes from "prop-types"
+import { branch, withProps } from "recompose"
 
 /**
  * Wrapper around simple browser file chooser.
  */
-export default class FileChooserDialog extends React.Component {
+class FileChooserDialog extends React.Component {
   /**
    * Handle Choose button is clicked in browser file chooser.
    */
@@ -43,3 +44,7 @@ export default class FileChooserDialog extends React.Component {
 FileChooserDialog.PropTypes = {
   onChooseFiles: PropTypes.func.isRequired
 }
+
+export default forwardRef((props, ref) => (
+  <FileChooserDialog ref={ref} {...props} />
+))

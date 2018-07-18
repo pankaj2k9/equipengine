@@ -23,8 +23,10 @@ class CheckboxRound extends React.Component {
   }
 
   render() {
+    const { className } = this.props
+
     return (
-      <div className="Form__Group--round">
+      <div className={`${className} Form__Group--round`}>
         <input
           checked={this.state.complete}
           onChange={this.handleInputChange}

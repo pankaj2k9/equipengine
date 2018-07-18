@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, createRef } from "react"
 import joi from "joi"
 import { toastr } from "react-redux-toastr"
 
@@ -98,12 +98,12 @@ const PanelGeneralInformation = ({
       <Label>Logo</Label>
       <ContainerFlex alignItems="center">
         <ButtonUpload
-          onClick={e => openFileChooser(e, logoRef)}
+          onClick={e => openFileChooser(e, logoRef.current)}
           isFileAttached={logo}
         />
         <FileChooser
           onChooseFiles={files => onChange(files[0], "logo")}
-          ref={el => updateRef(el, "logoRef")}
+          ref={logoRef}
         />
         <HintTextLogo>Recommended size: 160 x 55 px</HintTextLogo>
       </ContainerFlex>
@@ -222,6 +222,8 @@ class ItemTabMainSettings extends Component {
     email: "",
     telephone: ""
   }
+
+  logoRef = createRef()
 
   onChange = (e, selector) => {
     const fields = this.state
