@@ -7,16 +7,25 @@ import { ContainerSearchbarList } from "../../../../../components/ContainerAdmin
 import Button from "base_components/RootButton"
 import Form, { Text } from "base_components/RootForm"
 
+import form from "hoc/form"
+
 // This is searchbar for list group
-const SearchbarListAdminGroup = styled(({ className }) => (
-  <ContainerSearchbarList className={className}>
-    <Button secondary>Show All</Button>
-    <Form>
-      <Text name="create-groups" placeholder="Search groups" />
-    </Form>
-    <Button>Create a group</Button>
-  </ContainerSearchbarList>
-))`
+const SearchbarListAdminGroup = styled(
+  ({ className, fields: { term }, onChange }) => (
+    <ContainerSearchbarList className={className}>
+      <Button secondary>Show All</Button>
+      <Form>
+        <Text
+          value={term}
+          onChange={e => onChange(e.target.value, "term")}
+          name="create-groups"
+          placeholder="Search groups"
+        />
+      </Form>
+      <Button>Create a group</Button>
+    </ContainerSearchbarList>
+  )
+)`
   @media screen and (min-width: 768px) {
     button:first-child {
       margin-right: 0.6em;
@@ -29,4 +38,6 @@ const SearchbarListAdminGroup = styled(({ className }) => (
   }
 `
 
-export default SearchbarListAdminGroup
+export default form({
+  term: ""
+})(SearchbarListAdminGroup)

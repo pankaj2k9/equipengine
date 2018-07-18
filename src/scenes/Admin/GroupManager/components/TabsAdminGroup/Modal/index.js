@@ -15,6 +15,7 @@ import {
 } from "./elements"
 
 import IconAdd from "react-icons/lib/md/add-circle-outline"
+import form from "hoc/form"
 
 const ListItem = ({ name, avatar }) => (
   <ListItemElement>
@@ -28,15 +29,21 @@ const Header = ({ text }) => (
   </HeaderElement>
 )
 
-const Body = ({ items, placeholder }) => (
-  <div>
-    <Text placeholder={placeholder} />
-    <List>
-      {items.map(({ name, avatar }) => (
-        <ListItem name={name} avatar={avatar} />
-      ))}
-    </List>
-  </div>
+const Body = form({ term: "" })(
+  ({ items, placeholder, fields: { term }, onChange }) => (
+    <div>
+      <Text
+        value={term}
+        onChange={e => onChange(e.target.value, "term")}
+        placeholder={placeholder}
+      />
+      <List>
+        {items.map(({ name, avatar }) => (
+          <ListItem name={name} avatar={avatar} />
+        ))}
+      </List>
+    </div>
+  )
 )
 
 const Footer = () => (

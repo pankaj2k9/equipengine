@@ -22,6 +22,7 @@ import ModalActions from "./components/ModalActions"
 import { pure, compose } from "recompose"
 // resourses
 import modal from "hoc/modal"
+import form from "hoc/form"
 
 /**
  * -------------------------------------
@@ -30,16 +31,29 @@ import modal from "hoc/modal"
  * @see ListThingsToDo
  * -------------------------------------
  */
-const ItemTabBasics = ({ isOpen, onOpen, onClose }) => (
+const ItemTabBasics = ({
+  isOpen,
+  onOpen,
+  onClose,
+  fields: { name, description },
+  onChange
+}) => (
   <Fragment>
     <Form>
       <FormGroup>
         <Label>Lesson Name</Label>
-        <Text name="name" placeholder="Communication and culture" />
+        <Text
+          value={name}
+          onChange={e => onChange(e.target.value, "name")}
+          name="name"
+          placeholder="Communication and culture"
+        />
       </FormGroup>
       <FormGroup>
         <Label>Lesson Description</Label>
         <TextArea
+          value={description}
+          onChange={e => onChange(e.target.value, "description")}
           name="description"
           placeholder="Communication and culture is focused on those who want to serve in their local community."
           row={7}
@@ -63,6 +77,7 @@ const ItemTabBasics = ({ isOpen, onOpen, onClose }) => (
 )
 
 export default compose(
+  form({ name: "", description: "" }),
   modal,
   pure
 )(ItemTabBasics)
