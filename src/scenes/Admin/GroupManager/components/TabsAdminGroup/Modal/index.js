@@ -11,14 +11,18 @@ import {
   List,
   ListItem as ListItemElement,
   Checkbox,
-  Avatar
+  Avatar,
+  LabelListItem
 } from "./elements"
 
 import IconAdd from "react-icons/lib/md/add-circle-outline"
 
 const ListItem = ({ name, avatar }) => (
   <ListItemElement>
-    <Checkbox /> {avatar && <Avatar src={avatar} />} <div>{name}</div>
+    <LabelListItem>
+      {" "}
+      <Checkbox /> {avatar && <Avatar src={avatar} />} <div>{name}</div>
+    </LabelListItem>
   </ListItemElement>
 )
 
