@@ -1,7 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import { withStateHandlers, withProps, compose, withContext } from "recompose"
+import {
+  withStateHandlers,
+  withProps,
+  compose,
+  withContext,
+  withHandlers
+} from "recompose"
 
 import TeacherUser from "./components/TeacherUser"
 import TeacherUserSettings from "./components/TeacherUserSettings"
@@ -37,7 +43,7 @@ const courses = [
     name: "course4",
     id: "rc2j3r89c"
   }
-]
+].map(c => ({ ...c, description: "Some description" }))
 
 const users = [
   {
@@ -76,9 +82,22 @@ export default compose(
       })
     }
   ),
-  withContext(contextPropTypes, ({ users, selectedUserId, selectUser }) => ({
-    users,
-    selectedUserId,
-    selectUser
-  }))
+  withProps(({ courses, users, selectedUserId }) => {
+    const selectedUser = users.find(({ id }) => id === selectedUserId)
+
+    const selectedCourses = selectedUser.courses.map(id =>
+      courses.find(course => course.id === id)
+    )
+
+    return { selectedCourses }
+  }),
+  withContext(
+    contextPropTypes,
+    ({ users, selectedUserId, selectUser, selectedCourses }) => ({
+      users,
+      selectedUserId,
+      selectUser,
+      selectedCourses
+    })
+  )
 )(TeacherUserManager)

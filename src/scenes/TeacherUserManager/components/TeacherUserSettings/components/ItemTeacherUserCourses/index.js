@@ -3,32 +3,31 @@ import React, { Fragment } from "react"
 import { DroppableList, DroppableListItem } from "base_components/DragDrop"
 //
 import ListItemCourse from "./components/ListItemCourse"
+import { compose, getContext, renameProp } from "recompose"
+import { contextPropTypes } from "../../../../proptypes"
 
 // for teacher user courses component.
-const ItemTeacherUserCourses = () => (
-  <DroppableList droppableId="droppable-01" type="COURSES">
+const ItemTeacherUserCourses = ({ courses }) => (
+  <DroppableList list={courses} droppableId="droppable-01" type="COURSES">
     {list => (
       <Fragment>
-        <DroppableListItem
-          draggableId="draggable-01"
-          type="COURSES"
-          index={0}
-          key="02348jklj2343"
-        >
-          <ListItemCourse />
-        </DroppableListItem>
-        <DroppableListItem
-          draggableId="draggable-02"
-          type="COURSES"
-          index={1}
-          key="02348jklj2346"
-        >
-          <ListItemCourse />
-        </DroppableListItem>
+        {courses.map(course => (
+          <DroppableListItem
+            draggableId="draggable-01"
+            type="COURSES"
+            index={0}
+            key="02348jklj2343"
+          >
+            <ListItemCourse course={course} />
+          </DroppableListItem>
+        ))}
       </Fragment>
     )}
   </DroppableList>
 )
 
 // we will subscribe this component into hoc to make some components more collapsible.
-export default ItemTeacherUserCourses
+export default compose(
+  getContext(contextPropTypes),
+  renameProp("selectedCourses", "courses")
+)(ItemTeacherUserCourses)

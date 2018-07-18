@@ -24,11 +24,11 @@ const MenuButton = styled.span`
 `
 
 // this is the shape of the list item course.
-const ListItemCourse = ({ className, isOpenPanel, onToggle }) => (
+const ListItemCourse = ({ className, isOpenPanel, onToggle, course }) => (
   <li className={className}>
     <div>
       <ContainerInfoCourse>
-        <HeaderItemCourse />
+        <HeaderItemCourse course={course} />
         <BodyItemCourse onToggle={onToggle} isOpenPanel={isOpenPanel} />
       </ContainerInfoCourse>
       <MenuButton>
