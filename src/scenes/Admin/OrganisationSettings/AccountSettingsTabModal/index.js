@@ -5,7 +5,6 @@ import {
   withStateHandlers,
   withHandlers,
   pure,
-  withProps,
   mapProps
 } from "recompose"
 
@@ -25,7 +24,6 @@ import {
 } from "./elements"
 
 import IconAdd from "react-icons/lib/md/add-circle-outline"
-import { Label } from "base_components/RootForm"
 
 const ListItem = ({
   user: { name, avatar, id, isSelected },
