@@ -8,10 +8,15 @@ import { Label } from "base_components/RootForm"
 import Button from "base_components/RootButton"
 import { Text, TextArea, FormGroup } from "base_components/RootForm"
 import ButtonUpload from "base_components/ButtonUpload"
+import FileChooser from "base_components/FileChooser"
 
 import GearIcon from "react-icons/lib/md/settings"
 
 import { Header as HeaderElement, H5 } from "./elements"
+
+import form from "hoc/form"
+
+import { openFileChooser } from "utils/formFunctions"
 
 const Header = () => (
   <HeaderElement>
@@ -20,50 +25,78 @@ const Header = () => (
   </HeaderElement>
 )
 
-const Body = ({ updateVal, name, description }) => (
-  <div>
-    <FormGroup>
-      <Label>Course Name &#42;</Label>
-      <Text
-        value={name}
-        onChange={e => updateVal(e, "name")}
-        placeholder="Communication and culture"
-      />
-    </FormGroup>
-    <FormGroup>
-      <Label>Course Description</Label>
-      <TextArea
-        value={description}
-        onChange={e => updateVal(e, "description")}
-        placeholder="Communication and culture is focused on those who want to serve in their local community."
-        row={7}
-      />
-    </FormGroup>
-    <FormGroup>
-      <Label>Course Main Image</Label>
-      <div>
-        <ButtonUpload />
-      </div>
-    </FormGroup>
-    <FormGroup>
-      <Label>Course Banner Image</Label>
-      <div>
-        <ButtonUpload />
-      </div>
-    </FormGroup>
-  </div>
+const Body = form(
+  {
+    name: "",
+    description: "",
+    mainImage: null,
+    bannerImage: null
+  },
+  ["mainImageRef", "bannerImageRef"]
+)(
+  ({
+    fields: { name, description, mainImage, bannerImage },
+    refs: { mainImageRef, bannerImageRef },
+    onChange
+  }) => (
+    <div>
+      <FormGroup>
+        <Label>Course Name &#42;</Label>
+        <Text
+          value={name}
+          onChange={e => onChange(e.target.value, "name")}
+          placeholder="Communication and culture"
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label>Course Description</Label>
+        <TextArea
+          value={description}
+          onChange={e => onChange(e.target.value, "description")}
+          placeholder="Communication and culture is focused on those who want to serve in their local community."
+          row={7}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label>Course Main Image</Label>
+        <div>
+          <ButtonUpload
+            isFileAttached={mainImage}
+            onClick={e => openFileChooser(e, mainImageRef)}
+          />
+        </div>
+        <FileChooser
+          onChooseFiles={([file]) => onChange(file, "mainImage")}
+          ref={mainImageRef}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label>Course Banner Image</Label>
+        <div>
+          <ButtonUpload
+            isFileAttached={bannerImage}
+            onClick={e => openFileChooser(e, bannerImageRef)}
+          />
+          <FileChooser
+            onChooseFiles={([file]) => onChange(file, "bannerImage")}
+            ref={bannerImageRef}
+          />
+        </div>
+      </FormGroup>
+    </div>
+  )
 )
 
 const Footer = () => (
   <Button onClick={() => console.log("Create new course!")}>Add</Button>
 )
 
-const Modal = ({ handleClose, isOpen, updateVal, name, description }) => (
+const Modal = ({ handleClose, isOpen }) => (
   <BaseModal
     isOpen={isOpen}
     onClose={handleClose}
     header={<Header />}
-    body={<Body updateVal={updateVal} name={name} description={description} />}
+    body={<Body />}
     footer={<Footer />}
   />
 )
@@ -73,23 +106,4 @@ Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired
 }
 
-export default compose(
-  withStateHandlers(
-    {
-      name: "",
-      description: "",
-      mainImage: null,
-      bannerImage: null
-    },
-    {
-      updateVal: props => (e, selector) => {
-        const { value } = e.target
-
-        return {
-          ...props,
-          [selector]: value
-        }
-      }
-    }
-  )
-)(Modal)
+export default Modal
