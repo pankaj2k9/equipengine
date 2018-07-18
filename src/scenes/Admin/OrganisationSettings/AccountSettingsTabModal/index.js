@@ -1,6 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { compose, withStateHandlers, withHandlers, pure } from "recompose"
+import {
+  compose,
+  withStateHandlers,
+  withHandlers,
+  pure,
+  withProps,
+  mapProps
+} from "recompose"
 
 import BaseModal from "base_components/Modal"
 import Button from "base_components/RootButton"
@@ -13,17 +20,29 @@ import {
   Hint,
   ListItem as ListItemElement,
   Checkbox,
-  Avatar
+  Avatar,
+  ListItemLabel
 } from "./elements"
 
 import IconAdd from "react-icons/lib/md/add-circle-outline"
+import { Label } from "base_components/RootForm"
 
-const ListItem = ({ user: { name, avatar, id }, select, deselect }) => (
-  <ListItemElement>
-    <Checkbox onChange={e => (e.target.checked ? select(id) : deselect(id))} />{" "}
-    {avatar && <Avatar src={avatar} />} <div>{name}</div>
-  </ListItemElement>
-)
+const ListItem = ({
+  user: { name, avatar, id, isSelected },
+  select,
+  deselect
+}) => {
+  const toggle = () => (isSelected ? deselect(id) : select(id))
+
+  return (
+    <ListItemElement>
+      <Checkbox checked={isSelected} onChange={toggle} />{" "}
+      <ListItemLabel onClick={toggle}>
+        {avatar && <Avatar src={avatar} />} <div>{name}</div>
+      </ListItemLabel>
+    </ListItemElement>
+  )
+}
 
 const Header = () => (
   <HeaderElement>
@@ -66,7 +85,8 @@ Modal.propTypes = {
   users: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      avatar: PropTypes.string.isRequired
+      avatar: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired
     })
   ).isRequired,
   onSubmit: PropTypes.func.isRequired
@@ -104,5 +124,13 @@ export default compose(
       handleClose()
     }
   }),
+  mapProps(({ selectedIds, users, ...rest }) => ({
+    users: users.map(user => ({
+      ...user,
+      isSelected: !!selectedIds.find(id => id === user.id)
+    })),
+    selectedIds,
+    ...rest
+  })),
   pure
 )(Modal)
