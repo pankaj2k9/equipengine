@@ -3,6 +3,8 @@ import styled from "styled-components"
 
 import UserAvatar from "base_components/UserAvatar"
 import iconUser from "resources/images/user.png"
+import { compose, getContext } from "recompose"
+import { contextPropTypes } from "../../../../proptypes"
 
 // the list component
 const List = styled.ul`
@@ -14,16 +16,17 @@ const List = styled.ul`
 `
 
 // the list item user component.
-const ListItemUser = styled(({ className }) => (
-  <li className={className}>
+const ListItemUser = styled(({ className, name, onClick }) => (
+  <li className={className} onClick={onClick}>
     <UserAvatar image={iconUser} />
-    <span>Jane Doe</span>
+    <span>{name}</span>
   </li>
 ))`
   display: flex;
   align-items: center;
   padding: 0.8em;
-  background-color: ${props => props.active && "rgba(184,184,184,.2)"};
+  background-color: ${({ active }) => active && "rgba(184,184,184,.2)"};
+  cursor: pointer;
 
   span {
     color: #111111;
@@ -36,12 +39,17 @@ const ListItemUser = styled(({ className }) => (
 `
 
 // hold the List of user components.
-const ListUser = () => (
+const ListUser = ({ users, selectedUserId, selectUser }) => (
   <List>
-    <ListItemUser active />
-    <ListItemUser />
-    <ListItemUser />
+    {users.map(({ id, name }) => (
+      <ListItemUser
+        name={name}
+        active={selectedUserId === id}
+        selectUser={selectUser}
+        onClick={() => selectUser(id)}
+      />
+    ))}
   </List>
 )
 
-export default ListUser
+export default compose(getContext(contextPropTypes))(ListUser)
