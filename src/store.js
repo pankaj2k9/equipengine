@@ -10,7 +10,6 @@ import {
 import storage from "redux-persist/lib/storage" // defaults to localStorage for web and AsyncStorage for react-native
 import thunk from "redux-thunk"
 //
-import { PERSIST_KEY } from "global/constants"
 import rootReducer from "./reducer"
 
 // Our history syncs our browserHistory with our store and must be exported so we can use it within our routes later.
@@ -37,7 +36,7 @@ const composedEnhancers = compose(
 
 // Init app from local storage (at least, auth stuff)
 const persistConfig = {
-  key: PERSIST_KEY,
+  key: "equipengine",
   storage,
   stateReconciler: seamlessImmutableReconciler,
   transforms: [

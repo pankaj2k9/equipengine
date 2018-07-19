@@ -11,7 +11,7 @@ const isStudentType = type => identical(type, STUDENT_ROLE)
 
 const MainPanelLinks = ({ groupId, accountType }) => (
   <div className="Sidebar__body__mainPages">
-    <DropdownGroups />
+    <DropdownGroups groupId={groupId} />
     <Menu>
       <Link text="Dashboard" url={`/secure/${groupId}/dashboard`} />
       <Link isStrict text="Courses" url={`/secure/${groupId}/courses`} />

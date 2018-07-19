@@ -5,7 +5,7 @@ import Popover from "base_components/Popover"
 import Menu from "../Menu"
 import Link from "../Link"
 
-import { LinkWithPopover } from "../elements"
+import { LinkWithPopover } from "./elements"
 
 // this is for teacher panel links
 const TeacherPanelLinks = ({ groupId }) => (

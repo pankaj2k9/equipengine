@@ -1,3 +1,3 @@
-import MainBarsContainer from "./MainBarsContainer"
+import MainBars from "./MainBars"
 
-export { MainBarsContainer as default }
+export default MainBars

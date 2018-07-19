@@ -136,11 +136,11 @@ export default WrappedComponent =>
       z-index: 1;
       opacity: 1;
       height: ${props =>
-        addHeight({ type: props.type, pathname: props.pathname })};
+        addHeight({ type: props.type, pathname: props.location.pathname })};
 
       .Sidebar__body {
         display: ${props =>
-          addDisplay({ type: props.type, pathname: props.pathname })};
+          addDisplay({ type: props.type, pathname: props.location.pathname })};
       }
 
       .Sidebar__inner {

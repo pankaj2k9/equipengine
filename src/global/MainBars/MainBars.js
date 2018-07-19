@@ -5,22 +5,11 @@ import Navbar from "../Navbar"
 import Sidebar from "../Sidebar"
 import toggleSidebar from "./hoc/toggleSidebar"
 
-const MainBars = ({
-  openSidebar,
-  closeSidebar,
-  isOpen,
-  currentUserRole,
-  location
-}) => {
+const MainBars = ({ openSidebar, closeSidebar, isOpen }) => {
   return (
     <div>
-      <Navbar onOpenSidebar={openSidebar} accountType={currentUserRole} />
-      <Sidebar
-        isOpen={isOpen}
-        onCloseSidebar={closeSidebar}
-        accountType={currentUserRole}
-        pathname={location.pathname}
-      />
+      <Navbar onOpenSidebar={openSidebar} />
+      <Sidebar isOpen={isOpen} onCloseSidebar={closeSidebar} />
     </div>
   )
 }
@@ -28,9 +17,7 @@ const MainBars = ({
 MainBars.propTypes = {
   openSidebar: PropTypes.func.isRequired,
   closeSidebar: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  accountType: PropTypes.string.isRequired,
-  location: PropTypes.object.isRequired
+  isOpen: PropTypes.bool.isRequired
 }
 
 MainBars.defaultProps = {

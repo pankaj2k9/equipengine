@@ -2,17 +2,20 @@ import React from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 import { compose } from "recompose"
+import { connect } from "react-redux"
+import { createStructuredSelector } from "reselect"
 import { identical } from "ramda"
 import { withRouter } from "react-router-dom"
 //
 import { ADMIN_ROLE, STUDENT_ROLE, TEACHER_ROLE } from "services/Auth"
+import AdminPanelLinks from "./AdminPanelLinks"
+import features from "features"
 import LogoContainer from "base_components/LogoContainer"
-import MainPanelLinks from "./components/MainPanelLinks"
-import TeacherPanelLinks from "./components/TeacherPanelLinks"
-import AdminPanelLinks from "./components/AdminPanelLinks"
+import MainPanelLinks from "./MainPanelLinks"
+import TeacherPanelLinks from "./TeacherPanelLinks"
 import withStyle from "./withStyle"
 
-const Sidebar = ({ isOpen, onCloseSidebar, accountType, match, className }) => {
+const Sidebar = ({ className, accountType, isOpen, match, onCloseSidebar }) => {
   // when the isOpen props is true, add other classname on sidebar
   const sidebarClassnames = classNames("Sidebar", { isOpen })
   const {
@@ -47,7 +50,13 @@ Sidebar.propTypes = {
   accountType: PropTypes.string.isRequired
 }
 
+const mapState = () =>
+  createStructuredSelector({
+    accountType: features.auth.selectors.selectCurrentUserRole()
+  })
+
 export default compose(
+  component => connect(mapState)(component),
   withRouter,
   withStyle
 )(Sidebar)
