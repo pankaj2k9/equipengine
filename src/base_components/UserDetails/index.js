@@ -77,7 +77,7 @@ const UserDetails = ({
       <FirstName onChange={changeFirstName} value={firstName} />
       <LastName onChange={changeLastName} value={lastName} />
       <EmailInput onChange={changeEmail} value={email} />
-      <ResetPasswordButton onClick={() => onOpen} />
+      <ResetPasswordButton onClick={onOpen} />
     </Mobile>
     <ResetPasswordModal isOpen={isOpen} handleClose={onClose} />
   </div>
