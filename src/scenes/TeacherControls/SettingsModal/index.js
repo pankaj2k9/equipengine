@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 
 import BaseModal from "base_components/Modal"
 import Button from "base_components/RootButton"
-import { Checkbox } from "base_components/RootForm"
+import { Checkbox, Label } from "base_components/RootForm"
 
 import {
   HeaderRoot,
@@ -23,10 +23,10 @@ const Header = () => (
   </HeaderRoot>
 )
 
-const ListItem = () => (
+const ListItem = ({ id }) => (
   <ListItemRoot>
-    <Checkbox />
-    <div>Communication and Culture</div>
+    <Checkbox id={id} />
+    <Label htmlFor={id}>Communication and Culture</Label>
   </ListItemRoot>
 )
 
@@ -35,14 +35,14 @@ const Body = () => (
     <LabelElement>By course</LabelElement>
     <SubLabel>Select the course/s you want to display</SubLabel>
     <ListContainer>
-      <ListItem />
-      <ListItem />
+      <ListItem id="0" />
+      <ListItem id="1" />
     </ListContainer>
     <LabelElement>By person</LabelElement>
     <SubLabel>Select the person/s you want to display</SubLabel>
     <ListContainer>
-      <ListItem />
-      <ListItem />
+      <ListItem id="2" />
+      <ListItem id="3" />
     </ListContainer>
     <FilterContainer>
       <Button light lightBorder>
