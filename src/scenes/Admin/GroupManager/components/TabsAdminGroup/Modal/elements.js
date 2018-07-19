@@ -26,6 +26,11 @@ export const ListItem = styled.div`
   align-items: center;
 `
 
+export const LabelListItem = styled.label`
+  display: flex;
+  align-items: center;
+`
+
 export const Checkbox = styled(BaseCheckbox)`
   margin-right: 20px;
 `
