@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 
 import BaseModal from "base_components/Modal"
 import Button from "base_components/RootButton"
+import { Label } from "base_components/RootForm"
 
 import {
   Header as HeaderElement,
@@ -14,10 +15,19 @@ import {
 
 import IconAdd from "react-icons/lib/md/add-circle-outline"
 
-const ListItem = () => (
+const groups = [
+  {
+    name: "group 1"
+  },
+  {
+    name: "group 2"
+  }
+]
+
+const ListItem = ({ name }) => (
   <ListItemElement>
-    <Checkbox />
-    <div>group name</div>
+    <Checkbox id={name} />
+    <Label htmlFor={name}>{name}</Label>
   </ListItemElement>
 )
 
@@ -29,11 +39,7 @@ const Header = () => (
 
 const Body = () => (
   <div>
-    <List>
-      <ListItem />
-      <ListItem />
-      <ListItem />
-    </List>
+    <List>{groups.map(({ name }) => <ListItem name={name} />)}</List>
   </div>
 )
 
