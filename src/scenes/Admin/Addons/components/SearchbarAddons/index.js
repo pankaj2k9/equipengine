@@ -3,6 +3,7 @@ import styled from "styled-components"
 // components
 import Container from "base_components/Container"
 import Searchbar from "base_components/RootSearchBar"
+import form from "hoc/form"
 
 const ContainerSearchbarAddons = styled(Container)`
   padding-bottom: 0;
@@ -22,10 +23,14 @@ const ExtendSearchbar = styled(Searchbar)`
   }
 `
 
-const SearchbarAddons = () => (
+const SearchbarAddons = ({ fields: { term }, onChange }) => (
   <ContainerSearchbarAddons>
-    <ExtendSearchbar placeholder="Search add-ons" />
+    <ExtendSearchbar
+      value={term}
+      onChange={e => onChange(e.target.value, "term")}
+      placeholder="Search add-ons"
+    />
   </ContainerSearchbarAddons>
 )
 
-export default SearchbarAddons
+export default form({ term: "" })(SearchbarAddons)

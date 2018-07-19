@@ -5,14 +5,21 @@ import { ContainerSearchbarList } from "scenes/Admin/components/ContainerAdminPa
 import Button from "base_components/RootButton"
 import Form, { Text } from "base_components/RootForm"
 
-const Toolbar = () => (
+import form from "hoc/form"
+
+const Toolbar = ({ fields: { term }, onChange }) => (
   <ContainerSearchbarList>
     <Button secondary>Show All</Button>
     <Form>
-      <Text name="create-user" placeholder="Search users" />
+      <Text
+        value={term}
+        onChange={e => onChange(e.target.value, "term")}
+        name="create-user"
+        placeholder="Search users"
+      />
     </Form>
     <Button>Create a user</Button>
   </ContainerSearchbarList>
 )
 
-export default Toolbar
+export default form({ term: "" })(Toolbar)
