@@ -1,5 +1,6 @@
 import FeatureDisabled from "global/FeatureDisabled"
 import * as Auth from "scenes/Auth"
+import * as Course from "scenes/Course"
 import * as Courses from "scenes/Courses"
 import * as Landing from "scenes/Landing"
 import * as MyGroups from "scenes/MyGroups"
@@ -116,7 +117,8 @@ registerFeature({
 })
 registerFeature({
   name: "course",
-  enabled: true
+  enabled: true,
+  ...Course
 })
 
 export default features

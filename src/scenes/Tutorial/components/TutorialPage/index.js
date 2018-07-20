@@ -1,7 +1,8 @@
 import React from "react"
-import PageNavigationBar from "base_components/PageNavigationBar"
 
 import HeaderLinksBar from "../HeaderLinksBar"
+import Error from "base_components/Error"
+import PageNavigationBar from "base_components/PageNavigationBar"
 import TutorialDescription from "../TutorialDescription"
 import TutorialToDo from "../TutorialToDo"
 import TutorialTabs from "../TutorialTabs"
@@ -66,7 +67,7 @@ class TutorialModalPage extends React.Component {
   render() {
     const lessonIndex = this.findLessonIndex()
     if (lessonIndex === -1) {
-      return <div>Lesson not found</div>
+      return <Error>Lesson not found</Error>
     }
     const lesson = this.state.lessons[lessonIndex]
 

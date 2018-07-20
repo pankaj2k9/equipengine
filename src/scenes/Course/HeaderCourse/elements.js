@@ -12,7 +12,7 @@ export const Root = styled.div`
 
 export const CourseSmallImage = styled.img`
   width: 100%;
-  max-width: 250px;
+  max-width: 200px;
 `
 export const CourseTitle = styled.div`
   color: #fff;

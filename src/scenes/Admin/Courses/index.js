@@ -1,19 +1,12 @@
 import React from "react"
 import { Route, Switch } from "react-router-dom"
-// for our breadcrumbs
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic"
-// component
+
 import ErrorBoundary from "base_components/ErrorBoundary"
+import features from "features"
 import FilterableTableCourses from "./components/FilterableTableCourses"
 import ContainerAdminCourse from "scenes/Admin/CourseCreator/ContainerAdminCourse"
-// Scenes
-import Loadable from "base_components/Loadable"
-
 import ContentAdminCourse from "scenes/Admin/CourseCreator/ContentAdminCourse"
-
-const AsyncCourse = Loadable({
-  loader: () => import("./scenes/Course")
-})
 
 const Courses = ({ match }) => {
   return (
@@ -35,7 +28,7 @@ const Courses = ({ match }) => {
             path={`${match.url}/:id`}
             render={props => (
               <ErrorBoundary errMsg="Something went wrong in displaying the course page.">
-                <AsyncCourse {...props} />
+                <features.course.pages.Course {...props} />
               </ErrorBoundary>
             )}
           />

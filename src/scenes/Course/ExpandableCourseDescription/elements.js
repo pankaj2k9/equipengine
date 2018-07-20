@@ -5,30 +5,6 @@ export const Root = styled.div`
   background-color: #f0f0f0;
 `
 
-export const AccessableContainer = styled.div`
-  margin-top: 1.4em;
-
-  p,
-  li {
-    font-size: 14px;
-  }
-
-  > header {
-    border-bottom: 1px solid #7f7f7f;
-    padding-bottom: 0.5em;
-    margin-bottom: 1.5em;
-
-    > p {
-      margin-bottom: 0;
-      color: #000000;
-    }
-  }
-
-  li {
-    margin-bottom: 0.8em;
-  }
-`
-
 export const StyledPanel = styled(Panel)`
   .panel {
     background: none;

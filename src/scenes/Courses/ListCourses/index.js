@@ -10,7 +10,7 @@ import {
   ViewButton
 } from "./elements"
 import Box from "base_components/Box"
-import courseImg from "resources/images/course-img.png"
+import courseImg from "resources/images/course-default.png"
 import { ListRow } from "base_components/List"
 import NoCourses from "../NoCourses"
 import TutorialsCompleted from "../TutorialsCompleted"
@@ -30,7 +30,7 @@ const ListCourses = ({ courses, match }) => {
               <img
                 alt="Course Img"
                 src={course.image.url || courseImg}
-                width="150px"
+                width="100px"
               />
             </div>
             {/* Course title */}

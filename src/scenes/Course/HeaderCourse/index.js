@@ -11,7 +11,7 @@ import {
   Root
 } from "./elements"
 import CircleProgressBar from "base_components/CircleProgressBar"
-import courseImg from "resources/images/steve-bible-teaching.jpg"
+import courseImg from "resources/images/course-default.png"
 import ExpandableCourseDescription from "../ExpandableCourseDescription"
 
 class HeaderCourse extends Component {
@@ -31,7 +31,7 @@ class HeaderCourse extends Component {
     return (
       <Fragment>
         <Root>
-          <CourseSmallImage alt="Course" src={courseImg} />
+          <CourseSmallImage alt="Course" src={course.image.url || courseImg} />
           {/* Mobile non-flex and Desktop flex container */}
           <DesktopContainerFlex>
             {/* Course title and description link */}
@@ -51,8 +51,8 @@ class HeaderCourse extends Component {
             {/* Course completed progress circle */}
             <CircleProgressBar
               strokeWidth={4}
-              percentage={(100 * 2) / 3}
-              text="2 of 3 done"
+              percentage={(100 * 0) / course.lessons_count}
+              text={`${0} of ${course.lessons_count} done`}
               textColor="#fff"
             />
           </DesktopContainerFlex>

@@ -6,7 +6,7 @@ import { client } from "./API"
 export const fetchGroupCourses = ({ groupId, studentId }) =>
   client
     .get(`/api/v1/groups/${groupId}/courses`, {
-      params: {
+      params: studentId && {
         student_id: studentId
       }
     })
