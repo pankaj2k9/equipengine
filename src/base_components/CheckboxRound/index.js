@@ -3,23 +3,20 @@ import React from "react"
 import "./styles.css"
 
 class CheckboxRound extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      complete: false
+      value: props.value || false
     }
   }
 
-  handleInputChange = e => {
-    const { target } = e
-    // check if the target is checkbox or text
-    const value = target.type === "checkbox" ? target.checked : target.value
-    // we need to get the name value attribute of the target.
-    const name = target.name
-    // update the state based on the target
+  handleChange = ({ target: { checked } }) => {
     this.setState({
-      [name]: value
+      value: checked
     })
+    if (this.props.onChange) {
+      this.props.onChange(checked)
+    }
   }
 
   render() {
@@ -28,12 +25,12 @@ class CheckboxRound extends React.Component {
     return (
       <div className={`${className} Form__Group--round`}>
         <input
-          checked={this.state.complete}
-          onChange={this.handleInputChange}
-          name="complete"
+          checked={this.state.value}
+          onChange={this.handleChange}
           type="checkbox"
+          name="checkbox"
         />
-        <label htmlFor="complete" />
+        <label htmlFor="checkbox" />
       </div>
     )
   }

@@ -4,6 +4,7 @@ import * as Course from "scenes/Course"
 import * as Courses from "scenes/Courses"
 import * as Landing from "scenes/Landing"
 import * as MyGroups from "scenes/MyGroups"
+import * as Tutorial from "scenes/Tutorial"
 
 /**
  * Map with all the public accessible features
@@ -119,6 +120,11 @@ registerFeature({
   name: "course",
   enabled: true,
   ...Course
+})
+registerFeature({
+  name: "tutorials",
+  enabled: true,
+  ...Tutorial
 })
 
 export default features

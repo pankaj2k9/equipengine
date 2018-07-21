@@ -1,17 +1,15 @@
 import React from "react"
 
+import assignmentSrc from "resources/images/assignment.svg"
 import Box from "base_components/Box"
 import CheckboxRound from "base_components/CheckboxRound"
-// icon on things to do list
 import questionsSrc from "resources/images/question.svg"
-import assignmentSrc from "resources/images/assignment.svg"
-import mediaSrc from "resources/images/media.svg"
 import quizSrc from "resources/images/quiz.svg"
-
+import mediaSrc from "resources/images/media.svg"
 import TutorialToDoItem from "../TutorialToDoItem"
 import { CompleteContainer, CompleteLabel, Headline, List } from "./elements"
 
-const TutorialToDo = () => (
+const TutorialToDo = ({ completed, onChangeCompleted }) => (
   <Box>
     <header>
       <Headline>Things to do</Headline>
@@ -22,12 +20,10 @@ const TutorialToDo = () => (
       <TutorialToDoItem text="1 x Media" icon={mediaSrc} />
       <TutorialToDoItem text="1 x Quiz" icon={quizSrc} />
     </List>
-    <footer>
-      <CompleteContainer>
-        <CheckboxRound />
-        <CompleteLabel>Mark as complete</CompleteLabel>
-      </CompleteContainer>
-    </footer>
+    <CompleteContainer>
+      <CheckboxRound value={completed} onChange={onChangeCompleted} />
+      <CompleteLabel>Mark as complete</CompleteLabel>
+    </CompleteContainer>
   </Box>
 )
 

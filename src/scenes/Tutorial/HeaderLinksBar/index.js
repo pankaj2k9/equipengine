@@ -7,11 +7,11 @@ import BackIconButton from "base_components/BackIconButton"
 
 import { Root, Back, CloseImage } from "./elements"
 
-const HeaderLinksBar = ({ onCloseTutorial, onViewAllLessons }) => (
+const HeaderLinksBar = ({ onCloseTutorial, onViewAllTutorials }) => (
   <Root>
     <Back>
-      <BackIconButton onClick={onViewAllLessons} />
-      <Button light onClick={onViewAllLessons}>
+      <BackIconButton onClick={onViewAllTutorials} />
+      <Button light onClick={onViewAllTutorials}>
         View all lessons
       </Button>
     </Back>

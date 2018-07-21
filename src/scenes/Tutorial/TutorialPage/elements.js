@@ -22,6 +22,10 @@ export const WhiteBackground = styled.div`
   background-color: #fff;
 `
 
+export const FullScreenWhiteBackground = styled(WhiteBackground)`
+  min-height: 100vh;
+`
+
 export const ContainerFlex = styled.div`
   display: flex;
   flex-direction: column;

@@ -9,9 +9,8 @@ import { withRouter } from "react-router-dom"
 
 import iconPlayButton from "./play-button.svg"
 import iconExam from "./exam.svg"
-import { fetchTutorials } from "../thunks"
+import features from "features"
 import List from "base_components/List"
-import { selectors } from "../ducks"
 import {
   EmptyTutorialsList,
   StyledListRow,
@@ -63,14 +62,14 @@ TabListTutorials.propTypes = {
 
 const mapState = () =>
   createStructuredSelector({
-    tutorials: selectors.selectTutorials(),
-    isFetchingTutorials: selectors.selectIsFetchingTutorials()
+    tutorials: features.tutorials.selectors.selectTutorials(),
+    isFetchingTutorials: features.tutorials.selectors.selectIsFetchingTutorials()
   })
 
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
-      fetchTutorials
+      fetchTutorials: features.tutorials.actions.fetchTutorials
     },
     dispatch
   )

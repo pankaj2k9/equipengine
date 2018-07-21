@@ -1,3 +1,15 @@
-import TutorialPage from "./components/TutorialPage"
+import Loadable from "base_components/Loadable"
+import reducer, { selectors } from "./ducks"
+import { fetchTutorials } from "./thunks"
 
-export { TutorialPage as default }
+const actions = {
+  fetchTutorials
+}
+
+const pages = {
+  Tutorial: Loadable({
+    loader: () => import("./TutorialPage")
+  })
+}
+
+export { actions, pages, reducer, selectors }

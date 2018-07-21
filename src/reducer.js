@@ -10,8 +10,8 @@ export default combineReducers({
   activities,
   auth: features.auth.reducer,
   courses: features.courses.reducer,
-  course: features.course.reducer,
   myGroups: features.myGroups.reducer,
   routing,
-  toastr
+  toastr,
+  tutorials: features.tutorials.reducer
 })

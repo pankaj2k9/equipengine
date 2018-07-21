@@ -1,4 +1,3 @@
-import reducer from "./ducks"
 import Loadable from "base_components/Loadable"
 
 const pages = {
@@ -7,4 +6,4 @@ const pages = {
   })
 }
 
-export { pages, reducer }
+export { pages }

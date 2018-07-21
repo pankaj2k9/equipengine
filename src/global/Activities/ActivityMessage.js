@@ -21,7 +21,7 @@ const ActivityMessage = ({ activity }) => {
     )
   }
   if (eventable_type === CHAT_ACTIVITY_TYPE) {
-    const { message } = activity.eventable
+    const message = activity.eventable ? activity.eventable.message : ""
     const { user } = activity.message.as_object.variables
     // TODO improve API to return first_name and last_name
     const name = user.substring(user.indexOf(">") + 1, user.lastIndexOf("<"))
