@@ -153,9 +153,20 @@ const selectIsPendingLogout = () =>
 const selectCurrentUserToken = () =>
   createSelector(authSelector(), auth => auth.token)
 const selectIsLoggedIn = () =>
-  createSelector(selectCurrentUserToken(), token => !!token)
+  createSelector(selectCurrentUserToken(), token => {
+    if (!token) {
+      return false
+    }
+    try {
+      // Check if token is expired
+      const { exp } = JSON.parse(atob(token.split(".")[1]))
+      return exp > Date.now() / 1000
+    } catch (e) {
+      return false
+    }
+  })
 const selectIsNotLoggedIn = () =>
-  createSelector(selectCurrentUserToken(), token => !token)
+  createSelector(selectIsLoggedIn(), isLoggedIn => !isLoggedIn)
 
 // signup selectors
 const selectIsPendingSignup = () =>
