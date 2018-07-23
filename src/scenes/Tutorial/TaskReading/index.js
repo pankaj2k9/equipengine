@@ -18,10 +18,15 @@ const TaskReading = ({ task }) => (
     title={task.description}
     subtitle="Reading"
     summary={
-      <IconButton light lightBorder>
-        Download
-        <IconDownload />
-      </IconButton>
+      <React.Fragment>
+        {Array.isArray(task.attachments) &&
+          task.attachments.map(attachment => (
+            <IconButton light lightBorder>
+              {attachment.name || "Download"}
+              <IconDownload />
+            </IconButton>
+          ))}
+      </React.Fragment>
     }
   >
     <TaskAnswer />

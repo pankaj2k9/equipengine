@@ -15,14 +15,24 @@ export const types = {
     "equipengine/UPDATE_TUTORIAL_COMPLETED_REQUEST",
   UPDATE_TUTORIAL_COMPLETED_SUCCESS:
     "equipengine/UPDATE_TUTORIAL_COMPLETED_SUCCESS",
-  UPDATE_TUTORIAL_COMPLETED_ERROR: "equipengine/UPDATE_TUTORIAL_COMPLETED_ERROR"
+  UPDATE_TUTORIAL_COMPLETED_ERROR:
+    "equipengine/UPDATE_TUTORIAL_COMPLETED_ERROR",
+
+  //
+  // FETCH_TASKS
+  //
+  FETCH_TASKS_REQUEST: "equipengine/FETCH_TASKS_REQUEST",
+  FETCH_TASKS_SUCCESS: "equipengine/FETCH_TASKS_SUCCESS",
+  FETCH_TASKS_ERROR: "equipengine/FETCH_TASKS_ERROR"
 }
 
 const initialState = Immutable({
   isFetchingTutorials: false,
   isUpdatingTutorialCompleted: false,
   tutorials: [],
-  pagination: null
+  pagination: null,
+  isFetchingTasks: false,
+  tasks: []
 })
 
 // Reducer
@@ -63,6 +73,24 @@ export default (state = initialState, action) => {
         isUpdatingTutorialCompleted: false
       })
 
+    //
+    // FETCH_TASKS
+    //
+    case types.FETCH_TASKS_REQUEST:
+      return state.merge({
+        isFetchingTasks: true
+      })
+    case types.FETCH_TASKS_SUCCESS:
+      return state.merge({
+        isFetchingTasks: false,
+        tasks: action.payload.tasks
+      })
+    case types.FETCH_TASKS_ERROR:
+      return state.merge({
+        isFetchingTasks: false,
+        tasks: []
+      })
+
     default:
       return state
   }
@@ -96,12 +124,27 @@ export const actions = {
   }),
   updateTutorialCompletedError: () => ({
     type: types.UPDATE_TUTORIAL_COMPLETED_ERROR
+  }),
+
+  //
+  // FETCH_TASKS
+  //
+  fetchTasksRequest: () => ({
+    type: types.FETCH_TASKS_REQUEST
+  }),
+  fetchTasksSuccess: ({ tasks, pagination }) => ({
+    type: types.FETCH_TASKS_SUCCESS,
+    payload: { tasks, pagination }
+  }),
+  fetchTasksError: () => ({
+    type: types.FETCH_TASKS_ERROR
   })
 }
 
 // Selectors
 const tutorialsSelector = () => state => state.tutorials
 
+// Tutorials
 const selectIsFetchingTutorials = () =>
   createSelector(
     tutorialsSelector(),
@@ -115,8 +158,16 @@ const selectIsUpdatingTutorialCompleted = () =>
     tutorials => tutorials.isUpdatingTutorialCompleted
   )
 
+// Tasks
+const selectIsFetchingTasks = () =>
+  createSelector(tutorialsSelector(), tutorials => tutorials.isFetchingTasks)
+const selectTasks = () =>
+  createSelector(tutorialsSelector(), tutorials => tutorials.tasks)
+
 export const selectors = {
   selectIsFetchingTutorials,
   selectIsUpdatingTutorialCompleted,
-  selectTutorials
+  selectTutorials,
+  selectIsFetchingTasks,
+  selectTasks
 }

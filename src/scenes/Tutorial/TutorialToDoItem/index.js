@@ -2,10 +2,12 @@ import React from "react"
 
 import { ListItem, Icon, Label } from "./elements"
 
-const TutorialToDoItem = ({ text, icon }) => (
+const TutorialToDoItem = ({ count, label, icon }) => (
   <ListItem>
-    <Icon alt={text} src={icon} />
-    <Label>{text}</Label>
+    <Icon alt={label} src={icon} />
+    <Label>
+      {count} x {label}
+    </Label>
   </ListItem>
 )
 
