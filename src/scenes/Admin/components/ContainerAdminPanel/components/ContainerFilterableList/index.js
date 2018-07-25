@@ -39,6 +39,12 @@ const ContainerSearchbarList = Container.extend`
 
     form {
       width: 192px;
+      flex: 1;
+      margin-right: 0.6em;
+    }
+
+    button:first-child {
+      margin-right: 0.6em;
     }
 
     button:last-child {

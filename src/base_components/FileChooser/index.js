@@ -1,6 +1,5 @@
 import React, { forwardRef } from "react"
 import PropTypes from "prop-types"
-import { branch, withProps } from "recompose"
 
 /**
  * Wrapper around simple browser file chooser.

@@ -11,7 +11,6 @@ import Loading from "base_components/Loading"
 import ListCourses from "../ListCourses"
 import { fetchCourses } from "../thunks"
 import { selectors } from "../ducks"
-import { STUDENT_ROLE } from "services/API"
 
 class CoursesPage extends Component {
   componentDidMount() {
@@ -49,7 +48,7 @@ const mapState = () =>
     courses: selectors.selectCourses(),
     isFetchingCourses: selectors.selectIsFetchingCourses(),
     userId: features.auth.selectors.selectCurrentUserId(),
-    isStudent: features.auth.selectors.selectIsInAnyRole([STUDENT_ROLE])
+    isStudent: features.auth.selectors.selectIsStudent()
   })
 
 const mapDispatch = dispatch =>

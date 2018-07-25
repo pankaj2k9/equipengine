@@ -1,15 +1,54 @@
 import { client } from "./API"
+import { ACTIVE_GROUP_STATUS, PUBLIC_GROUP_VISIBILITY } from "./constants"
 
-export const ACTIVE_GROUP_STATUS = "active"
-export const PAUSE_GROUP_STATUS = "pause"
-
+/**
+ * @returns list of groups where user is a member
+ */
 export const fetchMyGroups = () => fetchGroups({ my: true })
 
-// TODO think about pagination, cause it is implemented in API, but not in UI
 /**
- * @returns list of available to user groups
+ * @returns list of all groups
  */
-export const fetchGroups = ({ my = false, status }) =>
+export const fetchGroups = ({ my = false, status, term }) => {
+  const params = {
+    my,
+    // TODO implement pagination/inifinite loading
+    current_count: 100
+  }
+
+  if (status) {
+    params.status = status
+  }
+
+  if (term) {
+    params.term = term
+  }
+
+  return client
+    .get(`/api/v1/groups`, { params })
+    .then(response => response.data)
+}
+
+/**
+ * @returns created group with its settings
+ */
+export const createGroup = ({
+  title,
+  status = ACTIVE_GROUP_STATUS,
+  user_limit = 10,
+  visibility = PUBLIC_GROUP_VISIBILITY,
+  noticeboard_enabled = true,
+  student_can_post = true,
+  student_can_comment = true
+}) =>
   client
-    .get(`/api/v1/groups`, { params: { my, status } })
+    .post(`/api/v1/groups`, {
+      title,
+      status,
+      user_limit,
+      visibility,
+      noticeboard_enabled,
+      student_can_post,
+      student_can_comment
+    })
     .then(response => response.data)

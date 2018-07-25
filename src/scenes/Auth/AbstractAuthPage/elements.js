@@ -13,7 +13,7 @@ export const Centerer = styled.div`
   background-color: #ffffff;
   box-shadow: 0px 3px 29px 0px rgba(214, 214, 214, 0.67);
   position: absolute;
-  top: 35%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
 

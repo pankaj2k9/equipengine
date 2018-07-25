@@ -1,4 +1,3 @@
-import React from "react"
 import styled from "styled-components"
 
 import BaseButton from "base_components/RootButton"

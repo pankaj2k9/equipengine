@@ -7,7 +7,7 @@ import { createStructuredSelector } from "reselect"
 import { identical } from "ramda"
 import { withRouter } from "react-router-dom"
 //
-import { ADMIN_ROLE, STUDENT_ROLE, TEACHER_ROLE } from "services/Auth"
+import { ADMIN_ROLE, STUDENT_ROLE, TEACHER_ROLE } from "services/constants"
 import AdminPanelLinks from "./AdminPanelLinks"
 import features from "features"
 import LogoContainer from "base_components/LogoContainer"

@@ -3,12 +3,18 @@ import { client } from "./API"
 /**
  * @returns list of courses in specific group
  */
+// TODO implement pagination/inifinite loading
 export const fetchGroupCourses = ({ groupId, studentId }) =>
   client
     .get(`/api/v1/groups/${groupId}/courses`, {
-      params: studentId && {
-        student_id: studentId
-      }
+      params: studentId
+        ? {
+            student_id: studentId,
+            current_count: 100
+          }
+        : {
+            current_count: 100
+          }
     })
     .then(response => response.data)
 

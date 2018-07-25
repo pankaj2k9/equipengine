@@ -1,9 +1,5 @@
 import { client } from "./API"
 
-export const ADMIN_ROLE = "admin"
-export const TEACHER_ROLE = "teacher"
-export const STUDENT_ROLE = "student"
-
 /**
  * @returns user info, role and token
  */

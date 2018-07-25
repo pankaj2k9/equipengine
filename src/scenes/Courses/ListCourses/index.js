@@ -3,15 +3,10 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { isEmpty, isNil } from "ramda"
 
-import {
-  StyledList,
-  StyledListRowLeft,
-  StyledListRowRight,
-  ViewButton
-} from "./elements"
+import { StyledListRowLeft, StyledListRowRight, ViewButton } from "./elements"
 import Box from "base_components/Box"
 import courseImg from "resources/images/course-default.png"
-import { ListRow } from "base_components/List"
+import List, { ListRow } from "base_components/List"
 import NoCourses from "../NoCourses"
 import TutorialsCompleted from "../TutorialsCompleted"
 
@@ -22,7 +17,7 @@ const ListCourses = ({ courses, match }) => {
 
   return (
     <Box>
-      <StyledList>
+      <List>
         {courses.map(course => (
           <ListRow key={course.courseId}>
             {/* Course default image */}
@@ -50,7 +45,7 @@ const ListCourses = ({ courses, match }) => {
             </StyledListRowRight>
           </ListRow>
         ))}
-      </StyledList>
+      </List>
     </Box>
   )
 }
@@ -65,8 +60,6 @@ ListCourses.defaultProps = {
 }
 
 export default styled(ListCourses)`
-  margin-top: 27px;
-
   &__item-right {
     display: flex;
     align-items: center;

@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom"
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic"
 
 import ErrorBoundary from "base_components/ErrorBoundary"
+// TODO use existing Admin Course instead of Course
 import features from "features"
 import FilterableTableCourses from "./components/FilterableTableCourses"
 import ContainerAdminCourse from "scenes/Admin/CourseCreator/ContainerAdminCourse"

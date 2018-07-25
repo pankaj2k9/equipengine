@@ -8,10 +8,6 @@ const AsyncDashboard = Loadable({
   loader: () => import("scenes/Dashboard")
 })
 
-const AsyncGroups = Loadable({
-  loader: () => import("scenes/Groups")
-})
-
 const AsyncMessages = Loadable({
   loader: () => import("scenes/Messages")
 })
@@ -108,16 +104,6 @@ const privateRoutes = [
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the tutorial page.">
         <features.tutorials.pages.Tutorial {...props} />
-      </ErrorBoundary>
-    )
-  },
-  {
-    path: "/secure/:groupId/groups",
-    strict: true,
-    exact: true,
-    AsyncComponent: props => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the groups page.">
-        <AsyncGroups {...props} />
       </ErrorBoundary>
     )
   },

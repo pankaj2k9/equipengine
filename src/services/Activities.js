@@ -1,7 +1,5 @@
 import { client } from "./API"
-
-export const USER_ACTIVITY_TYPE = "User"
-export const GROUP_ACTIVITY_TYPE = "Group"
+import { USER_ACTIVITY_TYPE } from "./constants"
 
 /**
  * @param userId id of user (not email)

@@ -51,8 +51,7 @@ class Form extends Component {
     role: "",
     // TODO: users management here
     // usersCanSee: [],
-    hasFileControlPrivelegies: false,
-    isSuspended: false
+    hasFileControlPrivelegies: false
   }
 
   onChange = (e, selector) => {
@@ -92,8 +91,7 @@ class Form extends Component {
       state,
       zipCode,
       role,
-      hasFileControlPrivelegies,
-      isSuspended
+      hasFileControlPrivelegies
     } = this.state
 
     return (
@@ -138,9 +136,7 @@ class Form extends Component {
             // users
             onChange={this.onChange}
           />
-          <PanelControlGroup
-          // isSuspended
-          />
+          <PanelControlGroup />
           <ButtonUpdate onClick={this.onSubmit}>Update</ButtonUpdate>
         </MainForm>
       </ContainerBodyAdmin>

@@ -1,9 +1,13 @@
-import React from "react"
 import PropTypes from "prop-types"
+import styled from "styled-components"
 
-const ListRowRight = ({ children, className }) => {
-  return <div className={`List__row__right ${className}`}>{children}</div>
-}
+const ListRowRight = styled.div`
+  margin-top: 1em;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+  }
+`
 
 ListRowRight.defaultProps = {
   className: ""

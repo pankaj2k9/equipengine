@@ -1,13 +1,6 @@
 import React from "react"
-import PropTypes from "prop-types"
 import styled from "styled-components"
-import {
-  withStateHandlers,
-  withProps,
-  compose,
-  withContext,
-  withHandlers
-} from "recompose"
+import { withStateHandlers, withProps, compose, withContext } from "recompose"
 
 import TeacherUser from "./components/TeacherUser"
 import TeacherUserSettings from "./components/TeacherUserSettings"

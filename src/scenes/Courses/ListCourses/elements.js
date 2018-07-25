@@ -1,10 +1,6 @@
 import styled from "styled-components"
-import List, { ListRowLeft, ListRowRight } from "base_components/List"
+import { ListRowLeft, ListRowRight } from "base_components/List"
 import LinkButton from "base_components/LinkButton"
-
-export const StyledList = styled(List)`
-  margin-top: 27px;
-`
 
 export const StyledListRowLeft = styled(ListRowLeft)`
   @media screen and (min-width: 768px) {

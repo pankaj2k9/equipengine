@@ -1,9 +1,18 @@
-import React from "react"
+import styled from "styled-components"
 import PropTypes from "prop-types"
 
-const ListRowLeft = ({ children, className }) => {
-  return <div className={`List__row__left ${className}`}>{children}</div>
-}
+const ListRowLeft = styled.div`
+  p {
+    margin-bottom: 0.5em;
+  }
+  p:first-child {
+    font-size: 16px;
+    color: #111111;
+  }
+  p:last-child {
+    color: #9fa6ad;
+  }
+`
 
 ListRowLeft.defaultProps = {
   className: ""

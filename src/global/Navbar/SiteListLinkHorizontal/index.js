@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { identical } from "ramda"
 
-import { ADMIN_ROLE } from "services/Auth"
+import { ADMIN_ROLE } from "services/constants"
 import { LinkHorizontal } from "../SiteLinkNavbar"
 
 const ListLinkHorizontal = styled.ul`
@@ -23,11 +23,13 @@ const ListLinkHorizontal = styled.ul`
 
 const SiteListLinkHorizontal = ({ isOpenPanel, onToggle, accountType }) => (
   <ListLinkHorizontal isOpenPanel={isOpenPanel}>
-    <li onClick={onToggle}>
-      <LinkHorizontal activeClassName="active" to="/secure/home">
-        Home
-      </LinkHorizontal>
-    </li>
+    {!identical(accountType, ADMIN_ROLE) && (
+      <li onClick={onToggle}>
+        <LinkHorizontal activeClassName="active" to="/secure/home">
+          Home
+        </LinkHorizontal>
+      </li>
+    )}
     <li onClick={onToggle}>
       <LinkHorizontal activeClassName="active" to="/secure/activity">
         Actvity
@@ -38,7 +40,7 @@ const SiteListLinkHorizontal = ({ isOpenPanel, onToggle, accountType }) => (
         <LinkHorizontal
           width="80px"
           activeClassName="active"
-          to="/secure/admin/group-manager"
+          to="/secure/admin/groups"
         >
           Admin Area
         </LinkHorizontal>

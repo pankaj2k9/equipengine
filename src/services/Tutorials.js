@@ -1,14 +1,15 @@
 import { client } from "./API"
 
-export const TUTORIAL_UNCOMPLETED_STATUS = "active"
-export const TUTORIAL_COMPLETED_STATUS = "completed"
-
 /**
  * @returns list of lessons/tutorials in specific course
  */
 export const fetchTutorials = ({ groupId, courseId }) =>
   client
-    .get(`/api/v1/groups/${groupId}/courses/${courseId}/lessons`)
+    .get(`/api/v1/groups/${groupId}/courses/${courseId}/lessons`, {
+      params: {
+        current_count: 100
+      }
+    })
     .then(response => response.data)
 
 /**

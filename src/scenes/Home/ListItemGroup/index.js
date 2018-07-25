@@ -4,7 +4,7 @@ import styled from "styled-components"
 //
 import IconUser from "react-icons/lib/fa/user"
 import LinkButton from "base_components/LinkButton"
-import { ACTIVE_GROUP_STATUS } from "services/Groups"
+import { ACTIVE_GROUP_STATUS } from "services/constants"
 
 // List Item Group
 const ListItemGroup = styled(({ className, group }) => {

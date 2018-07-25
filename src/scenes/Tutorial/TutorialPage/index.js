@@ -25,7 +25,7 @@ import {
   InfoContainer,
   ContainerFlex
 } from "./elements"
-import { TUTORIAL_COMPLETED_STATUS } from "services/API"
+import { TUTORIAL_COMPLETED_STATUS } from "services/constants"
 
 // Modal is used here as a variant of hiding appbar and navbar..
 class TutorialModalPage extends React.Component {

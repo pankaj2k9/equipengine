@@ -1,13 +1,10 @@
 import React from "react"
 
 import ErrorBoundary from "base_components/ErrorBoundary"
+import features from "features"
 import Loadable from "base_components/Loadable"
 
 // ------------------------- ADMIN PANEL COMPONENT -------------------------------//
-const AsyncAdminGroupManager = Loadable({
-  loader: () => import("scenes/Admin/GroupManager")
-})
-
 const AsyncAdminUserManager = Loadable({
   loader: () => import("scenes/Admin/UserManager")
 })
@@ -37,12 +34,12 @@ const AsyncVideos = Loadable({
 
 const adminRoutes = [
   {
-    path: "/secure/admin/group-manager",
+    path: "/secure/admin/groups",
     strict: true,
-    exact: true,
+    exact: false,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the admin group manager page.">
-        <AsyncAdminGroupManager {...props} />
+        <features.adminGroups.pages.Groups {...props} />
       </ErrorBoundary>
     )
   },

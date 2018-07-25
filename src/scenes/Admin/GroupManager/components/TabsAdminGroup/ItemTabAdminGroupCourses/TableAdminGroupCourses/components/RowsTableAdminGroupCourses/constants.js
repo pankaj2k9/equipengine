@@ -1,1 +1,0 @@
-export const DROPPABLE_LIST_TYPE = "GROUP_COURSE"

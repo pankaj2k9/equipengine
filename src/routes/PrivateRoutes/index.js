@@ -11,7 +11,7 @@ import Main from "base_components/Main"
 import studentRoutes from "./studentRoutes"
 import teacherRoutes from "./teacherRoutes"
 import adminRoutes from "./adminRoutes"
-import { ADMIN_ROLE, TEACHER_ROLE } from "services/Auth"
+import { ADMIN_ROLE, TEACHER_ROLE } from "services/constants"
 
 /* create our async component in here
  * this will optimize the loading of components of our app
@@ -31,9 +31,7 @@ const teacherOrAdmin = connectedAuthWrapper({
 })
 
 const adminOnly = connectedAuthWrapper({
-  authenticatedSelector: features.auth.selectors.selectIsInAnyRole([
-    ADMIN_ROLE
-  ]),
+  authenticatedSelector: features.auth.selectors.selectIsAdmin(),
   FailureComponent: AsyncNotFound
 })
 

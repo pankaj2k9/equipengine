@@ -12,7 +12,6 @@ import dicussionsData from "../discussionsData.json"
 import features from "features"
 import HeaderCourse from "../HeaderCourse"
 import Loading from "base_components/Loading"
-import { STUDENT_ROLE } from "services/API"
 
 const Course = ({ match, courses, isFetchingCourses, latestDicussions }) => {
   // TODO think if we should load one or all the courses for single course view
@@ -57,7 +56,7 @@ const mapState = () =>
     courses: features.courses.selectors.selectCourses(),
     isFetchingCourses: features.courses.selectors.selectIsFetchingCourses(),
     userId: features.auth.selectors.selectCurrentUserId(),
-    isStudent: features.auth.selectors.selectIsInAnyRole([STUDENT_ROLE])
+    isStudent: features.auth.selectors.selectIsStudent()
   })
 
 const mapDispatch = dispatch =>

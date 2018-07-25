@@ -2,6 +2,8 @@ import Immutable from "seamless-immutable"
 import { createSelector } from "reselect"
 import { REHYDRATE } from "redux-persist/lib/constants"
 
+import { ADMIN_ROLE, STUDENT_ROLE, TEACHER_ROLE } from "services/constants"
+
 // Types
 export const types = {
   //
@@ -159,6 +161,7 @@ const selectIsLoggedIn = () =>
     }
     try {
       // Check if token is expired
+      // TODO create API task to fix token expiration date (now it is 2019 year, but real is 1 day)
       const { exp } = JSON.parse(atob(token.split(".")[1]))
       return exp > Date.now() / 1000
     } catch (e) {
@@ -189,12 +192,21 @@ const selectIsInAnyRole = roles =>
     selectCurrentUserRole(),
     role => role && Array.isArray(roles) && roles.includes(role)
   )
+const selectIsStudent = () =>
+  createSelector(selectIsInAnyRole([STUDENT_ROLE]), hasRole => hasRole)
+const selectIsTeacher = () =>
+  createSelector(selectIsInAnyRole([TEACHER_ROLE]), hasRole => hasRole)
+const selectIsAdmin = () =>
+  createSelector(selectIsInAnyRole([ADMIN_ROLE]), hasRole => hasRole)
 
 export const selectors = {
   selectCurrentUser,
   selectCurrentUserId,
   selectCurrentUserRole,
   selectIsInAnyRole,
+  selectIsAdmin,
+  selectIsStudent,
+  selectIsTeacher,
   selectIsLoggedIn,
   selectIsNotLoggedIn,
   selectIsPendingLogin,

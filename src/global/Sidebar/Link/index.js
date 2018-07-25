@@ -15,9 +15,9 @@ const StyledLink = styled(Link)`
   font-size: 12px;
 `
 
-const SidebarLink = ({ text, url }) => (
+const SidebarLink = ({ text, url, ...rest }) => (
   <StyledLi>
-    <StyledLink text={text} url={url} />
+    <StyledLink text={text} url={url} {...rest} />
   </StyledLi>
 )
 

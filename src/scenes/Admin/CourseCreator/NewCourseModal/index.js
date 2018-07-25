@@ -1,28 +1,21 @@
 import React from "react"
 import PropTypes from "prop-types"
 //
-import AdminCourseModal from "scenes/Admin/CourseCreator/AdminCourseModal"
+import CreateEntityModal from "base_components/CreateEntityModal"
 import BodyContent from "./components/BodyContent"
 
 const NewCourseModal = ({ handleClose, isOpen }) => {
-  // informations use by the modal
-  const modal = {
-    header: {
-      title: "Create a new course"
-    },
-    body: {
-      children: <BodyContent /> // we will pass the element of Body
-    },
-    footer: {
-      buttonTitle: "Create",
-      buttonHandler() {
-        //console.log('Create new course!')
-      }
-    }
-  }
-
   return (
-    <AdminCourseModal isOpen={isOpen} handleClose={handleClose} modal={modal} />
+    <CreateEntityModal
+      isOpen={isOpen}
+      title="Create a new course"
+      onClose={handleClose}
+      onSubmit={() => {
+        //console.log('Create new course!')
+      }}
+    >
+      <BodyContent />
+    </CreateEntityModal>
   )
 }
 
