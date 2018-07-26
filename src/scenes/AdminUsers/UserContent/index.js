@@ -2,8 +2,7 @@ import React, { Component } from "react"
 import joi from "joi"
 import { toastr } from "react-redux-toastr"
 
-import ContainerBodyAdmin from "scenes/Admin/components/ContainerAdminPanel/components/ContainerBodyAdmin"
-
+import Box from "base_components/Box"
 import InputAddress from "base_components/InputAddress"
 import ButtonUpdate from "base_components/ButtonUpdate"
 import UserDetails from "base_components/UserDetails"
@@ -37,7 +36,7 @@ const validationSchema = joi.object().keys({
     .label("Email name is required")
 })
 
-class Form extends Component {
+class UserContent extends Component {
   state = {
     firstName: "",
     lastName: "",
@@ -95,7 +94,7 @@ class Form extends Component {
     } = this.state
 
     return (
-      <ContainerBodyAdmin>
+      <Box>
         <MainForm>
           <ResponsivePanel title="User Details">
             <UserDetails
@@ -139,9 +138,9 @@ class Form extends Component {
           <PanelControlGroup />
           <ButtonUpdate onClick={this.onSubmit}>Update</ButtonUpdate>
         </MainForm>
-      </ContainerBodyAdmin>
+      </Box>
     )
   }
 }
 
-export default Form
+export default UserContent

@@ -24,7 +24,7 @@ const GroupForm = ({
 }) => (
   <Root>
     <StyledFormGroup>
-      <Label>Group Name</Label>
+      <Label>Group Name*</Label>
       <Text value={title} onChange={e => onChange(e.target.value, "title")} />
     </StyledFormGroup>
     <StyledFormGroup>

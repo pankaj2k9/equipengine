@@ -5,10 +5,6 @@ import features from "features"
 import Loadable from "base_components/Loadable"
 
 // ------------------------- ADMIN PANEL COMPONENT -------------------------------//
-const AsyncAdminUserManager = Loadable({
-  loader: () => import("scenes/Admin/UserManager")
-})
-
 // const AsyncAdminCourseCreator = Loadable({
 //   loader: () => import("scenes/Admin/CourseCreator"),
 //   loading: Loader,
@@ -44,12 +40,12 @@ const adminRoutes = [
     )
   },
   {
-    path: "/secure/admin/user-manager",
+    path: "/secure/admin/users",
     strict: true,
-    exact: true,
+    exact: false,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the admin user manager page.">
-        <AsyncAdminUserManager {...props} />
+        <features.adminUsers.pages.Users {...props} />
       </ErrorBoundary>
     )
   },

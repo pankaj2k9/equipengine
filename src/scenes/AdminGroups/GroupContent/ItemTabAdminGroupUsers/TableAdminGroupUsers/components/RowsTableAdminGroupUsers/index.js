@@ -33,7 +33,7 @@ const RowsTableAdminGroupUsers = () => (
         <RoleUser roleUser="Teacher" />
       </TableDataGroupUser>
       <TableDataGroupUser>
-        <RouteButton to="/secure/admin/user-manager" light lightBorder>
+        <RouteButton to="/secure/admin/users" light lightBorder>
           User Details
         </RouteButton>
       </TableDataGroupUser>
@@ -55,7 +55,7 @@ const RowsTableAdminGroupUsers = () => (
       </TableDataGroupUser>
       <TableDataGroupUser />
       <TableDataGroupUser>
-        <RouteButton to="/secure/admin/user-manager" light lightBorder>
+        <RouteButton to="/secure/admin/users" light lightBorder>
           User Details
         </RouteButton>
       </TableDataGroupUser>

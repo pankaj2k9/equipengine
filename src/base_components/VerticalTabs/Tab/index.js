@@ -7,7 +7,8 @@ export default class Tab extends Component {
   componentDidMount() {
     if (this.props.active) {
       ReactDOM.findDOMNode(this).scrollIntoView({
-        block: "center"
+        block: "center",
+        behavior: "smooth"
       })
     }
   }

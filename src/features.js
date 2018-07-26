@@ -1,5 +1,6 @@
 import FeatureDisabled from "global/FeatureDisabled"
 import * as AdminGroups from "scenes/AdminGroups"
+import * as AdminUsers from "scenes/AdminUsers"
 import * as Auth from "scenes/Auth"
 import * as Course from "scenes/Course"
 import * as Courses from "scenes/Courses"
@@ -131,6 +132,11 @@ registerFeature({
   name: "adminGroups",
   enabled: true,
   ...AdminGroups
+})
+registerFeature({
+  name: "adminUsers",
+  enabled: true,
+  ...AdminUsers
 })
 
 export default features

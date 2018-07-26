@@ -11,7 +11,7 @@ const AdminPanelLinks = () => (
       <Title>Admin Area</Title>
       <Link isStrict text="Group Manager" url="/secure/admin/groups" />
       <Link text="Course Creator" url="/secure/admin/course-creator/courses" />
-      <Link text="User Manager" url="/secure/admin/user-manager" />
+      <Link isStrict text="User Manager" url="/secure/admin/users" />
       <Link
         text="Organizations Settings"
         url="/secure/admin/organisation-settings"

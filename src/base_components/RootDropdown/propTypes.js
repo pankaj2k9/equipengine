@@ -16,7 +16,7 @@ export default {
     ).isRequired,
     className: PropTypes.string,
     placeholder: PropTypes.string,
-    onChange: PropTypes.string
+    onChange: PropTypes.func
   },
   default: {
     name: "dropdown",

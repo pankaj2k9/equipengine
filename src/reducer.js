@@ -9,6 +9,7 @@ import { reducer as activities } from "global/Activities"
 export default combineReducers({
   activities,
   adminGroups: features.adminGroups.reducer,
+  adminUsers: features.adminUsers.reducer,
   auth: features.auth.reducer,
   courses: features.courses.reducer,
   myGroups: features.myGroups.reducer,
