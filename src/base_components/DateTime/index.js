@@ -2,12 +2,17 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
-const DateTime = styled(({ className, date, time }) => {
+// TODO refactor when all the dates come to date objects
+const DateTime = styled(({ className, date, time, withYear, withoutTime }) => {
+  let year = ""
   if (date && date instanceof Date) {
     time = date.toLocaleString("en-gb", {
       hour: "numeric",
       minute: "numeric",
       hour12: true
+    })
+    year = date.toLocaleString("en-gb", {
+      year: "2-digit"
     })
     date = date.toLocaleString("en-gb", {
       month: "short",
@@ -16,14 +21,16 @@ const DateTime = styled(({ className, date, time }) => {
   }
   return (
     <div className={className}>
-      <span>{date}</span>
-      <span>{time}</span>
+      <span>
+        {date} {withYear && year}
+      </span>
+      {!withoutTime && <span>{time}</span>}
     </div>
   )
 })`
   display: flex;
   flex-direction: column;
-  font-size: 10px;
+  font-size: ${props => props.fontSize || "10px"};
   font-weight: ${props => props.bold && "800"};
   color: ${props => (props.accent ? "#338FFC" : "#7e7e7e")};
   text-align: ${props => props.center && "center"};

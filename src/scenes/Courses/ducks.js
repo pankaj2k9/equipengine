@@ -4,11 +4,11 @@ import { createSelector } from "reselect"
 // Types
 export const types = {
   //
-  // FETCH_COURSES
+  // FETCH_GROUP_COURSES
   //
-  FETCH_COURSES_REQUEST: "equipengine/FETCH_COURSES_REQUEST",
-  FETCH_COURSES_SUCCESS: "equipengine/FETCH_COURSES_SUCCESS",
-  FETCH_COURSES_ERROR: "equipengine/FETCH_COURSES_ERROR"
+  FETCH_GROUP_COURSES_REQUEST: "equipengine/FETCH_GROUP_COURSES_REQUEST",
+  FETCH_GROUP_COURSES_SUCCESS: "equipengine/FETCH_GROUP_COURSES_SUCCESS",
+  FETCH_GROUP_COURSES_ERROR: "equipengine/FETCH_GROUP_COURSES_ERROR"
 }
 
 const initialState = Immutable({
@@ -21,18 +21,18 @@ const initialState = Immutable({
 export default (state = initialState, action) => {
   switch (action.type) {
     //
-    // FETCH_COURSES
+    // FETCH_GROUP_COURSES
     //
-    case types.FETCH_COURSES_REQUEST:
+    case types.FETCH_GROUP_COURSES_REQUEST:
       return state.merge({
         isFetchingCourses: true
       })
-    case types.FETCH_COURSES_SUCCESS:
+    case types.FETCH_GROUP_COURSES_SUCCESS:
       return state.merge({
         isFetchingCourses: false,
         courses: action.payload.courses
       })
-    case types.FETCH_COURSES_ERROR:
+    case types.FETCH_GROUP_COURSES_ERROR:
       return state.merge({
         isFetchingCourses: false,
         courses: []
@@ -46,17 +46,17 @@ export default (state = initialState, action) => {
 // Actions
 export const actions = {
   //
-  // FETCH_COURSES
+  // FETCH_GROUP_COURSES
   //
   fetchCoursesRequest: () => ({
-    type: types.FETCH_COURSES_REQUEST
+    type: types.FETCH_GROUP_COURSES_REQUEST
   }),
   fetchCoursesSuccess: ({ courses, pagination }) => ({
-    type: types.FETCH_COURSES_SUCCESS,
+    type: types.FETCH_GROUP_COURSES_SUCCESS,
     payload: { courses, pagination }
   }),
   fetchCoursesError: () => ({
-    type: types.FETCH_COURSES_ERROR
+    type: types.FETCH_GROUP_COURSES_ERROR
   })
 }
 

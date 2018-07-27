@@ -23,7 +23,7 @@ class Dropdown extends Component {
 
   render() {
     const { selectedOption } = this.state
-    const { name, options, className, placeholder, isClearable } = this.props
+    const { name, options, className, placeholder } = this.props
     const selectValue = isNotNil(selectedOption) && selectedOption.value
     return (
       <StyledSelect
@@ -33,7 +33,6 @@ class Dropdown extends Component {
         options={options}
         className={className}
         placeholder={placeholder}
-        isClearable={isClearable}
       />
     )
   }

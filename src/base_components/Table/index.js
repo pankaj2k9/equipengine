@@ -7,9 +7,12 @@ import {
 } from "@devexpress/dx-react-grid-bootstrap3"
 
 import { Root } from "./elements"
-import ActivityCellFormatter from "./components/ActivityCellFormatter"
-import DiscussionCellFormatter from "./components/DiscussionCellFormatter/"
-import DownloadCellFormatter from "./components/DownloadCellFormatter"
+import ActivityCellFormatter from "./ActivityCellFormatter"
+import DateCellFormatter from "./DateCellFormatter"
+import DiscussionCellFormatter from "./DiscussionCellFormatter/"
+import DownloadCellFormatter from "./DownloadCellFormatter"
+import SubtitledTextCellFormatter from "./SubtitledTextCellFormatter"
+import UserCountCellFormatter from "./UserCountCellFormatter"
 
 const skipColumnLabelIfNoColumnTitle = ({ column, ...props }) =>
   column.title ? (
@@ -88,6 +91,9 @@ const Table = ({ rows, columns, sorting, rowFontSize, headerRowFontSize }) => {
 export {
   Table as default,
   ActivityCellFormatter,
+  DateCellFormatter,
   DiscussionCellFormatter,
-  DownloadCellFormatter
+  DownloadCellFormatter,
+  SubtitledTextCellFormatter,
+  UserCountCellFormatter
 }

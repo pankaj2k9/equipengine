@@ -2,14 +2,13 @@ import React from "react"
 import PropTypes from "prop-types"
 import { compose, pure } from "recompose"
 //
+import CreateCourseForm, { validationSchema } from "../CreateCourseForm"
 import CreateEntityModal from "base_components/CreateEntityModal"
 import form from "hoc/form"
-import UserForm, { validationSchema } from "../UserForm"
 import Loading from "base_components/Loading"
-import { STUDENT_ROLE } from "services/constants"
 import withFormValidation from "hoc/withFormValidation"
 
-const CreateUserModal = ({
+const CreateCourseModal = ({
   isOpen,
   isSubmitting,
   fields,
@@ -18,7 +17,7 @@ const CreateUserModal = ({
   handleSubmit
 }) => (
   <CreateEntityModal
-    title="Create new user"
+    title="Create a new course"
     isOpen={isOpen}
     onClose={onClose}
     isSubmitting={isSubmitting}
@@ -27,24 +26,24 @@ const CreateUserModal = ({
     {isSubmitting ? (
       <Loading />
     ) : (
-      <UserForm fields={fields} onChange={onChange} />
+      <CreateCourseForm fields={fields} onChange={onChange} />
     )}
   </CreateEntityModal>
 )
 
-CreateUserModal.propTypes = {
+CreateCourseModal.propTypes = {
   onClose: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired
+  isOpen: PropTypes.bool.isRequired,
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default compose(
   form({
-    firstName: "",
-    lastName: "",
-    email: "",
-    role: STUDENT_ROLE
+    name: "",
+    description: "",
+    mainImage: null,
+    courseImage: null
   }),
   withFormValidation({ validationSchema }),
   pure
-)(CreateUserModal)
+)(CreateCourseModal)

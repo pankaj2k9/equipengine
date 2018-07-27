@@ -24,8 +24,9 @@ client.interceptors.request.use(config => {
 
 export { client }
 
-export * from "./Auth"
 export * from "./Activities"
+export * from "./AdminCourses"
+export * from "./Auth"
 export * from "./Courses"
 export * from "./Groups"
 export * from "./Tasks"

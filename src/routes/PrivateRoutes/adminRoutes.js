@@ -49,22 +49,22 @@ const adminRoutes = [
       </ErrorBoundary>
     )
   },
-  // {
-  //   path: "/secure/admin/course-creator",
-  //   strict: true,
-  //   exact: false,
-  //   AsyncComponent: props => (
-  //     <ErrorBoundary errMsg="Something went wrong in displaying the admin user manager page.">
-  //       <AsyncAdminCourseCreator {...props} />
-  //     </ErrorBoundary>
-  //   )
-  // },
+  {
+    path: "/secure/admin/course-manager",
+    strict: true,
+    exact: true,
+    AsyncComponent: props => (
+      <ErrorBoundary errMsg="Something went wrong in displaying the admin course manager page.">
+        <features.adminCourses.pages.Courses {...props} />
+      </ErrorBoundary>
+    )
+  },
   {
     path: "/secure/admin/organisation-settings",
     strict: true,
     exact: false,
     AsyncComponent: props => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the admin user manager page.">
+      <ErrorBoundary errMsg="Something went wrong in displaying the admin organization settings page.">
         <AsyncAdminOrganisationSettings {...props} />
       </ErrorBoundary>
     )

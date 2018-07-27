@@ -1,13 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { compose, pure, withHandlers } from "recompose"
-import { toastr } from "react-redux-toastr"
+import { compose, pure } from "recompose"
 //
 import CreateEntityModal from "base_components/CreateEntityModal"
 import form from "hoc/form"
 import GroupForm, { validationSchema } from "../GroupForm"
 import Loading from "base_components/Loading"
-import { validate } from "utils/formFunctions"
+import withFormValidation from "hoc/withFormValidation"
 
 const CreateGroupModal = ({
   isOpen,
@@ -47,20 +46,6 @@ export default compose(
     studentCanComment: true,
     studentCanPost: true
   }),
-  withHandlers({
-    handleSubmit: ({ fields, onSubmit }) => () => {
-      // validate group form
-      const validationResult = validate(fields, validationSchema)
-
-      if (validationResult.error) {
-        toastr.error(
-          "Validation failed",
-          validationResult.error.details[0].context.label
-        )
-      } else {
-        onSubmit(fields)
-      }
-    }
-  }),
+  withFormValidation({ validationSchema }),
   pure
 )(CreateGroupModal)

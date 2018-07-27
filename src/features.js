@@ -1,4 +1,5 @@
 import FeatureDisabled from "global/FeatureDisabled"
+import * as AdminCourses from "scenes/AdminCourses"
 import * as AdminGroups from "scenes/AdminGroups"
 import * as AdminUsers from "scenes/AdminUsers"
 import * as Auth from "scenes/Auth"
@@ -127,6 +128,11 @@ registerFeature({
   name: "tutorials",
   enabled: true,
   ...Tutorial
+})
+registerFeature({
+  name: "adminCourses",
+  enabled: true,
+  ...AdminCourses
 })
 registerFeature({
   name: "adminGroups",
