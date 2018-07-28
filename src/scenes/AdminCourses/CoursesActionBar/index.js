@@ -62,9 +62,7 @@ export default compose(
       createCourse(fields).then(action => {
         onClose()
         if (action.type === types.CREATE_COURSE_SUCCESS) {
-          history.push(
-            `/secure/admin/course-manager/${action.payload.course.id}`
-          )
+          history.push(`/secure/admin/courses/${action.payload.course.id}`)
           toastr.success(
             "Success",
             `New course "${fields.title}" is succesffully created`

@@ -32,7 +32,7 @@ const Course = ({ match, courses, isFetchingCourses, latestDicussions }) => {
       <Breadcrumbs
         items={[
           {
-            to: `/secure/${groupId}/courses`,
+            to: `/secure/groups/${groupId}/courses`,
             label: "Courses"
           },
           {

@@ -23,7 +23,7 @@ const ListItemGroup = styled(({ className, group }) => {
       <div>
         <LinkButton
           disabled={group.status !== ACTIVE_GROUP_STATUS}
-          url={`/secure/${group.id}/dashboard`}
+          url={`/secure/groups/${group.id}/dashboard`}
           text={group.status !== ACTIVE_GROUP_STATUS ? "View (paused)" : "View"}
         />
       </div>

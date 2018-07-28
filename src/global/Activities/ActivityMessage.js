@@ -14,6 +14,7 @@ const ActivityMessage = ({ activity }) => {
     return (
       <React.Fragment>
         {user.first_name} {user.last_name} commented on{" "}
+        {/* TODO fix link to course */}
         <Link to={`/secure/courses/${course.id}`}>
           {lesson.title}: {course.title}
         </Link>

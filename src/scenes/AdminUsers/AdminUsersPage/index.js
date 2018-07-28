@@ -6,6 +6,7 @@ import { createStructuredSelector } from "reselect"
 import { toastr } from "react-redux-toastr"
 import { withRouter } from "react-router-dom"
 
+import BorderedTitle from "base_components/BorderedTitle"
 import { createUser, fetchUsers } from "../thunks"
 import CreateUserModal from "../CreateUserModal"
 import UserItemFormatter from "../UserItemFormatter"
@@ -28,6 +29,7 @@ const AdminUsers = ({
   handleTabClick
 }) => (
   <div>
+    <BorderedTitle title="User Manager" />
     <VerticalTabs
       tabs={users}
       tabFormatter={tab => <UserItemFormatter user={tab} />}

@@ -44,7 +44,7 @@ class TutorialModalPage extends React.Component {
 
   handleCloseModal = () => {
     const { groupId, courseId } = this.props.match.params
-    this.props.history.push(`/secure/${groupId}/courses/${courseId}`)
+    this.props.history.push(`/secure/groups/${groupId}/courses/${courseId}`)
   }
 
   handlePreviousClick = () => {
@@ -56,7 +56,7 @@ class TutorialModalPage extends React.Component {
     }
     const previousTutorialId = this.props.tutorials[tutorialIndex - 1].id
     this.props.history.push(
-      `/secure/${groupId}/courses/${courseId}/tutorials/${previousTutorialId}`
+      `/secure/groups/${groupId}/courses/${courseId}/tutorials/${previousTutorialId}`
     )
   }
 
@@ -72,7 +72,7 @@ class TutorialModalPage extends React.Component {
     }
     const nextTutorialId = this.props.tutorials[tutorialIndex + 1].id
     this.props.history.push(
-      `/secure/${groupId}/courses/${courseId}/tutorials/${nextTutorialId}`
+      `/secure/groups/${groupId}/courses/${courseId}/tutorials/${nextTutorialId}`
     )
   }
 

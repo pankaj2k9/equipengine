@@ -4,28 +4,16 @@ import ErrorBoundary from "base_components/ErrorBoundary"
 import features from "features"
 import Loadable from "base_components/Loadable"
 
-// ------------------------- ADMIN PANEL COMPONENT -------------------------------//
-// const AsyncAdminCourseCreator = Loadable({
-//   loader: () => import("scenes/Admin/CourseCreator"),
-//   loading: Loader,
-//   timeout: 10000
-// })
-
 const AsyncAdminOrganisationSettings = Loadable({
-  loader: () => import("scenes/Admin/OrganisationSettings")
-})
-
-// Course creator components
-const AsyncCourses = Loadable({
-  loader: () => import("scenes/Admin/Courses")
+  loader: () => import("scenes/AdminOrganisationSettings")
 })
 
 const AsyncAddons = Loadable({
-  loader: () => import("scenes/Admin/Addons")
+  loader: () => import("scenes/AdminAddons")
 })
 
 const AsyncVideos = Loadable({
-  loader: () => import("scenes/Admin/Videos")
+  loader: () => import("scenes/AdminVideos")
 })
 
 const adminRoutes = [
@@ -50,7 +38,7 @@ const adminRoutes = [
     )
   },
   {
-    path: "/secure/admin/course-manager",
+    path: "/secure/admin/courses",
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -60,7 +48,7 @@ const adminRoutes = [
     )
   },
   {
-    path: "/secure/admin/organisation-settings",
+    path: "/secure/admin/organisations",
     strict: true,
     exact: false,
     AsyncComponent: props => (
@@ -70,31 +58,21 @@ const adminRoutes = [
     )
   },
   {
-    path: "/secure/admin/course-creator/courses",
+    path: "/secure/admin/add-ons",
     strict: true,
     exact: false,
     AsyncComponent: props => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the admin user manager page.">
-        <AsyncCourses {...props} />
-      </ErrorBoundary>
-    )
-  },
-  {
-    path: "/secure/admin/course-creator/add-ons",
-    strict: true,
-    exact: false,
-    AsyncComponent: props => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the admin user manager page.">
+      <ErrorBoundary errMsg="Something went wrong in displaying the admin add-ons page.">
         <AsyncAddons {...props} />
       </ErrorBoundary>
     )
   },
   {
-    path: "/secure/admin/course-creator/videos",
+    path: "/secure/admin/videos",
     strict: true,
     exact: false,
     AsyncComponent: props => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the admin user manager page.">
+      <ErrorBoundary errMsg="Something went wrong in displaying the admin videos page.">
         <AsyncVideos {...props} />
       </ErrorBoundary>
     )

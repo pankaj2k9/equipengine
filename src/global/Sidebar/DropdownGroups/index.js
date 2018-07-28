@@ -74,6 +74,6 @@ export default compose(
   withRouter,
   withHandlers({
     onChange: ({ history }) => ({ group }) =>
-      history.push(`/secure/${group.id}/dashboard`)
+      history.push(`/secure/groups/${group.id}/dashboard`)
   })
 )(DropdownGroups)

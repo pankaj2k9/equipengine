@@ -33,7 +33,7 @@ const ContainerHeader = Container.extend`
   }
 `
 
-const HeaderAdminCourse = ({
+const SearchActionBar = ({
   ControlButtonsGroup,
   searchbarInfo: { value, onChange, placeholder, onSubmit }
 }) => (
@@ -48,9 +48,9 @@ const HeaderAdminCourse = ({
   </ContainerHeader>
 )
 
-HeaderAdminCourse.propTypes = {
+SearchActionBar.propTypes = {
   ControlButtonsGroup: PropTypes.func.isRequired,
   searchbarInfo: PropTypes.object.isRequired
 }
 
-export default HeaderAdminCourse
+export default SearchActionBar

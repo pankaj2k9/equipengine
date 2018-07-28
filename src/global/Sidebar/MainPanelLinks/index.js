@@ -13,18 +13,18 @@ const MainPanelLinks = ({ groupId, accountType }) => (
   <div className="Sidebar__body__mainPages">
     <DropdownGroups groupId={groupId} />
     <Menu>
-      <Link text="Dashboard" url={`/secure/${groupId}/dashboard`} />
-      <Link isStrict text="Courses" url={`/secure/${groupId}/courses`} />
+      <Link text="Dashboard" url={`/secure/groups/${groupId}/dashboard`} />
+      <Link isStrict text="Courses" url={`/secure/groups/${groupId}/courses`} />
       <Link
         text="Files"
         url={
           isStudentType(accountType)
-            ? `/secure/${groupId}/files`
-            : `/secure/${groupId}/teacher/files`
+            ? `/secure/groups/${groupId}/files`
+            : `/secure/groups/${groupId}/teacher/files`
         }
       />
       {isStudentType(accountType) && (
-        <Link text="People" url={`/secure/${groupId}/people`} />
+        <Link text="People" url={`/secure/groups/${groupId}/people`} />
       )}
     </Menu>
   </div>

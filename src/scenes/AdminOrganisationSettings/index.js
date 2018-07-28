@@ -1,13 +1,10 @@
 import React, { Fragment } from "react"
 import PropTypes from "prop-types"
 import { compose, pure } from "recompose"
-
 import { Tab } from "react-bootstrap"
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic"
 
+import BorderedTitle from "base_components/BorderedTitle"
 import Tabs from "base_components/Tabs"
-import Breadcrumbs from "base_components/Breadcrumbs"
-
 import MainSettings from "./MainSettingsTab"
 import DomainMapping from "./DomainMappingTab"
 import AccountSettings from "./AccountSettingsTab"
@@ -34,10 +31,9 @@ const TabOrganisationSettings = () => (
   </Container>
 )
 
-const AdminOrganisationSettings = ({ match }) => (
+const AdminOrganisationSettings = () => (
   <Fragment>
-    <Breadcrumbs padding="4% 2%" />
-    <BreadcrumbsItem to={match.url}>Organisation Settings</BreadcrumbsItem>
+    <BorderedTitle title="Organisation Settings" />
     <TabOrganisationSettings />
   </Fragment>
 )

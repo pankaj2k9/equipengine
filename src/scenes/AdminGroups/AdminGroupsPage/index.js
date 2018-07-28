@@ -6,6 +6,7 @@ import { createStructuredSelector } from "reselect"
 import { toastr } from "react-redux-toastr"
 import { withRouter } from "react-router-dom"
 
+import BorderedTitle from "base_components/BorderedTitle"
 import { createGroup, fetchGroups } from "../thunks"
 import CreateGroupModal from "../CreateGroupModal"
 import GroupItemFormatter from "../GroupItemFormatter"
@@ -28,6 +29,7 @@ const AdminGroups = ({
   handleTabClick
 }) => (
   <div>
+    <BorderedTitle title="Group Manager" />
     <VerticalTabs
       tabs={groups}
       tabFormatter={tab => <GroupItemFormatter group={tab} />}

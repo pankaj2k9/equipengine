@@ -22,7 +22,7 @@ const AsyncTeacherUserManager = Loadable({
 
 const teacherRoutes = [
   {
-    path: "/secure/:groupId/teacher/groups-activity",
+    path: "/secure/groups/:groupId/teacher/groups-activity",
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -32,7 +32,7 @@ const teacherRoutes = [
     )
   },
   {
-    path: "/secure/:groupId/teacher/submissions-activity",
+    path: "/secure/groups/:groupId/teacher/submissions-activity",
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -42,7 +42,7 @@ const teacherRoutes = [
     )
   },
   {
-    path: "/secure/:groupId/teacher/files",
+    path: "/secure/groups/:groupId/teacher/files",
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -52,7 +52,7 @@ const teacherRoutes = [
     )
   },
   {
-    path: "/secure/:groupId/teacher/user-manager",
+    path: "/secure/groups/:groupId/teacher/user-manager",
     strict: true,
     exact: true,
     AsyncComponent: props => (

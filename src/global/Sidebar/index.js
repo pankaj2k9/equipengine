@@ -14,13 +14,18 @@ import LogoContainer from "base_components/LogoContainer"
 import MainPanelLinks from "./MainPanelLinks"
 import TeacherPanelLinks from "./TeacherPanelLinks"
 import withStyle from "./withStyle"
+import { extractGroupId } from "utils/urlUrils"
 
-const Sidebar = ({ className, accountType, isOpen, match, onCloseSidebar }) => {
+const Sidebar = ({
+  className,
+  accountType,
+  isOpen,
+  location,
+  onCloseSidebar
+}) => {
   // when the isOpen props is true, add other classname on sidebar
   const sidebarClassnames = classNames("Sidebar", { isOpen })
-  const {
-    params: { groupId }
-  } = match
+  const groupId = extractGroupId(location.pathname)
   return (
     <div
       onClick={onCloseSidebar}

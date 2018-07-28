@@ -48,7 +48,7 @@ const privateRoutes = [
     )
   },
   {
-    path: "/secure/:groupId/dashboard",
+    path: "/secure/groups/:groupId/dashboard",
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -78,7 +78,7 @@ const privateRoutes = [
     )
   },
   {
-    path: "/secure/:groupId/courses",
+    path: "/secure/groups/:groupId/courses",
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -88,7 +88,7 @@ const privateRoutes = [
     )
   },
   {
-    path: "/secure/:groupId/courses/:courseId",
+    path: "/secure/groups/:groupId/courses/:courseId",
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -98,7 +98,7 @@ const privateRoutes = [
     )
   },
   {
-    path: "/secure/:groupId/courses/:courseId/tutorials/:tutorialId",
+    path: "/secure/groups/:groupId/courses/:courseId/tutorials/:tutorialId",
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -108,7 +108,7 @@ const privateRoutes = [
     )
   },
   {
-    path: "/secure/:groupId/people",
+    path: "/secure/groups/:groupId/people",
     strict: true,
     exact: true,
     AsyncComponent: props => (
@@ -118,7 +118,7 @@ const privateRoutes = [
     )
   },
   {
-    path: "/secure/:groupId/files",
+    path: "/secure/groups/:groupId/files",
     strict: true,
     exact: true,
     AsyncComponent: props => (
