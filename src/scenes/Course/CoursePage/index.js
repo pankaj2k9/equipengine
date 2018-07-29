@@ -55,8 +55,8 @@ const mapState = () =>
   createStructuredSelector({
     courses: features.courses.selectors.selectCourses(),
     isFetchingCourses: features.courses.selectors.selectIsFetchingCourses(),
-    userId: features.auth.selectors.selectCurrentUserId(),
-    isStudent: features.auth.selectors.selectIsStudent()
+    userId: features.login.selectors.selectCurrentUserId(),
+    isStudent: features.login.selectors.selectIsStudent()
   })
 
 const mapDispatch = dispatch =>

@@ -34,7 +34,7 @@ const composedEnhancers = compose(
   ...enhancers
 )
 
-// Init app from local storage (at least, auth stuff)
+// Init app from local storage (at least, login stuff)
 const persistConfig = {
   key: "equipengine",
   storage,
@@ -42,11 +42,11 @@ const persistConfig = {
   transforms: [
     seamlessImmutableTransformCreator({
       whitelistPerReducer: {
-        reducerA: ["auth"]
+        reducerA: ["login"]
       }
     })
   ],
-  whitelist: ["auth"]
+  whitelist: ["login"]
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 

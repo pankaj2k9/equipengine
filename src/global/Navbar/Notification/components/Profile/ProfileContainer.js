@@ -7,13 +7,13 @@ import Profile from "./Profile"
 
 const mapState = () =>
   createStructuredSelector({
-    user: features.auth.selectors.selectCurrentUser()
+    user: features.login.selectors.selectCurrentUser()
   })
 
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
-      logout: features.auth.actions.logout
+      logout: features.login.actions.logout
     },
     dispatch
   )

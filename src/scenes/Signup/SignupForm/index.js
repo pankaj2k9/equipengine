@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 //
-import { Form, Input, StyledButton } from "../AuthFormElements"
+import { Form, Input, StyledButton } from "base_components/SimpleFormElements"
 
 class SignupForm extends Component {
   state = {

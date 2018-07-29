@@ -23,7 +23,7 @@ const AsyncMainBars = Loadable({
 })
 
 const teacherOrAdmin = connectedAuthWrapper({
-  authenticatedSelector: features.auth.selectors.selectIsInAnyRole([
+  authenticatedSelector: features.login.selectors.selectIsInAnyRole([
     ADMIN_ROLE,
     TEACHER_ROLE
   ]),
@@ -31,7 +31,7 @@ const teacherOrAdmin = connectedAuthWrapper({
 })
 
 const adminOnly = connectedAuthWrapper({
-  authenticatedSelector: features.auth.selectors.selectIsAdmin(),
+  authenticatedSelector: features.login.selectors.selectIsAdmin(),
   FailureComponent: AsyncNotFound
 })
 

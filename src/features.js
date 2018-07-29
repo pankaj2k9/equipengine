@@ -2,26 +2,26 @@ import FeatureDisabled from "global/FeatureDisabled"
 import * as AdminCourses from "scenes/AdminCourses"
 import * as AdminGroups from "scenes/AdminGroups"
 import * as AdminUsers from "scenes/AdminUsers"
-import * as Auth from "scenes/Auth"
 import * as Course from "scenes/Course"
 import * as Courses from "scenes/Courses"
 import * as Landing from "scenes/Landing"
+import * as Login from "scenes/Login"
 import * as MyGroups from "scenes/MyGroups"
+import * as Signup from "scenes/Signup"
 import * as Tutorial from "scenes/Tutorial"
 
 /**
  * Map with all the public accessible features
  * @example
  * {
- *   auth: {
+ *   login: {
  *     enabled: true,
  *     reducer,
  *     actions,
  *     types,
  *     selectors,
  *     pages: {
- *       Login: LoginPage,
- *       Signup: SignupPage
+ *       Login: LoginPage
  *     }
  *   },
  *   ...
@@ -100,9 +100,14 @@ const registerFeature = ({
 }
 
 registerFeature({
-  name: "auth",
+  name: "login",
   enabled: true,
-  ...Auth
+  ...Login
+})
+registerFeature({
+  name: "signup",
+  enabled: false, // Disable signup cause user can not login after signup for now..
+  ...Signup
 })
 registerFeature({
   name: "landing",

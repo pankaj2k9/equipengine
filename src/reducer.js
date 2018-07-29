@@ -11,10 +11,11 @@ export default combineReducers({
   adminCourses: features.adminCourses.reducer,
   adminGroups: features.adminGroups.reducer,
   adminUsers: features.adminUsers.reducer,
-  auth: features.auth.reducer,
   courses: features.courses.reducer,
+  login: features.login.reducer,
   myGroups: features.myGroups.reducer,
   routing,
+  signup: features.signup.reducer,
   toastr,
   tutorials: features.tutorials.reducer
 })

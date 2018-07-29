@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 //
-import { Form, Input, StyledButton } from "../AuthFormElements"
+import { Form, Input, StyledButton } from "base_components/SimpleFormElements"
 
 // TODO try to implement by compose
 class LoginForm extends Component {

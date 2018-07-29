@@ -18,20 +18,12 @@ export const types = {
   //
   LOGOUT_REQUEST: "equipengine/LOGOUT_REQUEST",
   LOGOUT_SUCCESS: "equipengine/LOGOUT_SUCCESS",
-  LOGOUT_ERROR: "equipengine/LOGOUT_ERROR",
-
-  //
-  // SIGN UP
-  //
-  SIGNUP_REQUEST: "equipengine/SIGNUP_REQUEST",
-  SIGNUP_SUCCESS: "equipengine/SIGNUP_SUCCESS",
-  SIGNUP_ERROR: "equipengine/SIGNUP_ERROR"
+  LOGOUT_ERROR: "equipengine/LOGOUT_ERROR"
 }
 
 const initialState = Immutable({
   isPendingLogin: false,
   isPendingLogout: false,
-  isPendingSignup: false,
   user: null,
   token: null
 })
@@ -77,26 +69,9 @@ export default (state = initialState, action) => {
     case REHYDRATE: {
       return state.merge({
         isPendingLogout: false,
-        isPendingLogin: false,
-        isPendingSignup: false
+        isPendingLogin: false
       })
     }
-
-    //
-    // SIGN UP
-    //
-    case types.SIGNUP_REQUEST:
-      return state.merge({
-        isPendingSignup: true
-      })
-    case types.SIGNUP_SUCCESS:
-      return state.merge({
-        isPendingSignup: false
-      })
-    case types.SIGNUP_ERROR:
-      return state.merge({
-        isPendingSignup: false
-      })
 
     default:
       return state
@@ -129,31 +104,19 @@ export const actions = {
   }),
   logoutError: () => ({
     type: types.LOGOUT_ERROR
-  }),
-  //
-  // SIGNUP
-  //
-  signupRequest: () => ({
-    type: types.SIGNUP_REQUEST
-  }),
-  signupSuccess: () => ({
-    type: types.SIGNUP_SUCCESS
-  }),
-  signupError: () => ({
-    type: types.SIGNUP_ERROR
   })
 }
 
 // Selectors
-const authSelector = () => state => state.auth
+const loginSelector = () => state => state.login
 
 // login-logout selectors
 const selectIsPendingLogin = () =>
-  createSelector(authSelector(), auth => auth.isPendingLogin)
+  createSelector(loginSelector(), login => login.isPendingLogin)
 const selectIsPendingLogout = () =>
-  createSelector(authSelector(), auth => auth.isPendingLogout)
+  createSelector(loginSelector(), login => login.isPendingLogout)
 const selectCurrentUserToken = () =>
-  createSelector(authSelector(), auth => auth.token)
+  createSelector(loginSelector(), login => login.token)
 const selectIsLoggedIn = () =>
   createSelector(selectCurrentUserToken(), token => {
     if (!token) {
@@ -171,14 +134,10 @@ const selectIsLoggedIn = () =>
 const selectIsNotLoggedIn = () =>
   createSelector(selectIsLoggedIn(), isLoggedIn => !isLoggedIn)
 
-// signup selectors
-const selectIsPendingSignup = () =>
-  createSelector(authSelector(), auth => auth.isPendingSignup)
-
 // current user/user role selectors
 // TODO probably separate Auth and CurrentUser features
 const selectCurrentUser = () =>
-  createSelector(authSelector(), auth => auth.user)
+  createSelector(loginSelector(), login => login.user)
 const selectCurrentUserId = () =>
   createSelector(selectCurrentUser(), user => user && user.id)
 const selectCurrentUserRole = () =>
@@ -210,6 +169,5 @@ export const selectors = {
   selectIsLoggedIn,
   selectIsNotLoggedIn,
   selectIsPendingLogin,
-  selectIsPendingLogout,
-  selectIsPendingSignup
+  selectIsPendingLogout
 }

@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { createStructuredSelector } from "reselect"
 import { toastr } from "react-redux-toastr"
 //
-import AbstractAuthPage from "../AbstractAuthPage"
+import AbstractAuthPage from "global/AbstractAuthPage"
 import SignupForm from "../SignupForm"
 import { selectors, types } from "../ducks"
 import { signup } from "../thunks"

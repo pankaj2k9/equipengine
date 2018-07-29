@@ -1,7 +1,7 @@
 import React from "react"
 
 //
-import AbstractAuthPage from "../AbstractAuthPage"
+import AbstractAuthPage from "global/AbstractAuthPage"
 
 const VerifyEmailPage = () => (
   <AbstractAuthPage title="Verify Email">

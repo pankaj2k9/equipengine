@@ -1,10 +1,5 @@
 import Loadable from "base_components/Loadable"
-import reducer, { types, selectors } from "./ducks"
-import * as thunks from "./thunks"
-
-const AsyncLogin = Loadable({
-  loader: () => import("./LoginPage")
-})
+import reducer from "./ducks"
 
 const AsyncSignup = Loadable({
   loader: () => import("./SignupPage")
@@ -16,14 +11,8 @@ const AsyncVerifyEmail = Loadable({
 
 // public containers
 const pages = {
-  Login: AsyncLogin,
   Signup: AsyncSignup,
   VerifyEmail: AsyncVerifyEmail
 }
 
-// Public methods
-const actions = {
-  logout: thunks.logout
-}
-
-export { actions, pages, reducer, selectors, types }
+export { pages, reducer }

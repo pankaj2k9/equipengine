@@ -15,9 +15,9 @@ const client = axios.create({
 // Add token for every request if provided
 client.interceptors.request.use(config => {
   // TODO ask DJ if it is more important to have badly implemented remember be functionallity
-  const { auth } = store.getState()
-  if (auth && auth.token) {
-    config.headers.authorization = auth.token
+  const { login } = store.getState()
+  if (login && login.token) {
+    config.headers.authorization = login.token
   }
   return Promise.resolve(config)
 })

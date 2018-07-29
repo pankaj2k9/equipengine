@@ -26,7 +26,7 @@ Navbar.propTypes = {
 
 const mapState = () =>
   createStructuredSelector({
-    accountType: features.auth.selectors.selectCurrentUserRole()
+    accountType: features.login.selectors.selectCurrentUserRole()
   })
 
 export default connect(mapState)(Navbar)

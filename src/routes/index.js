@@ -17,7 +17,7 @@ const userIsAuthenticated = connectedRouterRedirect({
   redirectPath: "/login",
   // If selector is true, wrapper will not redirect
   // For example let's check that state contains user data
-  authenticatedSelector: features.auth.selectors.selectIsLoggedIn()
+  authenticatedSelector: features.login.selectors.selectIsLoggedIn()
 })
 
 // For ?redirect=... parsing
@@ -28,14 +28,14 @@ const userIsNotAuthenticated = connectedRouterRedirect({
   // or to the landing page if none is specified and the user is already logged in
   redirectPath: (state, ownProps) =>
     locationHelper.getRedirectQueryParam(ownProps) ||
-    features.auth.selectors.selectIsAdmin()(state)
+    features.login.selectors.selectIsAdmin()(state)
       ? "/secure/admin/groups"
       : "/secure/home",
   // This prevents us from adding the query parameter when we send the user away from the login page
   allowRedirectBack: false,
   // If selector is true, wrapper will not redirect
   // So if there is no user data, then we show the page
-  authenticatedSelector: features.auth.selectors.selectIsNotLoggedIn()
+  authenticatedSelector: features.login.selectors.selectIsNotLoggedIn()
 })
 
 const Routes = () => (
@@ -47,21 +47,21 @@ const Routes = () => (
         strict
         path="/login"
         // Redirect to secure home page if user is already logged in
-        component={userIsNotAuthenticated(features.auth.pages.Login)}
+        component={userIsNotAuthenticated(features.login.pages.Login)}
       />
       <Route
         exact
         strict
         path="/signup"
         // Redirect to secure home page if user is already logged in
-        component={userIsNotAuthenticated(features.auth.pages.Signup)}
+        component={userIsNotAuthenticated(features.signup.pages.Signup)}
       />
       <Route
         exact
         strict
         path="/verify-email"
         // Redirect to secure home page if user is already logged in
-        component={userIsNotAuthenticated(features.auth.pages.VerifyEmail)}
+        component={userIsNotAuthenticated(features.signup.pages.VerifyEmail)}
       />
       <Route
         path="/secure"
