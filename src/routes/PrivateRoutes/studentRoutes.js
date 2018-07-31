@@ -8,10 +8,6 @@ const AsyncDashboard = Loadable({
   loader: () => import("scenes/Dashboard")
 })
 
-const AsyncMessages = Loadable({
-  loader: () => import("scenes/Messages")
-})
-
 const AsyncPeople = Loadable({
   loader: () => import("scenes/People")
 })
@@ -63,7 +59,7 @@ const privateRoutes = [
     exact: true,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the messages page.">
-        <AsyncMessages {...props} />
+        <features.messages.pages.Messages {...props} />
       </ErrorBoundary>
     )
   },

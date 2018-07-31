@@ -1,19 +1,34 @@
 import React from "react"
 
-import ListItem from "./ListItem"
+import MessagesListItem from "../MessagesListItem"
+import Loading from "base_components/Loading"
 
 import { Root, Header, Text, List, Form } from "./elements"
 
-const MessagesList = () => (
+const MessagesList = ({
+  currentChatUsers,
+  currentChatMessages,
+  isFetchingCurrentChat,
+  onWriteMessage,
+  onSendMessage,
+  textMessage
+}) => (
   <Root>
     <Header>
-      <Text>Conversation: Steve Long, Jane Doe</Text>
+      <Text>Conversation:</Text>
     </Header>
     <List>
-      <ListItem />
-      <ListItem />
+      {isFetchingCurrentChat ? (
+        <Loading />
+      ) : (
+        currentChatMessages.map(element => <MessagesListItem info={element} />)
+      )}
     </List>
-    <Form />
+    <Form
+      onWriteMessage={onWriteMessage}
+      onSendMessage={onSendMessage}
+      textMessage={textMessage}
+    />
   </Root>
 )
 

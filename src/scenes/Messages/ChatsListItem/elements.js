@@ -28,11 +28,6 @@ export const Top = styled.div`
   align-items: center;
 `
 
-export const Date = styled.span`
-  color: #7e7e7e;
-  font-size: 10px;
-`
-
 export const Message = styled.ul`
   padding-right: 4em;
   margin-top: 0.2em;

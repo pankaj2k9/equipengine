@@ -1,21 +1,10 @@
-import React from "react"
+import reducer from "./ducks"
+import Loadable from "base_components/Loadable"
 
-import PageWrapper from "global/PageWrapper"
-
-import MessagesSidebar from "./MessagesSidebar"
-import MessagesList from "./MessagesList"
-
-import { Root } from "./elements"
-
-const Messages = () => {
-  return (
-    <PageWrapper disableMargin>
-      <Root>
-        <MessagesSidebar />
-        <MessagesList />
-      </Root>
-    </PageWrapper>
-  )
+const pages = {
+  Messages: Loadable({
+    loader: () => import("./MessagesPage")
+  })
 }
 
-export default Messages
+export { reducer, pages }

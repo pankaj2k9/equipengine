@@ -6,6 +6,7 @@ import * as Course from "scenes/Course"
 import * as Courses from "scenes/Courses"
 import * as Landing from "scenes/Landing"
 import * as Login from "scenes/Login"
+import * as Messages from "scenes/Messages"
 import * as MyGroups from "scenes/MyGroups"
 import * as Signup from "scenes/Signup"
 import * as Tutorial from "scenes/Tutorial"
@@ -148,6 +149,11 @@ registerFeature({
   name: "adminUsers",
   enabled: true,
   ...AdminUsers
+})
+registerFeature({
+  name: "messages",
+  enabled: true,
+  ...Messages
 })
 
 export default features
