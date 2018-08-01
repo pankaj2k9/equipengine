@@ -4,10 +4,10 @@ import { compose, flattenProp } from "recompose"
 
 import CircleProgressBar from "base_components/CircleProgressBar"
 
-const HeaderItemCourse = ({ className, name, description }) => (
+const HeaderItemCourse = ({ className, title, description }) => (
   <header className={className}>
     <div>
-      <h5>{name}</h5>
+      <h5>{title}</h5>
       <p>{description}</p>
     </div>
     <div>

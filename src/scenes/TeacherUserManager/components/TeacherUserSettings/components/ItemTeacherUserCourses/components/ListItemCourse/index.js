@@ -24,18 +24,31 @@ const MenuButton = styled.span`
 `
 
 // this is the shape of the list item course.
-const ListItemCourse = ({ className, isOpenPanel, onToggle, course }) => (
+const ListItemCourse = ({
+  className,
+  isOpenPanel,
+  onToggle,
+  course,
+  tutorials
+}) => (
   <li className={className}>
     <div>
       <ContainerInfoCourse>
         <HeaderItemCourse course={course} />
-        <BodyItemCourse onToggle={onToggle} isOpenPanel={isOpenPanel} />
+        <BodyItemCourse
+          tutorials={tutorials}
+          onToggle={onToggle}
+          isOpenPanel={isOpenPanel}
+        />
       </ContainerInfoCourse>
       <MenuButton>
         <IconMenu />
       </MenuButton>
     </div>
-    <CollapsiblePanelItemCourse isOpenPanel={isOpenPanel} />
+    <CollapsiblePanelItemCourse
+      isOpenPanel={isOpenPanel}
+      tutorials={tutorials}
+    />
   </li>
 )
 
@@ -46,7 +59,7 @@ ListItemCourse.propTypes = {
 
 // we will make the ListItemCourse as a styled component
 const StyledListItemCourse = styled(ListItemCourse)`
-  *:hover {
+  > :hover {
     background-color: #f4f4f4;
   }
 

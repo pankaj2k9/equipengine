@@ -19,9 +19,9 @@ const ContainerCollapsiblePanel = styled(Panel)`
   }
 `
 
-const CollapsiblePanelItemCourse = ({ isOpenPanel }) => (
+const CollapsiblePanelItemCourse = ({ isOpenPanel, tutorials }) => (
   <ContainerCollapsiblePanel collapsible expanded={isOpenPanel}>
-    <ListTutorialCourse />
+    <ListTutorialCourse tutorials={tutorials} />
   </ContainerCollapsiblePanel>
 )
 
