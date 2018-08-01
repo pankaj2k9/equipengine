@@ -9,10 +9,11 @@ const SearchbarButtonFilter = withStyleButton(({ className, title }) => (
     margin-bottom: 0.5em;
     margin-right: 0.5em;
     border-radius: 4px;
-    width: 100%;
-
+    width: unset;
+    min-width: 12%;
+    
     @media screen and (min-width: 768px){
-      width: 12%;
+      padding: 10px 20px;
       margin-right: 1em;
     }
 `
