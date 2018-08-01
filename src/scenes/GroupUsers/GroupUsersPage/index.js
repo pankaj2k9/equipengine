@@ -1,16 +1,16 @@
 import React from "react"
 
 import { MainInnerContainer, MainLeft } from "base_components/Main"
-import TabsPeople from "./components/TabsPeople"
-import Sidebar from "./components/Sidebar"
+import Sidebar from "../Sidebar"
+import TabsUsers from "../TabsUsers"
 
-const People = () => (
+const GroupUsersPage = () => (
   <MainInnerContainer>
     <MainLeft>
-      <TabsPeople />
+      <TabsUsers />
     </MainLeft>
     <Sidebar />
   </MainInnerContainer>
 )
 
-export default People
+export default GroupUsersPage

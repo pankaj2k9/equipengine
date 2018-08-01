@@ -7,11 +7,19 @@ import avatar from "resources/images/user.png"
 import Button from "base_components/RootButton"
 
 // People item template
-const PeopleItem = styled(({ className }) => (
-  <li className={className}>
+const UserListItem = styled(({ className, student, key }) => (
+  <li className={className} key={key}>
     <div>
-      <UserAvatar image={avatar} />
-      <p>Jane Doe</p>
+      <UserAvatar
+        image={
+          student
+            ? student.avatar.small.url
+              ? student.avatar.small.url
+              : avatar
+            : avatar
+        }
+      />
+      <p>{student ? `${student.first_name} ${student.last_name}` : "as"}</p>
       <Link to="/secure/messages">
         <Button large>Send Message</Button>
       </Link>
@@ -44,7 +52,7 @@ const PeopleItem = styled(({ className }) => (
 `
 
 // this is for people list template.
-const PeopleList = styled.ul`
+const UserList = styled.ul`
   margin-bottom: 2em;
   display: flex;
   flex-direction: column;
@@ -56,4 +64,4 @@ const PeopleList = styled.ul`
   }
 `
 
-export { PeopleList as default, PeopleItem }
+export { UserList as default, UserListItem }

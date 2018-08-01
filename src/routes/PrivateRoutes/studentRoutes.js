@@ -8,8 +8,8 @@ const AsyncDashboard = Loadable({
   loader: () => import("scenes/Dashboard")
 })
 
-const AsyncPeople = Loadable({
-  loader: () => import("scenes/People")
+const AsyncMessages = Loadable({
+  loader: () => import("scenes/Messages")
 })
 
 const AsyncNotifications = Loadable({
@@ -109,7 +109,7 @@ const privateRoutes = [
     exact: true,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the people page.">
-        <AsyncPeople {...props} />
+        <features.groupUsers.pages.GroupUsers {...props} />
       </ErrorBoundary>
     )
   },

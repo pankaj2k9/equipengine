@@ -15,6 +15,7 @@ export default combineReducers({
   courses: features.courses.reducer,
   login: features.login.reducer,
   myGroups: features.myGroups.reducer,
+  groupUsers: features.groupUsers.reducer,
   routing,
   signup: features.signup.reducer,
   toastr,

@@ -8,6 +8,7 @@ import * as Landing from "scenes/Landing"
 import * as Login from "scenes/Login"
 import * as Messages from "scenes/Messages"
 import * as MyGroups from "scenes/MyGroups"
+import * as GroupUsers from "scenes/GroupUsers"
 import * as Signup from "scenes/Signup"
 import * as Tutorial from "scenes/Tutorial"
 
@@ -154,6 +155,11 @@ registerFeature({
   name: "messages",
   enabled: true,
   ...Messages
+})
+registerFeature({
+  name: "groupUsers",
+  enabled: true,
+  ...GroupUsers
 })
 
 export default features
