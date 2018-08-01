@@ -40,7 +40,7 @@ class FileChooserDialog extends React.Component {
   }
 }
 
-FileChooserDialog.PropTypes = {
+FileChooserDialog.propTypes = {
   onChooseFiles: PropTypes.func.isRequired
 }
 

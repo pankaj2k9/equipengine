@@ -5,8 +5,11 @@ import Divider from "base_components/Divider"
 import { Label, Switch } from "base_components/RootForm"
 import UserContacts from "base_components/UserContacts"
 import UserDetails from "base_components/UserDetails"
+import InputAddress from "base_components/InputAddress"
 
 import NotificationFrequency from "./NotificationFrequency"
+
+import { updateFieldValue, getDropdownValue } from "utils/formFunctions"
 
 class Profile extends Component {
   constructor(props) {
@@ -19,16 +22,33 @@ class Profile extends Component {
       birthDate: props.profile.birthDate,
       address: props.profile.address,
       privateMessenger: props.profile.privateMessenger,
-      notificationFrequency: props.profile.notificationFrequency
+      notificationFrequency: props.profile.notificationFrequency,
+      state: props.profile.state,
+      zipCode: props.profile.zipCode
     }
   }
 
-  handleFirstNameChange = firstName => this.setState({ firstName })
-  handleLastNameChange = lastName => this.setState({ lastName })
-  handleEmailChange = email => this.setState({ email })
-  handlePhoneChange = phone => this.setState({ phone })
-  handleBirthDateChange = birthDate => this.setState({ birthDate })
-  handleAddressChange = address => this.setState({ address })
+  onChange = (event, selector) => {
+    const fields = { ...this.state }
+    const nextFields = updateFieldValue(event, selector, fields)
+
+    this.setState(nextFields)
+  }
+
+  handleFirstNameChange = event =>
+    this.setState({ firstName: event.target.value })
+
+  handleLastNameChange = event =>
+    this.setState({ lastName: event.target.value })
+
+  handleEmailChange = event => this.setState({ email: event.target.value })
+
+  handlePhoneChange = event => this.setState({ phone: event.target.value })
+
+  handleBirthDateChange = data => this.setState({ birthDate: data })
+
+  handleAddressChange = event => this.setState({ address: event.target.value })
+
   handlePrivateMessengerToggle = () =>
     this.setState({ privateMessenger: !this.state.privateMessenger })
   handleNotificationFrequencyChange = notificationFrequency =>
@@ -41,12 +61,15 @@ class Profile extends Component {
     const {
       address,
       birthDate,
+      country,
       email,
       firstName,
       lastName,
       notificationFrequency,
       phone,
-      privateMessenger
+      privateMessenger,
+      state,
+      zipCode
     } = this.state
     return (
       <div>
@@ -57,9 +80,9 @@ class Profile extends Component {
           email={email}
           firstName={firstName}
           lastName={lastName}
-          onFirstNameChange={this.handleFirstNameChange}
-          onLastNameChange={this.handleLastNameChange}
-          onEmailChange={this.handleEmailChange}
+          changeFirstName={this.handleFirstNameChange}
+          changeLastName={this.handleLastNameChange}
+          changeEmail={this.handleEmailChange}
           onResetPasswordClick={this.handleResetPassword}
         />
 
@@ -70,10 +93,22 @@ class Profile extends Component {
           phone={phone}
           birthDate={birthDate}
           address={address}
-          onPhoneChange={this.handlePhoneChange}
-          onBirthDateChange={this.handleBirthDateChange}
-          onAddressChange={this.handleAddressChange}
+          changePhone={this.handlePhoneChange}
+          changeBirthDate={this.handleBirthDateChange}
+          changeAddress={this.handleAddressChange}
         />
+
+        <InputAddress
+          country={country}
+          state={state}
+          zipCode={zipCode}
+          changeCountry={value =>
+            this.onChange(getDropdownValue(value), "country")
+          }
+          changeState={value => this.onChange(getDropdownValue(value), "state")}
+          changeZipCode={e => this.onChange(e.target.value, "zipCode")}
+        />
+
         <Divider />
 
         {/* Private messenger switch */}
