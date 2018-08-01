@@ -1,10 +1,16 @@
 import styled from "styled-components"
 
-export const Title = styled.div`
+export const Title = styled.button`
+  padding: 0;
+  margin: 0;
+
+  border: none;
+  background-color: transparent;
+
   text-align: left;
 `
 
-export const Delimeter = styled.div`
+export const Delimiter = styled.div`
   padding: 5px;
 `
 

@@ -35,14 +35,14 @@ class Thread extends Component {
           </i>
         </ButtonIcon>
 
-        <CreateThreadModal isOpen={showModal} onClose={this.close} />
+        <CreateThreadModal
+          isOpen={showModal}
+          onClose={this.close}
+          onSubmit={() => {}}
+        />
       </div>
     )
   }
-}
-
-Thread.propTypes = {
-  thread: PropTypes.object.isRequired
 }
 
 export default Thread

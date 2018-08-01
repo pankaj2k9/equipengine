@@ -31,7 +31,7 @@ const CreateEntityModal = ({
 )
 
 CreateEntityModal.propTypes = {
-  handleClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
   submitButtonTitle: PropTypes.string,

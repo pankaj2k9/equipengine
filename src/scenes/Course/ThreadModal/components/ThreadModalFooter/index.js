@@ -6,14 +6,14 @@ import MessageForm from "base_components/MessageForm"
 
 const ThreadModalFooter = styled(({ className }) => (
   <ModalFooter className={className}>
-    <div>
+    <div className="modal-footer__content">
       <MessageForm />
     </div>
   </ModalFooter>
 ))`
-  width: 100%;
+  padding: 24px 0;
 
-  > div {
+  .modal-footer__content {
     max-width: 774px;
     margin: 0 auto;
   }
