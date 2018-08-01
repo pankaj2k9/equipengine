@@ -6,7 +6,7 @@ import SearchBar from "base_components/RootSearchBar"
 
 const Sidebar = styled(({ className }) => (
   <MainRight className={className}>
-    <SearchBar />
+    <SearchBar placeholder="Search people" />
     <p>
       People can turn off their communication function. If you want to
       enable/disable messages go to settings.
