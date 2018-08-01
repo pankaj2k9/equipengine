@@ -27,6 +27,7 @@ const ListRow = styled.li`
       span {
         color: #7e7e7e;
       }
+
       span:nth-child(2) {
         color: #1e1e1e;
       }
@@ -35,33 +36,40 @@ const ListRow = styled.li`
 `
 
 const ThreadModalBody = styled(({ className, thread }) => {
-  const commentList = thread.comments.map(comment => (
-    <ListRow key={comment.id}>
-      <div>
+  const commentList =
+    thread.comments &&
+    thread.comments.map(comment => (
+      <ListRow key={comment.id}>
         <div>
-          <UserAvatar image={comment.avatarURL} />
-          <span>{comment.name}</span>
-          <span>{comment.date.day}</span>
-          <span>{comment.date.time}</span>
+          <div>
+            <UserAvatar image={comment.avatarURL} />
+            <span>{comment.name}</span>
+            <span>{comment.date.day}</span>
+            <span>{comment.date.time}</span>
+          </div>
+          <p>{comment.comment}</p>
         </div>
-        <p>{comment.comment}</p>
-      </div>
-    </ListRow>
-  ))
+      </ListRow>
+    ))
+
   return (
     <ModalBody className={className}>
-      <div className="ModalBody__content">
+      <div className="modal-body__content">
         <header>
           <h3>{thread.title}</h3>
           <p>{`Posted by ${thread.name}`}</p>
-          <p>{`${thread.date.day} ${thread.date.time}`}</p>
+          {thread.date && <p>{`${thread.date.day} ${thread.date.time}`}</p>}
         </header>
         <ul>{commentList}</ul>
       </div>
     </ModalBody>
   )
 })`
-  .ModalBody__content {
+  flex: 1;
+
+  padding: 20px 0;
+
+  .modal-body__content {
     max-width: 774px;
     margin: 0 auto;
 
