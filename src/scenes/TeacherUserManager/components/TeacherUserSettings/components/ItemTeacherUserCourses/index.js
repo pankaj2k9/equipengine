@@ -1,9 +1,9 @@
 import React, { Fragment } from "react"
+import { compose, getContext, renameProp } from "recompose"
 // drag and drop components.
 import { DroppableList, DroppableListItem } from "base_components/DragDrop"
 //
 import ListItemCourse from "./components/ListItemCourse"
-import { compose, getContext, renameProp } from "recompose"
 import { contextPropTypes } from "../../../../proptypes"
 
 // for teacher user courses component.
@@ -16,7 +16,7 @@ const ItemTeacherUserCourses = ({ courses }) => (
             draggableId="draggable-01"
             type="COURSES"
             index={0}
-            key="02348jklj2343"
+            key={course.id}
           >
             <ListItemCourse course={course} />
           </DroppableListItem>

@@ -12,6 +12,7 @@ const Text = styled(
       type={type || "text"}
       value={value || ""}
       onChange={onChange}
+      readOnly={!onChange}
     />
   )
 )`

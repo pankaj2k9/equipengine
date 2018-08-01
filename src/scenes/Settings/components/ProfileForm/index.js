@@ -84,6 +84,8 @@ class Profile extends Component {
           changeLastName={this.handleLastNameChange}
           changeEmail={this.handleEmailChange}
           onResetPasswordClick={this.handleResetPassword}
+          resetPasswordExist={true}
+          isAvatarEditable={true}
         />
 
         <Divider />

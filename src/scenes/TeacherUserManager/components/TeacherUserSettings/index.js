@@ -1,42 +1,40 @@
 import React from "react"
-import styled from "styled-components"
-// Drap and drop
-import DragDrop from "base_components/DragDrop"
-// base components
-import { MainInnerContainer } from "base_components/Main"
 import { Tab } from "react-bootstrap"
+import { compose, flattenProp, getContext } from "recompose"
+import styled from "styled-components"
+
+import Divider from "base_components/Divider"
+import DragDrop from "base_components/DragDrop"
+import { MainInnerContainer } from "base_components/Main"
 import Tabs from "base_components/Tabs"
 import UserDetails from "base_components/UserDetails"
-// child components.
+
 import ItemTeacherUserCourses from "./components/ItemTeacherUserCourses"
-
 import { Header } from "./elements"
-import form from "hoc/form"
-import { compose, withHandlers, flattenProp } from "recompose"
+import { contextPropTypes } from "../../proptypes"
 
-const ItemTeacherUserSettings = ({
-  firstName,
-  changeFirstName,
-  lastName,
-  changeLastName,
-  email,
-  changeEmail
-}) => (
-  <div style={{ fontSize: "1.09rem", padding: "0px 20px", color: "#111" }}>
+import form from "hoc/form"
+
+const ItemTeacherUserSettings = ({ selectedUser }) => (
+  <div
+    style={{
+      width: "70%",
+      fontSize: "1.09rem",
+      padding: "0px 20px",
+      color: "#111"
+    }}
+  >
     <Header>User Details</Header>
     <UserDetails
-      firstName={firstName}
-      changeFirstName={changeFirstName}
-      lastName={lastName}
-      changeLastName={changeLastName}
-      email={email}
-      changeEmail={changeEmail}
+      firstName={selectedUser.firstName}
+      lastName={selectedUser.lastName}
+      email={selectedUser.email}
+      resetPasswordExist={false}
+      isAvatarEditable={false}
     />
+    <Divider />
   </div>
 )
-
-const onChange = key => ({ onChange }) => ({ target: { value } }) =>
-  onChange(value, key)
 
 const EnhancedItemTeacherUserSettings = compose(
   form({
@@ -44,11 +42,7 @@ const EnhancedItemTeacherUserSettings = compose(
     lastName: "",
     email: ""
   }),
-  withHandlers({
-    changeFirstName: onChange("firstName"),
-    changeLastName: onChange("lastName"),
-    changeEmail: onChange("email")
-  }),
+  getContext(contextPropTypes),
   flattenProp("fields")
 )(ItemTeacherUserSettings)
 
@@ -67,7 +61,7 @@ const TeacherUserSettings = styled(({ className }) => (
   </MainInnerContainer>
 ))`
   @media screen and (min-width: 768px) {
-    width: 70%;
+    width: 75%;
     padding: 16px 0;
 
     .nav-tabs {

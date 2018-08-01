@@ -40,18 +40,24 @@ const courses = [
 
 const users = [
   {
-    name: "user1",
     id: "g3293929j2",
+    firstName: "Kitty",
+    lastName: "Will",
+    email: "natalie_bayer1@swaniawskipollich.name",
     courses: [courses[0].id, courses[1].id]
   },
   {
-    name: "user2",
     id: "23j293fj9",
+    firstName: "Saul",
+    lastName: "Lakin",
+    email: "natalie_bayer2@swaniawskipollich.name",
     courses: [courses[1].id, courses[2].id]
   },
   {
-    name: "user3",
     id: "g236h7h65",
+    firstName: "Saul",
+    lastName: "Lakin1",
+    email: "natalie_bayer3@swaniawskipollich.name",
     courses: [courses[2].id, courses[3].id]
   }
 ]
@@ -67,17 +73,15 @@ export default compose(
   withProps({ users, courses }),
   withStateHandlers(
     ({ users }) => ({
-      selectedUserId: users[0].id
+      selectedUser: users[0]
     }),
     {
       selectUser: (_, { users }) => id => ({
-        selectedUserId: users.find(user => user.id === id).id
+        selectedUser: users.find(user => user.id === id)
       })
     }
   ),
-  withProps(({ courses, users, selectedUserId }) => {
-    const selectedUser = users.find(({ id }) => id === selectedUserId)
-
+  withProps(({ courses, users, selectedUser }) => {
     const selectedCourses = selectedUser.courses.map(id =>
       courses.find(course => course.id === id)
     )
@@ -86,9 +90,9 @@ export default compose(
   }),
   withContext(
     contextPropTypes,
-    ({ users, selectedUserId, selectUser, selectedCourses }) => ({
+    ({ users, selectedUser, selectUser, selectedCourses }) => ({
       users,
-      selectedUserId,
+      selectedUser,
       selectUser,
       selectedCourses
     })
