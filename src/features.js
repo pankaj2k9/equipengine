@@ -1,6 +1,7 @@
 import FeatureDisabled from "global/FeatureDisabled"
 import * as AdminCourses from "scenes/AdminCourses"
 import * as AdminGroups from "scenes/AdminGroups"
+import * as AdminGroupCourses from "scenes/AdminGroupCourses"
 import * as AdminUsers from "scenes/AdminUsers"
 import * as Course from "scenes/Course"
 import * as Courses from "scenes/Courses"
@@ -91,9 +92,6 @@ const registerFeature = ({
         }
       })
     }
-    if (types && typeof types === "object") {
-      feature.types = overrideValues(types, CALL_DISABLED_FEATURE)
-    }
     if (pages && typeof pages === "object") {
       feature.pages = overrideValues(pages, FeatureDisabled)
     }
@@ -145,6 +143,11 @@ registerFeature({
   name: "adminGroups",
   enabled: true,
   ...AdminGroups
+})
+registerFeature({
+  name: "adminGroupCourses",
+  enabled: true,
+  ...AdminGroupCourses
 })
 registerFeature({
   name: "adminUsers",

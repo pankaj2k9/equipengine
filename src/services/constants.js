@@ -23,6 +23,11 @@ export const PUBLIC_GROUP_VISIBILITY = "public"
 export const PRIVATE_GROUP_VISIBILITY = "private"
 
 //
+// GROUP COURSES
+//
+export const ACTIVE_COURSE_IN_GROUP_STATUS = "active"
+
+//
 // TUTORIALS
 //
 export const TUTORIAL_UNCOMPLETED_STATUS = "active"

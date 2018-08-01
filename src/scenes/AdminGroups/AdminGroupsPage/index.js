@@ -10,7 +10,7 @@ import BorderedTitle from "base_components/BorderedTitle"
 import { createGroup, fetchGroups } from "../thunks"
 import CreateGroupModal from "../CreateGroupModal"
 import GroupItemFormatter from "../GroupItemFormatter"
-import GroupContent from "../GroupContent"
+import GroupContentTabs from "../GroupContentTabs"
 import modal from "hoc/modal"
 import SearchActionBar from "base_components/SearchActionBar"
 import { selectors, types } from "../ducks"
@@ -43,7 +43,7 @@ const AdminGroups = ({
           onSearch={term => fetchGroups({ term })}
         />
       }
-      content={<GroupContent />}
+      content={<GroupContentTabs />}
       onTabClick={handleTabClick}
     />
     <CreateGroupModal
