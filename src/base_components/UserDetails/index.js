@@ -14,21 +14,21 @@ import { ButtonSetPassword, Spacing } from "./elemenst"
 
 const FirstName = ({ value, onChange }) => (
   <FormGroup flex={1}>
-    <Label>First Name*</Label>
+    <Label>First Name{onChange && "*"}</Label>
     <Text placeholder="First name" value={value} onChange={onChange} />
   </FormGroup>
 )
 
 const LastName = ({ value, onChange }) => (
   <FormGroup flex={1}>
-    <Label>Last Name*</Label>
+    <Label>Last Name{onChange && "*"}</Label>
     <Text placeholder="Last name" value={value} onChange={onChange} />
   </FormGroup>
 )
 
 const EmailInput = ({ value, onChange }) => (
   <FormGroup>
-    <Label>Email Address*</Label>
+    <Label>Email Address{onChange && "*"}</Label>
     <Text
       placeholder="Email Address"
       type="email"
@@ -53,13 +53,15 @@ const UserDetails = ({
   changeEmail,
   onOpen,
   onClose,
-  isOpen
+  isOpen,
+  resetPasswordExist,
+  isAvatarEditable
 }) => (
   <div>
     <Desktop>
       <ContainerFlex>
         <ItemFlex>
-          <UploadableAvatar image={iconUser} />
+          <UploadableAvatar readOnly={!isAvatarEditable} image={iconUser} />
         </ItemFlex>
         <ItemFlex>
           <ContainerFlex>
@@ -68,7 +70,7 @@ const UserDetails = ({
             <LastName onChange={changeLastName} value={lastName} />
           </ContainerFlex>
           <EmailInput onChange={changeEmail} value={email} />
-          <ResetPasswordButton onClick={onOpen} />
+          {resetPasswordExist && <ResetPasswordButton onClick={onOpen} />}
         </ItemFlex>
       </ContainerFlex>
     </Desktop>

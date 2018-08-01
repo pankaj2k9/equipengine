@@ -14,7 +14,7 @@ const TeacherUser = styled(({ className }) => (
   </div>
 ))`
   @media screen and (min-width: 768px) {
-    width: 30%;
+    width: 25%;
     border-right: 1px solid #dadada;
 
     form {

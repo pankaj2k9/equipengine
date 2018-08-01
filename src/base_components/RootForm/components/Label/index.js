@@ -4,6 +4,7 @@ import styled from "styled-components"
 const Label = styled.label`
   color: ${props => (props.light ? "#777777" : "#000000")};
   font-weight: 400;
+  font-size: 14px;
 `
 
 Label.propTypes = {
