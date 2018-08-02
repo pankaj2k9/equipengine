@@ -7,18 +7,18 @@ import ListItemCourse from "./components/ListItemCourse"
 import { contextPropTypes } from "../../../../proptypes"
 
 // for teacher user courses component.
-const ItemTeacherUserCourses = ({ courses }) => (
+const ItemTeacherUserCourses = ({ courses, tutorials }) => (
   <DroppableList list={courses} droppableId="droppable-01" type="COURSES">
     {list => (
       <Fragment>
         {courses.map(course => (
           <DroppableListItem
-            draggableId="draggable-01"
+            draggableId={`course-${course.id}`}
             type="COURSES"
             index={0}
             key={course.id}
           >
-            <ListItemCourse course={course} />
+            <ListItemCourse course={course} tutorials={tutorials} />
           </DroppableListItem>
         ))}
       </Fragment>

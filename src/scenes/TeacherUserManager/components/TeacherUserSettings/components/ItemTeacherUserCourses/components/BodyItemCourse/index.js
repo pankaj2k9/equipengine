@@ -28,28 +28,32 @@ const SpanIcon = styled.span`
   margin-left: 0.3em;
 `
 
-const BodyItemCourse = styled(({ className, isOpenPanel, onToggle }) => (
-  <div className={className}>
-    <div>
-      <span>Enable / Disable</span>
-      <Form>
-        <Switch name="course-switch" />
-      </Form>
-    </div>
-    <ButtonPanel onClick={() => onToggle()}>
-      View Lessons
-      {isOpenPanel ? (
-        <SpanIcon>
-          <IconDown />
-        </SpanIcon>
-      ) : (
-        <SpanIcon>
-          <IconRight />
-        </SpanIcon>
+const BodyItemCourse = styled(
+  ({ className, isOpenPanel, tutorials, onToggle }) => (
+    <div className={className}>
+      <div>
+        <span>Enable / Disable</span>
+        <Form>
+          <Switch name="course-switch" />
+        </Form>
+      </div>
+      {tutorials.length && (
+        <ButtonPanel onClick={onToggle}>
+          View Lessons
+          {isOpenPanel ? (
+            <SpanIcon>
+              <IconDown />
+            </SpanIcon>
+          ) : (
+            <SpanIcon>
+              <IconRight />
+            </SpanIcon>
+          )}
+        </ButtonPanel>
       )}
-    </ButtonPanel>
-  </div>
-))`
+    </div>
+  )
+)`
   margin-top: 2em;
 
   > div:first-child {
