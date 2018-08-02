@@ -15,22 +15,25 @@ const columns = [
   {
     name: TITLE_COLUMN,
     title: "Course name",
-    getCellValue: row => <div>{row[TITLE_COLUMN]}</div>
+    width: "40%"
   },
   {
     name: DATE_COLUMN,
     title: "Date added",
+    width: "15%",
     getCellValue: row => <DateCellFormatter date={new Date(row[DATE_COLUMN])} />
   },
   {
     name: STATUS_COLUMN,
     title: "Status",
     align: "center",
+    width: "15%",
     getCellValue: row => <StatusCircle disabled={!row[STATUS_COLUMN]} />
   },
   {
     name: DETAILS_COLUMN,
     align: "right",
+    width: "30%",
     getCellValue: row => (
       <span>
         <Mobile>

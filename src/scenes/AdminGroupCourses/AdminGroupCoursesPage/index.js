@@ -6,29 +6,34 @@ import { createStructuredSelector } from "reselect"
 import { withRouter } from "react-router-dom"
 
 import features from "features"
+import { selectors } from "../selectors"
+import { addCoursesToGroup, fetchGroupCourses } from "../thunks"
 import Loading from "base_components/Loading"
 import GroupCoursesTable from "../GroupCoursesTable"
 import GroupCoursesActionBar from "../GroupCoursesActionBar"
 
 class AdminGroupCoursesPage extends Component {
   componentDidMount() {
-    // Fetch all courses for autocomplete
-    const { courses, searchTerm } = this.props
-    if (!courses || courses.length === 0 || searchTerm) {
-      this.props.fetchCourses({})
-    }
-    // Fetch group courses
+    // Fetch current group courses
     const { groupId, groupCourses } = this.props
-    if (!groupId) {
-      return
-    }
     if (
-      !groupCourses ||
-      groupCourses.length === 0 ||
-      !Array.isArray(groupCourses[0].group_ids) ||
-      !groupCourses[0].group_ids.includes(groupId)
+      groupId &&
+      (!groupCourses ||
+        groupCourses.length === 0 ||
+        !Array.isArray(groupCourses[0].group_ids) ||
+        !groupCourses[0].group_ids.includes(groupId))
     ) {
       this.props.fetchGroupCourses({ groupId })
+    }
+
+    // Fetch all courses for autocomplete
+    const { nonCurrentGroupCourses, searchTerm } = this.props
+    if (
+      !nonCurrentGroupCourses ||
+      nonCurrentGroupCourses.length === 0 ||
+      searchTerm
+    ) {
+      this.props.fetchCourses({})
     }
   }
 
@@ -36,9 +41,9 @@ class AdminGroupCoursesPage extends Component {
     this.props.history.push(`/secure/admin/courses/${course.id}`)
 
   handleSearchCourse = term => this.props.fetchCourses({ term })
-  handleAddCoursesToGroup = courseIds =>
+  handleAddCoursesToGroup = (courseIds, courses) =>
     this.props.addCoursesToGroup({
-      courseIds,
+      courses,
       groupId: this.props.groupId
     })
 
@@ -47,7 +52,7 @@ class AdminGroupCoursesPage extends Component {
       className,
       groupCourses,
       isFetchingGroupCourses,
-      courses,
+      nonCurrentGroupCourses,
       isFetchingCourses,
       searchTerm,
       isAddingCourseToGroup
@@ -61,7 +66,7 @@ class AdminGroupCoursesPage extends Component {
           <div>
             <GroupCoursesActionBar
               isFetchingCourses={isFetchingCourses}
-              courses={courses}
+              courses={nonCurrentGroupCourses}
               searchTerm={searchTerm}
               onAddCourses={this.handleAddCoursesToGroup}
               onSearchCourse={this.handleSearchCourse}
@@ -79,22 +84,22 @@ class AdminGroupCoursesPage extends Component {
 
 const mapState = () =>
   createStructuredSelector({
-    courses: features.adminCourses.selectors.selectCourses({
-      withoutCurrentGroupCourses: true
-    }),
+    // action bar selectors
+    nonCurrentGroupCourses: selectors.selectNonCurrentGroupCourses(),
     isFetchingCourses: features.adminCourses.selectors.selectIsFetchingCourses(),
-    groupCourses: features.adminCourses.selectors.selectGroupCourses(),
-    isFetchingGroupCourses: features.adminCourses.selectors.selectIsFetchingGroupCourses(),
     searchTerm: features.adminCourses.selectors.selectSearchTerm(),
-    isAddingCourseToGroup: features.adminCourses.selectors.selectIsAddingCoursesToGroup()
+    // table and action bar selectors
+    groupCourses: selectors.selectGroupCourses(),
+    isFetchingGroupCourses: selectors.selectIsFetchingGroupCourses(),
+    isAddingCourseToGroup: selectors.selectIsAddingCoursesToGroup()
   })
 
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
-      addCoursesToGroup: features.adminCourses.actions.addCoursesToGroup,
-      fetchCourses: features.adminCourses.actions.fetchCourses,
-      fetchGroupCourses: features.adminCourses.actions.fetchGroupCourses
+      addCoursesToGroup,
+      fetchGroupCourses,
+      fetchCourses: features.adminCourses.actions.fetchCourses
     },
     dispatch
   )

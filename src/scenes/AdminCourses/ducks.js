@@ -14,35 +14,15 @@ export const types = {
   //
   CREATE_COURSE_REQUEST: "equipengine-admin/CREATE_COURSE_REQUEST",
   CREATE_COURSE_SUCCESS: "equipengine-admin/CREATE_COURSE_SUCCESS",
-  CREATE_COURSE_ERROR: "equipengine-admin/CREATE_COURSE_ERROR",
-  //
-  // FETCH_GROUP_COURSES
-  //
-  FETCH_GROUP_COURSES_REQUEST: "equipengine-admin/FETCH_GROUP_COURSES_REQUEST",
-  FETCH_GROUP_COURSES_SUCCESS: "equipengine-admin/FETCH_GROUP_COURSES_SUCCESS",
-  FETCH_GROUP_COURSES_ERROR: "equipengine-admin/FETCH_GROUP_COURSES_ERROR",
-  //
-  // ADD_COURSES_TO_GROUP
-  //
-  ADD_COURSES_TO_GROUP_REQUEST:
-    "equipengine-admin/ADD_COURSES_TO_GROUP_REQUEST",
-  ADD_COURSES_TO_GROUP_SUCCESS:
-    "equipengine-admin/ADD_COURSES_TO_GROUP_SUCCESS",
-  ADD_COURSES_TO_GROUP_ERROR: "equipengine-admin/ADD_COURSES_TO_GROUP_ERROR"
+  CREATE_COURSE_ERROR: "equipengine-admin/CREATE_COURSE_ERROR"
 }
 
 const initialState = Immutable({
-  // courses
   isFetchingCourses: false,
   courses: [],
   coursesPagination: null,
   searchTerm: "",
-  isSavingCourse: false,
-  isFetchingGroupCourses: false,
-  // group courses
-  groupCourses: [],
-  groupCoursesPagination: null,
-  isAddingCoursesToGroup: false
+  isSavingCourse: false
 })
 
 // Reducer
@@ -85,45 +65,6 @@ export default (state = initialState, action) => {
         isSavingCourse: false
       })
 
-    //
-    // FETCH_GROUP_COURSES
-    //
-    case types.FETCH_GROUP_COURSES_REQUEST:
-      return state.merge({
-        isFetchingGroupCourses: true
-      })
-    case types.FETCH_GROUP_COURSES_SUCCESS:
-      return state.merge({
-        isFetchingGroupCourses: false,
-        groupCourses: action.payload.groupCourses
-      })
-    case types.FETCH_GROUP_COURSES_ERROR:
-      return state.merge({
-        isFetchingGroupCourses: false,
-        groupCourses: []
-      })
-
-    //
-    // ADD_COURSES_TO_GROUP
-    //
-    case types.ADD_COURSES_TO_GROUP_REQUEST:
-      return state.merge({
-        isAddingCoursesToGroup: true
-      })
-    case types.ADD_COURSES_TO_GROUP_SUCCESS:
-      return state.merge({
-        isAddingCoursesToGroup: false,
-        groupCourses: state.groupCourses.concat(
-          action.payload.courseIds.map(courseId =>
-            state.courses.find(course => course.id === courseId)
-          )
-        )
-      })
-    case types.ADD_COURSES_TO_GROUP_ERROR:
-      return state.merge({
-        isAddingCoursesToGroup: false
-      })
-
     default:
       return state
   }
@@ -157,32 +98,6 @@ export const actions = {
   }),
   createCourseError: () => ({
     type: types.CREATE_COURSE_ERROR
-  }),
-  //
-  // FETCH_GROUP_COURSES
-  //
-  fetchGroupCoursesRequest: () => ({
-    type: types.FETCH_GROUP_COURSES_REQUEST
-  }),
-  fetchGroupCoursesSuccess: ({ groupCourses, groupCoursesPagination }) => ({
-    type: types.FETCH_GROUP_COURSES_SUCCESS,
-    payload: { groupCourses, groupCoursesPagination }
-  }),
-  fetchGroupCoursesError: () => ({
-    type: types.FETCH_GROUP_COURSES_ERROR
-  }),
-  //
-  // ADD_COURSES_TO_GROUP_TO_GROUP
-  //
-  addCoursesToGroupRequest: () => ({
-    type: types.ADD_COURSES_TO_GROUP_REQUEST
-  }),
-  addCoursesToGroupSuccess: ({ courseIds }) => ({
-    type: types.ADD_COURSES_TO_GROUP_SUCCESS,
-    payload: { courseIds }
-  }),
-  addCoursesToGroupError: () => ({
-    type: types.ADD_COURSES_TO_GROUP_ERROR
   })
 }
 
@@ -209,22 +124,9 @@ const selectCourses = config =>
 const selectSearchTerm = () =>
   createSelector(coursesSelector(), courses => courses.searchTerm)
 
-// group courses
-const selectIsFetchingGroupCourses = () =>
-  createSelector(coursesSelector(), courses => courses.isFetchingGroupCourses)
-const selectIsAddingCoursesToGroup = () =>
-  createSelector(coursesSelector(), courses => courses.isAddingCoursesToGroup)
-const selectGroupCourses = () =>
-  createSelector(coursesSelector(), courses => courses.groupCourses)
-
 export const selectors = {
-  // courses
   selectIsFetchingCourses,
   selectIsSavingCourse,
   selectCourses,
-  selectSearchTerm,
-  // group courses
-  selectIsFetchingGroupCourses,
-  selectGroupCourses,
-  selectIsAddingCoursesToGroup
+  selectSearchTerm
 }

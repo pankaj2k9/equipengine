@@ -10,6 +10,7 @@ export default combineReducers({
   activities,
   adminCourses: features.adminCourses.reducer,
   adminGroups: features.adminGroups.reducer,
+  adminGroupCourses: features.adminGroupCourses.reducer,
   adminUsers: features.adminUsers.reducer,
   chats: features.messages.reducer,
   courses: features.courses.reducer,
