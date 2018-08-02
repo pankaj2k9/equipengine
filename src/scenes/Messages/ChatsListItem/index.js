@@ -20,7 +20,7 @@ const ChatsListItem = ({
           <span>
             {chat.users[0].first_name} {chat.users[0].last_name}
           </span>
-          <DateTime date={new Date(chat.created_at)} />
+          <DateTime date={new Date(chat.created_at)} horizontal />
         </Top>
         <Message>{chat.title}</Message>
       </Container>

@@ -9,8 +9,15 @@ export const Header = styled.header`
 `
 
 export const ListRoot = styled.ul`
-  @media screen and (max-width: 767px) {
-    height: 155px;
-    overflow-y: auto;
-  }
+  flex: 1;
+
+  overflow-y: auto;
+`
+
+export const Root = styled.div`
+  width: 35%;
+  max-height: 90vh;
+
+  display: flex;
+  flex-direction: column;
 `

@@ -4,7 +4,7 @@ import { compose } from "recompose"
 import ChatsListItem from "../ChatsListItem"
 import NewMessageModal from "../NewMessageModal"
 
-import { Header, ListRoot } from "./elements"
+import { Header, ListRoot, Root } from "./elements"
 
 import Button from "base_components/RootButton"
 
@@ -28,7 +28,7 @@ const ChatsList = ({
   onChange
 }) => {
   return (
-    <div>
+    <Root>
       <Header>
         <Button onClick={onOpen} light lightBorder>
           New Message
@@ -58,7 +58,7 @@ const ChatsList = ({
         myId={myId}
         createChatRoom={createChatRoom}
       />
-    </div>
+    </Root>
   )
 }
 
