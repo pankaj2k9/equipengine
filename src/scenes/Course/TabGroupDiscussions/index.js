@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 
+import modal from "hoc/modal"
 import userURL from "resources/images/user.png"
 
 import TableDiscussions from "../TableDiscussions"
@@ -123,23 +124,25 @@ const discussions = [
 
 class TabGroupDiscussions extends Component {
   state = {
-    isOpen: false,
     thread: {}
   }
 
   onSelect = id => {
-    this.setState({
-      isOpen: true,
-      thread: discussions.find(item => item.id === id)
-    })
-  }
+    const { onOpen } = this.props
 
-  onClose = () => {
-    this.setState({ isOpen: false })
+    this.setState(
+      {
+        thread: discussions.find(item => item.id === id)
+      },
+      () => {
+        onOpen()
+      }
+    )
   }
 
   render() {
-    const { isOpen, thread } = this.state
+    const { isOpen, onClose } = this.props
+    const { thread } = this.state
 
     return (
       <div>
@@ -147,10 +150,10 @@ class TabGroupDiscussions extends Component {
 
         <TableDiscussions discussions={discussions} onSelect={this.onSelect} />
 
-        <ThreadModal isOpen={isOpen} onClose={this.onClose} thread={thread} />
+        <ThreadModal isOpen={isOpen} onClose={onClose} thread={thread} />
       </div>
     )
   }
 }
 
-export default TabGroupDiscussions
+export default modal(TabGroupDiscussions)
