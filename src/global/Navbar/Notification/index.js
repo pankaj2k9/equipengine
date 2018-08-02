@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 import RowData from "./components/RowData"
 import RowLink from "./components/RowLink"
@@ -11,16 +12,20 @@ import "./styles.css"
 
 const Notification = () => {
   // compose our notification data
-  const NotiRowData = () => (
+  const NotiRowData = url => (
     <ul>
-      <RowData
-        date="22 Sep 4:00pm"
-        message="Hi, Jane can you send me question I asked for the other day when you…"
-      />
-      <RowData
-        date="22 Sep 4:00pm"
-        message="Hi, Jane can you send me question I asked for the other day when you…"
-      />
+      <Link to={url}>
+        <RowData
+          date="22 Sep 4:00pm"
+          message="Hi, Jane can you send me question I asked for the other day when you…"
+        />
+      </Link>
+      <Link to={url}>
+        <RowData
+          date="22 Sep 4:00pm"
+          message="Hi, Jane can you send me question I asked for the other day when you…"
+        />
+      </Link>
       <RowLink text="View All" url="/secure/notifications" />
     </ul>
   )
@@ -46,7 +51,7 @@ const Notification = () => {
 
   return (
     <div className="Notification">
-      <PopoverNoti NotiRowData={NotiRowData} />
+      <PopoverNoti NotiRowData={() => NotiRowData("/secure/notifications")} />
       <PopoverMessage MessageRowData={MessageRowData} />
       <Profile userName="Jane Doe" avatar={avatar} />
     </div>
