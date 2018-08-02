@@ -16,10 +16,12 @@ const List = styled.ul`
 `
 
 // the list item user component.
-const ListItemUser = styled(({ className, name, onClick }) => (
+const ListItemUser = styled(({ className, firstName, lastName, onClick }) => (
   <li className={className} onClick={onClick}>
     <UserAvatar image={iconUser} />
-    <span>{name}</span>
+    <span>
+      {firstName || ""} {lastName || ""}
+    </span>
   </li>
 ))`
   display: flex;
@@ -39,12 +41,14 @@ const ListItemUser = styled(({ className, name, onClick }) => (
 `
 
 // hold the List of user components.
-const ListUser = ({ users, selectedUserId, selectUser }) => (
+const ListUser = ({ users, selectedUser, selectUser }) => (
   <List>
-    {users.map(({ id, name }) => (
+    {users.map(({ id, firstName, lastName }) => (
       <ListItemUser
-        name={name}
-        active={selectedUserId === id}
+        key={id}
+        firstName={firstName}
+        lastName={lastName}
+        active={selectedUser.id === id}
         selectUser={selectUser}
         onClick={() => selectUser(id)}
       />

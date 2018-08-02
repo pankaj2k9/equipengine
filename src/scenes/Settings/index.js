@@ -20,7 +20,10 @@ class AccountSettings extends Component {
         emailNotifications: true,
         groupDiscussion: false,
         privateMessage: true
-      }
+      },
+      country: "",
+      state: "",
+      zipCode: ""
     }
   }
 
@@ -33,6 +36,7 @@ class AccountSettings extends Component {
     return (
       <PageWrapper
         title="Account Settings"
+        margin="3em 0 0 17em"
         icon={
           <IconSettings
             size={21}

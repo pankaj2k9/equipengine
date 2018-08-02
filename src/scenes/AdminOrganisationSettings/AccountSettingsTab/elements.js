@@ -78,6 +78,15 @@ export const AddUserWrapper = styled(ContainerFlex)`
   margin-bottom: 15px;
 `
 
+export const Avatar = styled.img`
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  object-position: top;
+  object-fit: cover;
+  margin-right: 20px;
+`
+
 export const GrayBorderContainer = styled.div`
   border: 1px solid #e0e0e0;
   padding: 14px;

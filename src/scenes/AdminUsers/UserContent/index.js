@@ -104,6 +104,8 @@ class UserContent extends Component {
               changeFirstName={e => this.onChange(e.target.value, "firstName")}
               changeLastName={e => this.onChange(e.target.value, "lastName")}
               changeEmail={e => this.onChange(e.target.value, "email")}
+              resetPasswordExist={true}
+              isAvatarEditable={true}
             />
           </ResponsivePanel>
           <ResponsivePanel>

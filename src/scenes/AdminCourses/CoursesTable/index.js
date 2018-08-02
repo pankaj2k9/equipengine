@@ -108,7 +108,8 @@ const CoursesTable = ({
 const mapState = () =>
   createStructuredSelector({
     courses: selectors.selectCourses(),
-    isFetchingCourses: selectors.selectIsFetchingCourses()
+    isFetchingCourses: selectors.selectIsFetchingCourses(),
+    searchTerm: selectors.selectSearchTerm()
   })
 
 const mapDispatch = dispatch =>
@@ -127,7 +128,8 @@ export default compose(
     )(component),
   lifecycle({
     componentDidMount() {
-      if (!this.props.courses || this.props.courses.length === 0) {
+      const { courses, searchTerm } = this.props
+      if (!courses || courses.length === 0 || searchTerm) {
         this.props.fetchCourses({})
       }
     }

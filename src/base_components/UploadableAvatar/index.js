@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import styled from "styled-components"
 
 import UserAvatar from "base_components/UserAvatar"
@@ -29,25 +29,30 @@ class UploadableAvatar extends React.Component {
   }
 
   render() {
-    const { className, small } = this.props
+    const { className, readOnly, small } = this.props
     const { image } = this.state
+
     return (
-      <div className={className} onClick={this.handleUploadButtonClick}>
+      <button
+        className={className}
+        onClick={!readOnly && this.handleUploadButtonClick}
+      >
         {/* Image preview */}
         <UserAvatar image={image} small={small} />
 
-        {/* Text on image */}
-        <span className="centered">Upload</span>
-
-        {/* Browser file chooser, not visible by default */}
-        <FileChooser
-          accept="image/*"
-          onChooseFiles={this.handleChooseFilesButtonClick}
-          ref={input => {
-            this.fileChooserDialog = input
-          }}
-        />
-      </div>
+        {!readOnly && (
+          <Fragment>
+            <span className="centered">Upload</span>
+            <FileChooser
+              accept="image/*"
+              onChooseFiles={this.handleChooseFilesButtonClick}
+              ref={input => {
+                this.fileChooserDialog = input
+              }}
+            />
+          </Fragment>
+        )}
+      </button>
     )
   }
 }
@@ -55,30 +60,35 @@ class UploadableAvatar extends React.Component {
 export default styled(UploadableAvatar)`
   width: 98px;
   height: 98px;
-  border-radius: 50%;
-  transition: 0.5s;
-
+  padding: 0;
   margin-right: 1.2em;
+  border: unset;
+  border-radius: 50%;
+
   position: relative;
   text-align: center;
   color: white;
+  transition: 0.5s;
+  cursor: default;
 
-  &:hover {
-    cursor: pointer;
-    background-color: black;
-    z-index: 10;
-    color: white;
-  }
+  ${props =>
+    !props.readOnly &&
+    `
+      &:hover {
+        cursor: pointer;
+        background-color: black;
+        z-index: 10;
+        color: white;
 
-  img {
+        > img {
+          z-index: 5;
+          opacity: 0.5;
+        }
+      }
+    `} img {
     width: 98px;
     height: 98px;
     transition: 0.3s;
-  }
-
-  &:hover > img {
-    z-index: 5;
-    opacity: 0.5;
   }
 
   .centered {

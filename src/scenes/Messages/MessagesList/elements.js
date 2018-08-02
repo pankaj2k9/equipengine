@@ -7,6 +7,7 @@ export const Root = styled.div`
     border-left: 1px solid #dadada;
     min-height: 90vh;
     position: relative;
+    min-width: 400px;
   }
 `
 

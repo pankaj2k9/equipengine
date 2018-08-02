@@ -2,6 +2,8 @@ import React from "react"
 import styled from "styled-components"
 import { compose, flattenProp } from "recompose"
 
+import CircleProgressBar from "base_components/CircleProgressBar"
+
 const HeaderItemCourse = ({ className, name, description }) => (
   <header className={className}>
     <div>
@@ -10,7 +12,12 @@ const HeaderItemCourse = ({ className, name, description }) => (
     </div>
     <div>
       <div />
-      <span>0 of 22 Completed</span>
+      <CircleProgressBar
+        className={`${className}__progress`}
+        strokeWidth={10}
+        percentage={(10 / 20) * 100}
+      />
+      <span>11 of 22 Completed</span>
     </div>
   </header>
 )
@@ -18,6 +25,12 @@ const HeaderItemCourse = ({ className, name, description }) => (
 export default compose(
   flattenProp("course"),
   c => styled(c)`
+    &__progress {
+      width: 34px;
+      height: 34px;
+      margin-right: 10px;
+    }
+
     > div:first-child {
       h5 {
         font-size: 1.09rem;
@@ -35,14 +48,6 @@ export default compose(
       display: flex;
       align-items: center;
       margin-bottom: 1.3em;
-
-      div {
-        width: 34px;
-        height: 34px;
-        border: 4px solid #979797;
-        border-radius: 50%;
-        margin-right: 0.7em;
-      }
 
       span {
         color: #9fa6ad;

@@ -12,10 +12,6 @@ const AsyncMessages = Loadable({
   loader: () => import("scenes/Messages")
 })
 
-const AsyncPeople = Loadable({
-  loader: () => import("scenes/People")
-})
-
 const AsyncNotifications = Loadable({
   loader: () => import("scenes/Notifications")
 })
@@ -63,7 +59,7 @@ const privateRoutes = [
     exact: true,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the messages page.">
-        <AsyncMessages {...props} />
+        <features.messages.pages.Messages {...props} />
       </ErrorBoundary>
     )
   },
@@ -113,7 +109,7 @@ const privateRoutes = [
     exact: true,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the people page.">
-        <AsyncPeople {...props} />
+        <features.groupUsers.pages.GroupUsers {...props} />
       </ErrorBoundary>
     )
   },

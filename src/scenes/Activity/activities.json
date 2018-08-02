@@ -13,11 +13,17 @@
       }
     },
     "course": {
-      "id": 1,
+      "id": 16,
       "title": "CommunicationandCulture"
     },
+    "group": {
+      "id": 46,
+      "organization_id": 1,
+      "title": "Bernhard Group"
+    },
     "lesson": {
-      "title": "Tutorial1.1"
+      "id": 6,
+      "title": "Fisher-Batz"
     },
     "created_at": {
       "date": "22Sep",
@@ -41,7 +47,13 @@
       "id": 2,
       "title": "Becoming Equipment to Communicate"
     },
+    "group": {
+      "id": 46,
+      "organization_id": 1,
+      "title": "Bernhard Group"
+    },
     "lesson": {
+      "id": 6,
       "title": "Tutorial 1.3"
     },
     "created_at": {

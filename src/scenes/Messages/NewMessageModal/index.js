@@ -44,7 +44,7 @@ const Body = ({ message, onChange }) => (
   </div>
 )
 
-const Footer = ({ onChange, attachmentRef }) => (
+const Footer = ({ onChange, attachmentRef, onSubmit, myId }) => (
   <FooterRoot>
     <AttachmentButton onClick={e => openFileChooser(e, attachmentRef)} />
     <Button>Submit</Button>
@@ -55,13 +55,28 @@ const Footer = ({ onChange, attachmentRef }) => (
   </FooterRoot>
 )
 
-const Modal = ({ onClose, isOpen, message, attachmentRef, onChange }) => (
+const Modal = ({
+  onClose,
+  isOpen,
+  message,
+  attachmentRef,
+  onChange,
+  myId,
+  createChatRoom
+}) => (
   <BaseModal
     isOpen={isOpen}
     onClose={onClose}
     header={<Header />}
     body={<Body message={message} onChange={onChange} />}
-    footer={<Footer onChange={onChange} attachmentRef={attachmentRef} />}
+    footer={
+      <Footer
+        onChange={onChange}
+        attachmentRef={attachmentRef}
+        onSubmit={createChatRoom}
+        myId={myId}
+      />
+    }
   />
 )
 

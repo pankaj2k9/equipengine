@@ -5,8 +5,14 @@ import { toastr } from "react-redux-toastr"
 
 import ContainerFlex from "base_components/ContainerFlex"
 import Divider from "base_components/Divider"
-
-import Modal from "../AccountSettingsTabModal"
+import {
+  getDropdownValue,
+  updateFieldValue,
+  validate
+} from "utils/formFunctions"
+import modal from "hoc/modal"
+import SelectItemModal from "base_components/SelectItemModal"
+import UserInfoFormatter from "base_components/UserInfoFormatter"
 
 import {
   Form,
@@ -23,36 +29,27 @@ import {
   UserListItemCloseIcon
 } from "./elements"
 
-import modal from "hoc/modal"
-
-import {
-  getDropdownValue,
-  updateFieldValue,
-  validate
-} from "utils/formFunctions"
-
 const validationSchema = joi.object().keys({})
 
-const users = [
+const items = [
   {
     id: "gegae",
-    name: "User1",
-    avatar: "/static/media/user.002ba69c.png"
+    first_name: "User1",
+    avatar: {
+      url: "/static/media/user.002ba69c.png"
+    }
   },
   {
     id: "hjgh",
-    name: "User2",
-    avatar: "/static/media/user.002ba69c.png"
+    first_name: "User2"
   },
   {
     id: "gh554h3",
-    name: "User3",
-    avatar: "/static/media/user.002ba69c.png"
+    first_name: "User3"
   },
   {
     id: "y657iq",
-    name: "User4",
-    avatar: "/static/media/user.002ba69c.png"
+    first_name: "User4"
   }
 ]
 
@@ -60,12 +57,12 @@ const language = "en"
 
 const UserListItem = ({ user, remove }) => (
   <UserListItemElement>
-    <span>{user.name}</span>
+    <UserInfoFormatter user={user} />
     <UserListItemCloseIcon onClick={() => remove(user.id)} />
   </UserListItemElement>
 )
 
-const PanelWebAddress = ({ onOpen, users, onChange, removeUser }) => (
+const PanelWebAddress = ({ onOpen, items, onChange, removeUser }) => (
   <Panel title="Accounts" paddingBottom="1.6em">
     <HintText>
       Be careful - this will provide users access to everything related to this
@@ -82,8 +79,8 @@ const PanelWebAddress = ({ onOpen, users, onChange, removeUser }) => (
       />
     </AddUserWrapper>
     <GrayBorderContainer>
-      {!users.length && "No administrators"}
-      {users.map(user => <UserListItem user={user} remove={removeUser} />)}
+      {!items.length && "No administrators"}
+      {items.map(user => <UserListItem user={user} remove={removeUser} />)}
     </GrayBorderContainer>
     <Divider />
   </Panel>
@@ -122,9 +119,9 @@ class ItemTabAccountSettings extends Component {
 
   componentDidMount = () => {
     // TODO: Change to getting from store
-    const admins = [users[0], users[1]]
+    const admins = [items[0], items[1]]
 
-    this.setState({ allUsers: users, admins, language })
+    this.setState({ allUsers: items, admins, language })
   }
 
   onChange = (e, selector) => {
@@ -186,7 +183,7 @@ class ItemTabAccountSettings extends Component {
       <Fragment>
         <Form>
           <PanelWebAddress
-            users={admins}
+            items={admins}
             onOpen={onOpen}
             onChange={this.onChange}
             removeUser={this.removeAdmin}
@@ -194,10 +191,14 @@ class ItemTabAccountSettings extends Component {
           <PanelLanguage language={language} onChange={this.onChange} />
           <Button onClick={this.onSubmit}>Update</Button>
         </Form>
-        <Modal
-          users={nonAdmins}
-          handleClose={onClose}
+        <SelectItemModal
+          title="Add user to administrators"
+          hint="Be careful - this will provide items access to everything related to this organization account"
+          listTitle="Select a user to make an administrator"
+          formatListItem={user => <UserInfoFormatter user={user} />}
+          items={nonAdmins}
           isOpen={isOpen}
+          onClose={onClose}
           onSubmit={this.addAdmins}
         />
       </Fragment>
