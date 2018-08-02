@@ -19,22 +19,50 @@ const ContainerTeacherUserManager = styled.div`
   }
 `
 
+const tutorials = [
+  {
+    id: 6,
+    title: "Fisher-Batz",
+    description: "cultivate e-business channels",
+    status: "active",
+    user_id: 585,
+    course_id: 16,
+    created_at: "April 22, 2018 09:15",
+    updated_at: "April 22, 2018 15:15",
+    course_settings: {
+      id: 77,
+      course_id: 155,
+      group_id: 46,
+      precourse_id: 0,
+      complete_lesson_can: "all",
+      reports_enabled: true,
+      files_enabled: true,
+      discussing_enabled: true,
+      student_content_enabled: true,
+      status: "active",
+      created_at: "April 22, 2018 09:15",
+      updated_at: "April 22, 2018 09:15"
+    },
+    tasks: []
+  }
+]
+
 const courses = [
   {
-    name: "course1",
-    id: "g43g34g3"
+    title: "course1",
+    id: 16
   },
   {
-    name: "course2",
-    id: "8c3h8mc9"
+    title: "course2",
+    id: 17
   },
   {
-    name: "course3",
-    id: "c2m38mrc28"
+    title: "course3",
+    id: 18
   },
   {
-    name: "course4",
-    id: "rc2j3r89c"
+    title: "course4",
+    id: 19
   }
 ].map(c => ({ ...c, description: "Some description" }))
 
@@ -70,7 +98,7 @@ const TeacherUserManager = () => (
 )
 
 export default compose(
-  withProps({ users, courses }),
+  withProps({ courses, tutorials, users }),
   withStateHandlers(
     ({ users }) => ({
       selectedUser: users[0]
@@ -81,7 +109,7 @@ export default compose(
       })
     }
   ),
-  withProps(({ courses, users, selectedUser }) => {
+  withProps(({ courses, selectedUser }) => {
     const selectedCourses = selectedUser.courses.map(id =>
       courses.find(course => course.id === id)
     )
@@ -90,7 +118,8 @@ export default compose(
   }),
   withContext(
     contextPropTypes,
-    ({ users, selectedUser, selectUser, selectedCourses }) => ({
+    ({ tutorials, users, selectedUser, selectUser, selectedCourses }) => ({
+      tutorials,
       users,
       selectedUser,
       selectUser,

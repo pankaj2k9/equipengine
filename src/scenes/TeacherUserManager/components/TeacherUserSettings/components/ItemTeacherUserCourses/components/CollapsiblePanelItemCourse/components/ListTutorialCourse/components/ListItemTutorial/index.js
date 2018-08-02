@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import moment from "moment"
 
 // for our media
 import iconPlayButton from "resources/images/play-button.svg"
@@ -20,24 +21,29 @@ const MetaInfo = styled.span`
 `
 
 // this is for list item
-const ListItemTutorial = styled(({ className, isReport }) => (
+const ListItemTutorial = styled(({ className, isReport, tutorial }) => (
   <li className={`${className} ListItemTutorial`}>
     {!isReport ? (
       <div className="ListItemTutorial__container">
         <div className="ListItemTutorial__media">
           <img alt="Icon play button" src={iconPlayButton} />
           <div>
-            <p>Tutorial 1</p>
+            <p>{tutorial.title}</p>
             <MetaInfo default>00:05:25</MetaInfo>
           </div>
         </div>
         <div className="ListItemTutorial__date">
-          <DateTime accent bold center date="22nd Sep" time="5:25pm" />
+          <DateTime
+            accent
+            bold
+            center
+            date={moment(tutorial.updated_at).format("Do MMM")}
+            time={moment(tutorial.updated_at).format("hh:mma")}
+          />
           <MetaInfo>Last Activity</MetaInfo>
         </div>
         <div className="ListItemTutorial__feedback">
           <div>
-            <UserAvatar small image={iconUser} />
             <UserAvatar small image={iconUser} />
           </div>
           <MetaInfo>Feedback / Discussion</MetaInfo>
@@ -48,7 +54,12 @@ const ListItemTutorial = styled(({ className, isReport }) => (
           </Form>
           <MetaInfo>Mark Complete</MetaInfo>
         </div>
-        <LinkButton text="View" url="/view" />
+        <LinkButton
+          text="View"
+          url={`/secure/groups/${tutorial.course_settings.group_id}/courses/${
+            tutorial.course_id
+          }/tutorials/${tutorial.id}`}
+        />
       </div>
     ) : (
       <div className="ListItemTutorial__container">

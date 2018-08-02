@@ -9,10 +9,11 @@ const List = styled.ul`
 `
 
 // This is the main component.
-const ListTutorialCourse = () => (
+const ListTutorialCourse = ({ tutorials }) => (
   <List>
-    <ListItemTutorial />
-    <ListItemTutorial />
+    {tutorials.map(tutorial => (
+      <ListItemTutorial key={tutorial.id} tutorial={tutorial} />
+    ))}
     <ListItemTutorial isReport />
   </List>
 )
