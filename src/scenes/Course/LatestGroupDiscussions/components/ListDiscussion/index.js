@@ -79,12 +79,13 @@ const HasDiscussions = styled(({ className, discussions, onSelect }) => {
   }
 `
 
-const ListDiscussion = ({ discussions, onSelect }) => {
-  return discussions.length ? (
+const ListDiscussion = ({ discussions, onSelect }) =>
+  discussions.length ? (
     <HasDiscussions discussions={discussions} onSelect={onSelect} />
   ) : (
     <p
       style={{
+        margin: 0,
         color: "#CECECE",
         fontSize: 14
       }}
@@ -92,7 +93,6 @@ const ListDiscussion = ({ discussions, onSelect }) => {
       No discussion to show
     </p>
   )
-}
 
 ListDiscussion.propTypes = {
   discussions: PropTypes.array.isRequired
