@@ -14,7 +14,7 @@ const MessagesList = ({
   textMessage
 }) => (
   <Root>
-    {currentChatMessages.length || isFetchingCurrentChat ? (
+    {Array.isArray(currentChatMessages) || isFetchingCurrentChat ? (
       <React.Fragment>
         <Header>
           <Text>Conversation:</Text>
