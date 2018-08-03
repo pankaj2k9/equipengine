@@ -14,6 +14,7 @@ import form from "hoc/form"
 
 const ChatsList = ({
   createChatRoom,
+  currentChatId,
   currentChatMessages,
   myId,
   deleteMessage,
@@ -41,6 +42,7 @@ const ChatsList = ({
               key={chat.id}
               chat={chat}
               getChatMessages={getChatMessages}
+              isActive={currentChatId === chat.id}
               deleteChatRoom={deleteChatRoom}
               myId={myId}
               deleteMessage={deleteMessage}

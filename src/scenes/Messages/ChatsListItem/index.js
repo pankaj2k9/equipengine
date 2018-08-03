@@ -10,10 +10,11 @@ const ChatsListItem = ({
   deleteChatRoom,
   deleteMessage,
   myId,
-  currentChatMessages
+  currentChatMessages,
+  isActive
 }) => (
   <li onClick={_ => getChatMessages(chat.id, chat.users)}>
-    <Anchor href="">
+    <Anchor href="" isActive={isActive}>
       <Avatar small image={avatar} />
       <Container>
         <Top>

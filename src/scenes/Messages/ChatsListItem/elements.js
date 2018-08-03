@@ -5,7 +5,7 @@ import UserAvatar from "base_components/UserAvatar"
 export const Anchor = styled.ul`
   display: flex;
   padding: 1.3em;
-  background: ${props => props.active && "rgba(186, 186, 186, 0.21)"};
+  background: ${props => props.isActive && "rgba(186, 186, 186, 0.21)"};
   transition: background 300ms ease-in;
 
   &:hover {

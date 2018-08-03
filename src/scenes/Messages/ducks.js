@@ -50,7 +50,10 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_CHATS_REQUEST:
       return state.merge({
-        isFetchingChats: true
+        isFetchingChats: true,
+        currentChatMessages: [],
+        currentChatUsers: [],
+        currentChatId: null
       })
     case types.FETCH_CHATS_SUCCESS:
       return state.merge({
