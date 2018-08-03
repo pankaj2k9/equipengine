@@ -4,16 +4,24 @@ import UserAvatar from "base_components/UserAvatar"
 
 export const Root = styled.li`
   display: flex;
-  padding: 1.6em 1.3em;
-  border-bottom: 1px solid #dadada;
+  padding: 0 1.3em;
 `
 
 export const Container = styled.div`
-  margin-right: 1em;
+  display: flex;
+  flex: 1;
+  padding: 1.6em;
+  border-bottom: 1px solid #dbdbdb;
+`
+
+export const Content = styled.div`
+  margin-right: 2em;
 `
 
 export const Avatar = styled(UserAvatar)`
   margin-bottom: 0.8em;
+  width: 41px;
+  height: 41px;
 `
 
 export const Time = styled.span`

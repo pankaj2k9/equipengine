@@ -3,11 +3,16 @@ import styled from "styled-components"
 import MessageForm from "base_components/MessageForm"
 
 export const Root = styled.div`
+  max-height: 93vh;
+
   @media screen and (min-width: 768px) {
     border-left: 1px solid #dadada;
     min-height: 90vh;
     position: relative;
     min-width: 400px;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
   }
 `
 
@@ -37,13 +42,8 @@ export const Text = styled.header`
 `
 
 export const List = styled.ul`
-  max-height: 200px;
   overflow-y: auto;
-
-  @media screen and (min-width: 768px) {
-    max-height: 80vh;
-    overflow-y: auto;
-  }
+  flex: 1;
 `
 
 export const Form = styled(MessageForm)`
@@ -51,9 +51,4 @@ export const Form = styled(MessageForm)`
   width: 100%;
   background: #ffffff;
   border-top: 1px solid #dadada;
-
-  @media screen and (min-width: 768px) {
-    position: absolute;
-    bottom: 0;
-  }
 `

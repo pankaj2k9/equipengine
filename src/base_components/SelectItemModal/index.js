@@ -160,15 +160,6 @@ export default compose(
       onClose()
     }
   }),
-  withHandlers({
-    onSubmit: ({ onSubmit, selectedIds, onClose }) => e => {
-      e.preventDefault()
-
-      onSubmit(selectedIds)
-
-      onClose()
-    }
-  }),
   mapProps(({ selectedIds, items, ...rest }) => ({
     items: Array.isArray(items)
       ? items.map(item => ({
@@ -179,5 +170,14 @@ export default compose(
     selectedIds,
     ...rest
   })),
+  withHandlers({
+    onSubmit: ({ onSubmit, selectedIds, items, onClose }) => e => {
+      e.preventDefault()
+
+      onSubmit(selectedIds, items.filter(item => selectedIds.includes(item.id)))
+
+      onClose()
+    }
+  }),
   pure
 )(SelectItemModal)

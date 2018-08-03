@@ -3,7 +3,7 @@ import { actions as usersActions } from "./ducks"
 
 export const fetchUsers = ({ term }) => {
   return async dispatch => {
-    dispatch(usersActions.fetchUsersRequest())
+    dispatch(usersActions.fetchUsersRequest({ searchTerm: term }))
 
     try {
       const { users, meta } = await API.fetchUsers({ term })
@@ -20,7 +20,7 @@ export const fetchUsers = ({ term }) => {
   }
 }
 
-export const createUser = ({ firstName, lastName, email, password, role }) => {
+export const createUser = ({ firstName, lastName, email, role }) => {
   return async dispatch => {
     dispatch(usersActions.createUserRequest())
 

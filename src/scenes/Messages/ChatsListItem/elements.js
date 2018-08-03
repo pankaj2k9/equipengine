@@ -18,6 +18,7 @@ export const Avatar = styled(UserAvatar)`
 `
 
 export const Container = styled.div`
+  flex: 1;
   font-size: 13px;
   color: #2d2d2d;
 `

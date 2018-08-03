@@ -7,6 +7,7 @@ import UserAvatar from "base_components/UserAvatar"
 
 const ListRow = styled.li`
   padding: 1em 0;
+
   border-bottom: 1px solid #dadada;
 
   div {
@@ -68,6 +69,8 @@ const ThreadModalBody = styled(({ className, thread }) => {
   flex: 1;
 
   padding: 20px 0;
+
+  overflow-y: auto;
 
   .modal-body__content {
     max-width: 774px;

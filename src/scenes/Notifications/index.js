@@ -1,12 +1,23 @@
 import React from "react"
 import IconBell from "react-icons/lib/fa/bell"
-import IconDelete from "react-icons/lib/fa/trash"
+import styled from "styled-components"
 import Loading from "base_components/Loading"
 
 import notificationsData from "./notifications.json"
 import ListNotification from "./components/ListNotification"
 import OutlineButton from "../../base_components/OutlineButton"
 import PageWrapper from "global/PageWrapper"
+
+const ExtendOutlineButton = styled(OutlineButton)`
+  border: none;
+  color: #c9c9c9;
+  font-size: 14px;
+`
+const NoNotification = styled.h4`
+  text-align: center;
+  color: #a6a6a6;
+  font-size: 14px;
+`
 
 class Notifications extends React.Component {
   state = {
@@ -26,11 +37,20 @@ class Notifications extends React.Component {
     )
   }
 
-  handleClearAll = () => {}
+  handleClearAll = () => {
+    this.setState({ fetchingNotifications: true })
+    setTimeout(
+      () =>
+        this.setState({
+          fetchingNotifications: false,
+          notifications: []
+        }),
+      2000
+    )
+  }
 
   render() {
     const { fetchingNotifications, notifications } = this.state
-    const { onClearAll } = this.props
 
     return (
       <PageWrapper
@@ -44,15 +64,17 @@ class Notifications extends React.Component {
         }
         title="Notifications"
         actionBar={
-          <OutlineButton onClick={onClearAll}>
-            <IconDelete /> CLEAR ALL
-          </OutlineButton>
+          <ExtendOutlineButton onClick={this.handleClearAll}>
+            CLEAR ALL
+          </ExtendOutlineButton>
         }
       >
         {fetchingNotifications ? (
           <Loading />
-        ) : (
+        ) : notifications.length > 0 ? (
           <ListNotification notifications={notifications} />
+        ) : (
+          <NoNotification>No notifications to show.</NoNotification>
         )}
       </PageWrapper>
     )

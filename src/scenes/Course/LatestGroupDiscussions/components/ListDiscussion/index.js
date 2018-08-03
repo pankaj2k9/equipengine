@@ -4,15 +4,17 @@ import styled from "styled-components"
 
 import UserAvatar from "base_components/UserAvatar"
 
-const HasDiscussions = styled(({ className, discussions }) => {
-  // creating list of dicussion list
+const HasDiscussions = styled(({ className, discussions, onSelect }) => {
+  // creating list of discussion list
   const listDiscussions = discussions.map((item, i) => (
     <li className={className} key={i}>
       <UserAvatar small image={item.avatarURL} />
       <p>
         {`${item.name} `}
-        <strong>{`${item.task.action} `}</strong>
-        {item.task.meta}
+        <button onClick={() => onSelect(item.task.meta.id)} type="button">
+          {item.task.action}
+        </button>
+        {` ${item.task.meta.title}`}
       </p>
       <div>
         <span>{item.date.day}</span>
@@ -35,8 +37,17 @@ const HasDiscussions = styled(({ className, discussions }) => {
       max-width: 250px;
       text-align: inherit;
 
-      strong {
+      button {
+        display: inline;
+
+        padding: 0;
+        margin: 0;
+
+        border: none;
+        background: transparent;
+
         color: #2093e9;
+        font-weight: bold;
       }
     }
 
@@ -68,15 +79,13 @@ const HasDiscussions = styled(({ className, discussions }) => {
   }
 `
 
-const ListDiscussion = ({ discussions }) => {
-  // if there are discussions
-  if (discussions.length) {
-    return <HasDiscussions discussions={discussions} />
-  }
-  // no discussions
-  return (
+const ListDiscussion = ({ discussions, onSelect }) =>
+  discussions.length ? (
+    <HasDiscussions discussions={discussions} onSelect={onSelect} />
+  ) : (
     <p
       style={{
+        margin: 0,
         color: "#CECECE",
         fontSize: 14
       }}
@@ -84,7 +93,6 @@ const ListDiscussion = ({ discussions }) => {
       No discussion to show
     </p>
   )
-}
 
 ListDiscussion.propTypes = {
   discussions: PropTypes.array.isRequired

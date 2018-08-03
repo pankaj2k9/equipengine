@@ -19,6 +19,7 @@ const ThreadModal = styled(Modal)`
       border-radius: 0;
       border: 0;
       min-height: 100vh;
+      max-height: 100vh;
       position: relative;
     }
   }

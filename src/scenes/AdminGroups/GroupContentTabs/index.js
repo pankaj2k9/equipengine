@@ -7,7 +7,6 @@ import features from "features"
 import Box from "base_components/Box"
 import Tabs from "base_components/Tabs"
 import GroupSettingsTab from "../GroupSettingsTab"
-import GroupUsersTab from "../GroupUsersTab"
 import Centerer from "base_components/PageCenterer"
 
 const GroupContent = ({ groupId }) => {
@@ -21,7 +20,7 @@ const GroupContent = ({ groupId }) => {
           <features.adminGroupCourses.pages.GroupCourses />
         </Tab>
         <Tab eventKey={2} title="Users">
-          <GroupUsersTab />
+          <features.adminGroupUsers.pages.GroupUsers />
         </Tab>
         <Tab eventKey={3} title="Settings">
           <GroupSettingsTab />
