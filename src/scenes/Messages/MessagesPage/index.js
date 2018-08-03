@@ -46,7 +46,16 @@ class Messages extends React.Component {
  */
 
   componentDidMount() {
-    this.props.fetchChats()
+    this.props.fetchChats().then(() => {
+      const {
+        location: { state },
+        users
+      } = this.props
+
+      if (state && state.chatId) {
+        this.handleSelectChat(state.chatId, users)
+      }
+    })
   }
 
   render() {
@@ -59,9 +68,10 @@ class Messages extends React.Component {
       textMessage,
       id,
       deleteChatRoom,
-      deleteMessage,
-      createChatRoom
+      createChatRoom,
+      currentChatId
     } = this.props
+
     //const chats = this.handleGetMyChats(id)
     return (
       <PageWrapper disableMargin>
@@ -71,6 +81,7 @@ class Messages extends React.Component {
           ) : (
             <ChatsList
               chats={chats}
+              currentChatId={currentChatId}
               isFetchingChats={isFetchingChats}
               getChatMessages={this.handleSelectChat}
               deleteChatRoom={deleteChatRoom}

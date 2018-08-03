@@ -16,6 +16,17 @@ export const Root = styled.div`
   }
 `
 
+export const SelectChat = styled.div`
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 16px;
+  color: #c9c9c9;
+`
+
 export const Header = styled.header`
   border-bottom: 1px solid #dadada;
   padding: 0.8em;
