@@ -1,19 +1,18 @@
 import React from "react"
 import { bindActionCreators } from "redux"
 import { connect } from "react-redux"
-import { compose, lifecycle, withState } from "recompose"
+import { compose, lifecycle } from "recompose"
 import { createStructuredSelector } from "reselect"
 import { withRouter } from "react-router-dom"
 
 import BodyCourse from "../BodyCourse"
 import Breadcrumbs from "base_components/Breadcrumbs"
 import Error from "base_components/Error"
-import dicussionsData from "../discussionsData.json"
 import features from "features"
 import HeaderCourse from "../HeaderCourse"
 import Loading from "base_components/Loading"
 
-const Course = ({ match, courses, isFetchingCourses, latestDicussions }) => {
+const Course = ({ match, courses, isFetchingCourses }) => {
   // TODO think if we should load one or all the courses for single course view
   const { courseId, groupId } = match.params
   const course = courses.find(course => course.id.toString() === courseId)
@@ -28,7 +27,7 @@ const Course = ({ match, courses, isFetchingCourses, latestDicussions }) => {
 
   return (
     <div>
-      {/* Breadcrubms with links to courses */}
+      {/* Breadcrumbs with links to courses */}
       <Breadcrumbs
         items={[
           {
@@ -45,8 +44,8 @@ const Course = ({ match, courses, isFetchingCourses, latestDicussions }) => {
       {/* Image with name and completed circle */}
       <HeaderCourse course={course} />
 
-      {/* Tutorials, files and dicsussions */}
-      <BodyCourse course={course} latestDicussions={latestDicussions} />
+      {/* Tutorials, files and discussions */}
+      <BodyCourse course={course} />
     </div>
   )
 }
@@ -68,7 +67,6 @@ const mapDispatch = dispatch =>
   )
 
 export default compose(
-  withState("latestDicussions", null, dicussionsData),
   comp =>
     connect(
       mapState,

@@ -1,16 +1,18 @@
-import React from "react"
 import styled from "styled-components"
+import React from "react"
+import { compose, getContext } from "recompose"
 
 import ListDiscussion from "./components/ListDiscussion"
+import { contextPropTypes } from "../propTypes"
 
-const LatestGroupDiscussions = styled(({ className, latestDicussions }) => {
-  return (
+const LatestGroupDiscussions = styled(
+  ({ className, latestDiscussions, selectThread }) => (
     <div className={className}>
       <header>Latest Group Discussions</header>
-      <ListDiscussion discussions={latestDicussions} />
+      <ListDiscussion discussions={latestDiscussions} onSelect={selectThread} />
     </div>
   )
-})`
+)`
   > header {
     border-bottom: 1px solid #dadada;
     padding-bottom: 0.67em;
@@ -22,4 +24,4 @@ const LatestGroupDiscussions = styled(({ className, latestDicussions }) => {
   }
 `
 
-export default LatestGroupDiscussions
+export default compose(getContext(contextPropTypes))(LatestGroupDiscussions)
