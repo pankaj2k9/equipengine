@@ -5,6 +5,9 @@ import styled from "styled-components"
 // TODO refactor when all the dates come to date objects
 const DateTime = styled(
   ({ className, date, horizontal, time, withYear, withoutTime }) => {
+    if (!date) {
+      return ""
+    }
     let year = ""
     if (date && date instanceof Date) {
       time = date.toLocaleString("en-gb", {

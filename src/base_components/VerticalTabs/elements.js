@@ -15,6 +15,7 @@ export const Tabs = styled.div`
   @media screen and (min-width: 768px) {
     flex: 1;
     min-width: 350px;
+    max-width: 400px;
     height: 85vh;
     overflow-y: scroll;
   }
@@ -25,5 +26,7 @@ export const TabContent = styled.div`
   @media screen and (min-width: 768px) {
     border-left: 1px solid ${props => props.theme.lightgray};
     flex: 1;
+    height: 85vh;
+    overflow-y: scroll;
   }
 `

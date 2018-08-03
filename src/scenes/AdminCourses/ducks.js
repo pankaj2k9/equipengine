@@ -109,18 +109,8 @@ const selectIsFetchingCourses = () =>
   createSelector(coursesSelector(), courses => courses.isFetchingCourses)
 const selectIsSavingCourse = () =>
   createSelector(coursesSelector(), courses => courses.isSavingCourse)
-const selectCourses = config =>
-  createSelector(coursesSelector(), courses => {
-    if (!config || !config.withoutCurrentGroupCourses) {
-      return courses.courses
-    }
-    const groupCoursesIds = courses.groupCourses.map(
-      groupCourse => groupCourse.id
-    )
-    return courses.courses.filter(
-      course => !groupCoursesIds.includes(course.id)
-    )
-  })
+const selectCourses = () =>
+  createSelector(coursesSelector(), courses => courses.courses)
 const selectSearchTerm = () =>
   createSelector(coursesSelector(), courses => courses.searchTerm)
 

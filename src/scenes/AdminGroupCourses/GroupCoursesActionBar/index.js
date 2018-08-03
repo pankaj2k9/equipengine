@@ -11,9 +11,9 @@ class GroupCoursesActionBar extends Component {
       isFetchingCourses,
       courses,
       searchTerm,
-      isOpen: isOpenAddGroupModal,
-      onOpen: onOpenAddGroupModal,
-      onClose: onCloseAddGroupModal,
+      isOpen: isOpenAddCourseModal,
+      onOpen: onOpenAddCourseModal,
+      onClose: onCloseAddCourseModal,
       onAddCourses,
       onSearchCourse
     } = this.props
@@ -22,12 +22,12 @@ class GroupCoursesActionBar extends Component {
       <div>
         <HeaderItemTab>
           <ButtonAdd
-            onHandlerClick={onOpenAddGroupModal}
+            onHandlerClick={onOpenAddCourseModal}
             text="Add course to group"
           />
         </HeaderItemTab>
         <SelectItemModal
-          isOpen={isOpenAddGroupModal}
+          isOpen={isOpenAddCourseModal}
           title="Add course to group"
           searchBarPlaceholder="Search courses"
           searchTerm={searchTerm}
@@ -35,7 +35,7 @@ class GroupCoursesActionBar extends Component {
           items={courses}
           formatListItem={({ title }) => title}
           onSearch={onSearchCourse}
-          onClose={onCloseAddGroupModal}
+          onClose={onCloseAddCourseModal}
           onSubmit={onAddCourses}
         />
       </div>

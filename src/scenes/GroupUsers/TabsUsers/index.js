@@ -69,7 +69,7 @@ export default compose(
     componentDidMount() {
       if (!this.props.users || this.props.users.length === 0) {
         this.props.fetchGroupUsers({
-          group_id: this.props.match.params.groupId
+          groupId: this.props.match.params.groupId
         })
       }
     }
