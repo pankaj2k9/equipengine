@@ -9,6 +9,7 @@ import {
 import { Root } from "./elements"
 import ActivityCellFormatter from "./ActivityCellFormatter"
 import DateCellFormatter from "./DateCellFormatter"
+import DetailsButtonCellFormatter from "./DetailsButtonCellFormatter"
 import DiscussionCellFormatter from "./DiscussionCellFormatter/"
 import DownloadCellFormatter from "./DownloadCellFormatter"
 import SubtitledTextCellFormatter from "./SubtitledTextCellFormatter"
@@ -73,7 +74,10 @@ const Table = ({ rows, columns, sorting, rowFontSize, headerRowFontSize }) => {
       rowFontSize={rowFontSize}
       headerRowFontSize={headerRowFontSize}
     >
-      <Grid columns={columns} rows={rows}>
+      <Grid
+        columns={Array.isArray(columns) ? columns : []}
+        rows={Array.isArray(rows) ? rows : []}
+      >
         {sorting && <SortingState defaultSorting={defaultColumnsSorting} />}
         {sorting && <IntegratedSorting columnExtensions={sortFunctions} />}
 
@@ -92,6 +96,7 @@ export {
   Table as default,
   ActivityCellFormatter,
   DateCellFormatter,
+  DetailsButtonCellFormatter,
   DiscussionCellFormatter,
   DownloadCellFormatter,
   SubtitledTextCellFormatter,

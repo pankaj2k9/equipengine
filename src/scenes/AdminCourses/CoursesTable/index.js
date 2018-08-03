@@ -7,12 +7,10 @@ import { withRouter } from "react-router-dom"
 
 import { fetchCourses } from "../thunks"
 import { selectors } from "../ducks"
-import Button, { IconButton } from "base_components/RootButton"
-import { Desktop, Mobile } from "base_components/Responsive"
-import IconDetails from "react-icons/lib/fa/wrench"
 import Loading from "base_components/Loading"
 import Table, {
   DateCellFormatter,
+  DetailsButtonCellFormatter,
   SubtitledTextCellFormatter,
   UserCountCellFormatter
 } from "base_components/Table"
@@ -61,18 +59,7 @@ const columns = [
     align: "right",
     width: "20%",
     getCellValue: row => (
-      <span>
-        <Mobile>
-          <IconButton onClick={row[DETAILS_COLUMN]}>
-            <IconDetails />
-          </IconButton>
-        </Mobile>
-        <Desktop>
-          <Button secondary onClick={row[DETAILS_COLUMN]}>
-            Details
-          </Button>
-        </Desktop>
-      </span>
+      <DetailsButtonCellFormatter onClick={row[DETAILS_COLUMN]} />
     )
   }
 ]

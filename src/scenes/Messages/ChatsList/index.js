@@ -4,7 +4,7 @@ import { compose } from "recompose"
 import ChatsListItem from "../ChatsListItem"
 import NewMessageModal from "../NewMessageModal"
 
-import { Header, ListRoot } from "./elements"
+import { Header, ListRoot, Root } from "./elements"
 
 import Button from "base_components/RootButton"
 
@@ -14,6 +14,7 @@ import form from "hoc/form"
 
 const ChatsList = ({
   createChatRoom,
+  currentChatId,
   currentChatMessages,
   myId,
   deleteMessage,
@@ -28,7 +29,7 @@ const ChatsList = ({
   onChange
 }) => {
   return (
-    <div>
+    <Root>
       <Header>
         <Button onClick={onOpen} light lightBorder>
           New Message
@@ -41,6 +42,7 @@ const ChatsList = ({
               key={chat.id}
               chat={chat}
               getChatMessages={getChatMessages}
+              isActive={currentChatId === chat.id}
               deleteChatRoom={deleteChatRoom}
               myId={myId}
               deleteMessage={deleteMessage}
@@ -58,7 +60,7 @@ const ChatsList = ({
         myId={myId}
         createChatRoom={createChatRoom}
       />
-    </div>
+    </Root>
   )
 }
 

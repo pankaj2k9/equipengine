@@ -10,17 +10,18 @@ const ChatsListItem = ({
   deleteChatRoom,
   deleteMessage,
   myId,
-  currentChatMessages
+  currentChatMessages,
+  isActive
 }) => (
   <li onClick={_ => getChatMessages(chat.id, chat.users)}>
-    <Anchor href="">
+    <Anchor href="" isActive={isActive}>
       <Avatar small image={avatar} />
       <Container>
         <Top>
           <span>
             {chat.users[0].first_name} {chat.users[0].last_name}
           </span>
-          <DateTime date={new Date(chat.created_at)} />
+          <DateTime date={new Date(chat.created_at)} horizontal />
         </Top>
         <Message>{chat.title}</Message>
       </Container>

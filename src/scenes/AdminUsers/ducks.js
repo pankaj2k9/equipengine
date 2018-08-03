@@ -21,6 +21,7 @@ const initialState = Immutable({
   isFetchingUsers: false,
   users: [],
   pagination: null,
+  searchTerm: "",
   isSavingUser: false
 })
 
@@ -32,7 +33,8 @@ export default (state = initialState, action) => {
     //
     case types.FETCH_USERS_REQUEST:
       return state.merge({
-        isFetchingUsers: true
+        isFetchingUsers: true,
+        searchTerm: action.payload.searchTerm
       })
     case types.FETCH_USERS_SUCCESS:
       return state.merge({
@@ -72,8 +74,9 @@ export const actions = {
   //
   // FETCH_USERS
   //
-  fetchUsersRequest: () => ({
-    type: types.FETCH_USERS_REQUEST
+  fetchUsersRequest: ({ searchTerm }) => ({
+    type: types.FETCH_USERS_REQUEST,
+    payload: { searchTerm }
   }),
   fetchUsersSuccess: ({ users, pagination }) => ({
     type: types.FETCH_USERS_SUCCESS,
@@ -105,9 +108,12 @@ const selectIsFetchingUsers = () =>
 const selectUsers = () => createSelector(usersSelector(), users => users.users)
 const selectIsSavingUser = () =>
   createSelector(usersSelector(), users => users.isSavingUser)
+const selectSearchTerm = () =>
+  createSelector(usersSelector(), users => users.searchTerm)
 
 export const selectors = {
   selectIsFetchingUsers,
   selectIsSavingUser,
-  selectUsers
+  selectUsers,
+  selectSearchTerm
 }
