@@ -28,9 +28,9 @@ const userIsNotAuthenticated = connectedRouterRedirect({
   // or to the landing page if none is specified and the user is already logged in
   redirectPath: (state, ownProps) =>
     locationHelper.getRedirectQueryParam(ownProps) ||
-    features.login.selectors.selectIsAdmin()(state)
+    (features.login.selectors.selectIsAdmin()(state)
       ? "/secure/admin/groups"
-      : "/secure/home",
+      : "/secure/home"),
   // This prevents us from adding the query parameter when we send the user away from the login page
   allowRedirectBack: false,
   // If selector is true, wrapper will not redirect

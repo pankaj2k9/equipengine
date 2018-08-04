@@ -6,25 +6,31 @@ import { Label, Switch } from "base_components/RootForm"
 import UserContacts from "base_components/UserContacts"
 import UserDetails from "base_components/UserDetails"
 import InputAddress from "base_components/InputAddress"
+import moment from "moment"
 
-import NotificationFrequency from "./NotificationFrequency"
-
+import NotificationFrequency from "../NotificationFrequency"
 import { updateFieldValue, getDropdownValue } from "utils/formFunctions"
 
 class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      firstName: props.profile.firstName,
-      lastName: props.profile.lastName,
       email: props.profile.email,
-      phone: props.profile.phone,
-      birthDate: props.profile.birthDate,
+      firstName: props.profile.first_name,
+      lastName: props.profile.last_name,
+      phone: props.profile.phone_number,
+      birthDate: moment(props.profile.date_of_birth),
       address: props.profile.address,
-      privateMessenger: props.profile.privateMessenger,
-      notificationFrequency: props.profile.notificationFrequency,
-      state: props.profile.state,
-      zipCode: props.profile.zipCode
+      chatsEnabled: false,
+      notificationFrequency: {
+        activitySummary: false,
+        courseResponse: false,
+        emailNotifications: false,
+        groupDiscussion: false,
+        privateMessage: false
+      },
+      state: { state_id: props.profile.state_id, state: "" },
+      zipCode: props.profile.zip_code
     }
   }
 
@@ -45,7 +51,7 @@ class Profile extends Component {
 
   handlePhoneChange = event => this.setState({ phone: event.target.value })
 
-  handleBirthDateChange = data => this.setState({ birthDate: data })
+  handleBirthDateChange = date => this.setState({ birthDate: date })
 
   handleAddressChange = event => this.setState({ address: event.target.value })
 
@@ -54,8 +60,11 @@ class Profile extends Component {
   handleNotificationFrequencyChange = notificationFrequency =>
     this.setState({ notificationFrequency })
 
-  handleSubmit = () => this.props.onSubmit(this.state)
+  handleSubmit = () =>
+    this.props.onSubmit({ ...this.state, id: this.props.profile.id })
   handleResetPassword = () => this.props.onResetPassword()
+
+  handleStateChange = ({ target: { value } }) => {}
 
   render() {
     const {

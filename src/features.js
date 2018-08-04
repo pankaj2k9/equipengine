@@ -4,6 +4,7 @@ import * as AdminGroups from "scenes/AdminGroups"
 import * as AdminGroupCourses from "scenes/AdminGroupCourses"
 import * as AdminGroupUsers from "scenes/AdminGroupUsers"
 import * as AdminUsers from "scenes/AdminUsers"
+import * as Countries from "scenes/Countries"
 import * as Course from "scenes/Course"
 import * as Courses from "scenes/Courses"
 import * as Landing from "scenes/Landing"
@@ -13,6 +14,7 @@ import * as MyGroups from "scenes/MyGroups"
 import * as GroupUsers from "scenes/GroupUsers"
 import * as Signup from "scenes/Signup"
 import * as Tutorial from "scenes/Tutorial"
+import * as Settings from "scenes/Settings"
 
 /**
  * Map with all the public accessible features
@@ -169,6 +171,16 @@ registerFeature({
   name: "groupUsers",
   enabled: true,
   ...GroupUsers
+})
+registerFeature({
+  name: "settings",
+  enabled: true,
+  ...Settings
+})
+registerFeature({
+  name: "countries",
+  enabled: false,
+  ...Countries
 })
 
 export default features

@@ -18,7 +18,11 @@ const ItemTutorialTaskGroup = ({ tasks }) => {
         <TasksSettings />
       </AlignRight>
       {Array.isArray(tasks) && tasks.length !== 0 ? (
-        <ul>{tasks.map(task => <Task key={task.id} task={task} />)}</ul>
+        <ul>
+          {tasks.map(task => (
+            <Task key={task.id} task={task} />
+          ))}
+        </ul>
       ) : (
         <div>There are no tasks in this tutorial</div>
       )}

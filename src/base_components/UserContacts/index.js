@@ -51,7 +51,7 @@ const UserContacts = ({
     </Desktop>
     <Mobile>
       <Phone value={phone} onChange={changePhone} />
-      <BirthDate value={birthDate} onChange={changePhone} />
+      <BirthDate value={birthDate} onChange={changeBirthDate} />
     </Mobile>
     <Address value={address} onChange={changeAddress} />
   </Fragment>

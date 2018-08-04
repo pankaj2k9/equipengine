@@ -20,7 +20,8 @@ const SearchbarTableCourse = ({ isOpen, onOpen, onClose }) => (
     <SearchbarDropdownCourse />
     <SearchbarForm />
     <SettingsButton light onClick={onOpen}>
-      <SttingsIcon fontSize={23} />Filter
+      <SttingsIcon fontSize={23} />
+      Filter
     </SettingsButton>
     <Flagged className="Flagged" />
     <SettingsModal isOpen={isOpen} onClose={onClose} />

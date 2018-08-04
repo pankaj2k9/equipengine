@@ -80,7 +80,9 @@ const PanelWebAddress = ({ onOpen, items, onChange, removeUser }) => (
     </AddUserWrapper>
     <GrayBorderContainer>
       {!items.length && "No administrators"}
-      {items.map(user => <UserListItem user={user} remove={removeUser} />)}
+      {items.map(user => (
+        <UserListItem user={user} remove={removeUser} />
+      ))}
     </GrayBorderContainer>
     <Divider />
   </Panel>

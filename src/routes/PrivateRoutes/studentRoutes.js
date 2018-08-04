@@ -24,10 +24,6 @@ const AsyncHome = Loadable({
   loader: () => import("scenes/Home")
 })
 
-const AsyncSettings = Loadable({
-  loader: () => import("scenes/Settings")
-})
-
 const privateRoutes = [
   {
     path: "/secure/home",
@@ -135,7 +131,7 @@ const privateRoutes = [
     exact: true,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the dashboard page.">
-        <AsyncSettings {...props} />
+        <features.settings.pages.Settings {...props} />
       </ErrorBoundary>
     )
   }
