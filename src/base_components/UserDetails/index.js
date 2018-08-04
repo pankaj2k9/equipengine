@@ -10,7 +10,7 @@ import ResetPasswordModal from "base_components/ResetPasswordModal"
 
 import modal from "hoc/modal"
 
-import { ButtonSetPassword, Spacing } from "./elemenst"
+import { ButtonSetPassword, Spacing } from "./elements"
 
 const FirstName = ({ value, onChange }) => (
   <FormGroup flex={1}>

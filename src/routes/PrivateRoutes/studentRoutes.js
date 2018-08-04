@@ -8,9 +8,9 @@ const AsyncDashboard = Loadable({
   loader: () => import("scenes/Dashboard")
 })
 
-const AsyncMessages = Loadable({
-  loader: () => import("scenes/Messages")
-})
+// const AsyncMessages = Loadable({
+//   loader: () => import("scenes/Messages")
+// })
 
 const AsyncNotifications = Loadable({
   loader: () => import("scenes/Notifications")
