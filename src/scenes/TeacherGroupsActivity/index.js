@@ -4,7 +4,7 @@ import { compose, withContext, withProps, withStateHandlers } from "recompose"
 import modal from "hoc/modal"
 import userURL from "resources/images/user.png"
 
-import SearchBarTableGroups from "./components/SearchBarTableGroups"
+import SearchbarTableGroups from "./components/SearchbarTableGroups"
 import TableTeacherGroupsActivity from "./components/TableTeacherGroupsActivity"
 import ThreadModal from "./components/ThreadModal"
 import { contextPropTypes } from "./propTypes"
@@ -168,7 +168,7 @@ const TeacherGroupsActivity = ({
   thread
 }) => (
   <div className="TeacherGroupsActivity">
-    <SearchBarTableGroups />
+    <SearchbarTableGroups />
 
     <TableTeacherGroupsActivity
       activities={groupActivities}
