@@ -1,17 +1,30 @@
 import React from "react"
+import PropTypes from "prop-types"
 
 import MessageForm from "base_components/MessageForm"
 
 import ListNotice from "./ListNotice"
-import { Body, FormContainer } from "./elements"
+import { Body, FormContainer, Placeholder } from "./elements"
 
-const BodyDashboard = () => (
+const BodyDashboard = ({ notices }) => (
   <Body>
     <FormContainer>
       <MessageForm />
     </FormContainer>
-    <ListNotice />
+    {notices.length ? (
+      <ListNotice />
+    ) : (
+      <Placeholder>No posts on the noticeboard.</Placeholder>
+    )}
   </Body>
 )
+
+BodyDashboard.propTypes = {
+  notices: PropTypes.array
+}
+
+BodyDashboard.defaultProps = {
+  notices: []
+}
 
 export default BodyDashboard

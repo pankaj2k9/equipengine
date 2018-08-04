@@ -59,6 +59,8 @@ const Main = styled.main`
     top: 59px;
     width: 100%;
     margin-top: 0;
+
+    min-height: calc(100vh - 59px);
   }
 `
 

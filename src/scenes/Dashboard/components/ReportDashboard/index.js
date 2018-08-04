@@ -9,11 +9,11 @@ import ReportLatestGroupActivity from "./components/ReportLatestGroupActivity"
 const ReportContainer = Container.extend`
   background-color: #f4f4f4;
   margin: 0;
-  padding: 1.5em 2%;
 
   @media screen and (min-width: 768px) {
     flex-direction: column;
     width: 40%;
+    padding: 1.8em 1.8em;
   }
 `
 
