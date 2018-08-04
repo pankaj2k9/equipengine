@@ -11,9 +11,6 @@ export const Modal = styled.div`
   overflow-x: hidden;
 
   @media screen and (min-width: 767px) {
-    /**
-     * Badly hides left side bar...
-     */
     left: 0px;
   }
 `
@@ -30,8 +27,7 @@ export const ContainerFlex = styled.div`
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #dadada;
-  border-top: 1px solid #dadada;
-  min-height: 100vh;
+  min-height: calc(100vh - 124px);
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
