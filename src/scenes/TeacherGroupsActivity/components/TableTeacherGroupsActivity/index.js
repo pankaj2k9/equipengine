@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 
@@ -5,11 +6,25 @@ import "./styles.css"
 import Table, { TableRow } from "base_components/Tables"
 import DateTime from "base_components/DateTime"
 import UserAvatar from "base_components/UserAvatar"
-import iconUser from "resources/images/user.png"
 
 // the container component for our activity.
 const ContainerActivity = styled.div`
   display: flex;
+
+  p {
+    button {
+      display: inline;
+
+      padding: 0;
+      margin: 0;
+
+      border: none;
+      background: transparent;
+
+      color: #2093e9;
+      font-weight: bold;
+    }
+  }
 `
 
 // avatar that we will use to our activity table data.
@@ -17,7 +32,7 @@ const AvatarActivity = UserAvatar.extend`
   margin-right: 1em;
 `
 
-const TableTeacherGroupsActivity = () => (
+const TableTeacherGroupsActivity = ({ activities, onSelect }) => (
   <Table>
     <thead>
       <TableRow>
@@ -27,42 +42,43 @@ const TableTeacherGroupsActivity = () => (
       </TableRow>
     </thead>
     <tbody>
-      <TableRow>
-        <td>
-          <DateTime date="22 Sep" time="2:00pm" />
-        </td>
-        <td>
-          <p>Becoming Equipped to Communicate</p>
-        </td>
-        <td>
-          <ContainerActivity>
-            <AvatarActivity image={iconUser} />
-            <p>
-              Jane <strong>wrote something in</strong> How does our culture
-              impact decisions made by the government?
-            </p>
-          </ContainerActivity>
-        </td>
-      </TableRow>
-      <TableRow>
-        <td>
-          <DateTime date="22 Sep" time="2:00pm" />
-        </td>
-        <td>
-          <p>Becoming Equipped to Communicate</p>
-        </td>
-        <td>
-          <ContainerActivity>
-            <AvatarActivity image={iconUser} />
-            <p>
-              Jane <strong>wrote something in</strong> How does our culture
-              impact decisions made by the government?
-            </p>
-          </ContainerActivity>
-        </td>
-      </TableRow>
+      {activities.map(item => (
+        <TableRow>
+          <td>
+            <DateTime date={item.date.day} time={item.date.time} />
+          </td>
+          <td>
+            <p>{item.course}</p>
+          </td>
+          <td>
+            <ContainerActivity>
+              <AvatarActivity image={item.avatarURL} />
+              <p>
+                {`${item.name} `}
+                <button
+                  onClick={() => onSelect(item.task.meta.id)}
+                  type="button"
+                >
+                  {item.task.action}
+                </button>
+                {` ${item.task.meta.title}`}
+              </p>
+            </ContainerActivity>
+          </td>
+        </TableRow>
+      ))}
     </tbody>
   </Table>
 )
+
+TableTeacherGroupsActivity.propTypes = {
+  activities: PropTypes.array.isRequired,
+  onSelect: PropTypes.func.isRequired
+}
+
+TableTeacherGroupsActivity.defaultProps = {
+  activities: [],
+  onSelect: () => {}
+}
 
 export default TableTeacherGroupsActivity
