@@ -23,7 +23,7 @@ const Sidebar = ({
   location,
   onCloseSidebar
 }) => {
-  // when the isOpen props is true, add other classname on sidebar
+  // when the isOpen props is true, add other classnames on sidebar
   const sidebarClassnames = classNames("Sidebar", { isOpen })
   const groupId = extractGroupId(location.pathname)
   return (
@@ -34,7 +34,6 @@ const Sidebar = ({
       <div className="Sidebar__inner">
         <LogoContainer />
         <div className="Sidebar__body">
-          >
           {(identical(accountType, STUDENT_ROLE) ||
             identical(accountType, TEACHER_ROLE)) && (
             <MainPanelLinks accountType={accountType} groupId={groupId} />
