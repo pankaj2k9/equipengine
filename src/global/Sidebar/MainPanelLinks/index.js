@@ -23,9 +23,7 @@ const MainPanelLinks = ({ groupId, accountType }) => (
             : `/secure/groups/${groupId}/teacher/files`
         }
       />
-      {isStudentType(accountType) && (
-        <Link text="People" url={`/secure/groups/${groupId}/people`} />
-      )}
+      <Link text="People" url={`/secure/groups/${groupId}/people`} />
     </Menu>
   </div>
 )
