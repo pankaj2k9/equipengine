@@ -37,21 +37,19 @@ const ListRow = styled.li`
 `
 
 const ThreadModalBody = styled(({ className, thread }) => {
-  const commentList =
-    thread.comments &&
-    thread.comments.map(comment => (
-      <ListRow key={comment.id}>
+  const commentList = thread.comments.map(comment => (
+    <ListRow key={comment.id}>
+      <div>
         <div>
-          <div>
-            <UserAvatar image={comment.avatarURL} />
-            <span>{comment.name}</span>
-            <span>{comment.date.day}</span>
-            <span>{comment.date.time}</span>
-          </div>
-          <p>{comment.comment}</p>
+          <UserAvatar image={comment.avatarURL} />
+          <span>{comment.name}</span>
+          <span>{comment.date.day}</span>
+          <span>{comment.date.time}</span>
         </div>
-      </ListRow>
-    ))
+        <p>{comment.comment}</p>
+      </div>
+    </ListRow>
+  ))
 
   return (
     <ModalBody className={className}>
@@ -102,6 +100,10 @@ const ThreadModalBody = styled(({ className, thread }) => {
 
 ThreadModalBody.propTypes = {
   thread: PropTypes.object.isRequired
+}
+
+ThreadModalBody.defaultProps = {
+  thread: { comments: [] }
 }
 
 export default ThreadModalBody

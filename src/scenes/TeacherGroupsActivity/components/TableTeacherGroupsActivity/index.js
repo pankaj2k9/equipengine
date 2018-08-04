@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 
@@ -69,5 +70,15 @@ const TableTeacherGroupsActivity = ({ activities, onSelect }) => (
     </tbody>
   </Table>
 )
+
+TableTeacherGroupsActivity.propTypes = {
+  activities: PropTypes.array.isRequired,
+  onSelect: PropTypes.func.isRequired
+}
+
+TableTeacherGroupsActivity.defaultProps = {
+  activities: [],
+  onSelect: () => {}
+}
 
 export default TableTeacherGroupsActivity
