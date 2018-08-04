@@ -22,8 +22,7 @@ const HeaderLinksBar = ({ onClose }) => (
 )
 
 HeaderLinksBar.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  onBack: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired
 }
 
 export default HeaderLinksBar

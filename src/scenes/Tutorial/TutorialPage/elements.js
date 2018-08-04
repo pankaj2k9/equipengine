@@ -28,6 +28,7 @@ export const ContainerFlex = styled.div`
   flex-direction: column;
   border-bottom: 1px solid #dadada;
   min-height: calc(100vh - 124px);
+  height: calc(100vh - 124px);
 
   @media screen and (min-width: 768px) {
     flex-direction: row;

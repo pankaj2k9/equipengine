@@ -10,7 +10,9 @@ import VideoRunningTime from "../VideoRunningTime"
 
 // Video layout
 const Layout = styled.div`
+  flex-shrink: 0;
   width: 100%;
+  height: 360px;
 
   @media screen and (min-width: 768px) {
     display: flex;

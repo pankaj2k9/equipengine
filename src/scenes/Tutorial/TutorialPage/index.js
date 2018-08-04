@@ -129,10 +129,7 @@ class TutorialModalPage extends React.Component {
       return (
         <Modal>
           <FullScreenWhiteBackground>
-            <HeaderLinksBar
-              onCloseTutorial={this.handleCloseModal}
-              onViewAllTutorials={this.handleCloseModal}
-            />
+            <HeaderLinksBar onClose={this.handleCloseModal} />
             <Loading />
           </FullScreenWhiteBackground>
         </Modal>
@@ -150,10 +147,7 @@ class TutorialModalPage extends React.Component {
       // Not perfect existing solution..
       <Modal>
         <WhiteBackground>
-          <HeaderLinksBar
-            onCloseTutorial={this.handleCloseModal}
-            onViewAllTutorials={this.handleCloseModal}
-          />
+          <HeaderLinksBar onClose={this.handleCloseModal} />
           <ContainerFlex>
             <InfoContainer>
               <TutorialDescription
