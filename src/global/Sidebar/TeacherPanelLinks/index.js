@@ -1,11 +1,9 @@
 import React from "react"
 
-import Popover from "base_components/Popover"
-
 import Menu from "../Menu"
 import Link from "../Link"
 
-import { LinkWithPopover } from "./elements"
+import { LinkWithBadge } from "./elements"
 
 // TODO try to check if teacher doesn't need group-id
 const TeacherPanelLinks = ({ groupId }) => (
@@ -15,13 +13,13 @@ const TeacherPanelLinks = ({ groupId }) => (
         text="Groups Activity"
         url={`/secure/groups/${groupId}/teacher/groups-activity`}
       />
-      <LinkWithPopover>
+      <LinkWithBadge>
         <Link
           text="Submissions Activity"
           url={`/secure/groups/${groupId}/teacher/submissions-activity`}
         />
-        <Popover dataCount={10} />
-      </LinkWithPopover>
+        <span className="link-badge">10</span>
+      </LinkWithBadge>
       <Link
         text="User Manager"
         url={`/secure/groups/${groupId}/teacher/user-manager`}

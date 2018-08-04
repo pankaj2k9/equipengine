@@ -22,7 +22,7 @@ const addHeight = ({ type, pathname }) => {
   }
 
   const notificationsPath = "/secure/notifications"
-  // check first if the current location is equal to notifiactionsPath.
+  // check first if the current location is equal to notificationsPath.
   if (identical(pathname, notificationsPath)) {
     return "0px"
   }
@@ -102,7 +102,11 @@ export default WrappedComponent =>
     }
 
     .Sidebar__body__mainPages {
-      padding: 10% 7% 7% 7%;
+      padding: 24px 22px 34px 22px;
+
+      .btn-toolbar {
+        margin-left: 0;
+      }
     }
 
     .Sidebar__item {
@@ -118,9 +122,8 @@ export default WrappedComponent =>
     }
 
     .Sidebar__body__otherPages {
-      padding: 15% 8% 8% 8%;
+      padding: 34px 22px;
       border-top: 1px solid #424242;
-      border-bottom: 1px solid #424242;
     }
 
     .Sidebar__body__otherPages--settings {
@@ -145,10 +148,6 @@ export default WrappedComponent =>
 
       .Sidebar__inner {
         width: 100%;
-      }
-
-      .Sidebar__body__mainPages {
-        padding: 6px 20px 17px 20px;
       }
     }
   `

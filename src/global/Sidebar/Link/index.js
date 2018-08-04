@@ -4,7 +4,9 @@ import styled from "styled-components"
 import Link from "base_components/Link"
 
 const StyledLi = styled.li`
-  margin-bottom: 1.6em;
+  &:not(:last-child) {
+    margin-bottom: 1.6em;
+  }
 `
 
 const StyledLink = styled(Link)`
