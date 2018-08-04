@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { compose, withContext, withProps, withStateHandlers } from "recompose"
 
 import Box from "base_components/Box"

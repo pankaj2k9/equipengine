@@ -26,6 +26,7 @@ export const Root = styled.div`
   }
   .table {
     min-width: 300px !important;
+    table-layout: ${({ tableLayout }) => tableLayout || "fixed"} !important;
   }
   td {
     font-size: ${props => props.rowFontSize || "14px"};
