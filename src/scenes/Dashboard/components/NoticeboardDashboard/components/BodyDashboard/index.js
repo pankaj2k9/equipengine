@@ -1,13 +1,19 @@
 import React from "react"
+import PropTypes from "prop-types"
 
 import Form, { TextArea } from "base_components/RootForm"
 import Button from "base_components/RootButton"
 
 import ListNotice from "./ListNotice"
 
-import { AttachmentButton, ButtonsContainer, Body } from "./elements"
+import {
+  AttachmentButton,
+  ButtonsContainer,
+  Body,
+  Placeholder
+} from "./elements"
 
-const BodyDashboard = () => (
+const BodyDashboard = ({ notices }) => (
   <Body>
     <Form>
       <TextArea
@@ -19,8 +25,20 @@ const BodyDashboard = () => (
         <AttachmentButton /> <Button>Submit</Button>
       </ButtonsContainer>
     </Form>
-    <ListNotice />
+    {notices.length ? (
+      <ListNotice />
+    ) : (
+      <Placeholder>No posts on the noticeboard.</Placeholder>
+    )}
   </Body>
 )
+
+BodyDashboard.propTypes = {
+  notices: PropTypes.array
+}
+
+BodyDashboard.defaultProps = {
+  notices: []
+}
 
 export default BodyDashboard

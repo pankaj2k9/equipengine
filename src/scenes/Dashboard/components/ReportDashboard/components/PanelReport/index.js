@@ -10,11 +10,10 @@ const ReportPanel = styled(({ className, title, children }) => (
 ))`
   background: #ffffff;
   border: 1px solid #e2e2e2;
-  margin-bottom: 1.5em;
   border-radius: 3px;
 
-  &:last-child {
-    margin-bottom: 0;
+  &:not(:last-child) {
+    margin-bottom: 1.8em;
   }
 
   > header {

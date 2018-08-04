@@ -14,7 +14,7 @@ const ItemReport = styled(({ className, report }) => (
 ))`
   display: flex;
   align-items: center;
-  margin-bottom: 1.4em;
+  margin-bottom: 1.8em;
 
   &:last-child {
     margin-bottom: 0;

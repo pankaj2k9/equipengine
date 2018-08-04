@@ -10,8 +10,9 @@ export const Body = Container.extend`
   margin-bottom: 0;
 
   @media screen and (min-width: 768px) {
-    min-height: 80vh;
     display: block;
+    margin: 0;
+    padding: 1.2em 1.8em;
   }
 `
 
@@ -27,4 +28,9 @@ export const AttachmentButton = styled(({ className }) => (
   </IconButton>
 ))`
   margin-right: 7px;
+`
+
+export const Placeholder = styled.p`
+  color: #a6a6a6;
+  font-size: 1em;
 `
