@@ -19,7 +19,8 @@ class Profile extends Component {
       firstName: props.profile.first_name,
       lastName: props.profile.last_name,
       phone: props.profile.phone_number,
-      birthDate: moment(props.profile.date_of_birth),
+      birthDate:
+        props.profile.date_of_birth && moment(props.profile.date_of_birth),
       address: props.profile.address,
       chatsEnabled: false,
       notificationFrequency: {
