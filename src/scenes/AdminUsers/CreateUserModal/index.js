@@ -4,7 +4,7 @@ import { compose, pure } from "recompose"
 //
 import CreateEntityModal from "base_components/CreateEntityModal"
 import form from "hoc/form"
-import UserForm, { validationSchema } from "../UserForm"
+import CreateUserForm, { validationSchema } from "../CreateUserForm"
 import Loading from "base_components/Loading"
 import { STUDENT_ROLE } from "services/constants"
 import withFormValidation from "hoc/withFormValidation"
@@ -27,7 +27,7 @@ const CreateUserModal = ({
     {isSubmitting ? (
       <Loading />
     ) : (
-      <UserForm fields={fields} onChange={onChange} />
+      <CreateUserForm fields={fields} onChange={onChange} />
     )}
   </CreateEntityModal>
 )

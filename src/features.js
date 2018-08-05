@@ -7,11 +7,12 @@ import * as AdminUsers from "scenes/AdminUsers"
 import * as Countries from "scenes/Countries"
 import * as Course from "scenes/Course"
 import * as Courses from "scenes/Courses"
+import * as GroupUsers from "scenes/GroupUsers"
 import * as Landing from "scenes/Landing"
 import * as Login from "scenes/Login"
 import * as Messages from "scenes/Messages"
 import * as MyGroups from "scenes/MyGroups"
-import * as GroupUsers from "scenes/GroupUsers"
+import * as ResetPassword from "scenes/ResetPassword"
 import * as Signup from "scenes/Signup"
 import * as Tutorial from "scenes/Tutorial"
 import * as Settings from "scenes/Settings"
@@ -33,6 +34,8 @@ import * as Settings from "scenes/Settings"
  *   ...
  * }
  */
+// TODO probably try https://github.com/tdeekens/flopflip
+// Or https://vasanthk.gitbooks.io/react-bits/patterns/29.feature-flags-using-redux.html
 const features = {}
 
 const CALL_DISABLED_FEATURE = "equipenine/CALL_DISABLE_FEATURE"
@@ -106,6 +109,11 @@ registerFeature({
   name: "login",
   enabled: true,
   ...Login
+})
+registerFeature({
+  name: "resetPassword",
+  enabled: true,
+  ...ResetPassword
 })
 registerFeature({
   name: "signup",

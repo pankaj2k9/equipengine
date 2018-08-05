@@ -64,6 +64,12 @@ const Routes = () => (
         component={userIsNotAuthenticated(features.signup.pages.VerifyEmail)}
       />
       <Route
+        exact
+        strict
+        path="/reset-password/:token"
+        component={features.resetPassword.pages.ResetPassword}
+      />
+      <Route
         path="/secure"
         // Redirect to login page if user is not logged in
         component={userIsAuthenticated(PrivateRoutes)}
