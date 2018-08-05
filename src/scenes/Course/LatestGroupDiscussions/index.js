@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import React from "react"
-import { compose, getContext } from "recompose"
+import { getContext } from "recompose"
 
 import ListDiscussion from "./components/ListDiscussion"
 import { contextPropTypes } from "../propTypes"
@@ -24,4 +24,4 @@ const LatestGroupDiscussions = styled(
   }
 `
 
-export default compose(getContext(contextPropTypes))(LatestGroupDiscussions)
+export default getContext(contextPropTypes)(LatestGroupDiscussions)

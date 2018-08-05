@@ -1,26 +1,30 @@
 import React from "react"
+import PropTypes from "prop-types"
 
-import Form, { TextArea } from "base_components/RootForm"
-import Button from "base_components/RootButton"
+import MessageForm from "base_components/MessageForm"
 
 import ListNotice from "./ListNotice"
+import { Body, FormContainer, Placeholder } from "./elements"
 
-import { AttachmentButton, ButtonsContainer, Body } from "./elements"
-
-const BodyDashboard = () => (
+const BodyDashboard = ({ notices }) => (
   <Body>
-    <Form>
-      <TextArea
-        row={2}
-        name="noticeboard"
-        placeholder="Write on the noticeboard..."
-      />
-      <ButtonsContainer>
-        <AttachmentButton /> <Button>Submit</Button>
-      </ButtonsContainer>
-    </Form>
-    <ListNotice />
+    <FormContainer>
+      <MessageForm />
+    </FormContainer>
+    {notices.length ? (
+      <ListNotice />
+    ) : (
+      <Placeholder>No posts on the noticeboard.</Placeholder>
+    )}
   </Body>
 )
+
+BodyDashboard.propTypes = {
+  notices: PropTypes.array
+}
+
+BodyDashboard.defaultProps = {
+  notices: []
+}
 
 export default BodyDashboard

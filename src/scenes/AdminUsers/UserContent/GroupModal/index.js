@@ -39,7 +39,11 @@ const Header = () => (
 
 const Body = () => (
   <div>
-    <List>{groups.map(({ name }) => <ListItem name={name} />)}</List>
+    <List>
+      {groups.map(({ name }) => (
+        <ListItem name={name} />
+      ))}
+    </List>
   </div>
 )
 

@@ -8,10 +8,6 @@ const AsyncDashboard = Loadable({
   loader: () => import("scenes/Dashboard")
 })
 
-const AsyncMessages = Loadable({
-  loader: () => import("scenes/Messages")
-})
-
 const AsyncNotifications = Loadable({
   loader: () => import("scenes/Notifications")
 })
@@ -26,10 +22,6 @@ const AsyncActivity = Loadable({
 
 const AsyncHome = Loadable({
   loader: () => import("scenes/Home")
-})
-
-const AsyncSettings = Loadable({
-  loader: () => import("scenes/Settings")
 })
 
 const privateRoutes = [
@@ -139,7 +131,7 @@ const privateRoutes = [
     exact: true,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the dashboard page.">
-        <AsyncSettings {...props} />
+        <features.settings.pages.Settings {...props} />
       </ErrorBoundary>
     )
   }

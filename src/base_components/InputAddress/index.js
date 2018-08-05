@@ -6,6 +6,7 @@ import ContainerFlex from "base_components/ContainerFlex"
 import { FormGroupDropdown, FormGroupZipCode } from "./styles"
 
 const InputAddress = ({
+  countries = [],
   country,
   state,
   zipCode,
@@ -20,10 +21,15 @@ const InputAddress = ({
         name="country"
         value={country}
         onChange={changeCountry}
-        options={[
-          { label: "Australlia", value: "au" },
-          { label: "Philippines", value: "ph" }
-        ]}
+        options={
+          [
+            { label: "Australlia", value: "au" },
+            { label: "Philippines", value: "ph" }
+          ]
+          /* countries.map(country => {
+            return { label: country.name, value: country.code }
+          }) */
+        }
       />
     </FormGroupDropdown>
     <FormGroupDropdown>

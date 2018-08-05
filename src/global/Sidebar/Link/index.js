@@ -4,7 +4,14 @@ import styled from "styled-components"
 import Link from "base_components/Link"
 
 const StyledLi = styled.li`
-  margin-bottom: 1.6em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  &:not(:last-child) {
+    margin-bottom: 1.6em;
+  }
 `
 
 const StyledLink = styled(Link)`
@@ -15,9 +22,28 @@ const StyledLink = styled(Link)`
   font-size: 12px;
 `
 
-const SidebarLink = ({ text, url, ...rest }) => (
+const Badge = styled.span`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  width: 13px;
+  height: 13px;
+
+  background: #f44336;
+  border-radius: 50%;
+
+  color: #ffffff;
+  font-family: "Avenir Next", sans-serif;
+  font-size: 7px;
+  font-weight: 500;
+`
+
+const SidebarLink = ({ text, url, badge, ...rest }) => (
   <StyledLi>
     <StyledLink text={text} url={url} {...rest} />
+    {badge && <Badge>10</Badge>}
   </StyledLi>
 )
 

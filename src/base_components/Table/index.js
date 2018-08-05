@@ -8,6 +8,7 @@ import {
 
 import { Root } from "./elements"
 import ActivityCellFormatter from "./ActivityCellFormatter"
+import CloseCellFormatter from "./CloseCellFormatter"
 import DateCellFormatter from "./DateCellFormatter"
 import DetailsButtonCellFormatter from "./DetailsButtonCellFormatter"
 import DiscussionCellFormatter from "./DiscussionCellFormatter/"
@@ -22,7 +23,14 @@ const skipColumnLabelIfNoColumnTitle = ({ column, ...props }) =>
     <TableHeaderRow.Cell />
   )
 
-const Table = ({ rows, columns, sorting, rowFontSize, headerRowFontSize }) => {
+const Table = ({
+  rows,
+  columns,
+  sorting,
+  rowFontSize,
+  headerRowFontSize,
+  tableLayout
+}) => {
   const defaultColumnsSorting = []
   const columnExtensions = []
   const columnWidths = []
@@ -73,6 +81,7 @@ const Table = ({ rows, columns, sorting, rowFontSize, headerRowFontSize }) => {
       columnsWidths={columnWidths}
       rowFontSize={rowFontSize}
       headerRowFontSize={headerRowFontSize}
+      tableLayout={tableLayout}
     >
       <Grid
         columns={Array.isArray(columns) ? columns : []}
@@ -95,6 +104,7 @@ const Table = ({ rows, columns, sorting, rowFontSize, headerRowFontSize }) => {
 export {
   Table as default,
   ActivityCellFormatter,
+  CloseCellFormatter,
   DateCellFormatter,
   DetailsButtonCellFormatter,
   DiscussionCellFormatter,

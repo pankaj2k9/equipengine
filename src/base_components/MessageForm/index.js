@@ -1,42 +1,61 @@
-import React from "react"
-import styled from "styled-components"
-import { compose, withHandlers, pure } from "recompose"
+import React, { Component } from "react"
 
+import FileChooser from "base_components/FileChooser"
 import RootForm, { TextArea } from "base_components/RootForm"
-import iconDropfile from "resources/images/dropfile.svg"
 import Button from "base_components/RootButton"
+import iconOpenSrc from "resources/images/open-file.svg"
 
-const MessageForm = styled(
-  ({ className, textMessage, onSendMessage, onWriteMessage }) => (
-    <RootForm className={className}>
-      <TextArea
-        name="thread"
-        placeholder="Write Something"
-        value={textMessage}
-        onChange={onWriteMessage}
-      />
-      <div>
-        <img src={iconDropfile} alt="Drop file" />
-        <Button onClick={onSendMessage}>Submit</Button>
-      </div>
-    </RootForm>
-  )
-)`
-  div {
-    text-align: right;
-    margin-top: 0.5em;
-    img {
-      margin-right: 1em;
-    }
+import { ButtonContainer, AttachmentName, AttachmentIcon } from "./elements"
+
+class MessageForm extends Component {
+  state = {
+    message: "",
+    attachment: null
   }
-`
 
-export default compose(
-  withHandlers({
-    onSendMessage: ({ onSendMessage }) => event => {
-      event.preventDefault()
-      onSendMessage()
-    }
-  }),
-  pure
-)(MessageForm)
+  handleChange = event => {
+    this.setState({ message: event.target.value })
+  }
+
+  handleChooseFilesButtonClick = files =>
+    this.setState({
+      attachment: files[0]
+    })
+
+  handleUploadButtonClick = () => this.fileChooserDialog.open()
+
+  render() {
+    const { className, onSendMessage } = this.props
+    const { attachment, message } = this.state
+
+    return (
+      <RootForm className={className}>
+        <TextArea
+          name="thread"
+          placeholder="Write Something"
+          value={message}
+          onChange={this.handleChange}
+        />
+
+        <ButtonContainer>
+          <AttachmentName>{attachment && attachment.name}</AttachmentName>
+          <AttachmentIcon
+            alt="Add attachment"
+            src={iconOpenSrc}
+            onClick={this.handleUploadButtonClick}
+          />
+          <Button onClick={onSendMessage}>Submit</Button>
+        </ButtonContainer>
+
+        <FileChooser
+          onChooseFiles={this.handleChooseFilesButtonClick}
+          ref={input => {
+            this.fileChooserDialog = input
+          }}
+        />
+      </RootForm>
+    )
+  }
+}
+
+export default MessageForm

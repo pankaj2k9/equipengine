@@ -33,9 +33,9 @@ const ActivityMessage = ({ activity }) => {
     const name = user.substring(user.indexOf(">") + 1, user.lastIndexOf("<"))
     return (
       <React.Fragment>
-        {name} sent message starting with "{message.substring(0, 10)}..." on<Link to="/secure/messages">
-          Chat
-        </Link>
+        {name} sent message starting with "{message.substring(0, 10)}
+        ..." on
+        <Link to="/secure/messages">Chat</Link>
       </React.Fragment>
     )
   }

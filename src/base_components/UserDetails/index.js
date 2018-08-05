@@ -10,25 +10,34 @@ import ResetPasswordModal from "base_components/ResetPasswordModal"
 
 import modal from "hoc/modal"
 
-import { ButtonSetPassword, Spacing } from "./elemenst"
+import { ButtonSetPassword, Spacing } from "./elements"
 
 const FirstName = ({ value, onChange }) => (
   <FormGroup flex={1}>
-    <Label>First Name{onChange && "*"}</Label>
+    <Label>
+      First Name
+      {onChange && "*"}
+    </Label>
     <Text placeholder="First name" value={value} onChange={onChange} />
   </FormGroup>
 )
 
 const LastName = ({ value, onChange }) => (
   <FormGroup flex={1}>
-    <Label>Last Name{onChange && "*"}</Label>
+    <Label>
+      Last Name
+      {onChange && "*"}
+    </Label>
     <Text placeholder="Last name" value={value} onChange={onChange} />
   </FormGroup>
 )
 
 const EmailInput = ({ value, onChange }) => (
   <FormGroup>
-    <Label>Email Address{onChange && "*"}</Label>
+    <Label>
+      Email Address
+      {onChange && "*"}
+    </Label>
     <Text
       placeholder="Email Address"
       type="email"

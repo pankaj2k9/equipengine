@@ -1,6 +1,7 @@
 import Immutable from "seamless-immutable"
 import { createSelector } from "reselect"
 import { REHYDRATE } from "redux-persist/lib/constants"
+import features from "features"
 
 import { ADMIN_ROLE, STUDENT_ROLE, TEACHER_ROLE } from "services/constants"
 
@@ -70,6 +71,13 @@ export default (state = initialState, action) => {
       return state.merge({
         isPendingLogout: false,
         isPendingLogin: false
+      })
+    }
+
+    // Update user profile
+    case features.settings.types.UPDATE_SETTINGS_SUCCESS: {
+      return state.merge({
+        user: action.payload.user
       })
     }
 

@@ -1,5 +1,5 @@
 import React from "react"
-import { compose, getContext } from "recompose"
+import { getContext } from "recompose"
 
 import TableDiscussions from "../TableDiscussions"
 import Thread from "../Thread"
@@ -13,4 +13,4 @@ const TabGroupDiscussions = ({ discussions, selectThread }) => (
   </div>
 )
 
-export default compose(getContext(contextPropTypes))(TabGroupDiscussions)
+export default getContext(contextPropTypes)(TabGroupDiscussions)
