@@ -11,12 +11,11 @@ const reports = [
       date: "22 Sep",
       time: "2:00am"
     },
-    description: (
-      <p>
-        Jill Mane commented on{" "}
-        <a>Tutorial 1.3: Becoming Equipped to Communicate</a>
-      </p>
-    )
+    userName: "Jill Mane",
+    tutorialName: "Tutorial 1.3: Becoming Equipped to Communicate",
+    tutorialId: 6,
+    courseId: 16,
+    groupId: 46
   },
   {
     id: "jsladfj3j4l",
@@ -24,11 +23,11 @@ const reports = [
       date: "22 Sep",
       time: "2:00am"
     },
-    description: (
-      <p>
-        Jon Mcall commented on <a>Tutorial 1.1: Communication and Culture</a>
-      </p>
-    )
+    userName: "Jon Mcall",
+    tutorialName: "Tutorial 1.1: Communication and Culture",
+    tutorialId: 6,
+    courseId: 16,
+    groupId: 46
   }
 ]
 

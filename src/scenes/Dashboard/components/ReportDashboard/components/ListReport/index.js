@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import { map } from "ramda"
+import { Link } from "react-router-dom"
 
 import DateTime from "base_components/DateTime"
 
@@ -9,7 +10,16 @@ import DateTime from "base_components/DateTime"
 const ItemReport = styled(({ className, report }) => (
   <li className={className}>
     <DateTime date={report.date.date} time={report.date.time} />
-    <p>{report.description}</p>
+    <p>
+      {report.userName} commented on{" "}
+      <Link
+        to={`/secure/groups/${report.groupId}/courses/${
+          report.courseId
+        }/tutorials/${report.tutorialId}`}
+      >
+        {report.tutorialName}
+      </Link>
+    </p>
   </li>
 ))`
   display: flex;
