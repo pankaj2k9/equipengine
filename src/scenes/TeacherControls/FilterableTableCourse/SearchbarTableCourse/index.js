@@ -23,7 +23,7 @@ const SearchbarTableCourse = ({
 }) => (
   <SearchbarTable>
     <SearchbarButtonFilter title="Show All" />
-    <SearchbarDropdownCourse />
+    <SearchbarButtonFilter title="Search by course" />
     <SearchbarForm onChange={handleSearchChange} value={searchValue} />
     <SettingsButton light onClick={onOpen}>
       <SttingsIcon fontSize={23} />
