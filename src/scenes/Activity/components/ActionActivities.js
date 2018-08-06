@@ -11,13 +11,17 @@ const SearchbarButtonFilterLarger = styled(SearchbarButtonFilter)`
   min-width: 19%;
 `
 
-const ActionActivities = () => (
+const ActionActivities = ({ searchValue, handleSearchChange }) => (
   <SearchbarTable noDesktopPadding>
     <SearchbarButtonFilter title="Show All" />
     <SearchbarButtonFilter title="Unread" />
     <SearchbarButtonFilterLarger title="Show by group" />
     <SearchbarButtonFilterLarger title="Show by course" />
-    <SearchbarForm placeholder="Search" />
+    <SearchbarForm
+      onChange={handleSearchChange}
+      placeholder="Search"
+      value={searchValue}
+    />
     <Flagged />
   </SearchbarTable>
 )

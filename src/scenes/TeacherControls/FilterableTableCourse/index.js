@@ -9,7 +9,8 @@ class FilterableTableCourse extends Component {
   constructor() {
     super()
     this.state = {
-      courses: []
+      courses: [],
+      search: undefined
     }
   }
 
@@ -19,10 +20,19 @@ class FilterableTableCourse extends Component {
     })
   }
 
+  handleSearchChange = event => {
+    this.setState({
+      search: event.target.value
+    })
+  }
+
   render() {
     return (
       <div className="FilterableTableCourse">
-        <SearchbarTableCourse />
+        <SearchbarTableCourse
+          searchValue={this.state.search}
+          handleSearchChange={this.handleSearchChange}
+        />
         <TableCourse />
       </div>
     )
