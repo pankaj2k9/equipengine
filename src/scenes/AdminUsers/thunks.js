@@ -46,3 +46,20 @@ export const createUser = ({ firstName, lastName, email, role }) => {
     }
   }
 }
+
+export const sendResetPasswordToken = ({ id, email }) => {
+  return async dispatch => {
+    dispatch(usersActions.sendResetPasswordTokenRequest())
+
+    try {
+      await API.sendResetPasswordToken({
+        id,
+        email
+      })
+
+      return dispatch(usersActions.sendResetPasswordTokenSuccess())
+    } catch (error) {
+      return dispatch(usersActions.sendResetPasswordTokenError())
+    }
+  }
+}

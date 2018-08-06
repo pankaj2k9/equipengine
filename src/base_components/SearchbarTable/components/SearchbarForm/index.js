@@ -10,9 +10,14 @@ const StyledForm = styled(RootForm)`
     margin-bottom: 0.3em;
   }
 `
-const SearchbarForm = ({ placeholder }) => (
+const SearchbarForm = ({ placeholder, value, onChange }) => (
   <StyledForm>
-    <Text name="person" placeholder={placeholder || "Show by person..."} />
+    <Text
+      name="person"
+      placeholder={placeholder || "Show by person..."}
+      onChange={onChange}
+      value={value}
+    />
   </StyledForm>
 )
 

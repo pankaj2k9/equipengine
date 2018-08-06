@@ -10,7 +10,8 @@ import PageWrapper from "global/PageWrapper"
 class Activity extends Component {
   state = {
     activities: [],
-    fetchingActivities: false
+    fetchingActivities: false,
+    search: undefined
   }
 
   componentDidMount() {
@@ -25,6 +26,12 @@ class Activity extends Component {
     )
   }
 
+  handleSearchChange = event => {
+    this.setState({
+      search: event.target.value
+    })
+  }
+
   render() {
     const { fetchingActivities, activities } = this.state
 
@@ -34,7 +41,10 @@ class Activity extends Component {
           <Loading />
         ) : (
           <React.Fragment>
-            <ActionActivities />
+            <ActionActivities
+              searchValue={this.state.search}
+              handleSearchChange={this.handleSearchChange}
+            />
             <ListActivities activities={activities} />
           </React.Fragment>
         )}

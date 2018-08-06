@@ -53,6 +53,21 @@ const ResetPasswordButton = ({ onClick }) => (
   </ButtonSetPassword>
 )
 
+// TODO add loading to button when request is sending
+// TODO merge SendResetPassword and ResetPassword buttons
+const SendResetPasswordTokenButton = ({ onClick }) => (
+  <ButtonSetPassword
+    light
+    lightBorder
+    onClick={event => {
+      event.preventDefault()
+      onClick(event)
+    }}
+  >
+    Send reset password token
+  </ButtonSetPassword>
+)
+
 const UserDetails = ({
   firstName,
   lastName,
@@ -64,7 +79,8 @@ const UserDetails = ({
   onClose,
   isOpen,
   resetPasswordExist,
-  isAvatarEditable
+  isAvatarEditable,
+  onSendResetPasswordToken
 }) => (
   <div>
     <Desktop>
@@ -80,6 +96,9 @@ const UserDetails = ({
           </ContainerFlex>
           <EmailInput onChange={changeEmail} value={email} />
           {resetPasswordExist && <ResetPasswordButton onClick={onOpen} />}
+          {onSendResetPasswordToken && (
+            <SendResetPasswordTokenButton onClick={onSendResetPasswordToken} />
+          )}
         </ItemFlex>
       </ContainerFlex>
     </Desktop>
@@ -88,7 +107,10 @@ const UserDetails = ({
       <FirstName onChange={changeFirstName} value={firstName} />
       <LastName onChange={changeLastName} value={lastName} />
       <EmailInput onChange={changeEmail} value={email} />
-      <ResetPasswordButton onClick={onOpen} />
+      {resetPasswordExist && <ResetPasswordButton onClick={onOpen} />}
+      {onSendResetPasswordToken && (
+        <SendResetPasswordTokenButton onClick={onSendResetPasswordToken} />
+      )}
     </Mobile>
     <ResetPasswordModal isOpen={isOpen} handleClose={onClose} />
   </div>

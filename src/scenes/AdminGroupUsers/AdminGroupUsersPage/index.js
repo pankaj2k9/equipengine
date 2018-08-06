@@ -37,8 +37,8 @@ class AdminGroupUsersPage extends Component {
     }
   }
 
-  handleUserClick = user =>
-    this.props.history.push(`/secure/admin/users/${user.id}`)
+  handleUserClick = groupUser =>
+    this.props.history.push(`/secure/admin/users/${groupUser.user.id}`)
 
   handleSearchUser = term => this.props.fetchUsers({ term })
   handleAddUsersToGroup = (userIds, users) =>

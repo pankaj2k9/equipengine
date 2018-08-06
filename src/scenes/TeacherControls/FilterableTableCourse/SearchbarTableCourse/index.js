@@ -14,11 +14,17 @@ import { SettingsButton } from "./elements"
 
 import modal from "hoc/modal"
 
-const SearchbarTableCourse = ({ isOpen, onOpen, onClose }) => (
+const SearchbarTableCourse = ({
+  handleSearchChange,
+  isOpen,
+  onOpen,
+  onClose,
+  searchValue
+}) => (
   <SearchbarTable>
     <SearchbarButtonFilter title="Show All" />
     <SearchbarDropdownCourse />
-    <SearchbarForm />
+    <SearchbarForm onChange={handleSearchChange} value={searchValue} />
     <SettingsButton light onClick={onOpen}>
       <SttingsIcon fontSize={23} />
       Filter
