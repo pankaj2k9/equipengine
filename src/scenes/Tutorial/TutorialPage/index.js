@@ -89,12 +89,14 @@ class TutorialModalPage extends React.Component {
         if (action.type === types.UPDATE_TUTORIAL_COMPLETED_SUCCESS) {
           toastr.success(
             "Success",
-            `Tutorial is succesfully ${completed ? "completed" : "uncompleted"}`
+            `Tutorial is successfully ${
+              completed ? "completed" : "uncompleted"
+            }`
           )
         } else {
           toastr.error(
             "Error",
-            `${completed ? "Complete" : "Uncomplete"} tutorial failed`
+            `${completed ? "Complete" : "Incomplete"} tutorial failed`
           )
         }
       })
@@ -172,7 +174,7 @@ class TutorialModalPage extends React.Component {
               ) : (
                 <React.Fragment>
                   <VideosPlayer videos={this.extractVideos(tasks)} />
-                  <TutorialTabs tasks={tasks} />
+                  <TutorialTabs tableLayout="unset" tasks={tasks} />
                 </React.Fragment>
               )}
             </TaskContainer>

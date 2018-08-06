@@ -32,6 +32,7 @@ const TextContainer = styled.div`
   > input {
     margin-left: 1.5em;
     border: 0;
+    width: 100%;
     &:focus {
       outline: 0;
     }

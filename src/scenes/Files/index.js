@@ -9,12 +9,12 @@ import SearchBar from "base_components/RootSearchBar"
 const files = [
   {
     id: "ysdjfk",
-    file: "Submissions instructions.pdf",
+    title: "Submissions instructions.pdf",
     date: "22 April 17"
   },
   {
     id: "yskjdksf",
-    file: "Showing culture.ptt",
+    title: "Showing culture.ptt",
     date: "19 March 17"
   }
 ]

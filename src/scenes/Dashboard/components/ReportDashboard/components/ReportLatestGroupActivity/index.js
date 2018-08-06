@@ -13,9 +13,9 @@ const reports = [
     },
     userName: "Jill Mane",
     tutorialName: "Tutorial 1.3: Becoming Equipped to Communicate",
-    tutorialId: 6,
-    courseId: 16,
-    groupId: 46
+    tutorialId: 2,
+    courseId: 1,
+    groupId: 3
   },
   {
     id: "jsladfj3j4l",
@@ -25,9 +25,9 @@ const reports = [
     },
     userName: "Jon Mcall",
     tutorialName: "Tutorial 1.1: Communication and Culture",
-    tutorialId: 6,
-    courseId: 16,
-    groupId: 46
+    tutorialId: 2,
+    courseId: 1,
+    groupId: 3
   }
 ]
 
