@@ -1,8 +1,6 @@
 import Immutable from "seamless-immutable"
 import { createSelector } from "reselect"
 
-import { STUDENT_ROLE, TEACHER_ROLE } from "services/constants"
-
 // Types
 export const types = {
   //
@@ -15,7 +13,9 @@ export const types = {
 
 const initialState = Immutable({
   isFetchingUsers: false,
-  groupUsers: [],
+  users: [],
+  searchTerm: "",
+  selectedRole: "",
   pagination: null
 })
 
@@ -27,17 +27,19 @@ export default (state = initialState, action) => {
     //
     case types.FETCH_GROUP_USERS_REQUEST:
       return state.merge({
-        isFetchingUsers: true
+        isFetchingUsers: true,
+        searchTerm: action.payload.searchTerm,
+        selectedRole: action.payload.role
       })
     case types.FETCH_GROUP_USERS_SUCCESS:
       return state.merge({
         isFetchingUsers: false,
-        groupUsers: action.payload.groupUsers
+        users: action.payload.users
       })
     case types.FETCH_COURSES_ERROR:
       return state.merge({
         isFetchingUsers: false,
-        groupUsers: []
+        users: []
       })
 
     default:
@@ -50,12 +52,13 @@ export const actions = {
   //
   // FETCH_GROUP_USERS
   //
-  fetchGroupUsersRequest: () => ({
-    type: types.FETCH_GROUP_USERS_REQUEST
+  fetchGroupUsersRequest: ({ searchTerm, role }) => ({
+    type: types.FETCH_GROUP_USERS_REQUEST,
+    payload: { searchTerm, role }
   }),
-  fetchGroupUsersSuccess: ({ groupUsers, pagination }) => ({
+  fetchGroupUsersSuccess: ({ users, pagination }) => ({
     type: types.FETCH_GROUP_USERS_SUCCESS,
-    payload: { groupUsers, pagination }
+    payload: { users, pagination }
   }),
   fetchGroupUsersError: () => ({
     type: types.FETCH_COURSES_ERROR
@@ -66,21 +69,20 @@ export const actions = {
 const groupUsersSelector = () => state => state.groupUsers
 
 const selectGroupUsers = () =>
-  createSelector(groupUsersSelector(), group => group.groupUsers)
-const selectGroupStudents = () =>
-  createSelector(groupUsersSelector(), group =>
-    group.groupUsers.filter(i => i.role === STUDENT_ROLE)
-  )
-const selectGroupTeachers = () =>
-  createSelector(groupUsersSelector(), group =>
-    group.groupUsers.filter(user => user.role === TEACHER_ROLE)
-  )
+  createSelector(groupUsersSelector(), group => group.users)
+
 const selectIsFetchingGroupUsers = () =>
   createSelector(groupUsersSelector(), group => group.isFetchingUsers)
 
+const selectSearchTerm = () =>
+  createSelector(groupUsersSelector(), group => group.searchTerm)
+
+const selectCurrentRole = () =>
+  createSelector(groupUsersSelector(), group => group.selectedRole)
+
 export const selectors = {
   selectGroupUsers,
-  selectGroupStudents,
-  selectGroupTeachers,
-  selectIsFetchingGroupUsers
+  selectIsFetchingGroupUsers,
+  selectSearchTerm,
+  selectCurrentRole
 }

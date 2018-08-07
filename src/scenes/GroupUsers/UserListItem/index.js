@@ -7,19 +7,19 @@ import avatar from "resources/images/user.png"
 import Button from "base_components/RootButton"
 
 // People item template
-const UserListItem = styled(({ className, student, key }) => (
+const UserListItem = styled(({ className, user, key }) => (
   <li className={className} key={key}>
     <div>
       <UserAvatar
         image={
-          student
-            ? student.avatar.small.url
-              ? student.avatar.small.url
+          user
+            ? user.avatar.small.url
+              ? user.avatar.small.url
               : avatar
             : avatar
         }
       />
-      <p>{student ? `${student.first_name} ${student.last_name}` : "as"}</p>
+      <p>{user ? `${user.first_name} ${user.last_name}` : "No name"}</p>
       <Link to="/secure/messages">
         <Button large>Send Message</Button>
       </Link>

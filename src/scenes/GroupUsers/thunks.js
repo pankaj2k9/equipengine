@@ -1,14 +1,20 @@
 import * as API from "services/API"
 import { actions as groupUsersActions } from "./ducks"
 
-export const fetchGroupUsers = ({ groupId }) => {
+export const fetchGroupUsers = ({ groupId, role, term }) => {
   return async dispatch => {
-    dispatch(groupUsersActions.fetchGroupUsersRequest())
+    dispatch(
+      groupUsersActions.fetchGroupUsersRequest({ searchTerm: term, role })
+    )
     try {
-      const { group_users, meta } = await API.fetchGroupUsers({ groupId })
+      const { users, meta } = await API.fetchUsers({
+        group_id: groupId,
+        role,
+        term
+      })
       return dispatch(
         groupUsersActions.fetchGroupUsersSuccess({
-          groupUsers: group_users,
+          users: users,
           pagination: meta
         })
       )
