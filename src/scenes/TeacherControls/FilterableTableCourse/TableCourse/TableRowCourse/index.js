@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { map } from "ramda"
 
-import { FlaggedIcon } from "base_components/SearchbarTable"
+import FlagCheckbox from "base_components/FlagCheckbox"
 import { TableRow } from "base_components/Tables"
 import RootForm, { CheckboxCircle } from "base_components/RootForm"
 import UserAvatar from "base_components/UserAvatar"
@@ -66,7 +66,7 @@ const TableRowCourse = ({ course }) => {
       <TableRowCourseTd>{lastAction}</TableRowCourseTd>
       <TableRowCourseTd>{feedbacksItem}</TableRowCourseTd>
       <TableRowCourseTd middle>
-        <FlaggedIcon big isFlagged={isFlagged} />
+        <FlagCheckbox isFlagged={isFlagged} onClick={() => {}} />
       </TableRowCourseTd>
       <TableRowCourseTd middle style={{ textAlign: "center" }}>
         <RootForm>
