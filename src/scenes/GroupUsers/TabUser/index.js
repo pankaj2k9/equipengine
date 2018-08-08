@@ -4,8 +4,9 @@ import { compose, pure } from "recompose"
 import { connect } from "react-redux"
 import { createStructuredSelector } from "reselect"
 import { withRouter } from "react-router-dom"
+import InfiniteScroll from "react-infinite-scroller"
 
-import { fetchGroupUsers } from "../thunks"
+import { fetchGroupUsers, fetchMoreGroupUsers } from "../thunks"
 import { selectors } from "../ducks"
 
 import Loading from "base_components/Loading"
@@ -21,19 +22,39 @@ class TabUser extends Component {
     })
   }
 
+  loadMore = page => {
+    const { role, searchTerm } = this.props
+    this.props.fetchMoreGroupUsers({
+      groupId: this.props.match.params.groupId,
+      role: role,
+      term: searchTerm,
+      current_page: page
+    })
+  }
+
   render() {
-    const { users, isFetchingUsers } = this.props
-    if (isFetchingUsers) {
-      return <Loading />
-    }
+    const { users, isFetchingUsers, pagintation } = this.props
+
     return (
-      <UserList>
-        {Array.isArray(users) && users.length !== 0 ? (
-          users.map((user, index) => <UserListItem user={user} key={index} />)
-        ) : (
-          <li>No users found</li>
-        )}
-      </UserList>
+      <InfiniteScroll
+        pageStart={1}
+        loadMore={this.loadMore}
+        hasMore={
+          pagintation && pagintation.total_pages > pagintation.current_page
+        }
+        initialLoad={false}
+      >
+        <UserList>
+          {Array.isArray(users) && users.length !== 0 ? (
+            users.map((user, index) => <UserListItem user={user} key={index} />)
+          ) : isFetchingUsers ? (
+            ""
+          ) : (
+            <li>No users found</li>
+          )}
+        </UserList>
+        {isFetchingUsers ? <Loading /> : ""}
+      </InfiniteScroll>
     )
   }
 }
@@ -42,13 +63,15 @@ const mapState = () =>
   createStructuredSelector({
     users: selectors.selectGroupUsers(),
     isFetchingUsers: selectors.selectIsFetchingGroupUsers(),
-    searchTerm: selectors.selectSearchTerm()
+    searchTerm: selectors.selectSearchTerm(),
+    pagintation: selectors.selectPagintation()
   })
 
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
-      fetchGroupUsers
+      fetchGroupUsers,
+      fetchMoreGroupUsers
     },
     dispatch
   )
