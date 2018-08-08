@@ -3,7 +3,6 @@ import React from "react"
 import SearchbarTable, {
   Flagged,
   SearchbarButtonFilter,
-  SearchbarDropdownCourse,
   SearchbarForm
 } from "base_components/SearchbarTable"
 import SttingsIcon from "react-icons/lib/md/settings"
