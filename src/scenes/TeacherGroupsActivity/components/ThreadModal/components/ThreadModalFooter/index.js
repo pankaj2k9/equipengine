@@ -7,7 +7,7 @@ import MessageForm from "base_components/MessageForm"
 const ThreadModalFooter = styled(({ className }) => (
   <ModalFooter className={className}>
     <div className="modal-footer__content">
-      <MessageForm />
+      <MessageForm placeholder="Write something…" />
     </div>
   </ModalFooter>
 ))`
