@@ -107,6 +107,10 @@ export default WrappedComponent =>
       .btn-toolbar {
         margin-left: 0;
       }
+
+      .dropdown {
+        margin-left: 0;
+      }
     }
 
     .Sidebar__item {
