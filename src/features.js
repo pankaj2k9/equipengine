@@ -16,6 +16,7 @@ import * as ResetPassword from "scenes/ResetPassword"
 import * as Signup from "scenes/Signup"
 import * as Tutorial from "scenes/Tutorial"
 import * as Settings from "scenes/Settings"
+import * as GroupFiles from "scenes/Files"
 
 /**
  * Map with all the public accessible features
@@ -189,6 +190,11 @@ registerFeature({
   name: "countries",
   enabled: false,
   ...Countries
+})
+registerFeature({
+  name: "groupFiles",
+  enabled: true,
+  ...GroupFiles
 })
 
 export default features

@@ -111,7 +111,7 @@ const privateRoutes = [
     exact: true,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the files page.">
-        <AsyncFiles {...props} />
+        <features.groupFiles.pages.GroupFiles {...props} />
       </ErrorBoundary>
     )
   },

@@ -32,3 +32,8 @@ export const ACTIVE_COURSE_IN_GROUP_STATUS = "active"
 //
 export const TUTORIAL_UNCOMPLETED_STATUS = "active"
 export const TUTORIAL_COMPLETED_STATUS = "completed"
+
+//
+// ATTACHMENTS
+//
+export const ATTACHMENTABLE_GROUP_TYPE = "Group"
