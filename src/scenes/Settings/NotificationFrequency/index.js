@@ -70,6 +70,7 @@ class NotificationFrequency extends Component {
           <ContainerFlex isSpaceBetween>
             <Label>You receive a private message</Label>
             <Switch
+              disabled={!emailNotifications}
               value={privateMessage}
               onChange={this.handlePrivateMessageChange}
             />
@@ -77,6 +78,7 @@ class NotificationFrequency extends Component {
           <ContainerFlex isSpaceBetween>
             <Label>You receive a response in a course</Label>
             <Switch
+              disabled={!emailNotifications}
               value={courseResponse}
               onChange={this.handleCourseResponseChange}
             />
@@ -84,6 +86,7 @@ class NotificationFrequency extends Component {
           <ContainerFlex isSpaceBetween>
             <Label>You receive a group discussion</Label>
             <Switch
+              disabled={!emailNotifications}
               value={groupDiscussion}
               onChange={this.handleGroupDiscussionChange}
             />
@@ -91,6 +94,7 @@ class NotificationFrequency extends Component {
           <ContainerFlex isSpaceBetween>
             <Label>Get a weekly summary of activity</Label>
             <Switch
+              disabled={!emailNotifications}
               value={activitySummary}
               onChange={this.handleActivitySummaryChange}
             />
