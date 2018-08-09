@@ -12,10 +12,6 @@ const AsyncNotifications = Loadable({
   loader: () => import("scenes/Notifications")
 })
 
-const AsyncFiles = Loadable({
-  loader: () => import("scenes/Files")
-})
-
 const AsyncActivity = Loadable({
   loader: () => import("scenes/Activity")
 })
