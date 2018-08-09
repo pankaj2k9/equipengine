@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import FlagCheckbox from "base_components/FlagCheckbox"
+import FlagCheckbox from "base_components/RootForm/components/FlagCheckbox"
 import { TableRow } from "base_components/Tables"
 import RootForm, { CheckboxCircle } from "base_components/RootForm"
 import UserAvatar from "base_components/UserAvatar"

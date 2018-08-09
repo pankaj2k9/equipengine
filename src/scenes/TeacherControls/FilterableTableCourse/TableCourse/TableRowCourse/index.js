@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { map } from "ramda"
 
-import FlagCheckbox from "base_components/FlagCheckbox"
+import FlagCheckbox from "base_components/RootForm/components/FlagCheckbox"
 import { TableRow } from "base_components/Tables"
 import RootForm, { CheckboxCircle } from "base_components/RootForm"
 import UserAvatar from "base_components/UserAvatar"
