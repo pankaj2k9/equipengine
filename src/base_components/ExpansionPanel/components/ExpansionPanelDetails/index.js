@@ -1,11 +1,12 @@
-import React from "react"
 import PropTypes from "prop-types"
-import { Panel } from "react-bootstrap"
+import React from "react"
+
+import { ExpandPanel } from "./elements"
 
 const ExpansionPanelDetails = ({ children, expanded }) => (
-  <Panel collapsible expanded={expanded}>
+  <ExpandPanel collapsible expanded={expanded}>
     {children}
-  </Panel>
+  </ExpandPanel>
 )
 
 ExpansionPanelDetails.propTypes = {

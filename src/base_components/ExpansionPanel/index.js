@@ -7,7 +7,7 @@ import ExpansionPanelSummary from "./components/ExpansionPanelSummary"
 
 const Root = styled.div`
   border: 1px solid ${props => props.theme.lightgray};
-  border-radius: 4;
+  border-radius: 4px;
   margin-bottom: 1em;
 `
 
