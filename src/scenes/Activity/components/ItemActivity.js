@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { FlaggedIcon } from "base_components/SearchbarTable"
+import FlagCheckbox from "base_components/RootForm/components/FlagCheckbox"
 import { TableRow } from "base_components/Tables"
 import RootForm, { CheckboxCircle } from "base_components/RootForm"
 import UserAvatar from "base_components/UserAvatar"
@@ -40,7 +40,7 @@ const ItemActivity = ({ activity }) => {
         <UserAvatar small image={user.avatar.url} />
       </TableRowCourseTd>
       <TableRowCourseTd middle>
-        <FlaggedIcon big isFlagged={flagged} />
+        <FlagCheckbox isFlagged={flagged} onClick={() => {}} />
       </TableRowCourseTd>
       <TableRowCourseTd middle style={{ textAlign: "center" }}>
         <RootForm>
