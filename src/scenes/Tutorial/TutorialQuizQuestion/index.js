@@ -1,10 +1,25 @@
 import React, { Fragment } from "react"
 
-import { Question } from "./elements"
+import { Answer, Answers, Checkbox, Label, Question } from "./elements"
 
-const TutorialQuizQuestion = ({ question }) => (
+const TutorialQuizQuestion = ({ isFinished, question }) => (
   <Fragment>
-    <Question>{question.question}</Question>
+    <Question>{question.name}</Question>
+
+    <Label>Select the correct answer</Label>
+    <Answers>
+      {question.answers.map(answer => (
+        <Answer key={answer.id}>
+          <Checkbox
+            disabled={isFinished}
+            id={answer.id}
+            name={answer.value}
+            secondary
+          />{" "}
+          {answer.name}
+        </Answer>
+      ))}
+    </Answers>
   </Fragment>
 )
 

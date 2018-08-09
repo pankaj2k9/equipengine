@@ -22,10 +22,46 @@ import {
 import TutorialQuizQuestion from "../TutorialQuizQuestion"
 
 const questions = [
-  { question: "What is the difference between an apple and a orange?" },
-  { question: "What is the difference between an olive and a orange?" },
-  { question: "What is the difference between a banana and a orange?" },
-  { question: "What is the difference between a grape and a orange?" }
+  {
+    id: 1,
+    name: "What is the difference between an apple and a orange?",
+    answers: [
+      { id: 1, name: "Answer", value: 0 },
+      { id: 2, name: "Answer", value: 0 },
+      { id: 3, name: "Answer", value: 0 },
+      { id: 4, name: "Answer", value: 0 }
+    ]
+  },
+  {
+    id: 2,
+    name: "What is the difference between an olive and a orange?",
+    answers: [
+      { id: 5, name: "Answer", value: 0 },
+      { id: 6, name: "Answer", value: 0 },
+      { id: 7, name: "Answer", value: 0 },
+      { id: 8, name: "Answer", value: 0 }
+    ]
+  },
+  {
+    id: 3,
+    name: "What is the difference between a banana and a orange?",
+    answers: [
+      { id: 9, name: "Answer", value: 0 },
+      { id: 10, name: "Answer", value: 0 },
+      { id: 11, name: "Answer", value: 0 },
+      { id: 12, name: "Answer", value: 0 }
+    ]
+  },
+  {
+    id: 4,
+    name: "What is the difference between a grape and a orange?",
+    answers: [
+      { id: 13, name: "Answer", value: 0 },
+      { id: 14, name: "Answer", value: 0 },
+      { id: 15, name: "Answer", value: 0 },
+      { id: 16, name: "Answer", value: 0 }
+    ]
+  }
 ]
 
 class TutorialQuiz extends Component {
@@ -39,16 +75,20 @@ class TutorialQuiz extends Component {
   }
 
   handleFinish = () => {
-    this.setState({ isFinished: true })
+    this.setState({ isFinished: true, isReview: false })
   }
 
   handleNext = () => {
     this.setState({ activeStep: this.state.activeStep + 1 })
   }
 
+  handleReview = () => {
+    this.setState({ isReview: true, activeStep: 0 })
+  }
+
   render() {
     const { isOpen, onClose } = this.props
-    const { activeStep, isFinished } = this.state
+    const { activeStep, isFinished, isReview } = this.state
 
     return (
       <Modal show={isOpen}>
@@ -56,18 +96,20 @@ class TutorialQuiz extends Component {
 
         <ModalBody>
           <QuizBody>
-            {!isFinished && (
-              <Header>
-                Question {activeStep + 1} of {questions.length}
-              </Header>
-            )}
-            {isFinished && <Header>Completed</Header>}
+            <Header>
+              {!isFinished
+                ? `Question ${activeStep + 1} of ${questions.length}`
+                : "Completed"}
+            </Header>
 
-            {isFinished ? (
+            {isFinished && !isReview ? (
               <ResultView>
                 <QuizScoreRoot>
                   <span>Your Results</span>
-                  <QuizScore>7/8</QuizScore>
+                  <QuizScore>
+                    0/
+                    {questions.length}
+                  </QuizScore>
                 </QuizScoreRoot>
 
                 <ButtonContainer>
@@ -75,18 +117,23 @@ class TutorialQuiz extends Component {
                     Close
                   </CloseButton>
 
-                  <ReviewButton secondary>Review</ReviewButton>
+                  <ReviewButton onClick={this.handleReview} secondary>
+                    Review
+                  </ReviewButton>
                 </ButtonContainer>
               </ResultView>
             ) : (
               <QuestionView>
-                <TutorialQuizQuestion question={questions[activeStep]} />
+                <TutorialQuizQuestion
+                  isFinished={isFinished}
+                  question={questions[activeStep]}
+                />
               </QuestionView>
             )}
           </QuizBody>
         </ModalBody>
 
-        {!isFinished && (
+        {(!isFinished || isReview) && (
           <ModalFooter>
             <Button
               disabled={activeStep === 0}
