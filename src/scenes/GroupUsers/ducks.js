@@ -8,7 +8,13 @@ export const types = {
   //
   FETCH_GROUP_USERS_REQUEST: "equipengine/FETCH_GROUP_USERS_REQUEST",
   FETCH_GROUP_USERS_SUCCESS: "equipengine/FETCH_GROUP_USERS_SUCCESS",
-  FETCH_GROUP_USERS_ERROR: "equipengine/FETCH_GROUP_USERS_ERROR"
+  FETCH_GROUP_USERS_ERROR: "equipengine/FETCH_GROUP_USERS_ERROR",
+  //
+  // FETCH_MORE_GROUP_USERS
+  //
+  FETCH_MORE_GROUP_USERS_REQUEST: "equipengine/FETCH_MORE_GROUP_USERS_REQUEST",
+  FETCH_MORE_GROUP_USERS_SUCCESS: "equipengine/FETCH_MORE_GROUP_USERS_SUCCESS",
+  FETCH_MORE_GROUP_USERS_ERROR: "equipengine/FETCH_MORE_GROUP_USERS_ERROR"
 }
 
 const initialState = Immutable({
@@ -29,17 +35,39 @@ export default (state = initialState, action) => {
       return state.merge({
         isFetchingUsers: true,
         searchTerm: action.payload.searchTerm,
-        selectedRole: action.payload.role
+        selectedRole: action.payload.role,
+        users: [],
+        pagination: null
       })
     case types.FETCH_GROUP_USERS_SUCCESS:
       return state.merge({
         isFetchingUsers: false,
-        users: action.payload.users
+        users: action.payload.users,
+        pagination: action.payload.pagination
       })
-    case types.FETCH_COURSES_ERROR:
+    case types.FETCH_GROUP_USERS_ERROR:
       return state.merge({
         isFetchingUsers: false,
-        users: []
+        users: [],
+        pagination: null
+      })
+    case types.FETCH_MORE_GROUP_USERS_REQUEST:
+      return state.merge({
+        isFetchingUsers: true,
+        searchTerm: action.payload.searchTerm,
+        selectedRole: action.payload.role
+      })
+    case types.FETCH_MORE_GROUP_USERS_SUCCESS:
+      return state.merge({
+        isFetchingUsers: false,
+        users: state.users.concat(action.payload.users),
+        pagination: action.payload.pagination
+      })
+    case types.FETCH_MORE_GROUP_USERS_ERROR:
+      return state.merge({
+        isFetchingUsers: false,
+        users: [],
+        pagination: null
       })
 
     default:
@@ -61,7 +89,22 @@ export const actions = {
     payload: { users, pagination }
   }),
   fetchGroupUsersError: () => ({
-    type: types.FETCH_COURSES_ERROR
+    type: types.FETCH_GROUP_USERS_ERROR
+  }),
+
+  //
+  // FETCH_MORE_GROUP_USERS
+  //
+  fetchMoreGroupUsersRequest: ({ searchTerm, role }) => ({
+    type: types.FETCH_MORE_GROUP_USERS_REQUEST,
+    payload: { searchTerm, role }
+  }),
+  fetchMoreGroupUsersSuccess: ({ users, pagination }) => ({
+    type: types.FETCH_MORE_GROUP_USERS_SUCCESS,
+    payload: { users, pagination }
+  }),
+  fetchMoreGroupUsersError: () => ({
+    type: types.FETCH_MORE_GROUP_USERS_ERROR
   })
 }
 
@@ -80,9 +123,13 @@ const selectSearchTerm = () =>
 const selectCurrentRole = () =>
   createSelector(groupUsersSelector(), group => group.selectedRole)
 
+const selectPagintation = () =>
+  createSelector(groupUsersSelector(), group => group.pagination)
+
 export const selectors = {
   selectGroupUsers,
   selectIsFetchingGroupUsers,
   selectSearchTerm,
-  selectCurrentRole
+  selectCurrentRole,
+  selectPagintation
 }
