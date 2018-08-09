@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react"
+import React, { Component } from "react"
 
 import Button from "base_components/RootButton"
 
@@ -10,17 +10,23 @@ import {
   ModalBody,
   ModalFooter,
   ModalHeader,
-  Question,
+  QuestionView,
   QuizBody,
-  QuizBodyContent,
   QuizScore,
   QuizScoreRoot,
+  ResultView,
   ReviewButton,
   Step,
   Steps
 } from "./elements"
+import TutorialQuizQuestion from "../TutorialQuizQuestion"
 
-const questions = [{}, {}, {}, {}]
+const questions = [
+  { question: "What is the difference between an apple and a orange?" },
+  { question: "What is the difference between an olive and a orange?" },
+  { question: "What is the difference between a banana and a orange?" },
+  { question: "What is the difference between a grape and a orange?" }
+]
 
 class TutorialQuiz extends Component {
   state = {
@@ -50,33 +56,33 @@ class TutorialQuiz extends Component {
 
         <ModalBody>
           <QuizBody>
-            {!isFinished && <Header>Question 8 of 8</Header>}
+            {!isFinished && (
+              <Header>
+                Question {activeStep + 1} of {questions.length}
+              </Header>
+            )}
             {isFinished && <Header>Completed</Header>}
 
-            <QuizBodyContent>
-              {isFinished ? (
-                <Fragment>
-                  <QuizScoreRoot>
-                    <span>Your Results</span>
-                    <QuizScore>7/8</QuizScore>
-                  </QuizScoreRoot>
+            {isFinished ? (
+              <ResultView>
+                <QuizScoreRoot>
+                  <span>Your Results</span>
+                  <QuizScore>7/8</QuizScore>
+                </QuizScoreRoot>
 
-                  <ButtonContainer>
-                    <CloseButton onClick={onClose} secondary>
-                      Close
-                    </CloseButton>
+                <ButtonContainer>
+                  <CloseButton onClick={onClose} secondary>
+                    Close
+                  </CloseButton>
 
-                    <ReviewButton secondary>Review</ReviewButton>
-                  </ButtonContainer>
-                </Fragment>
-              ) : (
-                <Fragment>
-                  <Question>
-                    What is the difference between an apple and a orange?
-                  </Question>
-                </Fragment>
-              )}
-            </QuizBodyContent>
+                  <ReviewButton secondary>Review</ReviewButton>
+                </ButtonContainer>
+              </ResultView>
+            ) : (
+              <QuestionView>
+                <TutorialQuizQuestion question={questions[activeStep]} />
+              </QuestionView>
+            )}
           </QuizBody>
         </ModalBody>
 

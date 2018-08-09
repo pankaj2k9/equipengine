@@ -101,8 +101,15 @@ export const ModalHeader = styled.div`
   font-weight: bold;
 `
 
-export const Question = styled.h4`
-  font-size: 1.286em;
+export const QuestionView = styled.div`
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+
+  max-width: 700px;
+  width: 100%;
 `
 
 export const QuizBody = styled.div`
@@ -110,15 +117,6 @@ export const QuizBody = styled.div`
 
   display: flex;
   flex-direction: column;
-`
-
-export const QuizBodyContent = styled.div`
-  flex: 1;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `
 
 export const QuizScore = styled.div`
@@ -148,6 +146,15 @@ export const QuizScoreRoot = styled.div`
   span {
     font-size: 1.714em;
   }
+`
+
+export const ResultView = styled.div`
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `
 
 export const Step = styled.div`
