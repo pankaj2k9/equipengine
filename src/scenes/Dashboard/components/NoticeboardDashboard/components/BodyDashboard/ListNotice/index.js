@@ -3,8 +3,20 @@ import styled from "styled-components"
 
 import UserAvatar from "base_components/UserAvatar"
 import iconUser from "resources/images/user.png"
-import Form, { Text } from "base_components/RootForm"
+import RootForm, { Text } from "base_components/RootForm"
+import RootButton from "base_components/RootButton"
 import DateTime from "base_components/DateTime"
+
+const Form = styled(RootForm)`
+  display: flex;
+  flex-direction: column;
+`
+
+const Button = styled(RootButton)`
+  align-self: flex-end;
+
+  margin-top: 0.4em;
+`
 
 const ItemNotice = styled(({ className }) => (
   <li className={className}>
@@ -20,6 +32,7 @@ const ItemNotice = styled(({ className }) => (
       </p>
       <Form>
         <Text name="comment" placeholder="Comment..." />
+        <Button>Send</Button>
       </Form>
     </div>
   </li>
