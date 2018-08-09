@@ -90,9 +90,9 @@ const users = [
   }
 ]
 
-const TeacherUserManager = () => (
+const TeacherUserManager = ({ handleSearchClick, search }) => (
   <ContainerTeacherUserManager>
-    <TeacherUser />
+    <TeacherUser handleSearchClick={handleSearchClick} searchValue={search} />
     <TeacherUserSettings />
   </ContainerTeacherUserManager>
 )
@@ -101,11 +101,15 @@ export default compose(
   withProps({ courses, tutorials, users }),
   withStateHandlers(
     ({ users }) => ({
-      selectedUser: users[0]
+      selectedUser: users[0],
+      search: null
     }),
     {
       selectUser: (_, { users }) => id => ({
         selectedUser: users.find(user => user.id === id)
+      }),
+      handleSearchClick: () => event => ({
+        search: event.target.value
       })
     }
   ),

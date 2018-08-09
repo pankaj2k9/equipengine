@@ -15,7 +15,13 @@ import {
 import Switch from "./components/Switch"
 
 const RootForm = ({ children, className }) => (
-  <form className={className} action="">
+  <form
+    className={className}
+    action=""
+    onSubmit={event => {
+      event.preventDefault()
+    }}
+  >
     {children}
   </form>
 )

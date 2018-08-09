@@ -12,10 +12,6 @@ const AsyncNotifications = Loadable({
   loader: () => import("scenes/Notifications")
 })
 
-const AsyncFiles = Loadable({
-  loader: () => import("scenes/Files")
-})
-
 const AsyncActivity = Loadable({
   loader: () => import("scenes/Activity")
 })
@@ -111,7 +107,7 @@ const privateRoutes = [
     exact: true,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the files page.">
-        <AsyncFiles {...props} />
+        <features.groupFiles.pages.GroupFiles {...props} />
       </ErrorBoundary>
     )
   },

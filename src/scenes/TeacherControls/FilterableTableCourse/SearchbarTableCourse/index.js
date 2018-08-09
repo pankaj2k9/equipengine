@@ -3,7 +3,6 @@ import React from "react"
 import SearchbarTable, {
   Flagged,
   SearchbarButtonFilter,
-  SearchbarDropdownCourse,
   SearchbarForm
 } from "base_components/SearchbarTable"
 import SttingsIcon from "react-icons/lib/md/settings"
@@ -23,7 +22,7 @@ const SearchbarTableCourse = ({
 }) => (
   <SearchbarTable>
     <SearchbarButtonFilter title="Show All" />
-    <SearchbarDropdownCourse />
+    <SearchbarButtonFilter title="Search by course" />
     <SearchbarForm onChange={handleSearchChange} value={searchValue} />
     <SettingsButton light onClick={onOpen}>
       <SttingsIcon fontSize={23} />

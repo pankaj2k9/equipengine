@@ -25,14 +25,14 @@ class MessageForm extends Component {
   handleUploadButtonClick = () => this.fileChooserDialog.open()
 
   render() {
-    const { className, onSendMessage } = this.props
+    const { className, onSendMessage, placeholder } = this.props
     const { attachment, message } = this.state
 
     return (
       <RootForm className={className}>
         <TextArea
           name="thread"
-          placeholder="Write Something"
+          placeholder={placeholder}
           value={message}
           onChange={this.handleChange}
         />

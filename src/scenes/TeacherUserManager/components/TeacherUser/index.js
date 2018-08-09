@@ -5,10 +5,15 @@ import styled from "styled-components"
 import Form, { Text } from "base_components/RootForm"
 import ListUser from "./components/ListUser"
 
-const TeacherUser = styled(({ className }) => (
+const TeacherUser = styled(({ className, handleSearchClick, searchValue }) => (
   <div className={className}>
     <Form>
-      <Text name="user-searchbar" placeholder="Search people..." />
+      <Text
+        onChange={handleSearchClick}
+        value={searchValue}
+        name="user-searchbar"
+        placeholder="Search people..."
+      />
     </Form>
     <ListUser />
   </div>

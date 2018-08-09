@@ -20,4 +20,5 @@ export default css`
   justify-content: ${props =>
     props.isSpaceBetween ? "space-between" : props.justifyContent};
   background-color: ${props => props.backgroundColor};
+  flex: ${props => props.flex || "unset"};
 `

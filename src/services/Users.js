@@ -4,10 +4,22 @@ import { ACTIVE_USER_STATUS, STUDENT_ROLE } from "./constants"
 /**
  * @returns list of all app users
  */
-export const fetchUsers = ({ organization_id, group_id, role, term }) => {
-  const params = {
-    // TODO implement inifinite loading
-    current_count: 100
+export const fetchUsers = ({
+  organization_id,
+  group_id,
+  role,
+  term,
+  current_page,
+  current_count
+}) => {
+  const params = {}
+
+  if (current_page) {
+    params.current_page = current_page
+  }
+
+  if (current_count) {
+    params.current_count = current_count
   }
 
   if (organization_id) {

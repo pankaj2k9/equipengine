@@ -89,6 +89,7 @@ class TeacherFiles extends Component {
         <MainInnerContainer>
           <MainLeft>
             <TableFiles
+              tableLayout="unset"
               files={this.state.files}
               removeFile={this.handleRemoveFileClick}
             />

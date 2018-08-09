@@ -10,30 +10,40 @@ const DATE_COLUMN = "date_added"
 const DOWNLOAD_COLUMN = "download"
 const CLOSE_COLUMN = "close"
 
-const getColumns = removeFile => [
-  {
-    name: NAME_COLUMN,
-    title: "Name",
-    width: "50%"
-  },
-  {
-    name: DATE_COLUMN,
-    title: "Date Addded",
-    width: "25%"
-  },
-  {
-    name: DOWNLOAD_COLUMN,
-    width: "20%",
-    getCellValue: row => <DownloadCellFormatter />
-  },
-  {
-    name: CLOSE_COLUMN,
-    width: "5%",
-    getCellValue: row => (
-      <CloseCellFormatter onClose={() => removeFile(row.download.id)} />
-    )
+const getColumns = removeFile => {
+  const columns = [
+    {
+      name: NAME_COLUMN,
+      title: "Name",
+      width: "50%"
+    },
+    {
+      name: DATE_COLUMN,
+      title: "Date Addded",
+      width: "25%"
+    },
+    {
+      name: DOWNLOAD_COLUMN,
+      width: "20%",
+      getCellValue: row => <DownloadCellFormatter />
+    }
+  ]
+
+  if (removeFile) {
+    return [
+      ...columns,
+      {
+        name: CLOSE_COLUMN,
+        width: "5%",
+        getCellValue: row => (
+          <CloseCellFormatter onClose={() => removeFile(row.download.id)} />
+        )
+      }
+    ]
   }
-]
+
+  return columns
+}
 
 const filesToRows = files =>
   Array.isArray(files)

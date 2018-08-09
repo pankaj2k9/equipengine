@@ -9,7 +9,7 @@ import { Body, FormContainer, Placeholder } from "./elements"
 const BodyDashboard = ({ notices }) => (
   <Body>
     <FormContainer>
-      <MessageForm />
+      <MessageForm placeholder="Write on the noticeboard…" />
     </FormContainer>
     {notices.length ? (
       <ListNotice />

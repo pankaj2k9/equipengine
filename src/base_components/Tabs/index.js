@@ -4,12 +4,13 @@ import { Tabs as TabBootstrap } from "react-bootstrap"
 
 import "./styles.css"
 
-const Tabs = ({ style, children, className }) => {
+const Tabs = ({ style, children, className, ...rest }) => {
   return (
     <TabBootstrap
       style={style}
       className={`Tabs ${className}`}
       defaultActiveKey={1}
+      {...rest}
     >
       {children}
     </TabBootstrap>

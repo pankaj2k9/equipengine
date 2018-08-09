@@ -1,15 +1,87 @@
-import React from "react"
+import React, { Component } from "react"
+import { bindActionCreators } from "redux"
+import { compose, pure } from "recompose"
+import { connect } from "react-redux"
+import { createStructuredSelector } from "reselect"
+import { withRouter } from "react-router-dom"
+import InfiniteScroll from "react-infinite-scroller"
 
+import { fetchGroupUsers, fetchMoreGroupUsers } from "../thunks"
+import { selectors } from "../ducks"
+
+import Loading from "base_components/Loading"
 import UserList, { UserListItem } from "./../UserListItem"
 
-const TabUser = ({ students }) => (
-  <UserList>
-    {Array.isArray(students) && students.length !== 0 ? (
-      students.map((s, index) => <UserListItem student={s.user} key={index} />)
-    ) : (
-      <li>"No users found" </li>
-    )}
-  </UserList>
-)
+class TabUser extends Component {
+  componentDidMount() {
+    const { role, searchTerm } = this.props
+    this.props.fetchGroupUsers({
+      groupId: this.props.match.params.groupId,
+      role: role,
+      term: searchTerm
+    })
+  }
 
-export default TabUser
+  loadMore = page => {
+    const { role, searchTerm } = this.props
+    this.props.fetchMoreGroupUsers({
+      groupId: this.props.match.params.groupId,
+      role: role,
+      term: searchTerm,
+      current_page: page
+    })
+  }
+
+  render() {
+    const { users, isFetchingUsers, pagintation } = this.props
+
+    return (
+      <InfiniteScroll
+        pageStart={1}
+        loadMore={this.loadMore}
+        hasMore={
+          pagintation && pagintation.total_pages > pagintation.current_page
+        }
+        initialLoad={false}
+      >
+        <UserList>
+          {Array.isArray(users) && users.length !== 0 ? (
+            users.map((user, index) => <UserListItem user={user} key={index} />)
+          ) : isFetchingUsers ? (
+            ""
+          ) : (
+            <li>No users found</li>
+          )}
+        </UserList>
+        {isFetchingUsers ? <Loading /> : ""}
+      </InfiniteScroll>
+    )
+  }
+}
+
+const mapState = () =>
+  createStructuredSelector({
+    users: selectors.selectGroupUsers(),
+    isFetchingUsers: selectors.selectIsFetchingGroupUsers(),
+    searchTerm: selectors.selectSearchTerm(),
+    pagintation: selectors.selectPagintation()
+  })
+
+const mapDispatch = dispatch =>
+  bindActionCreators(
+    {
+      fetchGroupUsers,
+      fetchMoreGroupUsers
+    },
+    dispatch
+  )
+
+export default compose(
+  withRouter,
+  component =>
+    connect(
+      mapState,
+      mapDispatch
+    )(component),
+  pure
+)(TabUser)
