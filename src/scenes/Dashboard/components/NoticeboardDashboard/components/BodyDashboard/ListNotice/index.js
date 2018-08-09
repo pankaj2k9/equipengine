@@ -1,22 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 
+import MessageForm from "base_components/MessageForm"
+import DateTime from "base_components/DateTime"
 import UserAvatar from "base_components/UserAvatar"
 import iconUser from "resources/images/user.png"
-import RootForm, { Text } from "base_components/RootForm"
-import RootButton from "base_components/RootButton"
-import DateTime from "base_components/DateTime"
-
-const Form = styled(RootForm)`
-  display: flex;
-  flex-direction: column;
-`
-
-const Button = styled(RootButton)`
-  align-self: flex-end;
-
-  margin-top: 0.4em;
-`
 
 const ItemNotice = styled(({ className }) => (
   <li className={className}>
@@ -30,10 +18,8 @@ const ItemNotice = styled(({ className }) => (
         Hi everyone. Dont forget to send in your registration forms for this
         weeks event. Anyone that can make it is welcome.
       </p>
-      <Form>
-        <Text name="comment" placeholder="Comment..." />
-        <Button>Send</Button>
-      </Form>
+
+      <MessageForm placeholder="Comment..." />
     </div>
   </li>
 ))`
