@@ -35,7 +35,7 @@ class TaskAnswer extends React.Component {
 
         {/* Text input + Add attachment + Submit button */}
         <Form>
-          <Input type="text" name="quesstion" placeholder="Write your answer" />
+          <Input type="text" name="question" placeholder="Write your answer" />
           <ButtonContainer>
             <AttachmentName>{attachment && attachment.name}</AttachmentName>
             <AttachmentIcon

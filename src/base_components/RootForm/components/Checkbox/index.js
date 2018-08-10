@@ -116,10 +116,16 @@ CheckboxCircleSecondary.propTypes = {
   name: PropTypes.string.isRequired
 }
 
-const CheckboxCircle = styled(({ name, className }) => (
+const CheckboxCircle = styled(({ className, disabled, id, name }) => (
   <div className={className}>
-    <input className="Checkbox--circle" name={name} type="checkbox" />
-    <label className="Label--circle" htmlFor={name} />
+    <input
+      className="Checkbox--circle"
+      disabled={disabled}
+      id={id}
+      name={name}
+      type="checkbox"
+    />
+    <label className="Label--circle" htmlFor={id} />
   </div>
 ))`
   display: inline-block;
