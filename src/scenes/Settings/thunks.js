@@ -8,7 +8,9 @@ export const updateSettings = ({
   address,
   phone,
   zipCode,
-  state
+  state,
+  country,
+  birthDate
 }) => {
   return async dispatch => {
     dispatch(actions.updateSettingsRequest())
@@ -21,7 +23,9 @@ export const updateSettings = ({
         address,
         phone,
         zipCode,
-        state
+        state,
+        country,
+        birthDate
       })
       return dispatch(actions.updateSettingsSuccess({ user }))
     } catch (error) {

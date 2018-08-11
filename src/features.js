@@ -1,10 +1,10 @@
 import FeatureDisabled from "global/FeatureDisabled"
+import * as Address from "scenes/Address"
 import * as AdminCourses from "scenes/AdminCourses"
 import * as AdminGroups from "scenes/AdminGroups"
 import * as AdminGroupCourses from "scenes/AdminGroupCourses"
 import * as AdminGroupUsers from "scenes/AdminGroupUsers"
 import * as AdminUsers from "scenes/AdminUsers"
-import * as Countries from "scenes/Countries"
 import * as Course from "scenes/Course"
 import * as Courses from "scenes/Courses"
 import * as GroupUsers from "scenes/GroupUsers"
@@ -187,9 +187,9 @@ registerFeature({
   ...Settings
 })
 registerFeature({
-  name: "countries",
-  enabled: false,
-  ...Countries
+  name: "address",
+  enabled: true,
+  ...Address
 })
 registerFeature({
   name: "groupFiles",

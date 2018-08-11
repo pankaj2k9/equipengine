@@ -22,21 +22,7 @@ const BirthDate = ({ value, onChange }) => (
   </FormGroup>
 )
 
-const Address = ({ value, onChange }) => (
-  <FormGroup>
-    <Label>Address</Label>
-    <TextArea row={4} placeholder="Address" value={value} onChange={onChange} />
-  </FormGroup>
-)
-
-const UserContacts = ({
-  phone,
-  address,
-  birthDate,
-  changePhone,
-  changeAddress,
-  changeBirthDate
-}) => (
+const UserContacts = ({ phone, birthDate, changePhone, changeBirthDate }) => (
   <Fragment>
     <Desktop>
       <ContainerFlex>
@@ -48,12 +34,12 @@ const UserContacts = ({
           <BirthDate value={birthDate} onChange={changeBirthDate} />
         </ItemFlex>
       </ContainerFlex>
+      <Spacing />
     </Desktop>
     <Mobile>
       <Phone value={phone} onChange={changePhone} />
       <BirthDate value={birthDate} onChange={changeBirthDate} />
     </Mobile>
-    <Address value={address} onChange={changeAddress} />
   </Fragment>
 )
 
