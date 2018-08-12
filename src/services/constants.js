@@ -32,8 +32,22 @@ export const ACTIVE_COURSE_IN_GROUP_STATUS = "active"
 //
 export const TUTORIAL_UNCOMPLETED_STATUS = "active"
 export const TUTORIAL_COMPLETED_STATUS = "completed"
+export const ACTIVE_TUTORIAL_STATUS = "active"
+
+//
+// TASKS
+//
+export const TASK_READING_TYPE = "reading"
+export const TASK_QUESTION_TYPE = "question"
+export const TASK_WATCH_TYPE = "watch"
+export const TASK_QUIZ_TYPE = "quiz"
 
 //
 // ATTACHMENTS
 //
 export const ATTACHMENTABLE_GROUP_TYPE = "Group"
+
+//
+// VIDEOS
+//
+export const VIDEOABLE_TASK_TYPE = "Task"

@@ -1,24 +1,12 @@
-import React from "react"
-import PropTypes from "prop-types"
-//
-import BorderedTitle from "base_components/BorderedTitle"
-import SearchActionBar from "./components/SearchActionBar"
-import TableVideos from "./components/TableVideos"
+import * as actions from "./thunks"
+import reducer, { types } from "./ducks"
+import { selectors } from "./selectors"
+import Loadable from "base_components/Loadable"
 
-const Videos = () => (
-  <div>
-    <BorderedTitle title="Videos" />
-    <SearchActionBar
-      searchbarInfo={{
-        placeholder: "Search videos"
-      }}
-    />
-    <TableVideos />
-  </div>
-)
-
-Videos.propTypes = {
-  match: PropTypes.object.isRequired
+const pages = {
+  Videos: Loadable({
+    loader: () => import("./AdminVideosPage")
+  })
 }
 
-export default Videos
+export { actions, pages, reducer, types, selectors }

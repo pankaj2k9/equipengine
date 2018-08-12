@@ -16,7 +16,7 @@ export default ({ validationSchema }) =>
           "Validation failed",
           validationResult.error.details[0].context.label
         )
-      } else {
+      } else if (onSubmit) {
         onSubmit(fields)
       }
     }

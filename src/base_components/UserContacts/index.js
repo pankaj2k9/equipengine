@@ -3,7 +3,7 @@ import React, { Fragment } from "react"
 import ContainerFlex from "base_components/ContainerFlex"
 import DatePicker from "base_components/DatePicker"
 import { Desktop, Mobile } from "base_components/Responsive"
-import { FormGroup, Label, Text, TextArea } from "base_components/RootForm"
+import { FormGroup, Label, Text } from "base_components/RootForm"
 import ItemFlex from "base_components/ItemFlex"
 
 import { Spacing } from "./elements"

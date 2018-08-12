@@ -94,4 +94,32 @@ const IconButton = styled.button`
   background-color: white;
 `
 
-export { RootButton as default, ButtonIcon, IconButton }
+// TODO try to move to button as type 'outline'
+const OutlineButton = styled.button`
+  background: none;
+  border: 1px solid ${props => props.color || props.theme.gray};
+  color: ${props => props.color || props.theme.gray};
+  padding: 4px 13px 4px 7px;
+  position: relative;
+  top: -6px;
+  border-radius: 4px;
+  transition: all 300ms ease-in;
+
+  img {
+    vertical-align: text-bottom;
+    margin-right: 5px;
+  }
+
+  svg {
+    vertical-align: text-bottom;
+    margin-right: 5px;
+    margin-bottom: 2px;
+  }
+
+  &:hover {
+    border-color: ${props => props.hoverColor || props.theme.black};
+    color: ${props => props.hoverColor || props.theme.black};
+  }
+`
+
+export { RootButton as default, ButtonIcon, IconButton, OutlineButton }

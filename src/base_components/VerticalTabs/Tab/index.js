@@ -19,7 +19,11 @@ export default class Tab extends Component {
       block: "center",
       behavior: "smooth"
     })
-    setTimeout(() => this.props.onTabClick(this.props.tab), 200)
+    setTimeout(() => {
+      if (this.props.onTabClick) {
+        this.props.onTabClick(this.props.tab)
+      }
+    }, 200)
   }
 
   render() {

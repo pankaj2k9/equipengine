@@ -12,10 +12,6 @@ const AsyncAddons = Loadable({
   loader: () => import("scenes/AdminAddons")
 })
 
-const AsyncVideos = Loadable({
-  loader: () => import("scenes/AdminVideos")
-})
-
 const adminRoutes = [
   {
     path: "/secure/admin/groups",
@@ -48,6 +44,16 @@ const adminRoutes = [
     )
   },
   {
+    path: "/secure/admin/courses/:courseId",
+    strict: true,
+    exact: true,
+    AsyncComponent: props => (
+      <ErrorBoundary errMsg="Something went wrong in displaying the admin course page.">
+        <features.adminCourse.pages.Course {...props} />
+      </ErrorBoundary>
+    )
+  },
+  {
     path: "/secure/admin/organisations",
     strict: true,
     exact: false,
@@ -73,7 +79,7 @@ const adminRoutes = [
     exact: false,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the admin videos page.">
-        <AsyncVideos {...props} />
+        <features.adminVideos.pages.Videos {...props} />
       </ErrorBoundary>
     )
   }

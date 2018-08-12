@@ -1,14 +1,11 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { bindActionCreators } from "redux"
-import { isNil } from "ramda"
 import { connect } from "react-redux"
 import { compose, lifecycle } from "recompose"
 import { createStructuredSelector } from "reselect"
 import { withRouter } from "react-router-dom"
 
-import iconPlayButton from "./play-button.svg"
-import iconExam from "./exam.svg"
 import features from "features"
 import List from "base_components/List"
 import {
@@ -19,6 +16,7 @@ import {
   ViewButton
 } from "./elenents"
 import Loading from "base_components/Loading"
+import TutorialTitle from "global/TutorialTitle"
 
 const TabListTutorials = ({ tutorials, isFetchingTutorials, match }) => {
   if (isFetchingTutorials) {
@@ -34,15 +32,7 @@ const TabListTutorials = ({ tutorials, isFetchingTutorials, match }) => {
       {tutorials.map(tutorial => (
         <StyledListRow key={tutorial.id}>
           <StyledListRowLeft>
-            {tutorial.type === "video" ? (
-              <img src={iconPlayButton} alt="Play button icon" />
-            ) : (
-              <img src={iconExam} alt="Exam icon" />
-            )}
-            <div>
-              <p>{tutorial.title}</p>
-              {!isNil(tutorial.video) ? <p>{tutorial.video.length}</p> : <p />}
-            </div>
+            <TutorialTitle tutorial={tutorial} />
           </StyledListRowLeft>
           <StyledListRowRight>
             <ViewButton

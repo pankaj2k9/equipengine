@@ -8,6 +8,7 @@ import { reducer as activities } from "global/Activities"
 // this is the root reducers, we will combine all reducers that we are using.
 export default combineReducers({
   activities,
+  adminCourse: features.adminCourse.reducer,
   adminCourses: features.adminCourses.reducer,
   adminGroups: features.adminGroups.reducer,
   adminGroupCourses: features.adminGroupCourses.reducer,

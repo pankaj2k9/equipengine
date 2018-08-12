@@ -5,7 +5,7 @@ import Loading from "base_components/Loading"
 
 import notificationsData from "./notifications.json"
 import ListNotification from "./components/ListNotification"
-import OutlineButton from "../../base_components/OutlineButton"
+import { OutlineButton } from "base_components/RootButton"
 import PageWrapper from "global/PageWrapper"
 
 const ExtendOutlineButton = styled(OutlineButton)`

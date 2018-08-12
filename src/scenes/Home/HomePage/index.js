@@ -1,6 +1,6 @@
 import React from "react"
 import IconSettings from "react-icons/lib/fa/cog"
-import OutlineButton from "base_components/OutlineButton"
+import { OutlineButton } from "base_components/RootButton"
 import { Link } from "react-router-dom"
 //
 import MyGroups from "../MyGroups"

@@ -1,6 +1,12 @@
 import { client } from "./API"
 
 /**
+ * @returns course info
+ */
+export const fetchCourse = ({ course_id }) =>
+  client.get(`/api/v1/courses/${course_id}`).then(response => response.data)
+
+/**
  * @returns list of all courses
  */
 export const fetchCourses = ({ term, sort_field, sort_flag }) => {

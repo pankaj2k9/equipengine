@@ -26,6 +26,8 @@ export { client }
 
 export * from "./Activities"
 export * from "./AdminCourses"
+export * from "./AdminTasks"
+export * from "./AdminTutorials"
 export * from "./Auth"
 export * from "./Countries"
 export * from "./GroupCourses"
@@ -38,3 +40,4 @@ export * from "./Tutorials"
 export * from "./Users"
 export * from "./Attachments"
 export * from "./States"
+export * from "./Videos"

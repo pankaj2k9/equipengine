@@ -5,7 +5,7 @@ import Button from "base_components/RootButton"
 import modal from "hoc/modal"
 
 import TaskAnswer from "../TaskAnswer"
-import TutorialQuiz from "../TutorialQuiz"
+import Quiz from "../Quiz"
 
 const TaskQuiz = ({ isOpen, onOpen, onClose, task }) => (
   <Fragment>
@@ -21,7 +21,7 @@ const TaskQuiz = ({ isOpen, onOpen, onClose, task }) => (
       <TaskAnswer />
     </ExpansionPanel>
 
-    <TutorialQuiz isOpen={isOpen} onClose={onClose} />
+    <Quiz isOpen={isOpen} onClose={onClose} />
   </Fragment>
 )
 

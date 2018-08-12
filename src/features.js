@@ -1,10 +1,12 @@
 import FeatureDisabled from "global/FeatureDisabled"
 import * as Address from "scenes/Address"
+import * as AdminCourse from "scenes/AdminCourse"
 import * as AdminCourses from "scenes/AdminCourses"
 import * as AdminGroups from "scenes/AdminGroups"
 import * as AdminGroupCourses from "scenes/AdminGroupCourses"
 import * as AdminGroupUsers from "scenes/AdminGroupUsers"
 import * as AdminUsers from "scenes/AdminUsers"
+import * as AdminVideos from "scenes/AdminVideos"
 import * as Course from "scenes/Course"
 import * as Courses from "scenes/Courses"
 import * as GroupUsers from "scenes/GroupUsers"
@@ -152,6 +154,11 @@ registerFeature({
   ...AdminCourses
 })
 registerFeature({
+  name: "adminCourse",
+  enabled: true,
+  ...AdminCourse
+})
+registerFeature({
   name: "adminGroups",
   enabled: true,
   ...AdminGroups
@@ -170,6 +177,11 @@ registerFeature({
   name: "adminUsers",
   enabled: true,
   ...AdminUsers
+})
+registerFeature({
+  name: "adminVideos",
+  enabled: true,
+  ...AdminVideos
 })
 registerFeature({
   name: "messages",

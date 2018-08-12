@@ -1,14 +1,4 @@
 import styled from "styled-components"
-import bgImage from "./course-bg.png"
-
-export const Root = styled.div`
-  background-image: url(${bgImage});
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  padding: 20px 30px;
-  font-weight: 500;
-`
 
 export const CourseSmallImage = styled.img`
   width: 100%;

@@ -7,9 +7,9 @@ import {
   CourseTitle,
   DesktopContainerFlex,
   ExpandLink,
-  ExpandIcon,
-  Root
+  ExpandIcon
 } from "./elements"
+import BackgroundImage from "base_components/BackgroundImage"
 import CircleProgressBar from "base_components/CircleProgressBar"
 import courseImg from "resources/images/course-default.png"
 import ExpandableCourseDescription from "../ExpandableCourseDescription"
@@ -30,7 +30,7 @@ class HeaderCourse extends Component {
     const { course } = this.props
     return (
       <Fragment>
-        <Root>
+        <BackgroundImage>
           <CourseSmallImage alt="Course" src={course.image.url || courseImg} />
           {/* Mobile non-flex and Desktop flex container */}
           <DesktopContainerFlex>
@@ -56,7 +56,7 @@ class HeaderCourse extends Component {
               textColor="#fff"
             />
           </DesktopContainerFlex>
-        </Root>
+        </BackgroundImage>
         <ExpandableCourseDescription
           description={course.description}
           expanded={this.state.expandDescription}

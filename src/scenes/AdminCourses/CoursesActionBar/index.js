@@ -7,7 +7,7 @@ import { toastr } from "react-redux-toastr"
 import { withRouter } from "react-router-dom"
 
 import { createCourse, fetchCourses } from "../thunks"
-import CreateCourseModal from "../CreateCourseModal"
+import CourseSettingsModal from "global/CourseSettingsModal"
 import modal from "hoc/modal"
 import SearchActionBar from "base_components/SearchActionBar"
 import { selectors, types } from "../ducks"
@@ -26,7 +26,7 @@ const CoursesActionBar = ({
       onCreate={onOpenCreateCourseModal}
       onSearch={term => fetchCourses({ term })}
     />
-    <CreateCourseModal
+    <CourseSettingsModal
       isOpen={isOpenCreateCourseModal}
       isSubmitting={isSavingCourse}
       onClose={onCloseCreateCourseModal}

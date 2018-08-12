@@ -16,12 +16,6 @@ export const StyledListRow = styled(ListRow)`
 
 export const StyledListRowLeft = styled(ListRowLeft)`
   display: flex;
-  img {
-    margin-right: 1em;
-  }
-  p {
-    margin-bottom: 0;
-  }
 `
 
 export const StyledListRowRight = styled(ListRowRight)`

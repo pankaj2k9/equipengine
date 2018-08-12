@@ -6,5 +6,5 @@ import { client } from "./API"
  */
 export const fetchAttachments = ({ attachmentable_id, attachmentable_type }) =>
   client
-    .get(`api/v1/${attachmentable_type}/${attachmentable_id}/attachments`)
+    .get(`/api/v1/${attachmentable_type}/${attachmentable_id}/attachments`)
     .then(response => response.data)
