@@ -5,6 +5,11 @@ import styled from "styled-components"
 import Container from "base_components/Container"
 import SearchBar from "base_components/RootSearchBar"
 
+import RootButton from "base_components/RootButton"
+
+import VideoModal from "../CreateVideoModal"
+import modal from "hoc/modal"
+
 // create a higher-order-components for extending the styles of Searchbar
 const SearchbarAdminCourse = styled(SearchBar)`
   margin-top: 10px;
@@ -35,7 +40,10 @@ const ContainerHeader = Container.extend`
 
 const SearchActionBar = ({
   ControlButtonsGroup,
-  searchbarInfo: { value, onChange, placeholder, onSubmit }
+  searchbarInfo: { value, onChange, placeholder, onSubmit },
+  onOpen,
+  onClose,
+  isOpen
 }) => (
   <ContainerHeader>
     {ControlButtonsGroup && <ControlButtonsGroup />}
@@ -45,12 +53,15 @@ const SearchActionBar = ({
       placeholder={placeholder}
       onClick={onSubmit}
     />
+    {onOpen && <RootButton onClick={onOpen}>Upload</RootButton>}
+    {isOpen && (
+      <VideoModal isOpen={isOpen} onClose={onClose} onSubmit={() => {}} />
+    )}
   </ContainerHeader>
 )
 
 SearchActionBar.propTypes = {
-  ControlButtonsGroup: PropTypes.func.isRequired,
   searchbarInfo: PropTypes.object.isRequired
 }
 
-export default SearchActionBar
+export default modal(SearchActionBar)

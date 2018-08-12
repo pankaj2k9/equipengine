@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-//
-import { TableRow, Td } from "base_components/Tables"
+
 import Button from "base_components/RootButton"
 import DateTime from "base_components/DateTime"
+import { TableRow, Td } from "base_components/Tables"
 
 // Box
 const DataBox = styled.span`
@@ -31,13 +31,11 @@ const TableData = Td.extend`
   }
 `
 
-//
 const ExtendDateTime = styled(DateTime)`
   font-size: 14px;
   color: #7e7e7e;
 `
 
-//
 const ButtonEdit = styled(Button)`
   background-color: #a2a2a2;
   color: #ffffff;
@@ -48,34 +46,23 @@ const ButtonEdit = styled(Button)`
   }
 `
 
-const TableRowVideos = () => (
+const TableRowVideos = ({ onOpen, videos }) => (
   <tbody>
-    <TableRow>
-      <TableData>
-        <DataBox />
-      </TableData>
-      <TableData verticalAlign="top">Teacher speaking to students</TableData>
-      <TableData>00:25:03</TableData>
-      <TableData>
-        <ExtendDateTime date="22 Sep" time="1:00pm" />
-      </TableData>
-      <TableData>
-        <ButtonEdit>Edit</ButtonEdit>
-      </TableData>
-    </TableRow>
-    <TableRow>
-      <TableData>
-        <DataBox />
-      </TableData>
-      <TableData verticalAlign="top">More on teaching video</TableData>
-      <TableData>00:25:03</TableData>
-      <TableData>
-        <ExtendDateTime date="22 Sep" time="1:00pm" />
-      </TableData>
-      <TableData>
-        <ButtonEdit>Edit</ButtonEdit>
-      </TableData>
-    </TableRow>
+    {videos.map(video => (
+      <TableRow>
+        <TableData>
+          <DataBox />
+        </TableData>
+        <TableData verticalAlign="top">{video.name}</TableData>
+        <TableData>{video.length}</TableData>
+        <TableData>
+          <ExtendDateTime date="22 Sep" time="1:00pm" />
+        </TableData>
+        <TableData>
+          <ButtonEdit onClick={onOpen}>Edit</ButtonEdit>
+        </TableData>
+      </TableRow>
+    ))}
   </tbody>
 )
 
