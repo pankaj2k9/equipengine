@@ -37,7 +37,6 @@ const TableVideos = ({
   <ContainerTableVideos>
     <EditVideoModal
       isOpen={isOpenVideoModal}
-      // isSubmitting={isSavingCourse}
       onClose={onCloseVideoModal}
       onSubmit={() => {}}
     />

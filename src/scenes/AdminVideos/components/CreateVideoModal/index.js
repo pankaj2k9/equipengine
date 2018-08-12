@@ -45,6 +45,7 @@ export default compose(
   form(
     {
       file: {},
+      fileUrl: "",
       title: ""
     },
     ["videoRef"]

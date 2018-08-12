@@ -1,14 +1,13 @@
 import React, { Component } from "react"
 import joi from "joi"
 import styled from "styled-components"
+import Dropzone from "react-dropzone"
 
 import ButtonUpload from "base_components/ButtonUpload"
 import FileChooser from "base_components/FileChooser"
 import { Label, Text, FormGroup } from "base_components/RootForm"
-
+import Video from "base_components/Video"
 import { openFileChooser } from "utils/formFunctions"
-
-import Dropzone from "react-dropzone"
 
 const Root = styled.div`
   padding-bottom: 18px;
@@ -42,52 +41,67 @@ const validationSchema = joi.object().keys({
 })
 
 class CreateVideoForm extends Component {
-  handleSelectFile = file => {
+  handleFileChange = ([file]) => {
     const { onChange } = this.props
-
     onChange(file, "file")
+
     if (file) {
       onChange(file.name, "title")
+
+      const fileUrl = URL.createObjectURL(file)
+      onChange(fileUrl, "fileUrl")
     }
   }
 
+  handleChange = event => {
+    const { onChange } = this.props
+
+    onChange(event.target.value, event.target.name)
+  }
+
+  handleButtonUploadClick = event => openFileChooser(event, this.videoRef)
+
   render() {
     const {
-      onChange,
-      fields: { title }
+      fields: { fileUrl, title }
     } = this.props
 
     return (
       <Root>
         <FormGroup>
           <div>
-            <ButtonUpload onClick={e => openFileChooser(e, this.videoRef)} />
+            <ButtonUpload onClick={this.handleButtonUploadClick} />
             <FileChooser
               accept="video/*"
               ref={input => {
                 this.videoRef = input
               }}
-              onChooseFiles={([file]) => this.handleSelectFile(file)}
+              onChooseFiles={this.handleFileChange}
             />
           </div>
         </FormGroup>
         <FormGroup>
-          <StyledDropzone
-            accept="video/*"
-            disableClick
-            multiple={false}
-            onDrop={([file]) => this.handleSelectFile(file)}
-          >
-            <h5>Drag file here</h5>
-            <h5>(mp4, mov, avi)</h5>
-          </StyledDropzone>
+          {fileUrl ? (
+            <Video url={fileUrl} onProgress={() => {}} />
+          ) : (
+            <StyledDropzone
+              accept="video/*"
+              disableClick
+              multiple={false}
+              onDrop={this.handleFileChange}
+            >
+              <h5>Drag file here</h5>
+              <h5>(mp4, mov, avi)</h5>
+            </StyledDropzone>
+          )}
         </FormGroup>
 
         <FormGroup>
           <Label>Video name</Label>
           <Text
+            name="title"
             value={title}
-            onChange={e => onChange(e.target.value, "title")}
+            onChange={this.handleChange}
             placeholder="Video name"
           />
         </FormGroup>

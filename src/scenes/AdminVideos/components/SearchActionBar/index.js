@@ -41,9 +41,9 @@ const ContainerHeader = Container.extend`
 const SearchActionBar = ({
   ControlButtonsGroup,
   searchbarInfo: { value, onChange, placeholder, onSubmit },
-  onOpen: onOpenVideoModal,
-  onClose: onCloseVideoModal,
-  isOpen: isOpenVideoModal
+  onOpen,
+  onClose,
+  isOpen
 }) => (
   <ContainerHeader>
     {ControlButtonsGroup && <ControlButtonsGroup />}
@@ -53,14 +53,10 @@ const SearchActionBar = ({
       placeholder={placeholder}
       onClick={onSubmit}
     />
-    {onOpenVideoModal && (
-      <RootButton onClick={onOpenVideoModal}>Upload</RootButton>
+    {onOpen && <RootButton onClick={onOpen}>Upload</RootButton>}
+    {isOpen && (
+      <VideoModal isOpen={isOpen} onClose={onClose} onSubmit={() => {}} />
     )}
-    <VideoModal
-      isOpen={isOpenVideoModal}
-      onClose={onCloseVideoModal}
-      onSubmit={() => {}}
-    />
   </ContainerHeader>
 )
 
