@@ -5,9 +5,10 @@ import Divider from "base_components/Divider"
 import { Label, Switch } from "base_components/RootForm"
 import UserContacts from "base_components/UserContacts"
 import UserDetails from "base_components/UserDetails"
-import InputAddress from "base_components/InputAddress"
 import moment from "moment"
 
+import Loading from "base_components/Loading"
+import features from "features"
 import NotificationFrequency from "../NotificationFrequency"
 import { updateFieldValue, getDropdownValue } from "utils/formFunctions"
 
@@ -30,7 +31,8 @@ class Profile extends Component {
         groupDiscussion: false,
         privateMessage: false
       },
-      state: { state_id: props.profile.state_id, state: "" },
+      state: props.profile.state_id,
+      country: props.profile.country_id,
       zipCode: props.profile.zip_code
     }
   }
@@ -68,6 +70,7 @@ class Profile extends Component {
   handleStateChange = ({ target: { value } }) => {}
 
   render() {
+    const { isFetchingAddress } = this.props
     const {
       address,
       birthDate,
@@ -104,22 +107,30 @@ class Profile extends Component {
         <UserContacts
           phone={phone}
           birthDate={birthDate}
-          address={address}
           changePhone={this.handlePhoneChange}
           changeBirthDate={this.handleBirthDateChange}
-          changeAddress={this.handleAddressChange}
         />
 
-        <InputAddress
-          country={country}
-          state={state}
-          zipCode={zipCode}
-          changeCountry={value =>
-            this.onChange(getDropdownValue(value), "country")
-          }
-          changeState={value => this.onChange(getDropdownValue(value), "state")}
-          changeZipCode={e => this.onChange(e.target.value, "zipCode")}
-        />
+        {isFetchingAddress ? (
+          <Loading />
+        ) : (
+          <features.address.pages.AddressInfo
+            countries={this.props.countries}
+            states={/* vaibleStates */ this.props.states}
+            address={address}
+            country={country}
+            state={state}
+            zipCode={zipCode}
+            changeAddress={this.handleAddressChange}
+            changeCountry={value => {
+              this.onChange(getDropdownValue(value), "country")
+            }}
+            changeState={value =>
+              this.onChange(getDropdownValue(value), "state")
+            }
+            changeZipCode={e => this.onChange(e.target.value, "zipCode")}
+          />
+        )}
 
         <Divider />
 

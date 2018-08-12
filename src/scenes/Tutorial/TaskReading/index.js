@@ -1,4 +1,5 @@
-import React from "react"
+import React, { Fragment } from "react"
+
 import ExpansionPanel from "base_components/ExpansionPanel"
 import Button from "base_components/RootButton"
 import IconDownload from "react-icons/lib/fa/download"
@@ -18,7 +19,7 @@ const TaskReading = ({ task }) => (
     title={task.description}
     subtitle="Reading"
     summary={
-      <React.Fragment>
+      <Fragment>
         {Array.isArray(task.attachments) &&
           task.attachments.map(attachment => (
             <IconButton light lightBorder>
@@ -26,7 +27,7 @@ const TaskReading = ({ task }) => (
               <IconDownload />
             </IconButton>
           ))}
-      </React.Fragment>
+      </Fragment>
     }
   >
     <TaskAnswer />

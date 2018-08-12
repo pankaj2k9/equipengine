@@ -14,6 +14,11 @@ import { updateSettings } from "../thunks"
 import Loading from "base_components/Loading"
 
 class AccountSettings extends Component {
+  componentDidMount() {
+    this.props.fetchCountries()
+    this.props.fetchStates()
+  }
+
   handleUpdateSettings = settings =>
     this.props.updateSettings(settings).then(action => {
       if (action.type === types.UPDATE_SETTINGS_SUCCESS) {
@@ -24,7 +29,13 @@ class AccountSettings extends Component {
     })
 
   render() {
-    const { user, isUpdatingSettings } = this.props
+    const {
+      user,
+      isUpdatingSettings,
+      countries,
+      states,
+      isFetchingAddress
+    } = this.props
 
     return (
       <PageWrapper
@@ -42,7 +53,13 @@ class AccountSettings extends Component {
         {isUpdatingSettings ? (
           <Loading />
         ) : (
-          <ProfileForm profile={user} onSubmit={this.handleUpdateSettings} />
+          <ProfileForm
+            profile={user}
+            onSubmit={this.handleUpdateSettings}
+            countries={countries}
+            states={states}
+            isFetchingAddress={isFetchingAddress}
+          />
         )}
       </PageWrapper>
     )
@@ -52,14 +69,18 @@ class AccountSettings extends Component {
 const mapState = () =>
   createStructuredSelector({
     user: features.login.selectors.selectCurrentUser(),
-    isUpdatingSettings: selectors.selectIsUpdatingSettings()
+    isUpdatingSettings: selectors.selectIsUpdatingSettings(),
+    countries: features.address.selectors.selectCountries(),
+    states: features.address.selectors.selectStates(),
+    isFetchingAddress: features.address.selectors.selectIsFetchingAddress()
   })
 
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
       updateSettings,
-      fetchCountries: features.countries.actions.fetchCountries()
+      fetchCountries: features.address.actions.fetchCountries,
+      fetchStates: features.address.actions.fetchStates
     },
     dispatch
   )

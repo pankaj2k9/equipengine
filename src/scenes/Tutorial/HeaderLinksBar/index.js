@@ -2,28 +2,27 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import closeSrc from "resources/images/close-button.svg"
-import Button, { IconButton } from "base_components/RootButton"
+import { IconButton } from "base_components/RootButton"
 import BackIconButton from "base_components/BackIconButton"
 
-import { Root, Back, CloseImage } from "./elements"
+import { Back, BackButton, CloseImage, Root } from "./elements"
 
-const HeaderLinksBar = ({ onCloseTutorial, onViewAllTutorials }) => (
+const HeaderLinksBar = ({ onClose }) => (
   <Root>
     <Back>
-      <BackIconButton onClick={onViewAllTutorials} />
-      <Button light onClick={onViewAllTutorials}>
+      <BackIconButton onClick={onClose} />
+      <BackButton light onClick={onClose}>
         View all lessons
-      </Button>
+      </BackButton>
     </Back>
-    <IconButton light onClick={onCloseTutorial}>
+    <IconButton light onClick={onClose}>
       <CloseImage alt="Close" src={closeSrc} />
     </IconButton>
   </Root>
 )
 
 HeaderLinksBar.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  onBack: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired
 }
 
 export default HeaderLinksBar

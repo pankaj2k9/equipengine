@@ -14,3 +14,17 @@ export const fetchCountries = () => {
     }
   }
 }
+
+export const fetchStates = () => {
+  return async dispatch => {
+    dispatch(actions.fetchStatesRequest())
+
+    try {
+      const response = await API.fetchStates({})
+
+      return dispatch(actions.fetchStatesSuccess({ states: response.states }))
+    } catch (error) {
+      return dispatch(actions.fetchStatesError())
+    }
+  }
+}

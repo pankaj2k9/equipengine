@@ -3,9 +3,9 @@ import { Tab } from "react-bootstrap"
 
 // base components
 import Tabs from "base_components/Tabs"
-import Box from "base_components/Box"
 
 // sub-components
+import { Root } from "./elements"
 import TutorialFilesTab from "../TutorialFilesTab"
 import TutorialTasksTab from "../TutorialTasksTab"
 
@@ -24,7 +24,7 @@ const TutorialTabs = ({ tasks }) => {
   ]
 
   return (
-    <Box>
+    <Root>
       <Tabs>
         <Tab eventKey={1} title="Questions & Activities">
           <TutorialTasksTab tasks={tasks} />
@@ -33,7 +33,7 @@ const TutorialTabs = ({ tasks }) => {
           <TutorialFilesTab files={files} />
         </Tab>
       </Tabs>
-    </Box>
+    </Root>
   )
 }
 

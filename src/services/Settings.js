@@ -16,7 +16,10 @@ export const updateSetting = ({
   lastName,
   address,
   phone,
-  zipCode
+  zipCode,
+  country,
+  state,
+  birthDate
 }) =>
   client
     .put(`api/v1/users/${id}`, {
@@ -24,6 +27,9 @@ export const updateSetting = ({
       last_name: lastName,
       phone_number: phone,
       address,
-      zip_code: zipCode
+      zip_code: zipCode,
+      country_id: country,
+      state_id: state,
+      date_of_birth: birthDate
     })
     .then(response => response.data)

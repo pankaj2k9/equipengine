@@ -14,7 +14,7 @@ export default combineReducers({
   adminGroupUsers: features.adminGroupUsers.reducer,
   adminUsers: features.adminUsers.reducer,
   chats: features.messages.reducer,
-  countries: features.countries.reducer,
+  address: features.address.reducer,
   courses: features.courses.reducer,
   login: features.login.reducer,
   myGroups: features.myGroups.reducer,
