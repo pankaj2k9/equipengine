@@ -5,16 +5,14 @@ import { ButtonIcon } from "base_components/RootButton"
 import IconPlus from "react-icons/lib/md/add"
 
 const Button = ButtonIcon.extend`
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 5px 13px 8px 13px;
-  border: 1px solid #979797;
-  background: transparent;
-  color: #000000;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-  &:hover {
-    background-color: #e2e2e2;
-    color: #000000;
+  padding: 0.714em 1em;
+
+  *:first-child {
+    margin-right: 0.3em;
   }
 
   @media screen and (min-width: 768px) {
@@ -33,15 +31,11 @@ const ButtonAdd = ({ onHandlerClick, text, className, iconPosition }) => (
     {identical(iconPosition, "right") ? (
       <Fragment>
         <span>{text}</span>
-        <i>
-          <IconPlus />
-        </i>
+        <IconPlus />
       </Fragment>
     ) : (
       <Fragment>
-        <i>
-          <IconPlus />
-        </i>
+        <IconPlus />
         <span>{text}</span>
       </Fragment>
     )}

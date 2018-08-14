@@ -4,7 +4,7 @@ import { actions as groupsActions } from "./ducks"
 
 export const fetchGroups = ({ term }) => {
   return async dispatch => {
-    dispatch(groupsActions.fetchGroupsRequest())
+    dispatch(groupsActions.fetchGroupsRequest({ term }))
 
     try {
       const { groups, meta } = await API.fetchGroups({ term })

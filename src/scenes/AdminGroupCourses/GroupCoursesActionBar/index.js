@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, Fragment } from "react"
 
 import ButtonAdd from "base_components/ButtonAdd"
 import HeaderItemTab from "base_components/HeaderItemTab"
@@ -11,23 +11,24 @@ class GroupCoursesActionBar extends Component {
       isFetchingCourses,
       courses,
       searchTerm,
-      isOpen: isOpenAddCourseModal,
-      onOpen: onOpenAddCourseModal,
-      onClose: onCloseAddCourseModal,
+      isOpen,
+      onOpen,
+      onClose,
       onAddCourses,
       onSearchCourse
     } = this.props
 
     return (
-      <div>
+      <Fragment>
         <HeaderItemTab>
           <ButtonAdd
-            onHandlerClick={onOpenAddCourseModal}
+            iconPosition="right"
+            onHandlerClick={onOpen}
             text="Add course to group"
           />
         </HeaderItemTab>
         <SelectItemModal
-          isOpen={isOpenAddCourseModal}
+          isOpen={isOpen}
           title="Add course to group"
           searchBarPlaceholder="Search courses"
           searchTerm={searchTerm}
@@ -35,10 +36,10 @@ class GroupCoursesActionBar extends Component {
           items={courses}
           formatListItem={({ title }) => title}
           onSearch={onSearchCourse}
-          onClose={onCloseAddCourseModal}
+          onClose={onClose}
           onSubmit={onAddCourses}
         />
-      </div>
+      </Fragment>
     )
   }
 }

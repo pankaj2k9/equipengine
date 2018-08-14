@@ -15,7 +15,7 @@ const backgroundColorVariation = props => {
 // for color
 const fontColorVariation = props => {
   if (props.secondary) {
-    return "#333333"
+    return "#969696"
   } else if (props.light) {
     return "#80808b"
   } else {

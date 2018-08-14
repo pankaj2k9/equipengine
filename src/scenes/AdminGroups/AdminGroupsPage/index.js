@@ -1,6 +1,6 @@
-import React from "react"
+import React, { Component, Fragment } from "react"
 import { bindActionCreators } from "redux"
-import { compose, lifecycle, pure, withHandlers, withState } from "recompose"
+import { compose, pure } from "recompose"
 import { connect } from "react-redux"
 import { createStructuredSelector } from "reselect"
 import { toastr } from "react-redux-toastr"
@@ -16,44 +16,95 @@ import SearchActionBar from "base_components/SearchActionBar"
 import { selectors, types } from "../ducks"
 import VerticalTabs from "base_components/VerticalTabs"
 
-const AdminGroups = ({
-  fetchGroups,
-  groups,
-  groupId,
-  isFetchingGroups,
-  isSavingGroup,
-  isOpen: isOpenCreateGroupModal,
-  onOpen: onOpenCreateGroupModal,
-  onClose: onCloseCreateGroupModal,
-  handleCreateGroup,
-  handleTabClick
-}) => (
-  <div>
-    <BorderedTitle title="Group Manager" />
-    <VerticalTabs
-      tabs={groups}
-      tabFormatter={tab => <GroupItemFormatter group={tab} />}
-      loading={isFetchingGroups}
-      selectedTab={
-        groupId && groups.find(group => group.id.toString() === groupId)
+class AdminGroups extends Component {
+  state = {
+    groupId: null
+  }
+
+  static getDerivedStateFromProps(props) {
+    return {
+      groupId: props.location.pathname
+        .replace(props.match.path, "")
+        .replace("/", "")
+    }
+  }
+
+  componentDidMount() {
+    if (!this.props.groups || this.props.groups.length === 0) {
+      this.props.fetchGroups({})
+    }
+  }
+
+  handleCreateGroup = fields => {
+    const { createGroup, onClose } = this.props
+
+    createGroup(fields).then(action => {
+      onClose()
+
+      if (action.type === types.CREATE_GROUP_SUCCESS) {
+        this.handleTabClick(action.payload.group)
+
+        toastr.success(
+          "Success",
+          `New group "${fields.title}" was successfully created`
+        )
+      } else {
+        toastr.error("Error", `Failed to create group "${fields.title}"`)
       }
-      actionBar={
-        <SearchActionBar
-          onCreate={onOpenCreateGroupModal}
-          onSearch={term => fetchGroups({ term })}
+    })
+  }
+
+  handleSearch = term => {
+    const { fetchGroups } = this.props
+
+    console.log(fetchGroups({ term }))
+  }
+
+  handleTabClick = group => {
+    const { history } = this.props
+
+    history.push(`/secure/admin/groups/${group.id}`)
+  }
+
+  render() {
+    const {
+      groups,
+      isFetchingGroups,
+      isSavingGroup,
+      isOpen,
+      onOpen,
+      onClose
+    } = this.props
+    const { groupId } = this.state
+
+    return (
+      <Fragment>
+        <BorderedTitle title="Group Manager" />
+
+        <VerticalTabs
+          tabs={groups}
+          tabFormatter={tab => <GroupItemFormatter group={tab} />}
+          loading={isFetchingGroups}
+          selectedTab={
+            groupId && groups.find(group => group.id.toString() === groupId)
+          }
+          actionBar={
+            <SearchActionBar onCreate={onOpen} onSearch={this.handleSearch} />
+          }
+          content={<GroupContentTabs />}
+          onTabClick={this.handleTabClick}
         />
-      }
-      content={<GroupContentTabs />}
-      onTabClick={handleTabClick}
-    />
-    <CreateGroupModal
-      isOpen={isOpenCreateGroupModal}
-      isSubmitting={isSavingGroup}
-      onClose={onCloseCreateGroupModal}
-      onSubmit={handleCreateGroup}
-    />
-  </div>
-)
+
+        <CreateGroupModal
+          isOpen={isOpen}
+          isSubmitting={isSavingGroup}
+          onClose={onClose}
+          onSubmit={this.handleCreateGroup}
+        />
+      </Fragment>
+    )
+  }
+}
 
 const mapState = () =>
   createStructuredSelector({
@@ -63,52 +114,15 @@ const mapState = () =>
   })
 
 const mapDispatch = dispatch =>
-  bindActionCreators(
-    {
-      createGroup,
-      fetchGroups
-    },
-    dispatch
-  )
+  bindActionCreators({ createGroup, fetchGroups }, dispatch)
 
 export default compose(
+  withRouter,
   component =>
     connect(
       mapState,
       mapDispatch
     )(component),
-  lifecycle({
-    componentDidMount() {
-      if (!this.props.groups || this.props.groups.length === 0) {
-        this.props.fetchGroups({})
-      }
-    }
-  }),
-  withRouter,
   modal,
-  withHandlers({
-    handleTabClick: props => group =>
-      props.history.push(`/secure/admin/groups/${group.id}`)
-  }),
-  withHandlers({
-    handleCreateGroup: props => fields => {
-      props.createGroup(fields).then(action => {
-        props.onClose()
-        if (action.type === types.CREATE_GROUP_SUCCESS) {
-          props.handleTabClick(action.payload.group)
-          toastr.success(
-            "Success",
-            `New group "${fields.title}" is succesffully created`
-          )
-        } else {
-          toastr.error("Error", `Failed to create group "${fields.title}"`)
-        }
-      })
-    }
-  }),
-  withState("groupId", null, props =>
-    // retrieve group id from url if provided
-    props.location.pathname.replace(props.match.url, "").replace("/", "")
-  ),
   pure
 )(AdminGroups)

@@ -9,25 +9,15 @@ export const fetchMyGroups = () => fetchGroups({ my: true })
 /**
  * @returns list of all groups
  */
-export const fetchGroups = ({ my = false, status, term }) => {
-  const params = {
-    my,
-    // TODO implement pagination/inifinite loading
-    current_count: 100
-  }
-
-  if (status) {
-    params.status = status
-  }
-
-  if (term) {
-    params.term = term
-  }
-
-  return client
-    .get(`/api/v1/groups`, { params })
+export const fetchGroups = params =>
+  client
+    .get(`/api/v1/groups`, {
+      params: {
+        ...params,
+        current_count: 100
+      }
+    })
     .then(response => response.data)
-}
 
 /**
  * @returns created group with its settings

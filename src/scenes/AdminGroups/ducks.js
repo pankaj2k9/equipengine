@@ -9,6 +9,7 @@ export const types = {
   FETCH_GROUPS_REQUEST: "equipengine/FETCH_GROUPS_REQUEST",
   FETCH_GROUPS_SUCCESS: "equipengine/FETCH_GROUPS_SUCCESS",
   FETCH_GROUPS_ERROR: "equipengine/FETCH_GROUPS_ERROR",
+
   //
   // CREATE_GROUP
   //
@@ -46,7 +47,7 @@ export default (state = initialState, action) => {
       })
 
     //
-    // CREATE_GROUPS
+    // CREATE_GROUP
     //
     case types.CREATE_GROUP_REQUEST:
       return state.merge({
@@ -72,8 +73,9 @@ export const actions = {
   //
   // FETCH_GROUPS
   //
-  fetchGroupsRequest: () => ({
-    type: types.FETCH_GROUPS_REQUEST
+  fetchGroupsRequest: ({ term }) => ({
+    type: types.FETCH_GROUPS_REQUEST,
+    payload: { term }
   }),
   fetchGroupsSuccess: ({ groups, pagination }) => ({
     type: types.FETCH_GROUPS_SUCCESS,
@@ -82,8 +84,9 @@ export const actions = {
   fetchGroupsError: () => ({
     type: types.FETCH_GROUPS_ERROR
   }),
+
   //
-  // FETCH_GROUPS
+  // CREATE_GROUP
   //
   createGroupRequest: () => ({
     type: types.CREATE_GROUP_REQUEST
@@ -100,10 +103,12 @@ export const actions = {
 // Selectors
 const groupsSelector = () => state => state.adminGroups
 
-const selectIsFetchingGroups = () =>
-  createSelector(groupsSelector(), groups => groups.isFetchingGroups)
 const selectGroups = () =>
   createSelector(groupsSelector(), groups => groups.groups)
+
+const selectIsFetchingGroups = () =>
+  createSelector(groupsSelector(), groups => groups.isFetchingGroups)
+
 const selectIsSavingGroup = () =>
   createSelector(groupsSelector(), groups => groups.isSavingGroup)
 
