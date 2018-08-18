@@ -4,12 +4,21 @@ import features from "features"
 // Selectors
 const groupsSelector = () => state => state.adminGroupUsers
 
-const selectIsFetchingGroupUsers = () =>
-  createSelector(groupsSelector(), groups => groups.isFetchingGroupUsers)
-const selectIsAddingUsersToGroup = () =>
-  createSelector(groupsSelector(), groups => groups.isAddingUsersToGroup)
 const selectGroupUsers = () =>
-  createSelector(groupsSelector(), groups => groups.groupUsers)
+  createSelector(groupsSelector(), state => state.groupUsers)
+
+const selectIsAddingUsersToGroup = () =>
+  createSelector(groupsSelector(), state => state.isAddingUsersToGroup)
+
+const selectIsDeletingUsersFromGroup = () =>
+  createSelector(groupsSelector(), state => state.isDeletingUsersFromGroup)
+
+const selectIsFetchingGroupUsers = () =>
+  createSelector(groupsSelector(), state => state.isFetchingGroupUsers)
+
+const selectIsUpdatingUserGroupStatus = () =>
+  createSelector(groupsSelector(), state => state.isUpdatingUserGroupStatus)
+
 const selectNonCurrentGroupUsers = () =>
   createSelector(
     features.adminUsers.selectors.selectUsers(),
@@ -22,9 +31,15 @@ const selectNonCurrentGroupUsers = () =>
     }
   )
 
+const selectSelectedGroupUser = () =>
+  createSelector(groupsSelector(), state => state.selectedGroupUsers)
+
 export const selectors = {
-  selectIsFetchingGroupUsers,
   selectGroupUsers,
   selectIsAddingUsersToGroup,
-  selectNonCurrentGroupUsers
+  selectIsDeletingUsersFromGroup,
+  selectIsFetchingGroupUsers,
+  selectIsUpdatingUserGroupStatus,
+  selectNonCurrentGroupUsers,
+  selectSelectedGroupUser
 }

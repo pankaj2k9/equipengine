@@ -8,6 +8,14 @@ export default styled.header`
   padding: 0 0 28px 0;
   margin-bottom: 1.5em;
 
+  *:not(:last-child) {
+    margin-right: 0.571em;
+  }
+
+  *:first-child:not(:last-child) {
+    margin-right: 1.143em;
+  }
+
   @media screen and (min-width: 768px) {
     flex-direction: row;
   }

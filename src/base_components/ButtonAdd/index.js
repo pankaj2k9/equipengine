@@ -17,7 +17,6 @@ const Button = ButtonIcon.extend`
 
   @media screen and (min-width: 768px) {
     width: initial;
-    margin-right: 1.5em;
     margin-bottom: 0;
   }
 `
