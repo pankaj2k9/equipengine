@@ -8,7 +8,7 @@ export const Icon = styled(IconUser)`
   font-size: 1.1rem;
 `
 
-export const Meta = styled.div`
+export const MetaInfo = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;

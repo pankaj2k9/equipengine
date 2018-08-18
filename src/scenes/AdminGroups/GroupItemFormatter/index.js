@@ -1,14 +1,14 @@
 import React from "react"
 
-import { Icon, Meta, Root, Title } from "./elements"
+import { Icon, MetaInfo, Root, Title } from "./elements"
 
 const GroupItemFormatter = ({ group }) => (
   <Root>
     <Title>{group.title}</Title>
-    <Meta>
+    <MetaInfo>
       <Icon />
       {group.user_ids.length}/{group.user_limit}
-    </Meta>
+    </MetaInfo>
   </Root>
 )
 
