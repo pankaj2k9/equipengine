@@ -8,14 +8,23 @@ const RoleUser = styled(({ className, roleUser }) => (
   </div>
 ))`
   display: inline-block;
+
+  margin: 0 auto;
+  padding: 0 0.4em;
+  height: 20px;
+  width: fit-content;
+
   background-color: #757575;
   border-radius: 2px;
-  padding: 0.2em 0.4em;
+
+  line-height: 1;
 
   span {
     color: #ffffff;
     text-transform: uppercase;
     font-size: 12px;
+
+    line-height: 20px;
   }
 `
 

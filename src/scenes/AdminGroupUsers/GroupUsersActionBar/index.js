@@ -12,9 +12,9 @@ class GroupUsersActionBar extends Component {
       isFetchingUsers,
       users,
       searchTerm,
-      isOpen: isOpenAddUserModal,
-      onOpen: onOpenAddUserModal,
-      onClose: onCloseAddUserModal,
+      isOpen,
+      onOpen,
+      onClose,
       onAddUsers,
       onSearchUser
     } = this.props
@@ -23,12 +23,13 @@ class GroupUsersActionBar extends Component {
       <div>
         <HeaderItemTab>
           <ButtonAdd
-            onHandlerClick={onOpenAddUserModal}
+            iconPosition="right"
+            onHandlerClick={onOpen}
             text="Add user to group"
           />
         </HeaderItemTab>
         <SelectItemModal
-          isOpen={isOpenAddUserModal}
+          isOpen={isOpen}
           title="Add user to group"
           searchBarPlaceholder="Search users"
           searchTerm={searchTerm}
@@ -36,7 +37,7 @@ class GroupUsersActionBar extends Component {
           items={users}
           formatListItem={user => <UserInfoFormatter user={user} />}
           onSearch={onSearchUser}
-          onClose={onCloseAddUserModal}
+          onClose={onClose}
           onSubmit={onAddUsers}
         />
       </div>
