@@ -2,4 +2,4 @@ import React from "react"
 
 import Panel from "base_components/Panel"
 
-export const PanelFullWidth = props => <Panel {...props} isFullWidth />
+export const FullWidthPanel = props => <Panel {...props} isFullWidth />

@@ -59,6 +59,10 @@ const Switch = styled(({ className, disabled, name, onChange, value }) => (
     transition: 0.4s;
   }
 
+  input:disabled + .slider {
+    opacity: 0.5;
+  }
+
   input:checked + .slider:after {
     content: "ON";
     float: left;

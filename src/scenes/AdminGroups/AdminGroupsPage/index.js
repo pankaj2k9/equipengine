@@ -21,7 +21,7 @@ class AdminGroups extends Component {
   componentDidMount() {
     const { fetchGroups, groups, location, match, selectGroup } = this.props
 
-    if (!groups || groups.length === 0) {
+    if (groups.length === 0) {
       fetchGroups({}).then(({ payload }) => {
         const id = location.pathname.replace(match.path, "").replace("/", "")
 

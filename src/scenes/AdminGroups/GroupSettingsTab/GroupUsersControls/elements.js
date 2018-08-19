@@ -2,9 +2,9 @@ import styled from "styled-components"
 
 import { FormGroup } from "base_components/RootForm"
 
-import { PanelFullWidth } from "../elements"
+import { FullWidthPanel } from "../elements"
 
-export const Root = styled(PanelFullWidth)`
+export const Root = styled(FullWidthPanel)`
   label {
     width: 100px;
     margin-right: 2em;
@@ -17,11 +17,12 @@ export const Root = styled(PanelFullWidth)`
   }
 `
 
-export const FormGroupUser = FormGroup.extend`
+export const UserFormGroup = FormGroup.extend`
   display: flex;
   align-items: center;
   padding-bottom: 20px;
 `
+
 export const Label = styled.div`
   margin-right: 20px;
 `

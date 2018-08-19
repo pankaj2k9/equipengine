@@ -13,7 +13,7 @@ import { Root } from "./elements"
 import { updateGroup, deleteGroup } from "../../thunks"
 import { selectors } from "../../ducks"
 
-class ControlGroup extends Component {
+class GroupControls extends Component {
   handleDeleteGroup = () => {
     const { deleteGroup, group, history } = this.props
 
@@ -84,4 +84,4 @@ export default compose(
       mapDispatch
     )(component),
   pure
-)(ControlGroup)
+)(GroupControls)

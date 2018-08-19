@@ -10,99 +10,141 @@ import ButtonUpdate from "base_components/ButtonUpdate"
 import Loading from "base_components/Loading"
 import { updateFieldValue, validate } from "utils/formFunctions"
 
-import GeneralInfoGroup from "./GeneralInfoGroup"
-import UsersGroup from "./UsersGroup"
-import NoticeboardGroup from "./NoticeboardGroup"
-import ControlGroup from "./ControlGroup"
-import { selectors } from "../ducks"
+import GeneralGroupInfo from "./GeneralGroupInfo"
+import GroupControls from "./GroupControls"
+import GroupNoticeboardControls from "./GroupNoticeboardControls"
+import GroupUsersControls from "./GroupUsersControls"
+import { selectors, types } from "../ducks"
+import { updateGroup } from "../thunks"
 
-const validationSchema = joi.object().keys({})
+const ValidationSchema = joi.object().keys({
+  title: joi.string().required(),
+  description: joi.string().required(),
+  user_limit: joi.number(),
+  student_can_post: joi.boolean(),
+  noticeboard_enabled: joi.boolean(),
+  student_can_comment: joi.boolean()
+})
 
-// Disable and keep disabled both
-// areStudentsCanPostContent and areStudentsCanComment
-// if areStudentsCanPostContent is disabled
-// TODO: move this logic to the store
-const watchFields = fields => {
-  let nextFields = { ...fields }
-
-  if (!fields.isGroupNoticeboardActive) {
-    nextFields.areStudentsCanPostContent = false
-    nextFields.areStudentsCanComment = false
-  }
-
-  return nextFields
-}
+const watchFields = fields => ({
+  ...fields,
+  student_can_post: !fields.noticeboard_enabled
+    ? false
+    : fields.student_can_post,
+  student_can_comment: !fields.noticeboard_enabled
+    ? false
+    : fields.student_can_comment
+})
 
 class ItemTabAdminGroupSettings extends Component {
   state = {
-    groupName: "",
-    groupDescription: "",
-    groupSizeLimit: 0,
-    isGroupNoticeboardActive: false,
-    areStudentsCanPostContent: false,
-    areStudentsCanComment: false,
-    isGroupActive: false
+    id: null,
+    fields: {
+      description: "",
+      noticeboard_enabled: false,
+      student_can_comment: false,
+      student_can_post: false,
+      title: "",
+      user_limit: 0
+    }
   }
 
-  onChange = (e, selector) => {
-    const fields = this.state
+  static getDerivedStateFromProps(props, state) {
+    const { group } = props
 
-    const nextFields = compose(
-      fields => updateFieldValue(e, selector, fields),
-      watchFields
-    )(fields)
-
-    this.setState(nextFields)
-  }
-
-  onSubmit = () => {
-    const fields = this.state
-
-    const validationResult = validate(fields, validationSchema)
-
-    if (!validationResult.error) {
-      return toastr.success(
-        "Notifications settings",
-        "Data updated successfully"
-      )
+    if (state.id !== group.id) {
+      return {
+        id: group.id,
+        fields: {
+          description: group.description,
+          noticeboard_enabled: group.noticeboard_settings.noticeboard_enabled,
+          student_can_comment: group.noticeboard_settings.student_can_comment,
+          student_can_post: group.noticeboard_settings.student_can_post,
+          title: group.title,
+          user_limit: group.user_limit
+        }
+      }
     }
 
-    toastr.error(
-      "Validation error",
-      validationResult.error.details[0].context.label
-    )
+    return {}
+  }
+
+  handleChange = event => {
+    const { fields } = this.state
+
+    const value =
+      event.target.type === "checkbox"
+        ? event.target.checked
+        : event.target.value
+
+    const nextFields = compose(
+      watchFields,
+      fields => updateFieldValue(value, event.target.name, fields)
+    )(fields)
+
+    this.setState({ fields: nextFields })
+  }
+
+  handleSubmit = () => {
+    const { group, updateGroup } = this.props
+    const { fields } = this.state
+
+    const result = validate(fields, ValidationSchema)
+
+    if (result.error) {
+      toastr.error("Validation error", result.error.details[0].context.label)
+    } else {
+      updateGroup({
+        id: group.id,
+        group: fields
+      }).then(({ type }) => {
+        if (type === types.UPDATE_GROUP_SUCCESS) {
+          toastr.success("Notifications settings", "Data updated successfully")
+        } else {
+          toastr.error("Error", "Something went wrong")
+        }
+      })
+    }
   }
 
   render() {
     const { isUpdatingGroup } = this.props
     const {
-      areStudentsCanPostContent,
-      areStudentsCanComment,
-      groupName,
-      groupDescription,
-      groupSizeLimit,
-      isGroupNoticeboardActive,
-      isGroupActive
+      fields: {
+        description,
+        noticeboard_enabled,
+        student_can_comment,
+        student_can_post,
+        title,
+        user_limit
+      }
     } = this.state
 
     return isUpdatingGroup ? (
       <Loading />
     ) : (
       <Fragment>
-        <GeneralInfoGroup
-          groupName={groupName}
-          groupDescription={groupDescription}
-          onChange={this.onChange}
+        <GeneralGroupInfo
+          title={title}
+          description={description}
+          onChange={this.handleChange}
         />
-        <UsersGroup groupSizeLimit={groupSizeLimit} onChange={this.onChange} />
-        <NoticeboardGroup
-          isGroupNoticeboardActive={isGroupNoticeboardActive}
-          areStudentsCanPostContent={areStudentsCanPostContent}
-          areStudentsCanComment={areStudentsCanComment}
-          onChange={this.onChange}
+
+        <GroupUsersControls
+          userLimit={user_limit}
+          onChange={this.handleChange}
         />
-        <ControlGroup isGroupActive={isGroupActive} onChange={this.onChange} />
-        <ButtonUpdate onClick={this.onSubmit}>Update</ButtonUpdate>
+
+        <GroupNoticeboardControls
+          isNoticeboardEnabled={noticeboard_enabled}
+          canStudentPost={student_can_post}
+          canStudentComment={student_can_comment}
+          onChange={this.handleChange}
+        />
+
+        <GroupControls />
+
+        <ButtonUpdate onClick={this.handleSubmit}>Update</ButtonUpdate>
       </Fragment>
     )
   }
@@ -110,14 +152,13 @@ class ItemTabAdminGroupSettings extends Component {
 
 const mapState = () =>
   createStructuredSelector({
+    group: selectors.selectGroup(),
     isUpdatingGroup: selectors.selectIsUpdatingGroup()
   })
 
-const mapDispatch = dispatch => bindActionCreators({}, dispatch)
+const mapDispatch = dispatch => bindActionCreators({ updateGroup }, dispatch)
 
-export default compose(component =>
-  connect(
-    mapState,
-    mapDispatch
-  )(component)
+export default connect(
+  mapState,
+  mapDispatch
 )(ItemTabAdminGroupSettings)
