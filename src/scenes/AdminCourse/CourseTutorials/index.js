@@ -70,7 +70,7 @@ class Course extends Component {
         loading={isCreatingTutorial || isFetchingTutorials}
         tabs={tutorials}
         tabFormatter={tutorial => <TutorialItemFormatter tutorial={tutorial} />}
-        selectedTab={selectedTutorial}
+        selectedTab={selectedTutorial && selectedTutorial.id}
         content={<TutorialTabs tutorial={selectedTutorial} />}
         onTabClick={this.handleSelectTutorial}
       />

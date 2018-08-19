@@ -1,17 +1,19 @@
 import React from "react"
 import { Tab } from "react-bootstrap"
+import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
-import { compose, pure, withState } from "recompose"
+import { compose, pure } from "recompose"
+import { createStructuredSelector } from "reselect"
 
 import features from "features"
 import Centerer from "base_components/PageCenterer"
 
-import GroupSettingsTab from "../GroupSettingsTab"
-
 import { Tabs } from "./elements"
+import GroupSettingsTab from "../GroupSettingsTab"
+import { selectors } from "../ducks"
 
-const GroupContent = ({ groupId }) =>
-  groupId ? (
+const GroupContent = ({ group }) =>
+  group && group.id ? (
     <Tabs>
       <Tab eventKey={1} title="Courses">
         <features.adminGroupCourses.pages.GroupCourses />
@@ -27,10 +29,11 @@ const GroupContent = ({ groupId }) =>
     <Centerer>Please, select any group to see content</Centerer>
   )
 
+const mapState = () =>
+  createStructuredSelector({ group: selectors.selectGroup() })
+
 export default compose(
   withRouter,
-  withState("groupId", null, props =>
-    props.location.pathname.replace(props.match.url, "").replace("/", "")
-  ),
+  component => connect(mapState)(component),
   pure
 )(GroupContent)

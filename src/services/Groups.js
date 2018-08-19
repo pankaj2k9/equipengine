@@ -42,3 +42,9 @@ export const createGroup = ({
       student_can_comment
     })
     .then(response => response.data)
+
+/**
+ * @returns updated group
+ */
+export const updateGroup = ({ id, group }) =>
+  client.put(`/api/v1/groups/${id}`, { group }).then(response => response.data)

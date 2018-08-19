@@ -15,9 +15,9 @@ export const types = {
   ADD_USERS_TO_GROUP_SUCCESS: "equipengine-admin/ADD_USERS_TO_GROUP_SUCCESS",
   ADD_USERS_TO_GROUP_ERROR: "equipengine-admin/ADD_USERS_TO_GROUP_ERROR",
   //
-  // SELECT_GROUP_USER
+  // TOGGLE_GROUP_USER_STATE
   //
-  SELECT_GROUP_USER: "equipengine-admin/SELECT_GROUP_USER",
+  TOGGLE_GROUP_USER_STATE: "equipengine-admin/TOGGLE_GROUP_USER_STATE",
   //
   // DELETE_GROUP_USER
   //
@@ -83,9 +83,9 @@ export default (state = initialState, action) => {
       })
 
     //
-    // SELECT_GROUP_USER
+    // TOGGLE_GROUP_USER_STATE
     //
-    case types.SELECT_GROUP_USER:
+    case types.TOGGLE_GROUP_USER_STATE:
       return state.selectedGroupUsers.some(user => user === action.payload.id)
         ? state.merge({
             selectedGroupUsers: state.selectedGroupUsers.filter(
@@ -111,8 +111,8 @@ export default (state = initialState, action) => {
       const { groupUser } = action.payload
 
       return state.merge({
-        isDeactivating: false,
-        groupUsers: state.groupUsers.filter(user => user.id !== groupUser.id)
+        groupUsers: state.groupUsers.filter(user => user.id !== groupUser.id),
+        isDeactivating: false
       })
     }
 
@@ -128,15 +128,14 @@ export default (state = initialState, action) => {
     case types.UPDATE_GROUP_USER_STATUS_SUCCESS: {
       const { groupUser } = action.payload
 
-      const index = state.groupUsers.findIndex(user => user.id === groupUser.id)
-
       const groupUsers = Immutable(state.groupUsers).asMutable()
+      const index = groupUsers.findIndex(user => user.id === groupUser.id)
 
       groupUsers.splice(index, 1, groupUser)
 
       return state.merge({
-        isUpdatingUserGroupStatus: false,
         groupUsers,
+        isUpdatingUserGroupStatus: false,
         selectedGroupUsers: []
       })
     }
@@ -175,10 +174,10 @@ export const actions = {
     type: types.ADD_USERS_TO_GROUP_ERROR
   }),
   //
-  // SELECT_GROUP_USER
+  // TOGGLE_GROUP_USER_STATE
   //
-  selectGroupUser: id => ({
-    type: types.SELECT_GROUP_USER,
+  toggleGroupUserState: id => ({
+    type: types.TOGGLE_GROUP_USER_STATE,
     payload: { id }
   }),
   //

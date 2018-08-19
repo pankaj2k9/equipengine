@@ -1,37 +1,36 @@
 import React, { Component, Fragment } from "react"
-import { bindActionCreators } from "redux"
-import { compose, pure } from "recompose"
 import { connect } from "react-redux"
-import { createStructuredSelector } from "reselect"
 import { toastr } from "react-redux-toastr"
 import { withRouter } from "react-router-dom"
+import { compose, pure } from "recompose"
+import { bindActionCreators } from "redux"
+import { createStructuredSelector } from "reselect"
 
 import BorderedTitle from "base_components/BorderedTitle"
-import { createGroup, fetchGroups } from "../thunks"
-import CreateGroupModal from "../CreateGroupModal"
-import GroupItemFormatter from "../GroupItemFormatter"
-import GroupContentTabs from "../GroupContentTabs"
-import modal from "hoc/modal"
 import SearchActionBar from "base_components/SearchActionBar"
-import { selectors, types } from "../ducks"
 import VerticalTabs from "base_components/VerticalTabs"
+import modal from "hoc/modal"
+
+import CreateGroupModal from "../CreateGroupModal"
+import GroupContentTabs from "../GroupContentTabs"
+import GroupItemFormatter from "../GroupItemFormatter"
+import { createGroup, fetchGroups } from "../thunks"
+import { selectors, types, actions } from "../ducks"
 
 class AdminGroups extends Component {
-  state = {
-    groupId: null
-  }
-
-  static getDerivedStateFromProps(props) {
-    return {
-      groupId: props.location.pathname
-        .replace(props.match.path, "")
-        .replace("/", "")
-    }
-  }
-
   componentDidMount() {
-    if (!this.props.groups || this.props.groups.length === 0) {
-      this.props.fetchGroups({})
+    const { fetchGroups, groups, location, match, selectGroup } = this.props
+
+    if (!groups || groups.length === 0) {
+      fetchGroups({}).then(({ payload }) => {
+        const id = location.pathname.replace(match.path, "").replace("/", "")
+
+        if (id) {
+          selectGroup({
+            group: payload.groups.find(group => group.id.toString() === id)
+          })
+        }
+      })
     }
   }
 
@@ -61,13 +60,16 @@ class AdminGroups extends Component {
   }
 
   handleTabClick = group => {
-    const { history } = this.props
+    const { history, selectGroup } = this.props
 
     history.push(`/secure/admin/groups/${group.id}`)
+
+    selectGroup({ group })
   }
 
   render() {
     const {
+      group,
       groups,
       isFetchingGroups,
       isSavingGroup,
@@ -75,7 +77,6 @@ class AdminGroups extends Component {
       onOpen,
       onClose
     } = this.props
-    const { groupId } = this.state
 
     return (
       <Fragment>
@@ -85,9 +86,7 @@ class AdminGroups extends Component {
           tabs={groups}
           tabFormatter={tab => <GroupItemFormatter group={tab} />}
           loading={isFetchingGroups}
-          selectedTab={
-            groupId && groups.find(group => group.id.toString() === groupId)
-          }
+          selectedTab={group.id}
           actionBar={
             <SearchActionBar onCreate={onOpen} onSearch={this.handleSearch} />
           }
@@ -108,13 +107,17 @@ class AdminGroups extends Component {
 
 const mapState = () =>
   createStructuredSelector({
+    group: selectors.selectGroup(),
     groups: selectors.selectGroups(),
     isFetchingGroups: selectors.selectIsFetchingGroups(),
     isSavingGroup: selectors.selectIsSavingGroup()
   })
 
 const mapDispatch = dispatch =>
-  bindActionCreators({ createGroup, fetchGroups }, dispatch)
+  bindActionCreators(
+    { createGroup, fetchGroups, selectGroup: actions.selectGroup },
+    dispatch
+  )
 
 export default compose(
   withRouter,

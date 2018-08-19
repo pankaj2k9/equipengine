@@ -43,7 +43,7 @@ const UsersTable = ({
   isUpdatingUserGroupStatus,
   onUserClick,
   selectedGroupUsers,
-  selectUser,
+  toggleGroupUserState,
   users
 }) => {
   const getColumns = () => [
@@ -54,7 +54,7 @@ const UsersTable = ({
         <Checkbox
           defaultChecked={selectedGroupUsers.some(id => id === row.id)}
           checked={selectedGroupUsers.some(id => id === row.id)}
-          onChange={() => selectUser(row.id)}
+          onChange={() => toggleGroupUserState(row.id)}
         />
       )
     },
@@ -143,7 +143,7 @@ const mapState = () =>
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
-      selectUser: actions.selectGroupUser
+      toggleGroupUserState: actions.toggleGroupUserState
     },
     dispatch
   )

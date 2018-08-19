@@ -1,16 +1,20 @@
-import React, { Component } from "react"
-import { compose } from "recompose"
 import joi from "joi"
+import React, { Component, Fragment } from "react"
+import { connect } from "react-redux"
 import { toastr } from "react-redux-toastr"
+import { compose } from "recompose"
+import { bindActionCreators } from "redux"
+import { createStructuredSelector } from "reselect"
 
 import ButtonUpdate from "base_components/ButtonUpdate"
+import Loading from "base_components/Loading"
+import { updateFieldValue, validate } from "utils/formFunctions"
 
 import GeneralInfoGroup from "./GeneralInfoGroup"
 import UsersGroup from "./UsersGroup"
 import NoticeboardGroup from "./NoticeboardGroup"
 import ControlGroup from "./ControlGroup"
-
-import { updateFieldValue, validate } from "utils/formFunctions"
+import { selectors } from "../ducks"
 
 const validationSchema = joi.object().keys({})
 
@@ -70,18 +74,21 @@ class ItemTabAdminGroupSettings extends Component {
   }
 
   render() {
+    const { isUpdatingGroup } = this.props
     const {
+      areStudentsCanPostContent,
+      areStudentsCanComment,
       groupName,
       groupDescription,
       groupSizeLimit,
       isGroupNoticeboardActive,
-      areStudentsCanPostContent,
-      areStudentsCanComment,
       isGroupActive
     } = this.state
 
-    return (
-      <div>
+    return isUpdatingGroup ? (
+      <Loading />
+    ) : (
+      <Fragment>
         <GeneralInfoGroup
           groupName={groupName}
           groupDescription={groupDescription}
@@ -96,9 +103,21 @@ class ItemTabAdminGroupSettings extends Component {
         />
         <ControlGroup isGroupActive={isGroupActive} onChange={this.onChange} />
         <ButtonUpdate onClick={this.onSubmit}>Update</ButtonUpdate>
-      </div>
+      </Fragment>
     )
   }
 }
 
-export default ItemTabAdminGroupSettings
+const mapState = () =>
+  createStructuredSelector({
+    isUpdatingGroup: selectors.selectIsUpdatingGroup()
+  })
+
+const mapDispatch = dispatch => bindActionCreators({}, dispatch)
+
+export default compose(component =>
+  connect(
+    mapState,
+    mapDispatch
+  )(component)
+)(ItemTabAdminGroupSettings)

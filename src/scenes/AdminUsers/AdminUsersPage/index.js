@@ -80,7 +80,7 @@ class AdminUsers extends Component {
           tabs={users}
           tabFormatter={tab => <UserItemFormatter user={tab} />}
           loading={isFetchingUsers}
-          selectedTab={selectedUser}
+          selectedTab={selectedUser && selectedUser.id}
           actionBar={
             <SearchActionBar
               onCreate={onOpenCreateUserModal}
