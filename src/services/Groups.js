@@ -48,3 +48,9 @@ export const createGroup = ({
  */
 export const updateGroup = ({ id, group }) =>
   client.put(`/api/v1/groups/${id}`, { group }).then(response => response.data)
+
+/**
+ * @returns deleted group
+ */
+export const deleteGroup = ({ id }) =>
+  client.delete(`/api/v1/groups/${id}`).then(response => response.data)

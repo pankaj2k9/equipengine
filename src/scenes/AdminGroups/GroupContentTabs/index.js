@@ -12,8 +12,8 @@ import { Tabs } from "./elements"
 import GroupSettingsTab from "../GroupSettingsTab"
 import { selectors } from "../ducks"
 
-const GroupContent = ({ group }) =>
-  group && group.id ? (
+const GroupContent = ({ group, isDeletingGroup }) =>
+  group && group.id && !isDeletingGroup ? (
     <Tabs>
       <Tab eventKey={1} title="Courses">
         <features.adminGroupCourses.pages.GroupCourses />
@@ -30,7 +30,10 @@ const GroupContent = ({ group }) =>
   )
 
 const mapState = () =>
-  createStructuredSelector({ group: selectors.selectGroup() })
+  createStructuredSelector({
+    group: selectors.selectGroup(),
+    isDeletingGroup: selectors.selectIsDeletingGroup()
+  })
 
 export default compose(
   withRouter,

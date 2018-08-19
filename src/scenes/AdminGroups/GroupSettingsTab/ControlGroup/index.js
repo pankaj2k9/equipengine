@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { compose } from "recompose"
+import { withRouter } from "react-router-dom"
+import { compose, pure } from "recompose"
 import { bindActionCreators } from "redux"
 import { createStructuredSelector } from "reselect"
 
@@ -9,22 +10,28 @@ import Button from "base_components/RootButton"
 import { Label } from "base_components/RootForm"
 
 import { Root } from "./elements"
-import { updateGroup } from "../../thunks"
+import { updateGroup, deleteGroup } from "../../thunks"
 import { selectors } from "../../ducks"
 
 class ControlGroup extends Component {
-  handleStartGroup = () => {
-    const { group } = this.props
-    const { updateGroup } = this.props
+  handleDeleteGroup = () => {
+    const { deleteGroup, group, history } = this.props
 
-    updateGroup({ id: group.id, group: { status: "active" } })
+    history.push(`/secure/admin/groups`)
+
+    deleteGroup({ id: group.id })
   }
 
   handlePauseGroup = () => {
-    const { group } = this.props
-    const { updateGroup } = this.props
+    const { group, updateGroup } = this.props
 
     updateGroup({ id: group.id, group: { status: "pause" } })
+  }
+
+  handleStartGroup = () => {
+    const { group, updateGroup } = this.props
+
+    updateGroup({ id: group.id, group: { status: "active" } })
   }
 
   render() {
@@ -49,7 +56,7 @@ class ControlGroup extends Component {
             </Label>
           </ListItemControl>
           <ListItemControl>
-            <Button light large lightBorder>
+            <Button onClick={this.handleDeleteGroup} large light lightBorder>
               Remove Group
             </Button>
             <Label light>
@@ -66,11 +73,15 @@ class ControlGroup extends Component {
 const mapState = () =>
   createStructuredSelector({ group: selectors.selectGroup() })
 
-const mapDispatch = dispatch => bindActionCreators({ updateGroup }, dispatch)
+const mapDispatch = dispatch =>
+  bindActionCreators({ deleteGroup, updateGroup }, dispatch)
 
-export default compose(component =>
-  connect(
-    mapState,
-    mapDispatch
-  )(component)
+export default compose(
+  withRouter,
+  component =>
+    connect(
+      mapState,
+      mapDispatch
+    )(component),
+  pure
 )(ControlGroup)

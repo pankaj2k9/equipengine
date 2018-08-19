@@ -24,12 +24,19 @@ export const types = {
   //
   UPDATE_GROUP_ERROR: "equipengine/UPDATE_GROUP_ERROR",
   UPDATE_GROUP_REQUEST: "equipengine/UPDATE_GROUP_REQUEST",
-  UPDATE_GROUP_SUCCESS: "equipengine/UPDATE_GROUP_SUCCESS"
+  UPDATE_GROUP_SUCCESS: "equipengine/UPDATE_GROUP_SUCCESS",
+  //
+  // DELETE_GROUP
+  //
+  DELETE_GROUP_ERROR: "equipengine/DELETE_GROUP_ERROR",
+  DELETE_GROUP_REQUEST: "equipengine/DELETE_GROUP_REQUEST",
+  DELETE_GROUP_SUCCESS: "equipengine/DELETE_GROUP_SUCCESS"
 }
 
 const initialState = Immutable({
   group: {},
   groups: [],
+  isDeletingGroup: false,
   isFetchingGroups: false,
   isSavingGroup: false,
   isUpdatingGroup: false,
@@ -95,9 +102,29 @@ export default (state = initialState, action) => {
       const groups = Immutable(state.groups).asMutable()
       const index = groups.findIndex(item => item.id === group.id)
 
-      groups.slice(index, 1, group)
+      groups.splice(index, 1, group)
 
       return state.merge({ group, groups, isUpdatingGroup: false })
+    }
+
+    //
+    // DELETE_GROUP
+    //
+    case types.DELETE_GROUP_ERROR:
+      return state.merge({ isDeletingGroup: false })
+
+    case types.DELETE_GROUP_REQUEST:
+      return state.merge({ isDeletingGroup: true })
+
+    case types.DELETE_GROUP_SUCCESS: {
+      const { group } = action.payload
+
+      const groups = Immutable(state.groups).asMutable()
+      const index = groups.findIndex(item => item.id === group.id)
+
+      groups.splice(index, 1)
+
+      return state.merge({ group: {}, groups, isDeletingGroup: false })
     }
 
     default:
@@ -147,14 +174,20 @@ export const actions = {
   //
   // UPDATE_GROUP
   //
-  updateGroupError: () => ({
-    type: types.UPDATE_GROUP_ERROR
-  }),
-  updateGroupRequest: () => ({
-    type: types.UPDATE_GROUP_REQUEST
-  }),
+  updateGroupError: () => ({ type: types.UPDATE_GROUP_ERROR }),
+  updateGroupRequest: () => ({ type: types.UPDATE_GROUP_REQUEST }),
   updateGroupSuccess: ({ group }) => ({
     type: types.UPDATE_GROUP_SUCCESS,
+    payload: { group }
+  }),
+
+  //
+  // DELETE_GROUP
+  //
+  deleteGroupError: () => ({ type: types.DELETE_GROUP_ERROR }),
+  deleteGroupRequest: () => ({ type: types.DELETE_GROUP_REQUEST }),
+  deleteGroupSuccess: ({ group }) => ({
+    type: types.DELETE_GROUP_SUCCESS,
     payload: { group }
   })
 }
@@ -166,6 +199,9 @@ const selectGroup = () => createSelector(groupsSelector(), state => state.group)
 
 const selectGroups = () =>
   createSelector(groupsSelector(), state => state.groups)
+
+const selectIsDeletingGroup = () =>
+  createSelector(groupsSelector(), state => state.isDeletingGroup)
 
 const selectIsFetchingGroups = () =>
   createSelector(groupsSelector(), state => state.isFetchingGroups)
@@ -179,6 +215,7 @@ const selectIsUpdatingGroup = () =>
 export const selectors = {
   selectGroup,
   selectGroups,
+  selectIsDeletingGroup,
   selectIsFetchingGroups,
   selectIsSavingGroup,
   selectIsUpdatingGroup

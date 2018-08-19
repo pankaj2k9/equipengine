@@ -71,6 +71,7 @@ class AdminGroups extends Component {
     const {
       group,
       groups,
+      isDeletingGroup,
       isFetchingGroups,
       isSavingGroup,
       isOpen,
@@ -85,8 +86,8 @@ class AdminGroups extends Component {
         <VerticalTabs
           tabs={groups}
           tabFormatter={tab => <GroupItemFormatter group={tab} />}
-          loading={isFetchingGroups}
-          selectedTab={group.id}
+          loading={isDeletingGroup || isFetchingGroups}
+          selectedTab={group && group.id}
           actionBar={
             <SearchActionBar onCreate={onOpen} onSearch={this.handleSearch} />
           }
@@ -109,6 +110,7 @@ const mapState = () =>
   createStructuredSelector({
     group: selectors.selectGroup(),
     groups: selectors.selectGroups(),
+    isDeletingGroup: selectors.selectIsDeletingGroup(),
     isFetchingGroups: selectors.selectIsFetchingGroups(),
     isSavingGroup: selectors.selectIsSavingGroup()
   })

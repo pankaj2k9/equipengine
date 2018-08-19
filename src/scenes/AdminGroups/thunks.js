@@ -60,3 +60,15 @@ export const updateGroup = ({ id, group }) => async dispatch => {
     return dispatch(actions.updateGroupError({ error }))
   }
 }
+
+export const deleteGroup = ({ id }) => async dispatch => {
+  try {
+    dispatch(actions.deleteGroupRequest())
+
+    const { group } = await API.deleteGroup({ id })
+
+    return dispatch(actions.deleteGroupSuccess({ group }))
+  } catch (error) {
+    return dispatch(actions.deleteGroupError({ error }))
+  }
+}
