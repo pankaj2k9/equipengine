@@ -3,18 +3,17 @@ import PropTypes from "prop-types"
 
 const backgroundColorState = props => {
   switch (props.state) {
-    case "active": {
+    case "active":
       return "#2FE330"
-    }
-    case "inActive": {
+
+    case "inActive":
       return "#E82929"
-    }
-    case "disabled": {
+
+    case "pause":
       return "#AEAEAE"
-    }
-    default: {
+
+    default:
       return "#2FE330"
-    }
   }
 }
 

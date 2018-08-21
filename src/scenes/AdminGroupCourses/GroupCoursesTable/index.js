@@ -57,6 +57,7 @@ const CoursesTable = ({ className, courses, onCourseClick }) => (
         ? courses.map(course => courseToRow(course, onCourseClick))
         : []
     }
+    verticalAlign="middle"
   />
 )
 

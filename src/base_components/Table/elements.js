@@ -28,8 +28,9 @@ export const Root = styled.div`
     min-width: 300px !important;
     table-layout: ${({ tableLayout }) => tableLayout || "fixed"} !important;
   }
-  td {
-    font-size: ${props => props.rowFontSize || "14px"};
+  && td {
+    font-size: ${({ rowFontSize }) => rowFontSize || "14px"};
+    vertical-align: ${({ verticalAlign }) => verticalAlign || "top"};
   }
   th {
     border: none !important;

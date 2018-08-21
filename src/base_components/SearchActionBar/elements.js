@@ -32,6 +32,6 @@ export const StyledForm = styled(Form)`
   @media screen and (min-width: 768px) {
     width: 192px;
     flex: 1;
-    margin: 0 0.6em;
+    margin: 0 0.714em;
   }
 `

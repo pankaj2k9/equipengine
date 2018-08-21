@@ -14,14 +14,33 @@ export const types = {
   //
   CREATE_GROUP_REQUEST: "equipengine/CREATE_GROUP_REQUEST",
   CREATE_GROUP_SUCCESS: "equipengine/CREATE_GROUP_SUCCESS",
-  CREATE_GROUP_ERROR: "equipengine/CREATE_GROUP_ERROR"
+  CREATE_GROUP_ERROR: "equipengine/CREATE_GROUP_ERROR",
+  //
+  // SELECT_GROUP
+  //
+  SELECT_GROUP: "equipengine/SELECT_GROUP",
+  //
+  // UPDATE_GROUP
+  //
+  UPDATE_GROUP_ERROR: "equipengine/UPDATE_GROUP_ERROR",
+  UPDATE_GROUP_REQUEST: "equipengine/UPDATE_GROUP_REQUEST",
+  UPDATE_GROUP_SUCCESS: "equipengine/UPDATE_GROUP_SUCCESS",
+  //
+  // DELETE_GROUP
+  //
+  DELETE_GROUP_ERROR: "equipengine/DELETE_GROUP_ERROR",
+  DELETE_GROUP_REQUEST: "equipengine/DELETE_GROUP_REQUEST",
+  DELETE_GROUP_SUCCESS: "equipengine/DELETE_GROUP_SUCCESS"
 }
 
 const initialState = Immutable({
-  isFetchingGroups: false,
+  group: {},
   groups: [],
-  pagination: null,
-  isSavingGroup: false
+  isDeletingGroup: false,
+  isFetchingGroups: false,
+  isSavingGroup: false,
+  isUpdatingGroup: false,
+  pagination: null
 })
 
 // Reducer
@@ -46,7 +65,7 @@ export default (state = initialState, action) => {
       })
 
     //
-    // CREATE_GROUPS
+    // CREATE_GROUP
     //
     case types.CREATE_GROUP_REQUEST:
       return state.merge({
@@ -62,6 +81,52 @@ export default (state = initialState, action) => {
         isSavingGroup: false
       })
 
+    //
+    // SELECT_GROUP
+    //
+    case types.SELECT_GROUP:
+      return state.merge({ group: action.payload.group })
+
+    //
+    // UPDATE_GROUP
+    //
+    case types.UPDATE_GROUP_ERROR:
+      return state.merge({ isUpdatingGroup: false })
+
+    case types.UPDATE_GROUP_REQUEST:
+      return state.merge({ isUpdatingGroup: true })
+
+    case types.UPDATE_GROUP_SUCCESS: {
+      const { group } = action.payload
+
+      const groups = Immutable(state.groups).asMutable()
+      const index = groups.findIndex(item => item.id === group.id)
+
+      groups.splice(index, 1, group)
+
+      return state.merge({ group, groups, isUpdatingGroup: false })
+    }
+
+    //
+    // DELETE_GROUP
+    //
+    case types.DELETE_GROUP_ERROR:
+      return state.merge({ isDeletingGroup: false })
+
+    case types.DELETE_GROUP_REQUEST:
+      return state.merge({ isDeletingGroup: true })
+
+    case types.DELETE_GROUP_SUCCESS: {
+      const { group } = action.payload
+
+      const groups = Immutable(state.groups).asMutable()
+      const index = groups.findIndex(item => item.id === group.id)
+
+      groups.splice(index, 1)
+
+      return state.merge({ group: {}, groups, isDeletingGroup: false })
+    }
+
     default:
       return state
   }
@@ -72,8 +137,9 @@ export const actions = {
   //
   // FETCH_GROUPS
   //
-  fetchGroupsRequest: () => ({
-    type: types.FETCH_GROUPS_REQUEST
+  fetchGroupsRequest: ({ term }) => ({
+    type: types.FETCH_GROUPS_REQUEST,
+    payload: { term }
   }),
   fetchGroupsSuccess: ({ groups, pagination }) => ({
     type: types.FETCH_GROUPS_SUCCESS,
@@ -82,8 +148,9 @@ export const actions = {
   fetchGroupsError: () => ({
     type: types.FETCH_GROUPS_ERROR
   }),
+
   //
-  // FETCH_GROUPS
+  // CREATE_GROUP
   //
   createGroupRequest: () => ({
     type: types.CREATE_GROUP_REQUEST
@@ -94,21 +161,62 @@ export const actions = {
   }),
   createGroupError: () => ({
     type: types.CREATE_GROUP_ERROR
+  }),
+
+  //
+  // SELECT_GROUP
+  //
+  selectGroup: ({ group }) => ({
+    type: types.SELECT_GROUP,
+    payload: { group }
+  }),
+
+  //
+  // UPDATE_GROUP
+  //
+  updateGroupError: () => ({ type: types.UPDATE_GROUP_ERROR }),
+  updateGroupRequest: () => ({ type: types.UPDATE_GROUP_REQUEST }),
+  updateGroupSuccess: ({ group }) => ({
+    type: types.UPDATE_GROUP_SUCCESS,
+    payload: { group }
+  }),
+
+  //
+  // DELETE_GROUP
+  //
+  deleteGroupError: () => ({ type: types.DELETE_GROUP_ERROR }),
+  deleteGroupRequest: () => ({ type: types.DELETE_GROUP_REQUEST }),
+  deleteGroupSuccess: ({ group }) => ({
+    type: types.DELETE_GROUP_SUCCESS,
+    payload: { group }
   })
 }
 
 // Selectors
 const groupsSelector = () => state => state.adminGroups
 
-const selectIsFetchingGroups = () =>
-  createSelector(groupsSelector(), groups => groups.isFetchingGroups)
+const selectGroup = () => createSelector(groupsSelector(), state => state.group)
+
 const selectGroups = () =>
-  createSelector(groupsSelector(), groups => groups.groups)
+  createSelector(groupsSelector(), state => state.groups)
+
+const selectIsDeletingGroup = () =>
+  createSelector(groupsSelector(), state => state.isDeletingGroup)
+
+const selectIsFetchingGroups = () =>
+  createSelector(groupsSelector(), state => state.isFetchingGroups)
+
 const selectIsSavingGroup = () =>
-  createSelector(groupsSelector(), groups => groups.isSavingGroup)
+  createSelector(groupsSelector(), state => state.isSavingGroup)
+
+const selectIsUpdatingGroup = () =>
+  createSelector(groupsSelector(), state => state.isUpdatingGroup)
 
 export const selectors = {
+  selectGroup,
+  selectGroups,
+  selectIsDeletingGroup,
   selectIsFetchingGroups,
   selectIsSavingGroup,
-  selectGroups
+  selectIsUpdatingGroup
 }

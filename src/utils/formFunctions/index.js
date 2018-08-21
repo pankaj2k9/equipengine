@@ -18,7 +18,7 @@ export const updateFieldValue = (e, selector, fields) => {
 
   return {
     ...fields,
-    [selector]: e.target.value
+    [selector]: e.target.type === "checkbox" ? e.target.checked : e.target.value
   }
 }
 

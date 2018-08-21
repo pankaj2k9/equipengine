@@ -50,17 +50,22 @@ const addPaddingLeft = ({ pathname }) => {
 }
 
 const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
   padding-bottom: 2em;
 
   @media screen and (min-width: 768px) {
-    padding-left: ${props => addPaddingLeft({ pathname: props.pathname })};
-    padding-bottom: 0;
     position: absolute;
     top: 59px;
-    width: 100%;
-    margin-top: 0;
 
-    min-height: calc(100vh - 59px);
+    margin-top: 0;
+    padding-left: ${props => addPaddingLeft({ pathname: props.pathname })};
+    padding-bottom: 0;
+
+    height: calc(100vh - 59px);
   }
 `
 

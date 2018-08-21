@@ -2,10 +2,9 @@ import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
 
 const ListRow = styled.li`
-  border-bottom: 1px solid #dadada;
   display: block;
-  padding: 15px 0 20px 0;
-  background-color: ${props => props.active && props.theme.lightgray};
+  padding: 1.714em 0;
+  background-color: ${props => props.active && props.theme.transparentGray};
   transition: all 100ms ease-in;
 
   ${props =>

@@ -5,8 +5,16 @@ export default styled.header`
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #dadada;
-  padding: 6px 0 28px 0;
+  padding: 0 0 28px 0;
   margin-bottom: 1.5em;
+
+  *:not(:last-child) {
+    margin-right: 0.571em;
+  }
+
+  *:first-child:not(:last-child) {
+    margin-right: 1.143em;
+  }
 
   @media screen and (min-width: 768px) {
     flex-direction: row;

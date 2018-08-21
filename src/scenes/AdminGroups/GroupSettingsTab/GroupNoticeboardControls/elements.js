@@ -2,9 +2,9 @@ import styled from "styled-components"
 
 import { Label } from "base_components/RootForm"
 
-import { PanelFullWidth } from "../elements"
+import { FullWidthPanel } from "../elements"
 
-export const Root = styled(PanelFullWidth)`
+export const Root = styled(FullWidthPanel)`
   padding-bottom: 0;
 
   header label {
@@ -22,12 +22,12 @@ export const Root = styled(PanelFullWidth)`
   }
 `
 
-export const LabelNoticeBoard = Label.extend`
+export const NoticeBoardLabel = Label.extend`
   width: 134px;
   margin-right: 8em;
 `
 
-export const ContainerFormGroups = styled.div`
+export const FormContainer = styled.div`
   padding: 14px;
   background: #fbfbfb;
 

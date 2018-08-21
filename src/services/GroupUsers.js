@@ -18,3 +18,21 @@ export const addUserToGroup = ({ groupId, userId }) =>
       user_id: userId
     })
     .then(response => response.data)
+
+/**
+ * @returns delete user from group
+ */
+export const deleteGroupUser = ({ groupId, id }) =>
+  client
+    .delete(`/api/v1/groups/${groupId}/group_users/${id}`)
+    .then(response => response.data)
+
+/**
+ * @returns updates user's status
+ */
+export const updateGroupUserStatus = ({ groupId, id, status }) =>
+  client
+    .put(`/api/v1/groups/${groupId}/group_users/${id}`, {
+      group_user: { status }
+    })
+    .then(response => response.data)

@@ -11,10 +11,11 @@ class VerticalTabs extends Component {
       actionBar,
       content,
       loading,
+      onTabClick,
       selectedTab,
+      tabKey,
       tabs,
-      tabFormatter,
-      onTabClick
+      tabFormatter
     } = this.props
     return (
       <Layout>
@@ -28,7 +29,7 @@ class VerticalTabs extends Component {
                 tabs.map((tab, index) => (
                   <Tab
                     key={`${index}-${tab}`}
-                    active={tab === selectedTab}
+                    active={tab[tabKey || "id"] === selectedTab}
                     tab={tab}
                     tabFormatter={tabFormatter}
                     onTabClick={onTabClick}

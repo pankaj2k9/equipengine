@@ -24,12 +24,13 @@ const skipColumnLabelIfNoColumnTitle = ({ column, ...props }) =>
   )
 
 const Table = ({
-  rows,
   columns,
-  sorting,
-  rowFontSize,
   headerRowFontSize,
-  tableLayout
+  rows,
+  rowFontSize,
+  sorting,
+  tableLayout,
+  verticalAlign
 }) => {
   const defaultColumnsSorting = []
   const columnExtensions = []
@@ -79,9 +80,10 @@ const Table = ({
   return (
     <Root
       columnsWidths={columnWidths}
-      rowFontSize={rowFontSize}
       headerRowFontSize={headerRowFontSize}
+      rowFontSize={rowFontSize}
       tableLayout={tableLayout}
+      verticalAlign={verticalAlign}
     >
       <Grid
         columns={Array.isArray(columns) ? columns : []}

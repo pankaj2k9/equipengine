@@ -3,9 +3,9 @@ import { actions } from "./ducks"
 
 export const fetchGroupUsers = ({ groupId }) => {
   return async dispatch => {
-    dispatch(actions.fetchGroupUsersRequest())
-
     try {
+      dispatch(actions.fetchGroupUsersRequest())
+
       const response = await API.fetchGroupUsers({ groupId })
 
       return dispatch(
@@ -22,9 +22,9 @@ export const fetchGroupUsers = ({ groupId }) => {
 
 export const addUsersToGroup = ({ groupId, users }) => {
   return async dispatch => {
-    dispatch(actions.addUsersToGroupRequest())
-
     try {
+      dispatch(actions.addUsersToGroupRequest())
+
       const newGroupUsers = []
       for (const user of users) {
         const { group_user } = await API.addUserToGroup({
@@ -37,6 +37,40 @@ export const addUsersToGroup = ({ groupId, users }) => {
       return dispatch(actions.addUsersToGroupSuccess({ users: newGroupUsers }))
     } catch (error) {
       return dispatch(actions.addUsersToGroupError())
+    }
+  }
+}
+
+export const deleteGroupUser = ({ groupId, id }) => {
+  return async dispatch => {
+    try {
+      dispatch(actions.deleteGroupUserRequest())
+
+      const { group_user } = await API.deleteGroupUser({ groupId, id })
+
+      return dispatch(actions.deleteGroupUserSuccess({ groupUser: group_user }))
+    } catch (error) {
+      return dispatch(actions.deleteGroupUserError({ error }))
+    }
+  }
+}
+
+export const updateGroupUserStatus = ({ groupId, id, status }) => {
+  return async dispatch => {
+    try {
+      dispatch(actions.updateGroupUserStatusRequest())
+
+      const { group_user } = await API.updateGroupUserStatus({
+        groupId,
+        id,
+        status
+      })
+
+      return dispatch(
+        actions.updateGroupUserStatusSuccess({ groupUser: group_user })
+      )
+    } catch (error) {
+      return dispatch(actions.updateGroupUserStatusError({ error }))
     }
   }
 }

@@ -9,25 +9,15 @@ export const fetchMyGroups = () => fetchGroups({ my: true })
 /**
  * @returns list of all groups
  */
-export const fetchGroups = ({ my = false, status, term }) => {
-  const params = {
-    my,
-    // TODO implement pagination/inifinite loading
-    current_count: 100
-  }
-
-  if (status) {
-    params.status = status
-  }
-
-  if (term) {
-    params.term = term
-  }
-
-  return client
-    .get(`/api/v1/groups`, { params })
+export const fetchGroups = params =>
+  client
+    .get(`/api/v1/groups`, {
+      params: {
+        ...params,
+        current_count: 100
+      }
+    })
     .then(response => response.data)
-}
 
 /**
  * @returns created group with its settings
@@ -52,3 +42,15 @@ export const createGroup = ({
       student_can_comment
     })
     .then(response => response.data)
+
+/**
+ * @returns updated group
+ */
+export const updateGroup = ({ id, group }) =>
+  client.put(`/api/v1/groups/${id}`, { group }).then(response => response.data)
+
+/**
+ * @returns deleted group
+ */
+export const deleteGroup = ({ id }) =>
+  client.delete(`/api/v1/groups/${id}`).then(response => response.data)

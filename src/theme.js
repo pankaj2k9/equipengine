@@ -20,6 +20,9 @@ const theme = {
   // dark color versions
   darkgray: "#4e4e4e",
 
+  // transparent colors
+  transparentGray: "rgba(184, 184, 184, 0.2)",
+
   fontFamily: "karla, sans-serif"
 }
 
