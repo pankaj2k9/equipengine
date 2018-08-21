@@ -8,6 +8,7 @@ import { createStructuredSelector } from "reselect"
 import ListControl, { ListItemControl } from "base_components/ListControl"
 import Button from "base_components/RootButton"
 import { Label } from "base_components/RootForm"
+import { PAUSE_GROUP_STATUS } from "services/constants"
 
 import { Root } from "./elements"
 import { updateGroup, deleteGroup } from "../../thunks"
@@ -25,7 +26,7 @@ class GroupControls extends Component {
   handlePauseGroup = () => {
     const { group, updateGroup } = this.props
 
-    updateGroup({ id: group.id, group: { status: "pause" } })
+    updateGroup({ id: group.id, group: { status: PAUSE_GROUP_STATUS } })
   }
 
   handleStartGroup = () => {

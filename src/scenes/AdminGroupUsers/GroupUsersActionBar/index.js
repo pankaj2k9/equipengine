@@ -11,6 +11,8 @@ import Button from "base_components/RootButton"
 import SelectItemModal from "base_components/SelectItemModal"
 import UserInfoFormatter from "base_components/UserInfoFormatter"
 import modal from "hoc/modal"
+import { PAUSE_GROUP_STATUS } from "services/constants"
+import { extractGroupId } from "utils/urlUrils"
 
 import { deleteGroupUser, updateGroupUserStatus } from "../thunks"
 import { selectors } from "../selectors"
@@ -19,12 +21,10 @@ class GroupUsersActionBar extends Component {
   state = { groupId: null }
 
   componentDidMount() {
-    const { location, match } = this.props
+    const { location } = this.props
 
     if (location && location.pathname) {
-      this.setState({
-        groupId: location.pathname.replace(match.url, "").replace("/", "")
-      })
+      this.setState({ groupId: extractGroupId(location.pathname) })
     }
   }
 
@@ -42,7 +42,7 @@ class GroupUsersActionBar extends Component {
     const { groupId } = this.state
 
     selectedGroupUsers.forEach(id =>
-      updateGroupUserStatus({ groupId, id, status: "pause" })
+      updateGroupUserStatus({ groupId, id, status: PAUSE_GROUP_STATUS })
     )
   }
 

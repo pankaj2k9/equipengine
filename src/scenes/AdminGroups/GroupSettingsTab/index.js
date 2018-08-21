@@ -8,6 +8,7 @@ import { createStructuredSelector } from "reselect"
 
 import ButtonUpdate from "base_components/ButtonUpdate"
 import Loading from "base_components/Loading"
+import { toastAction } from "global/Toast"
 import { updateFieldValue, validate } from "utils/formFunctions"
 
 import GeneralGroupInfo from "./GeneralGroupInfo"
@@ -97,12 +98,13 @@ class ItemTabAdminGroupSettings extends Component {
       updateGroup({
         id: group.id,
         group: fields
-      }).then(({ type }) => {
-        if (type === types.UPDATE_GROUP_SUCCESS) {
-          toastr.success("Notifications settings", "Data updated successfully")
-        } else {
-          toastr.error("Error", "Something went wrong")
-        }
+      }).then(action => {
+        toastAction({
+          action,
+          errorType: types.UPDATE_GROUP_ERROR,
+          success: "Data updated successfully",
+          error: "Something went wrong"
+        })
       })
     }
   }

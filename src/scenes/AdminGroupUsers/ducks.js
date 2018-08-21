@@ -86,7 +86,7 @@ export default (state = initialState, action) => {
     // TOGGLE_GROUP_USER_STATE
     //
     case types.TOGGLE_GROUP_USER_STATE:
-      return state.selectedGroupUsers.some(user => user === action.payload.id)
+      return state.selectedGroupUsers.some(id => id === action.payload.id)
         ? state.merge({
             selectedGroupUsers: state.selectedGroupUsers.filter(
               item => item !== action.payload.id
@@ -112,7 +112,7 @@ export default (state = initialState, action) => {
 
       return state.merge({
         groupUsers: state.groupUsers.filter(user => user.id !== groupUser.id),
-        isDeactivating: false
+        isDeletingUsersFromGroup: false
       })
     }
 
