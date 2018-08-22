@@ -13,7 +13,6 @@ const GroupUsersControls = ({ userLimit, onChange }) => (
         defaultValue={0}
         max={5000}
         min={0}
-        name="user_limit"
         onChange={onChange}
         value={userLimit}
       />
