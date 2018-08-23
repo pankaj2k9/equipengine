@@ -16,6 +16,7 @@ import * as Messages from "scenes/Messages"
 import * as MyGroups from "scenes/MyGroups"
 import * as ResetPassword from "scenes/ResetPassword"
 import * as Signup from "scenes/Signup"
+import * as TeacherStudents from "scenes/TeacherStudents"
 import * as Tutorial from "scenes/Tutorial"
 import * as Settings from "scenes/Settings"
 import * as GroupFiles from "scenes/Files"
@@ -207,6 +208,11 @@ registerFeature({
   name: "groupFiles",
   enabled: true,
   ...GroupFiles
+})
+registerFeature({
+  name: "teacherStudents",
+  enabled: true,
+  ...TeacherStudents
 })
 
 export default features

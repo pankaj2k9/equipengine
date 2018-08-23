@@ -17,8 +17,8 @@ const TeacherPanelLinks = ({ groupId }) => (
         url={`/secure/groups/${groupId}/teacher/submissions-activity`}
       />
       <Link
-        text="User Manager"
-        url={`/secure/groups/${groupId}/teacher/user-manager`}
+        text="Students"
+        url={`/secure/groups/${groupId}/teacher/students`}
       />
     </Menu>
   </div>

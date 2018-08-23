@@ -6,7 +6,7 @@ export const fetchGroupUsers = ({ groupId }) => {
     try {
       dispatch(actions.fetchGroupUsersRequest())
 
-      const response = await API.fetchGroupUsers({ groupId })
+      const response = await API.fetchGroupUsers({ group_id: groupId })
 
       return dispatch(
         actions.fetchGroupUsersSuccess({
@@ -28,8 +28,8 @@ export const addUsersToGroup = ({ groupId, users }) => {
       const newGroupUsers = []
       for (const user of users) {
         const { group_user } = await API.addUserToGroup({
-          groupId,
-          userId: user.id
+          group_id: groupId,
+          user_id: user.id
         })
         newGroupUsers.push(group_user)
       }

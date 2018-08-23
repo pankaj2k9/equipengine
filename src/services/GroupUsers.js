@@ -3,19 +3,20 @@ import { client } from "./API"
 /**
  * @returns list of users that has access to specific group
  */
-export const fetchGroupUsers = ({ groupId }) => {
+export const fetchGroupUsers = ({ group_id, student_id }) => {
+  const params = student_id ? { student_id } : {}
   return client
-    .get(`/api/v1/groups/${groupId}/group_users`)
+    .get(`/api/v1/groups/${group_id}/group_users`, params)
     .then(response => response.data)
 }
 
 /**
  * @returns add user to group
  */
-export const addUserToGroup = ({ groupId, userId }) =>
+export const addUserToGroup = ({ group_id, user_id }) =>
   client
-    .post(`/api/v1/groups/${groupId}/group_users`, {
-      user_id: userId
+    .post(`/api/v1/groups/${group_id}/group_users`, {
+      user_id
     })
     .then(response => response.data)
 

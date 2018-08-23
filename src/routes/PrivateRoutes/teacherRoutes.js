@@ -1,6 +1,7 @@
 import React from "react"
 
 import ErrorBoundary from "base_components/ErrorBoundary"
+import features from "features"
 import Loadable from "base_components/Loadable"
 
 //------------------------- TEACHERS PANEL COMPONENT -------------------------------//
@@ -14,10 +15,6 @@ const AsyncTeacherControls = Loadable({
 
 const AsyncTeacherFiles = Loadable({
   loader: () => import("scenes/TeacherFiles")
-})
-
-const AsyncTeacherUserManager = Loadable({
-  loader: () => import("scenes/TeacherUserManager")
 })
 
 const teacherRoutes = [
@@ -52,12 +49,12 @@ const teacherRoutes = [
     )
   },
   {
-    path: "/secure/groups/:groupId/teacher/user-manager",
+    path: "/secure/groups/:groupId/teacher/students",
     strict: true,
     exact: true,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the teacher user manager page.">
-        <AsyncTeacherUserManager {...props} />
+        <features.teacherStudents.pages.Students {...props} />
       </ErrorBoundary>
     )
   }

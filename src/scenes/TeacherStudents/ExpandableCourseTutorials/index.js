@@ -3,7 +3,12 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { Panel } from "react-bootstrap"
 // sub components.
-import ListTutorialCourse from "./components/ListTutorialCourse"
+import TutorialListItem from "../TutorialListItem"
+
+// this is for list
+const List = styled.ul`
+  overflow-x: auto;
+`
 
 // overriding the styles for the root panel component.
 const ContainerCollapsiblePanel = styled(Panel)`
@@ -21,7 +26,12 @@ const ContainerCollapsiblePanel = styled(Panel)`
 
 const CollapsiblePanelItemCourse = ({ isOpenPanel, tutorials }) => (
   <ContainerCollapsiblePanel collapsible expanded={isOpenPanel}>
-    <ListTutorialCourse tutorials={tutorials} />
+    <List>
+      {tutorials.map(tutorial => (
+        <TutorialListItem key={tutorial.id} tutorial={tutorial} />
+      ))}
+      <TutorialListItem isReport />
+    </List>
   </ContainerCollapsiblePanel>
 )
 

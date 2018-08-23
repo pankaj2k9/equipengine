@@ -3,12 +3,12 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { isEmpty, isNil } from "ramda"
 
-import { StyledListRowLeft, StyledListRowRight, ViewButton } from "./elements"
 import Box from "base_components/Box"
+import CompletedCircleBar from "base_components/CompletedCircleBar"
 import courseImg from "resources/images/course-default.png"
 import List, { ListRow } from "base_components/List"
 import NoCourses from "../NoCourses"
-import TutorialsCompleted from "../TutorialsCompleted"
+import { StyledListRowLeft, StyledListRowRight, ViewButton } from "./elements"
 
 const ListCourses = ({ courses, match }) => {
   if (isEmpty(courses) || isNil(courses)) {
@@ -36,9 +36,9 @@ const ListCourses = ({ courses, match }) => {
             {/* Link to course and completed circle */}
             <StyledListRowRight>
               <div>
-                <TutorialsCompleted
+                <CompletedCircleBar
                   count={course.lessons_count}
-                  completed={0}
+                  completed={course.completed_lessons}
                 />
                 <ViewButton text="View" url={`${match.url}/${course.id}`} />
               </div>
