@@ -26,7 +26,7 @@ const UserListItem = styled(({ className, user, key }) => (
     </div>
   </li>
 ))`
-  margin-bottom: 1.5em;
+  margin: 0.75em;
 
   > div {
     display: inline-block;
@@ -45,15 +45,11 @@ const UserListItem = styled(({ className, user, key }) => (
       padding: 8px 0;
     }
   }
-
-  @media screen and (min-width: 768px) {
-    margin-right: 1.5em;
-  }
 `
 
 // this is for people list template.
 const UserList = styled.ul`
-  margin-bottom: 2em;
+  margin: 0 -0.75em 2em -0.75em;
   display: flex;
   flex-direction: column;
   text-align: center;

@@ -18,9 +18,6 @@
 .tab-content {
   margin-top: 18px; }
 
-.Tabs {
-  margin-top: 1em; }
-
 @media screen and (min-width: 768px) {
   .tab-content {
     margin-top: 20px; } }

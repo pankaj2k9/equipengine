@@ -4,7 +4,7 @@ import styled from "styled-components"
 const MainLeft = styled.div`
   @media screen and (min-width: 768px) {
     width: 75%;
-    padding-right: 3em;
+    margin-right: 3em;
   }
 `
 
