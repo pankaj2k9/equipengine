@@ -11,29 +11,28 @@ export const types = {
   FETCH_GROUP_FILES_ERROR: "equipengine/FETCH_GROUP_FILES_ERROR"
 }
 
-const initalState = Immutable({
-  isFetchingAttachments: false,
+const initialState = Immutable({
   attachments: [],
+  isFetchingAttachments: false,
   pagination: null
 })
 
 // reducer
-export default (state = initalState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_GROUP_FILES_REQUEST:
-      return state.merge({
-        isFetchingAttachments: true
-      })
+      return state.merge({ isFetchingAttachments: true })
+
     case types.FETCH_GROUP_FILES_SUCCESS:
       return state.merge({
         isFetchingAttachments: false,
         attachments: action.payload.attachments,
         pagination: action.payload.pagination
       })
+
     case types.FETCH_GROUP_FILES_ERROR:
-      return state.merge({
-        isFetchingAttachments: false
-      })
+      return state.merge({ isFetchingAttachments: false })
+
     default:
       return state
   }
@@ -41,16 +40,12 @@ export default (state = initalState, action) => {
 
 //Actions
 export const actions = {
-  fetchGroupFilesRequest: () => ({
-    type: types.FETCH_GROUP_FILES_REQUEST
-  }),
+  fetchGroupFilesRequest: () => ({ type: types.FETCH_GROUP_FILES_REQUEST }),
   fetchGroupFilesSuccess: ({ attachments, meta }) => ({
     type: types.FETCH_GROUP_FILES_SUCCESS,
     payload: { attachments, pagination: meta }
   }),
-  fetchGroupFilesError: () => ({
-    type: types.FETCH_GROUP_FILES_ERROR
-  })
+  fetchGroupFilesError: () => ({ type: types.FETCH_GROUP_FILES_ERROR })
 }
 
 //Selectors
@@ -62,8 +57,10 @@ const selectIsFetchingFiles = () =>
     filesSelector(),
     groupFiles => groupFiles.isFetchingAttachments
   )
+
 const selectAttachments = () =>
   createSelector(filesSelector(), groupFiles => groupFiles.attachments)
+
 const selectPagination = () =>
   createSelector(filesSelector(), groupFiles => groupFiles.pagination)
 

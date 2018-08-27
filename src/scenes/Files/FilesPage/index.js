@@ -1,7 +1,7 @@
 import React from "react"
 
 import Breadcrumbs from "base_components/Breadcrumbs"
-import { MainInnerContainer, MainLeft, MainRight } from "base_components/Main"
+import { MainRight } from "base_components/Main"
 import TableFiles from "base_components/TableFiles"
 import SearchBar from "base_components/RootSearchBar"
 
@@ -9,6 +9,7 @@ import { connect } from "react-redux"
 import { withRouter } from "react-router"
 import { createStructuredSelector } from "reselect"
 import { bindActionCreators } from "redux"
+import { Container, Left } from "./elements"
 import { selectors } from "../ducks"
 import { fetchFiles } from "../thunks"
 
@@ -32,6 +33,7 @@ class Files extends React.Component {
       attachmentable_id: this.props.match.params.groupId
     })
   }
+
   render() {
     return (
       <div>
@@ -44,8 +46,8 @@ class Files extends React.Component {
             }
           ]}
         />
-        <MainInnerContainer>
-          <MainLeft>
+        <Container>
+          <Left>
             <TableFiles
               // Remove ternary after adding files in production
               files={
@@ -60,11 +62,11 @@ class Files extends React.Component {
                   : files
               }
             />
-          </MainLeft>
+          </Left>
           <MainRight>
             <SearchBar placeholder="Search files" />
           </MainRight>
-        </MainInnerContainer>
+        </Container>
       </div>
     )
   }
