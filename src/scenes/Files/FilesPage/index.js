@@ -1,42 +1,37 @@
-import React from "react"
-
-import Breadcrumbs from "base_components/Breadcrumbs"
-import { MainRight } from "base_components/Main"
-import TableFiles from "base_components/TableFiles"
-import SearchBar from "base_components/RootSearchBar"
-
+import React, { Component, Fragment } from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router"
 import { createStructuredSelector } from "reselect"
 import { bindActionCreators } from "redux"
+
+import Breadcrumbs from "base_components/Breadcrumbs"
+import { MainRight } from "base_components/Main"
+import SearchBar from "base_components/RootSearchBar"
+import TableFiles from "base_components/TableFiles"
+
 import { Container, Left } from "./elements"
 import { selectors } from "../ducks"
 import { fetchFiles } from "../thunks"
 
-// test data
-const files = [
-  {
-    id: "ysdjfk",
-    title: "Submissions instructions.pdf",
-    date: "22 April 17"
-  },
-  {
-    id: "yskjdksf",
-    title: "Showing culture.ptt",
-    date: "19 March 17"
-  }
-]
-
-class Files extends React.Component {
+class Files extends Component {
   componentDidMount() {
     this.props.fetchFiles({
       attachmentable_id: this.props.match.params.groupId
     })
   }
 
+  handleSearch = ({ target: { value } }) => {
+    this.props.fetchFiles({
+      attachmentable_id: this.props.match.params.groupId,
+      term: value
+    })
+  }
+
   render() {
+    const { attachments } = this.props
+
     return (
-      <div>
+      <Fragment>
         <Breadcrumbs
           items={[
             {
@@ -46,28 +41,26 @@ class Files extends React.Component {
             }
           ]}
         />
+
         <Container>
           <Left>
             <TableFiles
-              // Remove ternary after adding files in production
-              files={
-                this.props.attachments.length > 0
-                  ? this.props.attachments.map(file => {
-                      return {
-                        id: file.id,
-                        title: file.title,
-                        date: file.updated_at
-                      }
-                    })
-                  : files
-              }
+              files={attachments.map(file => ({
+                id: file.id,
+                title: file.title,
+                date: file.updated_at
+              }))}
             />
           </Left>
+
           <MainRight>
-            <SearchBar placeholder="Search files" />
+            <SearchBar
+              onChange={this.handleSearch}
+              placeholder="Search files"
+            />
           </MainRight>
         </Container>
-      </div>
+      </Fragment>
     )
   }
 }
