@@ -18,6 +18,7 @@ const UserListItem = styled(({ className, user, key }) => (
               : avatar
             : avatar
         }
+        size="large"
       />
       <p>{user ? `${user.first_name} ${user.last_name}` : "No name"}</p>
       <Link to="/secure/messages">
@@ -26,11 +27,11 @@ const UserListItem = styled(({ className, user, key }) => (
     </div>
   </li>
 ))`
-  margin-bottom: 1.5em;
+  margin: 0.75em;
 
   > div {
     display: inline-block;
-    padding: 1em;
+    padding: 1.375em;
     border: 1px solid #e2e2e2;
     border-radius: 5px;
 
@@ -45,15 +46,11 @@ const UserListItem = styled(({ className, user, key }) => (
       padding: 8px 0;
     }
   }
-
-  @media screen and (min-width: 768px) {
-    margin-right: 1.5em;
-  }
 `
 
 // this is for people list template.
 const UserList = styled.ul`
-  margin-bottom: 2em;
+  margin: 0 -0.75em 2em -0.75em;
   display: flex;
   flex-direction: column;
   text-align: center;

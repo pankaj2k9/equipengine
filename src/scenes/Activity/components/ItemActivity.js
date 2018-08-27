@@ -37,7 +37,7 @@ const ItemActivity = ({ activity }) => {
         <ActivityMessage activity={activity} />
       </TableRowCourseTd>
       <TableRowCourseTd>
-        <UserAvatar small image={user.avatar.url} />
+        <UserAvatar image={user.avatar.url} size="small" />
       </TableRowCourseTd>
       <TableRowCourseTd middle>
         <FlagCheckbox isFlagged={flagged} onClick={() => {}} />
