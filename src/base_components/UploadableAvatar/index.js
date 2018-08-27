@@ -29,7 +29,7 @@ class UploadableAvatar extends React.Component {
   }
 
   render() {
-    const { className, readOnly, small } = this.props
+    const { className, readOnly, size } = this.props
     const { image } = this.state
 
     return (
@@ -38,7 +38,7 @@ class UploadableAvatar extends React.Component {
         onClick={!readOnly && this.handleUploadButtonClick}
       >
         {/* Image preview */}
-        <UserAvatar image={image} small={small} />
+        <UserAvatar image={image} size={size} />
 
         {!readOnly && (
           <Fragment>

@@ -18,6 +18,7 @@ const UserListItem = styled(({ className, user, key }) => (
               : avatar
             : avatar
         }
+        size="large"
       />
       <p>{user ? `${user.first_name} ${user.last_name}` : "No name"}</p>
       <Link to="/secure/messages">
@@ -30,7 +31,7 @@ const UserListItem = styled(({ className, user, key }) => (
 
   > div {
     display: inline-block;
-    padding: 1em;
+    padding: 1.375em;
     border: 1px solid #e2e2e2;
     border-radius: 5px;
 

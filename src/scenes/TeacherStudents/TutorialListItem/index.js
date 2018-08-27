@@ -44,7 +44,7 @@ const ListItemTutorial = styled(({ className, isReport, tutorial }) => (
         </div>
         <div className="ListItemTutorial__feedback">
           <div>
-            <UserAvatar small image={iconUser} />
+            <UserAvatar image={iconUser} size="small" />
           </div>
           <MetaInfo>Feedback / Discussion</MetaInfo>
         </div>

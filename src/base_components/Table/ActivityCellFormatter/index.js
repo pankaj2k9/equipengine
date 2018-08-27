@@ -4,7 +4,7 @@ import { Root, Name, Date, Time, UserInfoContainer } from "./elements"
 
 const ActivityCellFormatter = ({ activity }) => (
   <Root>
-    <UserAvatar small image={activity.avatarURL} />
+    <UserAvatar size="small" image={activity.avatarURL} />
     <UserInfoContainer>
       <Name>{activity.name}</Name>
       <Date>{activity.date.day}</Date>

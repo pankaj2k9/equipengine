@@ -21,7 +21,7 @@ const RowsTableAdminGroupUsers = () => (
         </Form>
       </TableDataGroupUser>
       <TableDataGroupUser>
-        <UserAvatar image={iconUser} small />
+        <UserAvatar image={iconUser} size="small" />
       </TableDataGroupUser>
       <TableDataGroupUser>Doe</TableDataGroupUser>
       <TableDataGroupUser>Jane</TableDataGroupUser>
@@ -45,7 +45,7 @@ const RowsTableAdminGroupUsers = () => (
         </Form>
       </TableDataGroupUser>
       <TableDataGroupUser>
-        <UserAvatar image={iconUser} small />
+        <UserAvatar image={iconUser} size="small" />
       </TableDataGroupUser>
       <TableDataGroupUser>Hall</TableDataGroupUser>
       <TableDataGroupUser>Tim</TableDataGroupUser>
