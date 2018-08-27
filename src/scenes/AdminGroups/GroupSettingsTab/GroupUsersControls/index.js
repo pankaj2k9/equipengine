@@ -4,7 +4,7 @@ import { NumberInput } from "base_components/RootForm"
 
 import { Root, UserFormGroup, Label } from "./elements"
 
-const GroupUsersControls = ({ userLimit, onChange }) => (
+const GroupUsersControls = ({ userLimit, onUserLimitChange }) => (
   <Root title="Users">
     <UserFormGroup>
       <Label>Group Size Limit</Label>
@@ -13,7 +13,7 @@ const GroupUsersControls = ({ userLimit, onChange }) => (
         defaultValue={0}
         max={5000}
         min={0}
-        onChange={onChange}
+        onChange={onUserLimitChange}
         value={userLimit}
       />
     </UserFormGroup>

@@ -140,7 +140,7 @@ class ItemTabAdminGroupSettings extends Component {
 
         <GroupUsersControls
           userLimit={user_limit}
-          onChange={this.handleChangeUserLimit}
+          onUserLimitChange={this.handleChangeUserLimit}
         />
 
         <GroupNoticeboardControls
