@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, Fragment } from "react"
 import { bindActionCreators } from "redux"
 import { compose, pure, withState } from "recompose"
 import { connect } from "react-redux"
@@ -74,7 +74,7 @@ class AdminUsers extends Component {
     } = this.props
 
     return (
-      <div>
+      <Fragment>
         <BorderedTitle title="User Manager" />
         <VerticalTabs
           tabs={users}
@@ -105,7 +105,7 @@ class AdminUsers extends Component {
           onClose={onCloseCreateUserModal}
           onSubmit={this.handleCreateUser}
         />
-      </div>
+      </Fragment>
     )
   }
 }
