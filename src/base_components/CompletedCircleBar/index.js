@@ -3,9 +3,8 @@ import CircleProgressBar from "base_components/CircleProgressBar"
 
 import { Delimeter, Root, Status } from "./elements"
 
-// TODO probably try to move CompletedCircleBar component
-const TutorialsCompleted = ({ count, completed }) => (
-  <Root>
+const CompletedCircleBar = ({ className, count, completed }) => (
+  <Root className={className}>
     <CircleProgressBar
       small
       percentage={count === 0 ? 0 : (completed / count) * 100}
@@ -17,6 +16,6 @@ const TutorialsCompleted = ({ count, completed }) => (
   </Root>
 )
 
-TutorialsCompleted.propTypes = {}
+CompletedCircleBar.propTypes = {}
 
-export default TutorialsCompleted
+export default CompletedCircleBar

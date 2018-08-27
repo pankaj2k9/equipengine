@@ -25,6 +25,7 @@ export default combineReducers({
   groupFiles: features.groupFiles.reducer,
   routing,
   signup: features.signup.reducer,
+  teacherStudents: features.teacherStudents.reducer,
   toastr,
   tutorials: features.tutorials.reducer
 })

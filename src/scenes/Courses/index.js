@@ -1,4 +1,4 @@
-import reducer, { selectors } from "./ducks"
+import reducer, { selectors, types } from "./ducks"
 import { fetchCourses } from "./thunks"
 import Loadable from "base_components/Loadable"
 
@@ -12,4 +12,4 @@ const actions = {
   fetchCourses
 }
 
-export { actions, reducer, selectors, pages }
+export { actions, reducer, selectors, pages, types }
