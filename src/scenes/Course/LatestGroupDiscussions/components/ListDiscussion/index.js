@@ -8,7 +8,7 @@ const HasDiscussions = styled(({ className, discussions, onSelect }) => {
   // creating list of discussion list
   const listDiscussions = discussions.map((item, i) => (
     <li className={className} key={i}>
-      <UserAvatar small image={item.avatarURL} />
+      <UserAvatar image={item.avatarURL} size="small" />
       <p>
         {`${item.name} `}
         <button onClick={() => onSelect(item.task.meta.id)} type="button">

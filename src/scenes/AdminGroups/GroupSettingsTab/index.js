@@ -86,6 +86,12 @@ class ItemTabAdminGroupSettings extends Component {
     this.setState({ fields: nextFields })
   }
 
+  handleChangeUserLimit = value => {
+    const { fields } = this.state
+
+    this.setState({ fields: { ...fields, user_limit: value } })
+  }
+
   handleSubmit = () => {
     const { group, updateGroup } = this.props
     const { fields } = this.state
@@ -134,7 +140,7 @@ class ItemTabAdminGroupSettings extends Component {
 
         <GroupUsersControls
           userLimit={user_limit}
-          onChange={this.handleChange}
+          onUserLimitChange={this.handleChangeUserLimit}
         />
 
         <GroupNoticeboardControls
