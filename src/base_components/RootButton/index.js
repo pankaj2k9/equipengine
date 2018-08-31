@@ -55,7 +55,7 @@ const RootButton = styled.button`
   background-color: ${backgroundColorVariation};
   opacity: ${props => (props.disabled ? "0.5" : "1")};
   color: ${fontColorVariation};
-  width: ${props => (props.large ? "146px" : "104px")};
+  width: ${props => (props.large ? "146px" : "86px")};
   border: ${props => (props.lightBorder ? "1px solid #d4d4d4" : "0")};
   padding: 10px 0;
   font-family: "karla", sans-serif;

@@ -1,5 +1,6 @@
 import { client } from "./API"
 import { ACTIVE_USER_STATUS, STUDENT_ROLE } from "./constants"
+import R from "ramda"
 
 /**
  * @returns list of all app users
@@ -30,8 +31,11 @@ export const fetchUsers = ({
     params.group_id = group_id
   }
 
-  if (role) {
-    params.role = role
+  if (!R.isNil(role)) {
+    params.roles = role
+    if (R.isEmpty(role)) {
+      params.roles = null
+    }
   }
 
   if (term) {

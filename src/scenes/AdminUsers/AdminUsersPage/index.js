@@ -59,7 +59,9 @@ class AdminUsers extends Component {
       }
     })
 
-  handleSearchUsers = term => this.props.fetchUsers({ term })
+  handleSearchUsers = ({ term, role }) => {
+    this.props.fetchUsers({ term, role })
+  }
 
   render() {
     const {

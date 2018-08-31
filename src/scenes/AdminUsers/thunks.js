@@ -1,12 +1,12 @@
 import * as API from "services/API"
 import { actions as usersActions } from "./ducks"
 
-export const fetchUsers = ({ term }) => {
+export const fetchUsers = ({ term, role }) => {
   return async dispatch => {
     dispatch(usersActions.fetchUsersRequest({ searchTerm: term }))
 
     try {
-      const { users, meta } = await API.fetchUsers({ term })
+      const { users, meta } = await API.fetchUsers({ term, role })
 
       return dispatch(
         usersActions.fetchUsersSuccess({
