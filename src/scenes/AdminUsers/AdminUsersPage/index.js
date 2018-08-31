@@ -14,7 +14,10 @@ import modal from "hoc/modal"
 import SearchActionBar from "base_components/SearchActionBar"
 import { actions, selectors, types } from "../ducks"
 import UserContent from "../UserContent"
+import { validationSchema } from "../UpdateUserForm"
 import VerticalTabs from "base_components/VerticalTabs"
+import { validate } from "utils/formFunctions"
+import features from "features"
 
 class AdminUsers extends Component {
   componentDidMount() {
@@ -45,7 +48,32 @@ class AdminUsers extends Component {
     })
   }
 
-  handleUpdateUser = user => {}
+  handleUpdateUser = (e, user) => {
+    e.preventDefault()
+
+    const validationResult = validate(user, validationSchema)
+
+    if (!validationResult.error) {
+      this.props.updateUser(user.id, user).then(action => {
+        if (action.type === types.UPDATE_USER_SUCCESS) {
+          this.handleTabClick(action.payload.user)
+          toastr.success(
+            "Success",
+            `User "${user.email}" is succesffully updated`
+          )
+        } else {
+          toastr.error("Error", `Failed to update user "${user.email}"`)
+        }
+      })
+
+      return
+    }
+
+    toastr.error(
+      "Validation error",
+      validationResult.error.details[0].context.label
+    )
+  }
 
   handleResetPasswordSend = ({ id, email }) =>
     this.props.sendResetPasswordToken({ id, email }).then(action => {
@@ -125,6 +153,7 @@ const mapDispatch = dispatch =>
     {
       createUser,
       fetchUsers,
+      updateUser: features.adminUsers.actions.updateUser,
       selectUser: actions.selectUser,
       sendResetPasswordToken
     },

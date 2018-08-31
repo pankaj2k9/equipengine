@@ -48,7 +48,7 @@ export const fetchUsers = ({
 /**
  * @returns create user with no organization and reset password link
  */
-export const createUser = ({
+export const createUser = async ({
   first_name,
   last_name,
   email,
@@ -59,43 +59,118 @@ export const createUser = ({
   country_id = 0,
   state_id = 0,
   zip_code = "",
-  phone_number = ""
-}) =>
-  client
-    .post(`/api/v1/users`, {
+  phone_number = "",
+  organization_ids = [1]
+} = {}) => {
+  const response = await client.post(`/api/v1/users`, {
+    first_name,
+    last_name,
+    email,
+    password,
+    password_confirmation,
+    address,
+    avatar,
+    country_id,
+    state_id,
+    zip_code,
+    phone_number,
+    organization_ids
+  })
+  return response.data
+}
+
+export const updateUser = async (
+  id,
+  {
+    first_name,
+    last_name,
+    email,
+    password,
+    password_confirmation,
+    address = "",
+    date_of_birth,
+    avatar = {},
+    country_id = 0,
+    state_id = 0,
+    zip_code = "",
+    phone_number = "",
+    organization_ids = [1],
+    participated_group_ids
+  }
+) => {
+  const response = await client.put(`/api/v1/users/${id}`, {
+    user: {
       first_name,
       last_name,
       email,
       password,
       password_confirmation,
       address,
+      date_of_birth,
       avatar,
       country_id,
       state_id,
       zip_code,
       phone_number,
-      organization_ids: [1]
-    })
-    .then(response => response.data)
+      organization_ids,
+      participated_group_ids
+    }
+  })
+  return response.data
+}
 
 /**
  * Attach user to organization
  * @returns organization settings of current user
  */
-export const createOrganizationUser = ({
+export const createOrganizationUser = async ({
   user_id,
+  organization_id,
   role = STUDENT_ROLE,
   status = ACTIVE_USER_STATUS
-}) =>
-  client
-    .post(`/api/v1/organization_users`, {
-      user_id,
-      role,
-      status,
-      exclude_students_ids: [],
-      files_controll_enabled: true,
-      messanger_access_enabled: true,
-      activity_course_ids: [],
-      activity_student_ids: []
-    })
-    .then(response => response.data)
+}) => {
+  const response = await client.post(`/api/v1/organization_users`, {
+    user_id,
+    organization_id,
+    role,
+    status,
+    exclude_students_ids: [],
+    files_controll_enabled: true,
+    messanger_access_enabled: true,
+    activity_course_ids: [],
+    activity_student_ids: []
+  })
+  return response.data
+}
+
+/**
+ * Update organization uer details
+ * @returns updated organization settings of current user
+ */
+export const updateOrganizationUser = async (
+  id,
+  {
+    user_id,
+    organization_id,
+    role = STUDENT_ROLE,
+    status = ACTIVE_USER_STATUS,
+    exclude_students_ids = [],
+    files_controll_enabled = true,
+    messanger_access_enabled = true,
+    activity_course_ids = [],
+    activity_student_ids = []
+  }
+) => {
+  const response = await client.put(`/api/v1/organization_users/${id}`, {
+    user_id,
+    organization_id,
+    role,
+    status,
+    exclude_students_ids,
+    files_controll_enabled,
+    messanger_access_enabled,
+    activity_course_ids,
+    activity_student_ids
+  })
+  return response.data
+}
