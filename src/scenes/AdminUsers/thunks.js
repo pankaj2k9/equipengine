@@ -63,7 +63,7 @@ export const updateUser = (
     zipCode = "",
     phone = "",
     organizationIds = [1],
-    participated_group_ids = [],
+    participatedGroupIds = [],
     organization_settings: {
       id,
       user_id,
@@ -95,7 +95,7 @@ export const updateUser = (
         zip_code: zipCode,
         phone_number: phone,
         organization_ids: organizationIds,
-        participated_group_ids
+        participated_group_ids: participatedGroupIds
       })
 
       const { organization_user } = await API.updateOrganizationUser(id, {

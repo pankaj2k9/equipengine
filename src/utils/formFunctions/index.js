@@ -1,4 +1,5 @@
 import joi from "joi"
+import R from "ramda"
 
 export const updateFieldValue = (e, selector, fields) => {
   // FIXME: below null||undefined check is a major blocker for dropdown clear states. they are expectedly
@@ -24,6 +25,8 @@ export const updateFieldValue = (e, selector, fields) => {
     // Moment object
     if (e.isValid && e.isValid()) {
       value = e.format("YYYY-MM-DD")
+    } else if (R.is(Object, e)) {
+      value = processCheckboxData(e, selector, fields)
     } else {
       value = e
     }
@@ -63,4 +66,15 @@ export const openFileChooser = (e, ref) => {
 export const getDropdownValue = selectedOption => {
   if (!selectedOption) return null
   return selectedOption.value
+}
+
+const processCheckboxData = (e, selector, fields) => {
+  let newValue
+  if (e.checked) {
+    newValue = R.append(Number(e.id), fields[selector])
+  } else {
+    newValue = R.remove(Number(e.id), fields[selector])
+  }
+  newValue = R.uniq(newValue)
+  return newValue
 }

@@ -4,7 +4,7 @@ import Box from "base_components/Box"
 import Centerer from "base_components/PageCenterer"
 import UpdateUserForm from "../UpdateUserForm"
 
-const UserContent = ({ user, onSubmit, onSendResetPasswordToken }) => {
+const UserContent = ({ user, groups, onSubmit, onSendResetPasswordToken }) => {
   if (!user) {
     return <Centerer>Please, select any group to see content</Centerer>
   }
@@ -13,6 +13,7 @@ const UserContent = ({ user, onSubmit, onSendResetPasswordToken }) => {
     <Box>
       <UpdateUserForm
         user={user}
+        groups={groups}
         onSubmit={onSubmit}
         onSendResetPasswordToken={onSendResetPasswordToken}
       />

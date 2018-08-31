@@ -54,6 +54,7 @@ class UpdateUserForm extends Component {
       country: props.user && props.user.country_id,
       state: props.user && props.user.state_id,
       zipCode: props.user && props.user.zip_code,
+      participatedGroupIds: props.user && props.user.participated_group_ids,
       organization_settings: props.user && props.user.organization_settings,
       role:
         props.user &&
@@ -157,7 +158,7 @@ class UpdateUserForm extends Component {
       messengerAccess,
       participatedGroupIds
     } = this.state
-    const { onSubmit, countries, states } = this.props
+    const { onSubmit, countries, states, groups } = this.props
 
     return (
       <MainForm>
@@ -201,7 +202,7 @@ class UpdateUserForm extends Component {
             )}
         </ResponsivePanel>
         <PanelGroups
-          groups={this.props.groups}
+          groups={groups}
           selectedGroupIds={participatedGroupIds}
           onChange={this.onChange}
         />

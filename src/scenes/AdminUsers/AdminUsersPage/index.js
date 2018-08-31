@@ -21,12 +21,22 @@ import features from "features"
 
 class AdminUsers extends Component {
   componentDidMount() {
-    const { users, userId, fetchUsers, selectUser } = this.props
+    const {
+      users,
+      userId,
+      fetchUsers,
+      selectUser,
+      groups,
+      fetchGroups
+    } = this.props
     if (!users || users.length === 0) {
       fetchUsers({})
     }
     if (userId) {
       selectUser({ userId })
+    }
+    if (!groups || groups.length === 0) {
+      fetchGroups()
     }
   }
 
@@ -98,6 +108,7 @@ class AdminUsers extends Component {
       selectedUser,
       isFetchingUsers,
       isSavingUser,
+      groups,
       isOpen: isOpenCreateUserModal,
       onOpen: onOpenCreateUserModal,
       onClose: onCloseCreateUserModal
@@ -122,6 +133,7 @@ class AdminUsers extends Component {
             selectedUser.id.toString() === userId && (
               <UserContent
                 user={selectedUser}
+                groups={groups}
                 onSubmit={this.handleUpdateUser}
                 onSendResetPasswordToken={this.handleResetPasswordSend}
               />
@@ -145,7 +157,8 @@ const mapState = () =>
     users: selectors.selectUsers(),
     selectedUser: selectors.selectSelectedUser(),
     isFetchingUsers: selectors.selectIsFetchingUsers(),
-    isSavingUser: selectors.selectIsSavingUser()
+    isSavingUser: selectors.selectIsSavingUser(),
+    groups: features.adminGroups.selectors.selectGroups()
   })
 
 const mapDispatch = dispatch =>
@@ -155,7 +168,8 @@ const mapDispatch = dispatch =>
       fetchUsers,
       updateUser: features.adminUsers.actions.updateUser,
       selectUser: actions.selectUser,
-      sendResetPasswordToken
+      sendResetPasswordToken,
+      fetchGroups: features.adminGroups.actions.fetchGroups
     },
     dispatch
   )
