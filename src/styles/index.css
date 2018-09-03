@@ -1,131 +1,158 @@
 @font-face {
-  font-family: 'Karla';
+  font-family: "Karla";
   src: url("../resources/fonts/karla/karla-bold-webfont.woff2") format("woff2"), url("../resources/fonts/karla/karla-bold-webfont.woff") format("woff");
   font-weight: 800;
-  font-style: normal; }
-
+  font-style: normal;
+}
 @font-face {
-  font-family: 'Karla';
+  font-family: "Karla";
   src: url("../resources/fonts/karla/karla-bolditalic-webfont.woff2") format("woff2"), url("../resources/fonts/karla/karla-bolditalic-webfont.woff") format("woff");
   font-weight: 800;
-  font-style: italic; }
-
+  font-style: italic;
+}
 @font-face {
-  font-family: 'Karla';
+  font-family: "Karla";
   src: url("../resources/fonts/karla/karla-italic-webfont.woff2") format("woff2"), url("../resources/fonts/karla/karla-italic-webfont.woff") format("woff");
   font-weight: 400;
-  font-style: italic; }
-
+  font-style: italic;
+}
 @font-face {
-  font-family: 'Karla';
+  font-family: "Karla";
   src: url("../resources/fonts/karla/karla-regular-webfont.woff2") format("woff2"), url("../resources/fonts/karla/karla-regular-webfont.woff") format("woff");
   font-weight: 400;
-  font-style: normal; }
-
+  font-style: normal;
+}
 @font-face {
-  font-family: 'Avenir Next';
+  font-family: "Avenir Next";
   src: url("../resources/fonts/avenir/AvenirNext-Bold.woff") format("woff");
   font-weight: 800;
-  font-style: normal; }
-
+  font-style: normal;
+}
 @font-face {
-  font-family: 'Avenir Next';
+  font-family: "Avenir Next";
   src: url("../resources/fonts/avenir/AvenirNext-Medium.woff") format("woff");
   font-weight: 500;
-  font-style: normal; }
-
+  font-style: normal;
+}
 html {
-  font-size: 1rem; }
+  font-size: 1rem;
+}
+
+html, body, #root, #root > div {
+  height: 100%;
+}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Karla', 'Helvetica Neau', 'Open Sans', sans-serif;
+  font-family: "Karla", "Helvetica Neau", "Open Sans", sans-serif;
   line-height: 1.45;
   font-weight: 400;
   font-style: normal;
-  color: #2D2D2D; }
+  color: #2D2D2D;
+}
 
 h1, h2, h3, h4 {
   margin: 1.414em 0 0.5em;
   font-weight: inherit;
-  line-height: 1.2; }
+  line-height: 1.2;
+}
 
 h1 {
   margin-top: 0;
-  font-size: 3.998em; }
+  font-size: 3.998em;
+}
 
 h2 {
-  font-size: 2.827rem; }
+  font-size: 2.827rem;
+}
 
 h3 {
-  font-size: 1.999rem; }
+  font-size: 1.999rem;
+}
 
 h4 {
-  font-size: 1.414rem; }
+  font-size: 1.414rem;
+}
 
 small, .font_small {
-  font-size: 0.707rem; }
+  font-size: 0.707rem;
+}
 
 ul {
   padding: 0;
   margin: 0;
-  list-style-type: none; }
+  list-style-type: none;
+}
 
 a {
-  transition: color 300ms ease-in; }
-  a:hover {
-    text-decoration: none; }
-  a:focus {
-    text-decoration: none;
-    color: #fff; }
+  transition: color 300ms ease-in;
+}
+a:hover {
+  text-decoration: none;
+}
+a:focus {
+  text-decoration: none;
+  color: #fff;
+}
 
 button:focus {
-  outline: 0; }
+  outline: 0;
+}
 
 p {
   max-width: 750px;
   text-align: justify;
-  margin-bottom: 1.3em; }
+  margin-bottom: 1.3em;
+}
 
 h4 {
   font-size: 1.2rem;
   text-align: left;
   font-family: "Avenir Next";
   font-weight: 500;
-  color: #505050; }
+  color: #505050;
+}
 
 @media screen and (min-width: 768px) {
   h4 {
     margin-top: 2em;
-    font-size: 1.5rem; } }
-
+    font-size: 1.5rem;
+  }
+}
 .popover {
   background: #FFFFFF;
   border: 1px solid #CDCDCD;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.22);
-  max-width: 300px; }
+  max-width: 300px;
+}
 
 .popover-content {
-  padding: 0; }
+  padding: 0;
+}
 
 #popover-trigger-click-root-close {
   margin-top: 12px;
   margin-left: -24px;
-  border-radius: 3px; }
+  border-radius: 3px;
+}
 
 #popover-trigger-click-root-close > .arrow {
   top: 0;
-  border-bottom-color: transparent; }
+  border-bottom-color: transparent;
+}
 
 .dropdown {
-  width: 100%; }
+  width: 100%;
+}
 
 .dropdown-menu {
-  width: 100%; }
+  width: 100%;
+}
 
 .panel-default {
-  border-bottom: 0; }
+  border-bottom: 0;
+}
 
 .panel {
   box-shadow: 0;
@@ -135,4 +162,11 @@ h4 {
   box-shadow: 0;
   border-top: 1px solid #CDCDCD;
   border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px; }
+  border-bottom-right-radius: 4px;
+}
+
+.width-sm {
+  width: 86px;
+}
+
+/*# sourceMappingURL=index.css.map */

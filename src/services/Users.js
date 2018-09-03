@@ -8,7 +8,7 @@ import R from "ramda"
 export const fetchUsers = ({
   organization_id,
   group_id,
-  roles,
+  role,
   term,
   current_page,
   current_count
