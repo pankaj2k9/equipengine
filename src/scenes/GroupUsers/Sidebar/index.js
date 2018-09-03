@@ -1,10 +1,10 @@
 import React, { Component } from "react"
-import styled from "styled-components"
-import { withRouter } from "react-router-dom"
-import { bindActionCreators } from "redux"
-import { compose, pure } from "recompose"
 import { connect } from "react-redux"
+import { withRouter } from "react-router-dom"
+import { compose, pure } from "recompose"
+import { bindActionCreators } from "redux"
 import { createStructuredSelector } from "reselect"
+import styled from "styled-components"
 
 import { MainRight } from "base_components/Main"
 import SearchBar from "base_components/RootSearchBar"
@@ -20,7 +20,7 @@ const Reminder = styled.p`
 `
 
 class Sidebar extends Component {
-  search = ({ target: { value } }) => {
+  handleSearch = ({ target: { value } }) => {
     this.props.fetchGroupUsers({
       groupId: this.props.match.params.groupId,
       role: this.props.role,
@@ -31,7 +31,7 @@ class Sidebar extends Component {
   render() {
     return (
       <MainRight>
-        <SearchBar placeholder="Search people" onChange={this.search} />
+        <SearchBar placeholder="Search people" onChange={this.handleSearch} />
         <Reminder>
           People can turn off their communication function. If you want to
           enable/disable messages go to settings.
@@ -40,6 +40,7 @@ class Sidebar extends Component {
     )
   }
 }
+
 const mapState = () =>
   createStructuredSelector({
     role: selectors.selectCurrentRole()
