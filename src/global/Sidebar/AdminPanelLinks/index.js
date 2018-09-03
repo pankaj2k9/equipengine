@@ -10,7 +10,7 @@ const AdminPanelLinks = () => (
     <Menu>
       <Title>Admin Area</Title>
       <Link isStrict text="Group Manager" url="/secure/admin/groups" />
-      <Link text="Course Creator" url="/secure/admin/courses" />
+      <Link text="Course Creator" url="/secure/admin/course-creator/courses" />
       <Link isStrict text="User Manager" url="/secure/admin/users" />
       <Link text="Organisations Settings" url="/secure/admin/organisations" />
       <Link text="Add-Ons" url="/secure/admin/add-ons" />
