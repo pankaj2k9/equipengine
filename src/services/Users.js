@@ -7,7 +7,7 @@ import { ACTIVE_USER_STATUS, STUDENT_ROLE } from "./constants"
 export const fetchUsers = ({
   organization_id,
   group_id,
-  role,
+  roles,
   term,
   current_page,
   current_count
@@ -30,8 +30,8 @@ export const fetchUsers = ({
     params.group_id = group_id
   }
 
-  if (role) {
-    params.role = role
+  if (roles) {
+    params.roles = roles
   }
 
   if (term) {

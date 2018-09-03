@@ -59,7 +59,9 @@ const adminRoutes = [
     exact: false,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the admin organization settings page.">
-        <AsyncAdminOrganisationSettings {...props} />
+        <features.adminOrganizationSettings.pages.AdminOrganizationSettings
+          {...props}
+        />
       </ErrorBoundary>
     )
   },
