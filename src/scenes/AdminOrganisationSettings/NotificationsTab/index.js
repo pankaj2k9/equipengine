@@ -1,16 +1,17 @@
 import React, { Component } from "react"
-import joi from "joi"
 import { toastr } from "react-redux-toastr"
 import { compose, pure } from "recompose"
+import joi from "joi"
+
+import { types } from "../ducks"
 
 import { FormGroup, Label, Text } from "base_components/RootForm"
-
 import { Form, Panel, Button } from "./elements"
 
 import { updateFieldValue, validate } from "utils/formFunctions"
 
 const validationSchema = joi.object().keys({
-  email: joi
+  notification_email: joi
     .string()
     .email()
     .required()
@@ -24,7 +25,8 @@ const PanelEmailAddress = ({ email, onChange }) => (
       <Text
         placeholder="email@email.com"
         value={email}
-        onChange={e => onChange(e.target.value, "email")}
+        onChange={event => onChange(event.target.value, event.target.name)}
+        name="notification_email"
       />
     </FormGroup>
   </Panel>
@@ -32,41 +34,58 @@ const PanelEmailAddress = ({ email, onChange }) => (
 
 class ItemTabAccountSettings extends Component {
   state = {
-    email: ""
+    fields: {
+      notification_email: this.props.organization.notification_settings
+        .notification_email
+    }
   }
 
   onChange = (e, selector) => {
-    const fields = this.state
+    const { fields } = this.state
 
     const nextFields = updateFieldValue(e, selector, fields)
 
-    this.setState(nextFields)
+    this.setState({ fields: nextFields })
   }
 
   onSubmit = () => {
-    const fields = this.state
+    const { fields } = this.state
 
     const validationResult = validate(fields, validationSchema)
 
-    if (!validationResult.error) {
-      return toastr.success(
-        "Notifications settings",
-        "Data updated successfully"
+    if (validationResult.error) {
+      toastr.error(
+        "Validation error",
+        validationResult.error.details[0].context.label
       )
-    }
+    } else {
+      const {
+        organization: { id },
+        changeOrganization
+      } = this.props
 
-    toastr.error(
-      "Validation error",
-      validationResult.error.details[0].context.label
-    )
+      changeOrganization({ id, organization: fields }).then(action => {
+        if (action.type === types.CHANGE_ORGANIZATION_SUCCESS) {
+          toastr.success(
+            "Notifications settings",
+            "Data is updated successfully"
+          )
+        } else {
+          toastr.error("Notifications settings", "Error while updating")
+        }
+      })
+    }
   }
 
   render() {
-    const { email } = this.state
+    const { notification_email } = this.state.fields
 
     return (
       <Form>
-        <PanelEmailAddress email={email} onChange={this.onChange} />
+        <PanelEmailAddress
+          email={notification_email}
+          onChange={this.onChange}
+        />
         <Button onClick={this.onSubmit}>Update</Button>
       </Form>
     )

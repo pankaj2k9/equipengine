@@ -31,11 +31,8 @@ export const fetchUsers = ({
     params.group_id = group_id
   }
 
-  if (!R.isNil(role)) {
+  if (!R.isNil(role) && !R.isEmpty(role)) {
     params.roles = role
-    if (R.isEmpty(role)) {
-      params.roles = null
-    }
   }
 
   if (term) {

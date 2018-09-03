@@ -7,6 +7,7 @@ import * as AdminGroupCourses from "scenes/AdminGroupCourses"
 import * as AdminGroupUsers from "scenes/AdminGroupUsers"
 import * as AdminUsers from "scenes/AdminUsers"
 import * as AdminVideos from "scenes/AdminVideos"
+import * as AdminOrganizationSettings from "scenes/AdminOrganisationSettings"
 import * as Course from "scenes/Course"
 import * as Courses from "scenes/Courses"
 import * as GroupUsers from "scenes/GroupUsers"
@@ -208,6 +209,11 @@ registerFeature({
   name: "groupFiles",
   enabled: true,
   ...GroupFiles
+})
+registerFeature({
+  name: "adminOrganizationSettings",
+  enabled: true,
+  ...AdminOrganizationSettings
 })
 registerFeature({
   name: "teacherStudents",

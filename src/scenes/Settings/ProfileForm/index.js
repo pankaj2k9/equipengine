@@ -7,7 +7,6 @@ import UserContacts from "base_components/UserContacts"
 import UserDetails from "base_components/UserDetails"
 import moment from "moment"
 
-import Loading from "base_components/Loading"
 import features from "features"
 import NotificationFrequency from "../NotificationFrequency"
 import { updateFieldValue, getDropdownValue } from "utils/formFunctions"
@@ -70,7 +69,6 @@ class Profile extends Component {
   handleStateChange = ({ target: { value } }) => {}
 
   render() {
-    const { isFetchingAddress } = this.props
     const {
       address,
       birthDate,
@@ -111,26 +109,18 @@ class Profile extends Component {
           changeBirthDate={this.handleBirthDateChange}
         />
 
-        {isFetchingAddress ? (
-          <Loading />
-        ) : (
-          <features.address.pages.AddressInfo
-            countries={this.props.countries}
-            states={/* vaibleStates */ this.props.states}
-            address={address}
-            country={country}
-            state={state}
-            zipCode={zipCode}
-            changeAddress={this.handleAddressChange}
-            changeCountry={value => {
-              this.onChange(getDropdownValue(value), "country")
-            }}
-            changeState={value =>
-              this.onChange(getDropdownValue(value), "state")
-            }
-            changeZipCode={e => this.onChange(e.target.value, "zipCode")}
-          />
-        )}
+        <features.address.pages.AddressInfo
+          address={address}
+          country={country}
+          state={state}
+          zipCode={zipCode}
+          changeAddress={this.handleAddressChange}
+          changeCountry={value => {
+            this.onChange(getDropdownValue(value), "country")
+          }}
+          changeState={value => this.onChange(getDropdownValue(value), "state")}
+          changeZipCode={e => this.onChange(e.target.value, "zipCode")}
+        />
 
         <Divider />
 

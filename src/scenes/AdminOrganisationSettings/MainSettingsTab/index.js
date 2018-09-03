@@ -1,48 +1,27 @@
 import React, { Component, createRef } from "react"
-import joi from "joi"
 import { toastr } from "react-redux-toastr"
-
-import {
-  FormGroup,
-  Label,
-  Text,
-  TextArea,
-  Switch
-} from "base_components/RootForm"
-import ButtonUpload from "base_components/ButtonUpload"
-import ContainerFlex from "base_components/ContainerFlex"
-import FileChooser from "base_components/FileChooser"
-import Dropdown from "base_components/RootDropdown"
-
-import {
-  HintTextLogo,
-  ContainerDisplayLogo,
-  DisplayTextLogo,
-  FormGroupDropdown,
-  FormGroupZipCode,
-  PanelSettings,
-  FormSettings,
-  ButtonSettings
-} from "./elements"
-
-import {
-  updateFieldValue,
-  validate,
-  openFileChooser,
-  getDropdownValue
-} from "utils/formFunctions"
 import { compose, pure } from "recompose"
+import joi from "joi"
+
+import { types } from "../ducks"
+
+import ContactDetailsPanel from "./ContactDetailsPanel"
+import GeneralInformationPanel from "./GeneralInformationPanel"
+
+import { ButtonSettings, FormSettings } from "./elements"
+
+import { updateFieldValue, validate } from "utils/formFunctions"
 
 const validationSchema = joi.object().keys({
-  organizationName: joi
+  title: joi
     .string()
     .required()
     .label("organization name is required"),
-  displayName: joi
+  display_name: joi
     .string()
     .required()
     .label("display name is required"),
-  contactAddress: joi
+  address: joi
     .string()
     .required()
     .label("contact address is required"),
@@ -56,238 +35,94 @@ const validationSchema = joi.object().keys({
     .label("email is required")
 })
 
-const PanelGeneralInformation = ({
-  organizationName,
-  displayName,
-  organizationDescription,
-  logo,
-  logoRef,
-  displayLogoInsteadOfDisplay,
-  onChange,
-  updateRef
-}) => (
-  <PanelSettings title="General Information" paddingBottom="1.6em">
-    <FormGroup>
-      <Label>Organisation Name &#42;</Label>
-      <Text
-        onChange={e => onChange(e.target.value, "organizationName")}
-        value={organizationName}
-        name="crossView"
-        placeholder="CrossView"
-      />
-    </FormGroup>
-    <FormGroup>
-      <Label>Display Name &#42;</Label>
-      <Text
-        onChange={e => onChange(e.target.value, "displayName")}
-        value={displayName}
-        name="name"
-      />
-    </FormGroup>
-    <FormGroup>
-      <Label>Description of Organisation</Label>
-      <TextArea
-        onChange={e => onChange(e.target.value, "organizationDescription")}
-        value={organizationDescription}
-        name="description"
-        row="4"
-        placeholder="Communication and culture is focused on those who want to serve in their local community."
-      />
-    </FormGroup>
-    <FormGroup>
-      <Label>Logo</Label>
-      <ContainerFlex alignItems="center">
-        <ButtonUpload
-          onClick={e => openFileChooser(e, logoRef.current)}
-          isFileAttached={logo}
-        />
-        <FileChooser
-          onChooseFiles={files => onChange(files[0], "logo")}
-          ref={logoRef}
-        />
-        <HintTextLogo>Recommended size: 160 x 55 px</HintTextLogo>
-      </ContainerFlex>
-      <ContainerDisplayLogo alignItems="center">
-        <DisplayTextLogo>Display logo instead of display name</DisplayTextLogo>
-        <Switch
-          value={displayLogoInsteadOfDisplay}
-          onChange={e =>
-            onChange(e.target.checked, "displayLogoInsteadOfDisplay")
-          }
-        />
-      </ContainerDisplayLogo>
-    </FormGroup>
-  </PanelSettings>
-)
-
-const PanelContactDetails = ({
-  contactAddress,
-  contactAddressCountry,
-  contactAddressState,
-  contactAddressZipCode,
-  website,
-  email,
-  telephone,
-  onChange
-}) => (
-  <PanelSettings title="Contact Details" borderBottom="0" paddingBottom="0">
-    <FormGroup>
-      <Label>Address &#42;</Label>
-      <Text
-        value={contactAddress}
-        onChange={e => onChange(e.target.value, "contactAddress")}
-        name="address"
-        placeholder="Connect: Level 1"
-      />
-    </FormGroup>
-    <ContainerFlex>
-      <FormGroupDropdown>
-        <Dropdown
-          placeholder="Country"
-          name="country"
-          onChange={selectedOption =>
-            onChange(getDropdownValue(selectedOption), "contactAddressCountry")
-          }
-          options={[
-            { label: "Australlia", value: "au" },
-            { label: "Philippines", value: "ph" }
-          ]}
-        />
-      </FormGroupDropdown>
-      <FormGroupDropdown>
-        <Dropdown
-          placeholder="State"
-          name="state"
-          onChange={selectedOption =>
-            onChange(getDropdownValue(selectedOption), "contactAddressState")
-          }
-          options={[
-            { label: "Australlia", value: "au" },
-            { label: "Philippines", value: "ph" }
-          ]}
-        />
-      </FormGroupDropdown>
-      <FormGroupZipCode>
-        <Text
-          value={contactAddressZipCode}
-          onChange={e => onChange(e.target.value, "contactAddressZipCode")}
-          name="zipCode"
-          placeholder="Zip code"
-        />
-      </FormGroupZipCode>
-    </ContainerFlex>
-    <FormGroup>
-      <Label>Website &#42;</Label>
-      <Text
-        value={website}
-        onChange={e => onChange(e.target.value, "website")}
-        name="website"
-        placeholder="crossview.com.au"
-      />
-    </FormGroup>
-    <FormGroup>
-      <Label>Email &#42;</Label>
-      <Text
-        value={email}
-        onChange={e => onChange(e.target.value, "email")}
-        name="email"
-        placeholder="crossview.com.au"
-      />
-    </FormGroup>
-    <FormGroup>
-      <Label>Telephone</Label>
-      <Text
-        value={telephone}
-        onChange={e => onChange(e.target.value, "telephone")}
-        name="telePhone"
-        placeholder="000000"
-      />
-    </FormGroup>
-  </PanelSettings>
-)
-
 class ItemTabMainSettings extends Component {
   state = {
-    organizationName: "",
-    displayName: "",
-    organizationDescription: "",
-    logo: null,
-    logoRef: null,
-    displayLogoInsteadOfDisplay: false,
-    contactAddress: "",
-    contactAddressCountry: "",
-    contactAddressState: "",
-    contactAddressZipCode: "",
-    website: "",
-    email: "",
-    telephone: ""
+    fields: {
+      title: this.props.organization.title,
+      display_name: this.props.organization.display_settings.display_name,
+      description: this.props.organization.description,
+      logo: this.props.organization.logo.url,
+      address: this.props.organization.address,
+      country_id: this.props.organization.country_id,
+      state_id: this.props.organization.state_id,
+      zip_code: this.props.organization.zip_code,
+      website: this.props.organization.website,
+      email: this.props.organization.email,
+      phone: this.props.organization.phone
+    }
   }
 
   logoRef = createRef()
 
-  onChange = (e, selector) => {
-    const fields = this.state
+  onChange = (event, selector) => {
+    const { fields } = this.state
 
-    const nextFields = updateFieldValue(e, selector, fields)
+    const nextFields = updateFieldValue(event, selector, fields)
 
-    this.setState(nextFields)
-  }
-
-  updateRef = (el, selector) => {
-    this[selector] = el
+    this.setState({ fields: nextFields })
   }
 
   onSubmit = () => {
-    const fields = this.state
+    const { fields } = this.state
 
     const validationResult = validate(fields, validationSchema)
 
-    if (!validationResult.error) {
-      return toastr.success("Main settings", "Data updated successfully")
-    }
+    if (validationResult.error) {
+      toastr.error(
+        "Validation error",
+        validationResult.error.details[0].context.label
+      )
+    } else {
+      const {
+        organization: { id },
+        changeOrganization
+      } = this.props
 
-    toastr.error(
-      "Validation error",
-      validationResult.error.details[0].context.label
-    )
+      changeOrganization({ id, organization: fields }).then(action => {
+        if (action.type === types.CHANGE_ORGANIZATION_SUCCESS) {
+          toastr.success("Main settings", "Data is updated successfully")
+        } else {
+          toastr.error("Main settings", "Error while updating")
+        }
+      })
+    }
   }
 
   render() {
     const {
-      organizationName,
-      displayName,
-      organizationDescription,
+      title,
+      display_name,
+      description,
       logo,
       displayLogoInsteadOfDisplay,
-      contactAddress,
-      contactAddressCountry,
-      contactAddressState,
-      contactAddressZipCode,
+      address,
+      country_id,
+      state_id,
+      zip_code,
       website,
       email,
-      telephone
-    } = this.state
+      phone
+    } = this.state.fields
 
     return (
       <FormSettings>
-        <PanelGeneralInformation
-          organizationName={organizationName}
-          displayName={displayName}
-          organizationDescription={organizationDescription}
+        <GeneralInformationPanel
+          title={title}
+          displayName={display_name}
+          description={description}
           logo={logo}
           logoRef={this.logoRef}
           displayLogoInsteadOfDisplay={displayLogoInsteadOfDisplay}
           onChange={this.onChange}
-          updateRef={this.updateRef}
         />
-        <PanelContactDetails
-          contactAddress={contactAddress}
-          contactAddressCountry={contactAddressCountry}
-          contactAddressState={contactAddressState}
-          contactAddressZipCode={contactAddressZipCode}
+        <ContactDetailsPanel
+          address={address}
+          countryId={country_id}
+          stateId={state_id}
+          zipCode={zip_code}
           website={website}
           email={email}
-          telephone={telephone}
+          phone={phone}
           onChange={this.onChange}
         />
         <ButtonSettings onClick={this.onSubmit}>Update</ButtonSettings>

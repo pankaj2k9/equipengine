@@ -1,17 +1,12 @@
-import React from "react"
+import React, { Component } from "react"
 import PropTypes from "prop-types"
-import {
-  compose,
-  withStateHandlers,
-  withHandlers,
-  pure,
-  mapProps
-} from "recompose"
+import { compose, pure } from "recompose"
+import InfiniteScroll from "react-infinite-scroller"
 
 import BaseModal from "base_components/Modal"
 import Button from "base_components/RootButton"
 import IconAdd from "react-icons/lib/md/add-circle-outline"
-import Loading from "base_components/Loading"
+// import Loading from "base_components/Loading"
 import { Text } from "base_components/RootForm"
 import {
   Header as HeaderElement,
@@ -54,7 +49,9 @@ const Body = ({
   formatListItem,
   searchBarPlaceholder,
   searchTerm,
-  onSearch
+  onSearch,
+  loadMore,
+  pagination
 }) => (
   <div>
     <Text
@@ -64,11 +61,19 @@ const Body = ({
     />
     {hint && <Hint>{hint}</Hint>}
     {listTitle && <ListTitle>{listTitle}</ListTitle>}
-    {loading ? (
-      <Loading />
-    ) : (
-      <List>
-        {!items.length && "No items"}
+    <List>
+      {!items.length && "No items"}
+      <InfiniteScroll
+        pageStart={1}
+        loadMore={loadMore}
+        hasMore={
+          !loading &&
+          pagination &&
+          pagination.total_pages > pagination.current_page
+        }
+        useWindow={false}
+        threshold={100}
+      >
         {items.map(item => (
           <ListItem
             select={select}
@@ -77,50 +82,104 @@ const Body = ({
             formatListItem={formatListItem}
           />
         ))}
-      </List>
-    )}
+      </InfiniteScroll>
+    </List>
   </div>
 )
 
 const Footer = ({ onSubmit }) => <Button onClick={onSubmit}>Add</Button>
 
-const SelectItemModal = ({
-  items,
-  title,
-  hint,
-  listTitle,
-  formatListItem,
-  isOpen,
-  select,
-  deselect,
-  searchBarPlaceholder,
-  searchTerm,
-  loading,
-  onClose,
-  onSubmit,
-  onSearch
-}) => (
-  <BaseModal
-    isOpen={isOpen}
-    onClose={onClose}
-    header={<Header title={title} />}
-    body={
-      <Body
-        select={select}
-        deselect={deselect}
-        items={items}
-        hint={hint}
-        listTitle={listTitle}
-        formatListItem={formatListItem}
-        loading={loading}
-        searchBarPlaceholder={searchBarPlaceholder}
-        searchTerm={searchTerm}
-        onSearch={onSearch}
+class SelectItemModal extends Component {
+  state = {
+    selectedIds: []
+  }
+
+  select = selectedId => {
+    const { selectedIds } = this.state
+
+    this.setState({
+      selectedIds: selectedIds.concat(selectedId)
+    })
+  }
+
+  unselect = unselectedId => {
+    const { selectedIds } = this.state
+
+    this.setState({
+      selectedIds: selectedIds.filter(id => id !== unselectedId)
+    })
+  }
+
+  clear = () =>
+    this.setState({
+      selectedIds: []
+    })
+
+  onSearch = ({ target: { value } }) => {
+    const { onSearch } = this.props
+
+    onSearch(value)
+  }
+
+  onClose = () => {
+    const { onClose } = this.props
+
+    this.clear()
+    onClose()
+  }
+
+  onSubmit = event => {
+    event.preventDefault()
+
+    const { onSubmit } = this.props
+    const { selectedIds } = this.state
+
+    onSubmit(selectedIds)
+
+    this.onClose()
+  }
+
+  render() {
+    const {
+      items,
+      title,
+      hint,
+      listTitle,
+      formatListItem,
+      isOpen,
+      searchBarPlaceholder,
+      searchTerm,
+      loading,
+      loadMore,
+      pagination
+    } = this.props
+
+    return (
+      <BaseModal
+        isOpen={isOpen}
+        onClose={this.onClose}
+        header={<Header title={title} />}
+        body={
+          <Body
+            select={this.select}
+            unselect={this.unselect}
+            items={items}
+            hint={hint}
+            listTitle={listTitle}
+            formatListItem={formatListItem}
+            loading={loading}
+            searchBarPlaceholder={searchBarPlaceholder}
+            searchTerm={searchTerm}
+            onSearch={this.onSearch}
+            loadMore={loadMore}
+            pagination={pagination}
+          />
+        }
+        footer={<Footer onSubmit={this.onSubmit} />}
       />
-    }
-    footer={<Footer onSubmit={onSubmit} />}
-  />
-)
+    )
+  }
+}
 
 SelectItemModal.propTypes = {
   onClose: PropTypes.func.isRequired,
@@ -135,49 +194,4 @@ SelectItemModal.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
 
-// TODO rewrite the logic from recompose to class cause it will be simpler..
-export default compose(
-  withStateHandlers(
-    {
-      selectedIds: []
-    },
-    {
-      select: ({ selectedIds }) => idSelect => ({
-        selectedIds: selectedIds.concat(idSelect)
-      }),
-      deselect: ({ selectedIds }) => idDeselect => ({
-        selectedIds: selectedIds.filter(id => id !== idDeselect)
-      }),
-      // Modal does not unmount, so we clear state when it closing
-      clear: () => () => ({ selectedIds: [] })
-    }
-  ),
-  withHandlers({
-    onSearch: ({ onSearch }) => ({ target: { value } }) => onSearch(value),
-    // We must keep this method in separated "withHandlers"
-    onClose: ({ onClose, clear }) => () => {
-      clear()
-      onClose()
-    }
-  }),
-  mapProps(({ selectedIds, items, ...rest }) => ({
-    items: Array.isArray(items)
-      ? items.map(item => ({
-          ...item,
-          isSelected: !!selectedIds.find(id => id === item.id)
-        }))
-      : [],
-    selectedIds,
-    ...rest
-  })),
-  withHandlers({
-    onSubmit: ({ onSubmit, selectedIds, items, onClose }) => e => {
-      e.preventDefault()
-
-      onSubmit(selectedIds, items.filter(item => selectedIds.includes(item.id)))
-
-      onClose()
-    }
-  }),
-  pure
-)(SelectItemModal)
+export default compose(pure)(SelectItemModal)
