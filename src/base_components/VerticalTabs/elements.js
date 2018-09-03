@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const ActionBar = styled.div`
-  padding: 1em 1.571em;
+  padding: 1em 10px;
   border-bottom: 1px solid ${props => props.theme.lightgray};
 `
 

@@ -8,7 +8,14 @@ import IconAdd from "react-icons/lib/md/add"
 
 import modal from "hoc/modal"
 
-const AccountContainer = ({ onOpen, onClose, isOpen }) => (
+const AccountContainer = ({
+  onOpen,
+  onClose,
+  isOpen,
+  groups,
+  selectedGroupIds = [],
+  onChange
+}) => (
   <Root
     title="Groups"
     AdditionalTitle={() => (
@@ -17,11 +24,26 @@ const AccountContainer = ({ onOpen, onClose, isOpen }) => (
       </ButtonIcon>
     )}
   >
-    <List>
-      <div>group1</div>
-      <div>group2</div>
-    </List>
-    <Modal isOpen={isOpen} handleClose={onClose} />
+    {groups && groups.length > 0 && selectedGroupIds.length > 0 ? (
+      selectedGroupIds.map(groupId => {
+        const group = groups.find(group => group.id === groupId)
+        let html = ""
+        if (group) {
+          html = <div>{group.title}</div>
+        }
+        return html
+      })
+    ) : (
+      <div>No groups selected</div>
+    )}
+    <Modal
+      isOpen={isOpen}
+      handleClose={onClose}
+      groups={groups}
+      selectedGroupIds={selectedGroupIds}
+      onChange={onChange}
+      onSubmit={onClose}
+    />
   </Root>
 )
 
