@@ -13,8 +13,6 @@ const AdminPanelLinks = () => (
       <Link text="Course Creator" url="/secure/admin/course-creator/courses" />
       <Link isStrict text="User Manager" url="/secure/admin/users" />
       <Link text="Organisations Settings" url="/secure/admin/organisations" />
-      <Link text="Add-Ons" url="/secure/admin/add-ons" />
-      <Link text="Videos" url="/secure/admin/videos" />
     </Menu>
   </div>
 )
