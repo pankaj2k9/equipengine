@@ -23,7 +23,6 @@ const AdminCoursesPage = props => {
   return (
     <CoursesContainer>
       <BorderedTitle title="Course Creator" />
-      <StyledCoursesActionBar />
 
       <div>
         <Switch>
@@ -32,6 +31,7 @@ const AdminCoursesPage = props => {
             path={`${match.url}`}
             render={props => (
               <ErrorBoundary errMsg="Something went wrong in displaying the course page.">
+                <StyledCoursesActionBar />
                 <StyledCoursesTable {...props} />
               </ErrorBoundary>
             )}
