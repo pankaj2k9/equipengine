@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react"
 //
 import { FormGroup, Label, Text, TextArea } from "base_components/RootForm"
+import VideoChooser from "base_components/VideoChooser"
 
 class TaskWatchForm extends Component {
   handleDescriptionChange = ({ target: { value } }) => {
@@ -11,6 +12,13 @@ class TaskWatchForm extends Component {
     this.props.onChange({
       ...this.props.task,
       video_link: value
+    })
+  }
+
+  handleVideoChange = file => {
+    this.props.onChange({
+      ...this.props.task,
+      video: file
     })
   }
 
@@ -38,6 +46,10 @@ class TaskWatchForm extends Component {
         </FormGroup>
         <FormGroup>
           <Label>Choose from your library</Label>
+        </FormGroup>
+        <FormGroup>
+          <Label>Or upload new video</Label>
+          <VideoChooser video={task.video} onChoose={this.handleVideoChange} />
         </FormGroup>
       </Fragment>
     )

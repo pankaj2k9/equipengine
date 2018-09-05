@@ -14,16 +14,29 @@ import modal from "hoc/modal"
 import SearchActionBar from "base_components/SearchActionBar"
 import { actions, selectors, types } from "../ducks"
 import UserContent from "../UserContent"
+import { validationSchema } from "../UpdateUserForm"
 import VerticalTabs from "base_components/VerticalTabs"
+import { validate } from "utils/formFunctions"
+import features from "features"
 
 class AdminUsers extends Component {
   componentDidMount() {
-    const { users, userId, fetchUsers, selectUser } = this.props
+    const {
+      users,
+      userId,
+      fetchUsers,
+      selectUser,
+      groups,
+      fetchGroups
+    } = this.props
     if (!users || users.length === 0) {
       fetchUsers({})
     }
     if (userId) {
       selectUser({ userId })
+    }
+    if (!groups || groups.length === 0) {
+      fetchGroups()
     }
   }
 
@@ -45,7 +58,32 @@ class AdminUsers extends Component {
     })
   }
 
-  handleUpdateUser = user => {}
+  handleUpdateUser = (e, user) => {
+    e.preventDefault()
+
+    const validationResult = validate(user, validationSchema)
+
+    if (!validationResult.error) {
+      this.props.updateUser(user.id, user).then(action => {
+        if (action.type === types.UPDATE_USER_SUCCESS) {
+          this.handleTabClick(action.payload.user)
+          toastr.success(
+            "Success",
+            `User "${user.email}" is succesffully updated`
+          )
+        } else {
+          toastr.error("Error", `Failed to update user "${user.email}"`)
+        }
+      })
+
+      return
+    }
+
+    toastr.error(
+      "Validation error",
+      validationResult.error.details[0].context.label
+    )
+  }
 
   handleResetPasswordSend = ({ id, email }) =>
     this.props.sendResetPasswordToken({ id, email }).then(action => {
@@ -59,7 +97,9 @@ class AdminUsers extends Component {
       }
     })
 
-  handleSearchUsers = term => this.props.fetchUsers({ term })
+  handleSearchUsers = ({ term, role }) => {
+    this.props.fetchUsers({ term, role })
+  }
 
   render() {
     const {
@@ -68,6 +108,7 @@ class AdminUsers extends Component {
       selectedUser,
       isFetchingUsers,
       isSavingUser,
+      groups,
       isOpen: isOpenCreateUserModal,
       onOpen: onOpenCreateUserModal,
       onClose: onCloseCreateUserModal
@@ -92,6 +133,7 @@ class AdminUsers extends Component {
             selectedUser.id.toString() === userId && (
               <UserContent
                 user={selectedUser}
+                groups={groups}
                 onSubmit={this.handleUpdateUser}
                 onSendResetPasswordToken={this.handleResetPasswordSend}
               />
@@ -115,7 +157,8 @@ const mapState = () =>
     users: selectors.selectUsers(),
     selectedUser: selectors.selectSelectedUser(),
     isFetchingUsers: selectors.selectIsFetchingUsers(),
-    isSavingUser: selectors.selectIsSavingUser()
+    isSavingUser: selectors.selectIsSavingUser(),
+    groups: features.adminGroups.selectors.selectGroups()
   })
 
 const mapDispatch = dispatch =>
@@ -123,8 +166,10 @@ const mapDispatch = dispatch =>
     {
       createUser,
       fetchUsers,
+      updateUser: features.adminUsers.actions.updateUser,
       selectUser: actions.selectUser,
-      sendResetPasswordToken
+      sendResetPasswordToken,
+      fetchGroups: features.adminGroups.actions.fetchGroups
     },
     dispatch
   )

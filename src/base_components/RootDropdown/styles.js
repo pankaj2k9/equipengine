@@ -9,5 +9,6 @@ import Select from "react-select"
 export default css`
   .Select-control {
     border-color: #dddddd;
+    height: 40px;
   }
 `(Select)

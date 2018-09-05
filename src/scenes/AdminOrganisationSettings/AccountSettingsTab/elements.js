@@ -91,6 +91,9 @@ export const GrayBorderContainer = styled.div`
   border: 1px solid #e0e0e0;
   padding: 14px;
   margin-bottom: 30px;
+
+  max-height: 360px;
+  overflow-y: auto;
 `
 
 export const LanguageLabel = styled.span`

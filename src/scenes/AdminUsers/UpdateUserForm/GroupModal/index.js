@@ -15,19 +15,23 @@ import {
 
 import IconAdd from "react-icons/lib/md/add-circle-outline"
 
-const groups = [
-  {
-    name: "group 1"
-  },
-  {
-    name: "group 2"
-  }
-]
-
-const ListItem = ({ name }) => (
+const ListItem = ({ id, title, selected, onChange }) => (
   <ListItemElement>
-    <Checkbox id={name} />
-    <Label htmlFor={name}>{name}</Label>
+    <Checkbox
+      name={`group-${id}`}
+      id={id}
+      checked={selected}
+      onChange={e =>
+        onChange(
+          {
+            checked: e.target.checked,
+            id: e.target.id
+          },
+          "participatedGroupIds"
+        )
+      }
+    />
+    <Label htmlFor={id}>{title}</Label>
   </ListItemElement>
 )
 
@@ -37,25 +41,52 @@ const Header = () => (
   </HeaderElement>
 )
 
-const Body = () => (
+const Body = ({ groups, selectedGroupIds, onChange }) => (
   <div>
     <List>
-      {groups.map(({ name }) => (
-        <ListItem name={name} />
-      ))}
+      {groups.map(({ id, title }) => {
+        if (selectedGroupIds.includes(id))
+          return (
+            <ListItem
+              id={id}
+              title={title}
+              selected={true}
+              onChange={onChange}
+            />
+          )
+        else return <ListItem id={id} title={title} onChange={onChange} />
+      })}
     </List>
   </div>
 )
 
-const Footer = () => <Button>Add</Button>
+const Footer = ({ isSubmitting, onSubmit }) => (
+  <Button disabled={isSubmitting} onClick={onSubmit}>
+    Add
+  </Button>
+)
 
-const Modal = ({ handleClose, isOpen }) => (
+const Modal = ({
+  handleClose,
+  isOpen,
+  groups,
+  selectedGroupIds,
+  onChange,
+  isSubmitting,
+  onSubmit
+}) => (
   <BaseModal
     isOpen={isOpen}
     onClose={handleClose}
     header={<Header />}
-    body={<Body />}
-    footer={<Footer />}
+    body={
+      <Body
+        groups={groups}
+        selectedGroupIds={selectedGroupIds}
+        onChange={onChange}
+      />
+    }
+    footer={<Footer isSubmitting={isSubmitting} onSubmit={onSubmit} />}
   />
 )
 

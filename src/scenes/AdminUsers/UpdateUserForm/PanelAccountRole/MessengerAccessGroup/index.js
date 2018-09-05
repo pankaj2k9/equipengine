@@ -4,10 +4,14 @@ import { Label } from "base_components/RootForm"
 
 import { Root, SwitchMessenger } from "./elements"
 
-const MessengerAccess = () => (
+const MessengerAccess = ({ messengerAccess, onChange }) => (
   <Root isSpaceBetween>
     <Label>Messenger Access</Label>
-    <SwitchMessenger name="messengerAccess" />
+    <SwitchMessenger
+      name="messengerAccess"
+      value={messengerAccess}
+      onChange={e => onChange(e.target.checked, "messengerAccess")}
+    />
   </Root>
 )
 

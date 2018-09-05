@@ -29,7 +29,7 @@ export default css`
   }
 
   @media screen and (min-width: 768px) {
-    padding: 16px 35px;
+    padding: 1em 2.286em;
     position: ${({ position }) => position};
     top: 59px;
     background: #fff;

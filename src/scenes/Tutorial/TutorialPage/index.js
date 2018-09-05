@@ -121,7 +121,7 @@ class TutorialModalPage extends React.Component {
     return chain(
       video => video,
       tasks.filter(task => Array.isArray(task.videos)).map(task => task.videos)
-    ).filter(video => video.video_link)
+    )
   }
 
   render() {

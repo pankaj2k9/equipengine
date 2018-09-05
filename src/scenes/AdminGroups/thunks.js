@@ -2,7 +2,7 @@ import * as API from "services/API"
 import { ACTIVE_GROUP_STATUS, PAUSE_GROUP_STATUS } from "services/constants"
 import { actions } from "./ducks"
 
-export const fetchGroups = ({ term }) => {
+export const fetchGroups = ({ term } = {}) => {
   return async dispatch => {
     try {
       dispatch(actions.fetchGroupsRequest({ term }))

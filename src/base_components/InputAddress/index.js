@@ -8,6 +8,7 @@ import { FormGroupDropdown, FormGroupZipCode } from "./styles"
 const InputAddress = ({
   countries = [],
   country,
+  states = [],
   state,
   zipCode,
   changeCountry,
@@ -21,15 +22,9 @@ const InputAddress = ({
         name="country"
         value={country}
         onChange={changeCountry}
-        options={
-          [
-            { label: "Australlia", value: "au" },
-            { label: "Philippines", value: "ph" }
-          ]
-          /* countries.map(country => {
-            return { label: country.name, value: country.code }
-          }) */
-        }
+        options={countries.map(country => {
+          return { key: country.id, label: country.name, value: country.id }
+        })}
       />
     </FormGroupDropdown>
     <FormGroupDropdown>
@@ -38,10 +33,9 @@ const InputAddress = ({
         name="state"
         value={state}
         onChange={changeState}
-        options={[
-          { label: "Australlia", value: "au" },
-          { label: "Philippines", value: "ph" }
-        ]}
+        options={states.map(state => {
+          return { key: state.id, label: state.name, value: state.id }
+        })}
       />
     </FormGroupDropdown>
     <FormGroupZipCode>

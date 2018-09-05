@@ -95,10 +95,11 @@ export const createTask = ({ courseId, tutorialId, task }) => {
       })
 
       // Create new video if the link is pasted
-      if (task.video_link) {
+      if (task.video_link || task.video) {
         const action = await features.adminVideos.actions.createVideo({
           videoableId: createdTask.id,
           videoLink: task.video_link,
+          file: task.video,
           title: task.description
         })(dispatch)
 
