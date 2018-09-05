@@ -1,7 +1,13 @@
 import * as API from "services/API"
 import { actions } from "./ducks"
 
-export const createVideo = ({ videoableId, videoLink, title, description }) => {
+export const createVideo = ({
+  videoableId,
+  videoLink,
+  file,
+  title,
+  description
+}) => {
   return async dispatch => {
     dispatch(actions.createVideoRequest())
 
@@ -9,6 +15,7 @@ export const createVideo = ({ videoableId, videoLink, title, description }) => {
       const { video } = await API.createVideo({
         videoable_id: videoableId,
         video_link: videoLink,
+        file,
         title,
         description
       })
