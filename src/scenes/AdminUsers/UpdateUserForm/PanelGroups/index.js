@@ -2,7 +2,7 @@ import React from "react"
 
 import Modal from "../GroupModal"
 
-import { Root, List } from "./elements"
+import { Root } from "./elements"
 import { ButtonIcon } from "base_components/RootButton"
 import IconAdd from "react-icons/lib/md/add"
 
