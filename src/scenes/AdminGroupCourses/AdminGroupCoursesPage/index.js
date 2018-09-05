@@ -41,11 +41,18 @@ class AdminGroupCoursesPage extends Component {
     this.props.history.push(`/secure/admin/courses/${course.id}`)
 
   handleSearchCourse = term => this.props.fetchCourses({ term })
-  handleAddCoursesToGroup = (courseIds, courses) =>
+  handleAddCoursesToGroup = courseIds => {
+    const { nonCurrentGroupCourses } = this.props
+    const mappedCourses = courseIds.map(courseId =>
+      nonCurrentGroupCourses.find(
+        nonCurrentGroupCourse => nonCurrentGroupCourse.id === courseId
+      )
+    )
     this.props.addCoursesToGroup({
-      courses,
+      courses: mappedCourses,
       groupId: this.props.groupId
     })
+  }
 
   render() {
     const {
