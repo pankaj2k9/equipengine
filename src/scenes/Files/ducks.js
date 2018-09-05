@@ -4,35 +4,46 @@ import { createSelector } from "reselect"
 //Types
 export const types = {
   //
-  //Fetch  group files
+  // FETCH_GROUP_FILES
   //
+  FETCH_GROUP_FILES_ERROR: "equipengine/FETCH_GROUP_FILES_ERROR",
   FETCH_GROUP_FILES_REQUEST: "equipengine/FETCH_GROUP_FILES_REQUEST",
   FETCH_GROUP_FILES_SUCCESS: "equipengine/FETCH_GROUP_FILES_SUCCESS",
-  FETCH_GROUP_FILES_ERROR: "equipengine/FETCH_GROUP_FILES_ERROR",
 
   //
-  // fetch more group files
+  // DELETE_GROUP_FILE
   //
-  FETCH_MORE_GROUP_FILES_REQUEST: "equipengine/FETCH_MORE_GROUP_FILES_REQUEST",
-  FETCH_MORE_GROUP_FILES_SUCCESS: "equipengine/FETCH_MORE_GROUP_FILES_SUCCESS",
-  FETCH_MORE_GROUP_FILES_ERROR: "equipengine/FETCH_MORE_GROUP_FILES_ERROR"
+  DELETE_GROUP_FILE_ERROR: "equipengine/DELETE_GROUP_FILE_ERROR",
+  DELETE_GROUP_FILE_REQUEST: "equipengine/DELETE_GROUP_FILE_REQUEST",
+  DELETE_GROUP_FILE_SUCCESS: "equipengine/DELETE_GROUP_FILE_SUCCESS",
+
+  //
+  // UPLOAD_GROUP_FILE
+  //
+  UPLOAD_GROUP_FILE_ERROR: "equipengine/UPLOAD_GROUP_FILE_ERROR",
+  UPLOAD_GROUP_FILE_REQUEST: "equipengine/UPLOAD_GROUP_FILE_REQUEST",
+  UPLOAD_GROUP_FILE_SUCCESS: "equipengine/UPLOAD_GROUP_FILE_SUCCESS"
 }
 
-const initalState = Immutable({
-  isFetchingMoreAttachments: false,
-  isFetchingAttachments: false,
+const initialState = Immutable({
   attachments: [],
-  pagination: null,
-  searchTerm: null
+  isFetchingAttachments: false,
+  isRemovingAttachment: false,
+  isUploadingAttachment: false,
+  pagination: { current_page: 1, current_count: 20 },
+  term: null
 })
 
 // reducer
-export default (state = initalState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
+    //
+    // FETCH_GROUP_FILES
+    //
     case types.FETCH_GROUP_FILES_REQUEST:
       return state.merge({
         isFetchingAttachments: true,
-        searchTerm: action.payload.term
+        term: action.payload.term
       })
     case types.FETCH_GROUP_FILES_SUCCESS:
       return state.merge({
@@ -44,22 +55,42 @@ export default (state = initalState, action) => {
       return state.merge({
         isFetchingAttachments: false
       })
-    case types.FETCH_MORE_GROUP_FILES_REQUEST:
+
+    //
+    // DELETE_GROUP_FILE
+    //
+    case types.DELETE_GROUP_FILE_ERROR:
+      return state.merge({ isRemovingAttachment: false })
+
+    case types.DELETE_GROUP_FILE_REQUEST:
+      return state.merge({ isRemovingAttachment: true })
+
+    case types.DELETE_GROUP_FILE_SUCCESS: {
+      const { attachment } = action.payload
+
+      const attachments = Immutable(state.attachments).asMutable()
+      const index = attachments.findIndex(item => item.id === attachment.id)
+
+      attachments.splice(index, 1)
+
+      return state.merge({ attachments, isRemovingAttachment: false })
+    }
+
+    //
+    // UPLOAD_GROUP_FILE
+    //
+    case types.UPLOAD_GROUP_FILE_ERROR:
+      return state.merge({ isUploadingAttachment: false })
+
+    case types.UPLOAD_GROUP_FILE_REQUEST:
+      return state.merge({ isUploadingAttachment: true })
+
+    case types.UPLOAD_GROUP_FILE_SUCCESS:
       return state.merge({
-        isFetchingMoreAttachments: true
+        isUploadingAttachment: false,
+        attachments: [...state.attachments, action.payload.attachment]
       })
-    case types.FETCH_MORE_GROUP_FILES_SUCCESS:
-      return state.merge({
-        isFetchingMoreAttachments: false,
-        attachments: state.attachments.concat(action.payload.attachments),
-        pagination: action.payload.meta
-      })
-    case types.FETCH_MORE_GROUP_FILES_ERROR:
-      return state.merge({
-        isFetchingMoreAttachments: false,
-        attachments: [],
-        meta: null
-      })
+
     default:
       return state
   }
@@ -67,26 +98,37 @@ export default (state = initalState, action) => {
 
 //Actions
 export const actions = {
-  fetchGroupFilesRequest: ({ term }) => ({
+  //
+  // FETCH_GROUP_FILES
+  //
+  fetchGroupFilesError: () => ({ type: types.FETCH_GROUP_FILES_ERROR }),
+  fetchGroupFilesRequest: ({ pagination, term }) => ({
     type: types.FETCH_GROUP_FILES_REQUEST,
-    payload: { term }
+    payload: { pagination, term }
   }),
-  fetchGroupFilesSuccess: ({ attachments, meta }) => ({
+  fetchGroupFilesSuccess: ({ attachments, pagination }) => ({
     type: types.FETCH_GROUP_FILES_SUCCESS,
-    payload: { attachments, pagination: meta }
+    payload: { attachments, pagination }
   }),
-  fetchGroupFilesError: () => ({
-    type: types.FETCH_GROUP_FILES_ERROR
+
+  //
+  // DELETE_GROUP_FILE
+  //
+  deleteGroupFileError: () => ({ type: types.DELETE_GROUP_FILE_ERROR }),
+  deleteGroupFileRequest: () => ({ type: types.DELETE_GROUP_FILE_REQUEST }),
+  deleteGroupFileSuccess: ({ attachment }) => ({
+    type: types.DELETE_GROUP_FILE_SUCCESS,
+    payload: { attachment }
   }),
-  fetchMoreGroupFilesRequest: () => ({
-    type: types.FETCH_MORE_GROUP_FILES_REQUEST
-  }),
-  fetchMoreGroupFilesSuccess: ({ meta, attachments }) => ({
-    type: types.FETCH_MORE_GROUP_FILES_SUCCESS,
-    payload: { meta, attachments }
-  }),
-  fetchMoreGroupFilesError: () => ({
-    type: types.FETCH_MORE_GROUP_FILES_ERROR
+
+  //
+  // UPLOAD_GROUP_FILE
+  //
+  uploadGroupFileError: () => ({ type: types.UPLOAD_GROUP_FILE_ERROR }),
+  uploadGroupFileRequest: () => ({ type: types.UPLOAD_GROUP_FILE_REQUEST }),
+  uploadGroupFileSuccess: ({ attachment }) => ({
+    type: types.UPLOAD_GROUP_FILE_SUCCESS,
+    payload: { attachment }
   })
 }
 
@@ -94,28 +136,35 @@ export const actions = {
 
 const filesSelector = () => state => state.groupFiles
 
-const selectIsFetchingFiles = () =>
+const selectAttachments = () =>
+  createSelector(filesSelector(), groupFiles => groupFiles.attachments)
+
+const selectIsFetchingAttachments = () =>
   createSelector(
     filesSelector(),
     groupFiles => groupFiles.isFetchingAttachments
   )
-const selectAttachments = () =>
-  createSelector(filesSelector(), groupFiles => groupFiles.attachments)
+
+const selectIsRemovingAttachment = () =>
+  createSelector(filesSelector(), groupFiles => groupFiles.isRemovingAttachment)
+
+const selectIsUploadingAttachment = () =>
+  createSelector(
+    filesSelector(),
+    groupFiles => groupFiles.isUploadingAttachment
+  )
+
 const selectPagination = () =>
   createSelector(filesSelector(), groupFiles => groupFiles.pagination)
 
-const selectIsFetchingMoreFiles = () =>
-  createSelector(
-    filesSelector(),
-    groupFiles => groupFiles.isFetchingMoreAttachments
-  )
-const selectSearchTerm = () =>
-  createSelector(filesSelector(), groupFiles => groupFiles.searchTerm)
+const selectTerm = () =>
+  createSelector(filesSelector(), groupFiles => groupFiles.term)
 
 export const selectors = {
-  selectIsFetchingMoreFiles,
-  selectIsFetchingFiles,
   selectAttachments,
+  selectIsFetchingAttachments,
+  selectIsRemovingAttachment,
+  selectIsUploadingAttachment,
   selectPagination,
-  selectSearchTerm
+  selectTerm
 }
