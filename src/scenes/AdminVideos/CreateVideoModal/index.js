@@ -11,7 +11,6 @@ import Loading from "base_components/Loading"
 import CreateVideoForm, { validationSchema } from "./CreateVideoForm"
 
 const CreateVideoModal = ({
-  isEditVideo,
   isOpen,
   isSubmitting,
   fields,
@@ -44,8 +43,7 @@ CreateVideoModal.propTypes = {
 export default compose(
   form(
     {
-      file: {},
-      fileUrl: "",
+      file: null,
       title: ""
     },
     ["videoRef"]

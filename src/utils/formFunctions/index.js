@@ -1,6 +1,7 @@
 import joi from "joi"
 import R from "ramda"
 
+// TODO delete form util cause it brings more dirty hacks than benefit..
 export const updateFieldValue = (e, selector, fields) => {
   // FIXME: below null||undefined check is a major blocker for dropdown clear states. they are expectedly
   // not getting updated. Providing hack fix as not sure the regression possibilites.
@@ -25,6 +26,8 @@ export const updateFieldValue = (e, selector, fields) => {
     // Moment object
     if (e.isValid && e.isValid()) {
       value = e.format("YYYY-MM-DD")
+    } else if (R.is(File, e)) {
+      value = e
     } else if (R.is(Object, e)) {
       value = processCheckboxData(e, selector, fields)
     } else {
