@@ -13,7 +13,7 @@ export const fetchAttachments = ({
     .get(`api/v1/${attachmentable_type}/${attachmentable_id}/attachments`, {
       params: {
         ...pagination,
-        term
+        term: term || undefined
       }
     })
     .then(response => response.data)
