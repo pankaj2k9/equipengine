@@ -16,6 +16,12 @@ export const types = {
   CREATE_USER_SUCCESS: "equipengine-admin/CREATE_USER_SUCCESS",
   CREATE_USER_ERROR: "equipengine-admin/CREATE_USER_ERROR",
   //
+  // UPDATE_USER
+  //
+  UPDATE_USER_REQUEST: "equipengine/UPDATE_USER_REQUEST",
+  UPDATE_USER_SUCCESS: "equipengine/UPDATE_USER_SUCCESS",
+  UPDATE_USER_ERROR: "equipengine/UPDATE_USER_ERROR",
+  //
   // SELECT_USER
   //
   SELECT_USER: "equipengine-admin/SELECT_USER",
@@ -81,6 +87,26 @@ export default (state = initialState, action) => {
       })
 
     //
+    // UPDATE_USERS
+    //
+    case types.UPDATE_USER_REQUEST:
+      return state.merge({
+        isUpdatingUser: true
+      })
+    case types.UPDATE_USER_SUCCESS:
+      return state.merge({
+        isUpdatingUser: false,
+        users: state.users.update(
+          state.users.findIndex(user => user.id === action.payload.user.id),
+          prevUser => action.payload.user
+        )
+      })
+    case types.UPDATE_USER_ERROR:
+      return state.merge({
+        isUpdatingUser: false
+      })
+
+    //
     // SELECT_USER
     //
     case types.SELECT_USER:
@@ -126,7 +152,7 @@ export const actions = {
     type: types.FETCH_USERS_ERROR
   }),
   //
-  // FETCH_USERS
+  // CREATE_USERS
   //
   createUserRequest: () => ({
     type: types.CREATE_USER_REQUEST
@@ -137,6 +163,19 @@ export const actions = {
   }),
   createUserError: () => ({
     type: types.CREATE_USER_ERROR
+  }),
+  //
+  // UPDATE_USER
+  //
+  updateUserRequest: () => ({
+    type: types.UPDATE_USER_REQUEST
+  }),
+  updateUserSuccess: ({ user }) => ({
+    type: types.UPDATE_USER_SUCCESS,
+    payload: { user }
+  }),
+  updateUserError: () => ({
+    type: types.UPDATE_USER_ERROR
   }),
   //
   // SELECT_USER

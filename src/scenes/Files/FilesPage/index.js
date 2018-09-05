@@ -1,68 +1,27 @@
-import moment from "moment"
-import React, { Component, Fragment } from "react"
+import React from "react"
+
+import Breadcrumbs from "base_components/Breadcrumbs"
+import { MainInnerContainer, MainLeft, MainRight } from "base_components/Main"
+import TableFiles from "base_components/TableFiles"
+import SearchBar from "base_components/RootSearchBar"
+
 import { connect } from "react-redux"
 import { withRouter } from "react-router"
 import { createStructuredSelector } from "reselect"
 import { bindActionCreators } from "redux"
-
-import Breadcrumbs from "base_components/Breadcrumbs"
-import { MainRight } from "base_components/Main"
-import SearchBar from "base_components/RootSearchBar"
-import TableFiles from "base_components/TableFiles"
-import FileChooser from "base_components/FileChooser"
-import features from "features"
-import { TEACHER_ROLE } from "services/constants"
-
-import { Container, Left, UploadButton, UploadButtonSpan } from "./elements"
-import iconUpload from "./iconUpload.svg"
 import { selectors } from "../ducks"
-import { fetchFiles } from "../thunks"
+import { fetchFiles, fetchMoreGroupFiles } from "../thunks"
 
-class Files extends Component {
-  state = {
-    files: [],
-    uploadFile: undefined
-  }
+import InfiniteScroll from "react-infinite-scroller"
 
+import moment from "moment"
+
+import Loading from "base_components/Loading"
+
+class Files extends React.Component {
   componentDidMount() {
     this.props.fetchFiles({
       attachmentable_id: this.props.match.params.groupId
-    })
-  }
-
-  isTeacher = () => {
-    const { role } = this.props
-
-    return role === TEACHER_ROLE
-  }
-
-  handleChooseFilesButtonClick = files => {
-    const reader = new FileReader()
-    const file = files[0]
-
-    this.setState({
-      files: [
-        ...this.state.files,
-        {
-          title: file.name,
-          date: moment().format("DD MMM YY"),
-          id: Math.random()
-        }
-      ]
-    })
-
-    reader.onloadend = () => {
-      this.setState({
-        file: reader.result
-      })
-    }
-
-    reader.readAsDataURL(file)
-  }
-
-  handleRemoveFileClick = rowId => {
-    this.setState({
-      files: this.state.files.filter(file => file.id !== rowId)
     })
   }
 
@@ -73,13 +32,18 @@ class Files extends Component {
     })
   }
 
-  handleUploadButtonClick = () => this.fileChooserDialog.open()
-
+  loadMore = page => {
+    const { fetchMoreGroupFiles, searchTerm } = this.props
+    fetchMoreGroupFiles({
+      attachmentable_id: this.props.match.params.groupId,
+      term: searchTerm,
+      pagination: page
+    })
+  }
   render() {
-    const { attachments } = this.props
-
+    const { isFetchingFiles, isFetchingMoreFiles, pagination } = this.props
     return (
-      <Fragment>
+      <div>
         <Breadcrumbs
           items={[
             {
@@ -89,57 +53,60 @@ class Files extends Component {
             }
           ]}
         />
-
-        <Container>
-          <Left>
-            <TableFiles
-              files={attachments.map(file => ({
-                id: file.id,
-                title: file.title,
-                date: file.updated_at
-              }))}
-              tableLayout="unset"
-              removeFile={this.isTeacher() && this.handleRemoveFileClick}
-            />
-          </Left>
-
-          <MainRight>
-            {this.isTeacher() && (
-              <UploadButton secondary onClick={this.handleUploadButtonClick}>
-                <UploadButtonSpan>Upload File</UploadButtonSpan>
-                <img alt="Upload icon" src={iconUpload} />
-                <FileChooser
-                  accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf"
-                  onChooseFiles={this.handleChooseFilesButtonClick}
-                  ref={input => {
-                    this.fileChooserDialog = input
-                  }}
+        <MainInnerContainer>
+          <MainLeft>
+            {isFetchingFiles ? (
+              <Loading />
+            ) : (
+              <InfiniteScroll
+                pageStart={1}
+                loadMore={this.loadMore}
+                hasMore={
+                  pagination && pagination.total_pages > pagination.current_page
+                }
+                initialLoad={true}
+              >
+                <TableFiles
+                  files={Array.from(
+                    this.props.attachments.map(file => {
+                      return {
+                        id: file.id,
+                        title: file.title,
+                        date: moment(file.updated_at).format("LLL")
+                      }
+                    })
+                  )}
                 />
-              </UploadButton>
+                {isFetchingMoreFiles ? <Loading /> : ""}
+              </InfiniteScroll>
             )}
+          </MainLeft>
+          <MainRight>
             <SearchBar
-              onChange={this.handleSearch}
               placeholder="Search files"
+              onChange={this.handleSearch}
             />
           </MainRight>
-        </Container>
-      </Fragment>
+        </MainInnerContainer>
+      </div>
     )
   }
 }
 
 const mapState = () =>
   createStructuredSelector({
-    role: features.login.selectors.selectCurrentUserRole(),
+    isFetchingMoreFiles: selectors.selectIsFetchingMoreFiles(),
     isFetchingFiles: selectors.selectIsFetchingFiles(),
     attachments: selectors.selectAttachments(),
-    pagination: selectors.selectPagination()
+    pagination: selectors.selectPagination(),
+    searchTerm: selectors.selectSearchTerm()
   })
 
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
-      fetchFiles
+      fetchFiles,
+      fetchMoreGroupFiles
     },
     dispatch
   )

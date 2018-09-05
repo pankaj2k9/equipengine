@@ -4,13 +4,14 @@ import PropTypes from "prop-types"
 import BorderedTitle from "base_components/BorderedTitle"
 import SearchbarAddons from "./components/SearchbarAddons"
 import TabsCoursePackages from "./components/TabsCoursePackages"
+import CoursesContainer from "scenes/AdminCoursesContainer"
 
 const Addons = () => (
-  <div>
+  <CoursesContainer>
     <BorderedTitle title="Add-ons" />
     <SearchbarAddons />
     <TabsCoursePackages />
-  </div>
+  </CoursesContainer>
 )
 
 Addons.propTypes = {

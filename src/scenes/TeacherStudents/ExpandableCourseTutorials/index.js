@@ -1,8 +1,8 @@
-import React from "react"
+import React, { Component } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import { Panel } from "react-bootstrap"
-// sub components.
+//
 import TutorialListItem from "../TutorialListItem"
 
 // this is for list
@@ -11,7 +11,7 @@ const List = styled.ul`
 `
 
 // overriding the styles for the root panel component.
-const ContainerCollapsiblePanel = styled(Panel)`
+const Root = styled(Panel)`
   .panel-body {
     padding-bottom: 0.8em;
     border-bottom: 1px solid #dadada;
@@ -24,19 +24,24 @@ const ContainerCollapsiblePanel = styled(Panel)`
   }
 `
 
-const CollapsiblePanelItemCourse = ({ isOpenPanel, tutorials }) => (
-  <ContainerCollapsiblePanel collapsible expanded={isOpenPanel}>
-    <List>
-      {tutorials.map(tutorial => (
-        <TutorialListItem key={tutorial.id} tutorial={tutorial} />
-      ))}
-      <TutorialListItem isReport />
-    </List>
-  </ContainerCollapsiblePanel>
-)
+class ExpandableCourseTutorials extends Component {
+  render() {
+    const { isOpenPanel, tutorials } = this.props
+    return (
+      <Root collapsible expanded={isOpenPanel}>
+        <List>
+          {tutorials.map(tutorial => (
+            <TutorialListItem key={tutorial.id} tutorial={tutorial} />
+          ))}
+          <TutorialListItem isReport />
+        </List>
+      </Root>
+    )
+  }
+}
 
-CollapsiblePanelItemCourse.propTypes = {
+ExpandableCourseTutorials.propTypes = {
   isOpenPanel: PropTypes.bool.isRequired
 }
 
-export default CollapsiblePanelItemCourse
+export default ExpandableCourseTutorials

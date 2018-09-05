@@ -66,10 +66,14 @@ class VideosPlayer extends React.Component {
           videos={videos}
           onChange={this.handleChangeVideo}
         />
-        <Video
-          url={currentVideo && currentVideo.video_link}
-          onProgress={this.handleVideoProgressChange}
-        />
+        {currentVideo && currentVideo.sproutvideo_id ? (
+          <div dangerouslySetInnerHTML={{ __html: currentVideo.embed_code }} />
+        ) : (
+          <Video
+            url={currentVideo && currentVideo.video_link}
+            onProgress={this.handleVideoProgressChange}
+          />
+        )}
         <VideoRunningTime
           // transform the current time of the video in hourly format.
           currentTime={moment()

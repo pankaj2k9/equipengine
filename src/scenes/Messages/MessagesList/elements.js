@@ -3,11 +3,8 @@ import styled from "styled-components"
 import MessageForm from "base_components/MessageForm"
 
 export const Root = styled.div`
-  max-height: 93vh;
-
   @media screen and (min-width: 768px) {
     border-left: 1px solid #dadada;
-    min-height: 90vh;
     position: relative;
     min-width: 400px;
     width: 65%;
@@ -47,7 +44,7 @@ export const List = styled.ul`
 `
 
 export const Form = styled(MessageForm)`
-  padding: 1.6em 1.3em;
+  padding: 2em 1.3em;
   width: 100%;
   background: #ffffff;
   border-top: 1px solid #dadada;

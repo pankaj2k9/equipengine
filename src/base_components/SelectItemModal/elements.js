@@ -24,6 +24,9 @@ export const List = styled.div`
   border: 1px solid #dddddd;
   padding: 15px;
   margin-top: 20px;
+
+  max-height: 350px;
+  overflow-y: auto;
 `
 
 export const ListTitle = styled.div`

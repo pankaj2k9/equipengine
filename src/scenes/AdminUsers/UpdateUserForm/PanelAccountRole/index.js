@@ -9,6 +9,7 @@ import { Root } from "./elements"
 const PanelAccountRole = ({
   role,
   hasFileControlPrivelegies,
+  messengerAccess,
   isSuspended,
   onChange
 }) => (
@@ -18,7 +19,11 @@ const PanelAccountRole = ({
       hasFileControlPrivelegies={hasFileControlPrivelegies}
       onChange={onChange}
     />
-    <MessengerAccessGroup isSuspended={isSuspended} onChange={onChange} />
+    <MessengerAccessGroup
+      // isSuspended={isSuspended}
+      messengerAccess={messengerAccess}
+      onChange={onChange}
+    />
   </Root>
 )
 

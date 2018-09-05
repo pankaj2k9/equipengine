@@ -124,7 +124,7 @@ export default compose(
   withRouter,
   withHandlers({
     handleCourseClick: ({ history }) => course =>
-      history.push(`/secure/admin/courses/${course.id}`)
+      history.push(`/secure/admin/course-creator/courses/${course.id}`)
   }),
   pure
 )(CoursesTable)

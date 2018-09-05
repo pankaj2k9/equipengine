@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Button from "base_components/RootButton"
 import Form, { Text } from "base_components/RootForm"
+import Dropdown from "base_components/RootDropdown"
 
 export const Root = styled.div`
   display: flex;
@@ -19,6 +20,11 @@ export const StyledButton = styled(Button)`
     width: 100%;
     margin-bottom: 10px;
   }
+  @media screen and (min-width: 768px) {
+    :not(:last-child) {
+      margin-right: 8px;
+    }
+  }
 `
 
 export const StyledText = styled(Text)`
@@ -30,8 +36,16 @@ export const StyledText = styled(Text)`
 
 export const StyledForm = styled(Form)`
   @media screen and (min-width: 768px) {
-    width: 192px;
+    width: 86px;
     flex: 1;
     margin: 0 0.714em;
+  }
+`
+
+export const StyledDropdown = styled(Dropdown)`
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 40px;
   }
 `

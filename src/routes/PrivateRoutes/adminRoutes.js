@@ -34,22 +34,12 @@ const adminRoutes = [
     )
   },
   {
-    path: "/secure/admin/courses",
+    path: "/secure/admin/course-creator/courses",
     strict: true,
-    exact: true,
+    exact: false,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the admin course manager page.">
         <features.adminCourses.pages.Courses {...props} />
-      </ErrorBoundary>
-    )
-  },
-  {
-    path: "/secure/admin/courses/:courseId",
-    strict: true,
-    exact: true,
-    AsyncComponent: props => (
-      <ErrorBoundary errMsg="Something went wrong in displaying the admin course page.">
-        <features.adminCourse.pages.Course {...props} />
       </ErrorBoundary>
     )
   },
@@ -59,14 +49,16 @@ const adminRoutes = [
     exact: false,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the admin organization settings page.">
-        <AsyncAdminOrganisationSettings {...props} />
+        <features.adminOrganizationSettings.pages.AdminOrganizationSettings
+          {...props}
+        />
       </ErrorBoundary>
     )
   },
   {
-    path: "/secure/admin/add-ons",
+    path: "/secure/admin/course-creator/add-ons",
     strict: true,
-    exact: false,
+    exact: true,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the admin add-ons page.">
         <AsyncAddons {...props} />
@@ -74,7 +66,7 @@ const adminRoutes = [
     )
   },
   {
-    path: "/secure/admin/videos",
+    path: "/secure/admin/course-creator/videos",
     strict: true,
     exact: false,
     AsyncComponent: props => (
