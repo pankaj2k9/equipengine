@@ -4,10 +4,6 @@ import ErrorBoundary from "base_components/ErrorBoundary"
 import features from "features"
 import Loadable from "base_components/Loadable"
 
-const AsyncAdminOrganisationSettings = Loadable({
-  loader: () => import("scenes/AdminOrganisationSettings")
-})
-
 const AsyncAddons = Loadable({
   loader: () => import("scenes/AdminAddons")
 })
