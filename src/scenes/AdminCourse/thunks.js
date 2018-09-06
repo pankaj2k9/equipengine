@@ -94,13 +94,13 @@ export const createTask = ({ courseId, tutorialId, task }) => {
         description: task.description
       })
 
-      // Create new video if the link is pasted
+      // Create new video if the link is pasted or video is uploaded
       if (task.video_link || task.video) {
         const action = await features.adminVideos.actions.createVideo({
           videoableId: createdTask.id,
           videoLink: task.video_link,
           file: task.video,
-          title: task.description
+          title: task.video_title
         })(dispatch)
 
         if (action.type === features.adminVideos.types.CREATE_VIDEO_ERROR) {
@@ -116,6 +116,73 @@ export const createTask = ({ courseId, tutorialId, task }) => {
       )
     } catch (error) {
       return dispatch(actions.createTaskError())
+    }
+  }
+}
+
+export const updateTask = ({ courseId, tutorialId, task }) => {
+  return async dispatch => {
+    dispatch(actions.updateTaskRequest())
+
+    try {
+      const { task: updatedTask } = await API.updateAdminTask({
+        course_id: courseId,
+        tutorial_id: tutorialId,
+        task_id: task.id,
+        type: task.action_type,
+        description: task.description
+      })
+
+      // TODO move createTaskVideo as a separate async function
+      // Create new video if the link is pasted or new video is uploaded
+      if (task.video_link || task.video) {
+        const action = await features.adminVideos.actions.createVideo({
+          videoableId: updatedTask.id,
+          videoLink: task.video_link,
+          file: task.video,
+          title: task.video_title
+        })(dispatch)
+
+        if (action.type === features.adminVideos.types.CREATE_VIDEO_ERROR) {
+          throw new Error(action.type)
+        }
+
+        if (Array.isArray(updatedTask.videos)) {
+          updatedTask.videos.push(action.payload.video)
+        } else {
+          updatedTask.videos = [action.payload.video]
+        }
+      }
+
+      return dispatch(
+        actions.updateTaskSuccess({
+          task: updatedTask
+        })
+      )
+    } catch (error) {
+      return dispatch(actions.updateTaskError())
+    }
+  }
+}
+
+export const deleteTask = ({ courseId, tutorialId, task }) => {
+  return async dispatch => {
+    dispatch(actions.deleteTaskRequest())
+
+    try {
+      await API.deleteAdminTask({
+        course_id: courseId,
+        tutorial_id: tutorialId,
+        task_id: task.id
+      })
+
+      return dispatch(
+        actions.deleteTaskSuccess({
+          task
+        })
+      )
+    } catch (error) {
+      return dispatch(actions.deleteTaskError())
     }
   }
 }

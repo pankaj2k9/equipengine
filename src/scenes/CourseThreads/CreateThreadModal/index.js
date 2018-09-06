@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { compose, pure } from "recompose"
 
-import CreateEntityModal from "base_components/CreateEntityModal"
+import EntityModal from "base_components/EntityModal"
 import Loading from "base_components/Loading"
 import form from "hoc/form"
 import withFormValidation from "hoc/withFormValidation"
@@ -17,7 +17,7 @@ const CreateThreadModal = ({
   onClose,
   handleSubmit
 }) => (
-  <CreateEntityModal
+  <EntityModal
     title="Create new thread"
     isOpen={isOpen}
     onClose={onClose}
@@ -29,7 +29,7 @@ const CreateThreadModal = ({
     ) : (
       <ThreadForm fields={fields} onChange={onChange} />
     )}
-  </CreateEntityModal>
+  </EntityModal>
 )
 
 CreateThreadModal.propTypes = {

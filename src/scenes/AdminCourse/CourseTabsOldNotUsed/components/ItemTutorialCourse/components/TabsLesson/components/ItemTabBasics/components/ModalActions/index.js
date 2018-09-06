@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react"
 import { identical } from "ramda"
 // components
-import CreateEntityModal from "base_components/CreateEntityModal"
+import EntityModal from "base_components/EntityModal"
 import Form, {
   FormGroup,
   Label,
@@ -32,7 +32,7 @@ class ModalActions extends Component {
 
     return (
       <Form>
-        <CreateEntityModal
+        <EntityModal
           className={className}
           title="New Action"
           isOpen={isOpen}
@@ -43,7 +43,7 @@ class ModalActions extends Component {
           }}
         >
           <ModalBody />
-        </CreateEntityModal>
+        </EntityModal>
       </Form>
     )
   }

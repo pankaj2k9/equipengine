@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { compose, pure } from "recompose"
 //
 import CourseSettingsForm, { validationSchema } from "../CourseSettingsForm"
-import CreateEntityModal from "base_components/CreateEntityModal"
+import EntityModal from "base_components/EntityModal"
 import form from "hoc/form"
 import Loading from "base_components/Loading"
 import withFormValidation from "hoc/withFormValidation"
@@ -18,7 +18,7 @@ const CourseSettingsModal = ({
   submitButtonTitle,
   handleSubmit
 }) => (
-  <CreateEntityModal
+  <EntityModal
     title={title || "Create a new course"}
     submitButtonTitle={submitButtonTitle}
     isOpen={isOpen}
@@ -31,7 +31,7 @@ const CourseSettingsModal = ({
     ) : (
       <CourseSettingsForm fields={fields} onChange={onChange} />
     )}
-  </CreateEntityModal>
+  </EntityModal>
 )
 
 CourseSettingsModal.propTypes = {

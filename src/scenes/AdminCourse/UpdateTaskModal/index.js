@@ -3,9 +3,12 @@ import React, { Component } from "react"
 import EntityModal from "base_components/EntityModal"
 import TaskForm from "../TaskForm"
 
-class CreateTaskModal extends Component {
-  state = {
-    task: {}
+class UpdateTaskModal extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      task: props.task
+    }
   }
 
   handleChange = task => {
@@ -22,10 +25,9 @@ class CreateTaskModal extends Component {
     return (
       <EntityModal
         className={className}
-        title="New Task"
+        title="Update Task"
         isOpen={isOpen}
         onClose={onClose}
-        isSubmitting={false}
         onSubmit={this.handleSubmit}
       >
         <TaskForm task={this.state.task} onChange={this.handleChange} />
@@ -34,4 +36,4 @@ class CreateTaskModal extends Component {
   }
 }
 
-export default CreateTaskModal
+export default UpdateTaskModal

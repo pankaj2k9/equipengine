@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react"
 import { identical } from "ramda"
 import { isNotNil } from "ramda-adjunct"
 // components
-import CreateEntityModal from "base_components/CreateEntityModal"
+import EntityModal from "base_components/EntityModal"
 import Form, {
   FormGroup,
   Label,
@@ -40,7 +40,7 @@ class ModalActions extends Component {
   render() {
     const { handleClose, isOpen, className } = this.props
     return (
-      <CreateEntityModal
+      <EntityModal
         className={className}
         title="New Action"
         isOpen={isOpen}
@@ -54,7 +54,7 @@ class ModalActions extends Component {
           selectedOption={this.state.selectedOption}
           handleChange={this.handleChange}
         />
-      </CreateEntityModal>
+      </EntityModal>
     )
   }
 }

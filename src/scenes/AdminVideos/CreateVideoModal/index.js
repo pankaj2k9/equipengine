@@ -5,7 +5,7 @@ import { compose, pure } from "recompose"
 import form from "hoc/form"
 import withFormValidation from "hoc/withFormValidation"
 
-import CreateEntityModal from "base_components/CreateEntityModal"
+import EntityModal from "base_components/EntityModal"
 import Loading from "base_components/Loading"
 
 import CreateVideoForm, { validationSchema } from "./CreateVideoForm"
@@ -18,7 +18,7 @@ const CreateVideoModal = ({
   onClose,
   handleSubmit
 }) => (
-  <CreateEntityModal
+  <EntityModal
     title="Upload video"
     isOpen={isOpen}
     onClose={onClose}
@@ -31,7 +31,7 @@ const CreateVideoModal = ({
     ) : (
       <CreateVideoForm fields={fields} onChange={onChange} />
     )}
-  </CreateEntityModal>
+  </EntityModal>
 )
 
 CreateVideoModal.propTypes = {
