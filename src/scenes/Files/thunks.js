@@ -2,23 +2,20 @@ import * as API from "services/API"
 import { actions as filesActions } from "./ducks"
 import { ATTACHMENTABLE_GROUP_TYPE } from "services/constants"
 
-export const fetchFiles = ({ attachmentable_id, term }) => {
+export const fetchAttachments = ({ attachmentable_id, pagination, term }) => {
   return async dispatch => {
-    dispatch(
-      filesActions.fetchGroupFilesRequest({
-        term
-      })
-    )
+    dispatch(filesActions.fetchGroupFilesRequest({ term }))
 
     try {
-      const { attachments, meta } = await API.fetchAttachments({
+      const { attachments, ...meta } = await API.fetchAttachments({
         attachmentable_id,
         attachmentable_type: ATTACHMENTABLE_GROUP_TYPE,
+        pagination,
         term
       })
 
       return dispatch(
-        filesActions.fetchGroupFilesSuccess({ attachments, meta, term })
+        filesActions.fetchGroupFilesSuccess({ attachments, pagination: meta })
       )
     } catch (error) {
       return dispatch(filesActions.fetchGroupFilesError())
@@ -26,26 +23,20 @@ export const fetchFiles = ({ attachmentable_id, term }) => {
   }
 }
 
-export const fetchMoreGroupFiles = ({
-  attachmentable_id,
-  term,
-  pagination
-}) => {
+export const deleteAttachment = ({ attachmentable_id, id }) => {
   return async dispatch => {
-    dispatch(filesActions.fetchMoreGroupFilesRequest())
+    dispatch(filesActions.deleteGroupFileRequest({ id }))
 
     try {
-      const { attachments, meta } = await API.fetchAttachments({
+      const { attachment } = await API.deleteAttachment({
         attachmentable_id,
         attachmentable_type: ATTACHMENTABLE_GROUP_TYPE,
-        pagination,
-        term
+        id
       })
-      return dispatch(
-        filesActions.fetchMoreGroupFilesSuccess({ attachments, meta })
-      )
+
+      return dispatch(filesActions.deleteGroupFileSuccess({ attachment }))
     } catch (error) {
-      return dispatch(filesActions.fetchMoreGroupFilesError())
+      return dispatch(filesActions.deleteGroupFileError())
     }
   }
 }
