@@ -1,23 +1,22 @@
 import PropTypes from "prop-types"
 import React from "react"
 
-import Table, {
-  ActivityCellFormatter,
-  DiscussionCellFormatter
-} from "base_components/Table"
+import Table, { DiscussionCellFormatter } from "base_components/Table"
+import DateTime from "base_components/DateTime"
+import LatestActivityCellFormatter from "../LatestActivityCellFormatter"
 
 const ID_COLUMN = "id"
 const TITLE_COLUMN = "title"
-const DATE_COLUMN = "date_added"
+const DATE_COLUMN = "created_at"
 const COMMENT_COUNT_COLUMN = "comment_count"
-const LATEST_ACTIVITY_COLUMN = "latest_activity"
+const LATEST_ACTIVITY_COLUMN = "latest_activity_at"
 
 const discussionToRow = discussion => ({
   [ID_COLUMN]: discussion.id,
   [TITLE_COLUMN]: discussion,
-  [DATE_COLUMN]: discussion.dateAdded,
-  [COMMENT_COUNT_COLUMN]: discussion.comments.length,
-  [LATEST_ACTIVITY_COLUMN]: discussion.activities[0]
+  [DATE_COLUMN]: discussion.created_at,
+  [COMMENT_COUNT_COLUMN]: discussion.comments_count,
+  [LATEST_ACTIVITY_COLUMN]: discussion.user
 })
 
 const TableDiscussions = ({ discussions, onSelect }) => {
@@ -37,7 +36,15 @@ const TableDiscussions = ({ discussions, onSelect }) => {
       title: "Date added",
       defaultSorting: "asc",
       align: "center",
-      width: "20%"
+      width: "20%",
+      getCellValue: row => (
+        <DateTime
+          date={new Date(row[DATE_COLUMN])}
+          fontSize="14px"
+          withoutTime
+          withYear
+        />
+      )
     },
     {
       name: COMMENT_COUNT_COLUMN,
@@ -51,17 +58,18 @@ const TableDiscussions = ({ discussions, onSelect }) => {
       align: "center",
       width: "20%",
       getCellValue: row => (
-        <ActivityCellFormatter activity={row[LATEST_ACTIVITY_COLUMN]} />
-      ),
-      sortFunction: (
-        { props: { activity: activity1 } },
-        { props: { activity: activity2 } }
-      ) => {
-        const date1 = activity1.date.day
-        const date2 = activity2.date.day
+        <LatestActivityCellFormatter activity={row[LATEST_ACTIVITY_COLUMN]} />
+      )
+      // ,
+      // sortFunction: (
+      //   { props: { activity: activity1 } },
+      //   { props: { activity: activity2 } }
+      // ) => {
+      //   const date1 = activity1.date.day
+      //   const date2 = activity2.date.day
 
-        return date1 < date2 ? -1 : date1 > date2 ? 1 : 0
-      }
+      //   return date1 < date2 ? -1 : date1 > date2 ? 1 : 0
+      // }
     }
   ]
 
@@ -70,7 +78,7 @@ const TableDiscussions = ({ discussions, onSelect }) => {
       rowFontSize="16px"
       columns={columns}
       rows={discussions ? discussions.map(discussionToRow) : []}
-      sorting
+      // sorting
     />
   )
 }
