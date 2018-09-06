@@ -13,10 +13,6 @@ const AsyncTeacherControls = Loadable({
   loader: () => import("scenes/TeacherControls")
 })
 
-const AsyncTeacherFiles = Loadable({
-  loader: () => import("scenes/TeacherFiles")
-})
-
 const teacherRoutes = [
   {
     path: "/secure/groups/:groupId/teacher/groups-activity",
@@ -39,12 +35,12 @@ const teacherRoutes = [
     )
   },
   {
-    path: "/secure/groups/:groupId/teacher/files",
+    path: "/secure/groups/:groupId/files",
     strict: true,
     exact: true,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the teacher files page.">
-        <AsyncTeacherFiles {...props} />
+        <features.groupFiles.pages.GroupFiles {...props} />
       </ErrorBoundary>
     )
   },
