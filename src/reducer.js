@@ -27,6 +27,7 @@ export default combineReducers({
   routing,
   signup: features.signup.reducer,
   teacherStudents: features.teacherStudents.reducer,
+  teacherGroupActivities: features.teacherGroupActivities.reducer,
   toastr,
   tutorials: features.tutorials.reducer
 })
