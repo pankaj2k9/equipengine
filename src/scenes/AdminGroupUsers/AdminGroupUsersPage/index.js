@@ -41,11 +41,18 @@ class AdminGroupUsersPage extends Component {
     this.props.history.push(`/secure/admin/users/${groupUser.user.id}`)
 
   handleSearchUser = term => this.props.fetchUsers({ term })
-  handleAddUsersToGroup = (userIds, users) =>
+  handleAddUsersToGroup = userIds => {
+    const { nonCurrentGroupUsers } = this.props
+    const mappedUsers = userIds.map(userId =>
+      nonCurrentGroupUsers.find(
+        nonCurrentGroupUser => nonCurrentGroupUser.id === userId
+      )
+    )
     this.props.addUsersToGroup({
-      users,
+      users: mappedUsers,
       groupId: this.props.groupId
     })
+  }
 
   render() {
     const {

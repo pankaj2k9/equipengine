@@ -59,7 +59,9 @@ class Course extends Component {
       <VerticalTabs
         actionBar={
           <div>
-            <Button onClick={onOpen}>New tutorial</Button>
+            <Button onClick={onOpen} large>
+              New tutorial
+            </Button>
             <CreateTutorialModal
               isOpen={isOpen}
               onClose={onClose}
