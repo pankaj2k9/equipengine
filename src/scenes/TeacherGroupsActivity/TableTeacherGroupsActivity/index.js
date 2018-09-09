@@ -1,39 +1,13 @@
 import PropTypes from "prop-types"
 import React from "react"
-import styled from "styled-components"
 
-import "./styles.css"
-import Table, { TableRow } from "base_components/Tables"
+import { TableRow } from "base_components/Tables"
 import DateTime from "base_components/DateTime"
-import UserAvatar from "base_components/UserAvatar"
 
-// the container component for our activity.
-const ContainerActivity = styled.div`
-  display: flex;
-
-  p {
-    button {
-      display: inline;
-
-      padding: 0;
-      margin: 0;
-
-      border: none;
-      background: transparent;
-
-      color: #2093e9;
-      font-weight: bold;
-    }
-  }
-`
-
-// avatar that we will use to our activity table data.
-const AvatarActivity = UserAvatar.extend`
-  margin-right: 1em;
-`
+import { ActivityTable, AvatarActivity, ContainerActivity } from "./elements"
 
 const TableTeacherGroupsActivity = ({ activities, onSelect }) => (
-  <Table>
+  <ActivityTable>
     <thead>
       <TableRow>
         <th>Time</th>
@@ -68,7 +42,7 @@ const TableTeacherGroupsActivity = ({ activities, onSelect }) => (
         </TableRow>
       ))}
     </tbody>
-  </Table>
+  </ActivityTable>
 )
 
 TableTeacherGroupsActivity.propTypes = {
