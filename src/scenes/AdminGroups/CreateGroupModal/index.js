@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { compose, pure } from "recompose"
 //
-import CreateEntityModal from "base_components/CreateEntityModal"
+import EntityModal from "base_components/EntityModal"
 import form from "hoc/form"
 import GroupForm, { validationSchema } from "../GroupForm"
 import Loading from "base_components/Loading"
@@ -16,7 +16,7 @@ const CreateGroupModal = ({
   onClose,
   handleSubmit
 }) => (
-  <CreateEntityModal
+  <EntityModal
     title="Create new group"
     isOpen={isOpen}
     onClose={onClose}
@@ -28,7 +28,7 @@ const CreateGroupModal = ({
     ) : (
       <GroupForm fields={fields} onChange={onChange} />
     )}
-  </CreateEntityModal>
+  </EntityModal>
 )
 
 CreateGroupModal.propTypes = {

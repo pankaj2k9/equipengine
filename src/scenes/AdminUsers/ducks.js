@@ -18,9 +18,15 @@ export const types = {
   //
   // UPDATE_USER
   //
-  UPDATE_USER_REQUEST: "equipengine/UPDATE_USER_REQUEST",
-  UPDATE_USER_SUCCESS: "equipengine/UPDATE_USER_SUCCESS",
-  UPDATE_USER_ERROR: "equipengine/UPDATE_USER_ERROR",
+  UPDATE_USER_REQUEST: "equipengine-admin/UPDATE_USER_REQUEST",
+  UPDATE_USER_SUCCESS: "equipengine-admin/UPDATE_USER_SUCCESS",
+  UPDATE_USER_ERROR: "equipengine-admin/UPDATE_USER_ERROR",
+  //
+  // REMOVE_USER
+  //
+  REMOVE_USER_REQUEST: "equipengine-admin/REMOVE_USER_REQUEST",
+  REMOVE_USER_SUCCESS: "equipengine-admin/REMOVE_USER_SUCCESS",
+  REMOVE_USER_ERROR: "equipengine-admin/REMOVE_USER_ERROR",
   //
   // SELECT_USER
   //
@@ -165,7 +171,20 @@ export const actions = {
     type: types.CREATE_USER_ERROR
   }),
   //
-  // UPDATE_USER
+  // REMOVE_USERS
+  //
+  removeUserRequest: () => ({
+    type: types.REMOVE_USER_REQUEST
+  }),
+  removeUserSuccess: ({ user }) => ({
+    type: types.REMOVE_USER_SUCCESS,
+    payload: { user }
+  }),
+  removeUserError: () => ({
+    type: types.REMOVE_USER_ERROR
+  }),
+  //
+  // UPDATE_USERS
   //
   updateUserRequest: () => ({
     type: types.UPDATE_USER_REQUEST
@@ -200,6 +219,7 @@ export const actions = {
 
 // Selectors
 const usersSelector = () => state => state.adminUsers
+const loginSelector = () => state => state.login
 
 const selectIsFetchingUsers = () =>
   createSelector(usersSelector(), users => users.isFetchingUsers)
@@ -217,6 +237,8 @@ const selectSelectedUser = () =>
   )
 const selectIsSendingResetPasswordToken = () =>
   createSelector(usersSelector(), users => users.isSendingResetPasswordToken)
+const selectAdminsOrganizationIds = () =>
+  createSelector(loginSelector(), users => users.isSendingResetPasswordToken)
 
 export const selectors = {
   selectIsFetchingUsers,
@@ -224,5 +246,6 @@ export const selectors = {
   selectIsSendingResetPasswordToken,
   selectUsers,
   selectSearchTerm,
-  selectSelectedUser
+  selectSelectedUser,
+  selectAdminsOrganizationIds
 }

@@ -1,4 +1,5 @@
 import React from "react"
+import moment from "moment"
 import DatePicker from "react-datepicker"
 import styled from "styled-components"
 import "react-datepicker/dist/react-datepicker.css"
@@ -9,7 +10,7 @@ export default styled(
   ({ className, value, placeholder, onChange, ...rest }) => (
     <div className={className}>
       <DatePicker
-        selected={value}
+        selected={moment(value).isValid() ? moment(value) : ""}
         onChange={onChange}
         placeholderText={placeholder}
         peekNextMonth

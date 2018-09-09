@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { Panel } from "react-bootstrap"
 //
 import TutorialListItem from "../TutorialListItem"
+import TutorialsReportLink from "../TutorialsReportLink"
 
 // this is for list
 const List = styled.ul`
@@ -26,14 +27,23 @@ const Root = styled(Panel)`
 
 class ExpandableCourseTutorials extends Component {
   render() {
-    const { isOpenPanel, tutorials } = this.props
+    const {
+      isOpenPanel,
+      tutorials,
+      onViewTutorial,
+      onReportTutorial
+    } = this.props
     return (
       <Root collapsible expanded={isOpenPanel}>
         <List>
           {tutorials.map(tutorial => (
-            <TutorialListItem key={tutorial.id} tutorial={tutorial} />
+            <TutorialListItem
+              key={tutorial.id}
+              tutorial={tutorial}
+              onView={onViewTutorial}
+            />
           ))}
-          <TutorialListItem isReport />
+          <TutorialsReportLink onReport={onReportTutorial} />
         </List>
       </Root>
     )

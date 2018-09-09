@@ -38,6 +38,7 @@ export const fetchUsers = ({
   if (term) {
     params.term = term
   }
+  params.current_count = 100
 
   return client.get(`/api/v1/users`, { params }).then(response => response.data)
 }
@@ -76,45 +77,52 @@ export const createUser = async ({
   return response.data
 }
 
-export const updateUser = async (
-  id,
-  {
-    first_name,
-    last_name,
-    email,
-    password,
-    password_confirmation,
-    address = "",
-    date_of_birth,
-    avatar = {},
-    country_id = 0,
-    state_id = 0,
-    zip_code = "",
-    phone_number = "",
-    organization_ids = [1],
-    participated_group_ids
-  }
-) => {
-  const response = await client.put(`/api/v1/users/${id}`, {
-    user: {
-      first_name,
-      last_name,
-      email,
-      password,
-      password_confirmation,
-      address,
-      date_of_birth,
-      avatar,
-      country_id,
-      state_id,
-      zip_code,
-      phone_number,
-      organization_ids,
-      participated_group_ids
-    }
-  })
-  return response.data
-}
+/**
+ * @returns update user
+ */
+export const updateUser = ({
+  userId,
+  first_name,
+  last_name,
+  email,
+  password,
+  password_confirmation,
+  address = "",
+  avatar = {},
+  country_id = 0,
+  date_of_birth,
+  state_id = 0,
+  zip_code = "",
+  phone_number = "",
+  participated_group_ids = [],
+  organization_users_attributes
+}) =>
+  client
+    .put(`/api/v1/users/${userId}`, {
+      user: {
+        first_name,
+        last_name,
+        email,
+        password,
+        password_confirmation,
+        address,
+        avatar,
+        country_id,
+        date_of_birth,
+        state_id,
+        zip_code,
+        phone_number,
+        organization_users_attributes,
+        participated_group_ids
+      }
+    })
+    .then(response => response.data)
+
+/**
+ * @returns removed user
+ */
+export const removeUser = userId =>
+  client.delete(`/api/v1/users/${userId}`).then(response => response.data)
 
 /**
  * Attach user to organization

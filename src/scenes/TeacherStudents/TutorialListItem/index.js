@@ -5,7 +5,7 @@ import moment from "moment"
 
 // for our media
 import iconPlayButton from "resources/images/play-button.svg"
-import LinkButton from "base_components/LinkButton"
+import Button from "base_components/RootButton"
 // for our date
 import DateTime from "base_components/DateTime"
 // for feedback
@@ -21,62 +21,46 @@ const MetaInfo = styled.span`
 `
 
 // this is for list item
-const ListItemTutorial = styled(({ className, isReport, tutorial }) => (
+const ListItemTutorial = styled(({ className, tutorial, onView, onReport }) => (
   <li className={`${className} ListItemTutorial`}>
-    {!isReport ? (
-      <div className="ListItemTutorial__container">
-        <div className="ListItemTutorial__media">
-          <img alt="Icon play button" src={iconPlayButton} />
-          <div>
-            <p>{tutorial.title}</p>
-            <MetaInfo default>00:05:25</MetaInfo>
-          </div>
+    <div className="ListItemTutorial__container">
+      <div className="ListItemTutorial__media">
+        <img alt="Icon play button" src={iconPlayButton} />
+        <div>
+          <p>{tutorial.title}</p>
+          <MetaInfo default>00:05:25</MetaInfo>
         </div>
-        <div className="ListItemTutorial__date">
-          <DateTime
-            accent
-            bold
-            center
-            date={moment(tutorial.updated_at).format("Do MMM")}
-            time={moment(tutorial.updated_at).format("hh:mma")}
-          />
-          <MetaInfo>Last Activity</MetaInfo>
-        </div>
-        <div className="ListItemTutorial__feedback">
-          <div>
-            <UserAvatar image={iconUser} size="small" />
-          </div>
-          <MetaInfo>Feedback / Discussion</MetaInfo>
-        </div>
-        <div className="ListItemTutorial__complete">
-          <Form>
-            <CheckboxCircleSecondary name="complete" />
-          </Form>
-          <MetaInfo>Mark Complete</MetaInfo>
-        </div>
-        <LinkButton
-          text="View"
-          url={`/secure/groups/${tutorial.course_settings.group_id}/courses/${
-            tutorial.course_id
-          }/tutorials/${tutorial.id}`}
-        />
       </div>
-    ) : (
-      <div className="ListItemTutorial__container">
-        <LinkButton
-          style={{ backgroundColor: "#596065" }}
-          text="Create Report"
-          url="/report"
+      <div className="ListItemTutorial__date">
+        <DateTime
+          accent
+          bold
+          center
+          date={moment(tutorial.updated_at).format("Do MMM")}
+          time={moment(tutorial.updated_at).format("hh:mma")}
         />
+        <MetaInfo>Last Activity</MetaInfo>
       </div>
-    )}
+      <div className="ListItemTutorial__feedback">
+        <div>
+          <UserAvatar image={iconUser} size="small" />
+        </div>
+        <MetaInfo>Feedback / Discussion</MetaInfo>
+      </div>
+      <div className="ListItemTutorial__complete">
+        <Form>
+          <CheckboxCircleSecondary name="complete" />
+        </Form>
+        <MetaInfo>Mark Complete</MetaInfo>
+      </div>
+      <Button onClick={() => onView(tutorial)}>View</Button>
+    </div>
   </li>
 ))`
   > .ListItemTutorial__container {
     display: flex;
     align-items: center;
-    justify-content: ${props =>
-      props.isReport ? "flex-end" : "space-between"};
+    justify-content: space-between;
     padding: 1.7em 0 1.3em 0;
     border-bottom: 1px solid #dadada;
 

@@ -25,8 +25,8 @@ class FlagCheckbox extends Component {
     const { isFlagged } = this.state
 
     return (
-      <button className={className} onClick={this.handleChange}>
-        <IconFlag className={isFlagged && "flagged"} />
+      <button className={className || ""} onClick={this.handleChange}>
+        <IconFlag className={isFlagged ? "flagged" : ""} />
       </button>
     )
   }

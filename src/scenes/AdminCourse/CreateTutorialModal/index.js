@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { compose, pure } from "recompose"
 //
-import CreateEntityModal from "base_components/CreateEntityModal"
+import EntityModal from "base_components/EntityModal"
 import form from "hoc/form"
 import TutorialForm, { validationSchema } from "../TutorialForm"
 import Loading from "base_components/Loading"
@@ -16,7 +16,7 @@ const CreateTutorialModal = ({
   onClose,
   handleSubmit
 }) => (
-  <CreateEntityModal
+  <EntityModal
     title="Create new tutorial"
     isOpen={isOpen}
     onClose={onClose}
@@ -28,7 +28,7 @@ const CreateTutorialModal = ({
     ) : (
       <TutorialForm fields={fields} onChange={onChange} />
     )}
-  </CreateEntityModal>
+  </EntityModal>
 )
 
 CreateTutorialModal.propTypes = {

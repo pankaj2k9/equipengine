@@ -4,11 +4,11 @@ import ListControl, { ListItemControl } from "base_components/ListControl"
 
 import { Root, Button, Label } from "./elements"
 
-const PanelControlGroup = () => (
+const PanelControlGroup = ({ removeUser, suspendUser }) => (
   <Root>
     <ListControl>
       <ListItemControl>
-        <Button large light lightBorder>
+        <Button onClick={suspendUser} large light lightBorder>
           Suspend user
         </Button>
         <Label light>
@@ -16,7 +16,7 @@ const PanelControlGroup = () => (
         </Label>
       </ListItemControl>
       <ListItemControl>
-        <Button light large lightBorder>
+        <Button onClick={removeUser} light large lightBorder>
           Remove user
         </Button>
         <Label light>

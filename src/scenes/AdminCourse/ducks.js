@@ -31,11 +31,23 @@ export const types = {
   FETCH_TASKS_SUCCESS: "equipengine-admin/FETCH_TASKS_SUCCESS",
   FETCH_TASKS_ERROR: "equipengine-admin/FETCH_TASKS_ERROR",
   //
-  // CREATE_TUTORIAL
+  // CREATE_TASK
   //
   CREATE_TASK_REQUEST: "equipengine-admin/CREATE_TASK_REQUEST",
   CREATE_TASK_SUCCESS: "equipengine-admin/CREATE_TASK_SUCCESS",
-  CREATE_TASK_ERROR: "equipengine-admin/CREATE_TASK_ERROR"
+  CREATE_TASK_ERROR: "equipengine-admin/CREATE_TASK_ERROR",
+  //
+  // UPDATE_TASK
+  //
+  UPDATE_TASK_REQUEST: "equipengine-admin/UPDATE_TASK_REQUEST",
+  UPDATE_TASK_SUCCESS: "equipengine-admin/UPDATE_TASK_SUCCESS",
+  UPDATE_TASK_ERROR: "equipengine-admin/UPDATE_TASK_ERROR",
+  //
+  // DELETE_TASK
+  //
+  DELETE_TASK_REQUEST: "equipengine-admin/DELETE_TASK_REQUEST",
+  DELETE_TASK_SUCCESS: "equipengine-admin/DELETE_TASK_SUCCESS",
+  DELETE_TASK_ERROR: "equipengine-admin/DELETE_TASK_ERROR"
 }
 
 const initialState = Immutable({
@@ -48,24 +60,10 @@ const initialState = Immutable({
   selectedTutorialId: null,
   isFetchingTasks: false,
   tasks: [],
-  isCreatingTask: false
+  isCreatingTask: false,
+  isUpdatingTask: false,
+  isDeletingTask: false
 })
-
-/**
- * Change task format from `task.videos[0].video_link` to `task.video_link`
- * Cause only one video per task is supported by UI
- */
-const mapTaskVideos = task => {
-  if (
-    !Array.isArray(task.videos) ||
-    task.videos.length === 0 ||
-    !task.videos[0].video_link
-  ) {
-    return task
-  }
-  task.video_link = task.videos[0].video_link
-  return task
-}
 
 // Reducer
 export default (state = initialState, action) => {
@@ -143,7 +141,7 @@ export default (state = initialState, action) => {
     case types.FETCH_TASKS_SUCCESS:
       return state.merge({
         isFetchingTasks: false,
-        tasks: action.payload.tasks.map(mapTaskVideos)
+        tasks: action.payload.tasks
       })
     case types.FETCH_TASKS_ERROR:
       return state.merge({
@@ -152,7 +150,7 @@ export default (state = initialState, action) => {
       })
 
     //
-    // CREATE_TUTORIAL
+    // CREATE_TASK
     //
     case types.CREATE_TASK_REQUEST:
       return state.merge({
@@ -161,11 +159,48 @@ export default (state = initialState, action) => {
     case types.CREATE_TASK_SUCCESS:
       return state.merge({
         isCreatingTask: false,
-        tasks: state.tasks.concat(mapTaskVideos(action.payload.task))
+        tasks: state.tasks.concat(action.payload.task)
       })
     case types.CREATE_TASK_ERROR:
       return state.merge({
         isCreatingTask: false
+      })
+
+    //
+    // UPDATE_TASK
+    //
+    case types.UPDATE_TASK_REQUEST:
+      return state.merge({
+        isUpdatingTask: true
+      })
+    case types.UPDATE_TASK_SUCCESS:
+      return state.merge({
+        isUpdatingTask: false,
+        tasks: state.tasks.map(
+          task =>
+            task.id === action.payload.task.id ? action.payload.task : task
+        )
+      })
+    case types.UPDATE_TASK_ERROR:
+      return state.merge({
+        isUpdatingTask: false
+      })
+
+    //
+    // DELETE_TASK
+    //
+    case types.DELETE_TASK_REQUEST:
+      return state.merge({
+        isDeletingTask: true
+      })
+    case types.DELETE_TASK_SUCCESS:
+      return state.merge({
+        isDeletingTask: false,
+        tasks: state.tasks.filter(task => task.id !== action.payload.task.id)
+      })
+    case types.DELETE_TASK_ERROR:
+      return state.merge({
+        isDeletingTask: false
       })
 
     default:
@@ -215,7 +250,7 @@ export const actions = {
     type: types.CREATE_TUTORIAL_ERROR
   }),
   //
-  // CREATE_TUTORIAL
+  // SELECT_TUTORIAL
   //
   selectTutorial: ({ selectedTutorialId }) => ({
     type: types.SELECT_TUTORIAL,
@@ -246,5 +281,31 @@ export const actions = {
   }),
   createTaskError: () => ({
     type: types.CREATE_TASK_ERROR
+  }),
+  //
+  // CREATE_TASK
+  //
+  updateTaskRequest: () => ({
+    type: types.UPDATE_TASK_REQUEST
+  }),
+  updateTaskSuccess: ({ task }) => ({
+    type: types.UPDATE_TASK_SUCCESS,
+    payload: { task }
+  }),
+  updateTaskError: () => ({
+    type: types.UPDATE_TASK_ERROR
+  }),
+  //
+  // DELETE_TASK
+  //
+  deleteTaskRequest: () => ({
+    type: types.DELETE_TASK_REQUEST
+  }),
+  deleteTaskSuccess: ({ task }) => ({
+    type: types.DELETE_TASK_SUCCESS,
+    payload: { task }
+  }),
+  deleteTaskError: () => ({
+    type: types.DELETE_TASK_ERROR
   })
 }

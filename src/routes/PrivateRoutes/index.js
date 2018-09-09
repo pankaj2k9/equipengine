@@ -44,9 +44,13 @@ const PrivateRoutes = ({ location }) => (
     <Main pathname={location.pathname}>
       {/* Routes that app uses */}
       <Switch>
-        {studentRoutes.map(route => createRoute(route))}
-        {teacherRoutes.map(route => createRoute(route, teacherOrAdmin))}
-        {adminRoutes.map(route => createRoute(route, adminOnly))}
+        {studentRoutes.map((route, index) => createRoute(route, index))}
+        {teacherRoutes.map((route, index) =>
+          createRoute(route, index, teacherOrAdmin)
+        )}
+        {adminRoutes.map((route, index) =>
+          createRoute(route, index, adminOnly)
+        )}
         <Route component={AsyncNotFound} />
       </Switch>
     </Main>

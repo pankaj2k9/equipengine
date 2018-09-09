@@ -20,6 +20,7 @@ const Checkbox = styled(({ name, className, ...rest }) => (
     height: 100%;
     width: 100%;
     cursor: pointer;
+    margin: 0;
 
     + label {
       background-color: transparent;

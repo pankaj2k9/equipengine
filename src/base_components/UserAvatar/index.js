@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import styled from "styled-components"
 
 const size = props => {
@@ -26,9 +25,5 @@ const UserAvatar = styled(({ image, className }) => (
   object-position: top;
   object-fit: cover;
 `
-
-UserAvatar.propTypes = {
-  image: PropTypes.string.isRequired
-}
 
 export default UserAvatar

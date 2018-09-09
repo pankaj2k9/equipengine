@@ -16,7 +16,8 @@ import {
 class TaskForm extends Component {
   handleTypeChange = option => {
     this.props.onChange({
-      action_type: option ? option.value : null
+      action_type: option ? option.value : null,
+      id: this.props.task.id
     })
   }
 

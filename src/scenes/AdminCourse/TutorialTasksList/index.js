@@ -6,7 +6,7 @@ import DragDrop, {
 } from "base_components/DragDrop"
 import TutorialTasksListItem from "../TutorialTasksListItem"
 
-const TutorialTasksList = ({ tasks }) => (
+const TutorialTasksList = ({ tasks, onUpdate, onDelete }) => (
   <DragDrop list={tasks}>
     <DroppableList droppableId="droppable-01" type="GROUP_ACTIONS">
       {tasks => (
@@ -19,7 +19,11 @@ const TutorialTasksList = ({ tasks }) => (
               index={index}
               inlineStyle={{ border: "1px solid #dadada" }}
             >
-              <TutorialTasksListItem task={task} />
+              <TutorialTasksListItem
+                task={task}
+                onUpdate={onUpdate}
+                onDelete={onDelete}
+              />
             </DroppableListItem>
           ))}
         </Fragment>

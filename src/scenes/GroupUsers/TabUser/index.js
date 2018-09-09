@@ -33,15 +33,13 @@ class TabUser extends Component {
   }
 
   render() {
-    const { users, isFetchingUsers, pagintation } = this.props
+    const { users, isFetchingUsers, pagination } = this.props
 
     return (
       <InfiniteScroll
         pageStart={1}
         loadMore={this.loadMore}
-        hasMore={
-          pagintation && pagintation.total_pages > pagintation.current_page
-        }
+        hasMore={pagination && pagination.total_pages > pagination.current_page}
         initialLoad={false}
       >
         <UserList>
@@ -64,7 +62,7 @@ const mapState = () =>
     users: selectors.selectGroupUsers(),
     isFetchingUsers: selectors.selectIsFetchingGroupUsers(),
     searchTerm: selectors.selectSearchTerm(),
-    pagintation: selectors.selectPagintation()
+    pagination: selectors.selectPagination()
   })
 
 const mapDispatch = dispatch =>

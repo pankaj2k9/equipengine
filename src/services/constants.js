@@ -51,3 +51,10 @@ export const ATTACHMENTABLE_GROUP_TYPE = "Group"
 // VIDEOS
 //
 export const VIDEOABLE_TASK_TYPE = "Task"
+
+//
+// COMMENT TYPE
+//
+export const COMMENT_COURSE_THREAD = "CourseThread"
+export const COMMENT_GROUP = "Group"
+export const COMMENT_TASK_USER = "TaskUser"

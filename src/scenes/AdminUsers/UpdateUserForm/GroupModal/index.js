@@ -15,65 +15,36 @@ import {
 
 import IconAdd from "react-icons/lib/md/add-circle-outline"
 
-const ListItem = ({ id, title, selected, onChange }) => (
-  <ListItemElement>
-    <Checkbox
-      name={`group-${id}`}
-      id={id}
-      checked={selected}
-      onChange={e =>
-        onChange(
-          {
-            checked: e.target.checked,
-            id: e.target.id
-          },
-          "participatedGroupIds"
-        )
-      }
-    />
-    <Label htmlFor={id}>{title}</Label>
-  </ListItemElement>
-)
-
 const Header = () => (
   <HeaderElement>
     <IconAdd color="#BFBFBF" fontSize={39} /> <H5>Add group</H5>
   </HeaderElement>
 )
 
-const Body = ({ groups, selectedGroupIds, onChange }) => (
-  <div>
-    <List>
-      {groups.map(({ id, title }) => {
-        if (selectedGroupIds.includes(id))
-          return (
-            <ListItem
-              id={id}
-              title={title}
-              selected={true}
-              onChange={onChange}
-            />
-          )
-        else return <ListItem id={id} title={title} onChange={onChange} />
-      })}
-    </List>
-  </div>
+const Body = ({ groups, usersGroups, handleUserGroupsChange }) => (
+  <List>
+    {groups.map(({ id, title }) => (
+      <ListItemElement key={`group-${id}`}>
+        <Checkbox
+          id={`group-${id}`}
+          name={`group-${id}`}
+          checked={usersGroups.find(group => group.id === id)}
+          onClick={handleUserGroupsChange}
+        />
+        <Label htmlFor={`group-${id}`}>{title}</Label>
+      </ListItemElement>
+    ))}
+  </List>
 )
 
-const Footer = ({ isSubmitting, onSubmit }) => (
-  <Button disabled={isSubmitting} onClick={onSubmit}>
-    Add
-  </Button>
-)
+const Footer = ({ handleClose }) => <Button onClick={handleClose}>Add</Button>
 
 const Modal = ({
+  groups,
+  usersGroups,
   handleClose,
   isOpen,
-  groups,
-  selectedGroupIds,
-  onChange,
-  isSubmitting,
-  onSubmit
+  handleUserGroupsChange
 }) => (
   <BaseModal
     isOpen={isOpen}
@@ -82,11 +53,11 @@ const Modal = ({
     body={
       <Body
         groups={groups}
-        selectedGroupIds={selectedGroupIds}
-        onChange={onChange}
+        usersGroups={usersGroups}
+        handleUserGroupsChange={handleUserGroupsChange}
       />
     }
-    footer={<Footer isSubmitting={isSubmitting} onSubmit={onSubmit} />}
+    footer={<Footer handleClose={handleClose} />}
   />
 )
 

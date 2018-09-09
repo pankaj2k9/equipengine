@@ -27,10 +27,25 @@ export const User = styled.div`
   }
 `
 
-export const PrivelegesLabel = styled(BaseLabel)`
+export const PrivilegesLabel = styled(BaseLabel)`
   max-width: 107px;
 `
 
 export const Flex = styled.div`
   display: flex;
+`
+
+export const ListItemRoot = styled.div`
+  display: flex;
+  align-items: center;
+
+  :not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  > label {
+    padding-left: 14px;
+    margin-bottom: 0;
+    cursor: pointer;
+  }
 `

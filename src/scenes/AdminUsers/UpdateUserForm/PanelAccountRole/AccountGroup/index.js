@@ -3,34 +3,43 @@ import React from "react"
 import WhiteArea from "base_components/WhiteArea"
 import { Switch, Checkbox, Label } from "base_components/RootForm"
 
-import { Root, P, User, PrivelegesLabel, Flex } from "./elements"
+import { Root, P, ListItemRoot, PrivilegesLabel, Flex } from "./elements"
 
-const AccountContainer = ({ hasFileControlPrivelegies, onChange }) => (
+const AccountContainer = ({
+  fileControlPrivileges,
+  handleActivityStudentsChange,
+  activityStudents,
+  onChange,
+  students = []
+}) => (
   <Root>
     <P>
       Submissions teacher can see (if a person is not selected people will not
       show):
     </P>
+
     <WhiteArea>
-      <User>
-        <Flex>
-          <Checkbox name="account1" />
-          <Label htmlFor="account1">Jane Doe</Label>
-        </Flex>
-      </User>
-      <User>
-        <Flex>
-          <Checkbox name="account2" />
-          <Label htmlFor="account2">Poter Rose</Label>
-        </Flex>
-      </User>
+      {students.map(student => (
+        <ListItemRoot key={`student-${student.id}`}>
+          <Checkbox
+            id={`${student.id}`}
+            checked={activityStudents.find(activity => activity === student.id)}
+            name={`${student.id}`}
+            onChange={handleActivityStudentsChange}
+          />
+          <Label htmlFor={`${student.id}`}>
+            {student.first_name || ""} {student.last_name || ""}
+          </Label>
+        </ListItemRoot>
+      ))}
     </WhiteArea>
+
     <Flex isSpaceBetween>
-      <PrivelegesLabel>File Control Priveleges</PrivelegesLabel>
+      <PrivilegesLabel>File Control Privileges</PrivilegesLabel>
       <Switch
-        value={hasFileControlPrivelegies}
-        onChange={e => onChange(e.target.checked, "hasFileControlPrivelegies")}
-        name="fileControlPriveleges"
+        value={fileControlPrivileges}
+        onChange={onChange}
+        name="fileControlPrivileges"
       />
     </Flex>
   </Root>

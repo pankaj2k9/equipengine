@@ -6,7 +6,7 @@ import Modal from "base_components/Modal"
 import ModalHeader from "./components/ModalHeader"
 
 // Modal facade
-const CreateEntityModal = ({
+const EntityModal = ({
   className,
   isOpen,
   title,
@@ -24,13 +24,13 @@ const CreateEntityModal = ({
     body={children}
     footer={
       <Button disabled={isSubmitting} onClick={onSubmit}>
-        {submitButtonTitle || "Create"}
+        {submitButtonTitle || "Save"}
       </Button>
     }
   />
 )
 
-CreateEntityModal.propTypes = {
+EntityModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
@@ -39,4 +39,4 @@ CreateEntityModal.propTypes = {
   className: PropTypes.string
 }
 
-export default CreateEntityModal
+export default EntityModal

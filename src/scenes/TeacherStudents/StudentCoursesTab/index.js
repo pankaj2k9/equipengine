@@ -13,41 +13,25 @@ import DragDrop, {
 import features from "features"
 import Loading from "base_components/Loading"
 import { selectors } from "../selectors"
-
-const tutorials = [
-  {
-    id: 6,
-    title: "Fisher-Batz",
-    description: "cultivate e-business channels",
-    status: "active",
-    user_id: 585,
-    course_id: 16,
-    created_at: "April 22, 2018 09:15",
-    updated_at: "April 22, 2018 15:15",
-    course_settings: {
-      id: 77,
-      course_id: 155,
-      group_id: 46,
-      precourse_id: 0,
-      complete_lesson_can: "all",
-      reports_enabled: true,
-      files_enabled: true,
-      discussing_enabled: true,
-      student_content_enabled: true,
-      status: "active",
-      created_at: "April 22, 2018 09:15",
-      updated_at: "April 22, 2018 09:15"
-    },
-    tasks: []
-  }
-]
+import { fetchCoursesTutorials } from "../thunks"
 
 class StudentCoursesTab extends Component {
   componentDidMount() {
-    this.props.fetchCourses({
-      groupId: this.props.groupId,
-      studentId: this.props.selectedUser.id
-    })
+    const { groupId, selectedUser } = this.props
+    this.props
+      .fetchCourses({
+        groupId,
+        studentId: selectedUser.id
+      })
+      .then(action => {
+        if (action.payload && action.payload.courses) {
+          // Load all tutorials for all student courses
+          this.props.fetchCoursesTutorials({
+            groupId,
+            courses: action.payload.courses
+          })
+        }
+      })
   }
 
   componentDidUpdate(prevProps) {
@@ -63,10 +47,27 @@ class StudentCoursesTab extends Component {
     // TODO add change enable/disable logic
   }
 
-  render() {
-    const { courses, isFetchingCourses, selectedUser } = this.props
+  handleViewTutorial = ({ id, course_id }) => {
+    const { groupId, history } = this.props
+    history.push(
+      `/secure/groups/${groupId}/courses/${course_id}/tutorials/${id}`
+    )
+  }
 
-    if (isFetchingCourses) {
+  handleReportTutorial = () => {
+    const { groupId, history } = this.props
+    history.push(`/secure/groups/${groupId}/report`)
+  }
+
+  render() {
+    const {
+      courses,
+      isFetchingCourses,
+      isFetchingCoursesTutorials,
+      selectedUser
+    } = this.props
+
+    if (isFetchingCourses || isFetchingCoursesTutorials) {
       return <Loading />
     }
 
@@ -85,9 +86,10 @@ class StudentCoursesTab extends Component {
                   >
                     <CourseListItem
                       course={course}
-                      tutorials={tutorials}
                       enabled={course.active_user_ids.includes(selectedUser.id)}
                       onChangeStatus={this.handleChangeStatus}
+                      onViewTutorial={this.handleViewTutorial}
+                      onReportTutorial={this.handleReportTutorial}
                     />
                   </DroppableListItem>
                 ))
@@ -102,13 +104,15 @@ const mapState = () =>
   createStructuredSelector({
     courses: features.courses.selectors.selectCourses(),
     isFetchingCourses: features.courses.selectors.selectIsFetchingCourses(),
-    selectedUser: selectors.selectSelectedUser()
+    selectedUser: selectors.selectSelectedUser(),
+    isFetchingCoursesTutorials: selectors.selectIsFetchingCoursesTutorials()
   })
 
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
-      fetchCourses: features.courses.actions.fetchCourses
+      fetchCourses: features.courses.actions.fetchCourses,
+      fetchCoursesTutorials
     },
     dispatch
   )

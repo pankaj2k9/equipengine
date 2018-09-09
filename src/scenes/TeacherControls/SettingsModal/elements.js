@@ -40,8 +40,10 @@ export const ListItemRoot = styled.div`
   align-items: center;
   margin-bottom: 10px;
 
-  & > *:first-child {
-    margin-right: 14px;
+  > label {
+    padding-left: 14px;
+    margin-bottom: 0;
+    cursor: pointer;
   }
 `
 

@@ -21,6 +21,7 @@ import * as TeacherStudents from "scenes/TeacherStudents"
 import * as Tutorial from "scenes/Tutorial"
 import * as Settings from "scenes/Settings"
 import * as GroupFiles from "scenes/Files"
+import * as CourseThreads from "scenes/CourseThreads"
 
 /**
  * Map with all the public accessible features
@@ -144,6 +145,11 @@ registerFeature({
   name: "course",
   enabled: true,
   ...Course
+})
+registerFeature({
+  name: "courseThreads",
+  enabled: true,
+  ...CourseThreads
 })
 registerFeature({
   name: "tutorials",

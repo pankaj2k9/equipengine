@@ -6,7 +6,7 @@ import modal from "hoc/modal"
 
 import CreateThreadModal from "../CreateThreadModal"
 
-const Thread = ({ isOpen, onClose, onOpen }) => (
+const Thread = ({ isOpen, onClose, onOpen, createThreadDiscussion }) => (
   <div>
     <ButtonIcon secondary onClick={onOpen}>
       New Thread
@@ -15,7 +15,14 @@ const Thread = ({ isOpen, onClose, onOpen }) => (
       </i>
     </ButtonIcon>
 
-    <CreateThreadModal isOpen={isOpen} onClose={onClose} onSubmit={() => {}} />
+    <CreateThreadModal
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={fields => {
+        createThreadDiscussion(fields)
+        onClose()
+      }}
+    />
   </div>
 )
 

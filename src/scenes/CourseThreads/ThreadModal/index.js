@@ -25,10 +25,10 @@ const ThreadModal = styled(Modal)`
   }
 `
 
-export default ({ isOpen, onClose, thread }) => (
+export default ({ isOpen, onClose, thread, isFetchingThreads }) => (
   <ThreadModal show={isOpen}>
     <ThreadModalHeader onClose={onClose} />
-    <ThreadModalBody thread={thread} />
+    <ThreadModalBody thread={thread} isFetchingComments={isFetchingThreads} />
     <ThreadModalFooter />
   </ThreadModal>
 )

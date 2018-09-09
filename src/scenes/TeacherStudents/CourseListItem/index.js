@@ -1,5 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { compose } from "recompose"
+import { connect } from "react-redux"
+import { createStructuredSelector } from "reselect"
 //
 import CompletedCircleBar from "base_components/CompletedCircleBar"
 import ExpandableCourseTutorials from "../ExpandableCourseTutorials"
@@ -7,6 +10,7 @@ import IconDown from "react-icons/lib/fa/angle-down"
 import IconMenu from "react-icons/lib/fa/align-justify"
 import IconRight from "react-icons/lib/fa/angle-right"
 import { Switch } from "base_components/RootForm"
+import { selectors } from "../selectors"
 import withCollapsiblePanel from "hoc/withCollapsiblePanel"
 import {
   Body,
@@ -25,6 +29,8 @@ const CourseListItem = ({
   isOpenPanel,
   onToggle,
   onChangeStatus,
+  onViewTutorial,
+  onReportTutorial,
   course,
   enabled,
   tutorials
@@ -70,6 +76,8 @@ const CourseListItem = ({
     <ExpandableCourseTutorials
       isOpenPanel={isOpenPanel}
       tutorials={tutorials}
+      onViewTutorial={onViewTutorial}
+      onReportTutorial={onReportTutorial}
     />
   </Root>
 )
@@ -79,4 +87,12 @@ CourseListItem.propTypes = {
   onToggle: PropTypes.func.isRequired
 }
 
-export default withCollapsiblePanel(CourseListItem)
+const mapState = (state, props) =>
+  createStructuredSelector({
+    tutorials: selectors.selectCourseTutorials(props.course.id)
+  })
+
+export default compose(
+  withCollapsiblePanel,
+  component => connect(mapState)(component)
+)(CourseListItem)
