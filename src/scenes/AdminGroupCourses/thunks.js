@@ -29,6 +29,15 @@ export const addCoursesToGroup = ({ groupId, courses }) => {
         await API.addCourseToGroup({ groupId, courseId: course.id })
       }
 
+      // TODO: Need to parallelize api calls like the commented code below though API throws 500. Need that fixed.
+      // const addCourseToGroupPromises = []
+      // for (const course of courses) {
+      //   const promise = API.addCourseToGroup({ groupId, courseId: course.id })
+      //   addCourseToGroupPromises.push(promise)
+      // }
+
+      // await Promise.all(addCourseToGroupPromises)
+
       return dispatch(actions.addCoursesToGroupSuccess({ courses }))
     } catch (error) {
       return dispatch(actions.addCoursesToGroupError())

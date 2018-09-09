@@ -4,10 +4,20 @@ import IconClose from "react-icons/lib/md/close"
 import { isNil } from "ramda"
 import styled from "styled-components"
 //
-import Button from "base_components/RootButton"
+import Button, { IconButton } from "base_components/RootButton"
 import ContainerFlex from "base_components/ContainerFlex"
+import UpdateTaskModal from "../UpdateTaskModal"
+import modal from "hoc/modal"
 
-const TasksListItem = ({ className, task }) => (
+const TasksListItem = ({
+  className,
+  task,
+  onOpen,
+  onClose,
+  isOpen,
+  onUpdate,
+  onDelete
+}) => (
   <div className={className}>
     <ContainerFlex isAlignCenter>
       <i>
@@ -23,15 +33,23 @@ const TasksListItem = ({ className, task }) => (
       </div>
     </ContainerFlex>
     <ContainerFlex>
-      <Button secondary>Edit</Button>
-      <i>
+      <Button secondary onClick={onOpen}>
+        Edit
+      </Button>
+      <IconButton onClick={() => onDelete(task)}>
         <IconClose />
-      </i>
+      </IconButton>
     </ContainerFlex>
+    <UpdateTaskModal
+      isOpen={isOpen}
+      task={task}
+      onClose={onClose}
+      onSubmit={onUpdate}
+    />
   </div>
 )
 
-export default styled(TasksListItem)`
+export default modal(styled(TasksListItem)`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -71,4 +89,4 @@ export default styled(TasksListItem)`
     align-items: center;
     flex-direction: row;
   }
-`
+`)

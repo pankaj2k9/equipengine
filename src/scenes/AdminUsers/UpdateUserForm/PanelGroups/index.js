@@ -2,19 +2,19 @@ import React from "react"
 
 import Modal from "../GroupModal"
 
-import { Root } from "./elements"
+import { Root, List } from "./elements"
 import { ButtonIcon } from "base_components/RootButton"
 import IconAdd from "react-icons/lib/md/add"
 
 import modal from "hoc/modal"
 
-const AccountContainer = ({
+const PanelGroups = ({
+  groups,
+  usersGroups,
+  handleUserGroupsChange,
   onOpen,
   onClose,
-  isOpen,
-  groups,
-  selectedGroupIds = [],
-  onChange
+  isOpen
 }) => (
   <Root
     title="Groups"
@@ -24,27 +24,22 @@ const AccountContainer = ({
       </ButtonIcon>
     )}
   >
-    {groups && groups.length > 0 && selectedGroupIds.length > 0 ? (
-      selectedGroupIds.map(groupId => {
-        const group = groups.find(group => group.id === groupId)
-        let html = ""
-        if (group) {
-          html = <div>{group.title}</div>
-        }
-        return html
-      })
-    ) : (
-      <div>No groups selected</div>
-    )}
+    <List>
+      {usersGroups.length > 0 ? (
+        usersGroups.map(group => <div key={group.id}>{group.title}</div>)
+      ) : (
+        <div>No groups selected</div>
+      )}
+    </List>
+
     <Modal
       isOpen={isOpen}
       handleClose={onClose}
       groups={groups}
-      selectedGroupIds={selectedGroupIds}
-      onChange={onChange}
-      onSubmit={onClose}
+      usersGroups={usersGroups}
+      handleUserGroupsChange={handleUserGroupsChange}
     />
   </Root>
 )
 
-export default modal(AccountContainer)
+export default modal(PanelGroups)

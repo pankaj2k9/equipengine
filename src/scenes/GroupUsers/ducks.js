@@ -123,7 +123,7 @@ const selectSearchTerm = () =>
 const selectCurrentRole = () =>
   createSelector(groupUsersSelector(), group => group.selectedRole)
 
-const selectPagintation = () =>
+const selectPagination = () =>
   createSelector(groupUsersSelector(), group => group.pagination)
 
 export const selectors = {
@@ -131,5 +131,5 @@ export const selectors = {
   selectIsFetchingGroupUsers,
   selectSearchTerm,
   selectCurrentRole,
-  selectPagintation
+  selectPagination
 }

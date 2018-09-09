@@ -34,6 +34,18 @@ export const addUsersToGroup = ({ groupId, users }) => {
         newGroupUsers.push(group_user)
       }
 
+      // TODO: Need to parallelize api calls like the commented code below though API throws 500. Need that fixed.
+      // const addUserToGroupPromises = []
+      // for (const user of users) {
+      //   addUserToGroupPromises.push(
+      //     API.addUserToGroup({
+      //       group_id: groupId,
+      //       user_id: user.id
+      //     })
+      //   )
+      // }
+      // const responses = await Promise.all(addUserToGroupPromises)
+
       return dispatch(actions.addUsersToGroupSuccess({ users: newGroupUsers }))
     } catch (error) {
       return dispatch(actions.addUsersToGroupError())

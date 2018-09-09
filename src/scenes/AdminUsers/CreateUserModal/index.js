@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { compose, pure } from "recompose"
 //
-import CreateEntityModal from "base_components/CreateEntityModal"
+import EntityModal from "base_components/EntityModal"
 import form from "hoc/form"
 import CreateUserForm, { validationSchema } from "../CreateUserForm"
 import Loading from "base_components/Loading"
@@ -17,7 +17,7 @@ const CreateUserModal = ({
   onClose,
   handleSubmit
 }) => (
-  <CreateEntityModal
+  <EntityModal
     title="Create new user"
     isOpen={isOpen}
     onClose={onClose}
@@ -29,7 +29,7 @@ const CreateUserModal = ({
     ) : (
       <CreateUserForm fields={fields} onChange={onChange} />
     )}
-  </CreateEntityModal>
+  </EntityModal>
 )
 
 CreateUserModal.propTypes = {

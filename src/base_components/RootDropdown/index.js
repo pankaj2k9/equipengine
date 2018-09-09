@@ -33,6 +33,8 @@ class Dropdown extends Component {
         options={options}
         className={className}
         placeholder={placeholder}
+        searchable={false}
+        clearable={false}
       />
     )
   }

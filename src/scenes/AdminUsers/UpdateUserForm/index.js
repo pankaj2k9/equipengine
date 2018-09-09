@@ -3,12 +3,16 @@ import { bindActionCreators } from "redux"
 import { connect } from "react-redux"
 import joi from "joi"
 import { toastr } from "react-redux-toastr"
+import { createStructuredSelector } from "reselect"
 import moment from "moment"
 
-import InputAddress from "base_components/InputAddress"
 import ButtonUpdate from "base_components/ButtonUpdate"
 import UserDetails from "base_components/UserDetails"
 import UserContacts from "base_components/UserContacts"
+import Loading from "base_components/Loading"
+import Centerer from "base_components/PageCenterer"
+
+import { STUDENT_ROLE } from "services/constants"
 
 import PanelAccountRole from "./PanelAccountRole"
 import PanelControlGroup from "./PanelControlGroup"
@@ -21,7 +25,6 @@ import {
   getDropdownValue
 } from "utils/formFunctions"
 
-import { types } from "../ducks"
 import features from "features"
 
 const validationSchema = joi.object().keys({
@@ -37,38 +40,36 @@ const validationSchema = joi.object().keys({
     .string()
     .email()
     .required()
-    .label("Email name is required")
+    .label("Email name is required"),
+  phoneNumber: joi
+    .number()
+    .required()
+    .label("Phone number name is required")
 })
 
 class UpdateUserForm extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      id: props.user && props.user.id,
-      firstName: props.user && props.user.first_name,
-      lastName: props.user && props.user.last_name,
-      email: props.user && props.user.email,
-      phone: props.user && props.user.phone_number,
-      birthDate: props.user && props.user.date_of_birth,
-      address: props.user && props.user.address,
-      country: props.user && props.user.country_id,
-      state: props.user && props.user.state_id,
-      zipCode: props.user && props.user.zip_code,
-      participatedGroupIds: props.user && props.user.participated_group_ids,
-      organization_settings: props.user && props.user.organization_settings,
-      role:
-        props.user &&
-        props.user.organization_settings &&
-        props.user.organization_settings.role,
-      hasFileControlPrivelegies:
-        props.user &&
-        props.user.organization_settings &&
-        props.user.organization_settings.files_controll_enabled,
-      messengerAccess:
-        props.user &&
-        props.user.organization_settings &&
-        props.user.organization_settings.messanger_access_enabled
-    }
+  state = {
+    userId: this.props.user && this.props.user.id,
+    firstName: this.props.user && this.props.user.first_name,
+    lastName: this.props.user && this.props.user.last_name,
+    email: this.props.user && this.props.user.email,
+    phoneNumber: this.props.user && this.props.user.phone_number,
+    dateOfBirth: this.props.user && this.props.user.date_of_birth,
+    address: this.props.user && this.props.user.address,
+    groupIds: this.props.user.participated_group_ids,
+    activityStudentIds: this.props.user.organization_settings.activity_settings
+      .activity_student_ids,
+    countryId: "",
+    stateId: "",
+    zipCode: this.props.user && this.props.user.zip_code,
+    role:
+      this.props.user &&
+      this.props.user.organization_settings &&
+      this.props.user.organization_settings.role,
+    messengerAccess: this.props.user.organization_settings
+      .messanger_access_enabled,
+    fileControlPrivileges: this.props.user.organization_settings
+      .files_controll_enabled
   }
 
   componentDidMount() {
@@ -78,61 +79,85 @@ class UpdateUserForm extends Component {
     !states.length && this.props.fetchStates()
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.user.id !== prevState.id) {
-      return { ...nextProps.user } // <- this is setState equivalent
+  static getDerivedStateFromProps(props, state) {
+    let result = {}
+
+    if (props.countries.length !== 0 && props.user.country_id) {
+      result = {
+        countryId: state.countryId || props.user.country_id
+      }
     }
+
+    if (props.states.length !== 0 && props.user.state_id) {
+      result = {
+        ...result,
+        stateId: state.stateId || props.user.state_id
+      }
+    }
+
+    return Object.keys(result).length !== 0 ? result : null
   }
 
-  onChange = (e, selector) => {
+  onChange = event => {
     const fields = this.state
+    const selector = event.currentTarget.name
 
-    const nextFields = updateFieldValue(e, selector, fields)
+    const value =
+      event.target.type === "checkbox"
+        ? event.target.checked
+        : event.target.value
 
-    // TODO: make this more generic.
-    if (selector === "role") {
-      nextFields.roles = e
-      nextFields.organization_settings = nextFields.organization_settings.merge(
-        { role: e }
-      )
-    } else if (selector === "hasFileControlPrivelegies") {
-      nextFields.organization_settings = nextFields.organization_settings.merge(
-        { files_controll_enabled: e }
-      )
-    } else if (selector === "messengerAccess") {
-      nextFields.organization_settings = nextFields.organization_settings.merge(
-        { messanger_access_enabled: e }
-      )
-    }
+    const nextFields = updateFieldValue(value, selector, fields)
 
     this.setState(nextFields)
   }
 
-  handleUpdateUser = e => {
+  onSubmit = e => {
     e.preventDefault()
 
-    const validationResult = validate(this.state, validationSchema)
+    let fields = this.state
+    const { organization_settings } = this.props.user
+    const validationResult = validate(fields, validationSchema)
 
-    if (!validationResult.error) {
-      this.props.updateUser(this.state.id, this.state).then(action => {
-        if (action.type === types.UPDATE_USER_SUCCESS) {
-          this.handleTabClick(action.payload.user)
-          toastr.success(
-            "Success",
-            `User "${this.state.email}" is succesffully updated`
-          )
-        } else {
-          toastr.error("Error", `Failed to update user "${this.state.email}"`)
-        }
-      })
-
-      return
+    fields = {
+      ...fields,
+      date_of_birth: moment(fields.dateOfBirth)
+        .toDate()
+        .toString(),
+      phone_number: fields.phoneNumber,
+      zip_code: fields.zipCode,
+      first_name: fields.firstName,
+      last_name: fields.lastName,
+      country_id: fields.countryId,
+      state_id: fields.stateId,
+      participated_group_ids: fields.groupIds,
+      organization_users_attributes: {
+        id: organization_settings.id,
+        role: fields.role,
+        user_id: fields.userId,
+        files_controll_enabled: fields.fileControlPrivileges,
+        activity_student_ids: fields.activityStudentIds,
+        messanger_access_enabled: fields.messengerAccess
+      }
     }
 
-    toastr.error(
-      "Validation error",
-      validationResult.error.details[0].context.label
-    )
+    if (!validationResult.error) {
+      this.props
+        .updateUser(fields)
+        .then(action => {
+          if (action.type === features.adminUsers.types.UPDATE_USER_SUCCESS) {
+            toastr.success("Success", "User is successfully updated")
+          } else {
+            toastr.error("Error", "User update failed")
+          }
+        })
+        .catch(err => {
+          toastr.error(
+            "Validation error",
+            [Object.keys(err.errors)] + [Object.values(err.errors)]
+          )
+        })
+    }
   }
 
   handleSendResetPasswordToken = () => {
@@ -142,23 +167,102 @@ class UpdateUserForm extends Component {
     }
   }
 
+  handleUserGroupsChange = event => {
+    const { groupIds } = this.state
+    const group_id = parseInt(event.target.id.replace("group-", ""), 10)
+    const idIndex = groupIds.includes(group_id)
+
+    this.setState({
+      groupIds: idIndex
+        ? groupIds.filter(id => id !== group_id)
+        : [...groupIds, group_id]
+    })
+  }
+
+  handleActivityStudentsChange = event => {
+    const { activityStudentIds } = this.state
+    const student_id = parseInt(event.target.id.replace("student-", ""), 10)
+    const idIndex = activityStudentIds.includes(student_id)
+
+    this.setState({
+      activityStudentIds: idIndex
+        ? activityStudentIds.filter(id => id !== student_id)
+        : [...activityStudentIds, student_id]
+    })
+  }
+
+  handleBirthDateChange = value =>
+    this.setState({ dateOfBirth: value.toDate().toString() })
+
+  handleDropdownChange = (value, selector) => {
+    this.setState({
+      [selector]: value
+    })
+  }
+
+  suspendUser = () => {
+    const { organization_settings } = this.props.user
+    const { userId } = this.state
+
+    const updateFields = {
+      userId,
+      organization_users_attributes: {
+        id: organization_settings.id,
+        status: null
+      }
+    }
+
+    this.props.updateUser(updateFields).then(action => {
+      if (action.type === features.adminUsers.types.UPDATE_USER_SUCCESS) {
+        toastr.success("Success", "User is successfully suspended")
+      } else {
+        toastr.error("Error", "User suspend failed")
+      }
+    })
+  }
+
+  removeUser = () => {
+    const { userId } = this.state
+
+    this.props.removeUser(userId).then(action => {
+      if (action.type === features.adminUsers.types.REMOVE_USER_SUCCESS) {
+        toastr.success("Success", "User is successfully removed")
+      } else {
+        toastr.error("Error", "User remove failed")
+      }
+    })
+  }
+
   render() {
     const {
+      address,
+      activityStudentIds,
+      messengerAccess,
+      dateOfBirth,
+      countryId,
+      email,
       firstName,
       lastName,
-      email,
-      phone,
-      birthDate,
-      address,
-      country,
-      state,
-      zipCode,
+      phoneNumber,
       role,
-      hasFileControlPrivelegies,
-      messengerAccess,
-      participatedGroupIds
+      stateId,
+      groupIds,
+      zipCode,
+      fileControlPrivileges
     } = this.state
-    const { onSubmit, countries, states, groups } = this.props
+    const { groups, isFetchingAddress, states, users, user } = this.props
+
+    const students =
+      users &&
+      users.filter(user => user.organization_settings.role === STUDENT_ROLE)
+
+    const usersGroups = this.props.groups.filter(group =>
+      groupIds.includes(group.id)
+    )
+
+    if (!user && users.length !== 0) {
+      return <Centerer>Please, select any group to see content</Centerer>
+    }
 
     return (
       <MainForm>
@@ -167,81 +271,90 @@ class UpdateUserForm extends Component {
             firstName={firstName}
             lastName={lastName}
             email={email}
-            changeFirstName={e => this.onChange(e.target.value, "firstName")}
-            changeLastName={e => this.onChange(e.target.value, "lastName")}
-            changeEmail={e => this.onChange(e.target.value, "email")}
+            changeFirstName={this.onChange}
+            changeLastName={this.onChange}
+            changeEmail={this.onChange}
             onSendResetPasswordToken={this.handleSendResetPasswordToken}
             isAvatarEditable
           />
         </ResponsivePanel>
+
         <ResponsivePanel>
           <UserContacts
-            phone={phone}
-            birthDate={birthDate ? moment(birthDate) : birthDate}
+            phone={phoneNumber}
+            birthDate={dateOfBirth}
             address={address}
-            changePhone={e => this.onChange(e.target.value, "phone")}
-            changeBirthDate={value => this.onChange(value, "birthDate")}
-            changeAddress={e => this.onChange(e.target.value, "address")}
+            changePhone={this.onChange}
+            changeBirthDate={this.handleBirthDateChange}
           />
-          {countries.length !== 0 &&
-            states.length !== 0 && (
-              <InputAddress
-                countries={countries}
-                country={country}
-                states={states}
-                state={state}
-                zipCode={zipCode}
-                changeCountry={value =>
-                  this.onChange(getDropdownValue(value), "country")
-                }
-                changeState={value =>
-                  this.onChange(getDropdownValue(value), "state")
-                }
-                changeZipCode={e => this.onChange(e.target.value, "zipCode")}
-              />
-            )}
+
+          {isFetchingAddress ? (
+            <Loading />
+          ) : (
+            <features.address.pages.AddressInfo
+              countries={this.props.countries}
+              states={states}
+              address={address}
+              country={countryId}
+              state={stateId}
+              zipCode={zipCode}
+              changeAddress={this.onChange}
+              changeCountry={value => {
+                this.handleDropdownChange(getDropdownValue(value), "countryId")
+              }}
+              changeState={value =>
+                this.handleDropdownChange(getDropdownValue(value), "stateId")
+              }
+              changeZipCode={this.onChange}
+            />
+          )}
         </ResponsivePanel>
+
         <PanelGroups
+          handleUserGroupsChange={this.handleUserGroupsChange}
           groups={groups}
-          selectedGroupIds={participatedGroupIds}
-          onChange={this.onChange}
+          usersGroups={usersGroups}
         />
-        <PanelAccountRole
-          role={role}
-          hasFileControlPrivelegies={hasFileControlPrivelegies}
-          messengerAccess={messengerAccess}
-          // users
-          onChange={this.onChange}
+
+        {!users ? (
+          <Loading />
+        ) : (
+          <PanelAccountRole
+            role={role}
+            fileControlPrivileges={fileControlPrivileges}
+            students={students}
+            onChange={this.onChange}
+            handleActivityStudentsChange={this.handleActivityStudentsChange}
+            activityStudents={activityStudentIds}
+            handleDropdownChange={this.handleDropdownChange}
+            messengerAccess={messengerAccess}
+          />
+        )}
+
+        <PanelControlGroup
+          suspendUser={this.suspendUser}
+          removeUser={this.removeUser}
         />
-        <PanelControlGroup />
-        <ButtonUpdate onClick={e => onSubmit(e, this.state)}>
-          Update
-        </ButtonUpdate>
-        {/* <ButtonUpdate onClick={this.handleUpdateUser}>Update</ButtonUpdate> */}
+        <ButtonUpdate onClick={this.onSubmit}>Update</ButtonUpdate>
       </MainForm>
     )
   }
 }
 
-// export default UpdateUserForm
-
-const mapState = state => {
-  // createStructuredSelector({
-  //   countries: features.address.selectors.selectCountries(),
-  //   states: features.address.selectors.selectStates()
-  // })
-  return {
-    countries: state.address.countries,
-    states: state.address.states
-  }
-}
+const mapState = () =>
+  createStructuredSelector({
+    countries: features.address.selectors.selectCountries(),
+    states: features.address.selectors.selectStates(),
+    isFetchingAddress: features.address.selectors.selectIsFetchingAddress()
+  })
 
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
-      updateUser: features.adminUsers.actions.updateUser,
       fetchCountries: features.address.actions.fetchCountries,
-      fetchStates: features.address.actions.fetchStates
+      fetchStates: features.address.actions.fetchStates,
+      updateUser: features.adminUsers.actions.updateUser,
+      removeUser: features.adminUsers.actions.removeUser
     },
     dispatch
   )
@@ -250,5 +363,3 @@ export default connect(
   mapState,
   mapDispatch
 )(UpdateUserForm)
-
-export { validationSchema }

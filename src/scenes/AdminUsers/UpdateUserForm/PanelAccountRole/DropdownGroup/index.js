@@ -15,6 +15,7 @@ const DropdownUserRole = ({ role, onChange }) => (
       value={role}
       onChange={value => onChange(getDropdownValue(value), "role")}
       options={[
+        { label: "Admin", value: "admin" },
         { label: "Teacher", value: "teacher" },
         { label: "Student", value: "student" }
       ]}

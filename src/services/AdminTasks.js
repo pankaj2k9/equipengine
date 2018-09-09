@@ -19,21 +19,45 @@ export const createAdminTask = ({
   course_id,
   tutorial_id,
   type,
-  description,
-  attachment_ids = [],
-  video_ids = []
+  description
 }) =>
   client
     .post(`/api/v1/courses/${course_id}/lessons/${tutorial_id}/tasks`, {
       task: {
         action_type: type,
-        description,
-        attachments_attributes: attachment_ids.map(attachment_id => ({
-          id: attachment_id
-        })),
-        video_attributes: video_ids.map(video_id => ({
-          id: video_id
-        }))
+        description
       }
     })
+    .then(response => response.data)
+
+/**
+ * @returns updated lesson task
+ */
+export const updateAdminTask = ({
+  course_id,
+  tutorial_id,
+  task_id,
+  type,
+  description
+}) =>
+  client
+    .put(
+      `/api/v1/courses/${course_id}/lessons/${tutorial_id}/tasks/${task_id}`,
+      {
+        task: {
+          action_type: type,
+          description
+        }
+      }
+    )
+    .then(response => response.data)
+
+/**
+ * @returns { "success": true }
+ */
+export const deleteAdminTask = ({ course_id, tutorial_id, task_id }) =>
+  client
+    .delete(
+      `/api/v1/courses/${course_id}/lessons/${tutorial_id}/tasks/${task_id}`
+    )
     .then(response => response.data)

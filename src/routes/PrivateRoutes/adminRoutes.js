@@ -32,10 +32,20 @@ const adminRoutes = [
   {
     path: "/secure/admin/course-creator/courses",
     strict: true,
-    exact: false,
+    exact: true,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the admin course manager page.">
         <features.adminCourses.pages.Courses {...props} />
+      </ErrorBoundary>
+    )
+  },
+  {
+    path: "/secure/admin/course-creator/courses/:courseId",
+    strict: true,
+    exact: true,
+    AsyncComponent: props => (
+      <ErrorBoundary errMsg="Something went wrong in displaying the course page.">
+        <features.adminCourse.pages.Course {...props} />
       </ErrorBoundary>
     )
   },

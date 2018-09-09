@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import ModalBody from "react-bootstrap/lib/ModalBody"
+import Loading from "base_components/Loading"
 
 import UserAvatar from "base_components/UserAvatar"
 
@@ -36,7 +37,11 @@ const ListRow = styled.li`
   }
 `
 
-const ThreadModalBody = styled(({ className, thread }) => {
+const ThreadModalBody = styled(({ className, thread, isFetchingComments }) => {
+  if (isFetchingComments) {
+    return <Loading />
+  }
+
   const commentList =
     thread.comments &&
     thread.comments.map(comment => (

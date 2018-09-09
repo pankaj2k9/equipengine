@@ -1,4 +1,5 @@
 import React, { Fragment } from "react"
+import moment from "moment"
 
 import ContainerFlex from "base_components/ContainerFlex"
 import DatePicker from "base_components/DatePicker"
@@ -11,14 +12,25 @@ import { Spacing } from "./elements"
 const Phone = ({ value, onChange }) => (
   <FormGroup>
     <Label>Phone Number</Label>
-    <Text placeholder="+61908434" value={value} onChange={onChange} />
+    <Text
+      placeholder="+61908434"
+      name="phoneNumber"
+      value={value}
+      onChange={onChange}
+    />
   </FormGroup>
 )
 
 const BirthDate = ({ value, onChange }) => (
   <FormGroup>
     <Label>Date of Birth</Label>
-    <DatePicker placeholder="09/15/1994" value={value} onChange={onChange} />
+    <DatePicker
+      placeholder="09/15/1994"
+      value={value}
+      onChange={onChange}
+      maxDate={moment()}
+      name="dateOfBirth"
+    />
   </FormGroup>
 )
 

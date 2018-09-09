@@ -3,7 +3,7 @@ import React from "react"
 import { getContext } from "recompose"
 
 import ListDiscussion from "./components/ListDiscussion"
-import { contextPropTypes } from "../propTypes"
+import { contextPropTypes } from "../../CourseThreads/propTypes"
 
 const LatestGroupDiscussions = styled(
   ({ className, latestDiscussions, selectThread }) => (

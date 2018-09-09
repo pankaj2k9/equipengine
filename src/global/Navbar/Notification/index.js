@@ -86,7 +86,7 @@ const Notification = () => {
       <PopoverMessage
         MessageRowData={() => MessageRowData("/secure/messages")}
       />
-      <Profile userName="Jane Doe" avatar={avatar} />
+      <Profile />
     </div>
   )
 }

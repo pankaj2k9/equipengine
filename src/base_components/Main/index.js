@@ -74,7 +74,6 @@ Main.propTypes = {
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element)
   ]).isRequired,
-  type: PropTypes.string.isRequired,
   pathname: PropTypes.string.isRequired
 }
 

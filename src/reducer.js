@@ -18,6 +18,7 @@ export default combineReducers({
   address: features.address.reducer,
   chats: features.messages.reducer,
   courses: features.courses.reducer,
+  courseThreads: features.courseThreads.reducer,
   login: features.login.reducer,
   myGroups: features.myGroups.reducer,
   settings: features.settings.reducer,

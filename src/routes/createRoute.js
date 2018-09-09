@@ -7,9 +7,9 @@ import { isNil } from "ramda"
  * @param{Object} route
  * @return{Object} Route component
  */
-const createRoute = (route, wrapper) => (
+const createRoute = (route, index, wrapper) => (
   <Route
-    key={route.id}
+    key={`route-${index}`}
     path={route.path}
     exact={route.exact}
     strict={route.strict}

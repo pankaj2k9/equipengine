@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 //
-import CreateEntityModal from "base_components/CreateEntityModal"
+import EntityModal from "base_components/EntityModal"
 import TaskForm from "../TaskForm"
 
 class CreateTaskModal extends Component {
@@ -20,7 +20,7 @@ class CreateTaskModal extends Component {
   render() {
     const { className, isOpen, onClose } = this.props
     return (
-      <CreateEntityModal
+      <EntityModal
         className={className}
         title="New Task"
         isOpen={isOpen}
@@ -29,7 +29,7 @@ class CreateTaskModal extends Component {
         onSubmit={this.handleSubmit}
       >
         <TaskForm task={this.state.task} onChange={this.handleChange} />
-      </CreateEntityModal>
+      </EntityModal>
     )
   }
 }

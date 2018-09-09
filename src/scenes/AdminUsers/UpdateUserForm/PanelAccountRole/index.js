@@ -5,22 +5,30 @@ import AccountGroup from "./AccountGroup"
 import MessengerAccessGroup from "./MessengerAccessGroup"
 
 import { Root } from "./elements"
+import { TEACHER_ROLE } from "services/constants"
 
 const PanelAccountRole = ({
   role,
-  hasFileControlPrivelegies,
+  activityStudents,
   messengerAccess,
-  isSuspended,
-  onChange
+  fileControlPrivileges,
+  onChange,
+  handleDropdownChange,
+  handleActivityStudentsChange,
+  students
 }) => (
   <Root title="Account Role">
-    <DropdownGroup role={role} onChange={onChange} />
-    <AccountGroup
-      hasFileControlPrivelegies={hasFileControlPrivelegies}
-      onChange={onChange}
-    />
+    <DropdownGroup role={role} onChange={handleDropdownChange} />
+    {role === TEACHER_ROLE && (
+      <AccountGroup
+        fileControlPrivileges={fileControlPrivileges}
+        onChange={onChange}
+        handleActivityStudentsChange={handleActivityStudentsChange}
+        activityStudents={activityStudents}
+        students={students}
+      />
+    )}
     <MessengerAccessGroup
-      // isSuspended={isSuspended}
       messengerAccess={messengerAccess}
       onChange={onChange}
     />

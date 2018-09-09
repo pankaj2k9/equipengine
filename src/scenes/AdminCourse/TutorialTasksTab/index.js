@@ -7,7 +7,7 @@ import { createStructuredSelector } from "reselect"
 import { Actions } from "./elements"
 import ButtonAdd from "base_components/ButtonAdd"
 import CreateTaskModal from "../CreateTaskModal"
-import { createTask, fetchTasks } from "../thunks"
+import { createTask, deleteTask, fetchTasks, updateTask } from "../thunks"
 import modal from "hoc/modal"
 import Loading from "base_components/Loading"
 import { selectors } from "../selectors"
@@ -48,10 +48,44 @@ class TutorialTasksTab extends Component {
         })
       )
 
+  handleUpdateTask = task =>
+    this.props
+      .updateTask({
+        courseId: this.props.selectedTutorial.course_id,
+        tutorialId: this.props.selectedTutorial.id,
+        task
+      })
+      .then(action =>
+        toastAction({
+          action,
+          errorType: types.UPDATE_TASK_ERROR,
+          success: "Task is succesffully updated",
+          error: "Task update failed"
+        })
+      )
+
+  handleDeleteTask = task =>
+    this.props
+      .deleteTask({
+        courseId: this.props.selectedTutorial.course_id,
+        tutorialId: this.props.selectedTutorial.id,
+        task
+      })
+      .then(action =>
+        toastAction({
+          action,
+          errorType: types.DELETE_TASK_ERROR,
+          success: "Task is successfully deleted",
+          error: "Task delete failed"
+        })
+      )
+
   render() {
     const {
-      isCreatingTask,
       isFetchingTasks,
+      isCreatingTask,
+      isUpdatingTask,
+      isDeletingTask,
       tasks,
       isOpen,
       onOpen,
@@ -62,12 +96,19 @@ class TutorialTasksTab extends Component {
         <Actions>
           <ButtonAdd text="Add" iconPosition="right" onHandlerClick={onOpen} />
         </Actions>
-        {isFetchingTasks || isCreatingTask ? (
+        {isFetchingTasks ||
+        isCreatingTask ||
+        isUpdatingTask ||
+        isDeletingTask ? (
           <Loading />
         ) : tasks.length === 0 ? (
           "This tutorial has no tasks"
         ) : (
-          <TutorialTasksList tasks={tasks} />
+          <TutorialTasksList
+            tasks={tasks}
+            onUpdate={this.handleUpdateTask}
+            onDelete={this.handleDeleteTask}
+          />
         )}
         <CreateTaskModal
           isOpen={isOpen}
@@ -84,14 +125,18 @@ const mapState = () =>
     selectedTutorial: selectors.selectSelectedTutorial(),
     tasks: selectors.selectTasks(),
     isFetchingTasks: selectors.selectIsFetchingTasks(),
-    isCreatingTask: selectors.selectIsCreatingTask()
+    isCreatingTask: selectors.selectIsCreatingTask(),
+    isUpdatingTask: selectors.selectIsUpdatingTask(),
+    isDeletingTask: selectors.selectIsDeletingTask()
   })
 
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
       createTask,
-      fetchTasks
+      deleteTask,
+      fetchTasks,
+      updateTask
     },
     dispatch
   )
