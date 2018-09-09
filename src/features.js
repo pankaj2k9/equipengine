@@ -18,10 +18,12 @@ import * as MyGroups from "scenes/MyGroups"
 import * as ResetPassword from "scenes/ResetPassword"
 import * as Signup from "scenes/Signup"
 import * as TeacherStudents from "scenes/TeacherStudents"
+import * as TeacherGroupsActivity from "scenes/TeacherGroupsActivity"
 import * as Tutorial from "scenes/Tutorial"
 import * as Settings from "scenes/Settings"
 import * as GroupFiles from "scenes/Files"
 import * as CourseThreads from "scenes/CourseThreads"
+import * as Dashboard from "scenes/Dashboard"
 
 /**
  * Map with all the public accessible features
@@ -225,6 +227,16 @@ registerFeature({
   name: "teacherStudents",
   enabled: true,
   ...TeacherStudents
+})
+registerFeature({
+  name: "teacherGroupActivities",
+  enabled: true,
+  ...TeacherGroupsActivity
+})
+registerFeature({
+  name: "dashboard",
+  enabled: true,
+  ...Dashboard
 })
 
 export default features

@@ -4,10 +4,6 @@ import ErrorBoundary from "base_components/ErrorBoundary"
 import features from "features"
 import Loadable from "base_components/Loadable"
 
-const AsyncDashboard = Loadable({
-  loader: () => import("scenes/Dashboard")
-})
-
 const AsyncNotifications = Loadable({
   loader: () => import("scenes/Notifications")
 })
@@ -37,7 +33,7 @@ const privateRoutes = [
     exact: true,
     AsyncComponent: props => (
       <ErrorBoundary errMsg="Something went wrong in displaying the dashboard page.">
-        <AsyncDashboard {...props} />
+        <features.dashboard.pages.Dashboard {...props} />
       </ErrorBoundary>
     )
   },
