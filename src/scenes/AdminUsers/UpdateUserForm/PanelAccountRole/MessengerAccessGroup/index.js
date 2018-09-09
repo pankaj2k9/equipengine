@@ -10,7 +10,7 @@ const MessengerAccess = ({ messengerAccess, onChange }) => (
     <SwitchMessenger
       name="messengerAccess"
       value={messengerAccess}
-      onChange={e => onChange(e.target.checked, "messengerAccess")}
+      onChange={onChange}
     />
   </Root>
 )

@@ -12,6 +12,7 @@
     "history": "^4.7.2",
     "immutable": "v4.0.0-rc.9",
     "joi": "^13.4.0",
+    "lodash.debounce": "^4.0.8",
     "moment": "^2.19.1",
     "prop-types": "^15.6.0",
     "ramda": "^0.24.1",

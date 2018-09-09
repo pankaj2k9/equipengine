@@ -21,22 +21,20 @@ const ListLinkHorizontal = styled.ul`
   }
 `
 
-const SiteListLinkHorizontal = ({ isOpenPanel, onToggle, accountType }) => (
-  <ListLinkHorizontal isOpenPanel={isOpenPanel}>
-    {!identical(accountType, ADMIN_ROLE) && (
-      <li onClick={onToggle}>
-        <LinkHorizontal activeClassName="active" to="/secure/home">
-          Home
-        </LinkHorizontal>
-      </li>
-    )}
-    <li onClick={onToggle}>
+const SiteListLinkHorizontal = ({ accountType }) => (
+  <ListLinkHorizontal>
+    <li>
+      <LinkHorizontal activeClassName="active" to="/secure/home">
+        Home
+      </LinkHorizontal>
+    </li>
+    <li>
       <LinkHorizontal activeClassName="active" to="/secure/activity">
-        Actvity
+        Activity
       </LinkHorizontal>
     </li>
     {identical(accountType, ADMIN_ROLE) && (
-      <li onClick={onToggle}>
+      <li>
         <LinkHorizontal
           width="80px"
           activeClassName="active"
@@ -50,8 +48,6 @@ const SiteListLinkHorizontal = ({ isOpenPanel, onToggle, accountType }) => (
 )
 
 SiteListLinkHorizontal.propTypes = {
-  isOpenPanel: PropTypes.bool.isRequired,
-  onToggle: PropTypes.func.isRequired,
   accountType: PropTypes.string.isRequired
 }
 

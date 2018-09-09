@@ -18,7 +18,12 @@ const FirstName = ({ value, onChange }) => (
       First Name
       {onChange && "*"}
     </Label>
-    <Text placeholder="First name" value={value} onChange={onChange} />
+    <Text
+      placeholder="First name"
+      name="firstName"
+      value={value}
+      onChange={onChange}
+    />
   </FormGroup>
 )
 
@@ -28,7 +33,12 @@ const LastName = ({ value, onChange }) => (
       Last Name
       {onChange && "*"}
     </Label>
-    <Text placeholder="Last name" value={value} onChange={onChange} />
+    <Text
+      placeholder="Last name"
+      name="lastName"
+      value={value}
+      onChange={onChange}
+    />
   </FormGroup>
 )
 
@@ -41,6 +51,7 @@ const EmailInput = ({ value, onChange }) => (
     <Text
       placeholder="Email Address"
       type="email"
+      name="email"
       value={value}
       onChange={onChange}
     />

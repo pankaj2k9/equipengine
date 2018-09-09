@@ -15,15 +15,27 @@ export const H5 = styled.h5`
 `
 
 export const List = styled.div`
-  border: 1px solid #dddddd;
+  max-height: 450px;
   padding: 15px;
   margin-top: 20px;
+  border: 1px solid #dddddd;
+  overflow-y: auto;
 `
 
 export const ListItem = styled.div`
   display: flex;
   margin-bottom: 20px;
   align-items: center;
+
+  > label {
+    margin: 0;
+    padding-left: 14px;
+    cursor: pointer;
+  }
+
+  > div {
+    margin-right: 0;
+  }
 `
 
 export const Checkbox = styled(BaseCheckbox)`

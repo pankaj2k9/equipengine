@@ -1,88 +1,70 @@
 import React, { Component, Fragment } from "react"
 import { bindActionCreators } from "redux"
 import { compose, pure, withState } from "recompose"
+import debounce from "lodash.debounce"
 import { connect } from "react-redux"
-import { createStructuredSelector } from "reselect"
 import { toastr } from "react-redux-toastr"
 import { withRouter } from "react-router-dom"
+import { createStructuredSelector } from "reselect"
 
 import BorderedTitle from "base_components/BorderedTitle"
-import { createUser, fetchUsers, sendResetPasswordToken } from "../thunks"
+import VerticalTabs from "base_components/VerticalTabs"
+import SearchActionBar from "base_components/SearchActionBar"
+
+import UpdateUserForm from "../UpdateUserForm"
 import CreateUserModal from "../CreateUserModal"
 import UserItemFormatter from "../UserItemFormatter"
-import modal from "hoc/modal"
-import SearchActionBar from "base_components/SearchActionBar"
+
 import { actions, selectors, types } from "../ducks"
-import UserContent from "../UserContent"
-import { validationSchema } from "../UpdateUserForm"
-import VerticalTabs from "base_components/VerticalTabs"
-import { validate } from "utils/formFunctions"
+import { createUser, fetchUsers, sendResetPasswordToken } from "../thunks"
+
+import modal from "hoc/modal"
 import features from "features"
 
 class AdminUsers extends Component {
   componentDidMount() {
     const {
+      groups,
       users,
       userId,
+      fetchGroups,
       fetchUsers,
-      selectUser,
-      groups,
-      fetchGroups
+      selectUser
     } = this.props
-    if (!users || users.length === 0) {
+    if (users.length === 0) {
       fetchUsers({})
+    }
+    if (groups.length === 0) {
+      fetchGroups({})
     }
     if (userId) {
       selectUser({ userId })
     }
-    if (!groups || groups.length === 0) {
-      fetchGroups()
-    }
+
+    this.handleSearchUsers = debounce(this.handleSearchUsers, 500)
   }
 
   handleTabClick = user =>
     this.props.history.push(`/secure/admin/users/${user.id}`)
 
   handleCreateUser = fields => {
-    this.props.createUser(fields).then(action => {
-      this.props.onClose()
-      if (action.type === types.CREATE_USER_SUCCESS) {
-        this.handleTabClick(action.payload.user)
-        toastr.success(
-          "Success",
-          `New user "${fields.email}" is succesffully created`
-        )
-      } else {
-        toastr.error("Error", `Failed to create user "${fields.email}"`)
-      }
-    })
-  }
-
-  handleUpdateUser = (e, user) => {
-    e.preventDefault()
-
-    const validationResult = validate(user, validationSchema)
-
-    if (!validationResult.error) {
-      this.props.updateUser(user.id, user).then(action => {
-        if (action.type === types.UPDATE_USER_SUCCESS) {
+    this.props
+      .createUser({
+        ...fields,
+        organization_ids: this.props.adminsOrganizationIds
+      })
+      .then(action => {
+        this.props.onClose()
+        if (action.type === types.CREATE_USER_SUCCESS) {
           this.handleTabClick(action.payload.user)
           toastr.success(
             "Success",
-            `User "${user.email}" is succesffully updated`
+            `New user "${fields.email}" is successfully created`
           )
         } else {
-          toastr.error("Error", `Failed to update user "${user.email}"`)
+          toastr.error("Error", `Failed to create user "${fields.email}"`)
         }
       })
-
-      return
-    }
-
-    toastr.error(
-      "Validation error",
-      validationResult.error.details[0].context.label
-    )
   }
 
   handleResetPasswordSend = ({ id, email }) =>
@@ -103,12 +85,12 @@ class AdminUsers extends Component {
 
   render() {
     const {
+      groups,
       users,
       userId,
       selectedUser,
       isFetchingUsers,
       isSavingUser,
-      groups,
       isOpen: isOpenCreateUserModal,
       onOpen: onOpenCreateUserModal,
       onClose: onCloseCreateUserModal
@@ -121,7 +103,7 @@ class AdminUsers extends Component {
           tabs={users}
           tabFormatter={tab => <UserItemFormatter user={tab} />}
           loading={isFetchingUsers}
-          selectedTab={selectedUser && selectedUser.id}
+          selectedTab={parseInt(userId, 10)}
           actionBar={
             <SearchActionBar
               onCreate={onOpenCreateUserModal}
@@ -131,9 +113,10 @@ class AdminUsers extends Component {
           content={
             selectedUser &&
             selectedUser.id.toString() === userId && (
-              <UserContent
-                user={selectedUser}
+              <UpdateUserForm
                 groups={groups}
+                user={selectedUser}
+                users={users}
                 onSubmit={this.handleUpdateUser}
                 onSendResetPasswordToken={this.handleResetPasswordSend}
               />
@@ -155,10 +138,11 @@ class AdminUsers extends Component {
 const mapState = () =>
   createStructuredSelector({
     users: selectors.selectUsers(),
-    selectedUser: selectors.selectSelectedUser(),
+    groups: features.adminGroups.selectors.selectGroups(),
     isFetchingUsers: selectors.selectIsFetchingUsers(),
     isSavingUser: selectors.selectIsSavingUser(),
-    groups: features.adminGroups.selectors.selectGroups()
+    selectedUser: selectors.selectSelectedUser(),
+    adminsOrganizationIds: selectors.selectAdminsOrganizationIds()
   })
 
 const mapDispatch = dispatch =>
@@ -183,7 +167,6 @@ export default compose(
   withRouter,
   modal,
   withState("userId", null, props =>
-    // retrieve user id from url if provided
     props.location.pathname.replace(props.match.url, "").replace("/", "")
   ),
   pure

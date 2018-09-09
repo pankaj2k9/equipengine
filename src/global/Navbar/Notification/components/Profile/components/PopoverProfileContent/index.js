@@ -54,7 +54,7 @@ const PopoverProfileContent = styled(({ className, onLogout }) => (
 `
 
 PopoverProfileContent.propTypes = {
-  removeLoggedUser: PropTypes.func.isRequired
+  onLogout: PropTypes.func.isRequired
 }
 
 export default PopoverProfileContent
