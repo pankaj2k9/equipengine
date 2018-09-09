@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router"
+import { compose } from "recompose"
 import { createStructuredSelector } from "reselect"
 import { bindActionCreators } from "redux"
 import InfiniteScroll from "react-infinite-scroller"
@@ -144,9 +145,10 @@ const mapState = () =>
 const mapDispatch = dispatch =>
   bindActionCreators({ fetchAttachments, deleteAttachment }, dispatch)
 
-export default withRouter(
+export default compose(
+  withRouter,
   connect(
     mapState,
     mapDispatch
-  )(Files)
-)
+  )
+)(Files)
