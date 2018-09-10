@@ -4,7 +4,7 @@ import ExpansionPanel from "base_components/ExpansionPanel"
 import Button from "base_components/RootButton"
 import modal from "hoc/modal"
 
-import TaskAnswer from "../TaskAnswer"
+import TaskComments from "../TaskComments"
 import Quiz from "../Quiz"
 
 const TaskQuiz = ({ isOpen, onOpen, onClose, task }) => (
@@ -18,7 +18,7 @@ const TaskQuiz = ({ isOpen, onOpen, onClose, task }) => (
         </Button>
       }
     >
-      <TaskAnswer />
+      <TaskComments task={task} />
     </ExpansionPanel>
 
     <Quiz isOpen={isOpen} onClose={onClose} />

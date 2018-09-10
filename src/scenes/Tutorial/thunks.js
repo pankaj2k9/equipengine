@@ -1,4 +1,5 @@
 import * as API from "services/API"
+import { COMMENT_TASK_USER } from "services/constants"
 import { actions } from "./ducks"
 
 export const fetchTutorials = ({ groupId, courseId }) => {
@@ -38,10 +39,7 @@ export const updateTutorialCompleted = ({
       })
 
       return dispatch(
-        actions.updateTutorialCompletedSuccess({
-          tutorialId,
-          completed
-        })
+        actions.updateTutorialCompletedSuccess({ tutorialId, completed })
       )
     } catch (error) {
       return dispatch(actions.updateTutorialCompletedError())
@@ -56,13 +54,42 @@ export const fetchTasks = ({ groupId, courseId, tutorialId }) => {
     try {
       const response = await API.fetchTasks({ groupId, courseId, tutorialId })
 
-      return dispatch(
-        actions.fetchTasksSuccess({
-          tasks: response.tasks
-        })
-      )
+      return dispatch(actions.fetchTasksSuccess({ tasks: response.tasks }))
     } catch (error) {
       return dispatch(actions.fetchTasksError())
+    }
+  }
+}
+
+export const fetchTaskComments = ({ taskId }) => {
+  return async dispatch => {
+    dispatch(actions.fetchTaskCommentsRequest({ taskId }))
+
+    try {
+      const { comments } = await API.fetchComments({
+        commentable_id: taskId,
+        commentable_type: COMMENT_TASK_USER
+      })
+
+      return dispatch(actions.fetchTaskCommentsSuccess({ taskId, comments }))
+    } catch (error) {
+      return dispatch(actions.fetchTaskCommentsError({ taskId }))
+    }
+  }
+}
+
+export const createTaskComment = ({ taskId, text }) => {
+  return async dispatch => {
+    dispatch(actions.createTaskCommentRequest({ taskId }))
+    try {
+      const { comment } = await API.createComment({
+        commentable_id: taskId,
+        commentable_type: COMMENT_TASK_USER,
+        comment_body: text
+      })
+      return dispatch(actions.createTaskCommentSuccess({ taskId, comment }))
+    } catch (error) {
+      return dispatch(actions.createTaskCommentError({ taskId }))
     }
   }
 }

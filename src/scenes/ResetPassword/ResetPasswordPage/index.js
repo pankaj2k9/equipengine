@@ -5,6 +5,7 @@ import { compose } from "recompose"
 import { createStructuredSelector } from "reselect"
 import { toastr } from "react-redux-toastr"
 import { withRouter } from "react-router-dom"
+import queryString from "query-string"
 //
 import AbstractAuthPage from "global/AbstractAuthPage"
 import ResetPasswordForm from "../ResetPasswordForm"
@@ -17,7 +18,8 @@ class ResetPasswordPage extends Component {
       .resetPassword({
         password,
         passwordConfirmation,
-        resetPasswordToken: this.props.match.params.token
+        resetPasswordToken: queryString.parse(this.props.location.search)
+          .confirmation_token
       })
       .then(action => {
         if (action.type === types.RESET_PASSWORD_SUCCESS) {

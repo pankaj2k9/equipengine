@@ -51,7 +51,7 @@ class AdminUsers extends Component {
     this.props
       .createUser({
         ...fields,
-        organization_ids: this.props.adminsOrganizationIds
+        organizationId: this.props.organizationId
       })
       .then(action => {
         this.props.onClose()
@@ -142,7 +142,7 @@ const mapState = () =>
     isFetchingUsers: selectors.selectIsFetchingUsers(),
     isSavingUser: selectors.selectIsSavingUser(),
     selectedUser: selectors.selectSelectedUser(),
-    adminsOrganizationIds: selectors.selectAdminsOrganizationIds()
+    organizationId: features.login.selectors.selectCurrentUserOrganizationId()
   })
 
 const mapDispatch = dispatch =>

@@ -165,11 +165,17 @@ const selectIsTeacher = () =>
   createSelector(selectIsInAnyRole([TEACHER_ROLE]), hasRole => hasRole)
 const selectIsAdmin = () =>
   createSelector(selectIsInAnyRole([ADMIN_ROLE]), hasRole => hasRole)
+const selectCurrentUserOrganizationId = () =>
+  createSelector(
+    selectCurrentUser(),
+    user => user && user.organization_settings.id
+  )
 
 export const selectors = {
   selectCurrentUser,
   selectCurrentUserId,
   selectCurrentUserRole,
+  selectCurrentUserOrganizationId,
   selectIsInAnyRole,
   selectIsAdmin,
   selectIsStudent,

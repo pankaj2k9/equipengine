@@ -22,11 +22,15 @@ const validationSchema = joi.object().keys({
   role: joi
     .string()
     .required()
-    .label("Role is missing")
+    .label("Role is missing"),
+  phone: joi
+    .string()
+    .required()
+    .label("Phone is missing")
 })
 
 const UserForm = ({
-  fields: { firstName, lastName, email, role },
+  fields: { firstName, lastName, email, role, phone },
   onChange
 }) => (
   <Root>
@@ -47,6 +51,10 @@ const UserForm = ({
         value={lastName}
         onChange={e => onChange(e.target.value, "lastName")}
       />
+    </StyledFormGroup>
+    <StyledFormGroup>
+      <Label>Phone*</Label>
+      <Text value={phone} onChange={e => onChange(e.target.value, "phone")} />
     </StyledFormGroup>
     <StyledFormGroup>
       <Label>Role*</Label>
