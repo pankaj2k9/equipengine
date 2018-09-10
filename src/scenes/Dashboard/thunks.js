@@ -1,5 +1,5 @@
 import * as API from "services/API"
-import { ATTACHMENTABLE_GROUP_TYPE } from "services/constants"
+import { COMMENT_GROUP } from "services/constants"
 
 import { actions } from "./ducks"
 
@@ -10,7 +10,7 @@ export const fetchComments = ({ commentable_id, pagination }) => {
     try {
       const { comments, ...meta } = await API.fetchComments({
         commentable_id,
-        commentable_type: ATTACHMENTABLE_GROUP_TYPE,
+        commentable_type: COMMENT_GROUP,
         pagination
       })
 
@@ -30,7 +30,7 @@ export const createComment = ({ commentable_id, comment_body }) => {
     try {
       const { comment: newComment } = await API.createComment({
         commentable_id,
-        commentable_type: ATTACHMENTABLE_GROUP_TYPE,
+        commentable_type: COMMENT_GROUP,
         comment_body
       })
 
