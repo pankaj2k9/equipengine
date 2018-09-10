@@ -23,6 +23,7 @@ import * as Tutorial from "scenes/Tutorial"
 import * as Settings from "scenes/Settings"
 import * as GroupFiles from "scenes/Files"
 import * as CourseThreads from "scenes/CourseThreads"
+import * as Dashboard from "scenes/Dashboard"
 
 /**
  * Map with all the public accessible features
@@ -231,6 +232,11 @@ registerFeature({
   name: "teacherGroupActivities",
   enabled: true,
   ...TeacherGroupsActivity
+})
+registerFeature({
+  name: "dashboard",
+  enabled: true,
+  ...Dashboard
 })
 
 export default features

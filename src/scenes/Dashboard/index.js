@@ -1,20 +1,11 @@
-import React from "react"
-import styled from "styled-components"
+import Loadable from "base_components/Loadable"
 
-import NoticeboardDashboard from "./components/NoticeboardDashboard"
-import ReportDashboard from "./components/ReportDashboard"
+import reducer from "./ducks"
 
-const Dashboard = styled(({ className }) => (
-  <div className={className}>
-    <NoticeboardDashboard />
-    <ReportDashboard />
-  </div>
-))`
-  @media screen and (min-width: 768px) {
-    display: flex;
+const pages = {
+  Dashboard: Loadable({
+    loader: () => import("./DashboardPage")
+  })
+}
 
-    min-height: calc(100vh - 59px);
-  }
-`
-
-export default Dashboard
+export { pages, reducer }
