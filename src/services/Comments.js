@@ -8,15 +8,15 @@ export const createComment = ({
   commentable_type,
   comment_body,
   comment_subject,
-  comment_title
+  comment_title,
+  root_id
 }) => {
   return client
     .post(`/api/v1/${commentable_type}/${commentable_id}/comments`, {
       body: comment_body,
       subject: comment_subject,
       title: comment_title,
-      root_id: 0,
-      attachment_id: 0
+      root_id
     })
     .then(response => response.data)
 }

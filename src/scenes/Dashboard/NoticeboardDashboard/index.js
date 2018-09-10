@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Breadcrumbs from "base_components/Breadcrumbs"
 
-import BodyDashboard from "./components/BodyDashboard"
+import BodyDashboard from "../BodyDashboard"
 
 const ContainerNoticeboard = styled.div`
   border-right: 1px solid #dadada;

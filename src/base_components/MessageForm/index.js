@@ -24,8 +24,19 @@ class MessageForm extends Component {
 
   handleUploadButtonClick = () => this.fileChooserDialog.open()
 
+  handleSendMessage = event => {
+    event.preventDefault()
+
+    const { onSendMessage } = this.props
+    const { message } = this.state
+
+    if (onSendMessage) {
+      onSendMessage(message)
+    }
+  }
+
   render() {
-    const { className, onSendMessage, placeholder } = this.props
+    const { className, placeholder } = this.props
     const { attachment, message } = this.state
 
     return (
@@ -44,7 +55,9 @@ class MessageForm extends Component {
             src={iconOpenSrc}
             onClick={this.handleUploadButtonClick}
           />
-          <Button onClick={onSendMessage}>Submit</Button>
+          <Button onClick={this.handleSendMessage} type="submit">
+            Submit
+          </Button>
         </ButtonContainer>
 
         <FileChooser
