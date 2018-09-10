@@ -15,19 +15,38 @@ import {
   AttachmentIcon
 } from "./elements"
 
-class TaskAnswer extends React.Component {
+class TaskCommentForm extends React.Component {
   state = {
+    text: "",
     attachment: null
   }
 
-  handleUploadButtonClick = () => this.fileChooserDialog.open()
-  handleChooseFilesButtonClick = files =>
+  handleChangeText = ({ target: { value } }) => {
+    this.setState({ text: value })
+  }
+
+  handleUploadButtonClick = () => {
+    this.fileChooserDialog.open()
+  }
+
+  handleChooseFilesButtonClick = files => {
     this.setState({
       attachment: files[0]
     })
+  }
+
+  handleSubmit = event => {
+    const { text, attachment } = this.state
+    if (event) {
+      event.preventDefault()
+    }
+
+    this.props.onSubmit({ text, attachment })
+    this.setState({ text: "", attachment: null })
+  }
 
   render() {
-    const { attachment } = this.state
+    const { text, attachment } = this.state
     return (
       <Root>
         {/* Current user avatar (message sender) */}
@@ -35,7 +54,13 @@ class TaskAnswer extends React.Component {
 
         {/* Text input + Add attachment + Submit button */}
         <Form>
-          <Input type="text" name="question" placeholder="Write your answer" />
+          <Input
+            type="text"
+            name="question"
+            placeholder="Write your answer"
+            value={text}
+            onChange={this.handleChangeText}
+          />
           <ButtonContainer>
             <AttachmentName>{attachment && attachment.name}</AttachmentName>
             <AttachmentIcon
@@ -43,7 +68,7 @@ class TaskAnswer extends React.Component {
               src={iconOpenSrc}
               onClick={this.handleUploadButtonClick}
             />
-            <Button>Submit</Button>
+            <Button onClick={this.handleSubmit}>Submit</Button>
           </ButtonContainer>
         </Form>
 
@@ -59,4 +84,4 @@ class TaskAnswer extends React.Component {
   }
 }
 
-export default TaskAnswer
+export default TaskCommentForm

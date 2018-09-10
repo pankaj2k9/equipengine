@@ -20,7 +20,14 @@ export const fetchUsers = ({ term, role }) => {
   }
 }
 
-export const createUser = ({ firstName, lastName, email, role }) => {
+export const createUser = ({
+  firstName,
+  lastName,
+  email,
+  phone,
+  role,
+  organizationId
+}) => {
   return async dispatch => {
     dispatch(usersActions.createUserRequest())
 
@@ -28,10 +35,12 @@ export const createUser = ({ firstName, lastName, email, role }) => {
       const { user } = await API.createUser({
         first_name: firstName,
         last_name: lastName,
-        email
+        email,
+        phone_number: phone
       })
       const { organization_user } = await API.createOrganizationUser({
         user_id: user.id,
+        organization_id: organizationId,
         role
       })
       user.organization_settings = organization_user

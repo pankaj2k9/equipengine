@@ -43,6 +43,7 @@ export default compose(
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     role: STUDENT_ROLE
   }),
   withFormValidation({ validationSchema }),

@@ -5,7 +5,7 @@ import Button from "base_components/RootButton"
 import IconDownload from "react-icons/lib/fa/download"
 import styled from "styled-components"
 
-import TaskAnswer from "../TaskAnswer"
+import TaskComments from "../TaskComments"
 
 const IconButton = styled(Button)`
   margin-top: 0.6em;
@@ -30,7 +30,7 @@ const TaskReading = ({ task }) => (
       </Fragment>
     }
   >
-    <TaskAnswer />
+    <TaskComments task={task} />
   </ExpansionPanel>
 )
 

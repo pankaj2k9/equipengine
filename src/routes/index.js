@@ -66,7 +66,7 @@ const Routes = () => (
       <Route
         exact
         strict
-        path="/reset-password/:token"
+        path="/set-password"
         component={features.resetPassword.pages.ResetPassword}
       />
       <Route

@@ -219,7 +219,6 @@ export const actions = {
 
 // Selectors
 const usersSelector = () => state => state.adminUsers
-const loginSelector = () => state => state.login
 
 const selectIsFetchingUsers = () =>
   createSelector(usersSelector(), users => users.isFetchingUsers)
@@ -237,8 +236,6 @@ const selectSelectedUser = () =>
   )
 const selectIsSendingResetPasswordToken = () =>
   createSelector(usersSelector(), users => users.isSendingResetPasswordToken)
-const selectAdminsOrganizationIds = () =>
-  createSelector(loginSelector(), users => users.isSendingResetPasswordToken)
 
 export const selectors = {
   selectIsFetchingUsers,
@@ -246,6 +243,5 @@ export const selectors = {
   selectIsSendingResetPasswordToken,
   selectUsers,
   selectSearchTerm,
-  selectSelectedUser,
-  selectAdminsOrganizationIds
+  selectSelectedUser
 }

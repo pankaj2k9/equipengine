@@ -13,7 +13,10 @@ export const fetchUsers = ({
   current_page,
   current_count
 }) => {
-  const params = {}
+  const params = {
+    // TODO implement pagination/inifinite loading
+    current_count: 100
+  }
 
   if (current_page) {
     params.current_page = current_page
@@ -38,7 +41,6 @@ export const fetchUsers = ({
   if (term) {
     params.term = term
   }
-  params.current_count = 100
 
   return client.get(`/api/v1/users`, { params }).then(response => response.data)
 }
@@ -57,8 +59,7 @@ export const createUser = async ({
   country_id = 0,
   state_id = 0,
   zip_code = "",
-  phone_number = "",
-  organization_ids = [1]
+  phone_number = ""
 } = {}) => {
   const response = await client.post(`/api/v1/users`, {
     first_name,
@@ -71,8 +72,7 @@ export const createUser = async ({
     country_id,
     state_id,
     zip_code,
-    phone_number,
-    organization_ids
+    phone_number
   })
   return response.data
 }

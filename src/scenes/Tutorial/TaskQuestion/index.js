@@ -1,11 +1,11 @@
 import React from "react"
 import ExpansionPanel from "base_components/ExpansionPanel"
 
-import TaskAnswer from "../TaskAnswer"
+import TaskComments from "../TaskComments"
 
 const TaskQuestion = ({ task }) => (
   <ExpansionPanel title={task.description} subtitle="Question">
-    <TaskAnswer />
+    <TaskComments task={task} />
   </ExpansionPanel>
 )
 
