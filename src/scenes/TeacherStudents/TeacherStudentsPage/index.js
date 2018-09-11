@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, Fragment } from "react"
 import { bindActionCreators } from "redux"
 import { compose, withState } from "recompose"
 import { connect } from "react-redux"
@@ -35,7 +35,7 @@ class StudentsPage extends Component {
     const { students, selectedUser, isFetchingStudents } = this.props
 
     return (
-      <div>
+      <Fragment>
         <BorderedTitle title="Students Manager" />
         <VerticalTabs
           tabs={students}
@@ -46,7 +46,7 @@ class StudentsPage extends Component {
           content={selectedUser && <StudentContentTabs />}
           onTabClick={this.handleTabClick}
         />
-      </div>
+      </Fragment>
     )
   }
 }
