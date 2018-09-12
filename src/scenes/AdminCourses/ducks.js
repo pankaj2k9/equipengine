@@ -14,7 +14,13 @@ export const types = {
   //
   CREATE_COURSE_REQUEST: "equipengine-admin/CREATE_COURSE_REQUEST",
   CREATE_COURSE_SUCCESS: "equipengine-admin/CREATE_COURSE_SUCCESS",
-  CREATE_COURSE_ERROR: "equipengine-admin/CREATE_COURSE_ERROR"
+  CREATE_COURSE_ERROR: "equipengine-admin/CREATE_COURSE_ERROR",
+  //
+  // UPDATE_COURSE
+  //
+  UPDATE_COURSE_REQUEST: "equipengine-admin/UPDATE_COURSE_REQUEST",
+  UPDATE_COURSE_SUCCESS: "equipengine-admin/UPDATE_COURSE_SUCCESS",
+  UPDATE_COURSE_ERROR: "equipengine-admin/UPDATE_COURSE_ERROR"
 }
 
 const initialState = Immutable({
@@ -22,7 +28,8 @@ const initialState = Immutable({
   courses: [],
   coursesPagination: null,
   searchTerm: "",
-  isSavingCourse: false
+  isSavingCourse: false,
+  isUpdatingCourse: false
 })
 
 // Reducer
@@ -65,6 +72,27 @@ export default (state = initialState, action) => {
         isSavingCourse: false
       })
 
+    //
+    // UPDATE_COURSES
+    //
+    case types.UPDATE_COURSE_REQUEST:
+      return state.merge({
+        isUpdatingCourse: true
+      })
+    case types.UPDATE_COURSE_SUCCESS:
+      const course = action.payload.course
+      const index = state.courses.findIndex(item => item.id === course.id)
+      const courses = state.courses.set(index, course)
+
+      return state.merge({
+        isUpdatingCourse: false,
+        courses: courses
+      })
+    case types.UPDATE_COURSE_ERROR:
+      return state.merge({
+        isUpdatingCourse: false
+      })
+
     default:
       return state
   }
@@ -87,7 +115,7 @@ export const actions = {
     type: types.FETCH_COURSES_ERROR
   }),
   //
-  // FETCH_COURSES
+  // CREATE_COURSES
   //
   createCourseRequest: () => ({
     type: types.CREATE_COURSE_REQUEST
@@ -98,6 +126,19 @@ export const actions = {
   }),
   createCourseError: () => ({
     type: types.CREATE_COURSE_ERROR
+  }),
+  //
+  // UPDATE_COURSES
+  //
+  updateCourseRequest: () => ({
+    type: types.UPDATE_COURSE_REQUEST
+  }),
+  updateCourseSuccess: ({ course }) => ({
+    type: types.UPDATE_COURSE_SUCCESS,
+    payload: { course }
+  }),
+  updateCourseError: () => ({
+    type: types.UPDATE_COURSE_ERROR
   })
 }
 
@@ -113,10 +154,13 @@ const selectCourses = () =>
   createSelector(coursesSelector(), courses => courses.courses)
 const selectSearchTerm = () =>
   createSelector(coursesSelector(), courses => courses.searchTerm)
+const selectIsUpdatingCourse = () =>
+  createSelector(coursesSelector(), courses => courses.isUpdatingCourse)
 
 export const selectors = {
   selectIsFetchingCourses,
   selectIsSavingCourse,
   selectCourses,
-  selectSearchTerm
+  selectSearchTerm,
+  selectIsUpdatingCourse
 }

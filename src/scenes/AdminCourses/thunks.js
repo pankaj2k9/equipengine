@@ -40,3 +40,24 @@ export const createCourse = ({ title, description }) => {
     }
   }
 }
+
+export const updateCourse = (id, { title, description }) => {
+  return async dispatch => {
+    dispatch(coursesActions.updateCourseRequest())
+
+    try {
+      const { course } = await API.updateCourse(id, {
+        title,
+        description
+      })
+
+      return dispatch(
+        coursesActions.updateCourseSuccess({
+          course
+        })
+      )
+    } catch (error) {
+      return dispatch(coursesActions.updateCourseError())
+    }
+  }
+}

@@ -1,10 +1,13 @@
 import React, { Component } from "react"
 import { bindActionCreators } from "redux"
-import { compose } from "recompose"
+import { compose, pure, withHandlers } from "recompose"
 import { connect } from "react-redux"
 import { createStructuredSelector } from "reselect"
 import { withRouter } from "react-router-dom"
+import { toastr } from "react-redux-toastr"
 // component
+import features from "features"
+import modal from "hoc/modal"
 import CourseBackground from "../CourseBackground"
 import { fetchCourse } from "../thunks"
 import { selectors } from "../selectors"
@@ -18,7 +21,14 @@ class Course extends Component {
   }
 
   render() {
-    const { course, isFetchingCourse } = this.props
+    const {
+      course,
+      isFetchingCourse,
+      handleCreateCourse,
+      onClose,
+      onOpen,
+      isOpen
+    } = this.props
 
     if (isFetchingCourse) {
       return <Loading />
@@ -26,7 +36,13 @@ class Course extends Component {
 
     return (
       <div>
-        <CourseBackground course={course} />
+        <CourseBackground
+          course={course}
+          onSubmit={handleCreateCourse}
+          onClose={onClose}
+          onOpen={onOpen}
+          isOpen={isOpen}
+        />
         <CourseTutorials />
       </div>
     )
@@ -36,13 +52,15 @@ class Course extends Component {
 const mapState = () =>
   createStructuredSelector({
     course: selectors.selectCourse(),
-    isFetchingCourse: selectors.selectIsFetchingCourse()
+    isFetchingCourse: selectors.selectIsFetchingCourse(),
+    isSavingCourse: features.adminCourses.selectors.selectIsSavingCourse()
   })
 
 const mapDispatch = dispatch =>
   bindActionCreators(
     {
-      fetchCourse
+      fetchCourse,
+      updateCourse: features.adminCourses.actions.updateCourse
     },
     dispatch
   )
@@ -53,5 +71,26 @@ export default compose(
       mapState,
       mapDispatch
     )(component),
-  withRouter
+  withRouter,
+  modal,
+  withHandlers({
+    handleCreateCourse: ({
+      updateCourse,
+      onClose,
+      match: { params } = {}
+    }) => fields => {
+      updateCourse(params.courseId, fields).then(action => {
+        onClose()
+        if (action.type === features.adminCourses.types.UPDATE_COURSE_SUCCESS) {
+          toastr.success(
+            "Success",
+            `Course "${fields.title}" is succesffully updated`
+          )
+        } else {
+          toastr.error("Error", `Failed to update course "${fields.title}"`)
+        }
+      })
+    }
+  }),
+  pure
 )(Course)
