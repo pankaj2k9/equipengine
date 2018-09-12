@@ -10,7 +10,7 @@ export const fetchVideos = ({ videoable_id, videoable_type }) =>
     .then(response => response.data)
 
 /**
- * Create video with video_link
+ * Create video with video_link or file
  */
 export const createVideo = ({
   videoable_id,

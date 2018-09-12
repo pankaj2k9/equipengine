@@ -1,11 +1,14 @@
 import React, { Component } from "react"
+import styled from "styled-components"
 
-import FileChooser from "base_components/FileChooser"
+import AttachmentChooser from "base_components/AttachmentChooser"
 import RootForm, { TextArea } from "base_components/RootForm"
 import Button from "base_components/RootButton"
-import iconOpenSrc from "resources/images/open-file.svg"
 
-import { ButtonContainer, AttachmentName, AttachmentIcon } from "./elements"
+const ButtonContainer = styled.div`
+  display: flex;
+  float: right;
+`
 
 class MessageForm extends Component {
   state = {
@@ -17,12 +20,10 @@ class MessageForm extends Component {
     this.setState({ message: event.target.value })
   }
 
-  handleChooseFilesButtonClick = files =>
+  handleChooseFile = file =>
     this.setState({
-      attachment: files[0]
+      attachment: file
     })
-
-  handleUploadButtonClick = () => this.fileChooserDialog.open()
 
   handleSendMessage = event => {
     event.preventDefault()
@@ -49,23 +50,14 @@ class MessageForm extends Component {
         />
 
         <ButtonContainer>
-          <AttachmentName>{attachment && attachment.name}</AttachmentName>
-          <AttachmentIcon
-            alt="Add attachment"
-            src={iconOpenSrc}
-            onClick={this.handleUploadButtonClick}
+          <AttachmentChooser
+            attachment={attachment}
+            onChoose={this.handleChooseFile}
           />
           <Button onClick={this.handleSendMessage} type="submit">
             Submit
           </Button>
         </ButtonContainer>
-
-        <FileChooser
-          onChooseFiles={this.handleChooseFilesButtonClick}
-          ref={input => {
-            this.fileChooserDialog = input
-          }}
-        />
       </RootForm>
     )
   }

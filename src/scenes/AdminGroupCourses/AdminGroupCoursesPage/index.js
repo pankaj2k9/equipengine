@@ -38,7 +38,7 @@ class AdminGroupCoursesPage extends Component {
   }
 
   handleCourseClick = course =>
-    this.props.history.push(`/secure/admin/courses/${course.id}`)
+    this.props.history.push(`/secure/admin/course-creator/courses/${course.id}`)
 
   handleSearchCourse = term => this.props.fetchCourses({ term })
   handleAddCoursesToGroup = courseIds => {

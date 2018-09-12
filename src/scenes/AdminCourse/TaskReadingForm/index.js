@@ -1,10 +1,19 @@
 import React, { Component, Fragment } from "react"
 //
+import AttachmentChooser from "base_components/AttachmentChooser"
+import AttachmentDownloadButton from "base_components/AttachmentDownloadButton"
 import { FormGroup, Label, TextArea } from "base_components/RootForm"
 
 class TaskReadingForm extends Component {
   handleDescriptionChange = ({ target: { value } }) => {
     this.props.onChange({ ...this.props.task, description: value })
+  }
+
+  handleAttachmentChoose = attachment => {
+    this.props.onChange({
+      ...this.props.task,
+      attachment
+    })
   }
 
   render() {
@@ -22,9 +31,25 @@ class TaskReadingForm extends Component {
         <FormGroup>
           <Label>Upload File</Label>
           <div>
-            TODO implement smth like ButtonUpload onUpload=... Upload file{" "}
+            <AttachmentChooser
+              type="button"
+              attachment={task.attachment}
+              attachmentPosition="right"
+              onChoose={this.handleAttachmentChoose}
+            />
           </div>
         </FormGroup>
+
+        {/* Read-only already saved attachments */}
+        {Array.isArray(task.attachments) &&
+          task.attachments.length > 0 && (
+            <React.Fragment>
+              <h4>Saved attachments</h4>
+              {task.attachments.map(attachment => (
+                <AttachmentDownloadButton attachment={attachment} />
+              ))}
+            </React.Fragment>
+          )}
       </Fragment>
     )
   }
