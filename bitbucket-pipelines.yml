@@ -20,7 +20,7 @@ templates:
   - deploy: &deploy
       name: deploy
       script:
-        - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD
+        - git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD
 
 pipelines:
   # pipeline for non-master branch

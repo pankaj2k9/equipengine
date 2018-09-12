@@ -1,5 +1,6 @@
 import * as API from "services/API"
 import { actions } from "./ducks"
+import { ATTACHMENTABLE_TASK_TYPE } from "services/constants"
 import features from "features"
 
 export const fetchCourse = ({ courseId }) => {
@@ -109,6 +110,15 @@ export const createTask = ({ courseId, tutorialId, task }) => {
         createdTask.videos = [action.payload.video]
       }
 
+      if (task.attachment) {
+        const { attachment } = await API.createAttachment({
+          attachmentable_id: createdTask.id,
+          attachmentable_type: ATTACHMENTABLE_TASK_TYPE,
+          file: task.attachment
+        })
+        createTask.attachments = [attachment]
+      }
+
       return dispatch(
         actions.createTaskSuccess({
           task: createdTask
@@ -151,6 +161,20 @@ export const updateTask = ({ courseId, tutorialId, task }) => {
           updatedTask.videos.push(action.payload.video)
         } else {
           updatedTask.videos = [action.payload.video]
+        }
+      }
+
+      if (task.attachment) {
+        const { attachment } = await API.createAttachment({
+          attachmentable_id: updatedTask.id,
+          attachmentable_type: ATTACHMENTABLE_TASK_TYPE,
+          file: task.attachment
+        })
+
+        if (Array.isArray(updatedTask.attachments)) {
+          updatedTask.attachments.push(attachment)
+        } else {
+          updatedTask.attachments = [attachment]
         }
       }
 

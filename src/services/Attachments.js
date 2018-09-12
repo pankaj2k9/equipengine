@@ -1,7 +1,7 @@
 import { client } from "./API"
 
 /**
- * fetch files without file content by type and id (like group type and group id)
+ * Fetch files without file content by type and id (like group type and group id)
  */
 export const fetchAttachments = ({
   attachmentable_id,
@@ -20,7 +20,31 @@ export const fetchAttachments = ({
 }
 
 /**
- * deletes attachment by id
+ * Create attachment with file
+ */
+export const createAttachment = ({
+  attachmentable_id,
+  attachmentable_type,
+  file,
+  title
+}) => {
+  const formData = new FormData()
+  formData.append("attachment[title]", title || (file && file.name))
+
+  if (file) {
+    formData.append("attachment[data]", file, file.name)
+  }
+
+  return client
+    .post(
+      `/api/v1/${attachmentable_type}/${attachmentable_id}/attachments`,
+      formData
+    )
+    .then(response => response.data)
+}
+
+/**
+ * Delete attachment by id
  */
 export const deleteAttachment = ({
   attachmentable_id,
