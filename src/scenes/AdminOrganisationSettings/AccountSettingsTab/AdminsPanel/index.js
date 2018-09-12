@@ -50,9 +50,7 @@ class AccountsPanel extends Component {
         <AddUserWrapper isAlignCenter isSpaceBetween>
           <Title>Administrators</Title>
           <ButtonAdd
-            onHandlerClick={() => {
-              onOpen()
-            }}
+            onHandlerClick={onOpen}
             text="Add user"
             iconPosition="right"
           />

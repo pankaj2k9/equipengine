@@ -1,12 +1,12 @@
 import * as API from "services/API"
 import { actions as usersActions } from "./ducks"
 
-export const fetchUsers = ({ term, role }) => {
+export const fetchUsers = ({ term, role, current_page }) => {
   return async dispatch => {
     dispatch(usersActions.fetchUsersRequest({ searchTerm: term }))
 
     try {
-      const { users, meta } = await API.fetchUsers({ term, role })
+      const { users, meta } = await API.fetchUsers({ term, role, current_page })
 
       return dispatch(
         usersActions.fetchUsersSuccess({
@@ -16,6 +16,25 @@ export const fetchUsers = ({ term, role }) => {
       )
     } catch (error) {
       return dispatch(usersActions.fetchUsersError())
+    }
+  }
+}
+
+export const fetchMoreUsers = ({ term, role, current_page }) => {
+  return async dispatch => {
+    dispatch(usersActions.fetchMoreUsersRequest({ searchTerm: term }))
+
+    try {
+      const { users, meta } = await API.fetchUsers({ term, role, current_page })
+
+      return dispatch(
+        usersActions.fetchMoreUsersSuccess({
+          users,
+          pagination: meta
+        })
+      )
+    } catch (error) {
+      return dispatch(usersActions.fetchMoreUsersError())
     }
   }
 }

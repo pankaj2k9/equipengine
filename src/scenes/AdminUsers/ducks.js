@@ -9,6 +9,9 @@ export const types = {
   FETCH_USERS_REQUEST: "equipengine-admin/FETCH_USERS_REQUEST",
   FETCH_USERS_SUCCESS: "equipengine-admin/FETCH_USERS_SUCCESS",
   FETCH_USERS_ERROR: "equipengine-admin/FETCH_USERS_ERROR",
+  FETCH_MORE_USERS_REQUEST: "equipengine-admin/FETCH_MORE_USERS_REQUEST",
+  FETCH_MORE_USERS_SUCCESS: "equipengine-admin/FETCH_MORE_USERS_SUCCESS",
+  FETCH_MORE_USERS_ERROR: "equipengine-admin/FETCH_MORE_USERS_ERROR",
   //
   // CREATE_USER
   //
@@ -67,12 +70,27 @@ export default (state = initialState, action) => {
     case types.FETCH_USERS_SUCCESS:
       return state.merge({
         isFetchingUsers: false,
-        users: action.payload.users
+        users: action.payload.users,
+        pagination: action.payload.pagination
       })
     case types.FETCH_USERS_ERROR:
       return state.merge({
         isFetchingUsers: false,
         users: []
+      })
+    case types.FETCH_MORE_USERS_REQUEST:
+      return state.merge({
+        searchTerm: action.payload.searchTerm,
+        selectedRole: action.payload.role
+      })
+    case types.FETCH_MORE_USERS_SUCCESS:
+      return state.merge({
+        users: state.users.concat(action.payload.users),
+        pagination: action.payload.pagination
+      })
+    case types.FETCH_MORE_USERS_ERROR:
+      return state.merge({
+        pagination: null
       })
 
     //
@@ -157,6 +175,17 @@ export const actions = {
   fetchUsersError: () => ({
     type: types.FETCH_USERS_ERROR
   }),
+  fetchMoreUsersRequest: ({ searchTerm }) => ({
+    type: types.FETCH_MORE_USERS_REQUEST,
+    payload: { searchTerm }
+  }),
+  fetchMoreUsersSuccess: ({ users, pagination }) => ({
+    type: types.FETCH_MORE_USERS_SUCCESS,
+    payload: { users, pagination }
+  }),
+  fetchMoreUsersError: () => ({
+    type: types.FETCH_MORE_USERS_ERROR
+  }),
   //
   // CREATE_USERS
   //
@@ -237,11 +266,15 @@ const selectSelectedUser = () =>
 const selectIsSendingResetPasswordToken = () =>
   createSelector(usersSelector(), users => users.isSendingResetPasswordToken)
 
+const selectPagination = () =>
+  createSelector(usersSelector(), users => users.pagination)
+
 export const selectors = {
   selectIsFetchingUsers,
   selectIsSavingUser,
   selectIsSendingResetPasswordToken,
   selectUsers,
   selectSearchTerm,
-  selectSelectedUser
+  selectSelectedUser,
+  selectPagination
 }
