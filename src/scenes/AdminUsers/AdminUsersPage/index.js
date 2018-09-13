@@ -108,6 +108,7 @@ class AdminUsers extends Component {
             <SearchActionBar
               onCreate={onOpenCreateUserModal}
               onSearch={this.handleSearchUsers}
+              refine
             />
           }
           content={

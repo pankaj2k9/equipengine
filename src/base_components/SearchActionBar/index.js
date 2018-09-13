@@ -14,7 +14,8 @@ const SearchActionBar = ({
   fields: { term, role },
   onChange,
   onSearch,
-  onCreate
+  onCreate,
+  refine
 }) => (
   <Root>
     <StyledButton
@@ -27,21 +28,23 @@ const SearchActionBar = ({
     >
       Show All
     </StyledButton>
-    <StyledDropdown
-      placeholder="Refine"
-      value={role}
-      className={"width-sm"}
-      onChange={e => {
-        const value = e && e.value ? e.value : ""
-        onChange(value, "role")
-        onSearch({ role: value })
-      }}
-      options={[
-        { label: "Student", value: STUDENT_ROLE },
-        { label: "Teacher", value: TEACHER_ROLE },
-        { label: "Admin", value: ADMIN_ROLE }
-      ]}
-    />
+    {refine && (
+      <StyledDropdown
+        placeholder="Refine"
+        value={role}
+        className={"width-sm"}
+        onChange={e => {
+          const value = e && e.value ? e.value : ""
+          onChange(value, "role")
+          onSearch({ role: value })
+        }}
+        options={[
+          { label: "Student", value: STUDENT_ROLE },
+          { label: "Teacher", value: TEACHER_ROLE },
+          { label: "Admin", value: ADMIN_ROLE }
+        ]}
+      />
+    )}
     <StyledForm>
       <StyledText
         value={term}

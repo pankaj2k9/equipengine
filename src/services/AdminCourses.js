@@ -45,3 +45,16 @@ export const createCourse = ({ title, description }) => {
     })
     .then(response => response.data)
 }
+
+/**
+ *  @desc update course
+ *  @returns updated course
+ */
+export const updateCourse = (id, { title, description }) => {
+  return client
+    .put(`/api/v1/courses/${id}`, {
+      title,
+      description
+    })
+    .then(response => response.data)
+}
