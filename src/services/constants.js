@@ -46,6 +46,7 @@ export const TASK_QUIZ_TYPE = "quiz"
 // ATTACHMENTS
 //
 export const ATTACHMENTABLE_GROUP_TYPE = "Group"
+export const ATTACHMENTABLE_TASK_TYPE = "Task"
 
 //
 // VIDEOS
