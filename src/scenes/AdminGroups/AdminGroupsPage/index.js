@@ -1,3 +1,4 @@
+import debounce from "lodash.debounce"
 import React, { Component, Fragment } from "react"
 import { connect } from "react-redux"
 import { toastr } from "react-redux-toastr"
@@ -32,6 +33,8 @@ class AdminGroups extends Component {
         }
       })
     }
+
+    this.handleSearch = debounce(this.handleSearch, 500)
   }
 
   handleCreateGroup = fields => {
@@ -53,7 +56,7 @@ class AdminGroups extends Component {
     })
   }
 
-  handleSearch = term => {
+  handleSearch = ({ term }) => {
     const { fetchGroups } = this.props
 
     fetchGroups({ term })

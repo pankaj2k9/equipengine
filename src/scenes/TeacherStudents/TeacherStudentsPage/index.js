@@ -24,7 +24,7 @@ class StudentsPage extends Component {
     this.props.selectUser({ userId: user.id })
   }
 
-  handleSearchUsers = term => {
+  handleSearchUsers = ({ term }) => {
     this.props.fetchStudents({
       term,
       groupId: this.props.groupId
