@@ -16,6 +16,7 @@ export default combineReducers({
   adminGroupUsers: features.adminGroupUsers.reducer,
   adminOrganizationSettings: features.adminOrganizationSettings.reducer,
   adminUsers: features.adminUsers.reducer,
+  adminVideos: features.adminVideos.reducer,
   chats: features.messages.reducer,
   courses: features.courses.reducer,
   courseThreads: features.courseThreads.reducer,

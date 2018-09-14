@@ -1,7 +1,6 @@
 import * as API from "services/API"
 import { actions } from "./ducks"
 import { ATTACHMENTABLE_TASK_TYPE } from "services/constants"
-import features from "features"
 
 export const fetchCourse = ({ courseId }) => {
   return async dispatch => {
@@ -97,17 +96,14 @@ export const createTask = ({ courseId, tutorialId, task }) => {
 
       // Create new video if the link is pasted or video is uploaded
       if (task.video_link || task.video) {
-        const action = await features.adminVideos.actions.createVideo({
-          videoableId: createdTask.id,
-          videoLink: task.video_link,
+        const { video } = await API.createVideo({
+          videoable_id: createdTask.id,
+          video_link: task.video_link,
           file: task.video,
           title: task.video_title
-        })(dispatch)
+        })
 
-        if (action.type === features.adminVideos.types.CREATE_VIDEO_ERROR) {
-          throw new Error(action.type)
-        }
-        createdTask.videos = [action.payload.video]
+        createdTask.videos = [video]
       }
 
       if (task.attachment) {
@@ -146,21 +142,17 @@ export const updateTask = ({ courseId, tutorialId, task }) => {
       // TODO move createTaskVideo as a separate async function
       // Create new video if the link is pasted or new video is uploaded
       if (task.video_link || task.video) {
-        const action = await features.adminVideos.actions.createVideo({
-          videoableId: updatedTask.id,
-          videoLink: task.video_link,
+        const { video } = await API.createVideo({
+          videoable_id: updatedTask.id,
+          video_link: task.video_link,
           file: task.video,
           title: task.video_title
-        })(dispatch)
-
-        if (action.type === features.adminVideos.types.CREATE_VIDEO_ERROR) {
-          throw new Error(action.type)
-        }
+        })
 
         if (Array.isArray(updatedTask.videos)) {
-          updatedTask.videos.push(action.payload.video)
+          updatedTask.videos.push(video)
         } else {
-          updatedTask.videos = [action.payload.video]
+          updatedTask.videos = [video]
         }
       }
 
