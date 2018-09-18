@@ -23,7 +23,11 @@ const InputAddress = ({
         value={country}
         onChange={changeCountry}
         options={countries.map(country => {
-          return { key: country.id, label: country.name, value: country.id }
+          return {
+            key: country.id,
+            label: country.name,
+            value: country.id
+          }
         })}
       />
     </FormGroupDropdown>

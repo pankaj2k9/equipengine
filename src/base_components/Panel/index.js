@@ -44,10 +44,6 @@ const Panel = styled(({ className, title, children, AdditionalTitle }) => (
 
 Panel.propTypes = {
   title: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element)
-  ]).isRequired,
   AdditionalTitle: PropTypes.func,
   isFullWidth: PropTypes.bool,
   marginBottom: PropTypes.string,

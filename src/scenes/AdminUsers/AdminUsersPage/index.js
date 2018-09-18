@@ -16,7 +16,12 @@ import CreateUserModal from "../CreateUserModal"
 import UserItemFormatter from "../UserItemFormatter"
 
 import { actions, selectors, types } from "../ducks"
-import { createUser, fetchUsers, sendResetPasswordToken } from "../thunks"
+import {
+  createUser,
+  fetchUsers,
+  fetchMoreUsers,
+  sendResetPasswordToken
+} from "../thunks"
 
 import modal from "hoc/modal"
 import features from "features"
@@ -42,6 +47,12 @@ class AdminUsers extends Component {
     }
 
     this.handleSearchUsers = debounce(this.handleSearchUsers, 500)
+  }
+
+  handleLoadMore = page => {
+    this.props.fetchMoreUsers({
+      current_page: page
+    })
   }
 
   handleTabClick = user =>
@@ -93,7 +104,8 @@ class AdminUsers extends Component {
       isSavingUser,
       isOpen: isOpenCreateUserModal,
       onOpen: onOpenCreateUserModal,
-      onClose: onCloseCreateUserModal
+      onClose: onCloseCreateUserModal,
+      pagination
     } = this.props
 
     return (
@@ -104,6 +116,8 @@ class AdminUsers extends Component {
           tabFormatter={tab => <UserItemFormatter user={tab} />}
           loading={isFetchingUsers}
           selectedTab={parseInt(userId, 10)}
+          handleLoadMore={this.handleLoadMore}
+          pagination={pagination}
           actionBar={
             <SearchActionBar
               onCreate={onOpenCreateUserModal}
@@ -143,7 +157,8 @@ const mapState = () =>
     isFetchingUsers: selectors.selectIsFetchingUsers(),
     isSavingUser: selectors.selectIsSavingUser(),
     selectedUser: selectors.selectSelectedUser(),
-    organizationId: features.login.selectors.selectCurrentUserOrganizationId()
+    organizationId: features.login.selectors.selectCurrentUserOrganizationId(),
+    pagination: selectors.selectPagination()
   })
 
 const mapDispatch = dispatch =>
@@ -151,6 +166,7 @@ const mapDispatch = dispatch =>
     {
       createUser,
       fetchUsers,
+      fetchMoreUsers,
       updateUser: features.adminUsers.actions.updateUser,
       selectUser: actions.selectUser,
       sendResetPasswordToken,

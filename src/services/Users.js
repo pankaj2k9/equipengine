@@ -13,10 +13,7 @@ export const fetchUsers = ({
   current_page,
   current_count
 }) => {
-  const params = {
-    // TODO implement pagination/inifinite loading
-    current_count: 100
-  }
+  const params = {}
 
   if (current_page) {
     params.current_page = current_page
