@@ -16,23 +16,35 @@ const CourseSettingsModal = ({
   onClose,
   title,
   submitButtonTitle,
-  handleSubmit
-}) => (
-  <EntityModal
-    title={title || "Create a new course"}
-    submitButtonTitle={submitButtonTitle}
-    isOpen={isOpen}
-    onClose={onClose}
-    isSubmitting={isSubmitting}
-    onSubmit={handleSubmit}
-  >
-    {isSubmitting ? (
-      <Loading />
-    ) : (
-      <CourseSettingsForm fields={fields} onChange={onChange} />
-    )}
-  </EntityModal>
-)
+  handleSubmit,
+  course
+}) => {
+  if (course) {
+    fields.title = fields.title || course.title
+    fields.description = fields.description || course.description
+  }
+
+  return (
+    <EntityModal
+      title={title || "Create a new course"}
+      submitButtonTitle={submitButtonTitle}
+      isOpen={isOpen}
+      onClose={onClose}
+      isSubmitting={isSubmitting}
+      onSubmit={handleSubmit}
+    >
+      {isSubmitting ? (
+        <Loading />
+      ) : (
+        <CourseSettingsForm
+          fields={fields}
+          course={course}
+          onChange={onChange}
+        />
+      )}
+    </EntityModal>
+  )
+}
 
 CourseSettingsModal.propTypes = {
   onClose: PropTypes.func.isRequired,
@@ -42,7 +54,7 @@ CourseSettingsModal.propTypes = {
 
 export default compose(
   form({
-    name: "",
+    title: "",
     description: "",
     mainImage: null,
     courseImage: null

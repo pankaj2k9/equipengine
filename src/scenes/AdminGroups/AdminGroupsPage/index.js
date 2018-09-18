@@ -59,7 +59,7 @@ class AdminGroups extends Component {
   handleSearch = ({ term }) => {
     const { fetchGroups } = this.props
 
-    fetchGroups({ term })
+    fetchGroups({ ...term })
   }
 
   handleTabClick = group => {

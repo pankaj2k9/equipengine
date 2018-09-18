@@ -38,9 +38,10 @@ const ContainerHeader = Container.extend`
   }
 `
 
-const SearchActionBar = ({
+const ActionBar = ({
   ControlButtonsGroup,
   searchbarInfo: { value, onChange, placeholder, onSubmit },
+  onCreate,
   onOpen,
   onClose,
   isOpen
@@ -55,13 +56,20 @@ const SearchActionBar = ({
     />
     {onOpen && <RootButton onClick={onOpen}>Upload</RootButton>}
     {isOpen && (
-      <VideoModal isOpen={isOpen} onClose={onClose} onSubmit={() => {}} />
+      <VideoModal
+        isOpen={isOpen}
+        onClose={onClose}
+        onSubmit={fields => {
+          onClose()
+          onCreate(fields)
+        }}
+      />
     )}
   </ContainerHeader>
 )
 
-SearchActionBar.propTypes = {
+ActionBar.propTypes = {
   searchbarInfo: PropTypes.object.isRequired
 }
 
-export default modal(SearchActionBar)
+export default modal(ActionBar)

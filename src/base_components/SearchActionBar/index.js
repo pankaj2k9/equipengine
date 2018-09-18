@@ -43,7 +43,8 @@ class SearchActionBar extends Component {
   render() {
     const {
       fields: { term, role },
-      onCreate
+      onCreate,
+      onRefine
     } = this.props
 
     return (
@@ -52,17 +53,19 @@ class SearchActionBar extends Component {
           Show All
         </StyledButton>
 
-        <StyledDropdown
-          placeholder="Refine"
-          value={role}
-          className="width-sm"
-          onChange={this.handleRefine}
-          options={[
-            { label: "Student", value: STUDENT_ROLE },
-            { label: "Teacher", value: TEACHER_ROLE },
-            { label: "Admin", value: ADMIN_ROLE }
-          ]}
-        />
+        {onRefine && (
+          <StyledDropdown
+            placeholder="Refine"
+            value={role}
+            className="width-sm"
+            onChange={this.handleRefine}
+            options={[
+              { label: "Student", value: STUDENT_ROLE },
+              { label: "Teacher", value: TEACHER_ROLE },
+              { label: "Admin", value: ADMIN_ROLE }
+            ]}
+          />
+        )}
 
         <StyledForm>
           <StyledText

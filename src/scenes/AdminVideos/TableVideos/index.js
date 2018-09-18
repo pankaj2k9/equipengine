@@ -1,58 +1,88 @@
-import React from "react"
+import React, { Component } from "react"
+import styled from "styled-components"
 
 import modal from "hoc/modal"
-
+import Button from "base_components/RootButton"
 import Container from "base_components/Container"
-import Tables, { TableRow } from "base_components/Tables"
-
 import EditVideoModal from "../EditVideoModal"
-import TableRowVideos from "./components/TableRowVideos"
+import Table, { DateCellFormatter } from "base_components/Table"
 
-const ContainerTableVideos = Container.extend`
-  .table-responsive {
-    width: 100%;
-  }
+const THUMBNAIL_COLUMN = "thumbnail_url"
+const DATE_COLUMN = "created_at"
+const TITLE_COLUMN = "title"
+const LENGTH_COLUMN = "length"
+const EDIT_COLUMN = "edit"
+
+const Thumbnail = styled.img`
+  width: 90px;
+  height: 55px;
+  border: 1px solid #979797;
+  border-radius: 3px;
 `
 
-const videos = [
-  {
-    id: 1,
-    name: "Teacher speaking to students",
-    length: "00:25:03",
-    date: "22 Sep 1:00pm"
-  },
-  {
-    id: 2,
-    name: "	More on teaching video",
-    length: "00:25:03",
-    date: "22 Sep 1:00pm"
+class TableVideos extends Component {
+  state = {
+    isOpen: false,
+    video: null
   }
-]
 
-const TableVideos = ({
-  onOpen: onOpenVideoModal,
-  onClose: onCloseVideoModal,
-  isOpen: isOpenVideoModal
-}) => (
-  <ContainerTableVideos>
-    <EditVideoModal
-      isOpen={isOpenVideoModal}
-      onClose={onCloseVideoModal}
-      onSubmit={() => {}}
-    />
-    <Tables>
-      <thead>
-        <TableRow>
-          <th />
-          <th>Name</th>
-          <th>Length</th>
-          <th>Date Added</th>
-          <th />
-        </TableRow>
-      </thead>
-      <TableRowVideos onOpen={onOpenVideoModal} videos={videos} />
-    </Tables>
-  </ContainerTableVideos>
-)
+  columns = [
+    {
+      name: THUMBNAIL_COLUMN,
+      getCellValue: row => <Thumbnail src={row[THUMBNAIL_COLUMN]} />
+    },
+    {
+      name: TITLE_COLUMN,
+      title: "Name"
+    },
+    {
+      name: LENGTH_COLUMN,
+      title: "Length"
+    },
+    {
+      name: DATE_COLUMN,
+      title: "Date Addded",
+      getCellValue: row => (
+        <DateCellFormatter date={new Date(row[DATE_COLUMN])} />
+      )
+    },
+    {
+      name: EDIT_COLUMN,
+      align: "center",
+      getCellValue: row => (
+        <Button onClick={() => this.handleOpenEditModal(row)}>Edit</Button>
+      )
+    }
+  ]
+
+  handleOpenEditModal = video =>
+    this.setState({
+      isOpen: true,
+      video
+    })
+
+  handleCloseEditModal = () =>
+    this.setState({
+      isOpen: false,
+      video: null
+    })
+
+  render() {
+    const { videos, onUpdate } = this.props
+    const { video, isOpen } = this.state
+
+    return (
+      <Container>
+        <Table columns={this.columns} rows={videos} />
+        <EditVideoModal
+          video={video}
+          isOpen={isOpen}
+          onClose={this.handleCloseEditModal}
+          onSubmit={onUpdate}
+        />
+      </Container>
+    )
+  }
+}
 
 export default modal(TableVideos)
