@@ -1,3 +1,4 @@
+import debounce from "lodash.debounce"
 import React, { Component, Fragment } from "react"
 import { connect } from "react-redux"
 import { toastr } from "react-redux-toastr"
@@ -5,7 +6,6 @@ import { withRouter } from "react-router-dom"
 import { compose, pure } from "recompose"
 import { bindActionCreators } from "redux"
 import { createStructuredSelector } from "reselect"
-import debounce from "lodash.debounce"
 
 import BorderedTitle from "base_components/BorderedTitle"
 import SearchActionBar from "base_components/SearchActionBar"
@@ -34,7 +34,7 @@ class AdminGroups extends Component {
       })
     }
 
-    this.handleSearchGroups = debounce(this.handleSearchGroups, 500)
+    this.handleSearch = debounce(this.handleSearch, 500)
   }
 
   handleCreateGroup = fields => {
@@ -56,7 +56,7 @@ class AdminGroups extends Component {
     })
   }
 
-  handleSearchGroups = term => {
+  handleSearch = ({ term }) => {
     const { fetchGroups } = this.props
 
     fetchGroups({ ...term })
@@ -92,10 +92,7 @@ class AdminGroups extends Component {
           loading={isDeletingGroup || isFetchingGroups}
           selectedTab={group && group.id}
           actionBar={
-            <SearchActionBar
-              onCreate={onOpen}
-              onSearch={this.handleSearchGroups}
-            />
+            <SearchActionBar onCreate={onOpen} onSearch={this.handleSearch} />
           }
           content={<GroupContentTabs />}
           onTabClick={this.handleTabClick}

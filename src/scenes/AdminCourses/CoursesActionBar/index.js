@@ -9,7 +9,7 @@ import SearchActionBar from "base_components/SearchActionBar"
 const CoursesActionBar = ({ className, fetchCourses }) => (
   <div className={className}>
     <SearchActionBar
-      onSearch={debounce(term => fetchCourses({ ...term }), 500)}
+      onSearch={debounce(({ term }) => fetchCourses({ ...term }), 500)}
     />
   </div>
 )
