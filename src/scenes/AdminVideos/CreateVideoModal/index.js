@@ -8,7 +8,7 @@ import withFormValidation from "hoc/withFormValidation"
 import EntityModal from "base_components/EntityModal"
 import Loading from "base_components/Loading"
 
-import CreateVideoForm, { validationSchema } from "./CreateVideoForm"
+import VideoForm, { validationSchema } from "../VideoForm"
 
 const CreateVideoModal = ({
   isOpen,
@@ -29,7 +29,7 @@ const CreateVideoModal = ({
     {isSubmitting ? (
       <Loading />
     ) : (
-      <CreateVideoForm fields={fields} onChange={onChange} />
+      <VideoForm fields={fields} onChange={onChange} />
     )}
   </EntityModal>
 )

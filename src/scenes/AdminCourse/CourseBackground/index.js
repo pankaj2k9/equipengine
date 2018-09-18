@@ -5,7 +5,6 @@ import CourseSettingsModal from "global/CourseSettingsModal"
 import IconSettings from "react-icons/lib/fa/cog"
 import BackgroundImage from "base_components/BackgroundImage"
 import courseImg from "resources/images/course-default.png"
-import modal from "hoc/modal"
 import { OutlineButton } from "base_components/RootButton"
 
 const Title = styled.div`
@@ -14,7 +13,7 @@ const Title = styled.div`
   font-size: 20px;
 `
 
-const CourseBackground = ({ course, onOpen, onClose, isOpen }) => (
+const CourseBackground = ({ course, onOpen, onClose, isOpen, onSubmit }) => (
   <Fragment>
     <BackgroundImage>
       <img alt="Course Img" src={courseImg} width="150px" />
@@ -25,11 +24,13 @@ const CourseBackground = ({ course, onOpen, onClose, isOpen }) => (
     </BackgroundImage>
     <CourseSettingsModal
       title="Course settings and information"
-      submitButtonTitle="Save"
+      submitButtonTitle="Update"
       isOpen={isOpen}
       onClose={onClose}
+      course={course}
+      onSubmit={onSubmit}
     />
   </Fragment>
 )
 
-export default modal(CourseBackground)
+export default CourseBackground

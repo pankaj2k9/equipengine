@@ -84,7 +84,7 @@ class InputAddress extends Component {
               value={zipCode}
               onChange={changeZipCode}
               placeholder="Zip code"
-              name="zip_code"
+              name="zipCode"
             />
           </FormGroupZipCode>
         </ContainerFlex>

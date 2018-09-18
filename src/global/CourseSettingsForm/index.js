@@ -15,7 +15,7 @@ const validationSchema = joi.object().keys({
   title: joi
     .string()
     .required()
-    .label("Title is missing")
+    .label("Course Name is missing")
 })
 
 const CourseSettingsForm = ({ fields: { title, description }, onChange }) => (
