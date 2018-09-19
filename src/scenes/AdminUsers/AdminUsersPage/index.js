@@ -50,8 +50,11 @@ class AdminUsers extends Component {
   }
 
   handleLoadMore = page => {
-    this.props.fetchMoreUsers({
-      current_page: page
+    const { fetchMoreUsers, searchTerm } = this.props
+
+    fetchMoreUsers({
+      current_page: page,
+      term: searchTerm
     })
   }
 
@@ -158,7 +161,8 @@ const mapState = () =>
     isSavingUser: selectors.selectIsSavingUser(),
     selectedUser: selectors.selectSelectedUser(),
     organizationId: features.login.selectors.selectCurrentUserOrganizationId(),
-    pagination: selectors.selectPagination()
+    pagination: selectors.selectPagination(),
+    searchTerm: selectors.selectSearchTerm()
   })
 
 const mapDispatch = dispatch =>

@@ -15,7 +15,7 @@ import modal from "hoc/modal"
 import CreateGroupModal from "../CreateGroupModal"
 import GroupContentTabs from "../GroupContentTabs"
 import GroupItemFormatter from "../GroupItemFormatter"
-import { createGroup, fetchGroups } from "../thunks"
+import { createGroup, fetchGroups, fetchMoreGroups } from "../thunks"
 import { selectors, types, actions } from "../ducks"
 
 class AdminGroups extends Component {
@@ -35,6 +35,15 @@ class AdminGroups extends Component {
     }
 
     this.handleSearch = debounce(this.handleSearch, 500)
+  }
+
+  handleLoadMore = page => {
+    const { searchTerm } = this.props
+
+    this.props.fetchMoreGroups({
+      current_page: page,
+      term: searchTerm
+    })
   }
 
   handleCreateGroup = fields => {
@@ -59,7 +68,7 @@ class AdminGroups extends Component {
   handleSearch = ({ term }) => {
     const { fetchGroups } = this.props
 
-    fetchGroups({ ...term })
+    fetchGroups({ term })
   }
 
   handleTabClick = group => {
@@ -79,7 +88,8 @@ class AdminGroups extends Component {
       isSavingGroup,
       isOpen,
       onOpen,
-      onClose
+      onClose,
+      pagination
     } = this.props
 
     return (
@@ -91,6 +101,8 @@ class AdminGroups extends Component {
           tabFormatter={tab => <GroupItemFormatter group={tab} />}
           loading={isDeletingGroup || isFetchingGroups}
           selectedTab={group && group.id}
+          handleLoadMore={this.handleLoadMore}
+          pagination={pagination}
           actionBar={
             <SearchActionBar onCreate={onOpen} onSearch={this.handleSearch} />
           }
@@ -115,12 +127,19 @@ const mapState = () =>
     groups: selectors.selectGroups(),
     isDeletingGroup: selectors.selectIsDeletingGroup(),
     isFetchingGroups: selectors.selectIsFetchingGroups(),
-    isSavingGroup: selectors.selectIsSavingGroup()
+    isSavingGroup: selectors.selectIsSavingGroup(),
+    pagination: selectors.selectPagination(),
+    searchTerm: selectors.selectSearchTerm()
   })
 
 const mapDispatch = dispatch =>
   bindActionCreators(
-    { createGroup, fetchGroups, selectGroup: actions.selectGroup },
+    {
+      createGroup,
+      fetchGroups,
+      fetchMoreGroups,
+      selectGroup: actions.selectGroup
+    },
     dispatch
   )
 
