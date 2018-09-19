@@ -25,3 +25,7 @@ export const ListItem = styled.li`
     text-align: inherit;
   }
 `
+
+export const MessageBody = styled.div`
+  flex-grow: 1;
+`
