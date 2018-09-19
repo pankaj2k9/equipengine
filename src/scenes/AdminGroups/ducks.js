@@ -9,6 +9,9 @@ export const types = {
   FETCH_GROUPS_REQUEST: "equipengine/FETCH_GROUPS_REQUEST",
   FETCH_GROUPS_SUCCESS: "equipengine/FETCH_GROUPS_SUCCESS",
   FETCH_GROUPS_ERROR: "equipengine/FETCH_GROUPS_ERROR",
+  FETCH_MORE_GROUPS_REQUEST: "equipengine/FETCH_MORE_GROUPS_REQUEST",
+  FETCH_MORE_GROUPS_SUCCESS: "equipengine/FETCH_MORE_GROUPS_SUCCESS",
+  FETCH_MORE_GROUPS_ERROR: "equipengine/FETCH_MORE_GROUPS_ERROR",
   //
   // CREATE_GROUP
   //
@@ -40,7 +43,8 @@ const initialState = Immutable({
   isFetchingGroups: false,
   isSavingGroup: false,
   isUpdatingGroup: false,
-  pagination: null
+  pagination: null,
+  searchTerm: ""
 })
 
 // Reducer
@@ -51,17 +55,32 @@ export default (state = initialState, action) => {
     //
     case types.FETCH_GROUPS_REQUEST:
       return state.merge({
-        isFetchingGroups: true
+        isFetchingGroups: true,
+        searchTerm: action.payload.searchTerm
       })
     case types.FETCH_GROUPS_SUCCESS:
       return state.merge({
         isFetchingGroups: false,
-        groups: action.payload.groups
+        groups: action.payload.groups,
+        pagination: action.payload.pagination
       })
     case types.FETCH_GROUPS_ERROR:
       return state.merge({
         isFetchingGroups: false,
         groups: []
+      })
+    case types.FETCH_MORE_GROUPS_REQUEST:
+      return state.merge({
+        searchTerm: action.payload.searchTerm
+      })
+    case types.FETCH_MORE_GROUPS_SUCCESS:
+      return state.merge({
+        groups: state.groups.concat(action.payload.groups),
+        pagination: action.payload.pagination
+      })
+    case types.FETCH_MORE_GROUPS_ERROR:
+      return state.merge({
+        pagination: null
       })
 
     //
@@ -137,9 +156,9 @@ export const actions = {
   //
   // FETCH_GROUPS
   //
-  fetchGroupsRequest: ({ term }) => ({
+  fetchGroupsRequest: ({ searchTerm }) => ({
     type: types.FETCH_GROUPS_REQUEST,
-    payload: { term }
+    payload: { searchTerm }
   }),
   fetchGroupsSuccess: ({ groups, pagination }) => ({
     type: types.FETCH_GROUPS_SUCCESS,
@@ -147,6 +166,17 @@ export const actions = {
   }),
   fetchGroupsError: () => ({
     type: types.FETCH_GROUPS_ERROR
+  }),
+  fetchMoreGroupsRequest: ({ searchTerm }) => ({
+    type: types.FETCH_MORE_GROUPS_REQUEST,
+    payload: { searchTerm }
+  }),
+  fetchMoreGroupsSuccess: ({ groups, pagination }) => ({
+    type: types.FETCH_MORE_GROUPS_SUCCESS,
+    payload: { groups, pagination }
+  }),
+  fetchMoreGroupsError: () => ({
+    type: types.FETCH_MORE_GROUPS_ERROR
   }),
 
   //
@@ -212,11 +242,19 @@ const selectIsSavingGroup = () =>
 const selectIsUpdatingGroup = () =>
   createSelector(groupsSelector(), state => state.isUpdatingGroup)
 
+const selectPagination = () =>
+  createSelector(groupsSelector(), state => state.pagination)
+
+const selectSearchTerm = () =>
+  createSelector(groupsSelector(), state => state.searchTerm)
+
 export const selectors = {
   selectGroup,
   selectGroups,
   selectIsDeletingGroup,
   selectIsFetchingGroups,
   selectIsSavingGroup,
-  selectIsUpdatingGroup
+  selectIsUpdatingGroup,
+  selectPagination,
+  selectSearchTerm
 }

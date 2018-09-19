@@ -5,7 +5,7 @@ import { actions } from "./ducks"
 export const fetchGroups = ({ term } = {}) => {
   return async dispatch => {
     try {
-      dispatch(actions.fetchGroupsRequest({ term }))
+      dispatch(actions.fetchGroupsRequest({ searchTerm: term }))
 
       const { groups, meta } = await API.fetchGroups({ term })
 
@@ -17,6 +17,25 @@ export const fetchGroups = ({ term } = {}) => {
       )
     } catch (error) {
       return dispatch(actions.fetchGroupsError())
+    }
+  }
+}
+
+export const fetchMoreGroups = ({ term, current_page }) => {
+  return async dispatch => {
+    dispatch(actions.fetchMoreGroupsRequest({ searchTerm: term }))
+
+    try {
+      const { groups, meta } = await API.fetchGroups({ term, current_page })
+
+      return dispatch(
+        actions.fetchMoreGroupsSuccess({
+          groups,
+          pagination: meta
+        })
+      )
+    } catch (error) {
+      return dispatch(actions.fetchMoreGroupsError())
     }
   }
 }

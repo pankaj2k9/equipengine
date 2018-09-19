@@ -251,11 +251,15 @@ const usersSelector = () => state => state.adminUsers
 
 const selectIsFetchingUsers = () =>
   createSelector(usersSelector(), users => users.isFetchingUsers)
+
 const selectUsers = () => createSelector(usersSelector(), users => users.users)
+
 const selectIsSavingUser = () =>
   createSelector(usersSelector(), users => users.isSavingUser)
+
 const selectSearchTerm = () =>
   createSelector(usersSelector(), users => users.searchTerm)
+
 const selectSelectedUser = () =>
   createSelector(
     usersSelector(),
