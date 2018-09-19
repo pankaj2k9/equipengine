@@ -1,10 +1,11 @@
-import React from "react"
+import React, { Component } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import ModalBody from "react-bootstrap/lib/ModalBody"
 import Loading from "base_components/Loading"
+import DateTime from "base_components/DateTime"
 
-import UserAvatar from "base_components/UserAvatar"
+import UserInfoFormatter from "base_components/UserInfoFormatter"
 
 const ListRow = styled.li`
   padding: 1em 0;
@@ -18,9 +19,9 @@ const ListRow = styled.li`
     > div {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       font-size: 10px;
-      width: 8%;
+      width: 45px;
 
       img {
         margin-bottom: 0.7em;
@@ -36,41 +37,7 @@ const ListRow = styled.li`
     }
   }
 `
-
-const ThreadModalBody = styled(({ className, thread, isFetchingComments }) => {
-  if (isFetchingComments) {
-    return <Loading />
-  }
-
-  const commentList =
-    thread.comments &&
-    thread.comments.map(comment => (
-      <ListRow key={comment.id}>
-        <div>
-          <div>
-            <UserAvatar image={comment.avatarURL} />
-            <span>{comment.name}</span>
-            <span>{comment.date.day}</span>
-            <span>{comment.date.time}</span>
-          </div>
-          <p>{comment.comment}</p>
-        </div>
-      </ListRow>
-    ))
-
-  return (
-    <ModalBody className={className}>
-      <div className="modal-body__content">
-        <header>
-          <h3>{thread.title}</h3>
-          <p>{`Posted by ${thread.name}`}</p>
-          {thread.date && <p>{`${thread.date.day} ${thread.date.time}`}</p>}
-        </header>
-        <ul>{commentList}</ul>
-      </div>
-    </ModalBody>
-  )
-})`
+const StyledBody = styled(ModalBody)`
   flex: 1;
 
   padding: 20px 0;
@@ -104,6 +71,57 @@ const ThreadModalBody = styled(({ className, thread, isFetchingComments }) => {
     }
   }
 `
+class ThreadModalBody extends Component {
+  componentDidMount() {
+    if (this.props.thread)
+      this.props.fetchThreadComments({ thread_id: this.props.thread.id })
+  }
+
+  commentList = () => {
+    const { commentsThread, isFetching } = this.props
+    if (isFetching) return <Loading />
+    return commentsThread.comments !== null
+      ? commentsThread.comments.map(comment => (
+          <ListRow key={comment.id}>
+            <div>
+              <div>
+                <UserInfoFormatter user={comment.user} />
+                <DateTime
+                  date={new Date(comment.created_at)}
+                  fontSize="14px"
+                  withYear
+                />
+              </div>
+              <p>{comment.body}</p>
+            </div>
+          </ListRow>
+        ))
+      : ""
+  }
+
+  render() {
+    const { className, thread } = this.props
+    return (
+      <StyledBody className={className}>
+        <div className="modal-body__content">
+          <header>
+            <h3>{thread.title}</h3>
+            <span>{`Posted by ${thread.user.first_name} ${
+              thread.user.last_name
+            }`}</span>
+            <DateTime
+              date={new Date(thread.created_at)}
+              fontSize="14px"
+              withYear
+              horizontal
+            />
+          </header>
+          <ul>{this.commentList()}</ul>
+        </div>
+      </StyledBody>
+    )
+  }
+}
 
 ThreadModalBody.propTypes = {
   thread: PropTypes.object.isRequired

@@ -26,7 +26,9 @@ const TableDiscussions = ({ discussions, onSelect }) => {
       getCellValue: row => (
         <DiscussionCellFormatter
           discussion={row[TITLE_COLUMN]}
-          onClick={() => onSelect(row[ID_COLUMN])}
+          onClick={() => {
+            onSelect(row[ID_COLUMN])
+          }}
         />
       ),
       width: "45%"

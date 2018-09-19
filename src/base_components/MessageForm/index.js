@@ -33,6 +33,7 @@ class MessageForm extends Component {
 
     if (onSendMessage) {
       onSendMessage(message)
+      this.setState({ message: "" })
     }
   }
 
@@ -54,9 +55,7 @@ class MessageForm extends Component {
             attachment={attachment}
             onChoose={this.handleChooseFile}
           />
-          <Button onClick={this.handleSendMessage} type="submit">
-            Submit
-          </Button>
+          <Button onClick={this.handleSendMessage}>Submit</Button>
         </ButtonContainer>
       </RootForm>
     )

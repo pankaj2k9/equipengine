@@ -1,6 +1,12 @@
 import * as API from "services/API"
 import { actions as courseThreadsActions } from "./ducks"
-import { COMMENT_COURSE_THREAD } from "constants"
+import { COMMENT_COURSE_THREAD } from "services/constants"
+
+export const setActiveThread = ({ threadId }) => {
+  return async dispatch => {
+    dispatch(courseThreadsActions.setActiveThread(threadId))
+  }
+}
 
 export const fetchCourseThreads = ({ groupId, courseId, current_page }) => {
   return async dispatch => {
@@ -25,7 +31,7 @@ export const fetchCourseThreads = ({ groupId, courseId, current_page }) => {
 }
 
 export const fetchThreadComments = ({
-  threads_id,
+  thread_id,
   current_page,
   root_id,
   only_roots
@@ -34,7 +40,7 @@ export const fetchThreadComments = ({
     dispatch(courseThreadsActions.fetchThreadCommentsRequest())
     try {
       const { comments, meta } = await API.fetchComments({
-        commentable_id: threads_id,
+        commentable_id: thread_id,
         commentable_type: COMMENT_COURSE_THREAD,
         root_id,
         only_roots,
@@ -43,6 +49,7 @@ export const fetchThreadComments = ({
 
       return dispatch(
         courseThreadsActions.fetchThreadCommentsSuccess({
+          threadId: thread_id,
           comments,
           pagination: meta
         })
@@ -65,6 +72,26 @@ export const createThreadDiscussion = ({ groupId, courseId, title }) => {
       return dispatch(
         courseThreadsActions.createThreadSuccess({
           courseThread: course_thread
+        })
+      )
+    } catch (error) {
+      return dispatch(courseThreadsActions.createThreadError())
+    }
+  }
+}
+
+export const createCommentThread = ({ thread_id, body }) => {
+  return async dispatch => {
+    dispatch(courseThreadsActions.createCommentThreadRequest())
+    try {
+      const { comment } = await API.createComment({
+        commentable_id: thread_id,
+        commentable_type: COMMENT_COURSE_THREAD,
+        body
+      })
+      return dispatch(
+        courseThreadsActions.createCommentThreadSuccess({
+          comment: comment
         })
       )
     } catch (error) {

@@ -27,8 +27,7 @@ const DateTime = styled(
       <div className={className}>
         {horizontal ? (
           <Fragment>
-            {date} {withYear && year}
-            {!withoutTime && time}
+            {`${date} ${withYear ? year : ""} ${!withoutTime ? time : ""}`}
           </Fragment>
         ) : (
           <Fragment>

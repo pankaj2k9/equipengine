@@ -6,7 +6,11 @@ import { createStructuredSelector } from "reselect"
 import { withRouter } from "react-router-dom"
 import { toastAction } from "global/Toast"
 
-import { fetchCourseThreads, createThreadDiscussion } from "../thunks"
+import {
+  fetchCourseThreads,
+  createThreadDiscussion,
+  setActiveThread
+} from "../thunks"
 import { selectors, types } from "../ducks"
 
 import Loading from "base_components/Loading"
@@ -40,7 +44,7 @@ class CourseThreadsPage extends Component {
   }
 
   render() {
-    const { isFetchingThreads, discussions } = this.props
+    const { isFetchingThreads, discussions, setActiveThread } = this.props
     if (isFetchingThreads) {
       return <Loading />
     }
@@ -48,6 +52,7 @@ class CourseThreadsPage extends Component {
       <TabGroupDiscussions
         discussions={discussions}
         createThreadDiscussion={this.createDiscussion}
+        setActiveThread={setActiveThread}
       />
     )
   }
@@ -64,7 +69,8 @@ const mapDispatch = dispatch =>
   bindActionCreators(
     {
       fetchCourseThreads,
-      createThreadDiscussion
+      createThreadDiscussion,
+      setActiveThread
     },
     dispatch
   )

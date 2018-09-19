@@ -4,11 +4,21 @@ import { createSelector } from "reselect"
 // Types
 export const types = {
   //
+  // SET_ACTIVE_THREAD
+  //
+  SET_ACTIVE_THREAD: "equipengine/SET_ACTIVE_THREAD",
+  //
   // CREATE_THREAD
   //
   CREATE_THREAD_REQUEST: "equipengine/CREATE_THREAD_REQUEST",
   CREATE_THREAD_SUCCESS: "equipengine/CREATE_THREAD_SUCCESS",
   CREATE_THREAD_ERROR: "equipengine/CREATE_THREAD_ERROR",
+  //
+  // CREATE_COMMENT_THREAD
+  //
+  CREATE_COMMENT_THREAD_REQUEST: "equipengine/CREATE_COMMENT_THREAD_REQUEST",
+  CREATE_COMMENT_THREAD_SUCCESS: "equipengine/CREATE_COMMENT_THREAD_SUCCESS",
+  CREATE_COMMENT_THREAD_ERROR: "equipengine/CREATE_COMMENT_THREAD_ERROR",
   //
   // FETCH_COURSE_THREADS
   //
@@ -26,9 +36,10 @@ export const types = {
 const initialState = Immutable({
   isFetchingThreads: false,
   threads: [],
+  openedThread: null,
   pagination: null,
   threadComments: {
-    comments: {},
+    comments: null,
     pagination: null
   }
 })
@@ -36,6 +47,13 @@ const initialState = Immutable({
 // Reducer
 export default (state = initialState, action) => {
   switch (action.type) {
+    //
+    // SET_ACTIVE_THREAD
+    //
+    case types.SET_ACTIVE_THREAD:
+      return state.merge({
+        openedThread: action.payload.threadId
+      })
     //
     // CREATE_THREAD
     //
@@ -69,6 +87,27 @@ export default (state = initialState, action) => {
         threadComments: { comments: {}, pagination: null }
       })
     //
+    // CREATE_COMMENT_THREAD
+    //
+    case types.CREATE_COMMENT_THREAD_REQUEST:
+      return state
+    case types.CREATE_COMMENT_THREAD_SUCCESS:
+      return state.merge({
+        threads: state.threads.map(
+          thread =>
+            thread.id === state.openedThread
+              ? { ...thread, comments_count: thread.comments_count + 1 }
+              : thread
+        ),
+        threadComments: {
+          comments: state.threadComments.comments.concat([
+            action.payload.comment
+          ])
+        }
+      })
+    case types.CREATE_COMMENT_THREAD_ERROR:
+      return state
+    //
     // FETCH_COURSE_THREADS
     //
     case types.FETCH_COURSE_THREADS_REQUEST:
@@ -96,6 +135,11 @@ export default (state = initialState, action) => {
 
 // Actions
 export const actions = {
+  // AVTIVE_THREAD
+  setActiveThread: threadId => ({
+    type: types.SET_ACTIVE_THREAD,
+    payload: { threadId }
+  }),
   //
   // CREATE_THREAD
   //
@@ -123,14 +167,27 @@ export const actions = {
     type: types.FETCH_COURSE_THREADS_ERROR
   }),
   //
+  // CREATE_COMMENT_THREAD
+  //
+  createCommentThreadRequest: () => ({
+    type: types.CREATE_COMMENT_THREAD_REQUEST
+  }),
+  createCommentThreadSuccess: ({ comment }) => ({
+    type: types.CREATE_COMMENT_THREAD_SUCCESS,
+    payload: { comment }
+  }),
+  createCommentThreadError: () => ({
+    type: types.CREATE_COMMENT_THREAD_ERROR
+  }),
+  //
   // FETCH_THREAD_COMMENTS
   //
   fetchThreadCommentsRequest: () => ({
     type: types.FETCH_THREAD_COMMENTS_REQUEST
   }),
-  fetchThreadCommentsSuccess: ({ comments, pagination }) => ({
+  fetchThreadCommentsSuccess: ({ threadId, comments, pagination }) => ({
     type: types.FETCH_THREAD_COMMENTS_SUCCESS,
-    payload: { comments, pagination }
+    payload: { threadId, comments, pagination }
   }),
   fetchThreadCommentsError: () => ({
     type: types.FETCH_THREAD_COMMENTS_ERROR
@@ -139,6 +196,12 @@ export const actions = {
 
 // Selectors
 const courseThreadsSelector = () => state => state.courseThreads
+
+const selectCommentsThread = () =>
+  createSelector(courseThreadsSelector(), base => base.threadComments)
+
+const selectOpenedThread = () =>
+  createSelector(courseThreadsSelector(), base => base.openedThread)
 
 const selectCourseThreads = () =>
   createSelector(courseThreadsSelector(), base => base.threads)
@@ -154,7 +217,9 @@ const selectDiscussionThreads = () =>
 
 export const selectors = {
   selectCourseThreads,
+  selectCommentsThread,
   selectIsFetchingCourseThreads,
   selectDiscussionThreads,
-  selectPagintation
+  selectPagintation,
+  selectOpenedThread
 }

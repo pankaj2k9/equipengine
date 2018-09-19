@@ -6,17 +6,23 @@ import {
   Name,
   UserInfoContainer
 } from "base_components/Table/ActivityCellFormatter/elements"
+import styled from "styled-components"
+
+const StyledRoot = styled(Root)`
+  align-items: center;
+  justify-content: center;
+`
 
 const LatestActivityCellFormatter = ({ activity }) => {
   let date = new Date(activity.created_at)
   return (
-    <Root>
+    <StyledRoot>
       <UserAvatar small image={activity.avatar.url} />
       <UserInfoContainer>
         <Name>{activity.first_name}</Name>
         <DateTime date={date} />
       </UserInfoContainer>
-    </Root>
+    </StyledRoot>
   )
 }
 
