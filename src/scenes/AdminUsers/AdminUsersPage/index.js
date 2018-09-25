@@ -135,7 +135,6 @@ class AdminUsers extends Component {
                 groups={groups}
                 user={selectedUser}
                 users={users}
-                onSubmit={this.handleUpdateUser}
                 onSendResetPasswordToken={this.handleResetPasswordSend}
               />
             )

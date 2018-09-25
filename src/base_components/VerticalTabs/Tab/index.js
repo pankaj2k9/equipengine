@@ -12,14 +12,6 @@ export default class Tab extends Component {
     }
   }
 
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.active !== this.props.active) {
-      return true
-    }
-
-    return false
-  }
-
   handleTabClick = () => {
     // Smooth scrolling with timeout is added here
     // Cause after page refresh (due to scroll in componentDidMount) it scrolled from the start and not obvoius on UI
