@@ -37,6 +37,7 @@ class AdminGroupCoursesPage extends Component {
     }
   }
 
+  handleCourseSettingsClick = course => console.log("handleCourseSettingsClick")
   handleCourseClick = course =>
     this.props.history.push(`/secure/admin/course-creator/courses/${course.id}`)
 
@@ -80,6 +81,7 @@ class AdminGroupCoursesPage extends Component {
             />
             <GroupCoursesTable
               courses={groupCourses}
+              onCourseSettingsClick={this.handleCourseSettingsClick}
               onCourseClick={this.handleCourseClick}
             />
           </div>

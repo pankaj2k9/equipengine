@@ -10,6 +10,7 @@ import { Root } from "./elements"
 import ActivityCellFormatter from "./ActivityCellFormatter"
 import CloseCellFormatter from "./CloseCellFormatter"
 import DateCellFormatter from "./DateCellFormatter"
+import SettingsButtonCellFormatter from "./SettingsButtonCellFormatter"
 import DetailsButtonCellFormatter from "./DetailsButtonCellFormatter"
 import DiscussionCellFormatter from "./DiscussionCellFormatter/"
 import DownloadCellFormatter from "./DownloadCellFormatter"
@@ -108,6 +109,7 @@ export {
   ActivityCellFormatter,
   CloseCellFormatter,
   DateCellFormatter,
+  SettingsButtonCellFormatter,
   DetailsButtonCellFormatter,
   DiscussionCellFormatter,
   DownloadCellFormatter,

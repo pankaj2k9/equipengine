@@ -3,12 +3,14 @@ import React from "react"
 import StatusCircle from "base_components/StatusCircle"
 import Table, {
   DateCellFormatter,
+  SettingsButtonCellFormatter,
   DetailsButtonCellFormatter
 } from "base_components/Table"
 
 const TITLE_COLUMN = "title"
 const DATE_COLUMN = "date_added"
 const STATUS_COLUMN = "status"
+const SETTINGS_COLUMN = "settings"
 const DETAILS_COLUMN = "details"
 
 const columns = [
@@ -31,30 +33,46 @@ const columns = [
     getCellValue: row => <StatusCircle disabled={!row[STATUS_COLUMN]} />
   },
   {
+    name: SETTINGS_COLUMN,
+    align: "center",
+    width: "10%",
+    getCellValue: row => (
+      <SettingsButtonCellFormatter onClick={row[SETTINGS_COLUMN]} />
+    )
+  },
+  {
     name: DETAILS_COLUMN,
     align: "right",
-    width: "30%",
+    width: "20%",
     getCellValue: row => (
       <DetailsButtonCellFormatter onClick={row[DETAILS_COLUMN]} />
     )
   }
 ]
 
-const courseToRow = (course, onCourseClick) => ({
+const courseToRow = (course, onCourseSettingsClick, onCourseClick) => ({
   [TITLE_COLUMN]: course.title,
   [DATE_COLUMN]: course.created_at,
   [STATUS_COLUMN]: true,
+  [SETTINGS_COLUMN]: () => onCourseSettingsClick(course),
   [DETAILS_COLUMN]: () => onCourseClick(course)
 })
 
-const CoursesTable = ({ className, courses, onCourseClick }) => (
+const CoursesTable = ({
+  className,
+  courses,
+  onCourseSettingsClick,
+  onCourseClick
+}) => (
   <Table
     className={className}
     columns={columns}
     rowFontSize="16px"
     rows={
       Array.isArray(courses)
-        ? courses.map(course => courseToRow(course, onCourseClick))
+        ? courses.map(course =>
+            courseToRow(course, onCourseSettingsClick, onCourseClick)
+          )
         : []
     }
     verticalAlign="middle"
