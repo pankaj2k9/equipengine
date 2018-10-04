@@ -3,34 +3,97 @@ import Immutable from "seamless-immutable"
 // Types
 export const types = {
   //
-  // CREATE_VIDEO
+  // FETCH_ORGANIZATION_VIDEOS
   //
-  CREATE_VIDEO_REQUEST: "equipengine-admin/CREATE_VIDEO_REQUEST",
-  CREATE_VIDEO_SUCCESS: "equipengine-admin/CREATE_VIDEO_SUCCESS",
-  CREATE_VIDEO_ERROR: "equipengine-admin/CREATE_VIDEO_ERROR"
+  FETCH_ORGANIZATION_VIDEOS_REQUEST:
+    "equipengine-admin/FETCH_ORGANIZATION_VIDEOS_REQUEST",
+  FETCH_ORGANIZATION_VIDEOS_SUCCESS:
+    "equipengine-admin/FETCH_ORGANIZATION_VIDEOS_SUCCESS",
+  FETCH_ORGANIZATION_VIDEOS_ERROR:
+    "equipengine-admin/FETCH_ORGANIZATION_VIDEOS_ERROR",
+  //
+  // CREATE_ORGANIZATION_VIDEO
+  //
+  CREATE_ORGANIZATION_VIDEO_REQUEST:
+    "equipengine-admin/CREATE_ORGANIZATION_VIDEO_REQUEST",
+  CREATE_ORGANIZATION_VIDEO_SUCCESS:
+    "equipengine-admin/CREATE_ORGANIZATION_VIDEO_SUCCESS",
+  CREATE_ORGANIZATION_VIDEO_ERROR:
+    "equipengine-admin/CREATE_ORGANIZATION_VIDEO_ERROR",
+  //
+  // UPDATE_ORGANIZATION_VIDEO
+  //
+  UPDATE_ORGANIZATION_VIDEO_REQUEST:
+    "equipengine-admin/UPDATE_ORGANIZATION_VIDEO_REQUEST",
+  UPDATE_ORGANIZATION_VIDEO_SUCCESS:
+    "equipengine-admin/UPDATE_ORGANIZATION_VIDEO_SUCCESS",
+  UPDATE_ORGANIZATION_VIDEO_ERROR:
+    "equipengine-admin/UPDATE_ORGANIZATION_VIDEO_ERROR"
 }
 
 const initialState = Immutable({
-  isCreatingVideo: false
+  videos: [],
+  isFetchingVideos: false,
+  isCreatingVideo: false,
+  isUpdatingVideo: false
 })
 
 // Reducer
 export default (state = initialState, action) => {
   switch (action.type) {
     //
-    // CREATE_VIDEO
+    // FETCH_ORGANIZATION_VIDEOS
     //
-    case types.CREATE_VIDEO_REQUEST:
+    case types.FETCH_ORGANIZATION_VIDEOS_REQUEST:
+      return state.merge({
+        isFetchingVideos: true
+      })
+    case types.FETCH_ORGANIZATION_VIDEOS_SUCCESS:
+      return state.merge({
+        isFetchingVideos: false,
+        videos: action.payload.videos
+      })
+    case types.FETCH_ORGANIZATION_VIDEOS_ERROR:
+      return state.merge({
+        isFetchingVideos: false,
+        videos: []
+      })
+
+    //
+    // CREATE_ORGANIZATION_VIDEO
+    //
+    case types.CREATE_ORGANIZATION_VIDEO_REQUEST:
       return state.merge({
         isCreatingVideo: true
       })
-    case types.CREATE_VIDEO_SUCCESS:
+    case types.CREATE_ORGANIZATION_VIDEO_SUCCESS:
+      return state.merge({
+        isCreatingVideo: false,
+        videos: state.videos.concat([action.payload.video])
+      })
+    case types.CREATE_ORGANIZATION_VIDEO_ERROR:
       return state.merge({
         isCreatingVideo: false
       })
-    case types.CREATE_VIDEO_ERROR:
+
+    //
+    // UPDATE_ORGANIZATION_VIDEO
+    //
+    case types.UPDATE_ORGANIZATION_VIDEO_REQUEST:
       return state.merge({
-        isCreatingVideo: false
+        isUpdatingVideo: true
+      })
+    case types.UPDATE_ORGANIZATION_VIDEO_SUCCESS:
+      return state.merge({
+        isUpdatingVideo: false,
+        videos: state.videos.map(
+          video =>
+            video.id === action.payload.video.id ? action.payload.video : video
+        )
+      })
+    case types.UPDATE_ORGANIZATION_VIDEO_ERROR:
+      return state.merge({
+        isUpdatingVideo: false
       })
 
     default:
@@ -41,16 +104,42 @@ export default (state = initialState, action) => {
 // Actions
 export const actions = {
   //
-  // CREATE_VIDEO
+  // FETCH_ORGANIZATION_VIDEOS
   //
-  createVideoRequest: () => ({
-    type: types.CREATE_VIDEO_REQUEST
+  fetchOrganizationVideosRequest: () => ({
+    type: types.FETCH_ORGANIZATION_VIDEOS_REQUEST
   }),
-  createVideoSuccess: ({ video }) => ({
-    type: types.CREATE_VIDEO_SUCCESS,
+  fetchOrganizationVideosSuccess: ({ videos, pagination }) => ({
+    type: types.FETCH_ORGANIZATION_VIDEOS_SUCCESS,
+    payload: { videos, pagination }
+  }),
+  fetchOrganizationVideosError: () => ({
+    type: types.FETCH_ORGANIZATION_VIDEOS_ERROR
+  }),
+  //
+  // CREATE_ORGANIZATION_VIDEO
+  //
+  createOrganizationVideoRequest: () => ({
+    type: types.CREATE_ORGANIZATION_VIDEO_REQUEST
+  }),
+  createOrganizationVideoSuccess: ({ video }) => ({
+    type: types.CREATE_ORGANIZATION_VIDEO_SUCCESS,
     payload: { video }
   }),
-  createVideoError: () => ({
-    type: types.CREATE_VIDEO_ERROR
+  createOrganizationVideoError: () => ({
+    type: types.CREATE_ORGANIZATION_VIDEO_ERROR
+  }),
+  //
+  // UPDATE_ORGANIZATION_VIDEO
+  //
+  updateOrganizationVideoRequest: () => ({
+    type: types.UPDATE_ORGANIZATION_VIDEO_REQUEST
+  }),
+  updateOrganizationVideoSuccess: ({ video }) => ({
+    type: types.UPDATE_ORGANIZATION_VIDEO_SUCCESS,
+    payload: { video }
+  }),
+  updateOrganizationVideoError: () => ({
+    type: types.UPDATE_ORGANIZATION_VIDEO_ERROR
   })
 }

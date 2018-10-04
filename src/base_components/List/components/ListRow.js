@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
 
 const ListRow = styled.li`
@@ -22,9 +21,5 @@ const ListRow = styled.li`
     justify-content: space-between;
   }
 `
-
-ListRow.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element)
-}
 
 export default ListRow

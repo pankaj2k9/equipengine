@@ -1,29 +1,40 @@
-import React, { Component } from "react"
+import React from "react"
+import InfiniteScroll from "react-infinite-scroller"
 
 import List from "base_components/List"
 import Loading from "base_components/Loading"
 import { ActionBar, Layout, Tabs, TabContent } from "./elements"
 import Tab from "./Tab"
 
-class VerticalTabs extends Component {
-  render() {
-    const {
-      actionBar,
-      content,
-      loading,
-      onTabClick,
-      selectedTab,
-      tabKey,
-      tabs,
-      tabFormatter
-    } = this.props
-    return (
-      <Layout>
-        <Tabs>
-          {actionBar && <ActionBar>{actionBar}</ActionBar>}
-          {loading ? (
-            <Loading />
-          ) : (
+const VerticalTabs = ({
+  actionBar,
+  content,
+  loading,
+  onTabClick,
+  selectedTab,
+  tabKey,
+  tabs,
+  tabFormatter,
+  handleLoadMore,
+  pagination
+}) => {
+  return (
+    <Layout>
+      <Tabs>
+        {actionBar && <ActionBar>{actionBar}</ActionBar>}
+        {loading ? (
+          <Loading />
+        ) : (
+          <InfiniteScroll
+            pageStart={1}
+            loadMore={handleLoadMore}
+            hasMore={
+              pagination && pagination.total_pages > pagination.current_page
+            }
+            initialLoad={false}
+            useWindow={false}
+            loader={<Loading />}
+          >
             <List>
               {Array.isArray(tabs) &&
                 tabs.map((tab, index) => (
@@ -36,12 +47,12 @@ class VerticalTabs extends Component {
                   />
                 ))}
             </List>
-          )}
-        </Tabs>
-        <TabContent>{content || "No item selected"}</TabContent>
-      </Layout>
-    )
-  }
+          </InfiniteScroll>
+        )}
+      </Tabs>
+      <TabContent>{content || "No item selected"}</TabContent>
+    </Layout>
+  )
 }
 
 export default VerticalTabs

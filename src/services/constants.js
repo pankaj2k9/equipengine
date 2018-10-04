@@ -52,6 +52,7 @@ export const ATTACHMENTABLE_TASK_TYPE = "Task"
 // VIDEOS
 //
 export const VIDEOABLE_TASK_TYPE = "Task"
+export const VIDEOABLE_ORGANIZATION_TYPE = "Organization"
 
 //
 // COMMENT TYPE

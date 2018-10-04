@@ -1,43 +1,69 @@
-import React from "react"
+import React, { Component } from "react"
 import PropTypes from "prop-types"
-import { compose, pure } from "recompose"
 
-import EditVideoForm, { validationSchema } from "./EditVideoForm"
-
-import Modal from "base_components/Modal"
-import form from "hoc/form"
+import EntityModal from "base_components/EntityModal"
 import Loading from "base_components/Loading"
-import withFormValidation from "hoc/withFormValidation"
+import VideoForm from "../VideoForm"
 
-import { Header, Footer } from "./components"
+class EditVideoModal extends Component {
+  state = {
+    id: null,
+    title: null,
+    file: null
+  }
 
-const EditVideoModal = ({
-  isOpen,
-  isSubmitting,
-  fields,
-  onChange,
-  onClose
-}) => (
-  <Modal
-    isOpen={isOpen}
-    onClose={onClose}
-    header={<Header title="Edit video" />}
-    body={
-      isSubmitting ? (
-        <Loading />
-      ) : (
-        <EditVideoForm fields={fields} onChange={onChange} />
-      )
+  componentDidUpdate(prevProps, prevState) {
+    const { video } = this.props
+    if (!video && prevState.id) {
+      this.setState({
+        id: null,
+        title: null,
+        file: null
+      })
     }
-    footer={
-      <Footer
-        isSubmitting={isSubmitting}
-        onSubmit={() => {}}
-        onDelete={() => {}}
-      />
+    if (video && prevState.id !== video.id) {
+      this.setState({
+        id: video.id,
+        title: video.title,
+        file: video.file
+      })
     }
-  />
-)
+  }
+
+  handleChange = (value, name) => {
+    this.setState({ [name]: value })
+  }
+
+  handleSubmit = () => {
+    const { id, title, file } = this.state
+    this.props.onClose()
+    this.props.onSubmit({ id, title, file })
+  }
+
+  render() {
+    const { video, isOpen, isSubmitting, onClose } = this.props
+    const { title, file } = this.state
+
+    return (
+      <EntityModal
+        title="Edit video"
+        isOpen={isOpen}
+        onClose={onClose}
+        onSubmit={this.handleSubmit}
+      >
+        {isSubmitting ? (
+          <Loading />
+        ) : (
+          <VideoForm
+            embedCode={video && video.embed_code}
+            fields={{ title, file }}
+            onChange={this.handleChange}
+          />
+        )}
+      </EntityModal>
+    )
+  }
+}
 
 EditVideoModal.propTypes = {
   onClose: PropTypes.func.isRequired,
@@ -45,11 +71,4 @@ EditVideoModal.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
 
-export default compose(
-  form({
-    file: {},
-    title: "Test file title"
-  }),
-  withFormValidation({ validationSchema }),
-  pure
-)(EditVideoModal)
+export default EditVideoModal

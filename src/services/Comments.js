@@ -3,20 +3,14 @@ import { client } from "./API"
 /**
  *  create comment from specific discussion at course
  */
-export const createComment = ({
-  commentable_id,
-  commentable_type,
-  comment_body,
-  comment_subject,
-  comment_title,
-  root_id
-}) => {
+export const createComment = ({ commentable_id, commentable_type, body }) => {
   return client
     .post(`/api/v1/${commentable_type}/${commentable_id}/comments`, {
-      body: comment_body,
-      subject: comment_subject,
-      title: comment_title,
-      root_id
+      body: body,
+      subject: "",
+      title: "",
+      root_id: 0,
+      attachment_id: 0
     })
     .then(response => response.data)
 }

@@ -9,7 +9,7 @@ import MessageForm from "base_components/MessageForm"
 import DateTime from "base_components/DateTime"
 import UserAvatar from "base_components/UserAvatar"
 
-import { ListItem } from "./elements"
+import { ListItem, MessageBody } from "./elements"
 import { createComment } from "../thunks"
 
 class ListNotice extends Component {
@@ -43,14 +43,14 @@ class ListNotice extends Component {
                 time={moment(comment.created_at).format("hh:mm a")}
               />
             </div>
-            <div>
+            <MessageBody>
               <p>{comment.body}</p>
 
               <MessageForm
                 onSendMessage={body => this.handleSendMessage(comment.id, body)}
                 placeholder="Comment..."
               />
-            </div>
+            </MessageBody>
           </ListItem>
         ))}
       </ul>

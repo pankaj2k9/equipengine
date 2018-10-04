@@ -1,12 +1,19 @@
-import React from "react"
+import React, { Component } from "react"
 import { Modal } from "react-bootstrap"
 import styled from "styled-components"
+
+import { bindActionCreators } from "redux"
+import { compose } from "recompose"
+import { connect } from "react-redux"
+import { createStructuredSelector } from "reselect"
+import { createCommentThread, fetchThreadComments } from "../thunks"
+import { selectors } from "../ducks"
 
 import ThreadModalBody from "./components/ThreadModalBody"
 import ThreadModalFooter from "./components/ThreadModalFooter"
 import ThreadModalHeader from "./components/ThreadModalHeader"
 
-const ThreadModal = styled(Modal)`
+const StyledModal = styled(Modal)`
   .modal-dialog {
     width: 100%;
     height: 100%;
@@ -24,11 +31,57 @@ const ThreadModal = styled(Modal)`
     }
   }
 `
+class ThreadModal extends Component {
+  render() {
+    const {
+      isOpen,
+      onClose,
+      createCommentThread,
+      fetchThreadComments,
+      threadId,
+      commentsThread,
+      isFetching
+    } = this.props
+    return (
+      <StyledModal show={isOpen}>
+        <ThreadModalHeader onClose={onClose} />
+        <ThreadModalBody
+          thread={this.props.threads.find(
+            value => value.id === this.props.threadId
+          )}
+          commentsThread={commentsThread}
+          isFetching={isFetching}
+          fetchThreadComments={fetchThreadComments}
+        />
+        <ThreadModalFooter
+          createCommentThread={createCommentThread}
+          threadId={threadId}
+        />
+      </StyledModal>
+    )
+  }
+}
 
-export default ({ isOpen, onClose, thread, isFetchingThreads }) => (
-  <ThreadModal show={isOpen}>
-    <ThreadModalHeader onClose={onClose} />
-    <ThreadModalBody thread={thread} isFetchingComments={isFetchingThreads} />
-    <ThreadModalFooter />
-  </ThreadModal>
-)
+const mapState = () =>
+  createStructuredSelector({
+    commentsThread: selectors.selectCommentsThread(),
+    threads: selectors.selectCourseThreads(),
+    threadId: selectors.selectOpenedThread(),
+    isFetching: selectors.selectIsFetchingCourseThreads()
+  })
+
+const mapDispatch = dispatch =>
+  bindActionCreators(
+    {
+      createCommentThread,
+      fetchThreadComments
+    },
+    dispatch
+  )
+
+export default compose(component =>
+  connect(
+    mapState,
+    mapDispatch
+  )(component)
+)(ThreadModal)

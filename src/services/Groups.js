@@ -10,10 +10,7 @@ export const fetchMyGroups = () => fetchGroups({ my: true })
  * @returns list of all groups
  */
 export const fetchGroups = ({ term, visibility, status, my, ...rest }) => {
-  const params = {
-    // TODO implement pagination/infinite loading
-    current_count: 100
-  }
+  const params = {}
 
   if (term) {
     params.term = term

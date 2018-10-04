@@ -1,34 +1,22 @@
 import React, { Component } from "react"
-import { isNotNil } from "ramda-adjunct"
-// components
+
 import StyledSelect from "./styles"
 import dropdown from "./propTypes"
 
 class Dropdown extends Component {
-  constructor(props) {
-    super(props)
-    const selectedOption =
-      props.value &&
-      props.options &&
-      props.options.find(option => option.value === props.value)
-    this.state = {
-      selectedOption
-    }
-  }
-
   handleChange = selectedOption => {
-    this.props.onChange(selectedOption)
-    this.setState({ selectedOption })
+    const { onChange } = this.props
+
+    onChange(selectedOption)
   }
 
   render() {
-    const { selectedOption } = this.state
-    const { name, options, className, placeholder } = this.props
-    const selectValue = isNotNil(selectedOption) && selectedOption.value
+    const { name, options, className, placeholder, value } = this.props
+
     return (
       <StyledSelect
         name={name}
-        value={selectValue}
+        value={value}
         onChange={this.handleChange}
         options={options}
         className={className}

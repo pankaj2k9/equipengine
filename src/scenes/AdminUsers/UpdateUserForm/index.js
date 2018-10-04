@@ -112,7 +112,7 @@ class UpdateUserForm extends Component {
     this.setState(nextFields)
   }
 
-  onSubmit = e => {
+  handleUpdateUser = e => {
     e.preventDefault()
 
     let fields = this.state
@@ -200,7 +200,7 @@ class UpdateUserForm extends Component {
     })
   }
 
-  suspendUser = () => {
+  handleSuspendUser = () => {
     const { organization_settings } = this.props.user
     const { userId } = this.state
 
@@ -221,7 +221,7 @@ class UpdateUserForm extends Component {
     })
   }
 
-  removeUser = () => {
+  handleRemoveUser = () => {
     const { userId } = this.state
 
     this.props.removeUser(userId).then(action => {
@@ -333,10 +333,10 @@ class UpdateUserForm extends Component {
         )}
 
         <PanelControlGroup
-          suspendUser={this.suspendUser}
-          removeUser={this.removeUser}
+          suspendUser={this.handleSuspendUser}
+          removeUser={this.handleRemoveUser}
         />
-        <ButtonUpdate onClick={this.onSubmit}>Update</ButtonUpdate>
+        <ButtonUpdate onClick={this.handleUpdateUser}>Update</ButtonUpdate>
       </MainForm>
     )
   }

@@ -44,7 +44,7 @@ const latestDiscussions = [
   }
 ]
 
-const BodyCourse = ({ course, isOpen, onClose, thread }) => {
+const BodyCourse = ({ course, isOpen, onClose }) => {
   return (
     <div>
       {/* this is the layout for 0-767px width */}
@@ -73,7 +73,7 @@ const BodyCourse = ({ course, isOpen, onClose, thread }) => {
         </Box>
       </Desktop>
 
-      <ThreadModal isOpen={isOpen} onClose={onClose} thread={thread} />
+      <ThreadModal isOpen={isOpen} onClose={onClose} />
     </div>
   )
 }
@@ -81,27 +81,15 @@ const BodyCourse = ({ course, isOpen, onClose, thread }) => {
 export default modal(
   compose(
     withProps({ latestDiscussions }),
-    withStateHandlers(
-      () => ({
-        thread: {}
-      }),
-      {
-        selectThread: (_, { discussions, onOpen }) => id => {
-          onOpen()
-
-          return {
-            thread: discussions.find(thread => thread.id === id)
-          }
-        }
+    withStateHandlers(null, {
+      selectThread: (_, { onOpen }) => () => {
+        onOpen()
+        return
       }
-    ),
-    withContext(
-      contextPropTypes,
-      ({ latestDiscussions, selectThread, thread }) => ({
-        latestDiscussions,
-        selectThread,
-        thread
-      })
-    )
+    }),
+    withContext(contextPropTypes, ({ latestDiscussions, selectThread }) => ({
+      latestDiscussions,
+      selectThread
+    }))
   )(BodyCourse)
 )

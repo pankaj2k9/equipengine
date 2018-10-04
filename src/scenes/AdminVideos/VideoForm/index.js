@@ -9,6 +9,12 @@ const Root = styled.div`
   padding-bottom: 18px;
 `
 
+const VideoFrame = styled.div`
+  iframe {
+    width: fill-available;
+  }
+`
+
 const validationSchema = joi.object().keys({
   title: joi
     .string()
@@ -16,7 +22,7 @@ const validationSchema = joi.object().keys({
     .label("Video name is missing")
 })
 
-class CreateVideoForm extends Component {
+class VideoForm extends Component {
   handleVideoChange = file => {
     this.props.onChange(file, "file")
     if (file) {
@@ -30,6 +36,7 @@ class CreateVideoForm extends Component {
 
   render() {
     const {
+      embedCode,
       fields: { file, title }
     } = this.props
 
@@ -45,9 +52,15 @@ class CreateVideoForm extends Component {
             placeholder="Video name"
           />
         </FormGroup>
+        {embedCode && (
+          <FormGroup>
+            <Label>Old video</Label>
+            <VideoFrame dangerouslySetInnerHTML={{ __html: embedCode }} />
+          </FormGroup>
+        )}
       </Root>
     )
   }
 }
 
-export { CreateVideoForm as default, validationSchema }
+export { VideoForm as default, validationSchema }
