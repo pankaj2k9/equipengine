@@ -8,10 +8,10 @@ class FileChooserDialog extends React.Component {
   /**
    * Handle Choose button is clicked in browser file chooser.
    */
-  handleChooseFiles = () => {
+  handleChooseFiles = event => {
     const files = this.fileChooser.files
     if (files && files.length > 0) {
-      this.props.onChooseFiles(files)
+      this.props.onChooseFiles(files, event)
     }
   }
 
@@ -23,10 +23,11 @@ class FileChooserDialog extends React.Component {
   }
 
   render() {
-    const { accept, multiple } = this.props
+    const { name, accept, multiple } = this.props
 
     return (
       <input
+        name={name}
         type="file"
         accept={accept}
         style={{ display: "none" }}

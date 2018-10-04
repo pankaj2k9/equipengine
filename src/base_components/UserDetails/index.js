@@ -86,6 +86,7 @@ const UserDetails = ({
   changeFirstName,
   changeLastName,
   changeEmail,
+  changeUserAvatar,
   onOpen,
   onClose,
   isOpen,
@@ -97,7 +98,11 @@ const UserDetails = ({
     <Desktop>
       <ContainerFlex>
         <ItemFlex>
-          <UploadableAvatar readOnly={!isAvatarEditable} image={iconUser} />
+          <UploadableAvatar
+            readOnly={!isAvatarEditable}
+            image={iconUser}
+            changeUserAvatar={changeUserAvatar}
+          />
         </ItemFlex>
         <ItemFlex>
           <ContainerFlex>
