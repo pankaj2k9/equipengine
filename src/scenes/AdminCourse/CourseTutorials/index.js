@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom"
 // component
 import Button from "base_components/RootButton"
 import CreateTutorialModal from "../CreateTutorialModal"
-import { createTutorial, fetchTutorials } from "../thunks"
+import { createTutorial, fetchTutorials, fetchMoreTutorials } from "../thunks"
 import { selectors } from "../selectors"
 import { actions, types } from "../ducks"
 import modal from "hoc/modal"
@@ -44,6 +44,8 @@ class Course extends Component {
   handleSelectTutorial = ({ id }) =>
     this.props.selectTutorial({ selectedTutorialId: id })
 
+  handleLoadMore = page => this.props.fetchMoreTutorials({ current_page: page })
+
   render() {
     const {
       tutorials,
@@ -75,6 +77,7 @@ class Course extends Component {
         selectedTab={selectedTutorial && selectedTutorial.id}
         content={<TutorialTabs tutorial={selectedTutorial} />}
         onTabClick={this.handleSelectTutorial}
+        handleLoadMore={this.handleLoadMore}
       />
     )
   }
@@ -93,6 +96,7 @@ const mapDispatch = dispatch =>
     {
       createTutorial,
       fetchTutorials,
+      fetchMoreTutorials,
       selectTutorial: actions.selectTutorial
     },
     dispatch

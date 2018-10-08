@@ -13,6 +13,8 @@ export const types = {
   //
   FETCH_TUTORIALS_REQUEST: "equipengine-admin/FETCH_TUTORIALS_REQUEST",
   FETCH_TUTORIALS_SUCCESS: "equipengine-admin/FETCH_TUTORIALS_SUCCESS",
+  FETCH_MORE_TUTORIALS_SUCCESS:
+    "equipengine-admin/FETCH_MORE_TUTORIALS_SUCCESS",
   FETCH_TUTORIALS_ERROR: "equipengine-admin/FETCH_TUTORIALS_ERROR",
   //
   // CREATE_TUTORIAL
@@ -79,6 +81,12 @@ export default (state = initialState, action) => {
       return state.merge({
         isFetchingTutorials: false,
         tutorials: action.payload.tutorials,
+        tutorialsPagination: action.payload.tutorialsPagination
+      })
+    case types.FETCH_MORE_TUTORIALS_SUCCESS:
+      return state.merge({
+        isFetchingTutorials: false,
+        tutorials: state.tutorials.concat(action.payload.tutorials),
         tutorialsPagination: action.payload.tutorialsPagination
       })
     case types.FETCH_TUTORIALS_ERROR:
@@ -231,6 +239,10 @@ export const actions = {
   }),
   fetchTutorialsSuccess: ({ tutorials, tutorialsPagination }) => ({
     type: types.FETCH_TUTORIALS_SUCCESS,
+    payload: { tutorials, tutorialsPagination }
+  }),
+  fetchMoreTutorialsSuccess: ({ tutorials, tutorialsPagination }) => ({
+    type: types.FETCH_MORE_TUTORIALS_SUCCESS,
     payload: { tutorials, tutorialsPagination }
   }),
   fetchTutorialsError: () => ({
