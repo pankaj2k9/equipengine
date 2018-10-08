@@ -1,15 +1,34 @@
 import * as API from "services/API"
 import { actions as coursesActions } from "./ducks"
 
-export const fetchCourses = ({ term }) => {
+export const fetchCourses = ({ term, current_page }) => {
   return async dispatch => {
     dispatch(coursesActions.fetchCoursesRequest({ term }))
 
     try {
-      const { courses, meta } = await API.fetchCourses({ term })
+      const { courses, meta } = await API.fetchCourses({ term, current_page })
 
       return dispatch(
         coursesActions.fetchCoursesSuccess({
+          courses,
+          pagination: meta
+        })
+      )
+    } catch (error) {
+      return dispatch(coursesActions.fetchCoursesError())
+    }
+  }
+}
+
+export const fetchMoreCourses = ({ term, current_page }) => {
+  return async dispatch => {
+    dispatch(coursesActions.fetchMoreCoursesRequest({ term }))
+
+    try {
+      const { courses, meta } = await API.fetchCourses({ term, current_page })
+
+      return dispatch(
+        coursesActions.fetchMoreCoursesSuccess({
           courses,
           pagination: meta
         })

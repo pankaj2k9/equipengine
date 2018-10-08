@@ -9,10 +9,14 @@ export const fetchCourse = ({ course_id }) =>
 /**
  * @returns list of all courses
  */
-export const fetchCourses = ({ term, sort_field, sort_flag }) => {
+export const fetchCourses = ({
+  term,
+  sort_field,
+  sort_flag,
+  current_page = 1
+}) => {
   const params = {
-    // TODO implement pagination/inifinite loading
-    current_count: 100
+    current_page
   }
 
   if (term) {
