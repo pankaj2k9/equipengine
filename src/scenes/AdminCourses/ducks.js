@@ -7,7 +7,9 @@ export const types = {
   // FETCH_COURSES
   //
   FETCH_COURSES_REQUEST: "equipengine-admin/FETCH_COURSES_REQUEST",
+  FETCH_MORE_COURSES_REQUEST: "equipengine-admin/FETCH_MORE_COURSES_REQUEST",
   FETCH_COURSES_SUCCESS: "equipengine-admin/FETCH_COURSES_SUCCESS",
+  FETCH_MORE_COURSES_SUCCESS: "equipengine-admin/FETCH_MORE_COURSES_SUCCESS",
   FETCH_COURSES_ERROR: "equipengine-admin/FETCH_COURSES_ERROR",
   //
   // CREATE_COURSE
@@ -38,16 +40,25 @@ export default (state = initialState, action) => {
     //
     // FETCH_COURSES
     //
-    case types.FETCH_COURSES_REQUEST: {
+    case types.FETCH_COURSES_REQUEST:
       return state.merge({
         isFetchingCourses: true,
         searchTerm: action.payload.searchTerm
       })
-    }
+    case types.FETCH_MORE_COURSES_REQUEST:
+      return state.merge({
+        searchTerm: action.payload.searchTerm
+      })
     case types.FETCH_COURSES_SUCCESS:
       return state.merge({
         isFetchingCourses: false,
-        courses: action.payload.courses
+        courses: action.payload.courses,
+        coursesPagination: action.payload.coursesPagination
+      })
+    case types.FETCH_MORE_COURSES_SUCCESS:
+      return state.merge({
+        courses: state.courses.concat(action.payload.courses),
+        coursesPagination: action.payload.coursesPagination
       })
     case types.FETCH_COURSES_ERROR:
       return state.merge({
@@ -107,8 +118,16 @@ export const actions = {
     type: types.FETCH_COURSES_REQUEST,
     payload: { searchTerm: term }
   }),
+  fetchMoreCoursesRequest: ({ term }) => ({
+    type: types.FETCH_MORE_COURSES_REQUEST,
+    payload: { searchTerm: term }
+  }),
   fetchCoursesSuccess: ({ courses, pagination }) => ({
     type: types.FETCH_COURSES_SUCCESS,
+    payload: { courses, coursesPagination: pagination }
+  }),
+  fetchMoreCoursesSuccess: ({ courses, pagination }) => ({
+    type: types.FETCH_MORE_COURSES_SUCCESS,
     payload: { courses, coursesPagination: pagination }
   }),
   fetchCoursesError: () => ({
@@ -156,11 +175,14 @@ const selectSearchTerm = () =>
   createSelector(coursesSelector(), courses => courses.searchTerm)
 const selectIsUpdatingCourse = () =>
   createSelector(coursesSelector(), courses => courses.isUpdatingCourse)
+const selectCoursesPagination = () =>
+  createSelector(coursesSelector(), courses => courses.coursesPagination)
 
 export const selectors = {
   selectIsFetchingCourses,
   selectIsSavingCourse,
   selectCourses,
   selectSearchTerm,
-  selectIsUpdatingCourse
+  selectIsUpdatingCourse,
+  selectCoursesPagination
 }
