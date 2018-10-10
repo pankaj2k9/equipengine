@@ -39,6 +39,26 @@ export const fetchTutorials = ({ courseId }) => {
   }
 }
 
+export const fetchMoreTutorials = ({ courseId, currentPage }) => {
+  return async dispatch => {
+    try {
+      const { lessons, meta } = await API.fetchAdminTutorials({
+        course_id: courseId,
+        current_page: currentPage
+      })
+
+      return dispatch(
+        actions.fetchMoreTutorialsSuccess({
+          tutorials: lessons,
+          tutorialsPagination: meta
+        })
+      )
+    } catch (error) {
+      return dispatch(actions.fetchTutorialsError())
+    }
+  }
+}
+
 export const createTutorial = ({ courseId, title, description }) => {
   return async dispatch => {
     dispatch(actions.createTutorialRequest())

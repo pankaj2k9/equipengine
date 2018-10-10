@@ -4,11 +4,11 @@ import { ACTIVE_TUTORIAL_STATUS } from "./constants"
 /**
  * @returns list of lessons/tutorials in specific course
  */
-export const fetchAdminTutorials = ({ course_id }) =>
+export const fetchAdminTutorials = ({ course_id, current_page = 1 }) =>
   client
     .get(`/api/v1/courses/${course_id}/lessons`, {
       params: {
-        current_count: 100
+        current_page
       }
     })
     .then(response => response.data)
