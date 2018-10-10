@@ -44,7 +44,10 @@ class Course extends Component {
   handleSelectTutorial = ({ id }) =>
     this.props.selectTutorial({ selectedTutorialId: id })
 
-  handleLoadMore = page => this.props.fetchMoreTutorials({ current_page: page })
+  handleLoadMore = page => {
+    const { courseId } = this.props.match.params
+    this.props.fetchMoreTutorials({ currentPage: page, courseId })
+  }
 
   render() {
     const {
@@ -54,7 +57,8 @@ class Course extends Component {
       isFetchingTutorials,
       isOpen,
       onOpen,
-      onClose
+      onClose,
+      pagination
     } = this.props
 
     return (
@@ -78,6 +82,8 @@ class Course extends Component {
         content={<TutorialTabs tutorial={selectedTutorial} />}
         onTabClick={this.handleSelectTutorial}
         handleLoadMore={this.handleLoadMore}
+        pagination={pagination}
+        useWindowScroll
       />
     )
   }
@@ -88,7 +94,8 @@ const mapState = () =>
     tutorials: selectors.selectTutorials(),
     isFetchingTutorials: selectors.selectIsFetchingTutorials(),
     isCreatingTutorial: selectors.selectIsCreatingTutorial(),
-    selectedTutorial: selectors.selectSelectedTutorial()
+    selectedTutorial: selectors.selectSelectedTutorial(),
+    pagination: selectors.selectTutorialPagination()
   })
 
 const mapDispatch = dispatch =>

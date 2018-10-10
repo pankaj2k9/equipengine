@@ -16,7 +16,8 @@ const VerticalTabs = ({
   tabs,
   tabFormatter,
   handleLoadMore,
-  pagination
+  pagination,
+  useWindowScroll
 }) => {
   return (
     <Layout>
@@ -32,7 +33,7 @@ const VerticalTabs = ({
               pagination && pagination.total_pages > pagination.current_page
             }
             initialLoad={false}
-            useWindow={false}
+            useWindow={useWindowScroll ? useWindowScroll : false}
             loader={<Loading />}
           >
             <List>

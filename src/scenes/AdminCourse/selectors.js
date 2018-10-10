@@ -32,6 +32,8 @@ const selectIsUpdatingTask = () =>
   createSelector(courseSelector(), course => course.isUpdatingTask)
 const selectIsDeletingTask = () =>
   createSelector(courseSelector(), course => course.isDeletingTask)
+const selectTutorialPagination = () =>
+  createSelector(courseSelector(), course => course.tutorialsPagination)
 
 export const selectors = {
   selectIsFetchingCourse,
@@ -44,5 +46,6 @@ export const selectors = {
   selectIsFetchingTasks,
   selectIsCreatingTask,
   selectIsUpdatingTask,
-  selectIsDeletingTask
+  selectIsDeletingTask,
+  selectTutorialPagination
 }
