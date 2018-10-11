@@ -7,7 +7,7 @@ const GroupItemFormatter = ({ group }) => (
     <Title>{group.title}</Title>
     <MetaInfo>
       <Icon />
-      {group.user_ids.length}/{group.user_limit}
+      {group.user_ids ? group.user_ids.length / group.user_limit : ""}
     </MetaInfo>
   </Root>
 )

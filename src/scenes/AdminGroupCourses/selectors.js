@@ -21,10 +21,28 @@ const selectNonCurrentGroupCourses = () =>
       return allCourses.filter(course => !groupCoursesIds.includes(course.id))
     }
   )
+const selectGroupCoursesPagination = () =>
+  createSelector(coursesSelector(), courses => courses.groupCoursesPagination)
+const selectGroupCourseSettings = () =>
+  createSelector(coursesSelector(), courses => courses.groupCourseSettings)
+const selectIsFetchingGroupCourseSettings = () =>
+  createSelector(
+    coursesSelector(),
+    courses => courses.isFetchingGroupCourseSettings
+  )
+const selectIsUpdatingGroupCourseSettings = () =>
+  createSelector(
+    coursesSelector(),
+    courses => courses.isUpdatingGroupCourseSettings
+  )
 
 export const selectors = {
   selectIsFetchingGroupCourses,
   selectGroupCourses,
   selectIsAddingCoursesToGroup,
-  selectNonCurrentGroupCourses
+  selectNonCurrentGroupCourses,
+  selectGroupCoursesPagination,
+  selectGroupCourseSettings,
+  selectIsFetchingGroupCourseSettings,
+  selectIsUpdatingGroupCourseSettings
 }

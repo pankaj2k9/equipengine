@@ -28,11 +28,6 @@ export const TabContent = styled.div`
   padding: 16px;
   @media screen and (min-width: 768px) {
     flex: 1;
-
-    height: auto;
-
     border-left: 1px solid ${props => props.theme.lightgray};
-
-    overflow-y: auto;
   }
 `

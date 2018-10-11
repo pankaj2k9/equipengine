@@ -9,6 +9,15 @@ export const types = {
   FETCH_GROUP_USERS_SUCCESS: "equipengine-admin/FETCH_GROUP_USERS_SUCCESS",
   FETCH_GROUP_USERS_ERROR: "equipengine-admin/FETCH_GROUP_USERS_ERROR",
   //
+  // FETCH_GROUP_USERS
+  //
+  FETCH_MORE_GROUP_USERS_REQUEST:
+    "equipengine-admin/FETCH_MORE_GROUP_USERS_REQUEST",
+  FETCH_MORE_GROUP_USERS_SUCCESS:
+    "equipengine-admin/FETCH_MORE_GROUP_USERS_SUCCESS",
+  FETCH_MORE_GROUP_USERS_ERROR:
+    "equipengine-admin/FETCH_MORE_GROUP_USERS_ERROR",
+  //
   // ADD_USERS_TO_GROUP
   //
   ADD_USERS_TO_GROUP_REQUEST: "equipengine-admin/ADD_USERS_TO_GROUP_REQUEST",
@@ -38,6 +47,7 @@ export const types = {
 const initialState = Immutable({
   groupUsers: [],
   groupUsersPagination: null,
+  isFetchingGroupUsers: false,
   isAddingUsersToGroup: false,
   isDeletingUsersFromGroup: false,
   isUpdatingUserGroupStatus: false,
@@ -57,12 +67,24 @@ export default (state = initialState, action) => {
     case types.FETCH_GROUP_USERS_SUCCESS:
       return state.merge({
         isFetchingGroupUsers: false,
-        groupUsers: action.payload.groupUsers
+        groupUsers: action.payload.groupUsers,
+        groupUsersPagination: action.payload.groupUsersPagination
       })
     case types.FETCH_GROUP_USERS_ERROR:
       return state.merge({
         isFetchingGroupUsers: false,
         groupUsers: []
+      })
+
+    //
+    // FETCH_GROUP_USERS
+    //
+    case types.FETCH_MORE_GROUP_USERS_REQUEST:
+      return state.merge({}) // placeholder for now
+    case types.FETCH_MORE_GROUP_USERS_SUCCESS:
+      return state.merge({
+        groupUsers: state.groupUsers.concat(action.payload.groupUsers),
+        groupUsersPagination: action.payload.groupUsersPagination
       })
 
     //
@@ -159,6 +181,16 @@ export const actions = {
   }),
   fetchGroupUsersError: () => ({
     type: types.FETCH_GROUP_USERS_ERROR
+  }),
+  //
+  // FETCH_MORE_GROUP_USERS
+  //
+  fetchMoreGroupUsersRequest: () => ({
+    type: types.FETCH_MORE_GROUP_USERS_REQUEST
+  }),
+  fetchMoreGroupUsersSuccess: ({ groupUsers, groupUsersPagination }) => ({
+    type: types.FETCH_MORE_GROUP_USERS_SUCCESS,
+    payload: { groupUsers, groupUsersPagination }
   }),
   //
   // ADD_USERS_TO_GROUP

@@ -26,6 +26,7 @@ export const PRIVATE_GROUP_VISIBILITY = "private"
 // GROUP COURSES
 //
 export const ACTIVE_COURSE_IN_GROUP_STATUS = "active"
+export const PAUSE_COURSE_IN_GROUP_STATUS = "pause"
 
 //
 // TUTORIALS

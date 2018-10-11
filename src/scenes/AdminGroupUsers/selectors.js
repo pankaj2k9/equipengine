@@ -7,6 +7,9 @@ const groupsSelector = () => state => state.adminGroupUsers
 const selectGroupUsers = () =>
   createSelector(groupsSelector(), state => state.groupUsers)
 
+const selectGroupUsersPagination = () =>
+  createSelector(groupsSelector(), state => state.groupUsersPagination)
+
 const selectIsAddingUsersToGroup = () =>
   createSelector(groupsSelector(), state => state.isAddingUsersToGroup)
 
@@ -36,6 +39,7 @@ const selectSelectedGroupUser = () =>
 
 export const selectors = {
   selectGroupUsers,
+  selectGroupUsersPagination,
   selectIsAddingUsersToGroup,
   selectIsDeletingUsersFromGroup,
   selectIsFetchingGroupUsers,

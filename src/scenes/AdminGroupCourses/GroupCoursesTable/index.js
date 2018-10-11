@@ -34,34 +34,48 @@ const columns = [
   },
   {
     name: SETTINGS_COLUMN,
-    align: "center",
-    width: "10%",
+    align: "right",
+    width: "15%",
     getCellValue: row => (
-      <SettingsButtonCellFormatter onClick={row[SETTINGS_COLUMN]} />
+      <SettingsButtonCellFormatter
+        onSubmit={row[SETTINGS_COLUMN].onUpdateGroupCourseSettings}
+        course={row[SETTINGS_COLUMN].course}
+        groupCourseSetting={row[SETTINGS_COLUMN].groupCourseSetting}
+      />
     )
   },
   {
     name: DETAILS_COLUMN,
     align: "right",
-    width: "20%",
+    width: "15%",
     getCellValue: row => (
       <DetailsButtonCellFormatter onClick={row[DETAILS_COLUMN]} />
     )
   }
 ]
 
-const courseToRow = (course, onCourseSettingsClick, onCourseClick) => ({
+const courseToRow = (
+  course,
+  groupCourseSetting,
+  onUpdateGroupCourseSettings,
+  onCourseClick
+) => ({
   [TITLE_COLUMN]: course.title,
   [DATE_COLUMN]: course.created_at,
   [STATUS_COLUMN]: true,
-  [SETTINGS_COLUMN]: () => onCourseSettingsClick(course),
+  [SETTINGS_COLUMN]: {
+    onUpdateGroupCourseSettings,
+    course,
+    groupCourseSetting
+  },
   [DETAILS_COLUMN]: () => onCourseClick(course)
 })
 
 const CoursesTable = ({
   className,
   courses,
-  onCourseSettingsClick,
+  groupCourseSettings,
+  onUpdateGroupCourseSettings,
   onCourseClick
 }) => (
   <Table
@@ -70,9 +84,18 @@ const CoursesTable = ({
     rowFontSize="16px"
     rows={
       Array.isArray(courses)
-        ? courses.map(course =>
-            courseToRow(course, onCourseSettingsClick, onCourseClick)
-          )
+        ? courses.map(course => {
+            const groupCourseSetting = groupCourseSettings.find(
+              groupCourseSetting => groupCourseSetting.course_id === course.id
+            )
+
+            return courseToRow(
+              course,
+              groupCourseSetting,
+              onUpdateGroupCourseSettings,
+              onCourseClick
+            )
+          })
         : []
     }
     verticalAlign="middle"

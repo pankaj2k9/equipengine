@@ -3,10 +3,21 @@ import { client } from "./API"
 /**
  * @returns list of users that has access to specific group
  */
-export const fetchGroupUsers = ({ group_id, student_id }) => {
+export const fetchGroupUsers = ({ group_id, student_id, current_page }) => {
   const params = student_id ? { student_id } : {}
+
+  if (current_page) {
+    params.current_count = 12
+    params.current_page = current_page
+  } else {
+    params.current_count = 12
+    params.current_page = 1
+  }
+
   return client
-    .get(`/api/v1/groups/${group_id}/group_users`, params)
+    .get(`/api/v1/groups/${group_id}/group_users`, {
+      params
+    })
     .then(response => response.data)
 }
 
