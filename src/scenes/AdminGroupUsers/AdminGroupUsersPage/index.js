@@ -9,7 +9,6 @@ import features from "features"
 import { selectors } from "../selectors"
 import { addUsersToGroup, fetchGroupUsers } from "../thunks"
 import Loading from "base_components/Loading"
-import GroupUsersTable from "../GroupUsersTable"
 import GroupUsersList from "../GroupUsersList"
 import GroupUsersActionBar from "../GroupUsersActionBar"
 
