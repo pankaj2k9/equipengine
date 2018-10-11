@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom"
 // component
 import Button from "base_components/RootButton"
 import CreateTutorialModal from "../CreateTutorialModal"
-import { createTutorial, fetchTutorials, fetchMoreTutorials } from "../thunks"
+import { createTutorial, fetchTutorials, fetchMoreTutorials, updateTutorial, deleteTutorial} from "../thunks"
 import { selectors } from "../selectors"
 import { actions, types } from "../ducks"
 import modal from "hoc/modal"
@@ -47,8 +47,26 @@ class Course extends Component {
   handleLoadMore = page => {
     const { courseId } = this.props.match.params
     this.props.fetchMoreTutorials({ currentPage: page, courseId })
+  
   }
 
+  handleUpdateTutorialStatus = ({ status, tutorialId }) => {
+    const { courseId } = this.props.match.params
+    this.props.updateTutorial({
+      courseId,
+      tutorialId,
+      status
+    })
+  }
+
+  handleDeleteTutorial = ({ tutorialId }) => {
+    const { courseId } = this.props.match.params
+    this.props.deleteTutorial({
+      tutorialId,
+      courseId
+    })
+  }
+  
   render() {
     const {
       tutorials,
@@ -77,7 +95,13 @@ class Course extends Component {
         }
         loading={isCreatingTutorial || isFetchingTutorials}
         tabs={tutorials}
-        tabFormatter={tutorial => <TutorialItemFormatter tutorial={tutorial} />}
+        tabFormatter={tutorial => (
+          <TutorialItemFormatter
+            tutorial={tutorial}
+            onUpdateTutorialStatus={this.handleUpdateTutorialStatus}
+            onDeleteTutorial={this.handleDeleteTutorial}
+          />
+        )}
         selectedTab={selectedTutorial && selectedTutorial.id}
         content={<TutorialTabs tutorial={selectedTutorial} />}
         onTabClick={this.handleSelectTutorial}
@@ -104,6 +128,8 @@ const mapDispatch = dispatch =>
       createTutorial,
       fetchTutorials,
       fetchMoreTutorials,
+      updateTutorial,
+      deleteTutorial,
       selectTutorial: actions.selectTutorial
     },
     dispatch

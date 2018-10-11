@@ -27,6 +27,16 @@ export const types = {
   //
   SELECT_TUTORIAL: "equipengine-admin/SELECT_TUTORIAL",
   //
+  // UPDATE_TUTORIAL
+  //
+  UPDATE_TUTORIAL_SUCCESS: "equipengine-admin/UPDATE_TUTORIAL_SUCCESS",
+  UPDATE_TUTORIAL_ERROR: "equipengine-admin/UPDATE_TUTORIAL_ERROR",
+  //
+  // DELETE_TUTORIAL
+  //
+  DELETE_TUTORIAL_SUCCESS: "equipengine-admin/DELETE_TUTORIAL_SUCCESS",
+  DELETE_TUTORIAL_ERROR: "equipengine-admin/DELETE_TUTORIAL_ERROR",
+  //
   // FETCH_TASKS
   //
   FETCH_TASKS_REQUEST: "equipengine-admin/FETCH_TASKS_REQUEST",
@@ -137,6 +147,33 @@ export default (state = initialState, action) => {
     case types.SELECT_TUTORIAL:
       return state.merge({
         selectedTutorialId: action.payload.selectedTutorialId
+      })
+
+    //
+    // UPDATE_TUTORIAL
+    //
+    case types.UPDATE_TUTORIAL_SUCCESS:
+      const { lesson } = action.payload
+
+      const courseTutorials = Immutable(state.tutorials).asMutable()
+      const index = courseTutorials.findIndex(
+        courseTutorial => courseTutorial.id === lesson.id
+      )
+
+      courseTutorials.splice(index, 1, lesson)
+
+      return state.merge({
+        tutorials: courseTutorials
+      })
+
+    //
+    // DELETE_TUTORIAL
+    //
+    case types.DELETE_TUTORIAL_SUCCESS:
+      return state.merge({
+        tasks: state.tutorials.filter(
+          tutorial => tutorial.id !== action.payload.tutorialId
+        )
       })
 
     //
@@ -267,6 +304,26 @@ export const actions = {
   selectTutorial: ({ selectedTutorialId }) => ({
     type: types.SELECT_TUTORIAL,
     payload: { selectedTutorialId }
+  }),
+  //
+  // UPDATE_TUTORIAL
+  //
+  updateTutorialSuccess: ({ lesson }) => ({
+    type: types.UPDATE_TUTORIAL_SUCCESS,
+    payload: { lesson }
+  }),
+  updateTutorialError: () => ({
+    type: types.UPDATE_TUTORIAL_ERROR
+  }),
+  //
+  // DELETE_TUTORIAL
+  //
+  deleteTutorialSuccess: ({ tutorialId }) => ({
+    type: types.DELETE_TUTORIAL_SUCCESS,
+    payload: { tutorialId }
+  }),
+  deleteTutorialError: () => ({
+    type: types.DELETE_TUTORIAL_ERROR
   }),
   //
   // FETCH_TASKS

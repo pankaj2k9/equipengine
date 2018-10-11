@@ -81,6 +81,55 @@ export const createTutorial = ({ courseId, title, description }) => {
   }
 }
 
+export const updateTutorial = ({
+  courseId,
+  tutorialId,
+  title,
+  description,
+  status
+}) => {
+  return async dispatch => {
+    try {
+      const { lesson } = await API.updateAdminTutorial({
+        course_id: courseId,
+        tutorial_id: tutorialId,
+        title,
+        description,
+        status
+      })
+
+      return dispatch(
+        actions.updateTutorialSuccess({
+          lesson
+        })
+      )
+    } catch (error) {
+      return dispatch(actions.updateTutorialError())
+    }
+  }
+}
+
+export const deleteTutorial = ({ courseId, tutorialId }) => {
+  return async dispatch => {
+    try {
+      const { success } = await API.deleteTutorial({
+        course_id: courseId,
+        tutorial_id: tutorialId
+      })
+
+      if (success) {
+        return dispatch(
+          actions.deleteTutorialSuccess({
+            tutorialId
+          })
+        )
+      }
+    } catch (error) {
+      return dispatch(actions.deleteTutorialError())
+    }
+  }
+}
+
 export const fetchTasks = ({ courseId, tutorialId }) => {
   return async dispatch => {
     dispatch(actions.fetchTasksRequest())
