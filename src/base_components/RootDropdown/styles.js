@@ -1,5 +1,8 @@
+import React from "react"
 import css from "utils/css"
 import Select from "react-select"
+
+const SelectWrapper = props => <Select {...props} />
 
 /**
  * -------------------------------------
@@ -11,4 +14,4 @@ export default css`
     border-color: #dddddd;
     height: 40px;
   }
-`(Select)
+`(SelectWrapper)

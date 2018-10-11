@@ -17,6 +17,7 @@ class UploadableAvatar extends React.Component {
 
   handleChooseFilesButtonClick = files => {
     const reader = new window.FileReader()
+    const formData = new FormData()
     const file = files[0]
 
     reader.onloadend = () => {
@@ -26,6 +27,8 @@ class UploadableAvatar extends React.Component {
     }
 
     reader.readAsDataURL(file)
+
+    formData.append("useravatar", file)
   }
 
   render() {
@@ -44,6 +47,7 @@ class UploadableAvatar extends React.Component {
           <Fragment>
             <span className="centered">Upload</span>
             <FileChooser
+              name="userAvatar"
               accept="image/*"
               onChooseFiles={this.handleChooseFilesButtonClick}
               ref={input => {

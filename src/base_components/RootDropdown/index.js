@@ -11,7 +11,14 @@ class Dropdown extends Component {
   }
 
   render() {
-    const { name, options, className, placeholder, value } = this.props
+    const {
+      name,
+      options,
+      className,
+      placeholder,
+      value,
+      disabled
+    } = this.props
 
     return (
       <StyledSelect
@@ -23,6 +30,7 @@ class Dropdown extends Component {
         placeholder={placeholder}
         searchable={false}
         clearable={false}
+        disabled={disabled}
       />
     )
   }

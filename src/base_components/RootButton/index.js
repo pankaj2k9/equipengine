@@ -91,7 +91,6 @@ const IconButton = styled.button`
   svg {
     width: 30px;
   }
-  background-color: white;
 `
 
 // TODO try to move to button as type 'outline'

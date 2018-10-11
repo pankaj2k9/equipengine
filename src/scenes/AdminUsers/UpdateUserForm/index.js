@@ -274,6 +274,7 @@ class UpdateUserForm extends Component {
             changeFirstName={this.onChange}
             changeLastName={this.onChange}
             changeEmail={this.onChange}
+            changeUserAvatar={this.onChange}
             onSendResetPasswordToken={this.handleSendResetPasswordToken}
             isAvatarEditable
           />

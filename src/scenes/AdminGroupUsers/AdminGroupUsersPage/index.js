@@ -10,6 +10,7 @@ import { selectors } from "../selectors"
 import { addUsersToGroup, fetchGroupUsers } from "../thunks"
 import Loading from "base_components/Loading"
 import GroupUsersTable from "../GroupUsersTable"
+import GroupUsersList from "../GroupUsersList"
 import GroupUsersActionBar from "../GroupUsersActionBar"
 
 class AdminGroupUsersPage extends Component {
@@ -78,7 +79,7 @@ class AdminGroupUsersPage extends Component {
               onAddUsers={this.handleAddUsersToGroup}
               onSearchUser={this.handleSearchUser}
             />
-            <GroupUsersTable
+            <GroupUsersList
               users={groupUsers}
               onUserClick={this.handleUserClick}
             />

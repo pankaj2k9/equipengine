@@ -4,12 +4,17 @@ import { compose, withState } from "recompose"
 import { connect } from "react-redux"
 import { createStructuredSelector } from "reselect"
 import { withRouter } from "react-router-dom"
-
+// components
 import features from "features"
 import { selectors } from "../selectors"
-import { addCoursesToGroup, fetchGroupCourses } from "../thunks"
+import {
+  addCoursesToGroup,
+  fetchGroupCourses,
+  fetchGroupCourseSettings,
+  updateGroupCourseSettings
+} from "../thunks"
 import Loading from "base_components/Loading"
-import GroupCoursesTable from "../GroupCoursesTable"
+import GroupCoursesList from "../GroupCourseList"
 import GroupCoursesActionBar from "../GroupCoursesActionBar"
 
 class AdminGroupCoursesPage extends Component {
@@ -23,7 +28,8 @@ class AdminGroupCoursesPage extends Component {
         !Array.isArray(groupCourses[0].group_ids) ||
         !groupCourses[0].group_ids.includes(groupId))
     ) {
-      this.props.fetchGroupCourses({ groupId })
+      this.props.fetchGroupCourses({ groupId, current_page: 1 })
+      this.props.fetchGroupCourseSettings({ groupId })
     }
 
     // Fetch all courses for autocomplete
@@ -35,6 +41,11 @@ class AdminGroupCoursesPage extends Component {
     ) {
       this.props.fetchCourses({})
     }
+  }
+
+  handleUpdateGroupCourseSettings = fields => {
+    console.log("handleCourseSettingsClick")
+    this.props.updateGroupCourseSettings(fields)
   }
 
   handleCourseClick = course =>
@@ -62,12 +73,18 @@ class AdminGroupCoursesPage extends Component {
       nonCurrentGroupCourses,
       isFetchingCourses,
       searchTerm,
-      isAddingCourseToGroup
+      isAddingCourseToGroup,
+      groupCourseSettings,
+      isFetchingGroupCourseSettings,
+      isUpdatingGroupCourseSettings
     } = this.props
 
     return (
       <div className={className}>
-        {isFetchingGroupCourses || isAddingCourseToGroup ? (
+        {isFetchingGroupCourses ||
+        isAddingCourseToGroup ||
+        isFetchingGroupCourseSettings ||
+        isUpdatingGroupCourseSettings ? (
           <Loading />
         ) : (
           <div>
@@ -78,8 +95,10 @@ class AdminGroupCoursesPage extends Component {
               onAddCourses={this.handleAddCoursesToGroup}
               onSearchCourse={this.handleSearchCourse}
             />
-            <GroupCoursesTable
+            <GroupCoursesList
               courses={groupCourses}
+              groupCourseSettings={groupCourseSettings}
+              onUpdateGroupCourseSettings={this.handleUpdateGroupCourseSettings}
               onCourseClick={this.handleCourseClick}
             />
           </div>
@@ -98,7 +117,10 @@ const mapState = () =>
     // table and action bar selectors
     groupCourses: selectors.selectGroupCourses(),
     isFetchingGroupCourses: selectors.selectIsFetchingGroupCourses(),
-    isAddingCourseToGroup: selectors.selectIsAddingCoursesToGroup()
+    isAddingCourseToGroup: selectors.selectIsAddingCoursesToGroup(),
+    groupCourseSettings: selectors.selectGroupCourseSettings(),
+    isFetchingGroupCourseSettings: selectors.selectIsFetchingGroupCourseSettings(),
+    isUpdatingGroupCourseSettings: selectors.selectIsUpdatingGroupCourseSettings()
   })
 
 const mapDispatch = dispatch =>
@@ -106,6 +128,8 @@ const mapDispatch = dispatch =>
     {
       addCoursesToGroup,
       fetchGroupCourses,
+      fetchGroupCourseSettings,
+      updateGroupCourseSettings,
       fetchCourses: features.adminCourses.actions.fetchCourses
     },
     dispatch
