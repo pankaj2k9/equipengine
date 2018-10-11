@@ -15,7 +15,7 @@ export const Root = Panel.extend`
   }
 
   @media screen and (max-width: 1350px) {
-    min-width: 650px;
+    min-width: 550px;
   }
 
   @media screen and (max-width: 767px) {

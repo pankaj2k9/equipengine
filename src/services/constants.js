@@ -34,6 +34,8 @@ export const PAUSE_COURSE_IN_GROUP_STATUS = "pause"
 export const TUTORIAL_UNCOMPLETED_STATUS = "active"
 export const TUTORIAL_COMPLETED_STATUS = "completed"
 export const ACTIVE_TUTORIAL_STATUS = "active"
+export const PAUSE_TUTORIAL_STATUS = "pause"
+export const INACTIVE_TUTORIAL_STATUS = "inactive"
 
 //
 // TASKS

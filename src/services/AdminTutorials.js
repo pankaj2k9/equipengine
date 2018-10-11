@@ -29,3 +29,31 @@ export const createAdminTutorial = ({
       status
     })
     .then(response => response.data)
+
+/**
+ * @returns updated tutorial
+ */
+export const updateAdminTutorial = ({
+  course_id,
+  tutorial_id,
+  title,
+  description,
+  status
+}) =>
+  client
+    .put(`/api/v1/courses/${course_id}/lessons/${tutorial_id}`, {
+      lesson: {
+        title,
+        description,
+        status
+      }
+    })
+    .then(response => response.data)
+
+/**
+ * @returns ture if success
+ */
+export const deleteTutorial = ({ course_id, tutorial_id }) =>
+  client
+    .delete(`/api/v1/courses/${course_id}/lessons/${tutorial_id}`)
+    .then(response => response.data)
