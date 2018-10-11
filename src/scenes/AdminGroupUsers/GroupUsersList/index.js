@@ -1,6 +1,6 @@
 import React from "react"
 import { bindActionCreators } from "redux"
-import { compose, lifecycle, pure, withHandlers, withState } from "recompose"
+import { compose, pure, withHandlers, withState } from "recompose"
 import { connect } from "react-redux"
 import { createStructuredSelector } from "reselect"
 import { withRouter } from "react-router-dom"

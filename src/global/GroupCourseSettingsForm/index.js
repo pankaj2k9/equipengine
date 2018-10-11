@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react"
+import React, { Fragment } from "react"
 import joi from "joi"
 // components
 import GroupCourseRules from "./GroupCourseRules"
