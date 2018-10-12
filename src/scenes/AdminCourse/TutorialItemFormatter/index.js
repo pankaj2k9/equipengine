@@ -10,11 +10,16 @@ import ContainerFlex from "base_components/ContainerFlex"
 import { Switch } from "base_components/RootForm"
 import { Root, DeleteIcon, DndIcon, StyledForm } from "./elements"
 import TutorialTitle from "global/TutorialTitle"
+import Loading from "base_components/Loading"
 
 const TutorialItemFormatter = ({
   tutorial,
   onUpdateTutorialStatus,
-  onDeleteTutorial
+  onDeleteTutorial,
+  isUpdatingTutorial,
+  updatingTutorialId,
+  isDeletingTutorial,
+  deletingTutorialId
 }) => (
   <Root isAlignCenter isSpaceBetween>
     <ContainerFlex isAlignCenter isSpaceBetween>
@@ -27,6 +32,7 @@ const TutorialItemFormatter = ({
       <StyledForm>
         <Switch
           value={tutorial.status === ACTIVE_TUTORIAL_STATUS}
+          disabled={isUpdatingTutorial && updatingTutorialId === tutorial.id}
           onChange={e => {
             const status = e.target.checked
               ? ACTIVE_TUTORIAL_STATUS
@@ -35,11 +41,15 @@ const TutorialItemFormatter = ({
             e.stopPropagation()
           }}
         />
-        <DeleteIcon
-          onClick={() => onDeleteTutorial({ tutorialId: tutorial.id })}
-        >
-          <IconClose />
-        </DeleteIcon>
+        {isDeletingTutorial && deletingTutorialId === tutorial.id ? (
+          <Loading />
+        ) : (
+          <DeleteIcon
+            onClick={() => onDeleteTutorial({ tutorialId: tutorial.id })}
+          >
+            <IconClose />
+          </DeleteIcon>
+        )}
       </StyledForm>
     </ContainerFlex>
   </Root>

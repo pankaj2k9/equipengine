@@ -78,6 +78,10 @@ class Course extends Component {
       tutorials,
       selectedTutorial,
       isCreatingTutorial,
+      isUpdatingTutorial,
+      updatingTutorialId,
+      isDeletingTutorial,
+      deletingTutorialId,
       isFetchingTutorials,
       isOpen,
       onOpen,
@@ -104,6 +108,10 @@ class Course extends Component {
         tabFormatter={tutorial => (
           <TutorialItemFormatter
             tutorial={tutorial}
+            isUpdatingTutorial={isUpdatingTutorial}
+            updatingTutorialId={updatingTutorialId}
+            isDeletingTutorial={isDeletingTutorial}
+            deletingTutorialId={deletingTutorialId}
             onUpdateTutorialStatus={this.handleUpdateTutorialStatus}
             onDeleteTutorial={this.handleDeleteTutorial}
           />
@@ -124,6 +132,10 @@ const mapState = () =>
     tutorials: selectors.selectTutorials(),
     isFetchingTutorials: selectors.selectIsFetchingTutorials(),
     isCreatingTutorial: selectors.selectIsCreatingTutorial(),
+    isUpdatingTutorial: selectors.selectIsUpdatingTutorial(),
+    updatingTutorialId: selectors.selectUpdatingTutorialId(),
+    isDeletingTutorial: selectors.selectIsDeletingTutorial(),
+    deletingTutorialId: selectors.selectDeletingTutorialId(),
     selectedTutorial: selectors.selectSelectedTutorial(),
     pagination: selectors.selectTutorialPagination()
   })

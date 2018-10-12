@@ -21,7 +21,7 @@ class TutorialTasksTab extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.selectedTutorial !== this.props.selectedTutorial) {
+    if (prevProps.selectedTutorial.id !== this.props.selectedTutorial.id) {
       this.fetchCurrentTutorialTasks()
     }
   }
