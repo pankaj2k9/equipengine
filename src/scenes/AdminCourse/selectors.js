@@ -13,6 +13,14 @@ const selectTutorials = () =>
   createSelector(courseSelector(), course => course.tutorials)
 const selectIsCreatingTutorial = () =>
   createSelector(courseSelector(), course => course.isCreatingTutorial)
+const selectIsUpdatingTutorial = () =>
+  createSelector(courseSelector(), course => course.isUpdatingTutorial)
+const selectUpdatingTutorialId = () =>
+  createSelector(courseSelector(), course => course.updatingTutorialId)
+const selectIsDeletingTutorial = () =>
+  createSelector(courseSelector(), course => course.isDeletingTutorial)
+const selectDeletingTutorialId = () =>
+  createSelector(courseSelector(), course => course.deletingTutorialId)
 const selectSelectedTutorial = () =>
   createSelector(
     courseSelector(),
@@ -41,6 +49,10 @@ export const selectors = {
   selectIsFetchingTutorials,
   selectTutorials,
   selectIsCreatingTutorial,
+  selectIsUpdatingTutorial,
+  selectUpdatingTutorialId,
+  selectIsDeletingTutorial,
+  selectDeletingTutorialId,
   selectSelectedTutorial,
   selectTasks,
   selectIsFetchingTasks,

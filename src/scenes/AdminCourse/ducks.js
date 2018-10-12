@@ -29,11 +29,13 @@ export const types = {
   //
   // UPDATE_TUTORIAL
   //
+  UPDATE_TUTORIAL_REQUEST: "equipengine-admin/UPDATE_TUTORIAL_REQUEST",
   UPDATE_TUTORIAL_SUCCESS: "equipengine-admin/UPDATE_TUTORIAL_SUCCESS",
   UPDATE_TUTORIAL_ERROR: "equipengine-admin/UPDATE_TUTORIAL_ERROR",
   //
   // DELETE_TUTORIAL
   //
+  DELETE_TUTORIAL_REQUEST: "equipengine-admin/DELETE_TUTORIAL_REQUEST",
   DELETE_TUTORIAL_SUCCESS: "equipengine-admin/DELETE_TUTORIAL_SUCCESS",
   DELETE_TUTORIAL_ERROR: "equipengine-admin/DELETE_TUTORIAL_ERROR",
   //
@@ -69,6 +71,10 @@ const initialState = Immutable({
   tutorials: [],
   tutorialsPagination: null,
   isCreatingTutorial: false,
+  isUpdatingTutorial: false,
+  updatingTutorialId: null,
+  deletingTutorial: false,
+  deletingTutorialId: null,
   selectedTutorialId: null,
   isFetchingTasks: false,
   tasks: [],
@@ -152,6 +158,12 @@ export default (state = initialState, action) => {
     //
     // UPDATE_TUTORIAL
     //
+
+    case types.UPDATE_TUTORIAL_REQUEST:
+      return state.merge({
+        isUpdatingTutorial: true,
+        updatingTutorialId: action.payload.tutorialId
+      })
     case types.UPDATE_TUTORIAL_SUCCESS:
       const { lesson } = action.payload
 
@@ -163,15 +175,23 @@ export default (state = initialState, action) => {
       courseTutorials.splice(index, 1, lesson)
 
       return state.merge({
-        tutorials: courseTutorials
+        tutorials: courseTutorials,
+        isUpdatingTutorial: false
       })
 
     //
     // DELETE_TUTORIAL
     //
+
+    case types.DELETE_TUTORIAL_REQUEST:
+      return state.merge({
+        isDeletingTutorial: true,
+        deletingTutorialId: action.payload.tutorialId
+      })
     case types.DELETE_TUTORIAL_SUCCESS:
       return state.merge({
-        tasks: state.tutorials.filter(
+        isDeletingTutorial: false,
+        tutorials: state.tutorials.filter(
           tutorial => tutorial.id !== action.payload.tutorialId
         )
       })
@@ -308,6 +328,10 @@ export const actions = {
   //
   // UPDATE_TUTORIAL
   //
+  updateTutorialRequest: ({ tutorialId }) => ({
+    type: types.UPDATE_TUTORIAL_REQUEST,
+    payload: { tutorialId }
+  }),
   updateTutorialSuccess: ({ lesson }) => ({
     type: types.UPDATE_TUTORIAL_SUCCESS,
     payload: { lesson }
@@ -318,6 +342,10 @@ export const actions = {
   //
   // DELETE_TUTORIAL
   //
+  deleteTutorialRequest: ({ tutorialId }) => ({
+    type: types.DELETE_TUTORIAL_REQUEST,
+    payload: { tutorialId }
+  }),
   deleteTutorialSuccess: ({ tutorialId }) => ({
     type: types.DELETE_TUTORIAL_SUCCESS,
     payload: { tutorialId }

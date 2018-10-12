@@ -89,6 +89,7 @@ export const updateTutorial = ({
   status
 }) => {
   return async dispatch => {
+    dispatch(actions.updateTutorialRequest({ tutorialId }))
     try {
       const { lesson } = await API.updateAdminTutorial({
         course_id: courseId,
@@ -111,16 +112,17 @@ export const updateTutorial = ({
 
 export const deleteTutorial = ({ courseId, tutorialId }) => {
   return async dispatch => {
+    dispatch(actions.deleteTutorialRequest({ tutorialId }))
     try {
-      const { success } = await API.deleteTutorial({
+      const { lesson } = await API.deleteTutorial({
         course_id: courseId,
         tutorial_id: tutorialId
       })
 
-      if (success) {
+      if (Object.keys(lesson).length) {
         return dispatch(
           actions.deleteTutorialSuccess({
-            tutorialId
+            tutorialId: lesson.id
           })
         )
       }
