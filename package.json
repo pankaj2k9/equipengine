@@ -10,7 +10,7 @@
     "@devexpress/dx-react-grid": "^1.4.0",
     "@devexpress/dx-react-grid-bootstrap3": "^1.4.0",
     "axios": "^0.18.0",
-    "bootstrap": "3",
+    "bootstrap": "3.4.0",
     "classnames": "^2.2.5",
     "eslint": "^5.5.0",
     "history": "^4.7.2",
